@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
+import com.etoc.weflow.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.test.flowbank.R;
 
 public class SlidingActivityHelper {
 

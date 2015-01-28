@@ -15,7 +15,8 @@
  *******************************************************************************/
 package com.handmark.pulltorefresh.library;
 
-import com.test.flowbank.R;
+
+import com.etoc.weflow.R;
 
 import android.annotation.TargetApi;
 import android.content.Context;

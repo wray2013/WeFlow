@@ -13,8 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.etoc.weflow.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.CanvasTransformer;
-import com.test.flowbank.R;
 
 public class CustomViewBehind extends ViewGroup {
 
