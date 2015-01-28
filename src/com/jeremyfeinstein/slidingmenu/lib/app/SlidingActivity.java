@@ -22,6 +22,7 @@ public class SlidingActivity extends Activity implements SlidingActivityBase {
 		mHelper.onCreate(savedInstanceState);
 	}
 
+	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onPostCreate(android.os.Bundle)
 	 */
