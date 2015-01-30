@@ -23,6 +23,13 @@
             </intent-filter>
         </activity>
         
+        <activity
+            android:name="com.etoc.weflow.activity.login.StartAccountActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:theme="@style/CustomerDialog" >
+        </activity>
+
     </application>
 
 </manifest>

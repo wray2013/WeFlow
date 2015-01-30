@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.utils.DisplayUtil;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.CanvasTransformer;
 
 public class CustomViewBehind extends ViewGroup {
@@ -31,6 +32,8 @@ public class CustomViewBehind extends ViewGroup {
 	private int mWidthOffset;
 	private CanvasTransformer mTransformer;
 	private boolean mChildrenEnabled;
+	private int startTop = 0;
+	private int endBottom = 0;
 
 	public CustomViewBehind(Context context) {
 		this(context, null);
@@ -40,6 +43,8 @@ public class CustomViewBehind extends ViewGroup {
 		super(context, attrs);
 		mMarginThreshold = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 
 				MARGIN_THRESHOLD, getResources().getDisplayMetrics());
+		startTop = DisplayUtil.getSize(context, 150);
+//		endBottom = DisplayUtil.getSize(context, 910);
 	}
 
 	public void setCustomViewAbove(CustomViewAbove customViewAbove) {
@@ -139,6 +144,7 @@ public class CustomViewBehind extends ViewGroup {
 		int width = getDefaultSize(0, widthMeasureSpec);
 		int height = getDefaultSize(0, heightMeasureSpec);
 		setMeasuredDimension(width, height);
+		endBottom = (int) (910 / 1230.0 * getHeight());
 		final int contentWidth = getChildMeasureSpec(widthMeasureSpec, 0, width-mWidthOffset);
 		final int contentHeight = getChildMeasureSpec(heightMeasureSpec, 0, height);
 		mContent.measure(contentWidth, contentHeight);
@@ -151,6 +157,8 @@ public class CustomViewBehind extends ViewGroup {
 	private final Paint mFadePaint = new Paint();
 	private float mScrollScale;
 	private Drawable mShadowDrawable;
+	private Drawable mTopShadowDrawable;
+	private Drawable mBottomShadowDrawable;
 	private Drawable mSecondaryShadowDrawable;
 	private int mShadowWidth;
 	private float mFadeDegree;
@@ -179,6 +187,16 @@ public class CustomViewBehind extends ViewGroup {
 
 	public void setShadowDrawable(Drawable shadow) {
 		mShadowDrawable = shadow;
+		invalidate();
+	}
+	
+	public void setTopShadowDrawable(Drawable shadow) {
+		mTopShadowDrawable = shadow;
+		invalidate();
+	}
+	
+	public void setBottomShadowDrawable(Drawable shadow) {
+		mBottomShadowDrawable = shadow;
 		invalidate();
 	}
 
@@ -233,8 +251,9 @@ public class CustomViewBehind extends ViewGroup {
 						(x-getBehindWidth())*mScrollScale), y);				
 			}
 		}
-		if (vis == View.INVISIBLE)
-			Log.v(TAG, "behind INVISIBLE");
+		if (vis == View.INVISIBLE) {
+//			Log.v(TAG, "behind INVISIBLE");
+		}
 		setVisibility(vis);
 	}
 
@@ -341,7 +360,8 @@ public class CustomViewBehind extends ViewGroup {
 		return false;
 	}
 
-	public void drawShadow(View content, Canvas canvas) {
+	public void drawShadow(View content, Canvas canvas,float percent) {
+//		Log.d(TAG,"drawShadow percent = " + percent);
 		if (mShadowDrawable == null || mShadowWidth <= 0) return;
 		int left = 0;
 		if (mMode == SlidingMenu.LEFT) {
@@ -356,8 +376,19 @@ public class CustomViewBehind extends ViewGroup {
 			}
 			left = content.getLeft() - mShadowWidth;
 		}
-		mShadowDrawable.setBounds(left, 0, left + mShadowWidth, getHeight());
+		int top = (int) (startTop * percent);
+		int bottom = (int) (top + (endBottom - getHeight()) * percent + getHeight());
+		mShadowDrawable.setBounds(left, top - mShadowWidth, left + mShadowWidth, bottom + mShadowWidth);
 		mShadowDrawable.draw(canvas);
+		
+		if (mTopShadowDrawable == null || mBottomShadowDrawable == null) {
+			return;
+		}
+		
+		mTopShadowDrawable.setBounds(left + mShadowWidth  ,top - mShadowWidth,getWidth(),top);
+		mBottomShadowDrawable.setBounds(left + mShadowWidth, bottom , getWidth(), bottom + mShadowWidth);
+		mTopShadowDrawable.draw(canvas);
+		mBottomShadowDrawable.draw(canvas);
 	}
 
 	public void drawFade(View content, Canvas canvas, float openPercent) {
@@ -435,6 +466,11 @@ public class CustomViewBehind extends ViewGroup {
 	public void setSelectorBitmap(Bitmap b) {
 		mSelectorDrawable = b;
 		refreshDrawableState();
+	}
+
+	public void setTopEdge(int topEdge) {
+		// TODO Auto-generated method stub
+		startTop = topEdge;
 	}
 
 }

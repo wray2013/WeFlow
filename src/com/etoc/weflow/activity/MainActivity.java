@@ -1,5 +1,6 @@
 package com.etoc.weflow.activity;
 
+import android.graphics.Canvas;
 import android.os.Handler.Callback;
 import android.os.Bundle;
 import android.os.Handler;
@@ -110,7 +111,7 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 		t.commit();
 		
 		// customize the SlidingMenu
-		final int leftOffset = 192 * dm.widthPixels / 720;
+		final int leftOffset = 120 * dm.widthPixels / 720;
 		final SlidingMenu sm = getSlidingMenu();
 		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
 		sm.setBehindOffset(leftOffset);
@@ -118,11 +119,32 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 		sm.setBehindScrollScale(0.25f);
 		sm.setFadeDegree(0.25f);
 		sm.setShadowDrawable(R.drawable.shadow_left);
-//		sm.setTopShadowDrawable(R.drawable.shadow_top);
-//		sm.setBottomShadowDrawable(R.drawable.shadow_down);
+		sm.setTopShadowDrawable(R.drawable.shadow_top);
+		sm.setBottomShadowDrawable(R.drawable.shadow_bottom);
 		sm.setShadowWidth(DisplayUtil.getSize(this, 30));
 		
-		sm.setBackgroundImage(R.drawable.drawer_bg);
+		sm.setBackgroundImage(R.drawable.img_frame_background);
+		
+		final float defaultPercent = 910.0f/(1280 - 50);
+		final float defaultMidPos = (577.0f) * dm.heightPixels / 1280;
+		sm.setTopEdge((int) (defaultMidPos * (1 - defaultPercent)));
+		Log.d(TAG,"defaultMidPos = " + defaultMidPos);
+		sm.setBehindCanvasTransformer(new SlidingMenu.CanvasTransformer() {
+			@Override
+			public void transformCanvas(Canvas canvas, float percentOpen) {
+				float scale = (float) (percentOpen * (1 - defaultPercent) + defaultPercent);
+				canvas.scale(scale, scale, -canvas.getWidth() / 2,
+						defaultMidPos);
+			}
+		});
+
+		sm.setAboveCanvasTransformer(new SlidingMenu.CanvasTransformer() {
+			@Override
+			public void transformCanvas(Canvas canvas, float percentOpen) {
+				float scale = (float) (1 - percentOpen * (1 - defaultPercent));
+				canvas.scale(scale, scale, 0, defaultMidPos);
+			}
+		});
 	}
 	
 	@Override

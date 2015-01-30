@@ -21,7 +21,7 @@ import android.widget.TextView;
  * fragment的父类，统一处理了title
  * @author guoyang
  */
-public abstract class TitleRootFragment extends XFragment implements View.OnClickListener{
+public abstract class TitleRootFragment extends XFragment<Object> implements View.OnClickListener {
 
 	private RelativeLayout rlyTitle;
 	private FrameLayout rlyContent;

@@ -10,6 +10,7 @@
     <color name="title_text_color">#666666</color>
     <color name="sub_text_color">#888888</color>
     
+    <color name="third_platform_login_text_color">#cb9760</color>
     
     <color name="right_buttom_text_normal">#f65c00</color>
     <color name="right_buttom_text_pressed">#b94500</color>

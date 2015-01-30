@@ -871,6 +871,26 @@ public class SlidingMenu extends RelativeLayout {
 	public void setShadowDrawable(Drawable d) {
 		mViewBehind.setShadowDrawable(d);
 	}
+	
+	public void setTopShadowDrawable(int resId) {
+		setTopShadowDrawable(getContext().getResources().getDrawable(resId));
+	}
+	
+	public void setTopShadowDrawable(Drawable d) {
+		mViewBehind.setTopShadowDrawable(d);
+	}
+	
+	public void setTopEdge(int topEdge) {
+		mViewBehind.setTopEdge(topEdge);
+	}
+	
+	public void setBottomShadowDrawable(int resId) {
+		setBottomShadowDrawable(getContext().getResources().getDrawable(resId));
+	}
+	
+	public void setBottomShadowDrawable(Drawable d) {
+		mViewBehind.setBottomShadowDrawable(d);
+	}
 
 	/**
 	 * Sets the secondary (right) shadow drawable.
@@ -1160,8 +1180,8 @@ public class SlidingMenu extends RelativeLayout {
 		if (layerType != getContent().getLayerType()) {
 			getHandler().post(new Runnable() {
 				public void run() {
-					Log.v(TAG, "changing layerType. hardware? "
-							+ (layerType == View.LAYER_TYPE_HARDWARE));
+					/*Log.v(TAG, "changing layerType. hardware? "
+							+ (layerType == View.LAYER_TYPE_HARDWARE));*/
 					getContent().setLayerType(layerType, null);
 					getMenu().setLayerType(layerType, null);
 					if (getSecondaryMenu() != null) {
