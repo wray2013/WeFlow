@@ -3,15 +3,22 @@
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/green"
     >
     <TextView
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:layout_centerInParent="true"
-    	android:text="HomePage Fragment"
-    	android:textColor="@color/white"
+    	android:text="FlowBank Fragment"
+    	android:textColor="@color/black"
         />
+    <com.etoc.weflow.view.MagicTextView
+        android:id="@+id/mtv_money" 
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_centerHorizontal="true"
+    	android:text="123456"
+    	android:textSize="60sp"/>
     
 </RelativeLayout>
 

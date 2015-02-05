@@ -23,6 +23,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/rl_login_applogo">
+        
+        <com.etoc.weflow.view.SpinnerEditText 
+            android:id="@+id/se_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_edit_bg_account"/>
+        
         <EditText
             android:id="@+id/et_account"
             android:layout_width="match_parent"
@@ -31,7 +38,9 @@
             android:hint="微流量账号(邮箱/手机号)"
             android:inputType="text"
             android:padding="5dp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:visibility="gone" />
+        
 		<EditText
             android:id="@+id/et_pass"
             android:layout_width="match_parent"
@@ -41,7 +50,8 @@
             android:hint="密码"
             android:inputType="textPassword"
             android:padding="5dp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:visibility="gone" />
     </RelativeLayout>
     
     <RelativeLayout 
@@ -173,7 +183,8 @@
         android:gravity="center_vertical"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/rl_login_third_platform" >
-        <Button 
+        <Button
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
         	android:layout_height="wrap_content"
         	android:textColor="@color/white"

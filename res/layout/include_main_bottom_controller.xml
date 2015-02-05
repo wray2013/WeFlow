@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_controller"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:baselineAligned="false"
+    android:background="@drawable/main_bottom_bg"
+    android:orientation="horizontal" >
+    <RelativeLayout
+        android:id="@+id/rl_btn_weflow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/btn_tab_weflow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/green" />
+
+        <TextView
+            android:id="@+id/tv_tab_weflow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_tab_weflow"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="@string/tab_weflow"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+        <!-- TextView
+	        android:id="@+id/tv_tab_gift_num"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:visibility="gone"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:background="@drawable/tips"
+	        android:gravity="center"
+	        android:text="1"
+	        android:textColor="#ffffff"
+	        android:textSize="10sp"  / -->
+    </RelativeLayout>
+<RelativeLayout
+        android:id="@+id/rl_btn_bank"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/btn_tab_bank"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/green" />
+
+        <TextView
+            android:id="@+id/tv_tab_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_tab_bank"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="@string/tab_bank"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+        <!-- TextView
+	        android:id="@+id/tv_tab_gift_num"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:visibility="gone"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:background="@drawable/tips"
+	        android:gravity="center"
+	        android:text="1"
+	        android:textColor="#ffffff"
+	        android:textSize="10sp"  / -->
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_btn_discover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/btn_tab_discover"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/green" />
+
+        <TextView
+            android:id="@+id/tv_tab_discover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_tab_discover"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="@string/tab_discover"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+        <!-- TextView
+	        android:id="@+id/tv_tab_gift_num"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:visibility="gone"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:background="@drawable/tips"
+	        android:gravity="center"
+	        android:text="1"
+	        android:textColor="#ffffff"
+	        android:textSize="10sp"  / -->
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_btn_me"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/btn_tab_me"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/green" />
+
+        <TextView
+            android:id="@+id/tv_tab_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_tab_me"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:text="@string/tab_me"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+        <!-- TextView
+	        android:id="@+id/tv_tab_gift_num"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:visibility="gone"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:background="@drawable/tips"
+	        android:gravity="center"
+	        android:text="1"
+	        android:textColor="#ffffff"
+	        android:textSize="10sp"  / -->
+    </RelativeLayout>
+</LinearLayout>

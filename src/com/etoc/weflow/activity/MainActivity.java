@@ -9,11 +9,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.event.FragmentEvent;
+import com.etoc.weflow.fragment.FlowBankFragment;
 import com.etoc.weflow.fragment.HomePageFragment;
 import com.etoc.weflow.fragment.MenuFragment;
 import com.etoc.weflow.fragment.XFragment;
@@ -24,7 +28,7 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends SlidingFragmentActivity implements Callback {
+public class MainActivity extends SlidingFragmentActivity implements Callback, OnClickListener {
 	
 	private final String TAG = "MainActivity";
 
@@ -35,6 +39,14 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 	private MenuFragment menuFragment;
 	
 	private XFragment<?> homePageFragment;
+	private XFragment<?> flowBankFragment;
+	
+	private RelativeLayout rlHomePage;
+	private RelativeLayout rlBank;
+	private RelativeLayout rlDiscover;
+	private RelativeLayout rlMe;
+	
+	private TextView tvTitle;
 	
 	private static long back_pressed;
 	
@@ -49,9 +61,24 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 		setContentView(R.layout.activity_main);
 		EventBus.getDefault().register(this);
 		
+		initController();
 		initMain(savedInstanceState);
 		//检查更新
 		CheckUpdate.getInstance(this).update();
+	}
+	
+	private void initController() {
+		rlHomePage = (RelativeLayout) findViewById(R.id.rl_btn_weflow);
+		rlBank     = (RelativeLayout) findViewById(R.id.rl_btn_bank);
+		rlDiscover = (RelativeLayout) findViewById(R.id.rl_btn_discover);
+		rlMe       = (RelativeLayout) findViewById(R.id.rl_btn_me);
+		
+		rlHomePage.setOnClickListener(this);
+		rlBank.setOnClickListener(this);
+		rlDiscover.setOnClickListener(this);
+		rlMe.setOnClickListener(this);
+		
+		tvTitle = (TextView) findViewById(R.id.tv_title);
 	}
 	
 	private void initMain(Bundle savedInstanceState) {
@@ -74,6 +101,9 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 			homePageFragment = (XFragment)getSupportFragmentManager().getFragment(
 					savedInstanceState, HomePageFragment.class.getName());
 			
+			flowBankFragment = (XFragment)getSupportFragmentManager().getFragment(
+					savedInstanceState, FlowBankFragment.class.getName());
+			
 			String contentClass = savedInstanceState.getString("content");
 			if (contentClass != null) {
 				currContentFragment = (XFragment<?>) getSupportFragmentManager().getFragment(
@@ -85,9 +115,15 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 			homePageFragment = new HomePageFragment();
 		}
 		
+		if (flowBankFragment == null) {
+			flowBankFragment = new FlowBankFragment();
+		}
+		
 		if (currContentFragment == null) {
 			currContentFragment = homePageFragment;
 		}
+		
+		showTitle(currContentFragment);
 		
 		if (null != getSupportFragmentManager().findFragmentByTag(
 				currContentFragment.getClass().getName())) {
@@ -182,9 +218,20 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 		}
 		
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		
+		if (currContentFragment != null){
+//			ft.hide(currContentFragment);
+			if (currContentFragment.getIndex() < fragment.getIndex()) {
+				ft.setCustomAnimations(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+			} else {
+				ft.setCustomAnimations(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+			}
+		}
+		
 		if (currContentFragment != null && currContentFragment != fragment) {
 			Log.d(TAG,"switchContent hide");
 			ft.hide(currContentFragment);
+			fragment.onShow();
 		}
 		
 		if (null == getSupportFragmentManager().findFragmentByTag(
@@ -196,9 +243,23 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 			Log.d(TAG, "show fragment=" + fragment);
 			ft.show(fragment);
 		}
+		
+		showTitle(fragment);
 		currContentFragment = fragment;
 		ft.commitAllowingStateLoss();
 		showContent();
+	}
+	
+	private void showTitle(XFragment<?> fragment) {
+		String title = "";
+		if(fragment != null) {
+			if(fragment instanceof HomePageFragment) {
+				title = "微流量";
+			} else if(fragment instanceof FlowBankFragment) {
+				title = "流量银行";
+			}
+		}
+		tvTitle.setText(title);
 	}
 	
 	@Override
@@ -241,5 +302,24 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()) {
+		case R.id.rl_btn_weflow:
+			switchContent(homePageFragment);
+			break;
+		case R.id.rl_btn_bank:
+			switchContent(flowBankFragment);
+			break;
+		case R.id.rl_btn_discover:
+			switchContent(homePageFragment);
+			break;
+		case R.id.rl_btn_me:
+			switchContent(flowBankFragment);
+			break;
+		}
 	}
 }

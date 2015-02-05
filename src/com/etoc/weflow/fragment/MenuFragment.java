@@ -2,9 +2,11 @@ package com.etoc.weflow.fragment;
 
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.CaptureActivity;
 import com.etoc.weflow.activity.login.StartAccountActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -44,6 +46,11 @@ public class MenuFragment extends XFragment<Object> implements OnClickListener {
 			startActivity(i);
 			break;
 		}
+	}
+
+	@Override
+	public void onShow() {
+		// TODO Auto-generated method stub
 	}
 
 }

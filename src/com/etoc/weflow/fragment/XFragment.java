@@ -20,6 +20,11 @@ public abstract class XFragment<T> extends Fragment implements Callback{
 	protected Handler handler;
 	protected String userID;
 	
+	protected static final int INDEX_HOMEPAGE = 0;
+	protected static final int INDEX_BANK     = 1;
+	protected static final int INDEX_DISCOVER = 2;
+	protected static final int INDEX_ME       = 3;
+	
 	@Override
 	public void onAttach(Activity a){
 		super.onAttach(a);
@@ -99,6 +104,11 @@ public abstract class XFragment<T> extends Fragment implements Callback{
 		Log.v(TAG, "fragment-" + this.getClass().getName() + " onResume");
 	}
 	
+	public int getIndex() {
+		return 0;
+	}
+	
+	public abstract void onShow();
 
 	public Handler getHandler() {
 		return handler;
@@ -134,7 +144,7 @@ public abstract class XFragment<T> extends Fragment implements Callback{
 	}	
 	
 	/**
-	 * 显示菜单�?
+	 * 显示菜单
 	 */
 	protected void showMenu(){
 		if (getActivity() == null)
@@ -146,7 +156,7 @@ public abstract class XFragment<T> extends Fragment implements Callback{
 	}
 	
 	/**
-	 * 显示内容�?
+	 * 显示内容
 	 */
 	protected void showContent(){
 		if (getActivity() == null)

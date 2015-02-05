@@ -1,25 +1,28 @@
 package com.etoc.weflow.fragment;
 
+import com.etoc.weflow.R;
+import com.etoc.weflow.view.MagicTextView;
+
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 
-import com.etoc.weflow.R;
+public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener {
 
-public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener {
-
-	private final String TAG = "HomePageFragment";
+	private final String TAG = "FlowBankFragment";
 	
 	private DisplayMetrics dm = new DisplayMetrics();
+	
+	private MagicTextView mtvMoney;
 	
 	/*@Override
 	public int subContentViewId() {
 		// TODO Auto-generated method stub
-		return R.layout.fragment_homepage;
+		return R.layout.fragment_flowbank;
 	}*/
 	
 	@Override
@@ -27,7 +30,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreateView(inflater, container, savedInstanceState);
-		View v = inflater.inflate(R.layout.fragment_homepage, null);
+		View v = inflater.inflate(R.layout.fragment_flowbank, null);
 		initView(v);
 		return v;
 	}
@@ -35,6 +38,9 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private void initView(View view) {
 		dm = getResources().getDisplayMetrics();
 		
+		mtvMoney = (MagicTextView) view.findViewById(R.id.mtv_money);
+		mtvMoney.setNumber(21985.2f);
+//		mtvMoney.showNumberWithAnimation(21985.2f, 1000);
 	}
 	
 	@Override
@@ -42,6 +48,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
+		if(mtvMoney != null)
+			mtvMoney.showNumberWithAnimation(21985.2f, 1000);
 	}
 	
 	@Override
@@ -52,15 +60,17 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			break;
 		}
 	}
-
+	
 	@Override
 	public int getIndex() {
-		return INDEX_HOMEPAGE;
+		return INDEX_BANK;
 	}
-	
+
 	@Override
 	public void onShow() {
 		Log.d(TAG, "onShow IN!");
+		if(mtvMoney != null)
+			mtvMoney.showNumberWithAnimation(21985.2f, 1000);
 	}
-
+	
 }
