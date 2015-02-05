@@ -54,14 +54,17 @@ public class LoginActivity extends Activity implements OnClickListener {
 			Intent iforget = new Intent(this, RegisterActivity.class);
 			iforget.putExtra("jumptype", RegisterActivity.JUMP_TYPE_PASSFORGET);
 			startActivity(iforget);
+			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 			break;
 		case R.id.btn_register:
 			Intent iregister = new Intent(this, RegisterActivity.class);
 			iregister.putExtra("jumptype", RegisterActivity.JUMP_TYPE_REGISTER);
 			startActivity(iregister);
+			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 			break;
 		case R.id.rl_login_title:
 			finish();
+			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 			break;
 		}
 	}

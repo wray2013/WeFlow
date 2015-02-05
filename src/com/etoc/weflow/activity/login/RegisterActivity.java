@@ -110,6 +110,7 @@ public class RegisterActivity extends Activity implements Callback, OnClickListe
 			break;
 		case R.id.rl_register_title:
 			finish();
+			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 			break;
 		}
 	}

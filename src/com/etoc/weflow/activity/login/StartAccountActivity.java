@@ -101,6 +101,7 @@ public class StartAccountActivity extends Activity implements OnClickListener {
 		case R.id.btn_login:
 			Intent i = new Intent(this, LoginActivity.class);
 			startActivity(i);
+			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 			break;
 		}
 	}
