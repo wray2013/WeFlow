@@ -97,6 +97,8 @@
             <flag name="rotate" value="0x0" />
             <flag name="flip" value="0x1" />
         </attr>
+        
+        <attr name="ptrPinnedListViewEnabled" format="reference|boolean" />
 
         <!-- Whether the user can scroll while the View is Refreshing -->
         <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean" />

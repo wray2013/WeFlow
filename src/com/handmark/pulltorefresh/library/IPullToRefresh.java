@@ -131,6 +131,7 @@ public interface IPullToRefresh<T extends View> {
 	 */
 	public boolean isPullToRefreshOverScrollEnabled();
 
+	public boolean isPinnedListViewEnabled();
 	/**
 	 * Returns whether the Widget is currently in the Refreshing mState
 	 * 

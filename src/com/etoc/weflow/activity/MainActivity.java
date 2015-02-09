@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.event.FragmentEvent;
+import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
 import com.etoc.weflow.fragment.HomePageFragment;
 import com.etoc.weflow.fragment.MenuFragment;
@@ -40,6 +41,7 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 	
 	private XFragment<?> homePageFragment;
 	private XFragment<?> flowBankFragment;
+	private XFragment<?> discoveryFragment;
 	
 	private RelativeLayout rlHomePage;
 	private RelativeLayout rlBank;
@@ -98,11 +100,14 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 		
 		if(savedInstanceState != null) {
 			
-			homePageFragment = (XFragment)getSupportFragmentManager().getFragment(
+			homePageFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
 					savedInstanceState, HomePageFragment.class.getName());
 			
-			flowBankFragment = (XFragment)getSupportFragmentManager().getFragment(
+			flowBankFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
 					savedInstanceState, FlowBankFragment.class.getName());
+			
+			discoveryFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
+					savedInstanceState, DiscoveryFragment.class.getName());
 			
 			String contentClass = savedInstanceState.getString("content");
 			if (contentClass != null) {
@@ -117,6 +122,10 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 		
 		if (flowBankFragment == null) {
 			flowBankFragment = new FlowBankFragment();
+		}
+		
+		if (discoveryFragment == null) {
+			discoveryFragment = new DiscoveryFragment();
 		}
 		
 		if (currContentFragment == null) {
@@ -257,6 +266,8 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 				title = "微流量";
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "流量银行";
+			} else if(fragment instanceof DiscoveryFragment) {
+				title = "发现";
 			}
 		}
 		tvTitle.setText(title);
@@ -315,7 +326,7 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 			switchContent(flowBankFragment);
 			break;
 		case R.id.rl_btn_discover:
-			switchContent(homePageFragment);
+			switchContent(discoveryFragment);
 			break;
 		case R.id.rl_btn_me:
 			switchContent(flowBankFragment);

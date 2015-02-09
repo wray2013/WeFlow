@@ -87,6 +87,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 	private boolean mFilterTouchEvents = true;
 	private boolean mOverScrollEnabled = true;
 	private boolean mLayoutVisibilityChangesEnabled = true;
+	private boolean mPinnedListViewEnabled = false;
 
 	private Interpolator mScrollAnimationInterpolator;
 	private AnimationStyle mLoadingAnimationStyle = AnimationStyle.getDefault();
@@ -230,6 +231,11 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 	@Override
 	public final boolean isScrollingWhileRefreshingEnabled() {
 		return mScrollingWhileRefreshingEnabled;
+	}
+	
+	@Override
+	public final boolean isPinnedListViewEnabled() {
+		return mPinnedListViewEnabled;
 	}
 
 	@Override
@@ -1146,6 +1152,10 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 					R.styleable.PullToRefresh_ptrScrollingWhileRefreshingEnabled, false);
 		}
 
+		if (a.hasValue(R.styleable.PullToRefresh_ptrPinnedListViewEnabled)) {
+			mPinnedListViewEnabled = a.getBoolean(
+					R.styleable.PullToRefresh_ptrPinnedListViewEnabled, false);
+		}
 		// Let the derivative classes have a go at handling attributes, then
 		// recycle them...
 		handleStyledAttributes(a);

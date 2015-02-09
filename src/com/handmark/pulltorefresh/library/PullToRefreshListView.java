@@ -203,12 +203,28 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 		return proxy;
 	}
 
+	private boolean isPinnedListViewEnabled(Context context, AttributeSet attrs) {
+		boolean mPinnedListViewEnabled = false;
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PullToRefresh);
+		if (a.hasValue(R.styleable.PullToRefresh_ptrPinnedListViewEnabled)) {
+			mPinnedListViewEnabled = a.getBoolean(
+					R.styleable.PullToRefresh_ptrPinnedListViewEnabled, false);
+		}
+		a.recycle();
+		return mPinnedListViewEnabled;
+	}
+	
 	protected ListView createListView(Context context, AttributeSet attrs) {
 		final ListView lv;
-		if (VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD) {
-			lv = new InternalListViewSDK9(context, attrs);
+		
+		if(isPinnedListViewEnabled(context, attrs)) {
+			lv = new PinnedSectionListView(context, attrs);
 		} else {
-			lv = new InternalListView(context, attrs);
+			if (VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD) {
+				lv = new InternalListViewSDK9(context, attrs);
+			} else {
+				lv = new InternalListView(context, attrs);
+			}
 		}
 		return lv;
 	}
