@@ -16,7 +16,7 @@ public class SimpleAdapter extends ArrayAdapter<Object> implements PinnedSection
 
     private static final int[] COLORS = new int[] {
         R.color.green, R.color.red,
-        R.color.blue, R.color.black };
+        R.color.blue, R.color.orange };
 
     public SimpleAdapter(Context context, int resource, int textViewResourceId) {
         super(context, resource, textViewResourceId);

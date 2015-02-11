@@ -21,6 +21,7 @@ import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
 import com.etoc.weflow.fragment.HomePageFragment;
 import com.etoc.weflow.fragment.MenuFragment;
+import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.version.CheckUpdate;
@@ -42,6 +43,7 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 	private XFragment<?> homePageFragment;
 	private XFragment<?> flowBankFragment;
 	private XFragment<?> discoveryFragment;
+	private XFragment<?> myselfFragment;
 	
 	private RelativeLayout rlHomePage;
 	private RelativeLayout rlBank;
@@ -109,6 +111,9 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 			discoveryFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
 					savedInstanceState, DiscoveryFragment.class.getName());
 			
+			myselfFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
+					savedInstanceState, MyselfFragment.class.getName());
+			
 			String contentClass = savedInstanceState.getString("content");
 			if (contentClass != null) {
 				currContentFragment = (XFragment<?>) getSupportFragmentManager().getFragment(
@@ -126,6 +131,10 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 		
 		if (discoveryFragment == null) {
 			discoveryFragment = new DiscoveryFragment();
+		}
+		
+		if (myselfFragment == null) {
+			myselfFragment = new MyselfFragment();
 		}
 		
 		if (currContentFragment == null) {
@@ -268,6 +277,8 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 				title = "流量银行";
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
+			} else if(fragment instanceof MyselfFragment) {
+				title = "我";
 			}
 		}
 		tvTitle.setText(title);
@@ -329,7 +340,7 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 			switchContent(discoveryFragment);
 			break;
 		case R.id.rl_btn_me:
-			switchContent(flowBankFragment);
+			switchContent(myselfFragment);
 			break;
 		}
 	}

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MenuFragment extends XFragment<Object> implements OnClickListener {
 
@@ -21,6 +22,7 @@ public class MenuFragment extends XFragment<Object> implements OnClickListener {
 	private DisplayMetrics dm = new DisplayMetrics();
 	
 	private ImageView ivAvatar;
+	private TextView tvQRTest;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup vg,
@@ -35,6 +37,9 @@ public class MenuFragment extends XFragment<Object> implements OnClickListener {
 	private void initViews(View view) {
 		ivAvatar = (ImageView) view.findViewById(R.id.iv_avatar);
 		ivAvatar.setOnClickListener(this);
+		
+		tvQRTest = (TextView) view.findViewById(R.id.tv_qr_test);
+		tvQRTest.setOnClickListener(this);
 	}
 	
 	@Override
@@ -42,8 +47,12 @@ public class MenuFragment extends XFragment<Object> implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.iv_avatar:
-			Intent i = new Intent(getActivity(), StartAccountActivity.class);
-			startActivity(i);
+			Intent ia = new Intent(getActivity(), StartAccountActivity.class);
+			startActivity(ia);
+			break;
+		case R.id.tv_qr_test:
+			Intent iq = new Intent(getActivity(), CaptureActivity.class);
+			startActivity(iq);
 			break;
 		}
 	}

@@ -22,7 +22,7 @@
         android:overScrollMode="never"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="@null"
-        android:background="@drawable/img_frame_background"
+        android:background="@color/black"
         ptr:ptrPinnedListViewEnabled="true"
         ptr:ptrAnimationStyle="flip"
         ptr:ptrMode="both" />

@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/white" >
 
-    <RelativeLayout 
+    <RelativeLayout
+        android:id="@+id/rl_menu_avatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -14,6 +15,21 @@
         	android:layout_height="wrap_content"
         	android:background="@drawable/not_login_icon"/>
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_menu_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_menu_avatar"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/tv_qr_test"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="二维码测试"
+        	android:textStyle="italic"
+        	android:textSize="20sp"
+        	android:textColor="@color/black" />
+	</RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
