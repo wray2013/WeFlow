@@ -91,6 +91,7 @@ public class StartAccountActivity extends Activity implements OnClickListener {
 		fakedata.add("重庆");
 		fakedata.add("青岛");
 		fakedata.add("石家庄");
+		fakedata.add("武汉");
 		return fakedata;
 	}
 
