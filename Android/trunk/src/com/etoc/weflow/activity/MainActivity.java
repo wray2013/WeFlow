@@ -161,6 +161,7 @@ public class MainActivity extends SlidingFragmentActivity implements Callback, O
 		if (menuFragment == null) {
 			menuFragment = new MenuFragment();
 		}
+		
 		t.replace(R.id.menu_frame, menuFragment);
 		t.commit();
 		
