@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/rl_video_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@android:color/black"
+        android:gravity="center" />
+    
+    <com.cmmobi.looklook.common.web.WebImageView
+		android:id="@+id/iv_video_thumbnail"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_gravity="center"
+		android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_activity_dairydetail_shiping_pause_play" />
+
+    <LinearLayout
+        android:id="@+id/rl_activity_shiping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:layout_gravity="bottom|center_horizontal"
+       	android:layout_marginBottom="80dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1.0"
+	        android:orientation="vertical">
+		    <SeekBar
+		        android:id="@+id/sk_diarydetail_seek"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:maxWidth="257dp"
+		  		android:minWidth="257dp"
+		        android:maxHeight="10dp"
+		  		android:minHeight="10dp"
+		  		android:layout_marginTop="15dp"
+	        	android:layout_marginLeft="20dp"
+	        	android:layout_marginRight="10dp"
+		        android:max="100"
+		        android:progress="50"
+		        android:progressDrawable="@drawable/skb_activity_shiping_seekbar"
+		        android:thumb="@drawable/diarydetail_shiping_bofang_jindu_4"
+		        android:thumbOffset="2.5dp" />
+	
+	        <TextView
+	            android:id="@+id/tv_activity_shiping_shijian"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="10dp"
+	            android:layout_marginLeft="20dp"
+	            android:textColor="@color/white"
+	            android:background="@color/looklook_dark_gray"/>
+	    </LinearLayout>
+	    
+	    <ImageView
+	        android:id="@+id/iv_activity_shiping_quanping"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="10dp"
+	        android:background="@drawable/btn_activity_dairydetail_shiping_quanping_restore" />
+    </LinearLayout>
+    
+</FrameLayout>

@@ -1,0 +1,69 @@
+package com.cmmobi.railwifi.activity;
+
+import java.io.InputStream;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.os.Handler;
+import android.widget.ImageView;
+
+import com.cmmobi.railwifi.R;
+
+public class LoadingAcitivity extends Activity{
+	//使用开源的webimageloader
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_loading);
+
+		ImageView iv = (ImageView) findViewById(R.id.iv_loading);
+		try {
+			Bitmap bitmap=readBitMap(LoadingAcitivity.this,R.drawable.loading);
+			iv.setImageBitmap(bitmap);
+			new Handler().postDelayed(new Runnable() {
+		         public void run() {
+		                   Intent mainIntent = new Intent(LoadingAcitivity.this, MainActivity.class);
+		                  startActivity(mainIntent);
+		                  finish();
+		           }
+		          },3000);
+		} catch (Exception e) {
+			// TODO: handle exception
+			 Intent mainIntent = new Intent(LoadingAcitivity.this, MainActivity.class);
+		     startActivity(mainIntent);
+		     finish();
+		} catch (Error e) {
+			// TODO: handle exception
+			 Intent mainIntent = new Intent(LoadingAcitivity.this, MainActivity.class);
+		     startActivity(mainIntent);
+		     finish();
+		}
+		
+	}
+	
+	
+	/**
+	 * 以最省内存的方式读取本地资源的图片
+	 * 
+	 * @param context
+	 * @param resId
+	 * @return
+	 */
+	 public static Bitmap readBitMap(Context context, int resId) {
+	 BitmapFactory.Options opt = new BitmapFactory.Options();
+	 opt.inPreferredConfig = Bitmap.Config.RGB_565;
+	 opt.inPurgeable = true;
+	 opt.inInputShareable = true;
+	 // 获取资源图片
+	 InputStream is = context.getResources().openRawResource(resId);
+	 return BitmapFactory.decodeStream(is, null, opt);
+	 }
+	  
+	
+}

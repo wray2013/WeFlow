@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants" >
+
+    <View
+        android:id="@+id/div"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/background" />
+
+    <FrameLayout
+        android:id="@+id/movie_fl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/div"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp" >
+
+        <ImageView
+            android:id="@+id/movie_pic"
+            android:layout_width="133dp"
+            android:layout_height="174dp"
+            android:contentDescription="图片找不到啦"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/btn_play"
+            android:layout_width="130dp"
+            android:layout_height="171dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_corner_recentage"
+            android:contentDescription="图片找不到啦"
+            android:src="@drawable/btn_movie_play" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/play_descrp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="即刻观影"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="9.1分"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tag"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/movie_fl"
+        android:layout_alignStart="@+id/movie_fl"
+        android:layout_alignTop="@+id/movie_fl"
+        android:layout_marginLeft="3px"
+        android:layout_marginStart="3px"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/tag_pic_b"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/div"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/movie_fl"
+        android:layout_toRightOf="@+id/movie_fl"
+        android:layout_toLeftOf="@+id/iv_fav"
+        android:gravity="start"
+        android:textColor="@color/title_bar_text_color"
+        android:text="索菲亚格蕾丝和罗茜的皇家冒险之旅"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/iv_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/btn_fav_normal"
+        android:contentDescription="图片找不到啦"
+        android:gravity="end"
+        android:textOff=""
+        android:textOn="" />
+
+    <ImageView
+        android:id="@+id/div_line"
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:layout_below="@id/tv_movie_name"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_toEndOf="@+id/movie_fl"
+        android:layout_toRightOf="@+id/movie_fl"
+        android:contentDescription="图片找不到啦"
+        android:src="@drawable/line_a" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/div_line"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/movie_fl"
+        android:layout_toRightOf="@+id/movie_fl"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/tv_duration_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/score"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/movie_fl"
+        android:layout_toRightOf="@+id/movie_fl"
+        android:singleLine="true"
+        android:text="时长:"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_duration_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/score"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/tv_duration_title"
+        android:layout_toRightOf="@+id/tv_duration_title"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_lang_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_duration_title"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/movie_fl"
+        android:layout_toRightOf="@+id/movie_fl"
+        android:singleLine="true"
+        android:text="语言:"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_lang_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_duration_title"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/tv_lang_title"
+        android:layout_toRightOf="@+id/tv_lang_title"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_source_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/movie_fl"
+        android:layout_toEndOf="@+id/movie_fl"
+        android:layout_toRightOf="@+id/movie_fl"
+        android:gravity="start"
+        android:text="来源: "
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/tv_descrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_source_name"
+        android:layout_below="@+id/tv_lang_title"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/movie_fl"
+        android:layout_toRightOf="@+id/movie_fl"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tag_1"
+            android:layout_width="46dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/tag_color_a"
+            android:gravity="center"
+            android:textColor="@color/title_bar_text_color"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tag_2"
+            android:layout_width="46dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/tag_color_b"
+            android:gravity="center"
+            android:textColor="@color/title_bar_text_color"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tag_3"
+            android:layout_width="46dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/tag_color_c"
+            android:gravity="center"
+            android:textColor="@color/title_bar_text_color"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tag_4"
+            android:layout_width="46dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/tag_color_d"
+            android:gravity="center"
+            android:textColor="@color/title_bar_text_color"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/div_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/movie_fl"
+        android:layout_marginTop="6dp"
+        android:contentDescription="图片找不到啦"
+        android:src="@color/bg_line" />
+
+    <ScrollView
+        android:id="@+id/scroll_pannel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/div_line2"
+        android:background="@color/background"
+        android:paddingBottom="6dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_director_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:text="导演 : "
+                android:textColor="@color/title_bar_text_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_director_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@+id/tv_director_title"
+                android:layout_toRightOf="@+id/tv_director_title"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/title_bar_text_color"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_actor_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_director_name"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:text="主演 : "
+                android:textColor="@color/title_bar_text_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_actor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_director_title"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@+id/tv_actor_title"
+                android:layout_toRightOf="@+id/tv_actor_title"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/title_bar_text_color"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/div_line3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv_actor_name"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:contentDescription="图片找不到啦"
+                android:src="@color/list_divider_color" />
+
+            <FrameLayout
+                android:id="@+id/fl_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/div_line3"
+                android:layout_margin="12dp"
+                android:fadingEdge="horizontal"
+                android:fadingEdgeLength="5dp" >
+
+                <TextView
+                    android:id="@+id/tv_desc_short"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="none"
+                    android:lineSpacingMultiplier="1.25"
+                    android:maxLines="4"
+                    android:textColor="@color/title_bar_text_color"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_desc_long"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.25"
+                    android:textColor="@color/title_bar_text_color"
+                    android:textSize="15sp" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/btn_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fl_desc"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/btn_open" />
+
+            <ImageView
+                android:id="@+id/div_line4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/btn_more"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:contentDescription="图片找不到啦"
+                android:src="@color/bg_line" />
+
+            <TextView
+                android:id="@+id/recommand_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/div_line4"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/title_bg"
+                android:contentDescription="图片找不到啦"
+                android:gravity="center_vertical|start"
+                android:paddingLeft="12dp"
+                android:paddingStart="12dp"
+                android:text="推荐理由"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/recommand_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recommand_title"
+                android:layout_marginEnd="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:lineSpacingMultiplier="1.25"
+                android:textColor="@color/title_bar_text_color"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/rl_no_network"
+        layout="@layout/include_no_network" />
+
+</RelativeLayout>

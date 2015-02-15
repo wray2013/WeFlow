@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/zhongjian"
+        android:orientation="horizontal"
+        >
+        
+         <ImageView 
+            android:id="@+id/iv_edit_photo_crop_no"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no"
+            android:background="@drawable/bg_activity_edit_photo_dark"
+            />
+         <ImageView 
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_edit_photo_crop_no"
+            android:src="@drawable/shuxian_zuo"
+            />
+         
+         <TextView
+            android:id="@+id/tv_edit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/edit_photo_cutup"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            />
+         
+         <ImageView
+            android:id="@+id/iv_edit_photo_crop_yes"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/yes"
+            android:background="@drawable/bg_activity_edit_photo_dark"
+            />
+         
+         <ImageView 
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/iv_edit_photo_crop_yes"
+            android:src="@drawable/shuxian_you"
+            />
+    </RelativeLayout>
+    
+    
+    <!-- <view class="com.cmmobi.looklook.common.imagecrop.CropImageView" 
+        android:id="@+id/iv_edit_photo_crop"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        /> -->
+    
+    <com.cmmobi.looklook.common.imagecrop.CropImageView2 
+        android:id="@+id/iv_edit_photo_crop"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"/>
+
+</LinearLayout>

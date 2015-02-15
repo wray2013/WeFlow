@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView 
+	    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+	    android:id="@+id/ptr_scroll_view"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:fillViewport="true"
+	    ptr:ptrHeaderTextColor="@color/title_bar_text_color"
+	    ptr:ptrAnimationStyle="flip"
+	    ptr:ptrMode="pullUpFromBottom"
+	    >
+	    <RelativeLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content" 
+		    android:background="#c3c3c3"
+		    >
+	        <GridView 
+	            android:id="@+id/gv_tags"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:background="#d9d9d9"
+	            android:horizontalSpacing="6dp"
+	        	android:verticalSpacing="6dp"
+	        	android:numColumns="3"
+	        	android:padding="6dp"
+	            >
+	            
+	        </GridView>
+	        
+	        <RelativeLayout 
+	            android:id="@+id/rl_discovery"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_below="@id/gv_tags"
+	            >
+	            
+	            <RelativeLayout 
+	                android:id="@+id/rl_discovery_title"
+	                android:layout_width="fill_parent"
+	                android:layout_height="30dp"
+	                android:background="#f1f1f1"
+	                android:layout_marginTop="6dp"
+	                >
+	                
+	                <ImageView 
+	                    android:id="@+id/iv_discover_title"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_centerVertical="true"
+	                    android:src="@drawable/icon_find"
+	                    android:layout_marginLeft="6dp"
+	                    />
+	                
+	                <TextView 
+	                    android:id="@+id/tv_discover_title"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_centerVertical="true"
+	                    android:text="箩筐发现"
+	                    android:textColor="@color/title_bar_text_color"
+	                    android:layout_marginLeft="6dp"
+	                    android:textSize="15sp"
+	                    android:layout_toRightOf="@id/iv_discover_title"
+	                    />
+	                
+	                
+	                
+	            </RelativeLayout>
+	            
+	            <com.etsy.android.grid.StaggeredGridView
+				    xmlns:app="http://schemas.android.com/apk/res-auto"
+				    android:id="@+id/grid_view"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:fastScrollEnabled="true"
+				    android:layout_below="@id/rl_discovery_title"
+				    app:item_margin="6dp"
+				    app:column_count="2"  />
+	            
+	        </RelativeLayout>
+		
+		</RelativeLayout>
+	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+    
+    <RelativeLayout 
+	    android:id="@+id/rl_discovery_title_bottom"
+	    android:layout_width="fill_parent"
+	    android:layout_height="30dp"
+	    android:background="#f1f1f1"
+	    android:layout_alignParentBottom="true"
+	    android:visibility="gone"
+	    >
+	    
+	    <ImageView 
+	        android:id="@+id/iv_discover_title_bottom"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:src="@drawable/icon_find"
+	        android:layout_marginLeft="6dp"
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/tv_discover_title_bottom"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:text="箩筐发现"
+	        android:textColor="@color/title_bar_text_color"
+	        android:layout_marginLeft="6dp"
+	        android:textSize="15sp"
+	        android:layout_toRightOf="@id/iv_discover_title_bottom"
+	        />
+	</RelativeLayout>
+</RelativeLayout>
+

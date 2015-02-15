@@ -1,0 +1,82 @@
+package com.cmmobi.railwifi.utils;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
+@SuppressLint("NewApi")
+public class MyTextWatcher implements TextWatcher {
+
+	protected EditText et;
+	public MyTextWatcher(EditText et) {
+		// TODO Auto-generated constructor stub
+		this.et = et;
+	}
+	
+	@Override
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+		// TODO Auto-generated method stub
+		et.setHintTextColor(0xff888888);
+	}
+	@Override
+	public void beforeTextChanged(CharSequence s, int start, int count,
+			int after) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void afterTextChanged(Editable s) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public static OnFocusChangeListener onFocusAutoClearHintListener = new OnFocusChangeListener() {
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			EditText textView = (EditText) v;
+			InputMethodManager imm = (InputMethodManager) textView.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);  
+			String hint;
+			if (hasFocus) {
+				hint = textView.getHint().toString();
+				textView.setTag(hint);
+				textView.setHint("");
+				imm.showSoftInput(textView,InputMethodManager.SHOW_FORCED);  
+			} else {
+				hint = textView.getTag().toString();
+				textView.setHint(hint);
+			}
+		}
+	};
+	
+	public static String removeExpression(String str) {
+		if (TextUtils.isEmpty(str)) {
+			return str;
+		}
+		int strLen = str.length();
+		StringBuffer buffer = new StringBuffer();  
+        for (int i = 0; i < strLen; i++) {  
+            char c = str.charAt(i);  
+            if (c == '@') {
+            	continue;
+            }
+            // 第一个字符为以下时，过滤掉  
+            if (c == 55356 || c == 55357 || c == 10060 || c == 9749 || c == 9917 || c == 10067 || c == 10024  
+                    || c == 11088 || c == 9889 || c == 9729 || c == 11093 || c == 9924) {  
+            	
+            	i++;
+            	continue;  
+            } else {  
+                buffer.append(c);  
+            }  
+        }
+        return buffer.toString();
+	}
+
+}

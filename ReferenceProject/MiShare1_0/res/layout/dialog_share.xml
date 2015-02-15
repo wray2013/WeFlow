@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/share_dialog_bg_gray"
+        android:orientation="vertical" >
+
+        
+        <LinearLayout
+            android:id="@+id/ll_share_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" 
+	            android:paddingTop="10dip"
+	            android:paddingBottom="10dip"
+	            >
+	
+	            <Button
+	                android:id="@+id/btn_share_weixiang"
+	                style="@style/share_dialog_button_style"
+	                android:drawableTop="@drawable/icon_share_weixg_selector"
+	                android:text="微享" />
+	
+	            <Button
+	                style="@style/share_dialog_button_style"
+	                android:drawableTop="@drawable/icon_share_public_selector"
+	                android:visibility="invisible"/>
+	            
+	            <Button
+	                style="@style/share_dialog_button_style"
+	                android:drawableTop="@drawable/icon_share_public_selector"
+	                android:visibility="invisible"/>
+	                        
+	            <Button
+	                style="@style/share_dialog_button_style"
+	                android:drawableTop="@drawable/icon_share_public_selector"
+	                android:visibility="invisible"/>
+	            
+	        </LinearLayout>
+	
+	        <TextView
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:background="@color/share_dialog_line_gray" />
+        
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:paddingTop="10dip"
+            android:paddingBottom="10dip"
+            >
+
+            <Button
+                android:id="@+id/btn_share_sinawb"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_sinawb_selector"
+                android:text="新浪微博" />
+
+            <Button
+                android:id="@+id/btn_share_qzone"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_qzone_selector"
+                android:text="QQ空间" />
+
+            <Button
+                android:id="@+id/btn_share_txwb"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_txwb_selector"
+                android:text="腾讯微博" />
+            
+            <Button
+                android:id="@+id/btn_share_renren"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_renren_selector"
+                android:text="人人网" />
+                        
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/share_dialog_line_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" 
+            android:paddingTop="10dip"
+            android:paddingBottom="10dip">
+
+            <Button
+                android:id="@+id/btn_share_weixin"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_weixin_selector"
+                android:text="微信" />
+
+            <Button
+                android:id="@+id/btn_share_weixin_friend"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_weixin_friend_selector"
+                android:text="微信朋友圈" />
+
+            <Button
+                android:id="@+id/btn_share_mail"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_mail_selector"
+                android:text="邮件分享" />
+
+            <Button
+                android:id="@+id/btn_share_sms"
+                style="@style/share_dialog_button_style"
+                android:drawableTop="@drawable/icon_share_sms_selector"
+                android:text="短信分享" />
+            
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_cancel_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="10dip"
+            android:text="@string/cancel"
+            android:textColor="@color/blue"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</FrameLayout>

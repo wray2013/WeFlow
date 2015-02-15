@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bj" >
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tou" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:src="@drawable/btn_activity_common_back" />
+
+        <TextView
+            android:id="@+id/textname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/gesture_pwd"
+            android:textColor="@color/white"
+            android:textSize="@dimen/setting_title" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/gv_thumb"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@id/relative"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shoushi_guiji_kuang"
+        android:columnWidth="5dp"
+        android:gravity="center"
+        android:horizontalSpacing="1dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="1dp" />
+
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gv_thumb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/create_gesture_pwd_prompt0"
+        android:textColor="@color/setting_default_text_gray"
+        android:textSize="@dimen/setting_max" />
+
+    <com.cmmobi.sns.utils.LocusPassWordView
+        android:id="@+id/lpwv_pwd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_prompt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="8dp" />
+     
+     <TextView
+        android:id="@+id/tv_forgetpwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/create_gesture_pwd_prompt3"
+        android:textColor="@color/setting_default_text_gray"
+        android:textSize="@dimen/setting_max" />
+
+</RelativeLayout>

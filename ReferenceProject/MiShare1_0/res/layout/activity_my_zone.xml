@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <!-- <FrameLayout
+        android:id="@+id/zone_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/fl_title" /> -->
+   <android.support.v4.view.ViewPager
+       android:id="@+id/viewpager_content"
+       android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/fl_title"
+       />
+
+    <FrameLayout
+        android:id="@+id/fl_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <include layout="@layout/myzone_normal_titlebar" />
+
+        <include layout="@layout/myzone_checked_titlebar" />
+    </FrameLayout>
+
+    <com.cmmobi.looklook.common.view.XFeatureLayout
+        android:id="@+id/x_feature_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom|right" >
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/myzone_xfeature_margin_right"
+            android:layout_marginBottom="@dimen/myzone_xfeature_margin_bottom"
+            android:src="@drawable/btn_video" />
+    </com.cmmobi.looklook.common.view.XFeatureLayout>
+
+</RelativeLayout>

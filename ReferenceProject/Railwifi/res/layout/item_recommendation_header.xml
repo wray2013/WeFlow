@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+     >
+     
+    <TextView 
+        android:id="@+id/tv_recommendation_title"
+        android:layout_width="315dp"
+        android:layout_height="35dp"
+        android:background="@drawable/bg_recommendation_header_text"
+        android:text="10月  第1周"
+        android:textColor="@color/white"
+        android:gravity="center_vertical"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="6dp"
+        android:paddingLeft="12dp"
+        android:layout_marginTop="6dp"
+        />
+    
+    <View
+        android:id="@+id/view_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_below="@id/tv_recommendation_title"
+        android:layout_marginTop="6dp" 
+        />
+    
+    <RelativeLayout 
+        android:id="@+id/rl_left"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/view_bottom"
+        android:layout_toLeftOf="@id/tv_recommendation_title"
+        >
+       <View
+	        android:id="@+id/line_left"
+	        android:layout_width="1.5dp"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:background="#c5c5c5" />
+        
+        <View 
+            android:id="@+id/iv_tag"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@color/red"
+            android:layout_centerInParent="true"
+            />
+        
+    </RelativeLayout>
+    
+
+</RelativeLayout>

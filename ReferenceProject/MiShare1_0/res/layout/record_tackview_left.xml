@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:orientation="horizontal">
+
+  
+    <FrameLayout
+        android:id="@+id/ll_biezhen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/record_tackview_bg_left" >
+
+        <ImageView
+            android:id="@+id/iv_biezhen_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/wave3" />
+
+        <TextView
+            android:id="@+id/tv_biezhen_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:paddingRight="5dp"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/img_dian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:visibility="gone"
+        android:background="@drawable/push_dian" />
+    
+      <FrameLayout
+        android:id="@+id/fly_recogn_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        />
+    
+</LinearLayout>

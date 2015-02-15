@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="@color/black">
+    
+    <include android:id="@+id/title"
+        android:layout_alignParentTop="true"
+        layout="@layout/include_diarydetail_title"/>
+    
+    <TextView 
+        android:id="@+id/gap"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:layout_below="@id/title"/>
+    
+    
+    <RelativeLayout 
+        android:id="@+id/bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="20dip"
+        android:layout_alignParentBottom="true">
+        
+        <ImageView 
+            android:id="@+id/record_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/btn_activity_audio_record_button_selector"/>
+        
+        <TextView 
+            android:id="@+id/done_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/record_button"
+            android:layout_centerVertical="true"
+            android:padding="5dip"
+            android:layout_marginLeft="10dip"
+            android:textColor="@drawable/btn_activity_audio_recorder_done_selector"
+            android:textSize="20dip"
+            android:text="@string/done"/>
+        
+    </RelativeLayout>
+    
+    <TextView 
+        android:id="@+id/audio_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:layout_above="@id/bottom"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textSize="18dip"
+        android:text="2013.12.12"/>
+    
+    <TextView 
+        android:id="@+id/audio_time"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dip"
+        android:layout_above="@id/audio_name"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textSize="35dip"
+        android:text="00:00:00"/>
+    
+    
+    
+    
+    <RelativeLayout 
+        android:id="@+id/shell"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/gap"
+        android:layout_above="@id/audio_time">
+        
+    </RelativeLayout>
+    
+    
+
+</RelativeLayout>

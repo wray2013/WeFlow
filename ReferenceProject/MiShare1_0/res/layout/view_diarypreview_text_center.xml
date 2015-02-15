@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cmmobi="http://schemas.android.com/apk/res/com.cmmobi.looklook"
+    android:id="@+id/ll_diarypreview_square"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    
+    <com.cmmobi.looklook.common.view.SquareLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+        
+        <com.cmmobi.looklook.common.view.InnerScrollView
+            android:id="@+id/sl_inner"
+            android:layout_width="fill_parent"
+        	android:layout_height="fill_parent"
+        	android:fillViewport="true">
+        	
+            <TextView
+		        android:id="@+id/tv_diarypreview_text_content"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:padding="10dp"
+		        android:textColor="@color/share_edit_text_color"
+		        android:textSize="16sp"/>
+                
+        </com.cmmobi.looklook.common.view.InnerScrollView>
+        
+        <com.cmmobi.looklook.common.web.TackView
+	        android:id="@+id/diarypreview_tack_right_bottom"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="right|bottom"
+	        android:layout_marginBottom="40dp"
+	        android:layout_marginRight="10dp"
+	        android:visibility="invisible"
+	        cmmobi:backresource="@layout/view_create_note_tack" />
+
+        <com.cmmobi.looklook.common.web.TackView
+            android:id="@+id/diarypreview_tack_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            cmmobi:backresource="@layout/view_play_note_tack" />
+    </com.cmmobi.looklook.common.view.SquareLayout>
+
+</LinearLayout>

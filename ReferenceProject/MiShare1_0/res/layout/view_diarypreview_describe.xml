@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cmmobi="http://schemas.android.com/apk/res/com.cmmobi.looklook"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+     
+    <ImageView
+        android:id="@+id/iv_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/btn_diarypreview_recordparm"
+        android:visibility="invisible"/>
+    
+    <com.cmmobi.looklook.common.web.TackView
+        android:id="@+id/diarypreview_param_tack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        cmmobi:backresource="@layout/record_tackview_diarpreview"
+        android:visibility="invisible"/>
+        
+    <TextView 
+        android:id="@+id/tv_param_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/diarypreview_param_tack"
+        android:layout_above="@+id/tv_diary_param_text"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="2dp"
+        android:textColor="@color/share_edit_text_color"
+        android:textSize="12sp"
+        android:visibility="invisible"/>
+    
+    <TextView 
+        android:id="@+id/tv_diary_param_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="@id/diarypreview_param_tack"
+        android:layout_toLeftOf="@+id/iv_comment"
+        android:layout_below="@id/iv_record"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:visibility="invisible"/>
+   
+   	<ImageView 
+   	    android:id="@+id/iv_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_diarypreview_comment"/>
+    
+</RelativeLayout>

@@ -1,0 +1,93 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/volume_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/luyin_kuang" />
+
+    <RelativeLayout
+        android:id="@+id/sound_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical" >
+
+        <RelativeLayout
+            android:id="@+id/volume_mic_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            
+            <FrameLayout 
+                android:id="@+id/volume_mic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/luyin" />
+                
+                <ImageView 
+                    android:id="@+id/iv_voice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="0.5dp"
+                    />
+                
+            </FrameLayout>
+
+            <TextView 
+		        android:id="@+id/tv_short_rec_countdown"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"
+		        android:layout_toRightOf="@id/volume_mic"
+		        android:layout_alignBottom="@id/volume_mic"
+		        android:layout_marginLeft="10dp"
+		        android:gravity="bottom"
+		        android:textSize="50sp"
+		        android:text="30&quot;"
+		        android:textColor="@color/white"
+		        />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/volume_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/volume_mic_show"
+            android:textColor="@color/white"
+            android:text="手指上滑  取消录音" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/sound_cancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal|center_vertical"
+        >
+        <ImageView
+            android:id="@+id/iv_volume_cancle"
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:src="@drawable/luyin_quxiao" 
+         	android:layout_centerHorizontal="true"
+            />
+		    
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_volume_cancle"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:text="松开手指 取消发送" />
+    </RelativeLayout>
+
+</FrameLayout>

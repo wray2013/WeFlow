@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fabu_zhitiao"
+    android:orientation="vertical" >
+    
+        
+       <RelativeLayout 
+	    android:id="@+id/rl_title"
+	    android:layout_width="match_parent"
+	    android:layout_height="45dp"
+	    >
+
+        <ImageView
+            android:id="@+id/iv_publish_cancle"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/btn_activity_publish_cancle"
+            />
+        <TextView
+            android:id="@+id/tv_publish_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:text="@string/str_activit_detail_share"
+            android:textColor="#8290A4"
+            android:textSize="16sp"
+            />
+        <ImageView
+            android:id="@+id/iv_publish_done"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/btn_activity_publish_publish"
+            />
+   	</RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        >
+         <com.cmmobi.looklook.common.web.WebImageView
+            android:id="@+id/iv_publish_preview_src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/iv_publish_preview"
+            android:layout_alignTop="@+id/iv_publish_preview"
+            android:layout_alignRight="@+id/iv_publish_preview"
+            android:layout_alignBottom="@+id/iv_publish_preview"
+            android:layout_marginRight="6dp"
+            android:background="#ffffffff"
+            />
+        <ImageView
+            android:id="@+id/iv_publish_preview"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/fabu_yulan_kuang"
+            />
+        <EditText 
+            android:id="@+id/et_share_content"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:lineSpacingExtra="4dp"
+	        android:layout_toLeftOf="@id/iv_publish_preview"
+	        android:layout_marginRight="4dp"
+	        android:gravity="top"
+	        android:textSize="9sp"
+	        android:layout_marginLeft="8dp"
+	        android:background="@null"/>
+        
+        <TextView
+            android:id="@+id/tv_remain_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="#AEAEAE"
+            android:layout_marginRight="6dp"
+            android:textSize="12sp"/>
+        
+    </RelativeLayout>
+    
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        >
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            >
+            <ImageView 
+	            android:id="@+id/iv_activity_publish_alt_sns"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:clickable="true"
+	            android:src="@drawable/btn_activity_publish_alt_sns"/>
+        </LinearLayout>
+        
+        <RelativeLayout
+	        android:layout_width="0dip"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:gravity="center_vertical|right"
+	        android:layout_marginRight="6dp">
+	        <TextView
+	            android:id="@+id/tv_activity_publish_time_sns"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical|right"
+	            android:layout_alignParentRight="true"
+	            android:singleLine="true"/>
+        </RelativeLayout>
+       <!--  <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="456"
+            >
+            
+            <LinearLayout 
+                android:layout_width="0dp"
+            	android:layout_height="fill_parent"
+            	android:layout_weight="1"
+            	android:gravity="center"
+                >
+                <ImageView 
+                    android:id="@+id/iv_activity_publish_sina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@drawable/btn_activity_publish_alt_sina_off"/>
+            </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_width="0dp"
+            	android:layout_height="fill_parent"
+            	android:layout_weight="1"
+            	android:gravity="center"
+                >
+                <ImageView 
+                    android:id="@+id/iv_activity_publish_tencent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@drawable/btn_activity_publish_alt_tencent_off"/>
+            </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_width="0dp"
+            	android:layout_height="fill_parent"
+            	android:layout_weight="1"
+            	android:gravity="center"
+                >
+                <ImageView 
+                    android:id="@+id/iv_activity_publish_renren"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@drawable/btn_activity_publish_alt_renren_off"/>
+            </LinearLayout>
+            
+        </LinearLayout> -->
+    </LinearLayout>
+</LinearLayout>

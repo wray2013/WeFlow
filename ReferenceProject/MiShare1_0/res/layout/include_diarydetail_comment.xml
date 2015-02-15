@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_recent_comment"
+    xmlns:tackview ="http://schemas.android.com/apk/res/com.cmmobi.looklook"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="7dip"
+    android:background="@drawable/bg_comment" >
+
+    <ImageView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+       	android:background="@drawable/bg_diarydetail_list_line"/>
+    
+    <ImageView
+        android:id="@+id/iv_portrait"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="7dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/moren_touxiang" />
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/tv_comment_time"
+        android:layout_toRightOf="@id/iv_portrait"
+        android:layout_alignTop="@id/iv_portrait"
+        android:layout_marginRight="2dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+    
+    <TextView
+        android:id="@+id/tv_comment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/iv_portrait"
+        android:layout_marginRight="14dip"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+    
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nickname"
+        android:layout_toRightOf="@id/iv_portrait"
+        android:orientation="vertical"
+        android:layout_margin="2dp" >
+
+         <LinearLayout
+             android:id="@+id/ll_comment_content"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="6dp"
+             android:orientation="vertical" >
+             
+             <RelativeLayout
+	            android:id="@+id/rly_tack_area"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/tackview_bg"
+	            >
+				<com.cmmobi.looklook.common.web.TackView
+	                  android:id="@+id/comment_tackview"
+	                  android:layout_width="wrap_content"
+	                  android:layout_height="wrap_content"
+	                  tackview:backresource="@layout/record_tackview_left"
+	                  />
+	            
+	            <TextView
+	                android:id="@+id/tv_tack_text"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textColor="@color/gray"
+	                android:layout_below="@id/comment_tackview"
+	                android:padding="5dip"
+	                android:textSize="16sp" />
+	
+	        </RelativeLayout>
+
+             <TextView
+                 android:id="@+id/tv_comment_text"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/gray"
+                 android:textSize="16sp" />
+
+         </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

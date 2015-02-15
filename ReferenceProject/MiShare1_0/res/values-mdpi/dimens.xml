@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- values-hdpi- 160 -->
+    
+    <dimen name="login_logo_top">130dp</dimen>
+    
+    
+</resources>

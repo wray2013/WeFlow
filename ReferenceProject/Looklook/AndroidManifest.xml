@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cmmobi.looklook"
+    android:versionCode="303"
+    android:versionName="3.0.3" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <permission
+        android:name="com.cmmobi.looklook.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 音频采集 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 往sdcard中写入数据的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 系统设置改变后回调问题 -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
+    </uses-permission>
+ 	<uses-permission android:name="android.permission.READ_CONTACTS" >
+    </uses-permission>
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </permission>
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <!-- <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" /> -->
+    <!-- for cdr sdk -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="com.cmmobi.looklook.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.autofocus" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" 
+        android:largeHeap="true">
+        <activity
+            android:name="com.cmmobi.looklook.activity.WelcomeActivity"
+            android:configChanges="orientation|navigation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity_test.MediaPlayerActivity"
+            android:configChanges="orientation|navigation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.renn.rennsdk.oauth.OAuthActivity"
+            android:configChanges="orientation|navigation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.HomeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.TestViewActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingPrivacyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingPersonalInfoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.GuideActivity"
+            android:configChanges="orientation|navigation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.AltFriendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.TestSNSActivity"
+            android:label="@string/app_name" >
+
+            <!--
+                 <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.UploadDownloadActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.WaterMarkActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingToCreateGestureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingBindPhoneChecknoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingBindEmailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.LoginMainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.LoginWelcomeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.ModificationCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingStorageManagerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.ShareSettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingBindPhoneActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingLoginPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity_test.AudioRecorderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingRemarkNameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.NetworkTaskActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingSafeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingSafeCheckNoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingFeedBackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingStorageManagerNotSynchronizedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.TagActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingGesturePwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SpaceCoverActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.CommentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingNicknameModifiActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingStorageManagerSynchronizedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingSignatureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+
+        <!--
+             <service
+            android:name="com.cmmobi.looklook.activity.CommonService"
+            android:theme="@style/ActivityTheme" android:screenOrientation="portrait"  >
+        </service>
+        -->
+
+        <activity
+            android:name="com.cmmobi.looklook.activity.MessagePersonalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.LoginLooklookActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.HomeEntriesActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.PersonFansActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.LoginRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.LoginAgreementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendAddActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendAddRecommendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendAddPhoneActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsSeacherActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsCircleContactsAttentionActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsCircleContactsFunsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsCircleContactsBlickListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        
+        <activity
+            android:name="com.cmmobi.looklook.activity.MapWatchModeActivity"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsCircleContactsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsCircleSystemFunctionActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsStrangerActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsNearByActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+		<activity
+            android:name="com.cmmobi.looklook.activity.FriendsRecommendActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsSessionPrivateMessageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme"
+            android:windowSoftInputMode="stateHidden"> 
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.cmmobi.looklook.activity.HomeActivity"/>
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendsSearchActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.SearchTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.ActivitiesActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.ActivitiesDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.dialog.FriendAddDialog"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.DialogActivity" />
+        <activity
+            android:name="com.cmmobi.looklook.dialog.LoginPasswordDialog"
+            android:launchMode="singleTop"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.SinaFriendWeiboActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.RenrenFriendWeiboActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/ActivityTheme" android:screenOrientation="portrait"  />
+        <activity
+            android:name="com.cmmobi.looklook.activity.TencentFriendWeiboActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/ActivityTheme" android:screenOrientation="portrait"  />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FriendAddInviteActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.HomepageMyselfDiaryActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" 
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="com.cmmobi.looklook.activity.DiaryDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:theme="@style/ActivityTheme"
+            android:configChanges="orientation|keyboardHidden|screenSize"> 
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.TestMscActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.DiscoverMainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.VideoShootActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.HomepageCommentActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme">
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.MyAttentionMembersActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.EditDiaryActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.EditPhotoDetailActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.EditVideoDetailActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.EditVoiceDetailActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.ShareWithSnsActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/ActivityTheme" android:screenOrientation="portrait"  />
+        
+        <activity
+            android:name="com.cmmobi.looklook.activity.SendDiaryByPrivateMsgActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/ActivityTheme" android:screenOrientation="portrait"  />
+        <activity
+            android:name="com.cmmobi.looklook.activity.FrenquentlyPositionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.HomepageOtherDiaryActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingSetupGestureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.SettingPortraitShowActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.AlsoPublishToActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.LookLookGalleryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.AppCommendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.AboutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.DiaryPraiseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTheme" >
+        </activity>
+        <activity
+            android:name="com.cmmobi.looklook.activity.ExtPlayerActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+
+        <service android:name="com.cmmobi.looklook.common.service.CommonService" >
+        </service>
+        <service android:name="com.cmmobi.looklook.common.service.InitService" >
+        </service>
+        <service android:name="com.cmmobi.looklook.common.service.PrivateMessageService" >
+        </service>
+		<service android:name="com.cmmobi.looklook.common.service.DiarySyncService" >
+        </service>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        
+                <receiver
+            android:name=".receiver.AppRegister"
+            android:permission="com.tencent.mm.plugin.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".receiver.NetworkConnectChangedReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="ACTION_WIFI_CONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.AttachNetworkTaskReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="ACTION_ATTACH_TASK_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.DailyReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="ACTION_REFRESH_DAILYSCAN_ALARM" />
+            </intent-filter>
+        </receiver>
+ 		<receiver
+            android:name=".receiver.NetworkTaskAlarmReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="ACTION_NETWORKTASK_ALARM" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.PrivateMessageReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="ACTION_HEARTBEAT_PRIVATEMESSAGE_ALARM" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.CommonReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="ACTION_HEARTBEAT_COMMON_ALARM" />
+            </intent-filter>
+        </receiver>
+		<receiver
+            android:name=".receiver.DiarySyncHeartbeatReceiver"
+            android:exported="false" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="ACTION_HEARTBEAT_DIARY_SYNC" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能 -->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- Required  SDK核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000" >
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="com.cmmobi.looklook" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name="com.cmmobi.looklook.receiver.JPushReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent -->
+                <category android:name="com.cmmobi.looklook" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.cmmobi.statistics.receiver.TimeChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="d8be5cc07f42d0f7ee2591c2" />
+        <meta-data
+            android:name="CMMOBI_APPKEY"
+            android:value="3" />
+        <meta-data
+            android:name="CMMOBI_CHANNEL"
+            android:value="looklook" />
+        <!-- </>值来自开发者平台取得的AppKey -->
+
+
+        <!-- Caution! Do not change this app key. It is only for demo usage. -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="51b9736656240b0742008d2e" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="looklook" >
+        </meta-data>
+
+        <service
+            android:name="com.umeng.common.net.DownloadingService"
+            android:exported="true"
+            android:process=":DownloadingService" >
+        </service>
+    </application>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+
+</manifest>

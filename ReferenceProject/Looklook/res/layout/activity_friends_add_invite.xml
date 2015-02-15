@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/dark_gray"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tou" >
+
+        <ImageView
+            android:id="@+id/iv_activity_friends_invite_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:src="@drawable/btn_activity_common_back" />
+
+        <TextView
+            android:id="@+id/tv_activity_friends_invite_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="邀请好友"
+             android:textColor="@color/white"
+            android:textSize="@dimen/setting_title" />
+
+        <ImageView
+            android:id="@+id/iv_activity_friends_invite_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:enabled="false"
+            android:src="@drawable/yaoqing_ok" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/common_shape_rectangle_both">
+
+        <EditText
+            android:id="@+id/ed_activity_friends_invite_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="150dp"
+            android:clickable="true"
+            android:gravity="left|top"
+            android:inputType="textMultiLine"
+            />
+        <TextView
+            android:id="@+id/ed_activity_friends_invite_text_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="0"
+            android:textColor="@color/dark_gray"
+            android:layout_gravity="right|bottom"
+            android:layout_margin="10sp"
+            />
+    </FrameLayout>
+
+
+</LinearLayout>

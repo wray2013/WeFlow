@@ -1,0 +1,269 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_zone_background"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/iv_background"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/transparent"
+        android:scaleType="centerCrop" />
+    
+	<ImageView
+        android:id="@+id/iv_waiting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/shuaxin"
+        android:visibility="gone" />
+        
+    <LinearLayout
+        android:id="@+id/ll_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/myzone_msg_margin_top"
+        android:background="@drawable/push_kuang"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="您有1条新评论"
+            android:textColor="@color/white"
+            android:textSize="@dimen/myzone_msg_font_size" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_userinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="129dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/ll_user_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/myzone_avatar_margin_left"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/rl_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/iv_head_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kongjian_morentouxiang"
+                    android:scaleType="fitXY"/>
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="1px"
+                    android:layout_alignBottom="@id/iv_head_background"
+                    android:layout_alignLeft="@id/iv_head_background"
+                    android:layout_alignRight="@id/iv_head_background"
+                    android:layout_alignTop="@id/iv_head_background"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/ll_user_head"
+            android:layout_alignBottom="@+id/ll_user_head"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-1.5dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"  
+                >
+
+                <TextView
+                    android:id="@+id/tv_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gray"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:shadowRadius="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/myzone_nickname_font_size" />
+
+                <ImageView
+                    android:id="@+id/iv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/nan" />
+            </LinearLayout>
+
+            <LinearLayout 
+                android:id="@+id/ll_signature"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="7"
+                >
+	            <TextView
+	                android:id="@+id/tv_signature"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:ellipsize="end"
+	                android:maxLines="2"
+	                android:shadowColor="@color/gray"
+	                android:shadowDx="2"
+	                android:shadowDy="2"
+	                android:shadowRadius="1"
+	                android:textColor="@color/white"
+	                android:textSize="@dimen/myzone_sign_font_size" 
+	                android:text="那些打不死我们的痛苦，最后都变成了我们骄傲的资本！"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+	        android:id="@+id/iv_footmark"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/ll_nickname"
+	        android:layout_toRightOf="@+id/ll_user_head"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="-15dp"
+	        android:src="@drawable/btn_foottrace" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_weather"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_userinfo"
+        android:background="@color/white" >
+
+        <LinearLayout
+            android:id="@+id/ll_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/myzone_today_margin_bottom"
+            android:layout_marginLeft="@dimen/myzone_avatar_margin_left"
+            android:layout_marginTop="@dimen/myzone_today_margin_top"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="今天"
+                android:textColor="@color/homepage_text_color_black"
+                android:textSize="@dimen/myzone_today_font_size" />
+
+            <TextView
+                android:id="@+id/tv_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="是不是想说点什么"
+                android:textColor="@color/black"
+                android:layout_marginLeft="2dp"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_import_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ll_weather"
+            android:layout_alignParentRight="true"
+            android:layout_margin="2dp"
+            android:src="@drawable/btn_import" />
+
+        <!--
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_weather_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="\? °C/\? °C"
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tv_weather_region"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="\?\?\?"
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+            
+			<com.cmmobi.looklook.common.web.WebImageView
+                android:id="@+id/iv_weather_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tianqi_weizhi" />
+			
+        </LinearLayout>
+        -->
+    </RelativeLayout>
+    
+    	
+		<ImageView 
+   		    android:id="@+id/iv_nodata"
+   		    android:layout_width="fill_parent"
+   		    android:layout_height="fill_parent"
+   		    android:src="@drawable/yjtjlndjc"
+   		    android:scaleType="center"
+   		    android:layout_marginTop="60dp"
+   		    android:layout_below="@id/rl_weather"
+   		    android:visibility="gone"
+   		    />
+    
+    <RelativeLayout
+        android:id="@+id/rl_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_background"
+        android:layout_alignBottom="@id/rl_weather"
+        android:layout_alignRight="@id/rl_weather"
+        android:layout_alignLeft="@id/rl_weather"
+        android:background="#80ffffff"
+        android:visibility="gone"
+        android:clickable="true"
+        />
+
+</RelativeLayout>

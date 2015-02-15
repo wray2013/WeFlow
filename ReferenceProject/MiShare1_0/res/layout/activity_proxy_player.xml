@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/tv_videohint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:text="视频地址" />
+
+    <EditText
+        android:id="@+id/et_videourl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_videohint"
+        android:layout_alignBottom="@+id/tv_videohint"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tv_videohint"
+        android:ems="10"
+        android:maxLines="5"
+        android:scrollbars="vertical"
+        android:text="http://xxx/abc.mp4" >
+    </EditText>
+
+	<TextView
+        android:id="@+id/tv_localhint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_alignBottom="@+id/et_localvideourl"
+        android:layout_alignTop="@+id/et_localvideourl"
+        android:layout_toLeftOf="@+id/et_videourl"
+        android:text="本地地址" />
+
+    <EditText
+        android:id="@+id/et_localvideourl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:editable="false"
+        android:layout_alignLeft="@+id/et_videourl"
+        android:layout_alignRight="@+id/et_videourl"
+        android:layout_below="@+id/et_videourl"
+        android:ems="10"
+        android:singleLine="true"
+        android:text="http://127.0.0.1/abc.mp4" />
+
+    <Button
+		android:id="@+id/bt_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取本地地址"
+        android:layout_below="@+id/et_localvideourl"/>
+    
+    <Button
+	    android:id="@+id/bt_play"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignRight="@+id/et_localvideourl"
+	    android:layout_below="@+id/et_localvideourl"
+	    android:clickable="false"
+	    android:text="开始播放视频" />
+    
+	<TextView
+        android:id="@+id/tv_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/bt_ok"
+        android:text="总大小 :0K" />
+	
+	<TextView
+	    android:id="@+id/tv_played"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/videoView"
+	    android:layout_alignRight="@+id/videoView"
+	    android:text="已播放:0K" />
+
+	<TextView
+	    android:id="@+id/tv_download"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/tv_total"
+	    android:layout_alignBottom="@+id/tv_total"
+	    android:layout_centerHorizontal="true"
+	    android:text="已下载:0K" />
+	
+	<VideoView
+        android:id="@+id/videoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_ok"
+        android:layout_below="@+id/tv_download" />
+
+</RelativeLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cmmobi="http://schemas.android.com/apk/res/com.cmmobi.looklook"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+	<TextView 
+	    android:id="@+id/tv_diary_param_time"
+	    android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="5dp"
+    	android:layout_marginLeft="8dp"
+    	android:layout_marginRight="8dp"
+    	android:textSize="12sp"
+    	android:textColor="@color/share_edit_text_color"/>
+	
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp"
+    	android:orientation="vertical"
+    	android:background="@drawable/bg_diarypreview_attach">
+    	
+ 		<com.cmmobi.looklook.common.web.TackView
+            android:id="@+id/diarypreview_param_tack"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            cmmobi:backresource="@layout/record_tackview_left"/>
+ 		
+ 		<TextView 
+	    	android:id="@+id/tv_diary_param_text"
+	    	android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="2dp"
+    		android:layout_marginRight="2dp"
+    		android:textSize="16sp"
+    		android:textColor="@color/share_edit_text_color"/>
+	    
+	</LinearLayout>
+    
+</LinearLayout>

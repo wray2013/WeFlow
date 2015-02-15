@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/tou"
+    >
+    <ImageView 
+        android:id="@+id/iv_edit_diary_back"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_back"
+        android:layout_centerVertical="true"
+        />
+     
+     <TextView
+        android:id="@+id/tv_edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/edit"
+        android:textColor="@color/black"
+        android:textSize="@dimen/setting_title"
+        />
+     
+     <ImageView 
+         android:id="@+id/iv_edit_diary_save"
+         android:clickable="true"
+         android:layout_width="50dp"
+         android:layout_height="wrap_content"
+         android:layout_centerVertical="true"
+         android:paddingTop="10dp"
+         android:paddingBottom="10dp"
+         android:layout_marginRight="5dp"
+         android:layout_alignParentRight="true"
+         android:src="@drawable/btn_activity_edit_diary_save"
+         />
+</RelativeLayout>

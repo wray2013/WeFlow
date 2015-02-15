@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
+    
+
+	<Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/sinaBtn"
+		android:text="登录新浪微薄"/>
+    <Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/qqBtn"
+		android:text="登录腾讯微薄"/>
+    <Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/renrenBtn"
+		android:text="登录人人微薄"/>
+
+    	<Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/shareToSina"
+		android:text="分享图片文字到新浪微博"/>
+	<Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/shareToTencent"
+		android:text="分享图片文字到腾讯微博"/>
+	<Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/shareToRenren"
+		android:text="分享图片文字到人人微博"/>
+    
+	<Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/getCommentFromSina"
+		android:text="获取指定新浪微博评论"/>
+	<Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/getCommentFromTencent"
+		android:text="获取指定腾讯微博评论"/>
+	<Button android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/getCommentFromRenren"
+		android:text="获取指定人人微博评论"/>
+	
+
+	
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="中传分享库，封装新浪微博，腾讯微博分享api"/>
+</LinearLayout>

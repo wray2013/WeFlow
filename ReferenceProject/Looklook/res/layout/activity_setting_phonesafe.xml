@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bj" >"
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tou" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:src="@drawable/btn_activity_common_back" />
+
+        <TextView
+            android:id="@+id/textname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/safe"
+            android:textColor="@color/white"
+            android:textSize="@dimen/setting_title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_phonenum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp" >
+
+        <EditText
+            android:id="@+id/et_phonenum"
+            style="@style/myedittext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_phonenum"
+            android:inputType="number"
+            android:paddingLeft="55dp"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/syncOperatorImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/et_phonenum"
+            android:layout_alignLeft="@+id/et_phonenum"
+            android:layout_alignTop="@+id/et_phonenum"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:drawableRight="@drawable/shiru_shuxian"
+            android:padding="8dp"
+            android:text="@string/phonenum_prefix"
+            android:textSize="@dimen/setting_middle" />
+        
+        
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_phonenum"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/safe_explain"
+        android:textColor="@color/setting_default_text_gray"
+        android:textSize="@dimen/setting_max" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_activity_setting_bg"
+        android:text="@string/next_step"
+        android:textColor="@color/setting_button_color_selector"
+        android:enabled="false"
+        android:textSize="@dimen/setting_max" />
+
+</RelativeLayout>

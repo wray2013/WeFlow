@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_rl"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="6dp" >
+
+    <ImageView
+        android:id="@+id/activies_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/huodong_touxiang" />
+
+    <TextView
+        android:id="@+id/activites_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/activies_imageview"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/activies_imageview"
+        android:text="looklook官方活动"
+        android:textColor="#7f7f7f"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/activites_image_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/activites_title"
+        android:layout_below="@id/activites_title"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/zhaopian_beijing_da"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/activites_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/activites_title"
+        android:layout_below="@id/activites_title"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/active_detail_icon"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout 
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/activites_title"
+        android:layout_below="@id/activites_image"
+        android:background="@drawable/zhitiao_miaoshu_da"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="-3.5dp"
+        android:paddingBottom="20dp"
+        >
+        <TextView 
+           	android:id="@+id/activites_name"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+			android:ellipsize="end"
+	        android:maxLines="1"
+	        android:paddingLeft="6dp"
+	        android:paddingTop="10dp"
+	        android:textColor="@color/blue"
+	        android:text="xxxxxxxxxxxxxxx"
+	        android:textSize="18sp" />
+	    <TextView
+	        android:id="@+id/activites_miaoshu"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/activites_name"
+			android:ellipsize="end"
+	        android:maxLines="3"
+	        android:minLines="3"
+	        android:paddingLeft="6dp"
+	        android:paddingTop="5dp"
+	        android:textColor="#707070"
+	        android:textSize="15sp" />
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activites_clock_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/activies_imageview"
+        android:layout_alignRight="@id/activies_imageview"
+        android:layout_below="@id/rl_content"
+        android:gravity="center" >
+
+        <com.cmmobi.looklook.common.view.ClockView
+            android:id="@+id/activites_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/time_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/activites_clock_rl"
+        android:layout_alignTop="@id/activites_clock_rl"
+        android:layout_toRightOf="@id/activites_clock_rl"
+        android:gravity="center_vertical"
+        android:text="2013-04-05 11:50"
+        android:textColor="#7f7f7f" />
+
+    <TextView
+        android:id="@+id/iseffective"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/activites_clock_rl"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/activites_clock_rl"
+        android:layout_marginRight="5dp"
+        android:gravity="center_vertical"
+        android:text="活动进行中..."
+        android:textColor="#7f7f7f" />
+
+</RelativeLayout>

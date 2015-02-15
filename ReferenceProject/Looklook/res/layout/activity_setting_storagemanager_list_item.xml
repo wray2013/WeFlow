@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp"
+     >
+
+    <com.cmmobi.looklook.common.web.WebImageView
+        android:id="@+id/wiv_img"
+        android:layout_width="154dp"
+        android:layout_height="103dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp" />
+
+<!--     <ImageView
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="1sp"
+        android:layout_below="@id/wiv_img"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/xuankuang_line" />  -->
+
+    <RelativeLayout
+        android:id="@+id/rl_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/wiv_img"
+        android:paddingLeft="20dp" >
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/setting_default_text_gray"
+            android:textSize="@dimen/setting_max" />
+
+        <TextView
+            android:id="@+id/tv_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_time"
+            android:layout_below="@id/tv_time"
+            android:maxWidth="150dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/setting_default_text_gray"
+            android:textSize="@dimen/setting_max" />
+    </RelativeLayout>
+ <!--    <Button 
+        android:id="@+id/btn_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="18dp"
+        android:background="@drawable/btn_activity_homepage_remove"
+        android:visibility="gone"
+        /> -->
+
+           <ImageView
+               android:layout_below="@+id/wiv_img"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="2dp"
+                android:layout_height="1dp"
+                android:background="@drawable/xuankuang_line" />
+           
+</RelativeLayout>

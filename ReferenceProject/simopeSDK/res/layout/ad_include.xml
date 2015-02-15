@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ad_include_contain"
+    android:background="@color/no_color"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+     >
+     
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/no_color" >
+
+        <TextView
+            android:id="@+id/ad_time_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dip"
+            android:visibility="gone"
+            android:text="广告时间"
+            android:textColor="@color/red_charactor_show" />
+
+        <ImageView
+            android:id="@+id/ad_cancle_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            android:onClick="doClick"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/top_back"
+            android:textColor="@color/_white_charactor_color" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/ad_link_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ad_more"
+        android:visibility="gone"
+        android:text=""
+        android:textColor="@color/_white_charactor_color" />
+
+  <LinearLayout
+       android:id="@+id/ad_load_prg"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center" 
+        android:visibility="gone"
+	    >
+        <ProgressBar
+        android:id="@+id/ad_progbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+  
+	    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:background="@drawable/tou">
+        
+        <ImageButton 
+            android:id="@+id/ib_title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_title_back"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textSize="24sp"
+   	    	android:text="@string/diary_praise_list"
+   	    	android:textColor="@color/black"/>
+        
+    </RelativeLayout>
+
+   	<com.cmmobi.looklook.common.view.pulltorefresh.PullToRefreshListView
+	    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+	    android:id="@+id/lv_praise_list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dip"
+	    android:layout_weight="1.0"
+	    android:cacheColorHint="@color/transparent"
+	    android:divider="@null"
+	  	android:listSelector="@drawable/bg_comment"
+	    android:overScrollMode="never"
+	    android:fadingEdge="none"
+	    android:scrollbars="vertical"
+	    android:scrollbarStyle="outsideOverlay"
+	    ptr:ptrAnimationStyle="flip"
+	    ptr:ptrMode="both" />
+    
+</LinearLayout> 

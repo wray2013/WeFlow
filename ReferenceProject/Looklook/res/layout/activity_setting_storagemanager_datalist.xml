@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_root"
+    android:background="@drawable/bj"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tou" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:src="@drawable/btn_activity_common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/not_upload_data"
+            android:textColor="@color/white"
+            android:textSize="@dimen/setting_title" />
+    </RelativeLayout>
+
+<com.cmmobi.looklook.common.view.pulltorefresh.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/xlv_data"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/relative"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="3dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:transcriptMode="alwaysScroll"
+        android:listSelector="@android:color/transparent"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both" >
+    </com.cmmobi.looklook.common.view.pulltorefresh.PullToRefreshListView>
+</RelativeLayout>

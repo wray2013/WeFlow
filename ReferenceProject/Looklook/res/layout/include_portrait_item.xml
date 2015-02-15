@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal" >
+    <com.cmmobi.looklook.common.web.WebImageView
+        android:id="@+id/iv_portrait"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/btn_default_touxiang"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+         >
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+       	 	android:layout_height="wrap_content"
+       	 	android:text="少年东方不败"
+            />
+        <ImageView
+            android:id="@+id/iv_portrait_transfer"
+             android:layout_width="wrap_content"
+       	 	android:layout_height="wrap_content"
+       	 	android:src="@drawable/qiehuan_zhuanfa"
+       	 	android:visibility="gone"
+            />
+    </LinearLayout>
+</LinearLayout>

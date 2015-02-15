@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <include layout="@layout/include_activity_edit_titlebar"
+        android:id="@+id/rl_edit_audio_soundtrack_top"/>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_audio_content_view"
+        android:layout_width="fill_parent"
+        android:layout_height="320dp"
+        android:background="@color/black"
+        >
+        
+        <TextView 
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="14dp"
+            android:text="2013.10.21"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            />
+            
+        <ImageView 
+            android:id="@+id/iv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/yinpin_play"
+            />
+        
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/iv_play" 
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="6dp"
+            android:text="00:00.00"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            />
+        
+        <SurfaceView 
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            />
+        
+        <RelativeLayout 
+            android:id="@+id/rl_wave_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/tv_time"
+            android:layout_marginTop="40dp"
+            >
+            
+        </RelativeLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        >
+        
+        <SeekBar 
+			android:id="@+id/sk_edit_voice_seekbar"
+			android:layout_width="194dp"  
+			android:layout_height="wrap_content"
+			android:minHeight="4.5dp"
+			android:maxHeight="4.5dp"
+			android:thumbOffset="1dp"
+			android:layout_centerHorizontal="true"
+			android:max="100"
+			android:progress="50"
+			android:progressDrawable="@drawable/skb_voice_seekbar"  
+			android:thumb="@drawable/yinliang_huakuai" />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_toLeftOf="@id/sk_edit_voice_seekbar"
+            android:layout_marginRight="15dp"
+            android:text="@string/original_voice"
+            android:textColor="@color/gray"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/sk_edit_voice_seekbar"
+            android:layout_marginLeft="15dp"
+            android:text="@string/soundtrack"
+            android:textColor="@color/gray"
+            />
+    </RelativeLayout>
+    
+    <HorizontalScrollView
+        android:id="@+id/hsv_sound_tracks"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="4dp"
+        >
+
+        <RadioGroup
+            android:id="@+id/rg_sound_tracks_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="2dip"
+            android:paddingTop="2dip" >
+        </RadioGroup>
+   	</HorizontalScrollView>
+
+</LinearLayout>

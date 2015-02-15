@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+
+        <RelativeLayout
+            android:id="@+id/tou_rl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tou" >
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/gesture_pwd"
+                android:textSize="@dimen/setting_title"
+                android:textColor="@color/black" />
+       
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tou_rl"
+        android:layout_marginLeft="@dimen/setting_padding"
+        android:layout_marginRight="@dimen/setting_padding"
+        android:layout_marginTop="60dp"
+        android:freezesText="true"
+        android:text="@string/gesture_pwd_explain"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/setting_max"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/btn_create"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_below="@id/text"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_activity_setting_bg"
+        android:text="@string/to_create"
+        android:textSize="@dimen/setting_max"
+        android:textColor="@color/dark_red" />
+
+</RelativeLayout>

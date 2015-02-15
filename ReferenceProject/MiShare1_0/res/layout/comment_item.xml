@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_comment" >
+
+    <ImageView
+        android:id="@+id/comment_list_head_icon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="10dip"
+        android:src="@drawable/moren_touxiang" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip" >
+
+        <TextView
+            android:id="@+id/nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:text="令狐冲"
+            android:textColor="#A0A0A0"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/comment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/nick_name"
+            android:gravity="right"
+            android:paddingRight="22dp"
+            android:text="前天"
+            android:textColor="#A0A0A0"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/comment_describe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nick_name"
+            android:text="这个视频太搞笑了！"
+            android:textColor="#707070"
+            android:textSize="13sp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_vioce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nick_name"
+            android:layout_marginTop="2dip"
+            android:orientation="horizontal" 
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

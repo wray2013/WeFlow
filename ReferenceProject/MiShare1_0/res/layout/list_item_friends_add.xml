@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_listview_item"
+    >
+        <RelativeLayout
+      	android:id="@+id/rl_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <ImageView
+        android:id="@+id/friend_icon_imageview"
+        android:layout_width="@dimen/contacts_image"
+        android:layout_height="@dimen/contacts_image"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitCenter"/>
+	<ImageView 
+	    android:id="@+id/iv_jiaobiao"
+	    android:layout_width="10dp"
+	    android:layout_height="10dp"
+	    android:src="@drawable/jiaobiao_1"
+	    android:layout_alignRight="@+id/friend_icon_imageview"
+	    android:layout_alignTop="@+id/friend_icon_imageview"
+	    android:layout_marginRight="-5dp"
+	    android:layout_marginTop="-5dp"
+	    android:visibility="gone"
+	    />
+    
+    <TextView
+        android:id="@+id/friend_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" 
+        android:paddingTop="12dp"
+        android:layout_toRightOf="@id/friend_icon_imageview"
+        android:textSize="@dimen/setting_max"
+        android:textColor="@color/black"
+        android:text="LookLook官方"
+        android:singleLine="true"
+        android:ellipsize="end" />
+    
+     <TextView 
+        android:id="@+id/tv_message"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/friend_name_textview"
+        android:layout_below="@+id/friend_name_textview"
+        android:layout_marginTop="2dp"
+        android:textSize="@dimen/setting_min"
+        android:textColor="@color/gray"
+        android:singleLine="true"
+        android:layout_marginRight="85dp"
+        android:text="微享"
+        android:ellipsize="end"
+       />
+     
+      <TextView
+        android:id="@+id/tv_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:text="添加"
+        android:textSize="@dimen/setting_max"
+        android:textColor="@color/blue"
+        />
+    </RelativeLayout>
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/rl_contact"
+        android:background="@drawable/liebiao_line"
+        />
+
+</RelativeLayout>

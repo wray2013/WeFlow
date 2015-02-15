@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tackview ="http://schemas.android.com/apk/res/com.cmmobi.looklook"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@drawable/bg_listview_item" >
+
+    <RelativeLayout
+      	android:id="@+id/rl_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+         >
+      	<ImageView
+            android:id="@+id/contacts_image"
+            android:layout_width="@dimen/contacts_image"
+            android:layout_height="@dimen/contacts_image"
+           android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/contacts_image"
+            android:text="LookLook团队硫酸铝乱说乱动在"
+            android:textColor="@color/gray"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/setting_max"
+            android:layout_marginRight="70dp"
+            android:singleLine="true"
+        android:ellipsize="end" >
+        </TextView>
+        <LinearLayout
+             android:id="@+id/ll_comment_content"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@+id/tv_nickname"
+             android:layout_below="@+id/tv_nickname"
+             android:layout_marginTop="6dp"
+             android:orientation="vertical" >
+             
+             <RelativeLayout
+	            android:id="@+id/rly_tack_area"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            >
+				<com.cmmobi.looklook.common.web.TackView
+	                  android:id="@+id/comment_tackview"
+	                  android:layout_width="wrap_content"
+	                  android:layout_height="wrap_content"
+	                  tackview:backresource="@layout/record_tackview_left"
+	                  tackview:needRecogn="true"
+	                  tackview:noTouchRecong="true"
+	                  />	
+	        </RelativeLayout>
+
+             <TextView
+                 android:id="@+id/tv_comment_text"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/black"
+                 android:textSize="@dimen/setting_max"
+                 android:singleLine="true"
+                 android:ellipsize="end"
+                 android:layout_marginRight="75dp" />
+
+         </LinearLayout>
+         
+		<TextView 
+        android:id="@+id/tv_time"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_nickname"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/ll_comment_content"
+        android:layout_marginBottom="5dp"
+        android:textSize="@dimen/setting_middle"
+        android:textColor="@color/gray"
+        android:text="昨天"
+         android:layout_marginRight="70dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+         />
+		
+	  <com.cmmobi.looklook.common.view.ContentThumbnailView
+	    android:id="@+id/ctv_content"
+	    android:layout_width="@dimen/contacts_image"
+	    android:layout_height="@dimen/contacts_image"
+	    android:layout_marginRight="10dp"
+	    android:layout_alignParentRight="true"
+	    android:layout_centerVertical="true"
+	    android:layout_alignTop="@+id/contacts_image"
+	/> 
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_alignBottom="@+id/rl_contact"
+        android:background="@drawable/liebiao_line" />
+</RelativeLayout>

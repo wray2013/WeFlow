@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <FrameLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        
+        <LinearLayout 
+            android:id="@+id/ll_edit_long_rec_detail"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:background="@drawable/zhongjian"
+	        >
+	        
+	        <LinearLayout
+	            android:id="@+id/ll_edit_voice"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent" 
+	            android:gravity="center"
+	            android:clickable="true"
+	            android:layout_weight="1"
+	            android:background="@drawable/bg_activity_edit_photo_dark"
+	            >
+	            <ImageView
+		            android:id="@+id/iv_edit_voice"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center"
+		            android:src="@drawable/bjly"
+		            />
+	        </LinearLayout>
+	        
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" 
+	            android:gravity="center"
+	            android:layout_weight="1"
+	            >
+	            <ImageView
+		            android:id="@+id/iv_edit_voice_detail"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center"
+		            android:src="@drawable/bjxq_2"
+		            android:scaleType="centerInside"
+		            android:background="@drawable/zhongjian_xuanzhong"
+		            />
+	        </LinearLayout>
+	    </LinearLayout>
+	    
+        <LinearLayout
+            android:id="@+id/ll_edit_short_rec_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:background="@drawable/zhongjian"
+	        android:visibility="gone"
+            >
+	        
+            <ImageView 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+	            android:src="@drawable/bjxq_2"
+	            android:scaleType="centerInside"
+	            android:background="@drawable/zhongjian_xuanzhong"/>
+            
+        </LinearLayout>
+        
+    </FrameLayout>
+    
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        
+        <ImageView 
+            android:id="@+id/iv_edit_media_record_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/btn_activity_edit_photo_detail_recode"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_back"      
+        />
+    
+    <RelativeLayout 
+        android:id="@+id/rl_edit_media_beautifysound"
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:clickable="true"
+        android:background="@drawable/bg_activity_edit_photo_dark"
+        >
+        
+        <ImageView 
+            android:id="@+id/iv_edit_media_beautifysound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/meihuashengyin"/>
+        
+       <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/iv_edit_media_beautifysound"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:textColor="#1B1B1B"
+            android:text="@string/edit_photo_detail_beautifysound"/>
+       
+       <ImageView 
+            android:id="@+id/iv_edit_media_detail_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_edit"/>
+        
+        <TextView 
+            android:id="@+id/tv_edit_media_beautifysound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/iv_edit_media_detail_arrow"
+            android:layout_marginRight="6dp"
+            android:textSize="12sp"
+            />
+        
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_back"      
+        />
+    
+    <RelativeLayout 
+        android:id="@+id/rl_edit_voice_detail_position"
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:background="@drawable/bg_activity_edit_photo_dark"
+        >
+        
+        <ImageView 
+            android:id="@+id/iv_edit_voice_detail_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/weizhi"/>
+        
+        <TextView 
+            android:id="@+id/iv_edit_voice_position_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_edit_voice_detail_position"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            android:text="@string/edit_photo_detail_position"/>
+        
+        <ImageView 
+            android:id="@+id/iv_edit_voice_detail_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_edit"/>
+        
+        <TextView 
+            android:id="@+id/tv_edit_voice_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/iv_edit_voice_detail_arrow"
+            android:layout_toRightOf="@id/iv_edit_voice_position_text"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="30dp"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:text="@string/edit_photo_detail_defaultpos"/>
+        
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_back"      
+        />
+    
+    <RelativeLayout 
+        android:id="@+id/rl_edit_voice_detail_tag"
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:background="@drawable/bg_activity_edit_photo_dark"
+        >
+        
+        <ImageView 
+            android:id="@+id/iv_edit_voice_detail_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/biaoqian"/>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_edit_voice_detail_tag"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            android:text="@string/edit_photo_detail_tag"/>
+        
+        <ImageView 
+            android:id="@+id/iv_edit_voice_detail_tagarrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_edit"/>
+        
+        <TextView 
+            android:id="@+id/tv_edit_voice_detail_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/iv_edit_voice_detail_tagarrow"
+            android:layout_marginRight="6dp"
+            android:textSize="12sp"
+            android:text="@string/edit_photo_detail_defaulttag"/>
+        
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line_back"      
+        />
+    
+
+</LinearLayout>

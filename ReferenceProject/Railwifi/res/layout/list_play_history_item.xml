@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_whole"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_bg"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants" >
+
+    <FrameLayout
+        android:id="@+id/fl_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp" 
+        android:layout_marginBottom="6dp">
+
+        <ImageView
+            android:layout_width="84dp"
+            android:layout_height="59dp"
+            android:background="@color/transframe"
+            android:contentDescription="图片找不到啦" />
+
+        <ImageView
+            android:id="@+id/movie_pic"
+            android:layout_margin="1dp"
+            android:layout_width="82dp"
+            android:layout_height="57dp"
+            android:contentDescription="图片找不到啦"
+            android:scaleType="fitXY" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/div"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/fl_movie"
+        android:layout_toRightOf="@+id/fl_movie"
+        android:layout_toLeftOf="@+id/btn_play"
+        android:gravity="start"
+        android:text="索菲亚格蕾丝和罗茜的皇家冒险之旅"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_jindu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/fl_movie"
+        android:layout_toRightOf="@+id/fl_movie"
+        android:singleLine="true"
+        android:text="观看至 00:28:27"
+        android:textColor="@color/sub_text_color"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/btn_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fl_movie"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:clickable="true"
+        android:gravity="end"
+        android:text="继续看"
+        android:textColor="@color/orange"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/btn_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/btn_play_history" />
+    
+    <View
+        android:id="@+id/view_line_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/fl_movie"
+        android:background="@color/list_divider_color" />
+
+</RelativeLayout>

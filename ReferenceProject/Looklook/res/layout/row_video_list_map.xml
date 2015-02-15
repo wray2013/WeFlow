@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip" >
+
+    <com.cmmobi.looklook.common.web.WebImageView
+        android:id="@+id/wiv_row_list_video_image"
+        android:layout_width="32dip"
+        android:layout_centerVertical="true"
+        android:layout_height="32dip" />
+    
+    <TextView
+        android:id="@+id/tv_row_listt_video_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/wiv_row_list_video_image"/>
+         
+</RelativeLayout>

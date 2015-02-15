@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="#ffffffff">
+    
+    <SurfaceView
+        android:id="@+id/surfaceView1"
+        android:layout_width="320px"
+        android:layout_height="240px" />
+
+    <ImageView
+        android:id="@+id/ivDisplay"
+	    android:layout_width="320px"
+	    android:layout_height="240px"
+        android:src="@drawable/ic_launcher" />
+    
+    <Button
+		android:id="@+id/btn_effect_test" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="@string/test_btn_name" />
+    
+    <Button
+		android:id="@+id/btn_effect2_test" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="@string/test2_btn_name" />
+    
+    <Button
+		android:id="@+id/btn_start" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="@string/btn_start_txt" />
+    <Button
+		android:id="@+id/btn_stop" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:text="@string/btn_stop_txt" />
+
+</LinearLayout>

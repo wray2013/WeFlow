@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="86dp"
+    android:gravity="center_vertical"
+    android:paddingBottom="19dp"
+    android:paddingTop="19dp" >
+    
+
+    <com.cmmobi.looklook.common.web.WebImageView
+        android:id="@+id/image"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="13dp" />
+    <RelativeLayout
+            android:id="@+id/rl_hudong_jiaobiao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:background="@drawable/jiaobiao"
+            android:layout_alignTop="@id/image"
+            android:layout_alignRight="@id/image"
+            android:gravity="center"
+            android:layout_marginTop="3dp"
+            >
+	        <TextView
+	            android:id="@+id/tv_hudong_jiaobiao"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="6sp"
+	            android:text="1"
+	            android:textColor="@color/white"
+	            />
+        </RelativeLayout>
+    
+
+    <RelativeLayout
+        android:id="@+id/rl_stranger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image"
+        android:layout_alignTop="@id/image"
+        android:layout_alignBottom="@id/image"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/stranger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:text="陌生人"
+            android:textColor="#7f7f7f"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/text_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:textColor="#a0a0a0"
+                android:textSize="18sp"
+                android:paddingRight="100dp"
+                android:singleLine="true"
+                android:ellipsize="end" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:paddingRight="50dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="#7f7f7f"
+                android:textSize="15sp" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:textColor="#7f7f7f" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:src="@drawable/arrow_1"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>

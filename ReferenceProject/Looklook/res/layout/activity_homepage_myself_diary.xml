@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_homepage"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bj">
+    <ImageView
+        android:id="@+id/iv_anchor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dot_big" 
+        />
+    <com.cmmobi.looklook.common.listview.pulltorefresh.DiaryListView
+        android:id="@+id/dlv_list"
+        android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:scrollbars="none"
+        />
+    <com.cmmobi.looklook.common.listview.pulltorefresh.RecentListView
+        android:id="@+id/dlv_recentlist"
+        android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:layout_below="@+id/rl_title"
+    	android:scrollbars="none"
+    	android:visibility="gone"
+        />
+    
+    <FrameLayout
+        android:id="@+id/fl_activity_homepage_myselfdiary_map"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <com.cmmobi.looklook.map.MyMapView
+            android:id="@+id/bmv_activity_homepage_myselfdiary_map"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true" />
+
+        <!--ImageView
+            android:id="@+id/iv_activity_discover_main_reloc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:clickable="true"
+            android:src="@drawable/btn_activity_discover_main_reloc" /-->
+
+	    <RelativeLayout
+            android:id="@+id/fl_activity_homepage_myselfdiary_map_tankuang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="80dp" >
+		    <ListView
+	            android:id="@+id/lv_activity_homepage_myselfdiary_map_list"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:paddingTop="18dp"
+	            android:paddingRight="10dp"
+	            android:paddingLeft="5dp"
+	            android:paddingBottom="10dp"
+	            android:background="@drawable/map_tankuang"
+	            android:cacheColorHint="#00000000" />
+		    <ImageView
+	            android:id="@+id/iv_activity_homepage_myselfdiary_map_tankuang_close"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentTop="true"
+	            android:layout_alignParentRight="true"
+	            android:paddingTop="7dp"
+	            android:paddingRight="7dp"
+	            android:src="@drawable/btn_include_map_close" />
+	    </RelativeLayout>
+    </FrameLayout>
+    
+    <include layout="@layout/include_activity_homepage_myself_diary_title_bar" />
+    <include layout="@layout/include_activity_homepage_time_replace" />
+    <RelativeLayout 
+        android:id="@+id/rl_removie_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tou" 
+        android:visibility="gone"
+        >
+        <ImageView
+            android:id="@+id/iv_back"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/btn_activity_common_back"
+            />
+        
+        <TextView
+            android:id="@+id/tv_checked_remove_num" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            />
+        
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/btn_activity_homepage_remove"
+            />
+    </RelativeLayout>
+</RelativeLayout>

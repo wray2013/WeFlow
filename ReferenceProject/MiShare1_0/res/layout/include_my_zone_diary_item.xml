@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/myzone_avatar_margin_left"
+     >
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/myzone_diaryitem_padding_top"
+        android:textColor="@color/homepage_text_color_black"
+        android:textSize="20sp" />
+
+    <TableLayout
+        android:id="@+id/tl_diary_items"
+        android:layout_below="@id/tv_date"
+        android:layout_width="fill_parent"
+        android:dividerPadding="2dp"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

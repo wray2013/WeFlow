@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_joke_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <com.cmmobi.railwifi.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <com.cmmobi.railwifi.view.gifview.GifView
+                android:id="@+id/iv_joke_pic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/pci_not_found"
+                android:gravity="center_horizontal" />
+        </com.cmmobi.railwifi.view.SquareLayout>
+
+        <TextView
+            android:id="@+id/tv_joke_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:lineSpacingExtra="6dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </LinearLayout> -->
+    
+    <WebView android:id="@+id/wv_game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    
+    <!-- <RelativeLayout 
+        android:id="@+id/rl_no_network"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#f1f1f1"
+        android:visibility="gone"
+        >
+        
+        <ImageView 
+            android:id="@+id/iv_img_no_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/image_no_network"
+            />
+        
+        <TextView 
+            android:id="@+id/tv_no_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/iv_img_no_network"
+            android:layout_marginTop="10dp"
+            android:text="当前网络好像出了点问题"
+            android:textSize="22sp"
+            android:textColor="@color/title_bar_text_color"
+            />
+        
+    </RelativeLayout> -->
+    
+    <include layout="@layout/include_no_network" android:id="@+id/rl_no_network"/>
+
+</RelativeLayout>

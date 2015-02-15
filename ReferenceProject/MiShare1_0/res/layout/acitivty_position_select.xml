@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white">
+    
+    <RelativeLayout 
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tou"
+        >
+        <ImageView 
+            android:id="@+id/iv_back"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"
+            />
+         
+         <TextView
+            android:id="@+id/tv_title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/position"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+         
+         <ImageView 
+	         android:id="@+id/iv_edit_diary_save"
+	         android:clickable="true"
+	         android:layout_width="50dp"
+	         android:layout_height="wrap_content"
+	         android:layout_alignParentRight="true"
+	         android:layout_centerVertical="true"
+	         android:src="@drawable/btn_activity_edit_diary_save"
+	         />
+    </RelativeLayout>
+    
+    <FrameLayout 
+        android:id="@+id/fl_map"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        >
+         
+        <com.cmmobi.looklook.map.MyMapView
+            android:id="@+id/bmv_edit_position"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone"
+            android:clickable="true" />
+		
+		<com.cmmobi.looklook.common.view.MyPositionLayout
+		    android:id="@+id/rl_edit_media_my_position"
+		    android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone"
+		    >
+		    <ImageView 
+		        android:id="@+id/iv_edit_media_myposition"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:src="@drawable/del_map_me"/>
+
+		    <TextView
+		        android:id="@+id/tv_edit_media_myposition"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_above="@+id/iv_edit_media_myposition"
+		        android:layout_centerHorizontal="true"
+		        android:visibility="gone"
+		        android:background="@drawable/del_weizhixinxi" />
+		</com.cmmobi.looklook.common.view.MyPositionLayout>
+        
+    </FrameLayout>
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/liebiao_line"      
+        />
+    
+    <RelativeLayout
+        android:id="@+id/rl_activity_edit_frequentlypos"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/frequentlypos_layout_height"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:background="@drawable/bg_activity_edit_photo_dark"
+        >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:text="@string/edit_photo_detail_frequentlypos"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            />
+        
+        <ImageView 
+            android:id="@+id/iv_edit_photo_detail_tagarrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/liebiao_arrow"/>
+        
+    </RelativeLayout>
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/liebiao_line"       
+        />
+    
+    <ListView 
+        android:id="@+id/lv_pos_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000" 
+        android:divider="@null"
+        >
+        
+    </ListView>
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/liebiao_line"
+        android:layout_marginTop="-1dp"  
+        />
+</LinearLayout>

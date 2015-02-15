@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tackview ="http://schemas.android.com/apk/res/com.cmmobi.looklook"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <include layout="@layout/include_activity_edit_titlebar"
+        android:id="@+id/rl_edit_note_top"/>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_note_content"
+        android:layout_width="fill_parent"
+        android:layout_height="320dp"
+        android:layout_below="@id/rl_edit_note_top"
+        >
+        <EditText 
+	        android:id="@+id/et_word_input"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:textCursorDrawable="@color/textcursorcolor"
+	        android:scrollbars="vertical"
+	        android:gravity="top"
+	        android:background="@drawable/bianqian_beijing"/>
+        <com.cmmobi.looklook.common.web.TackView
+	   		android:id="@+id/ll_tackview"
+	   		android:layout_width="wrap_content"
+	   		android:layout_height="wrap_content"
+	   		android:layout_marginBottom="8.5dp"
+	   		android:layout_alignParentRight="true"
+	   		android:layout_alignBottom="@id/et_word_input"
+	   		android:layout_marginRight="7dp"
+	   		android:clickable="true"
+	   		android:visibility="gone"
+	   		tackview:backresource="@layout/view_create_note_tack"
+	   		android:orientation="horizontal" />
+        <TextView
+	        android:id="@+id/text_notuse"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:focusable="true"
+			android:focusableInTouchMode="true"
+	        />
+        
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:id="@+id/ll_voice_modify"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/rl_note_content"
+        >
+        
+        <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="15dp"
+	        android:layout_marginTop="9dp"
+	        android:textColor="@color/gray"
+	        android:textSize="18sp"
+	        android:text="@string/voice_change"
+	        />
+    
+	    <HorizontalScrollView
+	        android:id="@+id/effects_group"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="16dp"
+	        android:layout_marginTop="19dp"
+	        >
+	
+	        <RadioGroup
+	            android:id="@+id/effects_wrap_layout"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical"
+	            android:orientation="horizontal"
+	            android:paddingBottom="2dip"
+	            android:paddingTop="2dip" >
+	
+	        </RadioGroup>
+	   	</HorizontalScrollView>
+        
+    </LinearLayout>
+    
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_pop_grid"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_corners_bg"
+    android:layout_margin="5dp"
+    android:padding="5dp" >
+
+    <GridView
+        android:id="@+id/gv_four_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:horizontalSpacing="0dp"
+        android:numColumns="2"
+        android:scrollbars="@null"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="0dp"
+        android:visibility="gone" />
+
+    <GridView
+        android:id="@+id/gv_nine_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:horizontalSpacing="0dp"
+        android:numColumns="3"
+        android:scrollbars="@null"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="0dp"
+        android:visibility="gone" />
+
+</FrameLayout>

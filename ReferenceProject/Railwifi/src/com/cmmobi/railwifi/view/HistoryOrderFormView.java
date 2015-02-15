@@ -1,0 +1,111 @@
+package com.cmmobi.railwifi.view;
+
+import java.util.List;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.View;
+
+import com.cmmobi.railwifi.utils.DisplayUtil;
+import com.cmmobi.railwifi.utils.OrderFormItem;
+
+public class HistoryOrderFormView extends View {
+
+	private Context context;
+	private List<OrderFormItem> orderFormList;
+	
+	private Paint textPaint;
+	public HistoryOrderFormView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+//		Log.d("=AAA=","HistoryOrderFormView");
+		this.context = context;
+		initPaint();
+	}
+	
+	private void initPaint() {
+		textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		textPaint.setTextSize(DisplayUtil.getSize(context, 30));
+		textPaint.setColor(0xff212434);
+	}
+	
+	public void setOrderFormItem(List<OrderFormItem> list) {
+		this.orderFormList = list;
+	}
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+//		Log.d("=AAA=","onDraw in orderFormList = " + orderFormList);
+		if (orderFormList == null) {
+			return;
+		}
+		int width = getWidth();
+		int yoffset = DisplayUtil.getSize(context, 30);
+		boolean isFirst = true;
+		for (OrderFormItem orderItem:orderFormList) {
+			String leftText = orderItem.name + "×" + orderItem.orderNum;
+			String rightText = orderItem.totalPrice + "元";
+			int rightTextWidth = (int) textPaint.measureText(rightText);
+			int rightTextStart = width - rightTextWidth - DisplayUtil.getSize(context, 30);
+			if (isFirst) {
+				Rect bound1 = new Rect();
+				textPaint.getTextBounds(leftText, 0, leftText.length(), bound1);
+				Rect bound2 = new Rect();
+				textPaint.getTextBounds(rightText, 0, rightText.length(), bound2);
+				yoffset += bound1.height() > bound2.height() ? bound1.height() : bound2.height();
+				isFirst = false;
+			}
+			
+			canvas.drawText(leftText , 0, yoffset, textPaint);
+			
+			canvas.drawText(rightText, rightTextStart, yoffset, textPaint);
+			yoffset += 2 * DisplayUtil.getSize(context, 30);
+//			Log.d("=AAA=","name = " + orderItem.name + " price = " + rightTextWidth);
+		}
+	}
+	
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		// TODO Auto-generated method stub
+		
+		setMeasuredDimension(measureWidth(widthMeasureSpec), measureHeight(heightMeasureSpec));
+	}
+	
+	 private int measureWidth(int measureSpec) {
+	        int specSize = MeasureSpec.getSize(measureSpec);
+
+	        return specSize;
+	 }
+
+    /**
+     * Determines the height of this view
+     * @param measureSpec A measureSpec packed into an int
+     * @return The height of the view, honoring constraints from measureSpec
+     */
+    private int measureHeight(int measureSpec) {
+        int height = 0;
+        int specMode = MeasureSpec.getMode(measureSpec);
+        int specSize = MeasureSpec.getSize(measureSpec);
+        
+        if (specMode == MeasureSpec.EXACTLY) {
+            // We were told how big to be
+        	height = specSize;
+        } else {
+            // Measure the text (beware: ascent is a negative number)
+        	if (orderFormList != null) {
+        		height = (2*orderFormList.size())* DisplayUtil.getSize(context, 30) + 5;
+			}
+            if (specMode == MeasureSpec.AT_MOST) {
+                // Respect AT_MOST value if that was what is called for by measureSpec
+            	height = Math.min(height, specSize);
+            }
+        }
+        return height;
+    }
+
+}

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:descendantFocusability="blocksDescendants">
+
+    <TextView
+        android:id="@+id/tv_msg_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/time"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="8:05"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:id="@+id/ll_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_date"
+        android:orientation="horizontal" >
+
+        <com.cmmobi.looklook.common.web.WebImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp" />
+<!--                     android:background="@drawable/touxiang"
+            android:src="@drawable/temp_local_icon" -->
+
+        <RelativeLayout
+            android:id="@+id/rl_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_toLeftOf="@id/iv_pic"
+            android:gravity="right" >
+
+            <ImageView 
+                android:id="@+id/iv_send_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shibai"
+                android:layout_margin="5dp"
+                android:layout_toLeftOf="@id/tv_txt_media"
+                />
+            <TextView
+                android:id="@+id/tv_txt_media"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/paopao_haoyou"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                >
+
+                <FrameLayout
+                    android:id="@+id/rl_video_media"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/paopao_haoyou"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="3dp" >
+
+                    <TextView
+                        android:id="@+id/tv_video_txt_media"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <com.cmmobi.looklook.common.web.WebImageView
+                        android:id="@+id/iv_video_play"
+                        android:layout_width="110dp"
+                        android:layout_height="80dp"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/iv_video_screen"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/btn_activity_message_personal_play" />
+
+                    <TextView
+                        android:id="@+id/tv_video_len"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|left"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="13dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"/>
+                    <ProgressBar 
+                        android:id="@+id/pb_video_progress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_gravity="bottom"
+                        android:visibility="gone"/>
+                </FrameLayout>
+                <com.cmmobi.looklook.common.web.TackView
+                    android:id="@+id/rl_video_attach_audio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/rl_video_media"
+                    android:layout_below="@id/rl_video_media"/>
+                
+
+
+            </RelativeLayout>
+             <TextView
+                    android:id="@+id/tv_video_attach_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/rl_video"
+                    android:layout_below="@id/rl_video"
+                    android:background="@drawable/paopao_haoyou_ms"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:visibility="visible" >
+                <com.cmmobi.looklook.common.web.TackView
+                    android:id="@+id/rl_record_media"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" />
+
+
+            </RelativeLayout>
+                            <TextView
+                    android:id="@+id/tv_audio_attach_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/rl_record"
+                    android:layout_below="@id/rl_record"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/paopao_haoyou_ms"
+                    android:gravity="center_vertical"
+                    android:text="dddddddddddddddddddddddddddddddddddddd"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+        </RelativeLayout>
+
+<!--         <ImageView
+            android:id="@+id/iv_audio_attach_loading"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_toLeftOf="@+id/rl_all"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/loading_s"
+            android:layout_marginRight="-50dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/iv_audio_attach_fail"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toLeftOf="@+id/rl_all"
+            android:layout_marginRight="-50dp"
+            android:background="@drawable/shibai"
+            android:visibility="gone"/> -->
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_row_list_diary_item"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right"
+    android:padding="5dip" >
+    
+    <RelativeLayout
+        android:id="@+id/rl_row_list_diary_head"
+        android:layout_width="100dip"
+        android:layout_height="100dip" >
+        <ImageView
+            android:id="@+id/wiv_row_list_diary_head"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY" />
+        <ImageView
+            android:id="@+id/iv_video_play_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/del_btn_activity_dairydetail_shiping_pause_play" 
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rl_row_list_diary_head"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/rl_row_list_diary_head"
+        android:layout_toRightOf="@+id/rl_row_list_diary_head"
+        android:orientation="vertical"
+        android:padding="5dip" >
+        <RelativeLayout
+            android:id="@+id/rl_row_list_diary_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal">
+      		<TextView
+      		    android:id="@+id/tv_row_list_diary_nick"
+				android:layout_width="wrap_content"
+				android:maxWidth="120dp"
+            	android:layout_height="wrap_content"
+            	android:singleLine="true"
+            	android:ellipsize = "end"
+            	android:text="樱桃小丸子">
+            
+        	</TextView>
+        	<ImageView
+        	    android:id="@+id/iv_row_list_diary_sex"
+     			android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:layout_toRightOf="@+id/tv_row_list_diary_nick"
+            	android:layout_alignTop="@+id/tv_row_list_diary_nick"
+            	android:layout_alignBottom="@+id/tv_row_list_diary_nick"
+            	android:src="@drawable/del_mapnv">
+            </ImageView>
+        	<TextView
+        	    android:id="@+id/tv_row_list_diary_time"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_alignBottom="@+id/tv_row_list_diary_nick"
+        	    android:text="今天10:15"
+        	    android:textSize="10dp" />
+        </RelativeLayout>
+		<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"
+            android:layout_below="@+id/rl_row_list_diary_banner"
+            android:paddingTop="5dp">
+	        <TextView
+	            android:id="@+id/tv_row_list_diary_content"
+				android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:textColor="@color/gray"
+	            android:ellipsize = "end"
+	            android:maxLines="4"
+	            android:text="来感受下京剧的魅力吧!">
+	        </TextView>
+    	</RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

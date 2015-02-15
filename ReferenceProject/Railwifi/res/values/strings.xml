@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">箩筐</string>
+    <string name="welcome">欢迎您，游客！</string>
+    <string name="railwayservice">列车服务</string>
+    <string name="mediaamusement">影音娱乐</string>
+    <string name="homepage">主页</string>
+    <string name="citylife">城市生活</string>
+    <string name="gameworld">游戏世界</string>
+    <string name="popularapp">热门应用</string>
+    <string name="cityintroduction">城市风采</string>
+    <string name="setting">设置</string>
+    <string name="movie_detail">电影详情>></string>
+    <string name="double_click_to_exit">再按一次退出程序</string>
+    <string name="pci_not_found">找不到图片</string>
+    <string name="railway_welcom">来~体验旅途中的5星级品质之旅吧！</string>
+    <string name="order_form_title">提交订单</string>
+    <string name="tip_title">乘客须知</string>
+    <string name="tip_content">\u3000\u3000从明年9月1日起所有计算机票(电子票)、磁介质车票(磁卡票)车票背面使用新版“铁路旅客乘车须知”(1102版) 内容如下：\r\n\u3000\u30001.请按票面标明的日期、车次凭票乘车，并在规定时间内至到站。直达票中途下车，未乘区间失效。通票中途换乘需中转签证。\r\n\u3000\u30002.免费携带品：成人20千克、儿童10千克，长、宽、高之和不超过160厘米(动车组列车130厘米)，超过规定需办理托运。禁止携带危险品及违章物品进站、乘车。\r\n\u3000\u30003.车站在开车前提前停止检票，进站安检、验证排队人数较多，请提前至指定场所候车，以免耽误旅行。\r\n\u3000\u30004.实名制车票须凭乘车人有效身份证件原件，票、证一致方可退票、换票、中转签证;票、证、人一致方可进站、乘车。\r\n\u3000\u30005.未尽事项请参阅《铁路旅客运输规程》。如有变化以车站公告为准，敬请关注。旅行中请关注有关安全提示。如有疑问，请拨打12306客服电话垂询。</string>
+    <string name="introdution_title">北京铁路局简介</string>
+    <string name="introdution_content">\u3000\u3000北京铁路局是以铁路客货运输为主的大型国有运输企业，所辖铁路线路分布在北京、天津、河北两市一省及山东、河南、山西省的部分地区，与沈阳、郑州、济南、太原四铁路局相接。管内有正线156条，其中有主要干线15条，分别为京哈线、京广线、京沪线、京原线、京包线、京通线、京承线、津山线、石德线、石太线、丰沙线、锦承线、邯长线、京九线、西长线。截至目前，北京铁路局管内铁路营业里程全长4962.6公里，其中时速200公里以上高速铁路线路长度达到732.7公里。北京铁路局下辖直属单位74个，其中运输单位50个，职工总数20.02万人。\r\n\u3000\u3000北京铁路局地处我国首都北京，是环渤海经济圈的中心，也是全国最重要的路网枢纽之一。北京铁路局科技水平，已经投入运营数条标志性铁路线：京津城际铁路，是目前国内最高标注的铁路客运专线；石太客运专线、京沪高速铁路（北京铁路局管辖区段）是我国铁路规划的“四纵四横”快速客运网骨架重要组成部分。\r\n\u3000\u3000北京铁路局在长期的改革和发展实践中，坚持“人才资源是第一资源”的方针，用铁路现代化事业凝聚人才，用崇高的精神来激励人才，用真挚的感情来关心人才，用良好的待遇来吸引人才。近年来，北京铁路局致力于打造高素质人才后备力量，以加强青年人才培养为切入点，立足当前，着眼长远，进一步发挥组织引领作用，实施了大学毕业生早期培养工作：大学生毕业后的第一年是“综合见习期”，重点落实见习计划；第二年和第三年是“实践锻炼期”，安排大学生到主要生产岗位进行锻炼，实现专业知识与现场实践的有机结合；第四年和第五年是“定向培养期”，根据大学生管理能力和专业特长确定发展方向，依据发展方向分流到管理岗位或专业技术岗位，做到人尽其才，促进优秀大学生脱颖而出。</string>
+
+    <string name="check_update">检查更新</string>
+    <string name="clear_cache">清空缓存</string>
+    <string name="clear_history">清空历史记录</string>
+    <string name="startCleanCache">清理缓存中</string>
+    <string name="endCleanCache">清理完毕</string>
+    <string name="day_name_format">EEE</string>
+    <string name="invalid_date">Date must be between %1$s and %2$s.</string>
+  	<string name="month_name_format">MMMM yyyy</string>
+  	
+  	<string name="empty_fav_descrp">没有收藏哦~</string>
+  	<string name="empty_history_descrp">没有历史记录哦~</string>
+  	<string name="empty_image_view">找不到图片</string>
+  	
+  	<string name="invest_promt">想看什么?告诉我们!虽然不一定有，但我们会尽量满足您的要求的!:)</string>
+  	
+    <string name="ptr_pull_to_refresh">Pull to refresh</string>
+    <string name="ptr_release_to_refresh">Release to refresh</string>
+    <string name="ptr_refreshing">Refreshing</string>
+    <string name="ptr_last_updated">Updated: %1$s</string>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="key_media_id">mediaId</string>
+    <string name="key_source_id">sourceId</string>
+    <string name="key_source_name">sourceName</string>
+    <string name="key_media_object">mediaObj</string>
+    <string name="removeItem">Remove</string>
+    <string name="share">分享</string>
+    <string name="settings">设置</string>
+    <string name="detail_tab_series">剧集</string>
+    <string name="load_vip_to_play">登录VIP观看全片</string>
+    <string name="loading">加载中…</string>
+    <string name="super_text">超清</string>
+    <string name="super_definition">超清</string>
+    <string name="hd_text">高清</string>
+    <string name="fluent_text">标清</string>
+    <string name="dlna_search">DLNA</string>
+    <string name="message_for_clarity_mode">高级播放器</string>
+    <string name="wizard_display_float_window">浮窗播放</string>
+    <string name="wizard_detail_dlna">DLNA多屏互动</string>
+    <string name="message_for_report_error_title">报错</string>
+    <string name="settings_jump_head_and_tail">跳过片头片尾</string>
+    <string name="projection">投影</string>
+    <string name="zero_try_watch_desc">本剧为付费视频,搜狐影院会员免费观看</string>
+    <string name="zero_try_watch">0元试看本片</string>
+</resources>

@@ -1,0 +1,171 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:id="@+id/ll_contactsfragment"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="8dp" >
+
+        <AutoCompleteTextView
+            android:id="@+id/et_friend_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/search_kuang"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:maxLength="100"
+            android:hint="@string/search_friend"
+            android:textSize="@dimen/setting_max"
+            android:textColor="@color/black"
+            android:textColorHint="@color/light_gray"
+            android:completionThreshold="1"
+            android:dropDownSelector="@drawable/transparent" />
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/search"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/setting_max" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/liebiao_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_request"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_marginLeft="15dp" >
+
+       <TextView
+           android:id="@+id/tv_request"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerVertical="true"
+           android:text="@string/contacts_new_friend"
+           android:textColor="@color/black"
+           android:textSize="@dimen/setting_max" />
+        <ImageButton
+            android:id="@+id/ib_arrow_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/arrow" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ib_arrow_request"
+            android:layout_alignTop="@+id/ib_arrow_request"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/ib_arrow_request"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/iv_jiaobiao_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/jiaobiao_1" />
+
+            <TextView
+                android:id="@+id/tv_count_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/setting_mini" />
+        </RelativeLayout>
+        
+        
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/liebiao_line" />
+
+    <RelativeLayout
+        android:id="@+id/rl_service"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/setting_item_height" >
+
+        <TextView
+            android:id="@+id/tv_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/contacts_customer_service"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_max" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/arrow" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_lastline"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/liebiao_line" />
+
+        <ListView
+        android:id="@+id/friends_circle_contacts_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000"
+        android:scrollingCache="true"
+        android:scrollbars="none" 
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        />
+    
+     <ListView
+            android:id="@+id/activites_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:orientation="vertical" >
+        </ListView>
+    
+    <TextView
+        android:id="@+id/tv_notfound"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/not_found"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/setting_title"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+         />
+
+</LinearLayout>

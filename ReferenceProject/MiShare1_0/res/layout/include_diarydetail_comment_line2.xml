@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cmmobi="http://schemas.android.com/apk/res/com.cmmobi.looklook"
+ 	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:paddingLeft="5dp"
+	android:paddingRight="5dp"
+	android:paddingTop="5dp">
+  	
+   	<!-- 不带语音输入部分 -->
+	<ImageButton 
+	    android:id="@+id/ib_comment_person_icon"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_alignParentLeft="true"/>
+	
+	<TextView
+	   	android:id="@+id/tv_comment_person_name"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_toRightOf="@id/ib_comment_person_icon"
+   	    android:layout_marginLeft="5dp"
+   	    android:textSize="18sp"
+   	    android:textColor="@color/black"/>
+	
+	<TextView
+	   	android:id="@+id/tv_comment_time"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_alignParentRight="true"
+	    android:textSize="16sp"
+   	    android:textColor="@color/black"/>
+	
+	<LinearLayout
+	    android:id="@+id/rl_comment_content"
+	   	android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:layout_below="@id/tv_comment_person_name"
+		android:layout_toRightOf="@id/ib_comment_person_icon"
+	   	android:layout_marginLeft="5dp"
+	   	android:layout_marginTop="5dp"
+	   	android:background="@color/white"
+	   	android:orientation="vertical">
+	   	
+   	    <com.cmmobi.looklook.common.web.TackView
+   	        android:id="@+id/tack_comment_record"
+  	    	android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			cmmobi:backresource="@layout/comment_tackview"/>
+	    
+    	<TextView
+		   	android:id="@+id/tv_comment_content"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:paddingLeft="2dp"
+		    android:paddingRight="2dp"
+	   	   	android:textSize="18sp"
+	   	    android:textColor="#979797"/>
+	    
+	</LinearLayout>
+
+   	<ImageView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/rl_comment_content"
+		android:layout_marginTop="5dp"
+       	android:background="@drawable/bg_diarydetail_list_line"/>
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" 
+        android:drawable="@drawable/tankuang_quxiao_2" />
+    <item android:state_focused="true"
+        android:drawable="@drawable/tankuang_quxiao_2" />
+    <item
+        android:drawable="@drawable/tankuang_quxiao_1" />
+</selector>

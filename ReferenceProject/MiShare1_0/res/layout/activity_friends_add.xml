@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_contacts"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="8dp" >
+
+        <EditText
+            android:id="@+id/et_friend_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/search_kuang"
+            android:gravity="center_vertical"
+            android:hint="@string/add_friend"
+            android:singleLine="true"
+            android:maxLength="100"
+            android:textColorHint="@color/light_gray"
+            android:textSize="@dimen/setting_max" />
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/search"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/setting_max" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/liebiao_line" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/rl_phonebook"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ImageButton
+                android:id="@+id/invite_arrow_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/arrow" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:scaleType="center"
+                android:src="@drawable/btn_invite_friend_phone" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/imageView1"
+                android:text="@string/invite_phonebook"
+                android:textColor="@color/black"
+                android:textSize="@dimen/setting_middle" />
+            <ImageView
+        	android:layout_width="match_parent"
+        	android:layout_alignLeft="@+id/tv_phone"
+        	android:layout_alignParentBottom="true"
+        	android:layout_height="wrap_content"
+       		 android:background="@drawable/liebiao_line" />
+        </RelativeLayout>
+    	
+    </LinearLayout>
+    
+    <ListView
+            android:id="@+id/activites_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:orientation="vertical" >
+        </ListView>
+    
+    <TextView
+        android:id="@+id/tv_notfound"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/not_found"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/setting_title"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+         />
+
+</LinearLayout>

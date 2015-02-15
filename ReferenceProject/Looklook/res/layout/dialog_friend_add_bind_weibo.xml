@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical" 
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_friend_add_bindweibo_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_10dip"
+        android:text="你还没有绑定账号"
+        android:textSize="@dimen/size_15sp" />
+
+    <TextView
+        android:id="@+id/tv_friend_add_bindweibo_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="现在就去绑定，与好友一起互动吧"
+        android:textSize="@dimen/size_15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_friend_add_bindweibo_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_10dip"
+            android:layout_marginRight="@dimen/size_10dip"
+            android:layout_weight="1"
+            android:text="取消"
+            android:textSize="@dimen/size_15sp" />
+
+        <Button
+            android:id="@+id/btn_friend_add_bindweibo_sure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_10dip"
+            android:layout_marginRight="@dimen/size_10dip"
+            android:layout_weight="1"
+            android:text="立即绑定"
+            android:textSize="@dimen/size_15sp" />
+    </LinearLayout>
+
+</LinearLayout>

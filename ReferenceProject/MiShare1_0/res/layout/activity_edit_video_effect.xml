@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+    
+    <include layout="@layout/include_activity_edit_titlebar"
+        android:id="@+id/rl_edit_video_effect_top"/>
+    
+    <FrameLayout 
+        android:id="@+id/fl_edit_diary_video"
+        android:layout_width="fill_parent"
+        android:layout_height="320dp"
+        android:layout_below="@id/rl_edit_video_effect_top"
+        >
+	    <RelativeLayout
+	        android:id="@+id/video_view"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@android:color/black"
+	        android:gravity="center"
+	        >
+	    </RelativeLayout>
+	    
+	    <ImageView 
+            android:id="@+id/iv_video_preview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            />
+	    
+        <ImageView 
+            android:id="@+id/iv_video_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+    
+    <FrameLayout 
+        android:id="@+id/fl_edit_video_montage"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/caijian_height"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/effect_seek_margin_top"
+        android:layout_below="@id/fl_edit_diary_video"
+        >
+        <LinearLayout
+	        android:id="@+id/ll_fragment_edit_video_montage_imgs"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_marginTop="2dp"
+	        android:layout_marginBottom="2dp"
+	        android:layout_marginLeft="12dp"
+	        android:layout_marginRight="12dp"
+	        android:orientation="horizontal"
+	        >
+        
+		    <com.cmmobi.looklook.common.view.VideoMontageGridView
+		        android:id="@+id/gv_edit_video_montage_imgs"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="top"
+		        android:numColumns="16"
+		        android:columnWidth="100dp"
+		        android:listSelector="@null" 
+		        android:stretchMode="columnWidth"
+		        />
+        
+   		</LinearLayout>
+   		
+        <com.cmmobi.looklook.common.view.VideoMontageView
+            android:id="@+id/vv_edit_video_montageview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+        </com.cmmobi.looklook.common.view.VideoMontageView>
+    </FrameLayout>
+    
+    <HorizontalScrollView
+        android:id="@+id/hsv_photo_effects"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fl_edit_video_montage"
+        android:background="@color/transparent"
+        android:layout_marginTop="@dimen/effect_item_margin_top"
+        android:layout_marginRight="7.5dp"
+        >
+	    <LinearLayout 
+	        android:id="@+id/effect_group"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginTop="5dp"
+	        android:layout_marginBottom="5dp"
+	        >
+	    </LinearLayout>
+   	</HorizontalScrollView>
+
+</RelativeLayout>

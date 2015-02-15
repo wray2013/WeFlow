@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical" >
+
+    <TextView
+        android:id="@+id/alpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#313131"
+        android:clickable="false"
+        android:enabled="false"
+        android:gravity="center_vertical"
+        android:paddingLeft="13dp"
+        android:text="XXX"
+        android:textColor="#1b1b1b" />
+
+    <ImageView
+        android:id="@+id/alpha_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/alpha"
+        android:background="@drawable/friends_list_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alpha"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="4dp"
+        android:paddingTop="10dp" >
+        
+        <ImageView 
+	        android:id="@+id/iv_privatemsg_contacts_selected"
+	        android:layout_width="26.5dp"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:scaleType="centerInside"
+	        android:src="@drawable/xuanzhong_1"/>
+        
+        <ImageView 
+	        android:clickable="true"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/iv_privatemsg_contacts_selected"
+	        android:layout_marginRight="10dp"
+	        android:background="@drawable/shuxian_list"
+	        />
+
+        <ImageView
+            android:id="@+id/remove_black_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/iv_privatemsg_contacts_selected"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_activity_friends_blacklist_jiechu"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:id="@+id/contacts_image"
+            android:layout_toRightOf="@id/remove_black_list"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/moren_touxiang" />
+
+        <TextView
+            android:id="@+id/contacts_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_toRightOf="@id/contacts_image"
+            android:text="LookLook团队"
+            android:textColor="#a0a0a0"
+            android:layout_centerVertical="true"
+            android:textSize="18sp" >
+        </TextView>
+
+        <ImageView
+            android:id="@+id/contacts_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/arrow" 
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

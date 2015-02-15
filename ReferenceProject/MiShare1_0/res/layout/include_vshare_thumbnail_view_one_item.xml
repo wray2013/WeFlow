@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:id="@+id/rl_content"
+        android:clickable="false">
+   <ImageView 
+       android:id="@+id/iv_one_photo"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:scaleType="fitXY"
+       android:src="@drawable/moren"
+       />
+
+   <TextView 
+       android:id="@+id/tv_chunyuyin_time"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:maxLines="1"
+       android:text="27"
+       android:ellipsize="end"
+       android:gravity="left|center_vertical"
+       android:textColor="@color/white"
+       android:textSize="50sp"
+       android:visibility="gone"
+       />
+
+<RelativeLayout 
+    android:id="@+id/rl_media_info"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/content_thumbnail_view_media_info_height"
+    android:layout_alignParentBottom="true"
+    android:padding="2dp"
+    android:background="@drawable/suolvetu_shipin"
+    android:visibility="gone"
+    >
+     <TextView
+        android:id="@+id/tv_media_right_info"
+        android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:text="02:13"
+		android:layout_alignParentRight="true"
+	    android:textColor="@color/white"
+		android:textSize="@dimen/content_thumbnail_view_textsize"
+        />
+     <TextView 
+        android:id="@+id/tv_media_middle_info"
+        android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:text="02:15"
+		android:textColor="@color/white"
+		android:visibility="gone"
+		android:textSize="@dimen/content_thumbnail_view_textsize"
+        />
+</RelativeLayout>
+</RelativeLayout>

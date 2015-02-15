@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ 		xmlns:tools="http://schemas.android.com/tools"
+ 		android:id="@+id/fl_container"
+        android:layout_width="fill_parent"
+     	android:layout_height="fill_parent"
+     	android:background="@color/white"
+     	android:orientation="vertical"
+     	>
+	<FrameLayout
+        android:id="@+id/fl_activity_homepage_otherdiary_map"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" >
+        <com.cmmobi.looklook.map.MyMapView
+            android:id="@+id/bmv_activity_discover_main_nearby"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true" />
+        <ImageView
+            android:id="@+id/iv_waiting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:src="@drawable/loading"/>
+        <FrameLayout
+		    android:id="@+id/fl_translucent_layout"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#80000000"
+		    android:visibility="gone" />
+        <RelativeLayout
+            android:id="@+id/fl_activity_discover_map_tankuang"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="60dp"
+            android:visibility="gone">
+        	<RelativeLayout
+        	    android:id="@+id/fl_map_tankuang"
+        	    android:layout_width="match_parent"
+        	    android:layout_height="wrap_content"
+        	    android:layout_above="@+id/fl_map_tankuang_cancel"
+        	    android:layout_marginBottom="10dp"
+        	    android:layout_centerHorizontal="true" >
+            	<ListView
+                	android:id="@+id/lv_activity_discover_main_list"
+                	android:layout_width="wrap_content"
+                	android:layout_height="wrap_content"
+                	android:background="@drawable/tankuang"
+                	android:divider="@color/light_gray"
+                	android:dividerHeight="1dp"
+                	android:layout_marginLeft="8dp"
+                	android:layout_marginRight="8dp"
+                	android:cacheColorHint="#00000000"/>
+        	</RelativeLayout>
+        	<RelativeLayout
+            	android:id="@+id/fl_map_tankuang_cancel"
+            	android:layout_width="match_parent"
+            	android:layout_height="wrap_content"
+            	android:layout_centerHorizontal="true"
+            	android:layout_alignParentBottom="true"
+            	android:paddingBottom="10dp" >
+        		<Button
+        		    android:id="@+id/btn_map_cancel"
+        		    android:layout_width="match_parent"
+        		    android:layout_height="wrap_content"
+        		    android:layout_marginLeft="8dp"
+        		    android:layout_marginRight="8dp"
+        		    android:background="@drawable/btn_menu_one"
+        		    android:text="取消"
+        		    android:textColor="@color/blue"
+        		    android:textSize="18sp" />
+
+        	</RelativeLayout>
+        </RelativeLayout>
+    </FrameLayout>
+    
+	<RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    >
+		<android.support.v4.view.ViewPager
+		        android:id="@+id/pager_container"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:persistentDrawingCache="animation"
+		        android:layout_below="@+id/inc_title_bar"
+		         />
+	     <include layout="@layout/root_title_bar" android:id="@+id/inc_title_bar"/>
+	</RelativeLayout>
+</FrameLayout>

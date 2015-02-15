@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants" >
+
+        <RelativeLayout
+            android:id="@+id/rl_media_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp" >
+
+            <LinearLayout
+                android:id="@+id/ll_pic_description"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/ll_content"
+                android:layout_alignRight="@+id/ll_content"
+                android:layout_below="@+id/ll_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="-3dp"
+                android:background="@drawable/zhitiao_miaoshu"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="4dp"
+                    android:maxLines="2"
+                    android:gravity="center_vertical"
+                    android:text="春暖花开 我喜欢这样的季节，你呢？2年前与你相遇2年前与你相遇2年前与你相遇2年前与你相遇2年前与你相遇"
+                    android:textColor="#A0A0A0"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.cmmobi.looklook.common.web.WebImageView
+                        android:id="@+id/iv_pic"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:scaleType="fitXY"
+                        android:background="@color/white"
+                        android:padding="1dp"
+                        android:src="@drawable/maptankuang_moren" />
+
+                    <ImageView
+                        android:id="@+id/iv_video_play_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/btn_activity_dairydetail_shiping_pause_play" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_main_text_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/zhitiao_xiao"
+                    android:padding="5dp" >
+
+                    <TextView
+                        android:id="@+id/tv_main_text_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="4dp"
+                        android:maxLines="2"
+                        android:gravity="center_vertical"
+                        android:textColor="#A0A0A0"
+                        android:textSize="9sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_cidai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/cidai" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <com.cmmobi.looklook.common.web.TackView
+                android:id="@+id/ll_biezhen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_content"
+                android:layout_marginTop="-17dp"
+                android:orientation="horizontal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_media_content_forceground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/rl_media_content"
+            android:layout_alignLeft="@id/rl_media_content"
+            android:layout_alignRight="@id/rl_media_content"
+            android:layout_alignTop="@id/rl_media_content"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/xuanzhong" />
+        </RelativeLayout>
+
+        <com.cmmobi.looklook.common.web.WebImageView
+            android:id="@+id/iv_tianqi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="-5dp" />
+
+        <ImageView
+            android:id="@+id/iv_stick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_tianqi"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ding" />
+    </RelativeLayout>
+
+</LinearLayout>

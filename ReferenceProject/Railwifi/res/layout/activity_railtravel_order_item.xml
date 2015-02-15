@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_travel"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+   		<LinearLayout
+   		    android:id="@+id/rl_top_info"
+   		    android:layout_width="fill_parent"
+   		    android:layout_height="wrap_content"
+   		    android:background="@color/white"
+   		    android:orientation="vertical"
+   		    >
+   		    <TextView 
+   		        android:id="@+id/tv_fullname"
+   		        android:layout_width="fill_parent"
+   		        android:textColor="#212434"
+   		        android:layout_height="30dp"
+   		        android:gravity="center_vertical"
+   		        android:singleLine="true"
+   		        />
+   		    <ImageView 
+   		        android:id="@+id/iv_line"
+   		        android:layout_width="fill_parent"
+   		        android:layout_height="wrap_content"
+   		        android:src="@drawable/line_a"
+   		         android:scaleType="centerCrop"
+   		        />
+   		    <include layout="@layout/activity_railtravel_item" android:id="@+id/inc_travel_item"/>
+   		        
+   		    <RelativeLayout 
+   		        android:id="@+id/rl_price_info"
+   		        android:layout_width="fill_parent"
+   		        android:layout_height="wrap_content"
+   		        android:layout_below="@+id/inc_travel_item"
+   		        >
+   	    	   	 
+   		        <TextView 
+   		        android:id="@+id/tv_time"
+   		        
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"   		        
+   		        android:layout_alignParentLeft="true"
+   		        android:textColor="#212434"
+   		        android:drawableLeft="@drawable/icon_clock"
+   		        />
+   		    <TextView 
+   		        android:id="@+id/tv_price"
+   		        android:layout_below="@+id/tv_time"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"
+   		        android:textColor="#212434"
+   		        android:text="本单消费 "
+   		        android:layout_alignParentLeft="true"
+   		        />
+   		    <TextView 
+   		        android:id="@+id/tv_price_detail"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"
+   		        android:layout_toRightOf="@+id/tv_price"
+   		        android:layout_alignBottom="@+id/tv_price"
+   		        android:textColor="#f65c00"
+   		        />
+   		     <TextView 
+   		        android:id="@+id/tv_start_time"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"
+   		        android:layout_below="@+id/tv_price"
+   		        android:textColor="#212434"
+   		        />
+   		   <ImageButton 
+           android:id="@+id/btn_pay"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/btn_payment_selected"
+           android:layout_alignBottom="@+id/tv_start_time"
+           android:layout_alignParentRight="true"
+           android:background="@null"
+           />
+   		    </RelativeLayout>
+   		    <TextView 
+   		        android:layout_width="fill_parent"
+   		        android:layout_height="1dp" 
+   		        android:background="#c1c1c1"
+   		        />
+   		</LinearLayout>
+   		
+  
+
+</LinearLayout>

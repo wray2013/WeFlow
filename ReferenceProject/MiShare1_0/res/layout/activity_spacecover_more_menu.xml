@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/translucence"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/popwindow_padding"
+    android:paddingLeft="@dimen/popwindow_padding"
+    android:paddingRight="@dimen/popwindow_padding" >
+
+    <Button
+        android:id="@+id/btn_more_menu_photograph"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_above="@+id/btn_more_menu_chose_from_gallery"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/btn_menu_top"
+        android:text="@string/spacecover_from_camera"
+        android:textColor="@color/tv_blue_and_gray_selector"
+        android:textSize="@dimen/setting_max" />
+
+    <Button
+        android:id="@+id/btn_more_menu_chose_from_gallery"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_above="@+id/btn_more_menu_cancel"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/btn_menu_bottom"
+        android:text="@string/spacecover_from_pic"
+        android:textColor="@color/tv_blue_and_gray_selector"
+        android:textSize="@dimen/setting_max" />
+
+    <Button
+        android:id="@+id/btn_more_menu_cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_menu_one"
+        android:text="@string/cancel"
+        android:textColor="@color/tv_blue_and_gray_selector"
+        android:textSize="@dimen/setting_max" />
+
+</RelativeLayout>

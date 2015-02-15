@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/tou_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tou" >
+
+        <ImageButton
+            android:id="@+id/system_function_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/contacts_gv"
+            android:textSize="@dimen/setting_title" 
+            android:textColor="@color/black"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/system_function_list"
+        android:layout_below="@id/tou_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="0dp"
+        >
+    </ListView>
+
+</RelativeLayout>

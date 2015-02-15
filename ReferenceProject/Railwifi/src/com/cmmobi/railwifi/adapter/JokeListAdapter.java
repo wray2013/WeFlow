@@ -1,0 +1,181 @@
+package com.cmmobi.railwifi.adapter;
+
+import java.util.List;
+
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.cmmobi.railwifi.R;
+import com.cmmobi.railwifi.dialog.PromptDialog;
+import com.cmmobi.railwifi.network.GsonResponseObject;
+import com.cmmobi.railwifi.network.Requester;
+import com.cmmobi.railwifi.utils.CmmobiClickAgentWrapper;
+import com.cmmobi.railwifi.utils.ConStant;
+import com.cmmobi.railwifi.utils.DisplayUtil;
+import com.cmmobi.railwifi.utils.DownloadApkUtils;
+import com.cmmobi.railwifi.utils.ViewUtils;
+import com.nostra13.universalimageloader.api.AnimateFirstDisplayListener;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+public class JokeListAdapter extends BaseAdapter {
+
+	private Context context;
+	private LayoutInflater inflater;
+	private List<GsonResponseObject.mediaElem> list;// = new ArrayList<GsonResponseObject.mediaElem>();
+	private int size = 0;
+	
+	//使用开源的webimageloader
+	public static DisplayImageOptions options;
+	protected MyImageLoader imageLoader;
+	private ImageLoadingListener animateFirstListener;
+	
+	public JokeListAdapter(final Context context) {
+		this.context = context;
+		DisplayMetrics dm = context.getApplicationContext().getResources().getDisplayMetrics();
+		this.size = dm.widthPixels/5;
+		inflater = LayoutInflater.from(context);
+		
+		animateFirstListener = new AnimateFirstDisplayListener();
+		imageLoader = MyImageLoader.getInstance();
+		
+		options = new DisplayImageOptions.Builder()
+		.cacheOnDisk(true)
+		.showImageOnFail(R.drawable.tourism_pic_bg_default)
+		.cacheInMemory(true)
+		.build();
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return list.size();
+	}
+
+	@Override
+	public GsonResponseObject.mediaElem getItem(int position) {
+		// TODO Auto-generated method stub
+		return list.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+	
+	@Override
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		if (convertView == null) {
+			convertView = inflater.inflate(
+					R.layout.list_joke_item, null);
+			holder = new ViewHolder();
+			
+			holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+			holder.joke_pic = (ImageView) convertView.findViewById(R.id.joke_pic);
+			holder.tag =  (TextView) convertView.findViewById(R.id.tv_tag);
+			holder.tv_source = (TextView) convertView.findViewById(R.id.tv_source);
+			holder.tv_descrp = (TextView) convertView.findViewById(R.id.tv_descrp);
+			holder.iv_sound = (ImageView) convertView.findViewById(R.id.iv_sound);
+			
+			ViewUtils.setSize(convertView.findViewById(R.id.joke_fl), 170, 170);
+			ViewUtils.setMarginLeft(convertView.findViewById(R.id.joke_fl), 12);
+			ViewUtils.setMarginTop(convertView.findViewById(R.id.joke_fl), 12);
+			
+			ViewUtils.setMarginLeft(holder.tv_title, 12);
+			ViewUtils.setMarginTop(holder.tv_descrp, 12);
+			ViewUtils.setMarginTop(convertView.findViewById(R.id.view_line_bottom), 21);
+			ViewUtils.setMarginBottom(holder.tv_source, 12);
+			
+			holder.tv_source.setTypeface(Typeface.MONOSPACE, Typeface.ITALIC);
+			
+			holder.tv_title.setTextSize(DisplayUtil.textGetSizeSp(context, 33));
+			holder.tv_descrp.setTextSize(DisplayUtil.textGetSizeSp(context, 24));
+			holder.tv_source.setTextSize(DisplayUtil.textGetSizeSp(context, 24));
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		
+		final GsonResponseObject.mediaElem elem = list.get(position);
+		holder.tv_title.setText(elem.name);
+		holder.tv_source.setText("来源: " + elem.source);
+		holder.tv_descrp.setText(elem.introduction);
+		imageLoader.displayImage(elem.img_path, holder.joke_pic, options, animateFirstListener);
+		if(elem.tag!=null && !elem.tag.equals("")){
+			holder.tag.setVisibility(View.VISIBLE);
+			holder.tag.setText(elem.tag);
+			String color = elem.color;
+			if("1".equals(color)){
+				holder.tag.setBackgroundResource(R.drawable.title_funny_bg_a);
+			}else if("2".equals(color)){
+				holder.tag.setBackgroundResource(R.drawable.title_funny_bg_b);
+			}else if("3".equals(color)){
+				holder.tag.setBackgroundResource(R.drawable.title_funny_bg_c);
+			}else if("4".equals(color)){
+				holder.tag.setBackgroundResource(R.drawable.title_funny_bg_d);
+			}else if("5".equals(color)){
+				holder.tag.setBackgroundResource(R.drawable.title_funny_bg_e);
+			}
+//			holder.tag.setBackgroundColor(context.getResources().getColor(R.color.red));
+		}else{
+			holder.tag.setVisibility(View.GONE);
+		}
+		
+		if ("1".equals(elem.has_audio)) {
+			holder.iv_sound.setVisibility(View.VISIBLE);
+		} else {
+			holder.iv_sound.setVisibility(View.GONE);
+		}
+		holder.tv_source.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				DownloadApkUtils downApk = new DownloadApkUtils(context, elem.source_id);
+				downApk.download();
+			}
+		});
+		return convertView;
+	}
+	
+	public void setData(List<GsonResponseObject.mediaElem> data){
+		this.list = data;
+	}
+	
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
+	
+	public class ViewHolder {
+		TextView tv_title;
+		ImageView joke_pic;
+		ImageView iv_sound;
+		TextView tag;
+		TextView tv_source;
+		TextView tv_descrp;
+	}
+
+}

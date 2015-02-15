@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingBottom="@dimen/popwindow_padding"
+    android:paddingLeft="@dimen/popwindow_padding"
+    android:paddingRight="@dimen/popwindow_padding"
+    android:background="@color/translucence"
+    >
+    <Button 
+       android:id="@+id/btn_sexcancel"
+       android:layout_width="fill_parent"
+       android:layout_height="@dimen/setting_item_height"
+       android:text="@string/cancel"
+       android:textColor="@color/tv_blue_and_gray_selector"
+       android:textSize="@dimen/setting_max"
+       android:background="@drawable/btn_menu_one"
+       android:layout_alignParentBottom="true"
+       />
+      <Button 
+       android:id="@+id/btn_sexsecret"
+       android:layout_width="fill_parent"
+       android:layout_height="@dimen/setting_item_height"
+       android:layout_marginBottom="5dp"
+       android:text="@string/secret"
+       android:textColor="@color/tv_blue_and_gray_selector"
+       android:textSize="@dimen/setting_max"
+       android:background="@drawable/btn_menu_bottom"
+       android:layout_above="@+id/btn_sexcancel"
+       />
+       <Button 
+       android:id="@+id/btn_sexwoman"
+       android:layout_width="fill_parent"
+       android:layout_height="@dimen/setting_item_height"
+       android:layout_marginBottom="1dp"
+       android:text="@string/sex_woman"
+       android:textColor="@color/tv_blue_and_gray_selector"
+       android:textSize="@dimen/setting_max"
+       android:background="@drawable/btn_menu_middle"
+       android:layout_above="@+id/btn_sexsecret"
+       />
+   <Button 
+       android:id="@+id/btn_sexman"
+       android:layout_width="fill_parent"
+       android:layout_height="@dimen/setting_item_height"
+       android:layout_marginBottom="1dp"
+       android:text="@string/sex_man"
+       android:textColor="@color/tv_blue_and_gray_selector"
+       android:textSize="@dimen/setting_max"
+       android:background="@drawable/btn_menu_top"
+       android:layout_above="@+id/btn_sexwoman"
+       />
+
+    
+
+</RelativeLayout>

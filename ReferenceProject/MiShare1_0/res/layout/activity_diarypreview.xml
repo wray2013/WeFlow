@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.cmmobi.looklook.common.view.DiaryDetailPager
+        android:id="@+id/diarypreview_viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+    
+    <include layout="@layout/include_diarypreview_mytitle"
+        android:id="@+id/ll_diarypreview_mytitle"/>
+    
+    <include layout="@layout/include_diarypreview_othertitle"
+        android:id="@+id/ll_diarypreview_othertitle"/>
+    
+    <include layout="@layout/include_diarypreview_deletetitle"
+        android:id="@+id/ll_diarypreview_deletetitle"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/ll_pager_num"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:visibility="gone"/>
+    
+	<include layout="@layout/include_diarypreview_mybottom"/>
+	<!-- <include layout="@layout/include_diarypreview_otherbottom"/> -->
+	
+	<com.cmmobi.looklook.common.view.InputRecoderView
+        android:id="@+id/inp_recoder_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        />
+    
+	<ImageView
+    	android:id="@+id/rl_preview_bg"
+    	android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_alignParentBottom="true"
+    	android:background="@color/transparent"/>
+	
+</RelativeLayout>

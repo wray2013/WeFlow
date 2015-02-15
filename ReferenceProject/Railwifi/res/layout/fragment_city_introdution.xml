@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f1f1f1" 
+    >
+
+    <GridView
+        android:id="@+id/gv_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalSpacing="6dp"
+        android:horizontalSpacing="6dp"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:gravity="center" 
+        android:numColumns="2" >
+    </GridView>
+    
+    <include layout="@layout/include_no_network" android:id="@+id/rl_no_network"/>
+
+</RelativeLayout>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bj"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_activity_edit_photo" />
+    
+    <FrameLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="302"
+        android:orientation="horizontal"
+        >
+        <LinearLayout 
+            android:id="@+id/ll_activity_edit_photo_main"
+	        android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+	        android:gravity="center"
+	        android:background="@color/black"
+	        >
+	        <ImageView 
+				android:id="@+id/iv_edit_photo_preview"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:scaleType="fitCenter"
+				/>
+	    </LinearLayout>
+		<LinearLayout 
+		    android:id="@+id/ll_activity_edit_photo_detail_main"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#E5E5E5"
+		    android:orientation="horizontal"
+		    >
+		    
+		    <LinearLayout 
+		        android:layout_width="0dp"
+		        android:layout_weight="220"
+		        android:layout_height="fill_parent"
+		        android:orientation="vertical">
+		        
+		        <ImageView 
+		            android:id="@+id/iv_edit_photo_thumbnails"
+		            android:layout_width="fill_parent"
+		            android:layout_height="0dp"
+		            android:layout_weight="2"
+		            android:scaleType="fitCenter"
+		            android:layout_marginLeft="8dp"
+		            android:layout_marginTop="8dp"
+		            android:layout_marginRight="8dp"
+		            android:background="@color/black"
+		            />
+		        
+		        <RelativeLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="0dp"
+		            android:layout_weight="3"
+		            android:orientation="vertical"
+		            android:paddingLeft="2dp"
+		            >
+		            <com.cmmobi.looklook.common.web.TackView
+                		android:id="@+id/ll_biezhen"
+                		android:layout_width="wrap_content"
+                		android:layout_height="wrap_content"
+                		android:layout_marginLeft="21dp"
+                		android:layout_marginTop="20dp"
+                		android:visibility="gone"
+                		android:orientation="horizontal" />
+		        
+			        <TextView 
+			            android:id="@+id/tv_edit_media_date"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_alignParentBottom="true"
+		                android:layout_marginBottom="8dp"
+		                android:layout_marginLeft="10dp"
+		                android:singleLine="true"
+		                android:textSize="12sp"
+		                android:textColor="#707070"/>
+		        </RelativeLayout>
+		    </LinearLayout>
+		    
+		    <RelativeLayout 
+		        android:id="@+id/rl_edit_photo_detail_text"
+		        android:layout_width="0dp"
+		        android:layout_weight="420"
+		        android:layout_height="fill_parent"
+		        >
+		        
+		        <!-- <LinearLayout 
+		            android:id="@+id/ll_edit_media_sound_distinguish"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:clickable="true"
+		            android:background="@drawable/btn_edit_media_record_textinput"
+		            android:layout_alignParentRight="true"
+		            android:layout_alignParentBottom="true"
+		            android:layout_marginBottom="6dp"
+		            android:layout_marginRight="8.5dp"
+		            >
+		            <TextView 
+		                android:id="@+id/tv_edit_media_sound_distinguish"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/edit_media_record_hand_input"
+		                android:layout_marginLeft="26dp"
+		                android:layout_gravity="center_vertical|right"
+		                android:textSize="12sp"
+		                android:gravity="right"/>
+		        </LinearLayout> -->
+		        
+		        <TextView 
+		            android:id="@+id/tv_edit_media_text_num"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textSize="12sp"
+		            android:text="110/110"
+		            android:textColor="#7F7F7F"
+		            android:layout_marginBottom="8dp"
+		            android:layout_alignParentBottom="true"
+		            android:layout_alignParentRight="true"
+		            android:layout_marginRight="18dp"/>
+		        
+		        <com.cmmobi.looklook.common.view.DiaryEditText 
+		            android:id="@+id/et_edit_media_record_text"
+		            android:layout_width="fill_parent"
+		            android:layout_height="fill_parent"
+		            android:hint="@string/edit_media_record_text"
+		            android:layout_above="@id/tv_edit_media_text_num"
+		            android:gravity="top"
+		            android:textColor="#7F7F7F"
+		            android:textSize="13.5sp"
+		            android:layout_marginTop="10dp"
+		            android:lineSpacingExtra="3.5dp"
+		            android:singleLine="false"
+		            android:maxLength="110"
+		            android:background="@null"/>
+		    </RelativeLayout>
+		</LinearLayout>
+		
+		<com.cmmobi.looklook.map.MyMapView
+	            android:id="@+id/bmv_activity_edit_photo_detail_position"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:visibility="gone"
+	            android:clickable="true" />
+		
+		<com.cmmobi.looklook.common.view.MyPositionLayout
+		    android:id="@+id/rl_activity_edit_media_my_position"
+		    android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone"
+		    >
+		    <ImageView 
+		        android:id="@+id/iv_edit_media_myposition"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:src="@drawable/map_me"/>
+
+		    <TextView
+		        android:id="@+id/tv_edit_media_myposition"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_above="@+id/iv_edit_media_myposition"
+		        android:layout_centerHorizontal="true"
+		        android:visibility="gone"
+		        android:background="@drawable/weizhixinxi" />
+		</com.cmmobi.looklook.common.view.MyPositionLayout>
+		
+    </FrameLayout>
+    
+    <FrameLayout
+        android:id="@+id/fl_edit_phone_detail_fragment"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="530"
+        >
+    </FrameLayout>
+    
+</LinearLayout>

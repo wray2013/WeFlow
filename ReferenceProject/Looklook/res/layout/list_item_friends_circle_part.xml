@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_rl"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:paddingBottom="10dp" >
+
+    <ImageView
+        android:id="@+id/circle_icon_imageview"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="10dp" />
+
+    <!-- </FrameLayout> -->
+
+    <TextView
+        android:id="@+id/circle_item_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/circle_icon_imageview"
+        android:text="附近"
+        android:textColor="#7b7b7b"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:id="@+id/item_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/circle_item_title_textview"
+        android:layout_below="@id/circle_item_title_textview"
+        android:layout_marginTop="6dp" >
+
+        <FrameLayout
+            android:id="@+id/viewpager_fl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:visibility="visible" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/tabcontent_vp"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:background="@drawable/tuijianfujin_kuang" />
+
+            <com.cmmobi.looklook.common.view.ViewPagerDigit
+                android:id="@+id/dot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal" />
+        </FrameLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

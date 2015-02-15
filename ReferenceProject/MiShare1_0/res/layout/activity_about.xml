@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+        <RelativeLayout
+            android:id="@+id/tou_rl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+            android:background="@drawable/tou" >
+
+            <ImageButton
+                android:id="@+id/about_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/about_us"
+                android:textColor="@color/black"
+                android:textSize="@dimen/setting_title" />
+        </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/about_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tou_rl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/gray_setting_about"
+        android:textSize="@dimen/setting_max"
+        android:text="@string/app_name_info" />
+    
+
+    <TextView
+        android:id="@+id/about_version_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_version"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/gray_setting_about"
+        android:textSize="@dimen/setting_max"
+        android:text="@string/app_version" />
+    
+    <ImageView
+        android:id="@+id/iv_about_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/guanyu_logo"
+        android:layout_below="@id/about_version_code" 
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/about_qq_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/about_official_url"
+        android:layout_below="@+id/iv_about_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info_6"
+            android:textSize="@dimen/setting_mini"
+            android:textColor="@color/gray_setting_about" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info_7"
+            android:textSize="@dimen/setting_mini"
+            android:textColor="@color/blue" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/about_publish_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/about_webaddress"
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_info_8"
+        android:textSize="@dimen/setting_middle"
+        android:textColor="@color/gray_setting_about" />
+
+    <TextView
+        android:id="@+id/about_webaddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="10dp"
+        android:text="@string/app_info_9"
+        android:textColor="@color/gray_setting_about"
+        android:textSize="@dimen/setting_middle" />
+
+</RelativeLayout>

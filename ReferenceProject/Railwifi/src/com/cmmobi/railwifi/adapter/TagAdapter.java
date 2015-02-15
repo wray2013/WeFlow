@@ -1,0 +1,93 @@
+package com.cmmobi.railwifi.adapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.cmmobi.railwifi.R;
+import com.cmmobi.railwifi.network.GsonResponseObject;
+import com.cmmobi.railwifi.network.GsonResponseObject.labelElem;
+
+public class TagAdapter extends BaseAdapter{
+	
+	private List<GsonResponseObject.labelElem> tags;
+	private LayoutInflater inflater;
+	
+	public TagAdapter(Context context){
+		this.inflater = LayoutInflater.from(context);
+		this.tags = new ArrayList<GsonResponseObject.labelElem>();
+	}
+
+	public void setData(labelElem[] list){
+		if(list != null && list.length>0){
+			this.tags.clear();
+			for(labelElem item : list){
+				this.tags.add(item);
+			}
+		}else{
+			this.tags.clear();
+		}
+	}
+	
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return tags.size();
+	}
+
+	@Override
+	public GsonResponseObject.labelElem getItem(int position) {
+		// TODO Auto-generated method stub
+		return tags.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return tags.get(position).hashCode();
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		GsonResponseObject.labelElem tag = tags.get(position);
+		String color = tag.color;
+		if (convertView == null) {
+			convertView = inflater.inflate(
+					R.layout.list_tag_item, null);
+			holder = new ViewHolder();
+			
+			holder.tv_tag = (TextView) convertView.findViewById(R.id.tv_tag);
+			convertView.setTag(holder);
+		}else{
+			holder = (ViewHolder) convertView.getTag();
+		}
+		
+		if("1".equals(color)){
+			holder.tv_tag.setBackgroundResource(R.color.tag_color_a);
+		}else if("2".equals(color)){
+			holder.tv_tag.setBackgroundResource(R.color.tag_color_b);
+		}else if("3".equals(color)){
+			holder.tv_tag.setBackgroundResource(R.color.tag_color_c);
+		}else if("4".equals(color)){
+			holder.tv_tag.setBackgroundResource(R.color.tag_color_d);
+		}else{
+			holder.tv_tag.setBackgroundResource(R.color.white);
+		}
+		
+		holder.tv_tag.setText(tag.name);
+		
+		return convertView;
+	}
+	
+	public class ViewHolder {
+		TextView tv_tag;
+	}
+
+}

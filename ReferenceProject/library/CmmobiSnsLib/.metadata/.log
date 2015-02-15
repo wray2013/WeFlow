@@ -1,0 +1,46 @@
+!SESSION 2012-11-07 08:13:28.062 -----------------------------------------------
+eclipse.buildId=I20090611-1540
+java.version=1.6.0_10-rc2
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.equinox.p2.repository 4 0 2012-11-07 08:13:34.593
+!MESSAGE ProvisioningEventBus could not be obtained. Metadata caches may not be cleaned up properly.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:39.484
+!MESSAGE The installable unit org.eclipse.persistence.jpa.equinox.weaving.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:39.484
+!MESSAGE The installable unit org.eclipse.ui.win32.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:39.484
+!MESSAGE The installable unit org.eclipse.cdt.core.win32.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.312
+!MESSAGE The installable unit org.eclipse.persistence.jpa.equinox.weaving.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.312
+!MESSAGE The installable unit org.eclipse.ui.win32.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.312
+!MESSAGE The installable unit org.eclipse.cdt.core.win32.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.671
+!MESSAGE The installable unit org.eclipse.persistence.jpa.equinox.weaving.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.687
+!MESSAGE The installable unit org.eclipse.ui.win32.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.687
+!MESSAGE The installable unit org.eclipse.cdt.core.win32.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.734
+!MESSAGE The installable unit org.eclipse.persistence.jpa.equinox.weaving.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.734
+!MESSAGE The installable unit org.eclipse.ui.win32.translated_host_properties is missing the filename property.
+
+!ENTRY org.eclipse.equinox.p2.directorywatcher 4 0 2012-11-07 08:13:42.734
+!MESSAGE The installable unit org.eclipse.cdt.core.win32.translated_host_properties is missing the filename property.

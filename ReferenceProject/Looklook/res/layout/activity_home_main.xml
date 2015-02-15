@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#E5E5E5" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" />
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-26dp" >
+
+            <LinearLayout
+                android:id="@+id/main_radio"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/home_diary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/btn_activity_home_main_diary" />
+
+                <FrameLayout
+                    android:id="@+id/commont_mid_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="16.0"
+                    android:orientation="horizontal"
+                    android:visibility="visible" >
+
+                    <LinearLayout
+                        android:id="@+id/bg_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/jiao_zhongjian"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/nomal_bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center" >
+
+                            <Button
+                                android:id="@+id/home_camera"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_activity_home_main_camera" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:gravity="center" >
+
+                            <Button
+                                android:id="@+id/home_mic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_activity_home_main_mic"
+                                 />
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/record_mid_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="16.0"
+                    android:orientation="horizontal" 
+                    android:visibility="gone"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/jiao_zhongjian_2"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/home_record_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:paddingTop="12dp"
+                        android:text="Recording 00:12" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="4dp"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp" >
+
+                            <Button
+                                android:id="@+id/home_record_start"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/btn_activity_home_main_record_start" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/camera_mid_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="16.0"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/jiao_zhongjian_1" >
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:gravity="bottom"
+                        android:orientation="horizontal" >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" >
+
+                            <Button
+                                android:id="@+id/home_private_pic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="20dp"
+                                android:background="@drawable/btn_activity_home_main_private_pic" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/private_video_shell"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/home_private_viedo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:background="@drawable/toupai_kuang"
+                                android:src="@drawable/toupai_tu" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- <FrameLayout -->
+                <!-- android:id="@+id/record_mid_fl" -->
+                <!-- android:layout_width="wrap_content" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_weight="2.0" -->
+                <!-- android:orientation="horizontal" -->
+                <!-- android:visibility="visible" > -->
+
+
+                <!-- <LinearLayout -->
+                <!-- android:layout_width="match_parent" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_gravity="bottom" -->
+                <!-- android:background="@drawable/jiao_zhongjian_2" > -->
+                <!-- </LinearLayout> -->
+
+
+                <!-- <TextView -->
+                <!-- android:id="@+id/home_record_time" -->
+                <!-- android:layout_width="wrap_content" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_gravity="top|center_horizontal" -->
+                <!-- android:paddingTop="12dp" -->
+                <!-- android:text="Recording 00:12" /> -->
+
+
+                <!-- <LinearLayout -->
+                <!-- android:layout_width="fill_parent" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_gravity="bottom" -->
+                <!-- android:gravity="center" -->
+                <!-- android:orientation="horizontal" -->
+                <!-- android:paddingBottom="5dp" -->
+                <!-- android:paddingLeft="12dp" -->
+                <!-- android:paddingRight="12dp" > -->
+
+
+                <!-- <Button -->
+                <!-- android:id="@+id/home_record_start" -->
+                <!-- android:layout_width="wrap_content" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_weight="1" -->
+                <!-- android:background="@drawable/btn_activity_home_main_record_start" /> -->
+
+
+                <!-- <Button -->
+                <!-- android:id="@+id/home_record_pause" -->
+                <!-- android:layout_width="wrap_content" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_weight="1" -->
+                <!-- android:background="@drawable/btn_activity_home_main_record_pause" /> -->
+                <!-- </LinearLayout> -->
+                <!-- </FrameLayout> -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" 
+                    android:gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    >
+
+                <Button
+                    android:id="@+id/home_friends"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    
+                    android:background="@drawable/btn_activity_home_main_friends" />
+                <ImageView 
+                        android:id="@+id/message_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:background="@drawable/paopao"
+                        android:layout_alignRight="@id/home_friends"
+                        />
+            </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <!-- <RadioGroup -->
+    <!-- android:id="@+id/main_radio" -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_gravity="bottom" -->
+    <!-- android:gravity="bottom" -->
+    <!-- android:background="@drawable/jiao" -->
+    <!-- android:orientation="horizontal" > -->
+    <!-- <RadioButton -->
+    <!-- android:id="@+id/radio_button0" -->
+    <!-- style="@style/main_tab_bottom" -->
+    <!-- android:checked="true" -->
+    <!-- android:drawableTop="@drawable/btn_activity_home_main_homepage" /> -->
+
+
+    <!-- <RadioButton -->
+    <!-- android:id="@+id/radio_button1" -->
+    <!-- style="@style/main_tab_bottom" -->
+    <!-- android:drawableTop="@drawable/btn_activity_home_main_search" /> -->
+
+
+    <!-- <RadioButton -->
+    <!-- android:id="@+id/radio_button2" -->
+    <!-- style="@style/main_tab_bottom" -->
+    <!-- android:background="@null" -->
+    <!-- android:drawableTop="@drawable/btn_activity_home_main_camera" /> -->
+
+
+    <!-- <RadioButton -->
+    <!-- android:id="@+id/radio_button3" -->
+    <!-- style="@style/main_tab_bottom" -->
+    <!-- android:drawableTop="@drawable/btn_activity_home_main_message" /> -->
+
+
+    <!-- <RadioButton -->
+    <!-- android:id="@+id/radio_button4" -->
+    <!-- style="@style/main_tab_bottom" -->
+    <!-- android:drawableTop="@drawable/btn_activity_home_main_zone" /> -->
+    <!-- </RadioGroup> -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/rl_bottom"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tv_unread_msg"
+                style="@style/tv_jiaobiao_style"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="15dp"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tv_unread_zone"
+                style="@style/tv_jiaobiao_style"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="15dp"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/traslate_full_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:gravity="bottom"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone" >
+    </RelativeLayout>
+    <!-- <RelativeLayout -->
+    <!-- android:id="@+id/traslate_full_cover" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="match_parent" -->
+    <!-- android:background="@color/t" -->
+    <!-- android:gravity="bottom" -->
+    <!-- android:visibility="gone" > -->
+
+
+    <!-- <LinearLayout -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_gravity="bottom" -->
+    <!-- android:gravity="bottom" -->
+    <!-- android:orientation="horizontal" > -->
+
+
+    <!-- <ImageButton -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_weight="1.0" -->
+    <!-- android:background="@drawable/btn_activity_home_main_diary" -->
+    <!-- android:visibility="visible" /> -->
+
+
+    <!-- <FrameLayout -->
+    <!-- android:id="@+id/record_mid_fl" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_weight="16.0" -->
+    <!-- android:orientation="horizontal" > -->
+
+
+    <!-- <LinearLayout -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_gravity="bottom" -->
+    <!-- android:background="@drawable/jiao_zhongjian_2" -->
+    <!-- android:orientation="horizontal" > -->
+    <!-- </LinearLayout> -->
+
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/home_record_time" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_gravity="top|center_horizontal" -->
+    <!-- android:paddingTop="12dp" -->
+    <!-- android:text="Recording 00:12" /> -->
+
+
+    <!-- <LinearLayout -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_gravity="center_horizontal|bottom" -->
+    <!-- android:orientation="vertical" > -->
+
+
+    <!-- <LinearLayout -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_gravity="bottom" -->
+    <!-- android:gravity="center" -->
+    <!-- android:orientation="horizontal" -->
+    <!-- android:paddingBottom="4dp" -->
+    <!-- android:paddingLeft="13dp" -->
+    <!-- android:paddingRight="13dp" > -->
+
+
+    <!-- <Button -->
+    <!-- android:id="@+id/home_record_start" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_weight="1" -->
+    <!-- android:background="@drawable/btn_activity_home_main_record_start" /> -->
+    <!-- </LinearLayout> -->
+    <!-- </LinearLayout> -->
+    <!-- </FrameLayout> -->
+
+
+    <!-- <ImageButton -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_weight="1.0" -->
+    <!-- android:background="@drawable/btn_activity_home_main_friends" -->
+    <!-- android:visibility="visible" /> -->
+    <!-- </LinearLayout> -->
+    <!-- </RelativeLayout> -->
+
+</TabHost>

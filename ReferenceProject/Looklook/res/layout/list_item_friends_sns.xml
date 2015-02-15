@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_all"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical" 
+    >
+
+    <TextView
+        android:id="@+id/alpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#313131"
+        android:clickable="false"
+        android:enabled="false"
+        android:gravity="center_vertical"
+        android:paddingLeft="3dp"
+        android:text="XXX"
+        android:textColor="#1b1b1b" />
+
+    <ImageView
+        android:id="@+id/alpha_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/alpha"
+        android:background="@drawable/friends_list_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alpha_image"
+        android:gravity="center_vertical"
+        android:paddingLeft="4dp"
+         >
+
+        <ImageView
+            android:id="@+id/ck_row_list_friend_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/xuanzhong_1" />
+
+
+        <ImageView
+            android:id="@+id/shuxian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ck_row_list_friend_choose"
+            android:background="@drawable/shuxian_list" />
+
+
+        <ImageView
+            android:id="@+id/contacts_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/shuxian"
+            android:layout_centerVertical="true" />
+                   <!--  android:src="@drawable/temp_local_icon" -->
+
+        <TextView
+            android:id="@+id/contacts_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:layout_toRightOf="@id/contacts_image"
+            android:text="LookLook团队"
+            android:textColor="#a0a0a0"
+            android:textSize="18sp" >
+        </TextView>
+    </RelativeLayout>
+
+</RelativeLayout>

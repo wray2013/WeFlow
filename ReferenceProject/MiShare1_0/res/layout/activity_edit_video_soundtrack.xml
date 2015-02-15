@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/white">
+    
+    <include layout="@layout/include_activity_edit_titlebar"
+        android:id="@+id/rl_edit_diary_info_top"/>
+    
+    <FrameLayout 
+        android:id="@+id/fl_edit_diary_video"
+        android:layout_width="fill_parent"
+        android:layout_height="320dp"
+        >
+	    <RelativeLayout
+	        android:id="@+id/video_view"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@android:color/black"
+	        android:gravity="center"
+	        >
+	    </RelativeLayout>
+	    
+	    <ImageView 
+            android:id="@+id/iv_video_preview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            />
+	    
+        <ImageView 
+            android:id="@+id/iv_video_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/play"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        >
+        
+        <SeekBar 
+			android:id="@+id/sk_edit_voice_seekbar"
+			android:layout_width="194dp"  
+			android:layout_height="wrap_content"
+			android:minHeight="4.5dp"
+			android:maxHeight="4.5dp"
+			android:thumbOffset="1dp"
+			android:layout_centerHorizontal="true"
+			android:max="100"
+			android:progress="50"
+			android:progressDrawable="@drawable/skb_voice_seekbar"  
+			android:thumb="@drawable/yinliang_huakuai" />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_toLeftOf="@id/sk_edit_voice_seekbar"
+            android:layout_marginRight="15dp"
+            android:text="@string/original_voice"
+            android:textColor="@color/gray"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/sk_edit_voice_seekbar"
+            android:layout_marginLeft="15dp"
+            android:text="@string/soundtrack"
+            android:textColor="@color/gray"
+            />
+    </RelativeLayout>
+    
+    <HorizontalScrollView
+        android:id="@+id/hsv_sound_tracks"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="4dp"
+        >
+
+        <RadioGroup
+            android:id="@+id/rg_sound_tracks_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="2dip"
+            android:paddingTop="2dip" >
+        </RadioGroup>
+   	</HorizontalScrollView>
+   	
+</LinearLayout>

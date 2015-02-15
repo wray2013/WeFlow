@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+     >
+    <RelativeLayout
+      	android:id="@+id/rl_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+         >
+
+        <ImageView
+            android:id="@+id/iv_add_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/xuanzhong_invite_1"
+            />
+
+        <ImageView
+            android:id="@+id/contacts_image"
+            android:layout_toRightOf="@id/iv_add_cancel"
+            android:layout_width="@dimen/contacts_image"
+            android:layout_height="@dimen/contacts_image"
+            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:id="@+id/contacts_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/contacts_image"
+            android:text="LookLook团队"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/setting_max"
+            android:layout_marginRight="25dp"
+            android:singleLine="true"
+        android:ellipsize="end" >
+        </TextView>
+		<TextView 
+        android:id="@+id/tv_nickname"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/contacts_text"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/setting_min"
+        android:textColor="@color/gray"
+        android:text="昵称：xxxx"
+        android:layout_marginRight="25dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+         />
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rl_contact"
+        android:background="@drawable/liebiao_line" />
+</RelativeLayout>

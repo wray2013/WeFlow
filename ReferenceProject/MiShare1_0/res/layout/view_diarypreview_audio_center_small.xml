@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_diarypreview_square"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    
+    <com.cmmobi.looklook.common.view.SquareLayout
+        android:id="@+id/fl_sl_video"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_diarydetail_audio_small" >
+        
+    	<!-- <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg_diarydetail_audio"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="146" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="148"
+                android:orientation="horizontal" >
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="40" />
+
+                <ImageView
+                    android:id="@+id/iv_diarypreview_audio_wheel_left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="148"
+                    android:src="@drawable/btn_diarypreview_audio_wheel" />
+
+                <ImageView
+                    android:id="@+id/iv_diarypreview_audio_play"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="264"
+                    android:src="@drawable/btn_diarypreview_audio_play" />
+
+                <ImageView
+                    android:id="@+id/iv_diarypreview_audio_wheel_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="148"
+                    android:src="@drawable/btn_diarypreview_audio_wheel" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="40" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_diarypreview_audio_time"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="344"
+                android:gravity="center"
+                android:paddingTop="60sp"
+                android:textColor="@color/white"
+                android:textSize="60sp" />
+        </LinearLayout> -->
+
+        <ImageView
+            android:id="@+id/iv_diarypreview_audio_wheel_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/btn_diarypreview_audio_wheel_small" />
+
+        <ImageView
+            android:id="@+id/iv_diarypreview_audio_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/btn_diarypreview_audio_play_small" />
+
+        <ImageView
+            android:id="@+id/iv_diarypreview_audio_wheel_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/btn_diarypreview_audio_wheel_small" />
+
+        <TextView
+            android:id="@+id/tv_diarypreview_audio_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </com.cmmobi.looklook.common.view.SquareLayout>
+
+    <SeekBar
+        android:id="@+id/sk_diarypreview_seek"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-16dp"
+        android:max="100"
+        android:maxHeight="2dip"
+        android:minHeight="2dip"
+        android:progress="50"
+        android:progressDrawable="@drawable/progress_player_seekbar_drawable"
+        android:thumb="@drawable/progress_player_thumb"
+        android:thumbOffset="0dp" />
+
+</LinearLayout>

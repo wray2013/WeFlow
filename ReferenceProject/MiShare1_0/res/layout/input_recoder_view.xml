@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       	android:background="@drawable/bg_comment_panel"
+        >
+        <FrameLayout 
+            android:id="@+id/fly_switch_input"
+            android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:layout_weight="115"
+        	android:layout_marginLeft="-5dp"
+            >
+            <Button
+	            android:id="@+id/btn_text_input"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/btn_comment_text" 
+	            android:layout_gravity="bottom|center_horizontal"
+	            />
+	        <Button
+	            android:id="@+id/btn_mic_input"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/btn_comment_voice" 
+	            android:layout_gravity="bottom|center_horizontal"
+	            android:visibility="gone"
+	            />
+        </FrameLayout>
+        <FrameLayout 
+            android:id="@+id/fly_switch_biaoqing"
+            android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:layout_weight="115"
+        	android:layout_marginLeft="-10dp"
+            >
+            <Button
+	            android:id="@+id/btn_biaoqing_input"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/btn_biaoqing_input"
+	            android:layout_gravity="bottom|center_horizontal" />
+            
+            <Button
+	            android:id="@+id/btn_jianpan"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/btn_inpview_jianpan_selector"
+	            android:layout_gravity="bottom|center_horizontal" 
+	            android:visibility="gone"/>
+            
+            
+        </FrameLayout>
+        <FrameLayout 
+            android:id="@+id/fly_switch_edit_input"
+            android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:layout_weight="50"
+            >
+            <Button
+	            android:id="@+id/btn_recorder"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/btn_audio_input"
+	            android:layout_gravity="center"
+	            android:text="按住说话"
+	            android:textSize="16sp"
+	            android:textColor="@color/blue"
+	            />
+	        <EditText
+	            android:id="@+id/edit_input"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/edit_comment_input" 
+	            android:layout_gravity="center"
+	            android:maxLines="3"
+	            android:layout_marginTop="5dp"
+	            android:layout_marginBottom="5dp"
+	            android:maxLength="500"
+	            android:visibility="gone"
+	            />
+        </FrameLayout>
+        <FrameLayout 
+            android:id="@+id/fly_switch_send"
+            android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:layout_weight="110"
+            >
+            <Button
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/btn_inpview_jianpan_selector"
+	            android:layout_gravity="bottom|center_horizontal" 
+	            android:visibility="invisible"/>
+            <Button
+	            android:id="@+id/btn_send"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/transparent"
+	            android:text="发送"
+	            android:textSize="@dimen/setting_max"
+	            android:paddingLeft="5dp"
+	            android:paddingRight="5dp"
+	            android:textColor="@color/gray"
+	            android:layout_gravity="bottom|center_horizontal"
+	            android:layout_marginBottom="10dp"
+	            />
+        </FrameLayout>
+        
+    </LinearLayout>
+    
+    <include layout="@layout/view_expression" />
+
+</LinearLayout>

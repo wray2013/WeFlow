@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tou" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/textname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/feedback"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_title" />
+    	<TextView 
+            android:id="@+id/tv_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/feedback_send"
+            android:textColor="@color/tv_blue_and_gray_selector"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@color/transparent"
+            android:textSize="@dimen/setting_title"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_feedback"
+        style="@style/myedittext"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/relative"
+        android:gravity="top|left"
+        android:layout_marginLeft="@dimen/setting_padding"
+        android:layout_marginRight="@dimen/setting_padding"
+        android:maxLength = "500"
+        android:layout_marginTop="20dp" />
+    <TextView 
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/setting_min"
+        android:layout_alignRight="@+id/et_feedback"
+        android:layout_below="@+id/et_feedback"
+        android:textColor="@color/gray"
+        android:paddingTop="5dp"
+        android:text="0/500"
+        />
+
+</RelativeLayout>

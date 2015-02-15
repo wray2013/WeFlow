@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tou" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/tv_activity_friends_weibo_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/invite_tencent_friends"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_title" />
+
+        <TextView
+            android:id="@+id/tv_invite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:enabled="false"
+            android:text="@string/invite"
+            android:textSize="@dimen/setting_title" 
+            android:textColor="@color/tv_blue_and_gray_selector"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout 
+       android:id="@+id/rl_search"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/ll"
+       android:layout_marginTop="8dp"
+       android:layout_marginBottom="8dp"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="15dp"
+       >
+       <EditText
+        android:id="@+id/et_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_kuang"
+        android:gravity="center_vertical"
+        android:hint="@string/invite_search_tencent_friends"
+        android:textSize="@dimen/setting_max"
+        android:layout_marginRight="50dp" />
+       <TextView 
+           android:id="@+id/tv_search"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:text="@string/search"
+           android:textColor="@color/tv_blue_and_gray_selector"
+           android:textSize="@dimen/setting_max"
+           />
+   </RelativeLayout>
+  <ImageView
+      android:id="@+id/iv_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/liebiao_line"
+        android:layout_below="@+id/rl_search" />
+
+    <ListView
+        android:id="@+id/lv_activity_friends_weibo_list_single"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/iv_line"
+        android:cacheColorHint="#00000000" 
+        android:divider="@drawable/liebiao_line"
+        android:dividerHeight="1dp">
+    </ListView>
+
+</RelativeLayout>

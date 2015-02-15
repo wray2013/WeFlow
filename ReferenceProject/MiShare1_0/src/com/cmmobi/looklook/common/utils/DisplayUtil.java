@@ -1,0 +1,68 @@
+package com.cmmobi.looklook.common.utils;
+
+import android.content.Context;
+
+/**
+ * dp、sp 转换为 px 的工具类
+ * 
+ * @author Ray 2014.5.28
+ *
+ */
+public class DisplayUtil {
+	/**
+	 * 将px值转换为dip或dp值，保证尺寸大小不变
+	 * 
+	 * @param pxValue
+	 * @param scale
+	 *            （DisplayMetrics类中属性density）
+	 * @return
+	 */
+	public static int px2dip(Context context, float pxValue) {
+		final float scale = context.getResources().getDisplayMetrics().density;
+		return (int) (pxValue / scale + 0.5f);
+	}
+
+	/**
+	 * 将dip或dp值转换为px值，保证尺寸大小不变
+	 * 
+	 * @param dipValue
+	 * @param scale
+	 *            （DisplayMetrics类中属性density）
+	 * @return
+	 */
+	public static int dip2px(Context context, float dipValue) {
+		final float scale = context.getResources().getDisplayMetrics().density;
+		return (int) (dipValue * scale + 0.5f);
+	}
+
+	/**
+	 * 将px值转换为sp值，保证文字大小不变
+	 * 
+	 * @param pxValue
+	 * @param fontScale
+	 *            （DisplayMetrics类中属性scaledDensity）
+	 * @return
+	 */
+	public static int px2sp(Context context, float pxValue) {
+		final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+		return (int) (pxValue / fontScale + 0.5f);
+	}
+
+	/**
+	 * 将sp值转换为px值，保证文字大小不变
+	 * 
+	 * @param spValue
+	 * @param fontScale
+	 *            （DisplayMetrics类中属性scaledDensity）
+	 * @return
+	 */
+	public static int sp2px(Context context, float spValue) {
+		final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+		return (int) (spValue * fontScale + 0.5f);
+	}
+	
+	public static int sp2dp(Context context, float spValue) {
+		int px = sp2px(context, spValue);
+		return px2dip(context, px);
+	}
+}

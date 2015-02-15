@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/remote_control"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="fill_vertical"
+    android:background="@drawable/bg_player_pop"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="55.0dip"
+        android:layout_gravity="center"
+        android:gravity="center" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            style="@style/yzvideo_comm_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mobile_cancle_select"/>
+
+        <TextView
+            style="@style/yzvideo_titlebar_title"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="@string/dlna_controlpoint" />
+
+      
+    </LinearLayout>
+
+   
+
+    <LinearLayout
+        android:id="@+id/playing_renderer_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:orientation="vertical" >
+<!--  
+        <LinearLayout
+            android:id="@+id/renderers_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ProgressBar
+                android:id="@+id/progress_indicator"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="5.0dip" />
+
+            <TextView
+                android:id="@+id/status_info"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_weight="1.0"
+                android:text="@string/dlna_player_status" />
+        </LinearLayout>
+-->
+        <LinearLayout
+            android:id="@+id/av_control_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/renderers_info_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/renderer_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+            		android:singleLine="true"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16.0dip" />
+
+                <TextView
+                    android:id="@+id/videotitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10.0dip"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/title"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/seek_bar_main"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="15.0dip"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/seek_bar_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <SeekBar
+                        android:id="@+id/seek_bar"
+                        style="@style/dlna_player_seekbar"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:maxHeight="5.0dip"
+                        android:minHeight="5.0dip"
+                        android:paddingLeft="5.0dip"
+                        android:paddingRight="5.0dip" />
+
+                    <LinearLayout
+                        android:id="@+id/renderer_time"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/start_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left|center"
+                            android:layout_weight="1.0"
+                            android:paddingLeft="5.0dip"
+                            android:text="00:00:00"
+                            android:textColor="#ffffffff"
+                            android:textSize="11.0dip"
+                            android:textStyle="bold" />
+ 					<TextView
+                            android:id="@+id/live_show"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center"
+                            android:paddingRight="5.0dip"
+                            android:text="直播"
+                            android:textColor="@color/red_charactor_show"
+                            android:visibility="invisible"
+                            android:textSize="11.0dip"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/end_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center"
+                            android:layout_weight="1.0"
+                            android:gravity="right"
+                            android:paddingRight="5.0dip"
+                            android:text="00:00:00"
+                            android:textColor="#ffffffff"
+                            android:textSize="11.0dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/av_play"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/dlna_controller_pause_drawable"
+                        />
+
+                    <ImageView
+                        android:id="@+id/volume_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                       	android:clickable="true"
+                        android:background="@drawable/dlna_speaker_on_drawable"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

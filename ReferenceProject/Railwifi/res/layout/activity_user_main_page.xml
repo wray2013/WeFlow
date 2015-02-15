@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_travel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="132.5dp"
+        android:background="#cccbc9" >
+
+        <RelativeLayout
+            android:id="@+id/rl_message"
+            android:layout_width="fill_parent"
+            android:layout_height="40.5dp"
+            android:layout_alignParentBottom="true"
+            >
+
+            <ImageView
+                android:id="@+id/iv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/menu_message_margin_left"
+                android:src="@drawable/btn_message"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/menu_message_text_margin_left"
+                android:layout_toRightOf="@id/iv_message"
+                android:text="消息"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+            	android:layout_centerVertical="true"
+                android:background="@drawable/user_head_default" />
+        
+
+        <RelativeLayout
+            android:id="@+id/rl_user_info"
+            android:layout_width="fill_parent"
+            android:layout_height="78dp"
+            android:layout_marginLeft="14.5dp"
+            android:layout_toRightOf="@id/iv_head" >
+
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:singleLine="true"
+                android:text="游客7563"
+                android:textColor="@color/menu_list_text_color"
+                android:textSize="@dimen/welcome_text_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_userid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_welcome"
+                android:layout_below="@+id/tv_welcome"
+                android:layout_marginTop="@dimen/userid_text_margin_top"
+                android:includeFontPadding="false"
+                android:text="ID:Y32198"
+                android:textColor="@color/menu_list_text_color"
+                android:textSize="@dimen/userid_text_size"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_check_tab"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_check_one"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/table_left_selected_3"
+            android:text="收藏" />
+
+        <Button
+            android:id="@+id/btn_check_two"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/table_right_default_3"
+            android:text="历史记录" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ll_check_tab" />
+
+</RelativeLayout>

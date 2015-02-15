@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        android:id="@+id/app_recommend_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/qq" 
+        android:layout_margin="@dimen/setting_padding"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/app_recommend_icon"
+        android:layout_marginBottom="2dp">
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="捕鱼达人"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_max" />
+
+        <RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            >
+             <TextView
+            android:id="@+id/app_kind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="游戏"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/setting_min" />
+        
+        <TextView
+            android:id="@+id/download_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/app_kind"
+            android:layout_alignTop="@+id/app_kind"
+            android:gravity="right"
+            android:layout_marginLeft="10dp"
+            android:text="4000万人使用"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/setting_min" />
+          <TextView 
+            android:id="@+id/app_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="@string/download"
+            android:textSize="@dimen/setting_max"
+            android:textColor="@color/tv_blue_and_gray_selector"
+            android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+         
+
+      
+        <TextView
+            android:id="@+id/app_describe"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="一般人我不告诉他！！啦啦啦~~~" />
+
+    </LinearLayout>
+       
+	 <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/liebiao_line" 
+                    android:layout_alignParentBottom="true"/>
+</RelativeLayout>

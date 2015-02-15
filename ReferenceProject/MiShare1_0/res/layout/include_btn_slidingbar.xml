@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+     >
+
+    <ImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:src="@drawable/btn_menu_message" />
+
+    <LinearLayout
+        android:id="@+id/ll_menu_mask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@drawable/jiaobiao_menu_1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/iv_arrow"
+         >
+	    <TextView
+	        android:id="@+id/tv_menu_mask"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="9"
+	        android:textSize="10sp"
+	        android:textColor="@color/white" />
+    </LinearLayout>
+	<ImageView
+	    android:id="@+id/iv_arrow"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/arrow"
+	    android:layout_centerVertical="true"
+	    android:layout_marginRight="10dp"
+	    android:layout_marginLeft="10dp"
+	    android:layout_alignParentRight="true"
+	    />
+
+   <!--  <TextView
+        android:id="@+id/tv_des"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_pic"
+        android:gravity="center"
+        android:text="通"
+        android:textColor="@color/white"
+        android:textSize="18sp" /> -->
+    <!--
+         <ImageView
+        android:id="@+id/iv_line_p"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@drawable/fengexian_heng"
+        />
+    -->
+    <!--
+         <ImageView
+        android:id="@+id/iv_line_l"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fengexian_shu"
+        android:layout_alignRight="@id/iv_line_p"
+        />
+    -->
+
+</RelativeLayout>

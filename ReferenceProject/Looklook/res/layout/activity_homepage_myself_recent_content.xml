@@ -1,0 +1,143 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bj"
+     >
+    <LinearLayout
+        android:id="@+id/rl_center"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/ll_person"
+        android:background="@drawable/qiehuan_1"
+        android:orientation="horizontal"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+         >
+        <LinearLayout
+            android:id="@+id/ll_share"
+            android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" 
+	        android:layout_weight="1"
+	        android:gravity="center"
+            >
+	        <ImageView
+	            android:id="@+id/iv_share"
+	            android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:src="@drawable/qiehuan_fenxiang"
+	            />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_enshrine"
+            android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" 
+	        android:layout_weight="1"
+	        android:gravity="center"
+            >
+	        <ImageView
+	            android:id="@+id/iv_enshrine"
+	            android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:src="@drawable/qiehuan_shoucang"
+	            />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_praise"
+            android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" 
+	        android:layout_weight="1"
+	        android:gravity="center"
+            >
+	        <ImageView
+	            android:id="@+id/iv_praise"
+	            android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:src="@drawable/qiehuan_zan"
+	            />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_comment"
+            android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" 
+	        android:layout_weight="1"
+	        android:orientation="horizontal"
+	        android:gravity="center"
+            >
+	        <RelativeLayout 
+	            android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	            >
+		        <ImageView
+		            android:id="@+id/iv_comment"
+		            android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content"
+		        	android:src="@drawable/qiehuan_pinglun"
+		        	android:layout_gravity="center"
+		            />
+		         <RelativeLayout
+			            android:id="@+id/rl_comment_jiaobiao"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content" 
+			            android:background="@drawable/jiaobiao"
+			            android:layout_toRightOf="@id/iv_comment"
+			            android:layout_marginTop="2dp"
+			            android:layout_marginLeft="-15dp"
+			            android:gravity="center"
+			            >
+				        <TextView
+				            android:id="@+id/tv_comment_jiaobiao"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:textSize="6sp"
+				            android:textColor="@color/white"
+				            />
+	        </RelativeLayout>
+	        </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_sharelist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/rl_center"
+        android:visibility="gone"
+        android:orientation="vertical" >
+        <!-- <include layout="@layout/activity_homepage_recent_diary_item"/>
+        <include layout="@layout/activity_homepage_recent_diary_item"/> -->
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_enshrinelist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/rl_center"
+        android:visibility="gone"
+        android:orientation="vertical"
+         >
+        <!-- <include layout="@layout/activity_homepage_recent_diary_item"/>
+        <include layout="@layout/activity_homepage_recent_diary_item"/> -->
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_praiselist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/rl_center"
+        android:visibility="gone"
+        android:orientation="vertical"
+         >
+        <!-- <include layout="@layout/activity_homepage_recent_diary_item"/>
+        <include layout="@layout/activity_homepage_recent_diary_item"/> -->
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_commentlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/rl_center"
+        android:orientation="vertical"
+        >
+       <!--  <include layout="@layout/activity_homepage_recent_comment_item"/>
+        <include layout="@layout/activity_homepage_recent_comment_item"/>
+        <include layout="@layout/activity_homepage_recent_comment_item"/> -->
+    </LinearLayout>
+
+</RelativeLayout>

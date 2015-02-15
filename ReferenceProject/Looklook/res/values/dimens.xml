@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="zero">0px</dimen>
+    <dimen name="size_3dip">3dip</dimen>
+    <dimen name="size_5dip">5dip</dimen>
+    <dimen name="size_10dip">10dip</dimen>
+    <dimen name="size_15dip">15dip</dimen>
+    <dimen name="size_20dip">20dip</dimen>
+    <dimen name="size_30dip">30dip</dimen>
+    <dimen name="size_40dip">40dip</dimen>
+    <dimen name="size_50dip">50dip</dimen>
+    <dimen name="size_60dip">60dip</dimen>
+    <dimen name="size_70dip">70dip</dimen>
+    <dimen name="size_80dip">80dip</dimen>
+    <dimen name="size_90dip">90dip</dimen>
+    <dimen name="size_100dip">100dip</dimen>
+    <dimen name="size_110dip">110dip</dimen>
+    <dimen name="size_120dip">120dip</dimen>
+    <dimen name="title_font_size">18dip</dimen>
+    <dimen name="sub_title_font_size">15dip</dimen>
+    <dimen name="text_view_button_font_size">16dip</dimen>
+    <dimen name="text_view_button_font_big_size">18dip</dimen>
+    <dimen name="bottom_tab_padding_drawable">5dip</dimen>
+    <dimen name="bottom_tab_padding_up">5dip</dimen>
+    <dimen name="mosaic_control_size">150px</dimen>
+    <dimen name="effect_and_scene_button_font_size">12dip</dimen>
+    <!-- 不要用sp做textSize的单位 -->
+    <dimen name="shoot_page_onscreen_buttons_size">49dip</dimen>
+
+    <!-- 设置界面 字体大小 -->
+      <dimen name="setting_title">18sp</dimen>
+    <dimen name="setting_max">17sp</dimen>
+    <dimen name="setting_middle">16sp</dimen>
+    <dimen name="setting_huadong_2_margin">90dp</dimen>
+    <dimen name="setting_huadong_3_margin">25dp</dimen>
+    <dimen name="setting_check_margin">1dp</dimen>
+    <dimen name="popwindow_title_margin">20dp</dimen>
+    <dimen name="popwindow_item_margin">5dp</dimen>
+    <dimen name="popwindow_item_padding">5dp</dimen>
+    <dimen name="setting_item_height">55dp</dimen>
+    
+    <dimen name="base_set_size">18sp</dimen>
+    <dimen name="size_12sp">12sp</dimen>
+    <dimen name="size_15sp">15sp</dimen>
+    <dimen name="size_20sp">20sp</dimen>
+    <dimen name="size_30sp">30sp</dimen>
+    <dimen name="size_40sp">40sp</dimen>
+
+    <!-- pull -->
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+
+</resources>

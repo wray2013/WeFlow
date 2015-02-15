@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/iv_list_pic_icon"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/bg_default"/>
+
+    <TextView 
+        android:id="@+id/iv_list_pic_time"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.0"
+        android:layout_marginLeft="20dp"
+        android:gravity="left|center_vertical"
+        android:textSize="19sp"
+        android:singleLine="true"
+        android:textColor="@color/tv_setpos"/>
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fengexian"/>
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/weizhi"/>
+    
+    <TextView 
+        android:id="@+id/iv_list_pic_position"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.2"
+        android:gravity="left|center_vertical"
+        android:textSize="16sp"
+        android:hint="未获取图片位置信息点击手动添加"
+        android:textColor="@color/tv_setpos"/>
+        
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/arrow"/>
+    
+</LinearLayout>

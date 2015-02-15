@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_travel_item">
+
+    <ImageView
+        android:id="@+id/iv_travel_img"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        />
+    
+    <TextView
+        android:id="@+id/tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/iv_travel_img"
+        android:layout_alignTop="@+id/iv_travel_img"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        />
+    
+    <RelativeLayout 
+        android:id="@+id/rl_travel"
+        android:layout_below="@+id/tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        >
+         <ImageView 
+        android:id="@+id/iv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        />
+
+	    <TextView
+	        android:id="@+id/tv_name"
+	        android:layout_toRightOf="@+id/iv_title" 
+	        android:layout_alignParentTop="true"   	
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/white"
+	        android:singleLine="true"
+	          android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+	       />
+    
+    <TextView
+        android:id="@+id/tv_descrp"
+       android:layout_toRightOf="@+id/iv_title" 
+        android:layout_alignBottom="@+id/iv_title"  
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:singleLine="true"
+        android:textColor="@color/white"/>
+    </RelativeLayout>
+   
+   
+</RelativeLayout>

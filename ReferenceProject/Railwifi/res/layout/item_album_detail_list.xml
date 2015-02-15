@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="4dp" 
+    >
+    
+    <RelativeLayout 
+        android:id="@+id/rl_content_img"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        
+        <ImageView 
+            android:id="@+id/iv_content_img"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            />
+        
+        <ImageButton 
+            android:id="@+id/ib_content_play_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/btn_film_play"
+            android:background="@null"
+            />
+        
+    </RelativeLayout>
+    
+    <TextView 
+        android:id="@+id/tv_content_intro"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="14sp"
+        android:layout_below="@id/rl_content_img"
+        android:layout_marginTop="12dp"
+        android:lineSpacingExtra="12dp"
+        android:includeFontPadding="false"
+        />
+
+</RelativeLayout>

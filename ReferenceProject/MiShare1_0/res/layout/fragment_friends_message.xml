@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<!--     <ListView
+        android:id="@+id/friend_message_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000" 
+        android:divider="@drawable/friends_list_line"
+        >
+    </ListView> -->
+    
+<!--     <com.cmmobi.looklook.common.listview.pulltorefresh.PrivateMessageMainListView
+        android:id="@+id/friend_message_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:divider="@drawable/friends_list_line"/> -->
+    <ListView
+        android:id="@+id/friend_message_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000" 
+        android:listSelector="@drawable/bg_listview_item"
+        android:divider="@drawable/bg_diarydetail_list_line"/>
+
+</RelativeLayout>

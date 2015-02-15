@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/iv_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/del_clock" />
+
+        <ImageView
+            android:id="@+id/iv_clock_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_clock"
+            android:layout_alignLeft="@id/iv_clock"
+            android:layout_alignRight="@id/iv_clock"
+            android:layout_alignTop="@id/iv_clock"
+            android:src="@drawable/del_shijian_clock_h"
+             />
+
+        <ImageView
+            android:id="@+id/iv_clock_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_clock"
+            android:layout_alignLeft="@id/iv_clock"
+            android:layout_alignRight="@id/iv_clock"
+            android:layout_alignTop="@id/iv_clock"
+            android:src="@drawable/del_shijian_clock_s" />
+    </RelativeLayout>

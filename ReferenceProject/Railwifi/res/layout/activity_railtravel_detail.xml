@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_travel"
+    android:background="@color/background"
+    android:orientation="vertical" >
+	<LinearLayout 
+	    android:id="@+id/rl_content"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    >
+   		<RelativeLayout 
+   		    android:id="@+id/rl_top_info"
+   		    android:layout_width="fill_parent"
+   		    android:layout_height="wrap_content"
+   		    android:background="@color/white"
+   		    >
+   		    <TextView 
+   		        android:id="@+id/tv_fullname"
+   		        android:layout_width="fill_parent"
+   		        android:textColor="#212434"
+   		        android:layout_height="30dp"
+   		        android:singleLine="true"
+   		        android:gravity="center_vertical"
+   		        />
+   		    <ImageView 
+   		        android:id="@+id/iv_line"
+   		        android:layout_width="fill_parent"
+   		        android:layout_height="wrap_content"
+   		        android:scaleType="centerCrop"
+   		        android:src="@drawable/line_a"
+   		        android:layout_below="@+id/tv_fullname"
+   		        />
+   		    <RelativeLayout 
+   		        android:id="@+id/rl_price_info"
+   		        android:layout_width="fill_parent"
+   		        android:layout_height="90dp"
+   		        android:layout_below="@+id/iv_line"
+   		        android:gravity="center_vertical"
+   		        >
+   		        <TextView 
+   		        android:id="@+id/tv_start"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"   		        
+   		        android:layout_alignParentLeft="true"
+   		        android:textColor="#212434"
+   		        />
+   		    <TextView 
+   		        android:id="@+id/tv_adult_price"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"
+   		        android:textColor="#212434"
+   		        android:layout_alignParentRight="true"
+   		        />
+   		    <TextView 
+   		        android:id="@+id/tv_kid_price"
+   		        android:layout_width="wrap_content"
+   		        android:layout_height="wrap_content"
+   		        android:layout_below="@+id/tv_adult_price"
+   		        android:textColor="#212434"
+   		        android:layout_alignLeft="@+id/tv_adult_price"
+   		        />
+   		    </RelativeLayout>
+   		    <TextView 
+   		        android:layout_width="fill_parent"
+   		        android:layout_height="1dp" 
+   		        android:background="#c1c1c1"
+   		        android:layout_alignBottom="@+id/rl_price_info"
+   		        />
+   		</RelativeLayout>
+   		
+   		
+   		<LinearLayout 
+   		    android:id="@+id/ll_details"
+   		    android:layout_width="fill_parent"
+   		    android:layout_height="wrap_content"
+   		    android:orientation="vertical"
+   		    >
+   		    <LinearLayout 
+   		        android:id="@+id/ll_check_tab"
+   		        android:layout_width="fill_parent"
+   		        android:layout_height="wrap_content"
+   		        android:orientation="horizontal"
+   		        >
+   		        <Button 
+   		            android:id="@+id/btn_check_one"
+   		            android:layout_weight="1"
+   		            android:layout_width="fill_parent"
+   		            android:layout_height="fill_parent"
+   		            android:background="@drawable/table_left_selected_3"
+   		            android:text="概要"
+   		            />
+   		        <Button 
+   		            android:id="@+id/btn_check_two"
+   		            android:layout_weight="1"
+   		            android:layout_width="fill_parent"
+   		            android:layout_height="fill_parent"
+   		            android:background="@drawable/table_middle_default_3"
+   		            android:text="行程"
+   		            />
+   		         <Button 
+   		            android:id="@+id/btn_check_three"
+   		            android:layout_weight="1"
+   		            android:layout_width="fill_parent"
+   		            android:layout_height="fill_parent"
+   		            android:background="@drawable/table_right_default_3"
+   		            android:text="参团须知"
+   		            />
+   		    </LinearLayout>
+   		    
+
+   		        <RelativeLayout
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        />
+   		        
+   		</LinearLayout>
+	</LinearLayout>
+	
+    <include layout="@layout/include_no_network" android:id="@+id/rl_empty"/>
+
+</LinearLayout>

@@ -1,0 +1,119 @@
+package com.cmmobi.railwifi.utils;
+
+import java.util.ArrayList;
+
+import android.util.SparseArray;
+
+import com.cmmobi.railwifi.R;
+
+public class ModuleUtils {
+	public static final int MODULEADD = -1;
+	public static final int MODULESHOPPING = 1;
+	public static final int MODULETRAINSERVER = 2;
+	public static final int MODULEALLIIANCE = 3;
+	public static final int MODULEMOVIE = 4;
+	public static final int MODULEFUNNY = 5;
+	public static final int MODULEMUSIC = 6;
+	public static final int MODULECITYINTRO = 7;
+	public static class TagWrapper {
+		public int tagId;
+		public int drawableRes;
+		public String tagDesc;
+		public boolean isDefault;
+		public boolean isRailService;
+	}
+	
+	public static SparseArray<Boolean> defaultArray = new SparseArray<Boolean>();
+	public static SparseArray<Boolean> railServiceArray = new SparseArray<Boolean>();
+	
+	
+	public static ArrayList<TagWrapper> tagLists = new ArrayList<TagWrapper>();
+	public static int [] resArray = {
+		R.drawable.add_icon_shopping,
+		R.drawable.add_icon_train_serve,
+		R.drawable.add_icon_alliance,
+		R.drawable.add_icon_movie,
+		R.drawable.add_icon_funny,
+		R.drawable.add_icon_music,
+		
+		/*R.drawable.add_icon_shopping,
+		R.drawable.add_icon_train_serve,
+		R.drawable.add_icon_alliance,
+		R.drawable.add_icon_movie,
+		R.drawable.add_icon_funny,
+		R.drawable.add_icon_music,
+		
+		R.drawable.add_icon_shopping,
+		R.drawable.add_icon_train_serve,
+		R.drawable.add_icon_alliance,
+		R.drawable.add_icon_movie,
+		R.drawable.add_icon_funny,
+		R.drawable.add_icon_music,
+		
+		R.drawable.add_icon_shopping,
+		R.drawable.add_icon_train_serve,
+		R.drawable.add_icon_alliance,
+		R.drawable.add_icon_movie,
+		R.drawable.add_icon_funny,
+		R.drawable.add_icon_music,*/
+	};
+	
+	public static String [] descArray = {
+		"订餐购物",
+		"铁路资讯",
+		"铁旅联盟",
+		"看电影",
+		"逗你玩",
+		"听音乐",
+		/*"订餐购物1",
+		"铁路资讯1",
+		"铁旅联盟1",
+		"看电影1",
+		"逗你玩1",
+		"听音乐1",
+		"订餐购物2",
+		"铁路资讯2",
+		"铁旅联盟2",
+		"看电影2",
+		"逗你玩2",
+		"听音乐2",
+		"订餐购物3",
+		"铁路资讯3",
+		"铁旅联盟3",
+		"看电影3",
+		"逗你玩3",
+		"听音乐3",*/
+	};
+	
+	static {
+		defaultArray.put(0, true);
+		defaultArray.put(1, true);
+		defaultArray.put(2, true);
+		defaultArray.put(3, true);
+		defaultArray.put(4, true);
+		defaultArray.put(5, true);
+		
+		railServiceArray.put(0, true);
+		railServiceArray.put(1, true);
+		
+		for (int i = 0;i < descArray.length;i++) {
+			TagWrapper wrapper = new TagWrapper();
+			wrapper.tagId = i + 1;
+			wrapper.drawableRes = resArray[i];
+			wrapper.tagDesc = descArray[i];
+			wrapper.isDefault = (defaultArray.get(i) != null);
+			wrapper.isRailService = (railServiceArray.get(i) != null);
+			tagLists.add(wrapper);
+		}
+	}
+	
+	public static TagWrapper findModules(int id) {
+		for (TagWrapper wrapper:tagLists) {
+			if (wrapper.tagId == id) {
+				return wrapper;
+			}
+		}
+		return null;
+	}
+	
+}

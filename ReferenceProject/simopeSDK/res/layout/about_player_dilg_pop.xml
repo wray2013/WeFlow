@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/no_color" >
+	<ScrollView 
+	        android:layout_width="match_parent"
+    		android:layout_height="match_parent"
+	    >
+    <LinearLayout
+        android:layout_width="235dp"
+        android:layout_height="157dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/about_player_dilg_pop"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <TextView 
+                android:id="@+id/about_player_dilg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="欢迎使用箩筐视频"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/transparent_color"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"
+                 android:textStyle="bold"
+                />
+            
+            <ImageButton 
+                android:id="@+id/about_player_dilg_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/about_dial_cancle"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                />
+            
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/white_244" />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="快捷操作技巧"  
+            android:textStyle="bold"
+            android:textColor="@color/white_244"        
+            />
+         <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="屏幕:  双击切换屏幕宽高"   
+            android:layout_marginTop="5dp" 
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white_244"        
+            />
+          <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_marginTop="5dp"
+             android:layout_marginLeft="10dp"
+            android:text="左屏:  上下滑动控制音量"    
+            android:textColor="@color/white_244"        
+            />
+           <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_marginTop="5dp"
+             android:layout_marginLeft="10dp"
+            android:text="右屏:  上下滑动控制亮度"    
+            android:textColor="@color/white_244"        
+            />
+            <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="中间:  左右滑动快退快进"    
+            android:textColor="@color/white_244"        
+            />                    
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

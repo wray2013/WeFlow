@@ -1,0 +1,62 @@
+package com.cmmobi.railwifi.view;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.cmmobi.railwifi.utils.DisplayUtil;
+
+
+@SuppressLint("DrawAllocation")
+public class TagTextView extends TextView {
+
+	enum TagEnum {
+		LEFTEDGE,RIGHTEDGE
+	}
+	
+	private TagEnum tagMode = TagEnum.LEFTEDGE;
+	private Paint paint;
+	public TagTextView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+		paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		paint.setColor(0xff4976e8);
+		paint.setStyle(Paint.Style.FILL);
+	}
+	
+	public void setBgColor(int color) {
+		paint.setColor(color);
+	}
+	
+	public void setMode(TagEnum mode) {
+		this.tagMode = mode;
+	}
+	
+	
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		Path path = new Path();
+		if (tagMode == TagEnum.LEFTEDGE) {
+		    path.moveTo(0, 0);
+		    path.lineTo(getWidth(), 0);
+		    path.lineTo(getWidth() - DisplayUtil.getSize(getContext(), 33), getHeight());
+		    path.lineTo(0, getHeight());
+		} else {
+			path.moveTo(0, 0);
+		    path.lineTo(getWidth(), 0);
+		    path.lineTo(getWidth(), getHeight());
+		    path.lineTo(DisplayUtil.getSize(getContext(), 33), getHeight());
+		}
+
+	    canvas.drawPath(path, paint);
+	    
+	    super.onDraw(canvas);
+	}
+
+}

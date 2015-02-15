@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_diarypreview_square"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <com.cmmobi.looklook.common.view.SquareLayout
+        android:id="@+id/fl_sl_video"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_default" >
+
+        <RelativeLayout
+            android:id="@+id/rl_diarypreview_video_surface"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_diarydpreview_video_thumbnail"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg_default" />
+
+        <ImageView
+            android:id="@+id/iv_diarypreview_video_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_diarypreview_video_play" />
+        
+        <TextView
+            android:id="@+id/tv_diarypreview_video_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_gravity="left|bottom"/>
+                
+    </com.cmmobi.looklook.common.view.SquareLayout>
+
+    <SeekBar
+        android:id="@+id/sk_diarypreview_seek"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/seekbar_margin_top"
+        android:max="100"
+        android:maxHeight="2dip"
+        android:minHeight="2dip"
+        android:progress="50"
+        android:progressDrawable="@drawable/progress_player_seekbar_drawable"
+        android:thumb="@drawable/progress_player_thumb"
+        android:thumbOffset="0dp" />
+
+</LinearLayout>

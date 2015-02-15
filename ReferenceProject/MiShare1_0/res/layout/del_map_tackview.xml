@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_sound_ll"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/map_sound_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="语音内容"
+        android:textColor="#000000"
+        android:paddingLeft="5dp" 
+        android:paddingTop="5dp"
+        android:background="@drawable/del_duihuakuangdi"
+        android:textSize="9sp" />
+
+    <ImageView
+        android:id="@+id/map_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/del_shengyin3" />
+
+</LinearLayout>

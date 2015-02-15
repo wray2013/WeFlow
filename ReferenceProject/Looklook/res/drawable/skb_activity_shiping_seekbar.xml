@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+   <item
+	    android:id="@android:id/background"
+	    android:drawable="@drawable/diarydetail_shiping_bofang_jindu_1" />
+
+   <item
+	    android:id="@android:id/secondaryProgress"
+	    android:drawable="@drawable/diarydetail_shiping_bofang_jindu_2" />
+   
+    <item
+	    android:id="@android:id/progress"
+	    android:drawable="@drawable/diarydetail_shiping_bofang_jindu_3" />
+
+</layer-list>

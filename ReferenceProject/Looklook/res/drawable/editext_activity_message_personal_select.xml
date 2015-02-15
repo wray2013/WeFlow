@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item  android:state_enabled="false" android:state_window_focused="false" android:drawable="@drawable/kuang"/>
+    <item  android:state_focused="true" android:drawable="@drawable/kuang_xuanzhong"/>
+    <item android:drawable="@drawable/kuang"></item>
+
+</selector>

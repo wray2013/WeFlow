@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@+id/layout_fullscreen_media_controller" android:visibility="gone" layout="@layout/vw_full_media_controller" />
+<!--     <include android:id="@+id/layout_lite_media_controller" android:visibility="gone" layout="@layout/vw_lite_media_controller" /> -->
+<!--     <include android:id="@+id/layout_advert_media_controller" android:visibility="gone" layout="@layout/vw_advert_media_controller" /> -->
+    <!-- <include android:id="@+id/layout_try_watch_media_controller" android:visibility="gone" layout="@layout/vw_try_watch_media_controller" /> -->
+</RelativeLayout>

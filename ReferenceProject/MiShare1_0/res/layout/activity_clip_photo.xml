@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+    
+    <RelativeLayout 
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tou"
+        >
+        <ImageView 
+            android:id="@+id/iv_back"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"
+            />
+         
+         <TextView
+            android:id="@+id/tv_title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/photoclip"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+         
+         <TextView 
+             android:id="@+id/tv_save"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:layout_centerVertical="true"
+             android:layout_marginRight="5dp"
+             android:textSize="@dimen/setting_title"
+             android:clickable="true"
+             android:text="@string/done"
+             android:textColor="@color/tv_save_btn_color_selector"
+             />
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        >
+         
+        <ImageView 
+	        android:id="@+id/iv_pic"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:scaleType="matrix"
+	        />
+    
+	    <com.cmmobi.looklook.common.view.ClipView 
+	        android:id="@+id/clip_view"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:src="@drawable/tupian_caijiankuang"
+	        android:scaleType="center"
+	        />
+	        
+    </RelativeLayout>
+    
+    
+
+</RelativeLayout>

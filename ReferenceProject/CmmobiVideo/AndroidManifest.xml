@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cmmobivideo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="10" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!--音频采集 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+	<!--往sdcard中写入数据的权限 -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<!--在sdcard中创建/删除文件的权限 -->
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+	<!-- 系统设置改变后回调问题 -->>
+	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION"></uses-permission> 
+	<uses-permission android:name="android.permission.FLASHLIGHT" />  
+	<uses-feature android:name="android.hardware.camera" />
+	<uses-feature android:name="android.hardware.autofocus"/>
+
+	<!-- android:screenOrientation="portrait" -->
+	
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name">
+        <activity
+            android:name=".CmmobiVideoActivity"
+            android:label="@string/app_name"
+            
+         	android:configChanges="orientation">
+            <!--往sdcard中写入数据的权限 -->
+			<!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/mobile_control_head_extral_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/control_writeback">
+
+        <Button
+            android:id="@+id/mobile_control_head_extral_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/mobile_cancle_select"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="3dp"
+            android:gravity="center"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/mobile_control_head_extral_tvshow"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/_white_charactor_color" />
+
+        <Button
+            android:id="@+id/mobile_control_head_extral_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/mobile_head_extra_about"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitCenter" />
+
+        <Button
+            android:id="@+id/mobile_control_head_extral_play_live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/mobile_control_head_extral_about"
+            android:text="直播"
+            android:background="@drawable/play_hd_bg"
+            android:textColor="@color/red_charactor_show"
+            android:textSize="16dp"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/mobile_control_head_extral_linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/mobile_control_head_extral_back"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/mobile_control_head_extral_show_time_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/mobile_control_head_extral_show_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:text="时间 :"
+                    android:textColor="@color/_white_charactor_color"
+                    android:textSize="7dp" />
+				<TextView
+                    android:id="@+id/mobile_control_head_extral_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textColor="@color/_white_charactor_color"
+                    android:textSize="7dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mobile_control_head_extral_show_battery_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电量 : "
+                    android:textColor="@color/_white_charactor_color"
+                    android:textSize="7dp" />
+
+                <TextView
+                    android:id="@+id/mobile_control_head_extral_show_battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/_white_charactor_color"
+                    android:textSize="7dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

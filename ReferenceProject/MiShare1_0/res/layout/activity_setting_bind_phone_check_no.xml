@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white" 
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tou" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:background="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/phone_bind"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_title" />
+        
+          <TextView 
+            android:id="@+id/tv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_step"
+            android:textColor="@color/tv_blue_and_gray_selector"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@color/transparent"
+            android:textSize="@dimen/setting_title"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_checkno"
+        style="@style/myedittext"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/single_line_edittext_height"
+        android:singleLine="true"
+        android:hint="@string/input_check_no"
+        android:layout_marginLeft="@dimen/setting_padding"
+        android:layout_marginRight="@dimen/setting_padding"
+        android:layout_marginTop="20dp"
+        android:inputType="number"/>
+
+    <TextView 
+        android:id="@+id/tv_checknoexplain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_padding"
+        android:layout_marginRight="@dimen/setting_padding"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/next_step"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/setting_max"
+        />
+
+   
+           <Button
+            android:id="@+id/btn_newcheckno"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_activity_setting_bg"
+            android:text="@string/next_step"
+            android:textColor="@color/dark_red"
+            android:enabled="false"
+            android:textSize="@dimen/setting_max" />
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="cn/zipper/framwork/canvas/Camera.java|cn/zipper/framwork/canvas/Event.java|cn/zipper/framwork/canvas/GameLogic.java|cn/zipper/framwork/canvas/Graphics.java|cn/zipper/framwork/canvas/Map.java|cn/zipper/framwork/canvas/ModuleActionListener.java|cn/zipper/framwork/canvas/ModuleManager.java|cn/zipper/framwork/canvas/OxyEngineActivityBase.java|cn/zipper/framwork/canvas/Pen.java|cn/zipper/framwork/canvas/PhysicsObject.java|cn/zipper/framwork/canvas/PixelsBitmap.java|cn/zipper/framwork/canvas/RandomUtils.java|cn/zipper/framwork/canvas/RichVariable.java|cn/zipper/framwork/canvas/Scene.java|cn/zipper/framwork/canvas/SortUtils.java|cn/zipper/framwork/canvas/StringUtils.java|cn/zipper/framwork/canvas/XPoint3D.java|cn/zipper/framwork/canvas/ZRect.java" kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="libs"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="libs/concurrentlinkedhashmap-lru-1.4_.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

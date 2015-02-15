@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:gravity="center"
+    >
+    <LinearLayout 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+	    android:gravity="center"
+	    android:padding="7dp"
+	    android:layout_margin="10dp"
+	    android:background="@drawable/bg_add_friends_grey"
+        >
+        
+	    <TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="对方已经不是您的好友无法接收消息。"
+		    android:textColor="@color/white"
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/tv_add_friends"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="添加好友"
+		    android:textColor="@color/blue"
+	        />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+   <TextView
+       android:id="@+id/tv_award_num" 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="#0075A9"
+       android:textSize="15sp"
+       android:layout_margin="8dp"
+       />
+	<RelativeLayout
+	    android:id="@+id/rl_award_num_item"
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+	     />
+</LinearLayout>

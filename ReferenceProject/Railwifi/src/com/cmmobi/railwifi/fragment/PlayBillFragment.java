@@ -1,0 +1,119 @@
+package com.cmmobi.railwifi.fragment;
+
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.cmmobi.railwifi.R;
+import com.cmmobi.railwifi.utils.DisplayUtil;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+
+public class PlayBillFragment extends Fragment {
+	private final String TAG = "PlayBillFragment";
+	private static final String KEY_URL = "PlayBillFragment:imageUrl";
+	private static final String KEY_NAME = "PlayBillFragment:name";
+	private String imageUrl = "";
+	private String name = "";
+	MyImageLoader imageLoader = null;
+	DisplayImageOptions imageLoaderOptions = null;
+	ImageView imageView;
+	TextView textView;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		imageLoader = MyImageLoader.getInstance();
+
+		imageLoaderOptions = new DisplayImageOptions.Builder()
+				.cacheInMemory(true)
+				.cacheOnDisc(true)
+				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+				.bitmapConfig(Bitmap.Config.RGB_565)
+//				.displayer(new SimpleBitmapDisplayer())
+				// .displayer(new CircularBitmapDisplayer()) 圆形图片
+				.displayer(new RoundedBitmapDisplayer(12))// 圆角图片
+				.build();
+		super.onCreate(savedInstanceState);
+		
+		if (savedInstanceState != null) {
+			if (savedInstanceState.containsKey(KEY_URL)) {
+				imageUrl = savedInstanceState.getString(KEY_URL);
+			}
+			if (savedInstanceState.containsKey(KEY_NAME)) {
+				name = savedInstanceState.getString(KEY_NAME);
+			}
+        }
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater,
+			ViewGroup container,  Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		View view = inflater.inflate(R.layout.item_view_pager, null);
+		view.setPadding(DisplayUtil.getSize(getActivity(), 2),0, 
+				DisplayUtil.getSize(getActivity(), 2), 0);
+		imageView = (ImageView)view.findViewById(R.id.iv_playbill);
+		textView = (TextView) view.findViewById(R.id.tv_playbill_name);
+//		Log.d(TAG,"imageUrl = " + imageUrl);
+		imageLoader.displayImage(imageUrl, imageView, imageLoaderOptions,new ImageLoadingListener() {
+			
+			
+			@Override
+			public void onLoadingFailed(String imageUri, View view,
+					FailReason failReason) {
+				// TODO Auto-generated method stub
+//				Log.d(TAG,"onLoadingFailed");
+			}
+			
+			@Override
+			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				// TODO Auto-generated method stub
+//				Log.d(TAG,"onLoadingComplete");
+			}
+
+			@Override
+			public void onLoadingStarted(String imageUri, View view) {
+				// TODO Auto-generated method stub
+//				Log.d(TAG,"onLoadingStarted");
+			}
+
+			@Override
+			public void onLoadingCancelled(String imageUri, View view) {
+				// TODO Auto-generated method stub
+//				Log.d(TAG,"onLoadingCancelled");
+			}
+			
+		});
+//		textView.setText("" + System.currentTimeMillis());
+		return view;
+	}
+	
+	public static PlayBillFragment newInstance(String url,String name) {
+		PlayBillFragment fragment = new PlayBillFragment();
+
+		fragment.imageUrl = url;
+		fragment.name = name;
+        return fragment;
+    }
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+		outState.putString(KEY_URL, imageUrl);
+		outState.putString(KEY_NAME, name);
+	}
+}

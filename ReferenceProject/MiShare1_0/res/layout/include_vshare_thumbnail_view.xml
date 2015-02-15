@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black"
+        android:clickable="false">
+<ImageView 
+    android:id="@+id/iv_safebox"
+    android:src="@drawable/moren_bxx_100x100"
+    android:scaleType="fitCenter"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:visibility="visible"
+    />
+
+<com.cmmobi.looklook.common.view.VshareThumbnailViewOneItem
+        android:id="@+id/ctvoi_one_photo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="visible"
+        />
+
+<LinearLayout
+    android:id="@+id/ll_four_photo"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:visibility="gone"
+    >
+    <LinearLayout 
+        android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="horizontal"
+	    android:layout_weight="1"
+        >
+        <com.cmmobi.looklook.common.view.VshareThumbnailViewOneItem
+        android:id="@+id/ctvoi_four_photo_first"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        />
+     <com.cmmobi.looklook.common.view.VshareThumbnailViewOneItem 
+        android:id="@+id/ctvoi_four_photo_second"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        />
+        
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/ll_secondline"
+        android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="horizontal"
+	    android:layout_weight="1"
+        >
+        <com.cmmobi.looklook.common.view.VshareThumbnailViewOneItem
+        android:id="@+id/ctvoi_four_photo_third"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        />
+       <com.cmmobi.looklook.common.view.VshareThumbnailViewOneItem
+        android:id="@+id/ctvoi_four_photo_fourth"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        />
+    </LinearLayout>   
+</LinearLayout>
+
+
+   <TextView
+    android:id="@+id/tv_right_info"
+    android:layout_width="fill_parent"
+	android:layout_height="@dimen/content_thumbnail_view_media_info_height"
+	android:text="02:13"
+	android:gravity="right|center_vertical"
+	android:textColor="@color/white"
+	android:textSize="@dimen/content_thumbnail_view_textsize"
+	android:background="@drawable/suolvetu_zutu"
+	android:layout_alignParentBottom="true"
+	android:paddingRight="2dp"
+	android:visibility="gone"
+    />
+     
+<ImageView 
+    android:id="@+id/iv_selected"
+    android:visibility="gone"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:src="@drawable/suolvetu_xuanzhong"
+    android:layout_centerInParent="true"
+    />
+
+ <RelativeLayout 
+     		android:id="@+id/rl_jiaobiao"
+ 	        android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+        	android:layout_alignParentRight="true"
+        	android:layout_alignParentTop="true"
+        	android:gravity="center"
+        	android:visibility="gone"
+ 	        >
+ 	        <ImageView 
+ 	            android:id="@+id/iv_jiaobiao_thumb"
+ 	            android:layout_width="wrap_content"
+ 	            android:layout_height="wrap_content"
+ 	            android:src="@drawable/jiaobiao_1"
+ 	            android:layout_centerInParent="true"
+ 	            />
+ 	         <TextView
+		        android:id="@+id/tv_count_thumb"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:layout_centerInParent="true"
+		        android:textSize="@dimen/setting_mini"
+		        android:textColor="@color/white"
+		        android:text="1" />
+		 	       
+ 	    </RelativeLayout>
+ 	    
+</RelativeLayout>

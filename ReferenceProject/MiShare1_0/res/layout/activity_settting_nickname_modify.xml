@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tou" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/textname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/nickname_modify"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_title" />
+    	<TextView 
+            android:id="@+id/tv_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/single_complete"
+            android:textColor="@color/tv_blue_and_gray_selector"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/text_margin_right"
+            android:background="@color/transparent"
+            android:textSize="@dimen/setting_title"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_newnickname"
+        android:textSize="@dimen/setting_max"
+        android:textColorHint="@color/light_gray"
+        android:textColor="@color/black"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/single_line_edittext_height"
+        android:layout_below="@id/relative"
+        android:hint="@string/input_nickname"
+        android:singleLine="true"
+        android:layout_marginLeft="@dimen/setting_padding"
+        android:layout_marginRight="@dimen/setting_padding"
+        android:background="@drawable/shurukuang"
+        android:paddingLeft="6dp"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/iv_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/et_newnickname"
+        android:layout_alignRight="@+id/et_newnickname"
+        android:layout_alignTop="@+id/et_newnickname"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/btn_activity_x" />
+
+</RelativeLayout>

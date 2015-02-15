@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+		    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"   		        
+		        >
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/ll_check_one">
+   	<ImageView 
+   	    android:id="@+id/iv_image"
+   	    android:layout_width="fill_parent"
+   	    android:layout_height="@dimen/viewpager_height"
+   	    android:scaleType="fitXY"
+   	    />	
+
+   	<TextView 
+   	    android:id="@+id/tv_services"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:textColor="#212434"
+   	    android:text="【品质服务】"
+   	    />
+   	<TextView 
+   	    android:id="@+id/tv_services_detail"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:textColor="#212434"
+   	    />
+   	<ImageButton 
+   	    android:id="@+id/btn_open_one"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:layout_gravity="right"
+   	    android:src="@drawable/btn_open"
+   	    android:background="@null"
+ 		android:scaleType="center"
+ 		android:visibility="gone"
+   	    />
+   	<ImageView 
+   	    android:layout_height="1dp" 
+   	    android:layout_width="fill_parent"
+   	    android:scaleType="centerCrop"
+   	    android:src="@drawable/line_b"
+   	    />
+   	   	<TextView 
+   	    android:id="@+id/tv_linepoint"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:textColor="#212434"
+   	    android:text="【线路特色】"
+   	    />
+   	<TextView 
+   	    android:id="@+id/tv_linepoint_detail"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:textColor="#212434"
+   	    />
+   	<ImageButton 
+   	    android:id="@+id/btn_open_two"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:layout_gravity="right"
+   	    android:src="@drawable/btn_open"
+   	    android:background="@null"
+   	    android:visibility="gone"
+   	    />
+</LinearLayout>
+</ScrollView>

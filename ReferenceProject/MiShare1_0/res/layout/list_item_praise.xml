@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+       <RelativeLayout
+      	android:id="@+id/rl_contact"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:gravity="center_vertical" 
+        >
+   
+    <ImageView
+        android:id="@+id/friend_icon_imageview"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:scaleType="fitCenter"/>
+    
+    <TextView
+        android:id="@+id/friend_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/friend_icon_imageview"
+        android:textSize="@dimen/setting_max"
+        android:textColor="@color/black"
+        android:text="LookLook官方" />
+    </RelativeLayout>
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/rl_contact"
+        android:background="@drawable/liebiao_line"
+        />
+
+</RelativeLayout>

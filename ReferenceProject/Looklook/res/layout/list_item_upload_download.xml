@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:padding="@dimen/size_5dip"
+	android:layout_marginRight="@dimen/size_5dip"
+    android:background="@color/white">
+    
+    <ImageView 
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/size_5dip"
+        android:layout_gravity="center"
+        android:src="@drawable/u23_normal"
+        android:background="@color/dark_green"/>
+    
+    <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        
+        <TextView 
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_20dip"
+            android:textStyle="bold"
+            android:text="军都山阿三卡掉了你NDSKLdAP撒大神大神大神的阿达大厦按时"/>
+        
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            
+            <ProgressBar
+	            android:id="@+id/progress_bar"
+	            android:progress="0"
+	            android:progressDrawable="@drawable/x_media_player_seek_bar_progress_drawable"
+	            android:indeterminate="false"
+	            android:indeterminateOnly="false"
+	            android:layout_width="0dip"
+	            android:layout_weight="8"
+	            android:layout_height="@dimen/size_10dip"
+	            android:max="100"/>
+            
+            <ImageView 
+                android:id="@+id/start_pause_button"
+                android:layout_width="0dip"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:src="@drawable/task_ready"/>
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            
+            <TextView 
+	            android:id="@+id/percent"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="left|center_vertical"
+	            android:textColor="@color/dark_gray"
+	            android:textSize="@dimen/size_12sp"
+	            android:text="12%"/>
+            
+            <TextView 
+	            android:id="@+id/size"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="right|center_vertical"
+	            android:textColor="@color/dark_gray"
+	            android:textSize="@dimen/size_12sp"
+	            android:text="6.03M/22M"/>
+            
+        </LinearLayout>
+        
+        
+    </LinearLayout>
+
+</LinearLayout>

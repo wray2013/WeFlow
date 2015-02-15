@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/rl_contacts"
+     >
+
+    <ListView
+        android:id="@+id/listview_country"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000"
+        android:scrollingCache="true"
+        android:scrollbars="none" 
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        />
+    
+    <LinearLayout
+	    android:gravity="center_vertical|center_horizontal"
+	    android:orientation="horizontal"
+	    android:id="@+id/fullscreen_loading_indicator"
+	    android:visibility="gone"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    >
+	    <ProgressBar
+	        android:layout_gravity="center_vertical"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        style="?android:attr/progressBarStyleSmall"
+	        >
+	    </ProgressBar>
+	    <TextView
+	        android:id="@+id/current_action"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5.0dp"
+	        android:text="loading"
+	        >
+	    </TextView>
+	</LinearLayout>
+   	<com.cmmobi.looklook.common.view.QuickBarView
+        android:id="@+id/quick_bar"
+        android:layout_width="35dip"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        />
+    
+</RelativeLayout>

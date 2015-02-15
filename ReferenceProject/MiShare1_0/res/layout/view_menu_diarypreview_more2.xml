@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom|center_horizontal"
+    android:padding="10dp"
+    android:orientation="vertical">
+    
+    <Button
+        android:id="@+id/btn_more_edit"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="1dp"
+    	android:gravity="center"
+    	android:text="@string/diary_edit"
+    	android:textSize="22sp"
+    	android:textColor="@color/blue"
+    	android:background="@drawable/btn_menu_top"/>
+    
+    <Button
+        android:id="@+id/btn_more_delete"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="1dp"
+    	android:gravity="center"
+    	android:text="@string/diary_delete"
+    	android:textSize="22sp"
+    	android:textColor="@color/blue"
+    	android:background="@drawable/btn_menu_bottom"/>
+        
+    <Button
+        android:id="@+id/btn_more_cancel"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="8dp"
+    	android:gravity="center"
+    	android:text="@string/diary_cancel"
+    	android:textSize="22sp"
+    	android:textColor="@color/blue"
+    	android:background="@drawable/btn_menu_one"/>
+
+</LinearLayout>

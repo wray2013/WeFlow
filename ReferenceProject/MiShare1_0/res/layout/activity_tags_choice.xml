@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:descendantFocusability="beforeDescendants"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:text="@string/str_tagschoice_prompt"
+        android:textColor="#7D7D7D"
+        android:layout_marginTop="9dp"
+        android:textSize="18sp" />
+
+    <GridView
+        android:id="@+id/gv_tags"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="9dp"
+        android:gravity="center_horizontal"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:numColumns="4" />
+
+</LinearLayout>

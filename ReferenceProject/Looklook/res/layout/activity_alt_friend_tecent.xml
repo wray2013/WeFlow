@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"    
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/qiehuan" >
+
+    <CheckBox
+        android:id="@+id/checkboxxx"
+        style="@style/mycheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+    <ImageView
+        android:id="@+id/activity_alt_friends_shuxian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/checkboxxx" />
+
+    <ImageView
+        android:id="@+id/webimgxx"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/activity_alt_friends_shuxian" />
+
+    <TextView
+        android:id="@+id/text_tencent"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/webimgxx"
+        android:text="22222222"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>

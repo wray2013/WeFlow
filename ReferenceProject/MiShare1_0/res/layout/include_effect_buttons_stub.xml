@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:layout_marginLeft="7.5dp"
+    android:layout_marginRight="7.5dp"
+    >
+    
+    <ImageView 
+        android:id="@+id/effect_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+	    />
+    
+    <ImageView 
+        android:id="@+id/effect_selected_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/effect_image"
+        android:layout_alignRight="@id/effect_image"
+        android:layout_alignTop="@id/effect_image"
+        android:layout_alignBottom="@id/effect_image"
+        android:padding="3dp"
+        android:src="@drawable/texiao_xuanzhong"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+	    />
+    
+    <TextView 
+        android:id="@+id/effect_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/effect_image"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        />
+    
+    
+    
+</RelativeLayout>

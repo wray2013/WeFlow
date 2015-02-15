@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_feedback"
+    android:layout_width="match_parent"
+    android:layout_height="62.5dp"
+    >
+    
+	<TextView 
+        android:id="@+id/tv_feedback_title"
+        android:layout_width="wrap_content"
+        android:layout_height="62.5dp"
+        android:layout_marginLeft="12dp"
+        android:gravity="center_vertical"
+        android:text="播放时卡慢"
+        android:textSize="18sp"
+        android:textColor="@color/title_bar_text_color"
+        />
+        
+    <ToggleButton 
+        android:id="@+id/tb_feedback_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rb_confirm_selector"
+        android:layout_alignParentRight="true"
+        android:textOn=""
+		android:textOff=""
+		android:checked="false"
+		android:clickable="false"
+		android:focusable="false"
+		android:layout_marginRight="22.5dp"
+		android:layout_centerVertical="true"
+        />
+    
+    <View 
+         android:id="@+id/view_bottom_feedback"
+         android:layout_width="fill_parent"
+         android:layout_height="1dp"
+         android:layout_marginLeft="6dp"
+         android:layout_marginRight="6dp"
+         android:background="#a1a1a1"
+         android:layout_alignParentBottom="true"
+         />
+    
+    
+</RelativeLayout>

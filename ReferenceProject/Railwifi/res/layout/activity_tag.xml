@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:paddingBottom="15dp" >
+
+    <TextView
+        android:id="@+id/tv_not_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <ImageView
+        android:id="@+id/btn_send_invest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/btn_sending"
+        android:clickable="true" />
+
+    <EditText
+        android:id="@+id/ed_input_invest"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:layout_above="@+id/btn_send_invest"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/stoke_rectangle"
+        android:gravity="start"
+        android:hint="@string/invest_promt"
+        android:maxLines="14"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:textColor="@color/sub_text_color"
+        android:textSize="15sp" />
+
+    <GridView
+        android:id="@+id/tag_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ed_input_invest"
+        android:horizontalSpacing="6dp"
+        android:numColumns="3"
+        android:verticalSpacing="6dp" >
+    </GridView>
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mobile="http://net.looklook.mobile"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/alt_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:gravity="right"
+        android:paddingRight="20dip"
+        android:text=""
+        android:textColor="#99CCFF"
+        android:visibility="gone" />
+
+</RelativeLayout>

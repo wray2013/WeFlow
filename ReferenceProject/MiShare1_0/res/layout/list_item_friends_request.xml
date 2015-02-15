@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+        <RelativeLayout
+      	android:id="@+id/rl_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+    <TextView
+        android:id="@+id/tv_agree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:textSize="@dimen/setting_max"
+        android:layout_centerVertical="true"
+        />
+    <ImageView
+        android:id="@+id/iv_portrait"
+        android:layout_width="@dimen/contacts_image"
+        android:layout_height="@dimen/contacts_image"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/iv_portrait"
+        android:textSize="@dimen/setting_max"
+        android:textColor="@color/black"
+        android:singleLine="true"
+        android:layout_marginRight="85dp"
+        android:ellipsize="end"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_message"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_name"
+        android:layout_below="@+id/tv_name"
+        android:textSize="@dimen/setting_min2"
+        android:textColor="@color/gray"
+         android:singleLine="true"
+        android:layout_marginRight="85dp"
+        android:ellipsize="end"
+         />
+        <TextView 
+        android:id="@+id/tv_info"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_name"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/setting_min2"
+        android:textColor="@color/gray"
+         android:singleLine="true"
+        android:layout_marginRight="85dp"
+        android:ellipsize="end"
+         />
+    </RelativeLayout>
+	<ImageView
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" 
+	    android:layout_marginLeft="85dp"
+	    android:layout_below="@+id/rl_contact"
+	    android:background="@drawable/liebiao_line"
+	    />    
+
+</RelativeLayout>

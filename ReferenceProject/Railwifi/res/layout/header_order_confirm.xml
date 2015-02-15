@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+     <RelativeLayout 
+         android:id="@+id/rl_user_info"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="6dp"
+         >
+	    <TextView 
+	        android:id="@+id/tv_name"
+	        android:layout_width="61dp"
+	        android:layout_height="50dp"
+	        android:gravity="center"
+	        android:text="姓名"
+	        android:textSize="18sp"
+	        android:layout_marginTop="12dp"
+	        android:textColor="@color/title_bar_text_color"
+	        android:background="@drawable/order_confirm_edit_bg"
+	        />
+	    
+	    <EditText 
+	        android:id="@+id/et_name"
+	        android:layout_width="276dp"
+	        android:layout_height="50dp"
+	        android:background="@drawable/order_confirm_edit_bg_top"
+	        android:layout_toRightOf="@id/tv_name"
+	        android:layout_alignTop="@id/tv_name"
+	        android:singleLine="true"
+	        android:hint="请填写联系人姓名"
+	        android:textSize="18sp"
+	        android:maxLength="10"
+	        android:paddingLeft="10dp"
+	        />
+	    
+	       <ImageView 
+	        android:id="@+id/iv_name_error"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/icon_input_error"
+	        android:layout_marginRight="6dp"
+	        android:layout_alignTop="@id/et_name"
+	        android:layout_alignBottom="@id/et_name"
+	        android:layout_alignRight="@id/et_name"
+	        android:visibility="gone"
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/tv_celphone"
+	        android:layout_width="61dp"
+	        android:layout_height="50dp"
+	        android:layout_below="@id/tv_name"
+	        android:gravity="center"
+	        android:text="手机"
+	        android:textSize="18sp"
+	        android:textColor="@color/title_bar_text_color"
+	        android:background="@drawable/order_confirm_edit_bg_left"
+	        />
+	    
+	    <EditText 
+	        android:id="@+id/et_celphome"
+	        android:layout_width="276dp"
+	        android:layout_height="50dp"
+	        android:background="@drawable/order_confirm_edit_bg_right"
+	        android:layout_toRightOf="@id/tv_celphone"
+	        android:layout_alignTop="@id/tv_celphone"
+	        android:singleLine="true"
+	        android:textSize="18sp"
+	        android:inputType="phone"
+	        android:hint="请输入手机号码"
+	        android:maxLength="11"
+	        android:paddingLeft="10dp"
+	        />
+	    
+	    <ImageView 
+	        android:id="@+id/iv_phone_error"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/icon_input_error"
+	        android:layout_marginRight="6dp"
+	        android:layout_alignTop="@id/et_celphome"
+	        android:layout_alignBottom="@id/et_celphome"
+	        android:layout_alignRight="@id/et_celphome"
+	        android:visibility="gone"
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/tv_rail_num"
+	        android:layout_width="61dp"
+	        android:layout_height="50dp"
+	        android:text="车厢"
+	        android:gravity="center"
+	        android:textSize="18sp"
+	        android:layout_below="@id/tv_celphone"
+	        android:textColor="@color/title_bar_text_color"
+	        android:background="@drawable/order_confirm_edit_bg_left"
+	        />
+	    
+	    <EditText 
+	        android:id="@+id/et_rail_num"
+	        android:layout_width="276dp"
+	        android:layout_height="50dp"
+	        android:background="@drawable/order_confirm_edit_bg_right"
+	        android:layout_toRightOf="@id/tv_rail_num"
+	        android:layout_alignTop="@id/tv_rail_num"
+	        android:singleLine="true"
+	        android:textSize="18sp"
+	        android:hint="请输入您所在车厢"
+	        android:maxLength="3"
+	        android:paddingLeft="10dp"
+	        />
+	    
+	    <ImageView 
+	        android:id="@+id/iv_rail_error"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/icon_input_error"
+	        android:layout_marginRight="6dp"
+	        android:layout_alignTop="@id/et_rail_num"
+	        android:layout_alignBottom="@id/et_rail_num"
+	        android:layout_alignRight="@id/et_rail_num"
+	        android:visibility="gone"
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/tv_site_num"
+	        android:layout_width="61dp"
+	        android:layout_height="50dp"
+	        android:layout_below="@id/tv_rail_num"
+	        android:text="座位"
+	        android:gravity="center"
+	        android:textSize="18sp"
+	        android:textColor="@color/title_bar_text_color"
+	        android:background="@drawable/order_confirm_edit_bg_left"
+	        />
+	    
+	    <EditText 
+	        android:id="@+id/et_site_num"
+	        android:layout_width="276dp"
+	        android:layout_height="50dp"
+	        android:background="@drawable/order_confirm_edit_bg_right"
+	        android:layout_toRightOf="@id/tv_site_num"
+	        android:layout_alignTop="@id/tv_site_num"
+	        android:singleLine="true"
+	        android:textSize="18sp"
+	        android:hint="请输入您的座位号"
+	        android:maxLength="3"
+	        android:paddingLeft="10dp"
+	        />
+	    
+	    <ImageView 
+	        android:id="@+id/iv_site_error"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/icon_input_error"
+	        android:layout_marginRight="6dp"
+	        android:layout_alignTop="@id/et_site_num"
+	        android:layout_alignBottom="@id/et_site_num"
+	        android:layout_alignRight="@id/et_site_num"
+	        android:visibility="gone"
+	        />
+	    
+     </RelativeLayout>
+     
+     <RadioGroup 
+         android:id="@+id/rg_eat_position"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/rl_user_info"
+         android:orientation="horizontal"
+         android:layout_marginLeft="11dp"
+         android:layout_marginTop="15dp"
+         android:visibility="gone"
+         >
+	     
+         <RadioButton 
+             android:id="@+id/rb_car"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@null"
+             android:button="@null"
+             android:drawableLeft="@drawable/btn_radio"
+             android:text="餐车食用"
+             android:drawablePadding="5dp"
+             android:textColor="@color/single_radio_text_color"
+             />
+         
+         <RadioButton 
+             android:id="@+id/rb_site"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@null"
+             android:button="@null"
+             android:drawableLeft="@drawable/btn_radio"
+             android:layout_marginLeft="21dp"
+             android:text="座位食用"
+             android:drawablePadding="5dp"
+             android:checked="true"
+             android:textColor="@color/single_radio_text_color"
+             />
+         
+     </RadioGroup>
+     
+     <View 
+        android:id="@+id/view_site_line"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/list_divider_color"
+        android:layout_below="@id/rg_eat_position"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        />
+     
+     <RelativeLayout 
+         android:id="@+id/rl_site_num"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/view_site_line"
+         android:layout_marginTop="15dp"
+         android:visibility="gone"
+         >
+         
+         <TextView 
+             android:id="@+id/tv_site_num_label"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="用餐人数"
+             android:includeFontPadding="false"
+             android:layout_marginLeft="6dp"
+             android:textColor="@color/title_bar_text_color"
+             android:textSize="16.5sp"
+             android:layout_centerVertical="true"
+             />
+         
+         <TextView 
+             android:id="@+id/tv_not_use"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:focusable="true"
+			 android:focusableInTouchMode="true"
+             />
+         
+         <ImageView 
+             android:id="@+id/iv_site_num_plus"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/btn_add_one"
+             android:layout_alignParentRight="true"
+             android:layout_marginRight="6dp"
+             />
+         
+         <ImageView 
+             android:id="@+id/iv_site_num_minus"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/btn_minus_one"
+             android:layout_toLeftOf="@id/iv_site_num_plus"
+             />
+         
+         <EditText 
+             android:id="@+id/et_site_count"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:singleLine="true"
+             android:maxLength="2"
+             android:inputType="number"
+             android:gravity="center"
+             android:hint="0"
+             android:textColor="@color/order_good_add_color"
+             android:background="@drawable/input_box_page"
+             android:layout_toLeftOf="@id/iv_site_num_minus"
+             android:layout_marginRight="50dp"
+             android:paddingLeft="5dp"
+             />
+         
+         <TextView 
+             android:id="@+id/tv_site_num_num_lable"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:includeFontPadding="true"
+             android:text="人"
+             android:textColor="@color/title_bar_text_color"
+             android:textSize="16.5sp"
+             android:layout_toLeftOf="@id/iv_site_num_minus"
+             android:layout_marginRight="32dp"
+             android:layout_centerVertical="true"
+             />
+         
+     </RelativeLayout>
+     
+     
+     <View 
+        android:id="@+id/view_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/rl_site_num"
+        android:background="@color/list_divider_color"
+        android:layout_marginTop="15dp"
+        />
+	
+
+</RelativeLayout>

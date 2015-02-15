@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_all"
+    android:background="@color/white"
+    android:layout_width="fill_parent"
+    android:layout_height="75dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:gravity="center_vertical" 
+    >
+            <ImageView
+            android:id="@+id/iv_portrait"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" 
+            android:src="@drawable/moren_touxiang"/>"
+            
+             <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/iv_portrait"
+            android:text="LookLook团队"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_max" 
+            android:layout_marginRight="50dp"
+            android:singleLine="true"
+        	android:ellipsize="end"/>
+ 
+        <ImageView
+            android:id="@+id/iv_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/xuanzhong_gou" />
+
+
+
+       
+
+</RelativeLayout>

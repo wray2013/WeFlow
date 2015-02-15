@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_rl"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:paddingBottom="10dp" >
+
+    <ImageView
+        android:id="@+id/circle_icon_imageview"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="10dp"/>
+
+    <!-- </FrameLayout> -->
+
+    <TextView
+        android:id="@+id/circle_item_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/circle_icon_imageview"
+        android:text="附近"
+        android:textColor="#7b7b7b"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:id="@+id/item_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/circle_item_title_textview"
+        android:layout_below="@id/circle_item_title_textview"
+        android:layout_marginTop="6dp" >
+
+        <FrameLayout
+            android:id="@+id/viewpager_fl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:visibility="visible" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/tabcontent_vp"
+                android:layout_width="wrap_content"
+                android:layout_height="152dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+				android:paddingLeft="1dp"
+                android:background="@drawable/tuijianfujin_kuang" />
+
+            <com.cmmobi.looklook.common.view.ViewPagerDigit
+                android:id="@+id/dot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal" />
+        </FrameLayout>
+
+        <include layout="@layout/list_item_friends_circle_diary" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activites_clock_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/circle_icon_imageview"
+        android:layout_alignRight="@id/circle_icon_imageview"
+        android:layout_below="@id/item_content_rl"
+        android:layout_marginTop="10dp"
+        android:gravity="center" >
+
+        <com.cmmobi.looklook.common.view.ClockView
+            android:id="@+id/circle_item_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/circle_item_time_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/activites_clock_rl"
+        android:layout_alignTop="@id/activites_clock_rl"
+        android:layout_toRightOf="@id/activites_clock_rl"
+        android:gravity="center_vertical"
+        android:text="2012-02-03 12:20"
+        android:textColor="#7f7f7f"
+        android:textSize="10sp" />
+
+    <ImageView
+        android:id="@+id/circle_item_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/activites_clock_rl"
+        android:layout_alignLeft="@id/circle_icon_imageview"
+        android:layout_alignRight="@id/circle_icon_imageview"
+        android:layout_marginBottom="5dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/btn_activity_friends_zan" />
+
+
+    <ImageView
+        android:id="@+id/friends_pin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:layout_alignBottom="@id/circle_item_time_textview"
+        android:layout_alignTop="@id/circle_item_time_textview"
+        android:layout_marginRight="3dp"
+        android:layout_toRightOf="@id/circle_item_time_textview"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/friends_pin" />
+    <TextView
+        android:id="@+id/local_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/friends_pin"
+        android:layout_alignTop="@id/friends_pin"
+        android:layout_alignBottom="@id/friends_pin"
+        android:gravity="center_vertical"
+        android:focusable="false"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="武汉市 汉阳区 "
+        android:textColor="#7f7f7f"
+        android:textSize="10sp" />
+
+</RelativeLayout>

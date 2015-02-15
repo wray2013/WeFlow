@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+    
+    <RelativeLayout 
+        android:id="@+id/rl_recommendation_img"
+        android:layout_width="315dp"
+        android:layout_height="177dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="6dp"
+        >
+        <ImageView 
+            android:id="@+id/iv_recommendation_img"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
+        
+        <!-- <com.cmmobi.railwifi.view.TagTextView  
+            android:id="@+id/tv_recommendation_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignLeft="@id/iv_recommendation_img"
+            android:layout_alignTop="@id/iv_recommendation_img"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="1dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:paddingLeft="12dp"
+            android:paddingRight="30dp"
+            /> -->
+        
+        <TextView
+	        android:id="@+id/tv_recommendation_tag"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@id/iv_recommendation_img"
+            android:layout_alignTop="@id/iv_recommendation_img"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="1dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+	        android:background="@drawable/bg_tag_color_a"
+	        android:textColor="@color/white"
+	        android:textStyle="italic"
+	        android:singleLine="true"
+	        android:shadowColor="#80000000"
+	        android:shadowDx="2"
+	        android:shadowDy="2"
+	        android:shadowRadius="1"
+	        android:paddingLeft="6dp"
+	        />
+    </RelativeLayout>
+    
+    <TextView 
+        android:id="@+id/tv_recommendation_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:layout_below="@id/rl_recommendation_img"
+        android:layout_alignLeft="@id/rl_recommendation_img"
+        android:layout_alignRight="@id/rl_recommendation_img"
+        android:layout_marginTop="6dp"
+        android:includeFontPadding="false"
+        android:textColor="@color/title_bar_text_color"
+        android:textSize="14sp"
+        />
+    
+    <View 
+        android:id="@+id/view_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_recommendation_intro"
+        android:layout_alignLeft="@id/rl_recommendation_img"
+        android:layout_alignRight="@id/rl_recommendation_img"
+        android:layout_marginTop="12dp"
+        android:background="#a1a1a1"
+        android:visibility="invisible"
+        />
+    
+    <!-- <RelativeLayout 
+        android:id="@+id/rl_left"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_recommendation_intro"
+        android:layout_toLeftOf="@id/tv_recommendation_intro"
+        >
+	    <View 
+	        android:id="@+id/line_left"
+	        android:layout_width="1.5dp"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:background="#c5c5c5"
+	        />
+    </RelativeLayout> -->
+
+</RelativeLayout>

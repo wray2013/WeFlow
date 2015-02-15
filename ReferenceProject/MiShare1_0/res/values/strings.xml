@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ios emoji -->
+    <string-array name="ios_emoji_array">
+        <item>23e283a3</item>
+        <item>30e283a3</item>
+        <item>31e283a3</item>
+        <item>32e283a3</item>
+        <item>33e283a3</item>
+        <item>34e283a3</item>
+        <item>35e283a3</item>
+        <item>36e283a3</item>
+        <item>37e283a3</item>
+        <item>38e283a3</item>
+        <item>39e283a3</item>
+        <item>c2a9</item>
+        <item>c2ae</item>
+        <item>e284a2</item>
+        <item>e28696</item>
+        <item>e28697</item>
+        <item>e28698</item>
+        <item>e28699</item>
+        <item>e28fa9</item>
+        <item>e28faa</item>
+        <item>e296b6</item>
+        <item>e29780</item>
+        <item>e29880</item>
+        <item>e29881</item>
+        <item>e2988e</item>
+        <item>e29894</item>
+        <item>e29895</item>
+        <item>e2989d</item>
+        <item>e298ba</item>
+        <item>e29988</item>
+        <item>e29989</item>
+        <item>e2998a</item>
+        <item>e2998b</item>
+        <item>e2998c</item>
+        <item>e2998d</item>
+        <item>e2998e</item>
+        <item>e2998f</item>
+        <item>e29990</item>
+        <item>e29991</item>
+        <item>e29992</item>
+        <item>e29993</item>
+        <item>e299a0</item>
+        <item>e299a3</item>
+        <item>e299a5</item>
+        <item>e299a6</item>
+        <item>e299a8</item>
+        <item>e299bf</item>
+        <item>e29aa0</item>
+        <item>e29aa1</item>
+        <item>e29abd</item>
+        <item>e29abe</item>
+        <item>e29b84</item>
+        <item>e29b8e</item>
+        <item>e29baa</item>
+        <item>e29bb2</item>
+        <item>e29bb3</item>
+        <item>e29bb5</item>
+        <item>e29bba</item>
+        <item>e29bbd</item>
+        <item>e29c82</item>
+        <item>e29c88</item>
+        <item>e29c8a</item>
+        <item>e29c8b</item>
+        <item>e29c8c</item>
+        <item>e29ca8</item>
+        <item>e29cb3</item>
+        <item>e29cb4</item>
+        <item>e29d8c</item>
+        <item>e29d94</item>
+        <item>e29d95</item>
+        <item>e29da4</item>
+        <item>e29ea1</item>
+        <item>e29ebf</item>
+        <item>e2ac85</item>
+        <item>e2ac86</item>
+        <item>e2ac87</item>
+        <item>e2ad95</item>
+        <item>e380bd</item>
+        <item>e38a97</item>
+        <item>e38a99</item>
+        <item>f09f8084</item>
+        <item>f09f85b0</item>
+        <item>f09f85b1</item>
+        <item>f09f85be</item>
+        <item>f09f85bf</item>
+        <item>f09f868e</item>
+        <item>f09f8692</item>
+        <item>f09f8694</item>
+        <item>f09f8695</item>
+        <item>f09f8697</item>
+        <item>f09f8699</item>
+        <item>f09f869a</item>
+        <item>f09f87a8f09f87b3</item>
+        <item>f09f87a9f09f87aa</item>
+        <item>f09f87aaf09f87b8</item>
+        <item>f09f87abf09f87b7</item>
+        <item>f09f87acf09f87a7</item>
+        <item>f09f87aef09f87b9</item>
+        <item>f09f87aff09f87b5</item>
+        <item>f09f87b0f09f87b7</item>
+        <item>f09f87b7f09f87ba</item>
+        <item>f09f87baf09f87b8</item>
+        <item>f09f8881</item>
+        <item>f09f8882</item>
+        <item>f09f889a</item>
+        <item>f09f88af</item>
+        <item>f09f88b3</item>
+        <item>f09f88b5</item>
+        <item>f09f88b6</item>
+        <item>f09f88b7</item>
+        <item>f09f88b8</item>
+        <item>f09f88b9</item>
+        <item>f09f88ba</item>
+        <item>f09f8990</item>
+        <item>f09f8c80</item>
+        <item>f09f8c82</item>
+        <item>f09f8c83</item>
+        <item>f09f8c84</item>
+        <item>f09f8c85</item>
+        <item>f09f8c86</item>
+        <item>f09f8c87</item>
+        <item>f09f8c88</item>
+        <item>f09f8c8a</item>
+        <item>f09f8c99</item>
+        <item>f09f8cb4</item>
+        <item>f09f8cb5</item>
+        <item>f09f8cb7</item>
+        <item>f09f8cb8</item>
+        <item>f09f8cb9</item>
+        <item>f09f8cba</item>
+        <item>f09f8cbb</item>
+        <item>f09f8cbe</item>
+        <item>f09f8d80</item>
+        <item>f09f8d81</item>
+        <item>f09f8d82</item>
+        <item>f09f8d83</item>
+        <item>f09f8d85</item>
+        <item>f09f8d86</item>
+        <item>f09f8d89</item>
+        <item>f09f8d8a</item>
+        <item>f09f8d8e</item>
+        <item>f09f8d93</item>
+        <item>f09f8d94</item>
+        <item>f09f8d98</item>
+        <item>f09f8d99</item>
+        <item>f09f8d9a</item>
+        <item>f09f8d9b</item>
+        <item>f09f8d9c</item>
+        <item>f09f8d9d</item>
+        <item>f09f8d9e</item>
+        <item>f09f8d9f</item>
+        <item>f09f8da1</item>
+        <item>f09f8da2</item>
+        <item>f09f8da3</item>
+        <item>f09f8da6</item>
+        <item>f09f8da7</item>
+        <item>f09f8db0</item>
+        <item>f09f8db1</item>
+        <item>f09f8db2</item>
+        <item>f09f8db3</item>
+        <item>f09f8db4</item>
+        <item>f09f8db5</item>
+        <item>f09f8db6</item>
+        <item>f09f8db8</item>
+        <item>f09f8dba</item>
+        <item>f09f8dbb</item>
+        <item>f09f8e80</item>
+        <item>f09f8e81</item>
+        <item>f09f8e82</item>
+        <item>f09f8e83</item>
+        <item>f09f8e84</item>
+        <item>f09f8e85</item>
+        <item>f09f8e86</item>
+        <item>f09f8e87</item>
+        <item>f09f8e88</item>
+        <item>f09f8e89</item>
+        <item>f09f8e8c</item>
+        <item>f09f8e8d</item>
+        <item>f09f8e8e</item>
+        <item>f09f8e8f</item>
+        <item>f09f8e90</item>
+        <item>f09f8e91</item>
+        <item>f09f8e92</item>
+        <item>f09f8e93</item>
+        <item>f09f8ea1</item>
+        <item>f09f8ea2</item>
+        <item>f09f8ea4</item>
+        <item>f09f8ea5</item>
+        <item>f09f8ea6</item>
+        <item>f09f8ea7</item>
+        <item>f09f8ea8</item>
+        <item>f09f8ea9</item>
+        <item>f09f8eab</item>
+        <item>f09f8eac</item>
+        <item>f09f8eaf</item>
+        <item>f09f8eb0</item>
+        <item>f09f8eb1</item>
+        <item>f09f8eb5</item>
+        <item>f09f8eb6</item>
+        <item>f09f8eb7</item>
+        <item>f09f8eb8</item>
+        <item>f09f8eba</item>
+        <item>f09f8ebe</item>
+        <item>f09f8ebf</item>
+        <item>f09f8f80</item>
+        <item>f09f8f81</item>
+        <item>f09f8f83</item>
+        <item>f09f8f84</item>
+        <item>f09f8f86</item>
+        <item>f09f8f88</item>
+        <item>f09f8f8a</item>
+        <item>f09f8fa0</item>
+        <item>f09f8fa2</item>
+        <item>f09f8fa3</item>
+        <item>f09f8fa5</item>
+        <item>f09f8fa6</item>
+        <item>f09f8fa7</item>
+        <item>f09f8fa8</item>
+        <item>f09f8fa9</item>
+        <item>f09f8faa</item>
+        <item>f09f8fab</item>
+        <item>f09f8fac</item>
+        <item>f09f8fad</item>
+        <item>f09f8faf</item>
+        <item>f09f8fb0</item>
+        <item>f09f908d</item>
+        <item>f09f908e</item>
+        <item>f09f9091</item>
+        <item>f09f9092</item>
+        <item>f09f9094</item>
+        <item>f09f9097</item>
+        <item>f09f9098</item>
+        <item>f09f9099</item>
+        <item>f09f909a</item>
+        <item>f09f909b</item>
+        <item>f09f909f</item>
+        <item>f09f90a0</item>
+        <item>f09f90a4</item>
+        <item>f09f90a6</item>
+        <item>f09f90a7</item>
+        <item>f09f90a8</item>
+        <item>f09f90ab</item>
+        <item>f09f90ac</item>
+        <item>f09f90ad</item>
+        <item>f09f90ae</item>
+        <item>f09f90af</item>
+        <item>f09f90b0</item>
+        <item>f09f90b1</item>
+        <item>f09f90b3</item>
+        <item>f09f90b4</item>
+        <item>f09f90b5</item>
+        <item>f09f90b6</item>
+        <item>f09f90b7</item>
+        <item>f09f90b8</item>
+        <item>f09f90b9</item>
+        <item>f09f90ba</item>
+        <item>f09f90bb</item>
+        <item>f09f9180</item>
+        <item>f09f9182</item>
+        <item>f09f9183</item>
+        <item>f09f9184</item>
+        <item>f09f9186</item>
+        <item>f09f9187</item>
+        <item>f09f9188</item>
+        <item>f09f9189</item>
+        <item>f09f918a</item>
+        <item>f09f918b</item>
+        <item>f09f918c</item>
+        <item>f09f918d</item>
+        <item>f09f918e</item>
+        <item>f09f918f</item>
+        <item>f09f9190</item>
+        <item>f09f9191</item>
+        <item>f09f9192</item>
+        <item>f09f9194</item>
+        <item>f09f9195</item>
+        <item>f09f9197</item>
+        <item>f09f9198</item>
+        <item>f09f9199</item>
+        <item>f09f919c</item>
+        <item>f09f919f</item>
+        <item>f09f91a0</item>
+        <item>f09f91a1</item>
+        <item>f09f91a2</item>
+        <item>f09f91a3</item>
+        <item>f09f91a6</item>
+        <item>f09f91a7</item>
+        <item>f09f91a8</item>
+        <item>f09f91a9</item>
+        <item>f09f91ab</item>
+        <item>f09f91ae</item>
+        <item>f09f91af</item>
+        <item>f09f91b1</item>
+        <item>f09f91b2</item>
+        <item>f09f91b3</item>
+        <item>f09f91b4</item>
+        <item>f09f91b5</item>
+        <item>f09f91b6</item>
+        <item>f09f91b7</item>
+        <item>f09f91b8</item>
+        <item>f09f91bb</item>
+        <item>f09f91bc</item>
+        <item>f09f91bd</item>
+        <item>f09f91be</item>
+        <item>f09f91bf</item>
+        <item>f09f9280</item>
+        <item>f09f9281</item>
+        <item>f09f9282</item>
+        <item>f09f9283</item>
+        <item>f09f9284</item>
+        <item>f09f9285</item>
+        <item>f09f9286</item>
+        <item>f09f9287</item>
+        <item>f09f9288</item>
+        <item>f09f9289</item>
+        <item>f09f928a</item>
+        <item>f09f928b</item>
+        <item>f09f928d</item>
+        <item>f09f928e</item>
+        <item>f09f928f</item>
+        <item>f09f9290</item>
+        <item>f09f9291</item>
+        <item>f09f9292</item>
+        <item>f09f9293</item>
+        <item>f09f9294</item>
+        <item>f09f9297</item>
+        <item>f09f9298</item>
+        <item>f09f9299</item>
+        <item>f09f929a</item>
+        <item>f09f929b</item>
+        <item>f09f929c</item>
+        <item>f09f929d</item>
+        <item>f09f929f</item>
+        <item>f09f92a1</item>
+        <item>f09f92a2</item>
+        <item>f09f92a3</item>
+        <item>f09f92a4</item>
+        <item>f09f92a6</item>
+        <item>f09f92a8</item>
+        <item>f09f92a9</item>
+        <item>f09f92aa</item>
+        <item>f09f92b0</item>
+        <item>f09f92b1</item>
+        <item>f09f92b9</item>
+        <item>f09f92ba</item>
+        <item>f09f92bb</item>
+        <item>f09f92bc</item>
+        <item>f09f92bd</item>
+        <item>f09f92bf</item>
+        <item>f09f9380</item>
+        <item>f09f9396</item>
+        <item>f09f939d</item>
+        <item>f09f93a0</item>
+        <item>f09f93a1</item>
+        <item>f09f93a2</item>
+        <item>f09f93a3</item>
+        <item>f09f93a9</item>
+        <item>f09f93ab</item>
+        <item>f09f93ae</item>
+        <item>f09f93b1</item>
+        <item>f09f93b2</item>
+        <item>f09f93b3</item>
+        <item>f09f93b4</item>
+        <item>f09f93b6</item>
+        <item>f09f93b7</item>
+        <item>f09f93ba</item>
+        <item>f09f93bb</item>
+        <item>f09f93bc</item>
+        <item>f09f948a</item>
+        <item>f09f948d</item>
+        <item>f09f9491</item>
+        <item>f09f9492</item>
+        <item>f09f9493</item>
+        <item>f09f9494</item>
+        <item>f09f949d</item>
+        <item>f09f949e</item>
+        <item>f09f94a5</item>
+        <item>f09f94a8</item>
+        <item>f09f94ab</item>
+        <item>f09f94af</item>
+        <item>f09f94b0</item>
+        <item>f09f94b1</item>
+        <item>f09f94b2</item>
+        <item>f09f94b3</item>
+        <item>f09f94b4</item>
+        <item>f09f9590</item>
+        <item>f09f9591</item>
+        <item>f09f9592</item>
+        <item>f09f9593</item>
+        <item>f09f9594</item>
+        <item>f09f9595</item>
+        <item>f09f9596</item>
+        <item>f09f9597</item>
+        <item>f09f9598</item>
+        <item>f09f9599</item>
+        <item>f09f959a</item>
+        <item>f09f959b</item>
+        <item>f09f97bb</item>
+        <item>f09f97bc</item>
+        <item>f09f97bd</item>
+        <item>f09f9881</item>
+        <item>f09f9882</item>
+        <item>f09f9883</item>
+        <item>f09f9884</item>
+        <item>f09f9889</item>
+        <item>f09f988a</item>
+        <item>f09f988c</item>
+        <item>f09f988d</item>
+        <item>f09f988f</item>
+        <item>f09f9892</item>
+        <item>f09f9893</item>
+        <item>f09f9894</item>
+        <item>f09f9896</item>
+        <item>f09f9898</item>
+        <item>f09f989a</item>
+        <item>f09f989c</item>
+        <item>f09f989d</item>
+        <item>f09f989e</item>
+        <item>f09f98a0</item>
+        <item>f09f98a1</item>
+        <item>f09f98a2</item>
+        <item>f09f98a3</item>
+        <item>f09f98a5</item>
+        <item>f09f98a8</item>
+        <item>f09f98aa</item>
+        <item>f09f98ad</item>
+        <item>f09f98b0</item>
+        <item>f09f98b1</item>
+        <item>f09f98b2</item>
+        <item>f09f98b3</item>
+        <item>f09f98b7</item>
+        <item>f09f9985</item>
+        <item>f09f9986</item>
+        <item>f09f9987</item>
+        <item>f09f998c</item>
+        <item>f09f998f</item>
+        <item>f09f9a80</item>
+        <item>f09f9a83</item>
+        <item>f09f9a84</item>
+        <item>f09f9a85</item>
+        <item>f09f9a87</item>
+        <item>f09f9a89</item>
+        <item>f09f9a8c</item>
+        <item>f09f9a8f</item>
+        <item>f09f9a91</item>
+        <item>f09f9a92</item>
+        <item>f09f9a93</item>
+        <item>f09f9a95</item>
+        <item>f09f9a97</item>
+        <item>f09f9a99</item>
+        <item>f09f9a9a</item>
+        <item>f09f9aa2</item>
+        <item>f09f9aa4</item>
+        <item>f09f9aa5</item>
+        <item>f09f9aa7</item>
+        <item>f09f9aac</item>
+        <item>f09f9aad</item>
+        <item>f09f9ab2</item>
+        <item>f09f9ab6</item>
+        <item>f09f9ab9</item>
+        <item>f09f9aba</item>
+        <item>f09f9abb</item>
+        <item>f09f9abc</item>
+        <item>f09f9abd</item>
+        <item>f09f9abe</item>
+        <item>f09f9b80</item>
+    </string-array>
+    <!-- xeditdialog -->
+    <string name="xeditdialog_hit">我是...</string>
+    <string name="xeditdialog_title">请输入验证信息</string>
+    
+    
+    <!-- other zone -->
+    <string name="otherzone_vsharenum">%1$s 条</string>
+    <string name="otherzone_bakname">备注名</string>
+    <string name="str_backname_modify">备注名修改</string>
+    <string name="str_backname_modify_hint">备注名称</string>
+    <string name="str_add_friend">加好友</string>
+    <string name="str_add_subscribe">订阅</string>
+    <string name="str_cancel_friend">删除好友</string>
+    <string name="str_cancel_subscribe">取消订阅</string>
+    <string name="other_zone_hint_1">他真的很懒什么都没写</string>
+    <string name="other_zone_hint_2">他今天没有想说的</string>
+    <string name="other_zone_hint_3">他已经去火星了</string>
+    
+    <!-- safebox -->
+    <string name="str_safebox">保险箱</string>
+    <string name="safebox_me">我</string>
+    <string name="safebox_vshare">微享</string>
+    
+    <!-- spacecover -->
+    <string name="str_spacecover_from_album">从手机相册选择</string>
+    <string name="str_spacecover">更换空间封面</string>
+    <string name="spacecover_from_camera">拍照</string>
+    <string name="spacecover_from_pic">从相册选择</string>
+    
+    <!-- tags choice -->
+    <string name="str_tagschoice_prompt">注：最多可选择3个标签</string>
+    <string name="str_tagschoice">标签</string>
+    <string name="str_tagschoice_save">保存</string>
+    
+    <!-- sliding menu -->
+    <string name="sliding_menu_des_homepage">首页</string>
+    <string name="sliding_menu_des_comment">评论</string>
+    <string name="sliding_menu_des_contact">通讯录</string>
+    <string name="sliding_menu_des_invite">邀请好友</string>
+    <string name="sliding_menu_des_collect">收藏</string>
+    <string name="sliding_menu_des_activity">活动</string>
+    <string name="sliding_menu_des_message">私信</string>
+    <string name="sliding_menu_des_safebox">保险箱</string>
+    <string name="sliding_menu_des_settings">设置</string>
+    <string name="sliding_menu_des_help">帮助</string>
+    
+    <!-- my zone -->
+    <string name="myzone_bundle_mobile_content">为了更好的保护您的内容\n建议您绑定手机号</string>
+    <string name="myzone_bundle_mobile_ok">立即绑定</string>
+    <string name="myzone_bundle_mobile_cancel">暂不绑定</string>
+    <string name="zonebase_zone">我</string>
+    <string name="zonebase_vshare">微享</string>
+    <string name="zonebase_friend">朋友</string>
+    <string name="zonebase_subscribe">订阅</string>
+    <string name="myzone_hint_1">是不是想说点什么?</string>
+    <string name="myzone_hint_2">美好的时光记下来</string>
+    <string name="myzone_hint_3">你是不是去火星了~~~~</string>
+    <string name="myzone_complete_userinfo">完善个人信息</string>
+    <string name="myzone_login">已有账号登录</string>
+    <string name="myzone_delete_diary">该内容将被彻底删除</string>
+    <string name="myzone_delete_diary_with_vshare">您所要删除的内容中有%1$s项正在上传到微享，如继续删除，上传中的内容将自动取消</string>
+    
+<!-- 3.1 -->
+	<!-- 编辑 -->
+	<string name="position_info_invisiable">位置信息不可见</string>
+	<string name="position_example">16℃/12℃\n河北省秦皇岛市</string>
+	<string name="add_tag">添加标签</string>
+	<string name="edit_media_tag">标签</string>
+	<string name="save">保存</string>
+	<string name="done">完成</string>
+	<string name="edit">编辑</string>
+	<string name="voicenote">语音便签</string>
+	<string name="photoclip">照片裁剪</string>
+	<string name="clipphoto">裁剪照片</string>
+	<string name="modifydescription">修改描述</string>
+	<string name="voice_change">变声处理:</string>
+	<string name="original_voice">原音</string>
+	<string name="soundtrack">配音</string>
+	<string name="original_pic">原图</string>
+	<string name="replace">覆盖</string>
+	<string name="save_as">另存为</string>
+	<string name="position">位置</string>
+	<string name="description">描述</string>
+	<string name="position_not_visiable">不显示位置</string>
+	<string name="edit_frequently_position">常用位置</string>
+	<string name="ask_save_change">是否保存编辑后的内容?</string>
+	
+	<!-- 编辑分享 -->
+	<string name="friend_visible">朋友可见</string>
+	<string name="create">生成</string>
+	<string name="cancel_save">不保存</string>
+	 
+	 <!-- 设置界面的标签 -->
+    <string name="setting">设置</string>
+    <string name="base_setting">基本设置</string>
+    <string name="sync_type">即拍即传设置</string>
+    <string name="sync_type_explain">视频拍摄过程中同时上传 ，节省上传时间</string>
+    <string name="contact_auto">自动接收手机通讯录好友邀请</string>
+    <string name="auto">自动</string>
+    <string name="manual">手动</string>
+    <string name="sync_type_wifi">仅WIFI下</string>
+    <string name="sync_type_any">任何网络</string>
+	<string name="account_bind">账号绑定</string>
+	<string name="phone_bind">手机号绑定</string>
+	<string name="mobile_bind">手机绑定</string>
+	<string name="input_phonenum">输入手机号</string>
+	<string name="phonenum_prefix">+86</string>
+	<string name="phone_bind_explain">通过手机号可以找到更多的朋友</string>
+	<string name="next_step">下一步</string>
+	<string name="input_check_no">输入验证码</string>
+	<string name="new_check_no_prefix">重新发送(</string>
+	<string name="time_90">90</string>
+	<string name="new_check_no_suffix">)</string>
+	<string name="not_bind">未绑定</string>
+	<string name="bind_tips">绑定的手机号是找回密码的唯一途径</string>
+	<string name="safe_explain">开启保险箱功能的时候建议绑定第二个手机号，以便找回保险箱密码</string>
+	<string name="email_bind">邮箱绑定</string>
+	<string name="email_prompt">输入邮箱地址</string>
+	<string name="email_bind_explain">通过邮箱地址可以找到更多的朋友</string>
+	<string name="send_email">发送验证邮件</string>
+	<string name="sina_weibo">新浪微博</string>
+	<string name="qq_no">QQ号码</string>
+	<string name="tencent_weibo">腾讯微博</string>
+	<string name="renren">人人网</string>
+	<string name="sina_bind">新浪微博</string>
+	<string name="tencent_bind">腾讯微博</string>
+	<string name="renren_bind">人人网</string>
+	<string name="account_set">账号设置</string>
+	<string name="personal_info">个人信息</string>
+	<string name="personal_account">您的微时光账号为: </string>
+	<string name="safe">保险箱设置</string>
+	<string name="setting_clean_cache">清理缓存</string>
+	<string name="clean_upload">清理本地未上传</string>
+	<string name="about_looklook">关于微时光</string>
+	<string name="exit">切换账号</string>
+	<string name="feedback">意见反馈</string>
+	<string name="help">帮助</string>
+	<string name="about_us">关于微时光</string>
+	<string name="app_name_info">微时光 android版</string>
+	<string name="app_version">版本      1.0.1</string>
+	<string name="app_info_0">微时光应用官方首页：</string>
+	<string name="app_info_1">http://download.looklook.cn/</string>
+	<string name="app_info_2">微享新浪官方微博：</string>
+	<string name="app_info_3"> \&#064;微享视频社交</string>
+	<string name="app_info_4">微享官方微信账号：</string>
+	<string name="app_info_5">looklook</string>
+	<string name="app_info_6">微时光用户交流qq群：</string>
+	<string name="app_info_7">105486020</string>
+	<string name="app_info_8">北京中传视讯科技有限公司</string>
+	<string name="app_info_9">www.cmmobi.com</string>
+    <string name="dialog_globe_loading">请稍等</string>
+
+    <string name="feedback_send">发送</string>
+
+    <!-- 个人信息页的标签 -->
+    <string name="single_complete">完成</string>
+    <string name="photo">头像</string>
+    <string name="camera">拍照</string>
+    <string name="local_pic">从相册中选择</string>
+    <string name="nickname">昵称</string>
+    <string name="nickname_modify">昵称修改</string>
+    <string name="input_nickname">输入昵称（ 不超过8个中文字符）</string>
+    <string name="nickname_num">20</string>
+    <string name="sex">性别</string>
+    <string name="sex_man">男</string>
+    <string name="sex_woman">女</string>
+    <string name="sex_modify">性别修改</string>
+    <string name="unknown">""</string>
+    <string name="secret">保密</string>
+    <string name="birthday">生日</string>
+    <string name="area">地区</string>
+    <string name="signature">个性签名</string>
+     <string name="input_signature">个性签名（不超过30个中文字符）</string>
+    <string name="signature_num">30</string>
+    
+    <!-- 隐私设置 -->
+    <string name="login_pwd">设置登录密码</string>
+    <string name="login_pwd_explain">手机邮箱登陆密码修改</string>
+    <string name="current_pwd">旧密码</string>
+    <string name="new_pwd">新密码</string>
+    <string name="repeat_new_pwd">重复密码</string>
+    <string name="gesture_pwd">保险箱</string>
+    <string name="gesture_pwd_explain">为保险箱创建一个解锁图案，他人在使用你的手机时无法看到</string>
+    <string name="to_create">立即创建</string>
+    <string name="create_gesture_pwd_prompt0">请输入手势密码</string>
+    <string name="create_gesture_pwd_prompt1">绘制解锁密码</string>
+    <string name="create_gesture_pwd_prompt2">请再次绘制解锁密码</string>
+    <string name="create_gesture_pwd_prompt3">忘记保险箱密码请与客服联系</string>
+    <string name="reset_geture_pwd"><u>重置手势密码</u></string>
+    <string name="cancel_safe_mode">注销保险箱</string>
+    <string name="bind_second_phone">绑定第二个保险箱手机号</string>
+    <string name="unbind_second_phone">解除第二个保险箱手机号</string>
+ 	<string name="cancel_safe_explain">如注销保险箱，保险箱里的内容将全部显示在空间页</string>
+    <string name="cancel">取消</string>
+    
+    
+    <!-- 微享 -->
+    <string name="vshare">微享</string>
+    <string name="vshare_group">微享空间</string>
+    <string name="vshare_detail">微享详情</string>
+    <string name="vshare_list_title">微享内容</string>
+    <string name="vshare_clear">清屏</string>
+    <string name="vshare_joinsafe">加入保险箱</string>
+    <item type="id" name="tag_first"></item>
+	<item type="id" name="tag_second"></item>
+	<item type="id" name="tag_third"></item>
+	<string name="new_vshare">和好友微享一下心里话</string>
+	<string name="other_zone_vshare">我们的微享</string>
+	<string name="other_zone_new">和TA微享一下</string>
+    
+    <!-- 分享记录 -->
+    <string name="sharetrace">分享记录</string>
+    <string name="share_cancle">取消分享</string>
+    
+    <!-- 邀请好友 -->
+    <string name="search_friend">搜索好友列表</string>
+    <string name="add_friend">微时光号/手机号</string>
+    <string name="share_friend">搜索微时光好友</string>
+    <string name="phone_friend">搜索手机通讯录</string>
+    <string name="search">搜索</string>
+    <string name="invite_recommendfriends">推荐好友</string>
+    <string name="invite_phonebook">手机通讯录</string>
+    <string name="invite_sina">新浪微博</string>
+    <string name="invite_tencent">腾讯微博</string>
+    <string name="invite_renren">人人网</string>
+    <string name="invite_alreadyin">已加入微享好友</string>
+    <string name="looklook_recommendfriends">微享推荐好友</string>
+    <string name="invite_phone">手机通讯录</string>
+    <string name="invite_phone_alreadyin">已加入微享</string>
+    <string name="invite_phone_notin">未加入微享</string>
+    <string name="invite_looklook_inside">搜索微享站内好友</string>
+    <string name="invite_sina_friends">新浪微博好友</string>
+    <string name="invite_search_sina_friends">搜索新浪微博好友</string>
+    <string name="invite">邀请</string>
+    <string name="invite_friends">邀请好友</string>
+    <string name="invite_send">发送</string>
+    <string name="invite_tencent_friends">腾讯微博好友</string>
+    <string name="invite_search_tencent_friends">搜索腾讯微博好友</string>
+    <string name="invite_renren_friends">人人网好友</string>
+    <string name="invite_search_renren_friends">搜索人人网好友</string>
+    <string name="not_found">无结果</string>
+
+    <!-- 通讯录 -->
+    <string name="contacts">通讯录</string>
+    <string name="contacts_list">好友列表</string>
+    <string name="contacts_friend">朋友</string>
+    <string name="contacts_attention">订阅</string>
+    <string name="contacts_fans">粉丝</string>
+    <string name="contacts_blacklist">黑名单</string>
+    <string name="contacts_gv">官方账号</string>
+    <string name="contacts_customer_service">客服</string>
+    <string name="contacts_request">好友请求</string>
+    <string name="contacts_request_content">申请成为您的好友</string>
+    <string name="contacts_clear">清空</string>
+    <string name="contacts_menu_addfriend">加为好友</string>
+    <string name="contacts_menu_attention">订阅</string>
+    <string name="contacts_menu_cancelattiontion">取消订阅</string>
+    <string name="contacts_sort_by_name">按用户名排序</string>
+    <string name="contacts_sort_by_time">按发布时间排序</string>
+    <string name="contacts_clear_unread">忽略未读</string>
+    <string name="contacts_new_friend">新好友</string>
+    <string name="phone_positive">允许</string>
+    <string name="phone_negative">不允许</string>
+    <string name="send">提交</string>
+    
+    <!-- 分享 -->
+    <string name="recent_contacts">最近联系人</string>
+    <string name="choose_contacts">给谁看</string>
+
+    <!-- 视频拍摄及音频录制界面 -->
+    <string name="none">无</string>
+    <string name="left_right_symmetry">左右折叠</string>
+    <string name="up_down_symmetry">上下折叠</string>
+    <!-- <string name="none">无</string> -->
+    <string name="ask_download_plugin">安装特效插件, 拥有绚丽效果!</string>
+    <string name="alert_low_storage_space">可用存储空间已小于100M, 请及时清理</string>
+    <string name="alert_no_sdcard">请您安装存储卡</string>
+    <string name="download">下载</string>
+    <string name="install">安装</string>
+    <string name="install_ok">安装完成</string>
+    <string name="clean_cache">清理缓存</string>
+    <string name="recording">正在拍摄, 无法切换</string>
+    <string name="cant_use_effect_when_recording">您未安装特效插件, 请在拍摄结束后再安装</string>
+    <string name="press_to_shooting">按住屏幕拍摄\n向左滑动可拍摄长视频</string>
+    <string name="press_to_continue_shooting">按住继续拍摄</string>
+    <string name="press_to_done_shooting">点击完成结束拍摄\n按住屏幕左滑拍摄长视频</string>
+    <string name="capture">拍照</string>
+    <string name="short_video">短视频</string>
+    <string name="long_video">长视频</string>
+    <string name="screen_shot">截屏</string>
+    <string name="pause_shoot">暂停</string>
+    <string name="continue_shoot">继续</string>
+    <string name="shoot_2_seconds_at_least">请至少拍摄2秒</string>
+    <string name="camera_error">摄像机故障, 请重启手机</string>
+    <string name="audio_record">录音</string>
+    <string name="audio_recording_canot_back">请先完成录音</string>
+    <string name="reference_line">网格</string>
+    <string name="gradienter">水平仪</string>
+    <string name="get_cover_error">封面错误</string>
+    <string name="stop_shooting_please">请先完成拍摄</string>
+    <string name="wait_for_auto_capture_stop_please">请等待连拍结束</string>
+    <string name="last_video_saved">刚刚拍摄的内容已保存</string>
+    <string name="again">再来一段</string>
+    <string name="re_snapshot">重拍</string>
+    <string name="use_this_photo">使用照片</string>
+    
+    <!-- 特效库下载 -->
+    <string name="server_error">服务器错误  </string>
+    <string name="network_error">网络错误</string>
+    
+<!-- 3.1 -->
+
+  <!-- old, will be delete -->
+    <string name="app_name">微时光</string>
+    <string name="toast">VideoShare</string>
+    <string name="video_edit">视频编辑</string>
+    <!-- <string name="save">保存</string> -->
+    <string name="ok">好的</string>
+  
+    <string name="cancel_shoot">取消拍摄</string>
+    <string name="cancel_record_audio">取消录音</string>
+    <string name="cancel_install">取消安装</string>
+    <string name="trans_code_cancel">转码已取消</string>
+    <string name="trans_code_ok">转码已成功</string>
+    <string name="menu_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="ptr_pull_to_refresh">Pull to refresh</string>
+    <string name="ptr_release_to_refresh">Release to refresh</string>
+    <string name="ptr_refreshing">Refreshing</string>
+    <string name="ptr_last_updated">Updated: %1$s</string>
+    <string name="str_activity_login_main_title">LookLook</string>
+    <string name="str_activity_login_main_sinalogin">新浪微博账号登录</string>
+    <string name="str_activity_login_main_tencentlogin">腾讯微博账号登录</string>
+    <string name="str_activity_login_main_renrenlogin">人人微博账号登录</string>
+    <string name="str_activity_login_main_looklooklogin">LookLook账号登录</string>
+    <string name="str_activity_login_main_try">试玩</string>
+    <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_release_label">松开即可更新…</string>
+    <string name="pull_to_refresh_refreshing_label">正在刷新\u2026</string>
+    <string name="pull_to_refresh_footer_release_label">释放加载数据</string>
+    <string name="pull_to_refresh_footer_pull_label">上拖加载更多</string>
+    <string name="pull_to_refresh_footer_refreshing_label">正在加载\u2026</string>
+    
+    <string name="no_more_date">已到最后一条记录</string>
+    <string name="loading_more_date">正在加载新内容</string>
+
+    <string-array name="activity_home_entry_main_entries">
+        <item>"主界面"</item>
+        <item>"评论"</item>
+        <item>"私信"</item>
+        <item>"关注"</item>
+        <item>"添加好友"</item>
+        <item>"发现-地图模式"</item>
+        <item>"@好友"</item>
+        <item>"选择活动"</item>
+        <item>"定位信息:GPS=1111.22,3333.11"</item>
+        <item>"标签"</item>
+        <item>"活动详情页"</item>
+        <item>"更换空间封面"</item>
+        <item>"粉丝"</item>
+        <item>"设置"</item>
+        <item>"注销用户"</item>
+        <item>"评论详情页"</item>
+        <item>"语音识别"</item>
+        <item>"图片编辑"</item>
+        <item>"视频编辑"</item>
+        <item>"他人主页"</item>
+        <item>"网络测试demo"</item>
+        <item>"音频编辑"</item>
+        <item>"详情"</item>
+        <item>"附近"</item>
+        <item>"观赏模式"</item>
+        <item>"xaudioRecoder"</item>
+        <item>"相册"</item>
+        <item>"视频播放测试"</item>
+    </string-array>
+    <string-array name="weibo_invite">
+        <item>邀请新浪微博好友</item>
+        <item>邀请腾讯微博好友</item>
+        <item>邀请人人网好友</item>
+    </string-array>
+    <string-array name="weibo_type">
+        <item>sina</item>
+        <item>tencent</item>
+        <item>renren</item>
+    </string-array>
+    <string-array name="sexy_select">
+        <item>男</item>
+        <item>女</item>
+        <item>保密</item>
+    </string-array>
+
+    <!-- 个性水印标签 -->
+    <string name="indivi_mark">个性水印</string>
+    <string name="write_mark">请输入水印</string>
+    <string name="str_activity_login_title">looklook账号登录</string>
+    <string name="str_activity_login_account">   账号</string>
+    <string name="str_activity_login_password">   密码</string>
+    <string name="str_activity_login_forget"><u>忘记密码?</u></string>
+    <string name="str_activity_login_main_reg">注册</string>
+    <string name="str_activity_login_main_login">登录</string>
+    <string name="str_activity_login_main_hint_account">请输入邮箱地址（4-30字符）</string>
+    <string name="str_activity_login_main_hint_password">密码</string>
+    <string name="invite_dialog_prefix">" 我用#looklook#记录生活，期待与你分享! 下载:http://download.looklook.cn/ (分享自"</string>
+    
+    <!-- 上传下载页面 -->
+    <string name="uploading">正在上传</string>
+    <string name="no_upload_task">没有上传任务</string>
+    <string name="downloading">正在下载</string>
+    <string name="no_download_task">没有下载任务</string>
+    <string name="network_task">网络任务</string>
+    <string name="network_task_startall">全部开始</string>
+    <string name="network_task_pauseall">全部暂停</string>
+    <string name="network_exception">网络异常</string>
+    <string name="prompt_network_alarm">还有任务还没上传完,建议打开looklook继续上传</string>
+	
+    <!-- View Tag Key -->
+    <string name="view_tag_key"></string>
+
+    <!-- 首页 -->
+    <string name="homepage_all_vedio">全部视频</string>
+    <string name="homepage_attention_vedio">关注视频</string>
+    <string name="homepage_my_vedio">我的视频</string>
+    <string name="homepage_attention_title">关注</string>
+    <string name="homepage_fans">粉丝</string>
+    <string name="homepage_my_title">我的</string>
+    <string name="homepage_checked_remove_num">已选中%1$s条内容</string>
+    <string name="homepage_my_album">我的相册</string>
+    <string name="homepage_my_interact">我的互动</string>
+    <string name="homepage_ta_album">个人相册</string>
+    <string name="homepage_ta_interact">Ta的互动</string>
+    <string name="homepage_my_map_mode">地图模式</string>
+    <string name="homepage_my_pubu_mode">瀑布流</string>
+    <string name="homepage_my_create_savebox">创建保险箱</string>
+    <string name="homepage_my_open_savebox">打开保险箱</string>
+    <string name="homepage_my_close_savebox">退出保险箱</string>
+    <string name="homepage_diary_unsync">未同步</string>
+    <string name="homepage_diary_shared">已分享</string>
+    <string name="homepage_diary_savebox">保险箱</string>
+    <string name="homepage_diary_tags">标签</string>
+    <string name="record_promt">长按麦克风录制语音描述</string>
+    <string name="has_new_comment">您有%1$s条新评论</string>
+    
+
+    <string-array name="homepage_filter_text">
+        <item>保险箱</item>
+        <item>已发布</item>
+        <item>未上传</item>
+        <item>标签</item>
+        <item>全部</item>
+    </string-array>
+
+    <!-- 图片编辑图片 -->
+    <string name="edit_photo_title">编辑</string>
+    <string name="edit_photo_cutup">裁剪</string>
+    <string name="edit_photo_effect">特效</string>
+    <string name="edit_photo_effect_default">正常</string>
+
+    <!-- 图片编辑详情 -->
+    <string name="edit_photo_detail_beautifysound">美化声音</string>
+    <string name="edit_photo_detail_position">位置</string>
+    <string name="edit_photo_detail_frequentlypos">常用地址</string>
+    <string name="edit_photo_detail_frequently_position">常用位置</string>
+    <string name="edit_photo_detail_defaultpos"></string>
+    <string name="edit_photo_detail_tag">标签</string>
+    <string name="edit_photo_detail_defaulttag">军事，政治，搞笑</string>
+    <string name="edit_photo_detail_duration">17″  </string>
+    <string name="edit_photo_detail_defaultdate">2013.5.7 17:13</string>
+    <string name="edit_media_tag_prompt">注: 最多可选三个标签</string>
+    <string name="edit_media_record_text">录点声音\n记录一下这个美好瞬间吧</string>
+    <string name="edit_media_record_hand_input">转为手工输入</string>
+    <string name="edit_media_record_distinguish">文字识别中...</string>
+
+    <!-- 视频编辑视频 -->
+    <string name="edit_media_cover">覆盖</string>
+    <string name="edit_media_saveas">另存为</string>
+    <string name="edit_video_montage">剪辑</string>
+    <string name="edit_video_soundtrack">配乐</string>
+    <string name="edit_video_frontcover">封面</string>
+    <string name="edit_video_montagetime">00:01-00:05</string>
+    <string name="only_selected_save">只有选中部分会被保存</string>
+    <string name="only_selected_delete">只有选中部分会被删除</string>
+    <string name="cutcp_one_frame_for_frontcover">截取一帧作为封面</string>
+    <string name="process_video_effect">视频处理中...</string>
+    <string name="process_audio_effect">音频处理中...</string>
+    <string name="process_long_record_effect">长录音处理中...</string>
+    <string name="process_short_record_effect">短录音处理中...</string>
+    <string name="edit_media_original_sound">原声</string>
+
+    
+    <!-- 标签 -->
+    <string-array name="activity_edit_media_tags">
+        <item>搞笑</item>
+        <item>宝宝</item>
+        <item>宠物</item>
+        <item>生活</item>
+        <item>自拍</item>
+        <item>美食</item>
+        <item>音乐</item>
+        <item>旅游</item>
+        <item>风景</item>
+        <item>社会</item>
+        <item>达人</item>
+        <item>体育</item>
+        <item>明星</item>
+        <item>娱乐</item>
+        <item>热点</item>
+        <item>其他</item>
+    </string-array>
+
+    <!-- 主页(其他人) -->
+    <string name="alter_remarkname">修改备注名称</string>
+    <string name="prompt_weather_error">当前位置没有天气！</string>
+    <string name="prompt_weather_nogps">请打开定位服务，并允许looklook使用定位服务</string>
+        
+    <!-- 朋友圈 -->
+    <string name="friends_contacts">通讯录</string>
+    <string name="friends_system_function">微享官方</string>
+    <string name="activies">活动</string>
+    <string name="newfriendstitle">新好友</string>
+    <string name="friendsstatus">好友动态</string>
+    
+	
+    <!-- 登录 -->
+    <string name="looklook_agreement"><u>looklook用户协议</u></string>
+    <string name="prompt_network_error">您的网络不给力呀！</string>
+
+    <!-- pull -->
+<!--     <string name="pull_to_refresh_pull_label">Pull to refresh…</string> -->
+<!--     <string name="pull_to_refresh_release_label">Release to refresh…</string> -->
+<!--     <string name="pull_to_refresh_refreshing_label">Loading…</string> -->
+
+<!--     Just use standard Pull Down String when pulling up. These can be set for languages which require it -->
+    <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
+    <string name="pull_to_refresh_from_bottom_release_label">@string/pull_to_refresh_release_label</string>
+    <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
+
+    <!-- 详情页 -->
+    <string name="str_activit_detail_putin_savebox">放置保险箱</string>
+    <string name="str_activit_detail_putoff_savebox">移出保险箱</string>
+    <string name="str_activit_detail_publish">发布</string>
+    <string name="str_activit_detail_cancel_publish">取消发布</string>
+    <string name="str_activit_detail_enshrine">收藏</string>
+    <string name="str_activit_detail_cancel_enshrine">取消收藏</string>
+    <string name="str_activit_detail_share">分享</string>
+    <string name="str_activit_detail_privateletter">私信</string>
+    <string name="str_activit_detail_diary_duplicate">副本</string>
+    
+  
+  
+    <string name="str_hqyzm">获取验证码</string>
+    <string name="str_cxfs">重新发送</string>
+    <string name="str_qr">确          认</string>
+    <string name="phone_invite">邀请</string>
+    
+    
+    <!-- 预览 分享相关 -->
+    <string name="diary_detail">详情</string>
+    <string name="diary_all_content">全文</string>
+    <string name="diary_hide_content">收起</string>
+    <string name="diary_favorite">收藏</string>
+    <string name="diary_comment_commit">发送</string>
+    <string name="diary_comment_more">更多</string>
+    <string name="diary_comment_reply">回复</string>
+    <string name="diary_comment_delete">删除</string>
+    <string name="diary_comment_cancel">取消</string>
+    
+    <string name="diary_status_open">公开</string>
+    <string name="diary_status_friend">朋友</string>
+    <string name="diary_status_private">私密</string>
+    
+    <string name="diary_delete">删除</string>
+    <string name="diary_modify">修改</string>
+    <string name="diary_update">上传</string>
+    <string name="diary_edit">编辑</string>
+    <string name="diary_cancel">取消</string>
+    
+    <string name="diary_edit_msg">信息编辑</string>
+    <string name="diary_edit_video">视频编辑</string>
+    <string name="diary_edit_effect">特效编辑</string>
+    <string name="diary_edit_music">配乐编辑</string>
+    <string name="diary_edit_tag">标签编辑</string>
+    <string name="diary_edit_position">位置编辑</string>
+    <string name="diary_edit_audio">音频编辑</string>
+    <string name="diary_edit_picture">图片编辑</string>
+    <string name="diary_edit_text">文本编辑</string>
+    
+    <string name="load_next">下一步</string>
+    <string name="load_finish">完成</string>
+    <string name="load_picture">相册</string>
+    <string name="load_audio">音乐</string>
+    <string name="load_max">最多只能导入9个内容</string>
+    <string name="load_min">请选择内容</string>
+    <string name="load_error">导入失败</string>
+    <string name="load_error_notexit">文件不存在</string>
+    
+    <string name="diary_share_lasttime">前</string>
+    <string name="minute">分钟</string>
+    <string name="hour">小时</string>
+    <string name="yesterday">昨天</string>
+    <string name="beforeyesterday">前天</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="diary_share">公开分享</string>
+    <string name="diary_praise_list">赞过的人</string>
+	<string name="share_error_isgroup">内容不符合分享条件</string>
+	<string name="share_error_max">最多只能分享9个内容</string>
+	<string name="share_error_user_max">最多只能分享给8个好友</string>
+	<string name="share_error_nofriend">最少选择一个好友</string>
+	<string name="share_error_nodiary">最少选择一篇日记</string>
+	<string name="share_error_time_capsure">胶囊开启时间必须在当前时间之后</string>
+	<string name="share_error_nowifi">目前是非wifi情况，分享此内容需要</string>
+	<string name="share_error_flow">流量</string>
+	<string name="share_friend_tips">谁可见（至少@一位好友，最多8位）</string>
+	<string name="time_capsule">时光胶囊</string>
+	<string name="burn_after_read">阅后即焚</string>
+    <string name="save_as_forever">永久保存</string>
+    
+    <string name="promt_iknow">知道了</string>
+    <string name="promt_later">稍后</string>
+    <string name="promt_immediately">立即查看</string>
+
+<!-- old, will be delete -->
+</resources>

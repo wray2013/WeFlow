@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="NewApi" severity="ignore" />
+    <issue id="Suspicious0dp">
+        <ignore path="res/layout/activity_shoot.xml" />
+    </issue>
+    <issue id="UnknownId" severity="ignore" />
+    <issue id="ValidFragment">
+        <ignore path="src/com/cmmobi/looklook/activity/DiaryPreviewActivity.java" />
+        <ignore path="src/com/cmmobi/looklook/fragment/FriendsContactsFragment.java" />
+    </issue>
+</lint>

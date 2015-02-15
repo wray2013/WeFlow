@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rl_time"
+        android:layout_alignLeft="@+id/iv_portrait"
+        android:layout_alignRight="@+id/iv_portrait"
+        android:layout_below="@+id/iv_portrait"
+        android:layout_marginTop="-10dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shijianzhou" />
+    </LinearLayout>
+
+    <com.cmmobi.looklook.common.web.WebImageView
+        android:id="@+id/iv_recent_portrait"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="10dp"
+        android:padding="4dp"
+        android:src="@drawable/head"
+        android:background="@drawable/touxiang_kuang_bai" />
+
+    <TextView
+        android:id="@+id/tv_recent_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@id/iv_recent_portrait"
+        android:textSize="13sp"
+        android:textColor="#A0A0A0"
+        android:text="joker_小丑" />
+
+    <LinearLayout
+        android:id="@+id/ll_diary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_recent_nickname"
+        android:layout_toRightOf="@id/iv_recent_portrait"
+        android:gravity="center_horizontal"
+        android:paddingRight="5dp" >
+
+        <include layout="@layout/activity_homepage_main_list_item_da" />
+    </LinearLayout>
+
+    <com.cmmobi.looklook.common.view.ClockView
+        android:id="@+id/rl_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/iv_recent_portrait"
+        android:layout_alignRight="@id/iv_recent_portrait"
+        android:layout_below="@id/ll_diary"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_recent_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/rl_time"
+        android:layout_alignTop="@id/rl_time"
+        android:layout_alignBottom="@id/rl_time"
+        android:layout_marginLeft="-10dp"
+        android:gravity="center_vertical"
+        android:textSize="9.5sp"
+        android:textColor="#7F7F7F"
+        android:text="2013-6-3 15:36" />
+	
+    <LinearLayout
+        android:id="@+id/ll_recent_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/rl_time"
+        android:layout_alignBottom="@id/rl_time"
+        android:gravity="center_vertical"
+        >
+        <ImageView
+            android:id="@+id/iv_pin"
+             android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" 
+        	android:src="@drawable/pin"
+        	android:layout_marginRight="2dp"
+            />
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" 
+        	android:textSize="9.5sp"
+        	android:textColor="#7F7F7F"
+        	android:layout_marginRight="5dp"
+            />
+    </LinearLayout>
+	<ImageView
+	    android:paddingTop="3dp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="5dp"
+	    android:scaleType="fitXY"
+	    android:layout_below="@id/tv_recent_time"
+	    android:layout_alignParentBottom="true"
+	    android:src="@drawable/xuankuang_line" 
+	    />
+</RelativeLayout>

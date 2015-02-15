@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<!-- 背景图 -->
+  <item
+    android:id="@+android:id/background"
+    android:drawable="@drawable/play_controller_volume_bg" />
+    <!--全部能量图  -->
+  <item
+    android:id="@+android:id/progress"
+    android:drawable="@drawable/play_controller_volume_progress" />
+</layer-list>
