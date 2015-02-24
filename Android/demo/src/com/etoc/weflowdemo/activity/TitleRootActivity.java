@@ -50,6 +50,7 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 	private RelativeLayout rlyTitle;
 	private FrameLayout rlyContent;
 	protected ImageButton leftButton;
+	protected Button tvLeftBtn;
 	protected Button rightButton;
 	protected ImageView ivRightButton;
 	protected TextView title;
@@ -71,13 +72,16 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 //		rlyTitle.setPadding(0, 0, paddingSize, 0);
 
 		
-		leftButton = (ImageButton)findViewById(R.id.btn_title_left);
-		leftButton.setPadding(paddingSize, 0, paddingSize, 0);
+		leftButton = (ImageButton)findViewById(R.id.ib_title_left);
+		leftButton.setPadding(paddingSize, 0, 0, 0);
+		tvLeftBtn = (Button) findViewById(R.id.btn_title_left_tv);
+		tvLeftBtn.setPadding(paddingSize, 0, paddingSize, 0);
 		rightButton = (Button)findViewById(R.id.btn_title_right);
 		ivRightButton = (ImageView)findViewById(R.id.iv_title_right);
 	
 		ViewUtils.setMarginRight(rightButton, 12);
 		ViewUtils.setMarginRight(ivRightButton, 12);
+		ViewUtils.setMarginLeft(tvLeftBtn, 12);
 		rightButton.setOnClickListener(this);
 		ivRightButton.setOnClickListener(this);
 		leftButton.setOnClickListener(this);
@@ -99,7 +103,7 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_title_left:
+		case R.id.ib_title_left:
 			this.finish();
 			break;
 		default:
@@ -311,6 +315,14 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 		rightButton.setText(s);
 		rightButton.setTextSize(DisplayUtil.textGetSizeSp(this, 33));
 		rightButton.setPadding(DisplayUtil.getSize(this, 20), DisplayUtil.getSize(this, 19), DisplayUtil.getSize(this, 19), DisplayUtil.getSize(this, 12));
+	}
+	
+	protected void setLeftButtonText(String s) {
+		hideLeftButton();
+		tvLeftBtn.setVisibility(View.VISIBLE);
+		tvLeftBtn.setBackgroundColor(Color.TRANSPARENT);
+		tvLeftBtn.setText(s);
+		tvLeftBtn.setTextSize(DisplayUtil.textGetSizeSp(this, 33));
 	}
 	
 	protected void setTitleBackground(int resId){

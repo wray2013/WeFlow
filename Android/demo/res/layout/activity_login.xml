@@ -44,7 +44,7 @@
             android:inputType="phone"
             android:background="@android:color/transparent"
             android:paddingLeft="15dp"
-            android:maxLength="13"
+            android:maxLength="11"
             android:singleLine="true"
             />
         

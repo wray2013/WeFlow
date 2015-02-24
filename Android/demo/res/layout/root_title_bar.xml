@@ -6,7 +6,7 @@
     >
 
     <ImageButton
-        android:id="@+id/btn_title_left"
+        android:id="@+id/ib_title_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_back"
@@ -14,6 +14,16 @@
         android:background="@android:color/transparent"
         android:layout_centerVertical="true"
         />
+    
+    <Button
+        android:id="@+id/btn_title_left_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:visibility="gone" />
     
 
     <TextView
@@ -45,7 +55,7 @@
         android:textColor="@color/white"
         android:visibility="visible" />
     
-        <ImageView
+   <ImageView
         android:id="@+id/iv_title_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
