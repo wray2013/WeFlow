@@ -1,4 +1,7 @@
-package com.etoc.weflowdemo;
+package com.etoc.weflowdemo.activity;
+
+import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.R.layout;
 
 import android.app.Activity;
 import android.os.Bundle;
