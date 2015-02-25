@@ -41,6 +41,12 @@
             android:screenOrientation="portrait"
             >
         </activity>
+        
+        <activity
+                android:name="com.etoc.weflowdemo.activity.AdDetailActivity"
+                android:screenOrientation="portrait"
+                android:theme="@android:style/Theme.NoTitleBar" >
+            </activity>
     </application>
 
 </manifest>

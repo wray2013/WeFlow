@@ -46,11 +46,12 @@
             android:layout_centerHorizontal="true"
             >
             
-            <TextView 
+            <com.etoc.weflowdemo.view.MagicTextView 
                 android:id="@+id/tv_flow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
+                android:gravity="center"
                 android:layout_centerHorizontal="true"
                 android:text="98"
                 android:textColor="@color/white"
@@ -90,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_yestory_precent"
             android:layout_marginTop="9dp"
-            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/tv_yestory_precent"
             android:includeFontPadding="false"
             android:text="昨日收益：43流量币"
             android:textColor="@color/white"
