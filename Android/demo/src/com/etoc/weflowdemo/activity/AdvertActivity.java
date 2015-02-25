@@ -3,8 +3,8 @@ package com.etoc.weflowdemo.activity;
 import android.os.Bundle;
 import android.os.Message;
 
-import com.etoc.view.autoscrollviewpager.AutoScrollViewPager;
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.view.autoscrollviewpager.AutoScrollViewPager;
 import com.viewpagerindicator.PageIndicator;
 
 public class AdvertActivity extends TitleRootActivity {

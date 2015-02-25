@@ -1,4 +1,4 @@
-package com.etoc.view.autoscrollviewpager;
+package com.etoc.weflowdemo.view.autoscrollviewpager;
 
 import java.lang.reflect.Field;
 

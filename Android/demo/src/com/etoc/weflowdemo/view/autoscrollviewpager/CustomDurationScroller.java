@@ -1,4 +1,4 @@
-package com.etoc.view.autoscrollviewpager;
+package com.etoc.weflowdemo.view.autoscrollviewpager;
 
 import android.content.Context;
 import android.view.animation.Interpolator;
