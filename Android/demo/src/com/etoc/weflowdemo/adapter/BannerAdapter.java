@@ -1,4 +1,4 @@
-package com.etoc.adapter;
+package com.etoc.weflowdemo.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.ViewGroup;
 
-import com.etoc.fragment.BannerFragment;
+import com.etoc.weflowdemo.fragment.BannerFragment;
 import com.imbryk.viewPager.LoopViewPager;
 
 public class BannerAdapter extends FragmentPagerAdapter {
