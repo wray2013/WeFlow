@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.activity.MainActivity;
-import com.etoc.weflowdemo.util.StringUtils;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -111,11 +110,14 @@ public class PromptDialog {
 	}
 	
 	public static void Alert(String content){
-		Alert(MainApplication.getAppInstance(),  content);
+		Alert(MainApplication.getAppInstance(),  content, null);
 	}
 	
+	public static void Alert(Class<?> cls, String content){
+		Alert(MainApplication.getAppInstance(),  content, cls);
+	}
 	
-	public static void Alert(Context context, String content){
+	public static void Alert(Context context, String content, Class<?> cls){
 		int mId = 0x12345678;
 		NotificationCompat.Builder mBuilder =
 		        new NotificationCompat.Builder(context)
@@ -124,7 +126,7 @@ public class PromptDialog {
 		        .setContentText(content)
 		        .setAutoCancel(true);
 		// Creates an explicit intent for an Activity in your app
-		Intent resultIntent = new Intent(context, MainActivity.class);
+		Intent resultIntent = new Intent(context, cls == null ? MainActivity.class : cls);
 
 		// The stack builder object will contain an artificial back stack for the
 		// started Activity.
@@ -133,7 +135,7 @@ public class PromptDialog {
 		TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
 		
 		// Adds the back stack for the Intent (but not the Intent itself)
-		stackBuilder.addParentStack(MainActivity.class);
+		stackBuilder.addParentStack(cls == null ? MainActivity.class : cls);
 		
 		// Adds the Intent that starts the Activity to the top of the stack
 		stackBuilder.addNextIntent(resultIntent);

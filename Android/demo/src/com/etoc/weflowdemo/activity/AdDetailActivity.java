@@ -99,10 +99,8 @@ public class AdDetailActivity extends TitleRootActivity {
 			ibPlay.setVisibility(View.GONE);
 //			vvAdvVideo.start();
 			break;
-		case R.id.ib_title_left:
-			super.onClick(v);
-			break;
 		}
+		super.onClick(v);
 	}
 	
 	@Override

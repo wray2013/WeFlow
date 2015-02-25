@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.dialog.PromptDialog;
+import com.etoc.weflowdemo.net.GsonResponseObject.loginResponse;
+import com.etoc.weflowdemo.net.GsonResponseObject.sendSMSResponse;
+import com.etoc.weflowdemo.net.Requester;
 import com.etoc.weflowdemo.util.StringUtils;
 import com.etoc.weflowdemo.util.TickDownHelper;
 
@@ -59,6 +62,32 @@ public class LoginActivity extends TitleRootActivity {
 			tvValidCode.setEnabled(true);
 			tvValidCode.setText("获取验证码");
 			break;
+			
+		case Requester.RESPONSE_TYPE_LOGIN:
+			loginResponse loginresponse = (loginResponse) msg.obj;
+			if(loginresponse != null) {
+				if(loginresponse.status == null || loginresponse.status.equals("0")) {
+					PromptDialog.Alert(LoginActivity.class, "登录成功");
+					finish();
+					startActivity(new Intent(this, HomePageActivity.class));
+				} else {
+					PromptDialog.Alert(LoginActivity.class, "登录失败");
+				}
+			}
+			PromptDialog.Alert(LoginActivity.class, "请求失败");
+			break;
+			
+		case Requester.RESPONSE_TYPE_SENDSMS:
+			sendSMSResponse smsresponse = (sendSMSResponse) msg.obj;
+			if(smsresponse != null) {
+				if(smsresponse.status == null || smsresponse.status.equals("0")) {
+					PromptDialog.Alert(LoginActivity.class, "短信发送成功");
+				} else {
+					PromptDialog.Alert(LoginActivity.class, "短信发送失败");
+				}
+			}
+			PromptDialog.Alert(LoginActivity.class, "请求失败");
+			break;
 		}
 		return false;
 	}
@@ -78,6 +107,7 @@ public class LoginActivity extends TitleRootActivity {
 			if (StringUtils.isEmpty(etPhone.getText().toString())) {
 				PromptDialog.Dialog(this, "温馨提示", "请填写手机号", "确定");
 			} else if (PromptDialog.checkPhoneNum(etPhone.getText().toString())) {
+				Requester.sendSMS(handler, etPhone.getText().toString());
 				hasGetValidCode = true;
 				tvValidCode.setEnabled(false);
 				tvValidCode.setText("重新发送(60)");
@@ -93,14 +123,24 @@ public class LoginActivity extends TitleRootActivity {
 			} else if (StringUtils.isEmpty(etValidCode.getText().toString())) {
 				PromptDialog.Dialog(this, "温馨提示", "请输入验证码", "确定");
 			} else {
-				finish();
-				startActivity(new Intent(this, HomePageActivity.class));
+				login();
+//				finish();
+//				startActivity(new Intent(this, HomePageActivity.class));
 			}
 			break;
 		}
 		super.onClick(v);
 	}
 
+	private void login() {
+		String tel = etPhone.getText().toString();
+		if(PromptDialog.checkPhoneNum(tel)) {
+			Requester.login(handler, tel, etValidCode.getText().toString());
+		} else {
+			PromptDialog.Dialog(this, "温馨提示", "手机号格式错误", "确定");
+		}
+	}
+	
 	@Override
 	public int subContentViewId() {
 		// TODO Auto-generated method stub
