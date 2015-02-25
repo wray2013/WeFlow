@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:fillViewport="true"
+    >
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        
+        <RelativeLayout 
+	        android:id="@+id/rl_view_pager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="169dp"
+	        >
+	        
+		    <com.etoc.view.autoscrollviewpager.AutoScrollViewPager
+		        android:id="@+id/vp_pager_service"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        />
+		    
+	        <com.viewpagerindicator.CirclePageIndicator
+		        android:id="@+id/indicator_service"
+		        android:padding="10dp"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"
+		        android:layout_centerHorizontal="true"
+		    	android:layout_alignParentBottom="true"
+		        style="@style/CirclePageIndicator"
+		        />
+	        
+	        <ImageView 
+	            android:id="@+id/iv_net_error"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:visibility="gone"
+	            />
+	        
+	    </RelativeLayout>
+        
+    </RelativeLayout>
+    
+
+</ScrollView>
