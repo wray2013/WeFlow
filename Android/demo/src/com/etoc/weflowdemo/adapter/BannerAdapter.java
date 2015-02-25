@@ -17,14 +17,14 @@ import com.imbryk.viewPager.LoopViewPager;
 public class BannerAdapter extends FragmentPagerAdapter {
 
 	private int mDrawable;
-	public BannerAdapter(FragmentManager fm,int drawable,List<String> list) {
+	public BannerAdapter(FragmentManager fm,int drawable,List<Integer> list) {
 		super(fm);
 		// TODO Auto-generated constructor stub
 		mDrawable = drawable;
 		playBillImageSites = list;
 	}
 
-	List<String> playBillImageSites = new ArrayList<String>();
+	List<Integer> playBillImageSites = new ArrayList<Integer>();
 	Activity act;
 	
 	@Override

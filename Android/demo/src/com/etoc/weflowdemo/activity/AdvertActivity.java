@@ -3,17 +3,22 @@ package com.etoc.weflowdemo.activity;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.activity.AdvertActivity.AdAdapter;
+import com.etoc.weflowdemo.adapter.BannerAdapter;
 import com.etoc.weflowdemo.util.DisplayUtil;
 import com.etoc.weflowdemo.util.ViewUtils;
 import com.etoc.weflowdemo.view.autoscrollviewpager.AutoScrollViewPager;
@@ -25,8 +30,10 @@ public class AdvertActivity extends TitleRootActivity {
 	private AutoScrollViewPager viewPager = null;
 	private PageIndicator mIndicator;
 	private GridView gvRecommentAd = null;
+	BannerAdapter bannerAdapter = null;
 	private AdAdapter adapter = null;
 	private PullToRefreshScrollView ptrScrollView = null;
+	ArrayList<Integer> imgIds = new ArrayList<Integer>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,15 @@ public class AdvertActivity extends TitleRootActivity {
         viewPager.setCycle(true);
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         mIndicator = (PageIndicator) findViewById(R.id.indicator_service);
+        int [] adRes = {R.drawable.banner_ad_1,R.drawable.banner_ad_2,R.drawable.banner_ad_3};
+        for (int i = 0;i < 3; i++) {
+        	imgIds.add(adRes[i]);
+        }
+        bannerAdapter = new BannerAdapter(getSupportFragmentManager(), 0, imgIds);
+        viewPager.setAdapter(bannerAdapter);
+        
+        mIndicator.setViewPager(viewPager);
+		mIndicator.notifyDataSetChanged();
         
         gvRecommentAd = (GridView) findViewById(R.id.gv_recomment_ad);
         ArrayList<AdInfo> infoList = new ArrayList<AdvertActivity.AdInfo>();
@@ -62,9 +78,42 @@ public class AdvertActivity extends TitleRootActivity {
         int gridHeight = getGridViewHeight(gvRecommentAd);
 		ViewUtils.setHeightPixel(gvRecommentAd, gridHeight);
 		
+		gvRecommentAd.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(AdvertActivity.this, AdDetailActivity.class);
+				startActivity(i);
+				
+			}
+		});
+		
+		findViewById(R.id.rl_newest_1).setOnClickListener(this);
+		findViewById(R.id.rl_newest_2).setOnClickListener(this);
+		findViewById(R.id.rl_newest_3).setOnClickListener(this);
+		
 		ptrScrollView = (PullToRefreshScrollView) findViewById(R.id.ptr_scroll_view);
 		ptrScrollView.setPullLabel("加载更多");
 		ptrScrollView.setReleaseLabel("松开加载更多");
+	}
+	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.rl_newest_1:
+		case R.id.rl_newest_2:
+		case R.id.rl_newest_3:
+			Intent i = new Intent(AdvertActivity.this, AdDetailActivity.class);
+			startActivity(i);
+			break;
+
+		default:
+			break;
+		}
+		super.onClick(v);
 	}
 	
 	private int getGridViewHeight(GridView gridView) {

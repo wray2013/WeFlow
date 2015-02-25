@@ -9,6 +9,7 @@
         android:id="@+id/iv_playbill"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:scaleType="fitXY"
         />
     
 </RelativeLayout>

@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.activity.AdDetailActivity;
 import com.etoc.weflowdemo.util.DisplayUtil;
 import com.etoc.weflowdemo.util.ViewUtils;
 import com.nostra13.universalimageloader.api.MyImageLoader;
@@ -36,7 +37,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 	private static final String KEY_NAME = "PlayBillFragment:name";
 	private static final String KEY_ID = "PlayBillFragment:id";
 	private static final String KEY_TYPE = "PlayBillFragment:type";
-	private String imageUrl = "";
+	private int imageId = 0;
 	MyImageLoader imageLoader = null;
 	DisplayImageOptions imageLoaderOptions = null;
 	ImageView imageView;
@@ -69,7 +70,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		
 		if (savedInstanceState != null) {
 			if (savedInstanceState.containsKey(KEY_URL)) {
-				imageUrl = savedInstanceState.getString(KEY_URL);
+				imageId = savedInstanceState.getInt(KEY_URL);
 			}
         }
 		
@@ -81,7 +82,6 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		// TODO Auto-generated method stub
 //		EventBus.getDefault().unregister(this);
 		Log.d("=AAA=","RailServiceBannerFragment onDestroy in");
-		ViewUtils.releasePicture(imageView);
 		super.onDestroy();
 	}
 	
@@ -90,21 +90,16 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 			ViewGroup container,  Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.item_view_pager, null);
-		view.setPadding(DisplayUtil.getSize(getActivity(), 2),0, 
-				DisplayUtil.getSize(getActivity(), 2), 0);
 		imageView = (ImageView)view.findViewById(R.id.iv_playbill);
 		
-		ViewUtils.setMarginTop(tvAmusement, 36);
-		ViewUtils.setHeight(tvAmusement, 100);
-		imageLoader.displayImage(imageUrl, imageView, imageLoaderOptions);
-		
+		imageView.setImageResource(imageId);
 		view.setOnClickListener(this);
 		return view;
 	}
 	
-	public static BannerFragment newInstance(String elem,int drawable) {
+	public static BannerFragment newInstance(Integer elem,int drawable) {
 		BannerFragment fragment = new BannerFragment();
-		fragment.imageUrl = elem;
+		fragment.imageId = elem;
 		fragment.mDrawable = drawable;
         return fragment;
     }
@@ -113,7 +108,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 	public void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
-		outState.putString(KEY_URL, imageUrl);
+		outState.putInt(KEY_URL, imageId);
 	}
 	
 	@Override
@@ -128,7 +123,9 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		// TODO Auto-generated method stub
 		
 		switch(v.getId()) {
-		case R.id.rl_item_view_pager:			
+		case R.id.rl_item_view_pager:	
+			Intent i = new Intent(getActivity(), AdDetailActivity.class);
+			startActivity(i);
 			break;
 		}
 	}
