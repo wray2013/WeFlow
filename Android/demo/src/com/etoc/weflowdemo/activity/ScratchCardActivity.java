@@ -92,6 +92,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 		int i = RandomUtils.getRandom(20);
 		if(i < 6) {
 			stvCard.setText(items[i]);
+		} else {
+			stvCard.setText("谢谢参与！");
 		}
 	}
 	
