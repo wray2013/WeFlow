@@ -3,4 +3,5 @@
     <color name="bg_title_gray">#031028</color>
     <color name="white">#ffffff</color>
     <color name="bg_gray">#f3f4f4</color>
+    <color name="bg_red">#e60012</color>
 </resources>
