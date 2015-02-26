@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:background="@drawable/demo_picture"
+    android:background="#f3f4f4"
     >
     
-    <!-- <RelativeLayout 
+    <RelativeLayout 
         android:id="@+id/rl_account_phone"
         android:layout_width="fill_parent"
         android:layout_height="56dp"
@@ -41,20 +41,112 @@
         
     </RelativeLayout>
     
-    <GridView
+    <!-- <GridView
         android:id="@+id/gv_plans"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:verticalSpacing="8dp"
     	android:horizontalSpacing="8dp"
-	     android:scrollbars="vertical"
-	     android:scrollbarStyle="insideOverlay"
-	     android:gravity="center" 
-	     android:layout_below="@id/view_line_recomment_ad_bottom"
-	     android:numColumns="2"
+    	android:layout_marginTop="8dp"
+	    android:scrollbars="vertical"
+	    android:scrollbarStyle="insideOverlay"
+	    android:gravity="center" 
+	    android:layout_below="@id/rl_account_phone"
+	    android:numColumns="4"
         >
-            
-        </GridView> -->
+    </GridView> -->
+    
+    
+    <RelativeLayout 
+        android:id="@+id/rl_pay_much"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/rl_account_phone"
+        >
+        
+        <TextView 
+            android:id="@+id/tv_pay_1"
+            android:layout_width="73dp"
+            android:layout_height="37dp"
+            android:background="#FFFFFF"
+            />
+        
+        <TextView 
+            android:id="@+id/tv_pay_2"
+            android:layout_width="73dp"
+            android:layout_height="37dp"
+            android:background="#FFFFFF"
+            android:layout_toRightOf="@id/tv_pay_1"
+            android:layout_marginLeft="17dp"
+            />
+        
+        <TextView 
+            android:id="@+id/tv_pay_3"
+            android:layout_width="73dp"
+            android:layout_height="37dp"
+            android:background="#FFFFFF"
+            android:layout_toRightOf="@id/tv_pay_2"
+            android:layout_marginLeft="17dp"
+            />
+        
+        <TextView 
+            android:id="@+id/tv_pay_4"
+            android:layout_width="73dp"
+            android:layout_height="37dp"
+            android:background="#FFFFFF"
+            android:layout_toRightOf="@id/tv_pay_3"
+            android:layout_marginLeft="17dp"
+            />
+        
+        <TextView 
+            android:id="@+id/tv_pay_5"
+            android:layout_width="73dp"
+            android:layout_height="37dp"
+            android:background="#FFFFFF"
+            android:layout_below="@id/tv_pay_1"
+            android:layout_marginTop="12dp"
+            />
+        
+        <TextView 
+            android:id="@+id/tv_pay_6"
+            android:layout_width="73dp"
+            android:layout_height="37dp"
+            android:background="#FFFFFF"
+            android:layout_toRightOf="@id/tv_pay_5"
+            android:layout_marginLeft="17dp"
+            android:layout_alignTop="@id/tv_pay_5"
+            />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_pay_info"
+        android:layout_width="fill_parent"
+        android:layout_height="114dp"
+        android:background="#ffffff"
+        android:layout_below="@id/rl_pay_much"
+        android:layout_marginTop="22dp"
+        >
+        
+    </RelativeLayout>
+    
+    <TextView 
+        android:id="@+id/tv_pay_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/rl_pay_info"
+        android:layout_marginTop="22.5dp"
+        android:layout_alignLeft="@id/rl_account_phone"
+        android:layout_alignRight="@id/rl_account_phone"
+        android:background="#DF201D"
+        android:text="换购"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:gravity="center"
+        />
     
 
 </RelativeLayout>
