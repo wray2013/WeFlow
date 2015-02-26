@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/demo_picture"
+    >
+    
+    <!-- <RelativeLayout 
+        android:id="@+id/rl_account_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:background="#ffffff"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        >
+        
+        <TextView 
+            android:id="@+id/tv_account_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="18627934685"
+            android:textColor="#e60012"
+            android:textSize="16sp"
+            />
+        
+        <TextView 
+            android:id="@+id/tv_account_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="账户绑定号码"
+            android:textColor="#adadad"
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            />
+        
+    </RelativeLayout>
+    
+    <GridView
+        android:id="@+id/gv_plans"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:verticalSpacing="8dp"
+    	android:horizontalSpacing="8dp"
+	     android:scrollbars="vertical"
+	     android:scrollbarStyle="insideOverlay"
+	     android:gravity="center" 
+	     android:layout_below="@id/view_line_recomment_ad_bottom"
+	     android:numColumns="2"
+        >
+            
+        </GridView> -->
+    
+
+</RelativeLayout>
