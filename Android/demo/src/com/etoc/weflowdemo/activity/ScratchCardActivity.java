@@ -2,6 +2,9 @@ package com.etoc.weflowdemo.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+
+import cn.trinea.android.common.util.RandomUtils;
 
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.util.DisplayUtil;
@@ -9,11 +12,13 @@ import com.etoc.weflowdemo.view.ScratchTextView;
 
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 public class ScratchCardActivity extends TitleRootActivity {
 
@@ -29,6 +34,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 	}
 	
 	public void initViews() {
+		Log.e("ScratchCardActivity", "initViews IN!");
 		setLeftButtonBackground(R.drawable.btn_back);
 		hideRightButton();
 		setTitleText("刮刮卡");
@@ -44,10 +50,13 @@ public class ScratchCardActivity extends TitleRootActivity {
 		stvCard.setLayoutParams(cardlp);
 		stvCard.initScratchCard(R.drawable.scratch_bg, 0, 25, 1f);
 		stvCard.setCompletePercent(45);
+		randomAward();
 		
 		gvAward = (GridView) findViewById(R.id.gv_award);
 		makeFakeData(gvAward);
 		
+		TextView hint = (TextView) findViewById(R.id.tv_flow_hint);
+		hint.setOnClickListener(this);
 	}
 	
 	private static String[] items = {
@@ -79,12 +88,24 @@ public class ScratchCardActivity extends TitleRootActivity {
 		gv.setAdapter(saImageItems);
 	}
 	
+	private void randomAward() {
+		int i = RandomUtils.getRandom(20);
+		if(i < 6) {
+			stvCard.setText(items[i]);
+		}
+	}
+	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.iv_cover:
+			randomAward();
+			stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
 			ivCover.setVisibility(View.GONE);
+			break;
+		case R.id.tv_flow_hint:
+			ivCover.setVisibility(View.VISIBLE);
 			break;
 		}
 		super.onClick(v);

@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -70,6 +71,28 @@ public class ScratchTextView extends TextView {
 			p = 100;
 		}
 		ScratchTextView.percent = p;
+	}
+	
+	public void resetScratchCard(final int bgDrawable, final int bgColor) {
+		clearCanvas();
+		if(bgDrawable != 0) {
+			Drawable drawable = getResources().getDrawable(bgDrawable);
+			Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
+			Paint p = new Paint();
+			mCanvas.drawBitmap(bm, 0, 0, p);
+		} else {
+			mCanvas.drawColor(bgColor);
+		}
+		isDraw = true;
+		isComplete = false;
+		invalidate();
+	}
+	
+	public void clearCanvas() {
+		Paint paint = new Paint();
+		paint.setXfermode(new PorterDuffXfermode(Mode.CLEAR));
+		mCanvas.drawPaint(paint);
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
 	}
 	
 	/**

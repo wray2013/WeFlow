@@ -18,7 +18,8 @@
         android:layout_below="@+id/iv_item_image"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:text="TextView01" >
+        android:text="TextView01"
+        android:textColor="@color/bg_title_gray">
     </TextView>
 
 </RelativeLayout>
