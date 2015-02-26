@@ -67,6 +67,7 @@ public class HomePageActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.rl_discover:
+			startActivity(new Intent(this, ScratchCardActivity.class));
 			break;
 		case R.id.rl_make_flow:
 			startActivity(new Intent(this, AdvertActivity.class));
