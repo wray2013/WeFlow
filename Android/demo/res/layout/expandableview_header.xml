@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <View
+        android:id="@+id/view_top_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#232D3E" />
+
+    <FrameLayout
+        android:id="@+id/view_expandable_headerlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_top_line"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/tv_phone_num"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:gravity="center"
+            android:text="您的账户：18627934685"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+</RelativeLayout>

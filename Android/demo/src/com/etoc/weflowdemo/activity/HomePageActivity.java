@@ -1,6 +1,8 @@
 package com.etoc.weflowdemo.activity;
 
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.view.ExpandableLayout;
+import com.etoc.weflowdemo.view.ExpandableLayout.ExpandListener;
 import com.etoc.weflowdemo.view.MagicTextView;
 
 import android.content.Intent;
@@ -14,6 +16,7 @@ public class HomePageActivity extends TitleRootActivity {
 	private RelativeLayout useFlowLayout = null;
 	private RelativeLayout discoverLayout = null;
 	//UI Component
+	private ExpandableLayout rlExpand;
 	private MagicTextView mtvFlow;
 	private RelativeLayout rlMakeFlow;
 	@Override
@@ -30,11 +33,21 @@ public class HomePageActivity extends TitleRootActivity {
 		
 		useFlowLayout = (RelativeLayout) findViewById(R.id.rl_use_flow);
 		discoverLayout = (RelativeLayout) findViewById(R.id.rl_discover);
+		rlExpand = (ExpandableLayout) findViewById(R.id.exv_user_info);
+		rlExpand.setOnExpandListener(new ExpandListener() {
+			@Override
+			public void onExpandCompleted() {
+				// TODO Auto-generated method stub
+				if(mtvFlow != null) {
+					mtvFlow.showNumberWithAnimation(98.5f, 1000);
+				}
+			}
+		});
 		
 		useFlowLayout.setOnClickListener(this);
 		discoverLayout.setOnClickListener(this);
 		mtvFlow = (MagicTextView) findViewById(R.id.tv_flow);
-		mtvFlow.showNumberWithAnimation(98.5f, 1000);
+//		mtvFlow.showNumberWithAnimation(98.5f, 1000);
 		
 		rlMakeFlow = (RelativeLayout) findViewById(R.id.rl_make_flow);
 		rlMakeFlow.setOnClickListener(this);

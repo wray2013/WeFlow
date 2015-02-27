@@ -48,7 +48,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 		cardlp.width  = DisplayUtil.getSize(this, 688);
 		cardlp.height = DisplayUtil.getSize(this, 488);
 		stvCard.setLayoutParams(cardlp);
-		stvCard.initScratchCard(R.drawable.scratch_bg, 0, 25, 1f);
+		stvCard.initScratchCard(R.drawable.scratch_bg, 0, DisplayUtil.getSize(this, 50), 1f);
 		stvCard.setCompletePercent(45);
 		randomAward();
 		

@@ -1,340 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:expandable="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
-    <RelativeLayout 
-        android:id="@+id/rl_user_info"
-        android:layout_width="fill_parent"
-        android:layout_height="306dp"
-        android:background="@drawable/bg_user_info"
-        >
-        
-        <View android:id="@+id/view_top_line"
-	        android:layout_width="fill_parent"
-	        android:layout_height="1dp"
-	        android:background="#232D3E"
-	        />
-        <TextView 
-            android:id="@+id/tv_phone_num"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:text="您的账户：18627934685"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:layout_below="@id/view_top_line"
-            />
-        
-        <View android:id="@+id/view_user_line"
-	        android:layout_width="fill_parent"
-	        android:layout_height="1dp"
-	        android:background="#293446"
-	        android:layout_below="@id/tv_phone_num"
-	        android:layout_marginLeft="8dp"
-	        android:layout_marginRight="8dp"
-	        />
-        
-        <RelativeLayout 
-            android:id="@+id/rl_flow_account"
-            android:layout_width="106dp"
-            android:layout_height="106dp"
-            android:background="@drawable/liuliang"
-            android:layout_below="@id/view_user_line"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            >
-            
-            <com.etoc.weflowdemo.view.MagicTextView 
-                android:id="@+id/tv_flow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:text="98"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                />
-            
-            <TextView 
-                android:id="@+id/tv_flow_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"
-                android:text="流量币"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                />
-            
-        </RelativeLayout>
-        
-        <TextView 
-            android:id="@+id/tv_yestory_precent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rl_flow_account"
-            android:layout_marginTop="21dp"
-            android:layout_centerHorizontal="true"
-            android:includeFontPadding="false"
-            android:text="昨日年化率：4.75%"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            />
-        
-        <TextView 
-            android:id="@+id/tv_yestory_income"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_yestory_precent"
-            android:layout_marginTop="9dp"
-            android:layout_alignLeft="@+id/tv_yestory_precent"
-            android:includeFontPadding="false"
-            android:text="昨日收益：43流量币"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            />
-        
-        <View android:id="@+id/view_user_line_2"
-	        android:layout_width="fill_parent"
-	        android:layout_height="1dp"
-	        android:background="#2c384b"
-	        android:layout_below="@id/tv_yestory_income"
-	        android:layout_marginTop="14dp"
-	        android:layout_alignLeft="@id/view_user_line"
-	        android:layout_alignRight="@id/view_user_line"
-	        />
-        
-        <LinearLayout 
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@id/view_user_line_2"
-            android:orientation="horizontal"
-            >
-            
-            <LinearLayout 
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                >
-                
-                <TextView 
-                    android:id="@+id/tv_plans"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="3398元"
-                    android:textColor="@color/white"
-            		android:textSize="14sp"
-            		android:layout_marginTop="16dp"
-                    />
-                
-                <TextView 
-                    android:id="@+id/tv_plans_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="B套餐"
-                    android:textColor="@color/white"
-            		android:textSize="14sp"
-                    />
-                
-            </LinearLayout>
-            
-            <View 
-                android:layout_width="1dp"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="#283345"
-                />
-            
-            <LinearLayout 
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                >
-                
-                <TextView 
-                    android:id="@+id/tv_plans_in_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="套餐内剩余流量：100M"
-                    android:textColor="@color/white"
-            		android:textSize="12sp"
-            		android:layout_marginTop="16dp"
-                    />
-                
-                <TextView 
-                    android:id="@+id/tv_plans_out_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="套餐外剩余流量：100M"
-                    android:textColor="@color/white"
-            		android:textSize="12sp"
-            		android:layout_marginTop="6dp"
-                    />
-                
-            </LinearLayout>
-            
-        </LinearLayout>
-        
-    </RelativeLayout>
-    
-    <LinearLayout 
-        android:id="@+id/ll_functions"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:layout_below="@id/rl_user_info"
-        >
-        
-        <RelativeLayout 
-            android:id="@+id/rl_make_flow"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-            
-            <ImageView 
-                android:id="@+id/iv_make_flow"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:background="#ededed"
-                />
-            
-            <TextView 
-                android:id="@+id/tv_make_flow_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/iv_make_flow"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="20dp"
-                android:includeFontPadding="false"
-                android:text="赚流量币"
-                android:textSize="15sp"
-                android:textColor="#ff000000"
-                />
-            <TextView 
-                android:id="@+id/tv_make_flow_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_make_flow_title"
-                android:layout_alignLeft="@id/tv_make_flow_title"
-                android:includeFontPadding="false"
-                android:layout_marginTop="8dp"
-                android:text="看视频，下软件，玩游戏，轻松赚流量币"
-                android:textSize="12sp"
-                android:textColor="#adadad"
-                />
-            
-        </RelativeLayout>
-        
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="#f6f7f7"
-            />
-        
-        <RelativeLayout 
-            android:id="@+id/rl_use_flow"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-            <ImageView 
-                android:id="@+id/iv_use_flow"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:background="#ededed"
-                />
-            
-            <TextView 
-                android:id="@+id/tv_use_flow_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/iv_use_flow"
-                android:includeFontPadding="false"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="20dp"
-                android:text="花流量币"
-                android:textSize="15sp"
-                android:textColor="#ff000000"
-                />
-            <TextView 
-                android:id="@+id/tv_use_flow_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_use_flow_title"
-                android:layout_alignLeft="@id/tv_use_flow_title"
-                android:includeFontPadding="false"
-                android:layout_marginTop="8dp"
-                android:text="充话费，定流量包，流量币大有用途"
-                android:textSize="12sp"
-                android:textColor="#adadad"
-                />
-            
-        </RelativeLayout>
-        
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="#f6f7f7"
-            />
-        
-        <RelativeLayout 
-            android:id="@+id/rl_discover"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-            <ImageView 
-                android:id="@+id/iv_discover"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:background="#ededed"
-                />
-            
-            <TextView 
-                android:id="@+id/tv_discover_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/iv_discover"
-                android:includeFontPadding="false"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="20dp"
-                android:text="发现"
-                android:textSize="15sp"
-                android:textColor="#ff000000"
-                />
-            <TextView 
-                android:id="@+id/tv_discover_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_discover_title"
-                android:layout_alignLeft="@id/tv_discover_title"
-                android:includeFontPadding="false"
-                android:layout_marginTop="8dp"
-                android:text="刮刮卡，更多乐趣等你发现"
-                android:textSize="12sp"
-                android:textColor="#adadad"
-                />
-            
-        </RelativeLayout>
-        
-    </LinearLayout>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.etoc.weflowdemo.view.ExpandableLayout
+            android:id="@+id/exv_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_user_info"
+            expandable:el_contentLayout="@layout/expandableview_content"
+            expandable:el_headerLayout="@layout/expandableview_header" />
+
+        <LinearLayout
+            android:id="@+id/ll_functions"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exv_user_info"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_make_flow"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/iv_make_flow"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:background="#ededed" />
+
+                <TextView
+                    android:id="@+id/tv_make_flow_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/iv_make_flow"
+                    android:includeFontPadding="false"
+                    android:text="赚流量币"
+                    android:textColor="#ff000000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_make_flow_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_make_flow_title"
+                    android:layout_below="@id/tv_make_flow_title"
+                    android:layout_marginTop="8dp"
+                    android:includeFontPadding="false"
+                    android:text="看视频，下软件，玩游戏，轻松赚流量币"
+                    android:textColor="#adadad"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#f6f7f7" />
+
+            <RelativeLayout
+                android:id="@+id/rl_use_flow"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/iv_use_flow"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:background="#ededed" />
+
+                <TextView
+                    android:id="@+id/tv_use_flow_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/iv_use_flow"
+                    android:includeFontPadding="false"
+                    android:text="花流量币"
+                    android:textColor="#ff000000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_use_flow_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_use_flow_title"
+                    android:layout_below="@id/tv_use_flow_title"
+                    android:layout_marginTop="8dp"
+                    android:includeFontPadding="false"
+                    android:text="充话费，定流量包，流量币大有用途"
+                    android:textColor="#adadad"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#f6f7f7" />
+
+            <RelativeLayout
+                android:id="@+id/rl_discover"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/iv_discover"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:background="#ededed" />
+
+                <TextView
+                    android:id="@+id/tv_discover_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/iv_discover"
+                    android:includeFontPadding="false"
+                    android:text="发现"
+                    android:textColor="#ff000000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_discover_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_discover_title"
+                    android:layout_below="@id/tv_discover_title"
+                    android:layout_marginTop="8dp"
+                    android:includeFontPadding="false"
+                    android:text="刮刮卡，更多乐趣等你发现"
+                    android:textColor="#adadad"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>
