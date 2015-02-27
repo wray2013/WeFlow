@@ -27,16 +27,16 @@ import android.util.Log;
 
 
 public class Requester {
-	private static final int isDebug = 1;
+	private static final int isDebug = 0;
 	
 	///////////////////////////////////////Response code:
 	
 	//2.1.1 车上虚拟注册
 	public static final int RESPONSE_TYPE_SENDSMS = 0xffee2100;
-	public static final String RIA_INTERFACE_SENDSMS = "/rw/service/sendsms.html";
+	public static final String RIA_INTERFACE_SENDSMS = "/interface/service/getAuthCode";
 	
 	public static final int RESPONSE_TYPE_LOGIN = 0xffee2101;
-	public static final String RIA_INTERFACE_LOGIN = "/rw/service/login.html";
+	public static final String RIA_INTERFACE_LOGIN = "/interface/service/login";
 	
 	public static final int RESPONSE_TYPE_ACC_INFO = 0xffee2102;
 	public static final String RIA_INTERFACE_ACC_INFO = "/rw/service/getaccountinfo.html";
@@ -49,20 +49,21 @@ public class Requester {
 	
 	public static void sendSMS(Handler handler, String tel) {
 		sendSMSRequest request = new sendSMSRequest();
-		request.tel  = tel;
-		request.imei = IMEI;
-		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, sendSMSResponse.class);
+		request.phone  = tel;
+		request.channelid = "app";
+		request.transid = "" + System.currentTimeMillis();
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, commonResponse.class);
 		worker.execute(RIA_INTERFACE_SENDSMS, request);
 	}
 	
 	public static void login(Handler handler, String tel, String code) {
 		loginRequest request = new loginRequest();
-		request.tel  = tel;
-		request.code = code;
-		request.imei = IMEI;
-		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
+		request.authcode = code;
+		request.channelid = "app";
+		request.transid = "" + System.currentTimeMillis();
+		request.phone = tel;
+		request.weixinid = "Wang_JM";
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, commonResponse.class);
 		worker.execute(RIA_INTERFACE_LOGIN, request);
 	}
 	

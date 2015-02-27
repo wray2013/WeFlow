@@ -109,6 +109,30 @@ public class PromptDialog {
 	        return false; 
 	}
 	
+	private static XProcessDialog progressDialog;
+	public static void showProgressDialog(final Context content){
+		
+		dimissProgressDialog();
+		
+		try {
+			progressDialog=new XProcessDialog(content);
+			progressDialog.setCancelable(true);
+			progressDialog.setCanceledOnTouchOutside(false);
+			progressDialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static void dimissProgressDialog(){
+		if(progressDialog!=null)
+			progressDialog.dismiss();
+		
+		progressDialog = null;
+
+	}
+	
 	public static void Alert(String content){
 		Alert(MainApplication.getAppInstance(),  content, null);
 	}
