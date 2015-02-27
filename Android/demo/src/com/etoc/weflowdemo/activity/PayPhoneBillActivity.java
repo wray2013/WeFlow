@@ -10,7 +10,9 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.dialog.PromptDialog;
 import com.etoc.weflowdemo.util.DisplayUtil;
@@ -170,6 +172,7 @@ public class PayPhoneBillActivity extends TitleRootActivity {
 	}
 	
 	private float payFlow = 0;
+	private long lastRespNullTs = 0;
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -183,8 +186,14 @@ public class PayPhoneBillActivity extends TitleRootActivity {
 			changeStatus(v);
 			break;
 		case R.id.tv_pay_btn:
-			PromptDialog.Alert(PayPhoneBillActivity.class, "请求失败");
-			finish();
+			long curRespNullTs = System.currentTimeMillis();
+	        if(curRespNullTs - lastRespNullTs > 3000){
+	        	Toast.makeText(MainApplication.getAppInstance(), "请求失败", Toast.LENGTH_LONG).show();
+		        lastRespNullTs = curRespNullTs;
+	        }
+			
+//			PromptDialog.Alert(PayPhoneBillActivity.class, "请求失败");
+//			finish();
 		default:
 			break;
 		}

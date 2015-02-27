@@ -95,6 +95,8 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 		}
 		
 		handler = new Handler(this);
+		
+		overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out); 
 	}
 	
 
