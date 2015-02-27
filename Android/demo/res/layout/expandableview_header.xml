@@ -15,15 +15,28 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/view_top_line"
         android:layout_centerHorizontal="true" >
-
+        <RelativeLayout 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:gravity="center">
+		<TextView
+            android:id="@+id/tv_phone_num_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:gravity="center"
+            android:text="您的账户："
+            android:textColor="@color/white"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/tv_phone_num"
             android:layout_width="wrap_content"
             android:layout_height="44dp"
+            android:layout_toRightOf="@+id/tv_phone_num_hint"
             android:gravity="center"
-            android:text="您的账户：18627934685"
+            android:text="18627934685"
             android:textColor="@color/white"
             android:textSize="16sp" />
+        </RelativeLayout>
     </FrameLayout>
 
 </RelativeLayout>

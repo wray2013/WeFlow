@@ -69,7 +69,9 @@ public class LoginActivity extends TitleRootActivity {
 				if(loginresponse.status == null || loginresponse.status.equals("0")) {
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
 					finish();
-					startActivity(new Intent(this, HomePageActivity.class));
+					Intent homeIntent = new Intent(this,HomePageActivity.class);
+					homeIntent.putExtra("phone", etPhone.getText().toString());
+					startActivity(homeIntent);
 				} else {
 					PromptDialog.Alert(LoginActivity.class, "登录失败");
 				}
