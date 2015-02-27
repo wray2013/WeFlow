@@ -1,21 +1,26 @@
 package com.etoc.weflowdemo.activity;
 
-import com.etoc.weflowdemo.R;
-import com.etoc.weflowdemo.view.MagicTextView;
-
+import android.widget.TextView;
+import com.etoc.weflowdemo.view.ExpandableLayout;
+import com.etoc.weflowdemo.view.ExpandableLayout.ExpandListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.view.MagicTextView;
+
 public class HomePageActivity extends TitleRootActivity {
 
 	private RelativeLayout useFlowLayout = null;
 	private RelativeLayout discoverLayout = null;
 	//UI Component
+	private ExpandableLayout rlExpand;
 	private MagicTextView mtvFlow;
 	private RelativeLayout rlMakeFlow;
+	private TextView tvPhoneNum = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -30,14 +35,30 @@ public class HomePageActivity extends TitleRootActivity {
 		
 		useFlowLayout = (RelativeLayout) findViewById(R.id.rl_use_flow);
 		discoverLayout = (RelativeLayout) findViewById(R.id.rl_discover);
+		rlExpand = (ExpandableLayout) findViewById(R.id.exv_user_info);
+		rlExpand.setOnExpandListener(new ExpandListener() {
+			@Override
+			public void onExpandCompleted() {
+				// TODO Auto-generated method stub
+				if(mtvFlow != null) {
+					mtvFlow.showNumberWithAnimation(98.5f, 1000);
+				}
+			}
+		});
 		
 		useFlowLayout.setOnClickListener(this);
 		discoverLayout.setOnClickListener(this);
 		mtvFlow = (MagicTextView) findViewById(R.id.tv_flow);
-		mtvFlow.showNumberWithAnimation(98.5f, 1000);
+//		mtvFlow.showNumberWithAnimation(98.5f, 1000);
 		
 		rlMakeFlow = (RelativeLayout) findViewById(R.id.rl_make_flow);
 		rlMakeFlow.setOnClickListener(this);
+		
+		tvPhoneNum = (TextView) findViewById(R.id.tv_phone_num);
+		String phoneNum = getIntent().getStringExtra("phone");
+		if (phoneNum != null) {
+			tvPhoneNum.setText(phoneNum);
+		}
 	}
 	
 	@Override
@@ -73,7 +94,9 @@ public class HomePageActivity extends TitleRootActivity {
 			startActivity(new Intent(this, AdvertActivity.class));
 			break;
 		case R.id.rl_use_flow:
-			startActivity(new Intent(this,PayPhoneBillActivity.class));
+			Intent payIntent = new Intent(this,PayPhoneBillActivity.class);
+			payIntent.putExtra("phone", tvPhoneNum.getText().toString());
+			startActivity(payIntent);
 			break;
 
 		default:

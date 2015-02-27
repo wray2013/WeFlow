@@ -1,0 +1,1 @@
+@cscript /nologo //Job:tee "%~dp0toolkit.wsf" "%1"
