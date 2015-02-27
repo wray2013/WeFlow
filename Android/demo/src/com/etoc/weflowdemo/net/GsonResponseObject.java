@@ -21,7 +21,7 @@ public class GsonResponseObject {
 		public String message;// 
 		
 		public boolean isSucceed() {
-			return "0000".equals(code);
+			return "0000".equals(code) || "2009".equals(code);
 		}
 	}
 	
