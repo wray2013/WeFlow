@@ -46,6 +46,7 @@
             android:paddingLeft="15dp"
             android:maxLength="11"
             android:singleLine="true"
+            android:hint="填写手机号"
             />
         
         
@@ -64,6 +65,7 @@
         android:singleLine="true"
         android:inputType="number"
         android:paddingLeft="15dp"
+        android:hint="输入验证码"
         />
         
     

@@ -1,6 +1,7 @@
 package com.etoc.weflowdemo.view;
 
 
+import android.R;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -8,7 +9,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -69,13 +73,36 @@ public class ScratchTextView extends TextView {
 		ScratchTextView.percent = p;
 	}
 	
+	public void resetScratchCard(final int bgDrawable, final int bgColor) {
+		clearCanvas();
+		if(bgDrawable != 0) {
+			Drawable drawable = getResources().getDrawable(bgDrawable);
+			Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
+			Paint p = new Paint();
+			mCanvas.drawBitmap(bm, 0, 0, p);
+		} else {
+			mCanvas.drawColor(bgColor);
+		}
+		isDraw = true;
+		isComplete = false;
+		invalidate();
+	}
+	
+	public void clearCanvas() {
+		Paint paint = new Paint();
+		paint.setXfermode(new PorterDuffXfermode(Mode.CLEAR));
+		mCanvas.drawPaint(paint);
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
+	}
+	
 	/**
 	 * 初始化刮刮卡
+	 * @param bgDrawable 刮刮卡背景图
 	 * @param bgColor 刮刮卡背景色
 	 * @param paintStrokeWidth 擦除线宽
 	 * @param touchTolerance 画线容差
 	 */
-	public void initScratchCard(final int bgColor,final int paintStrokeWidth,float touchTolerance) {
+	public void initScratchCard(final int bgDrawable, final int bgColor,final int paintStrokeWidth,float touchTolerance) {
 		TOUCH_TOLERANCE = touchTolerance;
 		mPaint = new Paint();
 //		mPaint.setAlpha(0);
@@ -107,7 +134,15 @@ public class ScratchTextView extends TextView {
 		mBitmap = Bitmap.createBitmap(w, h, Config.ARGB_8888);
 		mCanvas = new Canvas(mBitmap);
 
-		mCanvas.drawColor(bgColor);
+		if(bgDrawable != 0) {
+			Drawable drawable = getResources().getDrawable(bgDrawable);
+			Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
+			Paint p = new Paint();
+			mCanvas.drawBitmap(bm, 0, 0, p);
+		} else {
+			mCanvas.drawColor(bgColor);
+		}
+		
 		isDraw = true;
 		isComplete = false;
 	}
@@ -213,7 +248,7 @@ public class ScratchTextView extends TextView {
 
 				if (percent > ScratchTextView.percent)
 				{
-					Log.e("TAG", "清除区域达到70%，下面自动清除");
+					Log.e("TAG", "清除区域达到" + ScratchTextView.percent + "%，下面自动清除");
 					isComplete = true;
 					postInvalidate();
 				}

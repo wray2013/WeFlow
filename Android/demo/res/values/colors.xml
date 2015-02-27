@@ -3,4 +3,7 @@
     <color name="bg_title_gray">#031028</color>
     <color name="white">#ffffff</color>
     <color name="bg_gray">#f3f4f4</color>
+    <color name="bg_red">#e60012</color>
+    <drawable name="gray">#f0f0f0</drawable>
+    <drawable name="white">#ffffff</drawable>
 </resources>
