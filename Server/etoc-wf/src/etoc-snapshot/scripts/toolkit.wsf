@@ -1,0 +1,14 @@
+<job id="tee">
+	<script language="JScript">
+		var fso = new ActiveXObject('Scripting.FileSystemObject');
+		var log = fso.CreateTextFile(WScript.Arguments(0));
+		var stdin = WScript.StdIn;
+		var stdout = WScript.StdOut;
+		while (!stdin.AtEndOfStream) {
+			 var str = stdin.ReadLine();
+			 stdout.WriteLine(str);
+			 log.WriteLine(str);
+		}
+		log.Close();
+	</script>
+</job>

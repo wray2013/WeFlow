@@ -1,0 +1,15 @@
+To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: http://gradle.org/docs/2.1/userguide/gradle_daemon.html.
+:mgt:clean UP-TO-DATE
+:api:compileJava UP-TO-DATE
+:api:processResources
+:api:classes
+:api:jar
+:mgt:compileJava UP-TO-DATE
+:mgt:processV3Resources
+:mgt:processResources
+:mgt:classes
+:mgt:war
+
+BUILD SUCCESSFUL
+
+Total time: 14.872 secs
