@@ -16,10 +16,13 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import com.etoc.weflowdemo.Config;
+import com.etoc.weflowdemo.event.RequestEvent;
 import com.etoc.weflowdemo.net.GsonRequestObject.*;
 import com.etoc.weflowdemo.net.GsonResponseObject.*;
 import com.etoc.weflowdemo.util.VMobileInfo;
 import com.google.gson.Gson;
+
+import de.greenrobot.event.EventBus;
 
 import android.os.Handler;
 import android.os.Message;
@@ -119,10 +122,8 @@ public class Requester {
 		
 
 		@Override
-		public void run(){
-			/*if(!RIA_INTERFACE_MOVIE_PLAY.equals(ria_command_id)){
-				EventBus.getDefault().post(RequestEvent.LOADING_START);
-			}*/
+		public void run() {
+			EventBus.getDefault().post(RequestEvent.LOADING_START);
 			String url = /*(use_dc?Config.SERVER_DC_URL:Config.SERVER_RIA_URL)*/Config.HOST + ria_command_id;
 			System.out.println("url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
 		    Log.v(TAG,"request url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
@@ -186,7 +187,7 @@ public class Requester {
 		    	}
 		    } else{
 		    	Log.v(TAG, "request url--->" + url  + "*******ret_entity_str:" + ret_entity_str);
-//		    	EventBus.getDefault().post(RequestEvent.RESP_NULL);
+		    	EventBus.getDefault().post(RequestEvent.RESP_NULL);
 
 		    }
 		    
@@ -206,9 +207,7 @@ public class Requester {
 				Log.e(TAG, "handler is null, data can not callback - ria_command_id:" + ria_command_id);
 			}
 			
-			/*if(!RIA_INTERFACE_MOVIE_PLAY.equals(ria_command_id)){
-				EventBus.getDefault().post(RequestEvent.LOADING_END);
-			}*/
+			EventBus.getDefault().post(RequestEvent.LOADING_END);
 		}
 
 	}

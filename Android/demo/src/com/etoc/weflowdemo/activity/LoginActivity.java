@@ -67,7 +67,6 @@ public class LoginActivity extends TitleRootActivity {
 			break;
 			
 		case Requester.RESPONSE_TYPE_LOGIN:
-			PromptDialog.dimissProgressDialog();
 			commonResponse loginresponse = (commonResponse) msg.obj;
 			if(loginresponse != null) {
 				if(loginresponse.isSucceed()) {
@@ -84,7 +83,6 @@ public class LoginActivity extends TitleRootActivity {
 			break;
 			
 		case Requester.RESPONSE_TYPE_SENDSMS:
-			PromptDialog.dimissProgressDialog();
 			commonResponse smsresponse = (commonResponse) msg.obj;
 			if(smsresponse != null) {
 				if(smsresponse.isSucceed()) {
@@ -114,7 +112,6 @@ public class LoginActivity extends TitleRootActivity {
 			if (StringUtils.isEmpty(etPhone.getText().toString())) {
 				PromptDialog.Dialog(this, "温馨提示", "请填写手机号", "确定");
 			} else if (PromptDialog.checkPhoneNum(etPhone.getText().toString())) {
-				PromptDialog.showProgressDialog(this);
 				Requester.sendSMS(handler, etPhone.getText().toString());
 				hasGetValidCode = true;
 				tvValidCode.setEnabled(false);
@@ -144,7 +141,6 @@ public class LoginActivity extends TitleRootActivity {
 		String tel = etPhone.getText().toString();
 		if(PromptDialog.checkPhoneNum(tel)) {
 			Requester.login(handler, tel, etValidCode.getText().toString());
-			PromptDialog.showProgressDialog(this);
 		} else {
 			PromptDialog.Dialog(this, "温馨提示", "手机号格式错误", "确定");
 		}

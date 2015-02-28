@@ -4,8 +4,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.dialog.PromptDialog;
+import com.etoc.weflowdemo.event.DialogEvent;
 import com.etoc.weflowdemo.util.DisplayUtil;
 import com.etoc.weflowdemo.util.ViewUtils;
+
+import de.greenrobot.event.EventBus;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -97,10 +101,9 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 		handler = new Handler(this);
 		
 		overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out); 
+		
+		EventBus.getDefault().register(this);
 	}
-	
-
-
 	
 	@Override
 	public void onClick(View v) {
@@ -172,6 +175,8 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 	@Override
 	protected void onDestroy(){
 		super.onDestroy();
+		
+		EventBus.getDefault().unregister(this);
 	}
 	
 	/**
@@ -347,6 +352,28 @@ public abstract class TitleRootActivity extends FragmentActivity implements OnCl
 		iv_title.setImageResource(resId);
 		title.setOnClickListener(this);
 		iv_title.setOnClickListener(this);
+	}
+	
+	public static void ProcessDialogEvent(final Context context, final DialogEvent evt, String className){
+		if(!isTopActivity(context, className)){
+			return;
+		}
+		switch(evt){
+		case LOADING_START:
+			PromptDialog.showProgressDialog(context);
+			break;
+		case LOADING_END:
+			PromptDialog.dimissProgressDialog();
+			break;
+		}
+	
+	}
+	
+	public void onEventMainThread(Object event) {
+		if(event instanceof DialogEvent){
+			DialogEvent evt  =(DialogEvent) event;
+			ProcessDialogEvent(this, evt, this.getClass().getName());
+		}
 	}
 	
 	
