@@ -34,6 +34,7 @@ public class ScratchTextView extends TextView {
 	private float mX,mY;
 	
 	private static int percent = 70;
+	private OnCompletedListener listener = null;
 
 	private boolean isDraw = false;
 	private boolean isComplete;
@@ -58,6 +59,14 @@ public class ScratchTextView extends TextView {
 //			mCanvas.drawPoint(mX, mY, mPaint);
 			canvas.drawBitmap(mBitmap, 0, 0, null);
 		}
+	}
+	
+	public void setOnCompletedListener(OnCompletedListener l) {
+		listener = l;
+	}
+	
+	public interface OnCompletedListener {
+		void OnCompleted();
 	}
 
 	/**
@@ -250,6 +259,9 @@ public class ScratchTextView extends TextView {
 				{
 					Log.e("TAG", "清除区域达到" + ScratchTextView.percent + "%，下面自动清除");
 					isComplete = true;
+					if(listener != null) {
+						listener.OnCompleted();
+					}
 					postInvalidate();
 				}
 			}

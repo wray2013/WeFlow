@@ -18,13 +18,23 @@
         	android:textSize="30sp"
         	android:textColor="@color/white"
         	android:gravity="center"
-        	android:background="@color/bg_red"/>
+        	android:background="@drawable/bg_scratchcard"/>
         <ImageView 
             android:id="@+id/iv_cover"
             android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:layout_centerHorizontal="true"
         	android:background="@drawable/scratchcard_cover"/>
+        <Button 
+            android:id="@+id/iv_start_lottery"
+            android:layout_width="match_parent"
+        	android:layout_height="30dp"
+        	android:layout_margin="35dp"
+        	android:layout_centerHorizontal="true"
+        	android:layout_alignBottom="@+id/stv_card"
+        	android:text="试试手气"
+        	android:textColor="@color/white"
+        	android:background="@color/bg_red"/>
         <TextView
             android:id="@+id/tv_flow_hint"
             android:layout_width="wrap_content"

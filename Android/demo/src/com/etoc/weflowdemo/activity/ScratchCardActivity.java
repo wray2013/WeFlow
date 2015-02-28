@@ -9,12 +9,14 @@ import cn.trinea.android.common.util.RandomUtils;
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.util.DisplayUtil;
 import com.etoc.weflowdemo.view.ScratchTextView;
+import com.etoc.weflowdemo.view.ScratchTextView.OnCompletedListener;
 
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
@@ -23,8 +25,11 @@ import android.widget.TextView;
 public class ScratchCardActivity extends TitleRootActivity {
 
 	private ImageView ivCover;
+	private Button btnStartLottery;
 	private ScratchTextView stvCard;
 	private GridView gvAward;
+	
+	private boolean isRetry = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +44,14 @@ public class ScratchCardActivity extends TitleRootActivity {
 		hideRightButton();
 		setTitleText("刮刮卡");
 		
+		btnStartLottery = (Button) findViewById(R.id.iv_start_lottery);
+		btnStartLottery.setVisibility(View.VISIBLE);
+		btnStartLottery.setOnClickListener(this);
+		btnStartLottery.setBackgroundResource(R.color.bg_red);
+		
 		ivCover = (ImageView) findViewById(R.id.iv_cover);
 		ivCover.setVisibility(View.VISIBLE);
-		ivCover.setOnClickListener(this);
+//		ivCover.setOnClickListener(this);
 		
 		stvCard = (ScratchTextView) findViewById(R.id.stv_card);
 		LayoutParams cardlp = stvCard.getLayoutParams();
@@ -50,13 +60,31 @@ public class ScratchCardActivity extends TitleRootActivity {
 		stvCard.setLayoutParams(cardlp);
 		stvCard.initScratchCard(R.drawable.scratch_bg, 0, DisplayUtil.getSize(this, 50), 1f);
 		stvCard.setCompletePercent(45);
+		stvCard.setOnCompletedListener(new OnCompletedListener() {
+			@Override
+			public void OnCompleted() {
+				handler.post(new Runnable() {
+					
+					@Override
+					public void run() {
+						ivCover.setVisibility(View.GONE);
+						btnStartLottery.setText("再试试");
+						btnStartLottery.setTextColor(getResources().getColor(R.color.bg_red));
+						btnStartLottery.setBackgroundResource(R.color.bg_yellow);
+						btnStartLottery.setVisibility(View.VISIBLE);
+//						randomAward();
+//						stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
+					}
+				});
+			}
+		});
 		randomAward();
 		
 		gvAward = (GridView) findViewById(R.id.gv_award);
 		makeFakeData(gvAward);
 		
-		TextView hint = (TextView) findViewById(R.id.tv_flow_hint);
-		hint.setOnClickListener(this);
+		/*TextView hint = (TextView) findViewById(R.id.tv_flow_hint);
+		hint.setOnClickListener(this);*/
 	}
 	
 	private static String[] items = {
@@ -93,7 +121,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 		if(i < 6) {
 			stvCard.setText(items[i]);
 		} else {
-			stvCard.setText("谢谢参与！");
+			stvCard.setText("谢谢参与");
 		}
 	}
 	
@@ -101,13 +129,21 @@ public class ScratchCardActivity extends TitleRootActivity {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
-		case R.id.iv_cover:
+		case R.id.iv_start_lottery:
 			randomAward();
 			stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
-			ivCover.setVisibility(View.GONE);
+			if(isRetry) {
+//				ivCover.setVisibility(View.VISIBLE);
+//				btnStartLottery.setVisibility(View.VISIBLE);
+			} else {
+				ivCover.setVisibility(View.GONE);
+			}
+			btnStartLottery.setVisibility(View.GONE);
+			isRetry = true;
 			break;
 		case R.id.tv_flow_hint:
 			ivCover.setVisibility(View.VISIBLE);
+			btnStartLottery.setVisibility(View.VISIBLE);
 			break;
 		}
 		super.onClick(v);

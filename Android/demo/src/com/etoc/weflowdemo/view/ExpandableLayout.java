@@ -94,7 +94,33 @@ public class ExpandableLayout extends RelativeLayout
         contentLayout.addView(contentView);
 //        contentLayout.setVisibility(GONE);
         initContentVisibility();
-        headerLayout.setOnClickListener(new OnClickListener()
+        headerLayout.setOnLongClickListener(new OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				// TODO Auto-generated method stub
+				if (!isAnimationRunning)
+                {
+                    if (contentLayout.getVisibility() == VISIBLE)
+                        collapse(contentLayout);
+                    else
+                        expand(contentLayout);
+
+                    isAnimationRunning = true;
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            isAnimationRunning = false;
+                        }
+                    }, duration);
+                }
+				return false;
+			}
+		});
+        
+        /*headerLayout.setOnClickListener(new OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -117,7 +143,7 @@ public class ExpandableLayout extends RelativeLayout
                     }, duration);
                 }
             }
-        });
+        });*/
 
         typedArray.recycle();
     }

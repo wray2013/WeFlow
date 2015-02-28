@@ -38,7 +38,7 @@ public class LoginActivity extends TitleRootActivity {
 	public void initViews() {
 		hideLeftButton();
 		hideRightButton();
-		setTitleText("微流量");
+		setTitleText("流量钱包");
 		
 		etPhone = (EditText) findViewById(R.id.et_phone);
 		etValidCode = (EditText) findViewById(R.id.et_valid);

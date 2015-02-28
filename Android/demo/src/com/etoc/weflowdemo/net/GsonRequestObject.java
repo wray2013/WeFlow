@@ -40,5 +40,17 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	public static class getAwardInfoRequest {
+		String uuid;
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	public static class lotteryRequest {
+		String uuid;
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 }
 
