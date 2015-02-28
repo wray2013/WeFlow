@@ -17,6 +17,8 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.etoc.weflowdemo.activity.MainActivity;
+import com.etoc.weflowdemo.event.DialogUtils;
+import com.etoc.weflowdemo.event.RequestEvent;
 import com.etoc.weflowdemo.util.ConStant;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -25,6 +27,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import de.greenrobot.event.EventBus;
 
 
 public class MainApplication extends Application {
@@ -57,7 +61,7 @@ public class MainApplication extends Application {
 		MyImageLoader.getInstance();
 		
 //		ImageLoader.getInstance().clearDiskCache();
-		
+		EventBus.getDefault().register(this);
 	}
 	
 	/**
@@ -133,5 +137,36 @@ public class MainApplication extends Application {
 	        
 	    } 
     } 
+    
+    public void onEventMainThread(RequestEvent event) {
+		switch(event) {
+		case RESP_NULL:
+	    	ConnectivityManager manager = (ConnectivityManager) MainApplication.getAppInstance().getSystemService(Context.CONNECTIVITY_SERVICE);  
+	        NetworkInfo mobileInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);  
+	        NetworkInfo wifiInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);  
+	        
+	        boolean isConnected = wifiInfo.isConnected()|mobileInfo.isConnected();
+
+	        long curRespNullTs = System.currentTimeMillis();
+	        if(curRespNullTs - lastRespNullTs > 3000){
+		        if(isConnected){
+			    	Toast.makeText(MainApplication.getAppInstance(), "网络不佳，请检查网络连接", Toast.LENGTH_LONG).show();
+		        }else{
+		        	Toast.makeText(MainApplication.getAppInstance(), "没有网络，请检查网络连接", Toast.LENGTH_LONG).show();
+		        }
+		        lastRespNullTs = curRespNullTs;
+	        }
+
+	        break;
+		case LOADING_START:
+			DialogUtils.SendLoadingDialogStart(this);
+			break;
+		case LOADING_END:
+			DialogUtils.SendLoadingDialogEnd(this);
+			break;
+		default:
+			break;
+		}
+	}
 
 }

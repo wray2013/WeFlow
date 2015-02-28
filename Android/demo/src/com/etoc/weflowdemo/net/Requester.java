@@ -16,10 +16,13 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import com.etoc.weflowdemo.Config;
+import com.etoc.weflowdemo.event.RequestEvent;
 import com.etoc.weflowdemo.net.GsonRequestObject.*;
 import com.etoc.weflowdemo.net.GsonResponseObject.*;
 import com.etoc.weflowdemo.util.VMobileInfo;
 import com.google.gson.Gson;
+
+import de.greenrobot.event.EventBus;
 
 import android.os.Handler;
 import android.os.Message;
@@ -27,16 +30,16 @@ import android.util.Log;
 
 
 public class Requester {
-	private static final int isDebug = 1;
+	private static final int isDebug = 0;
 	
 	///////////////////////////////////////Response code:
 	
 	//2.1.1 车上虚拟注册
 	public static final int RESPONSE_TYPE_SENDSMS = 0xffee2100;
-	public static final String RIA_INTERFACE_SENDSMS = "/rw/service/sendsms.html";
+	public static final String RIA_INTERFACE_SENDSMS = "/interface/service/getAuthCode";
 	
 	public static final int RESPONSE_TYPE_LOGIN = 0xffee2101;
-	public static final String RIA_INTERFACE_LOGIN = "/rw/service/login.html";
+	public static final String RIA_INTERFACE_LOGIN = "/interface/service/login";
 	
 	public static final int RESPONSE_TYPE_ACC_INFO = 0xffee2102;
 	public static final String RIA_INTERFACE_ACC_INFO = "/rw/service/getaccountinfo.html";
@@ -49,20 +52,21 @@ public class Requester {
 	
 	public static void sendSMS(Handler handler, String tel) {
 		sendSMSRequest request = new sendSMSRequest();
-		request.tel  = tel;
-		request.imei = IMEI;
-		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, sendSMSResponse.class);
+		request.phone  = tel;
+		request.channelid = "app";
+		request.transid = "" + System.currentTimeMillis();
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, commonResponse.class);
 		worker.execute(RIA_INTERFACE_SENDSMS, request);
 	}
 	
 	public static void login(Handler handler, String tel, String code) {
 		loginRequest request = new loginRequest();
-		request.tel  = tel;
-		request.code = code;
-		request.imei = IMEI;
-		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
+		request.authcode = code;
+		request.channelid = "app";
+		request.transid = "" + System.currentTimeMillis();
+		request.phone = tel;
+		request.weixinid = "Wang_JM";
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, commonResponse.class);
 		worker.execute(RIA_INTERFACE_LOGIN, request);
 	}
 	
@@ -118,10 +122,8 @@ public class Requester {
 		
 
 		@Override
-		public void run(){
-			/*if(!RIA_INTERFACE_MOVIE_PLAY.equals(ria_command_id)){
-				EventBus.getDefault().post(RequestEvent.LOADING_START);
-			}*/
+		public void run() {
+			EventBus.getDefault().post(RequestEvent.LOADING_START);
 			String url = /*(use_dc?Config.SERVER_DC_URL:Config.SERVER_RIA_URL)*/Config.HOST + ria_command_id;
 			System.out.println("url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
 		    Log.v(TAG,"request url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
@@ -147,7 +149,7 @@ public class Requester {
 
 			    String json = gson.toJson(request);
 			    
-			    parameters.add(new BasicNameValuePair("requestapp", json));
+			    parameters.add(new BasicNameValuePair("requestApp", json));
 				
 			    
 			    try {
@@ -185,7 +187,7 @@ public class Requester {
 		    	}
 		    } else{
 		    	Log.v(TAG, "request url--->" + url  + "*******ret_entity_str:" + ret_entity_str);
-//		    	EventBus.getDefault().post(RequestEvent.RESP_NULL);
+		    	EventBus.getDefault().post(RequestEvent.RESP_NULL);
 
 		    }
 		    
@@ -205,9 +207,7 @@ public class Requester {
 				Log.e(TAG, "handler is null, data can not callback - ria_command_id:" + ria_command_id);
 			}
 			
-			/*if(!RIA_INTERFACE_MOVIE_PLAY.equals(ria_command_id)){
-				EventBus.getDefault().post(RequestEvent.LOADING_END);
-			}*/
+			EventBus.getDefault().post(RequestEvent.LOADING_END);
 		}
 
 	}

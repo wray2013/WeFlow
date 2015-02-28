@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.dialog.PromptDialog;
+import com.etoc.weflowdemo.net.GsonResponseObject.commonResponse;
 import com.etoc.weflowdemo.net.GsonResponseObject.loginResponse;
 import com.etoc.weflowdemo.net.GsonResponseObject.sendSMSResponse;
 import com.etoc.weflowdemo.net.Requester;
@@ -23,6 +25,7 @@ public class LoginActivity extends TitleRootActivity {
 	private TextView tvLogin = null;
 	private TickDownHelper tickDown = null;
 	private boolean hasGetValidCode = false;
+	private String validCode = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -64,9 +67,9 @@ public class LoginActivity extends TitleRootActivity {
 			break;
 			
 		case Requester.RESPONSE_TYPE_LOGIN:
-			loginResponse loginresponse = (loginResponse) msg.obj;
+			commonResponse loginresponse = (commonResponse) msg.obj;
 			if(loginresponse != null) {
-				if(loginresponse.status == null || loginresponse.status.equals("0")) {
+				if(loginresponse.isSucceed()) {
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
 					finish();
 					Intent homeIntent = new Intent(this,HomePageActivity.class);
@@ -80,15 +83,15 @@ public class LoginActivity extends TitleRootActivity {
 			break;
 			
 		case Requester.RESPONSE_TYPE_SENDSMS:
-			sendSMSResponse smsresponse = (sendSMSResponse) msg.obj;
+			commonResponse smsresponse = (commonResponse) msg.obj;
 			if(smsresponse != null) {
-				if(smsresponse.status == null || smsresponse.status.equals("0")) {
+				if(smsresponse.isSucceed()) {
 					PromptDialog.Alert(LoginActivity.class, "短信发送成功");
 				} else {
 					PromptDialog.Alert(LoginActivity.class, "短信发送失败");
 				}
 			}
-			PromptDialog.Alert(LoginActivity.class, "请求失败");
+//			PromptDialog.Alert(LoginActivity.class, "请求失败");
 			break;
 		}
 		return false;

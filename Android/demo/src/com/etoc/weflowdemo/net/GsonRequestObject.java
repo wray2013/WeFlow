@@ -11,16 +11,21 @@ public class GsonRequestObject {
 	}
 	
 	public static class sendSMSRequest {
-		String tel;  //
-		String mac; // 手机的mac地址
-		String imei; // 手机imei（手机的唯一标识）
+		String phone;  //用户号码
+//		String mac; // 手机的mac地址
+//		String imei; // 手机imei（手机的唯一标识）
+		String channelid;//渠道ID
+		String transid;// 交易流水
 	}
 	
 	public static class loginRequest {
-		String tel;
-		String code;
-		String mac; // 手机的mac地址
-		String imei; // 手机imei（手机的唯一标识）
+		String phone;  //用户号码
+//		String mac; // 手机的mac地址
+//		String imei; // 手机imei（手机的唯一标识）
+		String channelid;//渠道ID
+		String transid;// 交易流水
+		String weixinid;//微信号
+		String authcode;//验证码
 	}
 	
 	public static class getAccInfoRequest {

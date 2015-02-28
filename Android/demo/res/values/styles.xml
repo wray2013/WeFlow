@@ -16,5 +16,14 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="CmmobiDialog" parent="@android:style/Theme.Dialog">
+     <item name="android:windowFrame">@null</item> <!--Dialog的windowFrame框为无 --> 
+     <item name="android:windowIsFloating">true</item><!-- 是否漂现在activity上 -->
+     <item name="android:windowIsTranslucent">true</item><!-- 是否半透明 -->
+     <item name="android:windowNoTitle">true</item>
+     <item name="android:backgroundDimEnabled">true</item>
+     <item name="android:windowBackground">@android:color/transparent</item>
+   </style>
 
 </resources>

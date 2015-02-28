@@ -13,7 +13,7 @@ public class FakeData {
 	public static Map<String, Object> map = new HashMap<String, Object>();
 	static{
 		sendSMSResponse r0 = new sendSMSResponse();
-		r0.status="0";
+		r0.code = "0";
 		map.put(Requester.RIA_INTERFACE_SENDSMS, r0);
 		
 		loginResponse r1 = new loginResponse();

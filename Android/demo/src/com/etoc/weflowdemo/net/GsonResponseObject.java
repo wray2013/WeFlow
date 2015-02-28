@@ -12,7 +12,17 @@ public class GsonResponseObject {
 	public static final int MEDIA_TYPE_TOPICS = 7;
 
 	public static class sendSMSResponse {
-		public String status;// ":0;
+		public String code;// ":0;
+		public String message;// 
+	}
+	
+	public static class commonResponse {
+		public String code;// ":0;
+		public String message;// 
+		
+		public boolean isSucceed() {
+			return "0000".equals(code) || "2009".equals(code);
+		}
 	}
 	
 	public static class loginResponse {
