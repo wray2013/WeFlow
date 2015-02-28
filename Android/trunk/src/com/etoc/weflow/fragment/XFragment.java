@@ -151,7 +151,7 @@ public abstract class XFragment<T> extends Fragment implements Callback{
 			return;
 		if(getActivity() instanceof MainActivity){
 			MainActivity slidingActivity = (MainActivity) getActivity();
-			slidingActivity.showMenu();
+//			slidingActivity.showMenu();
 		}
 	}
 	
@@ -163,16 +163,16 @@ public abstract class XFragment<T> extends Fragment implements Callback{
 			return;
 		if(getActivity() instanceof MainActivity){
 			MainActivity slidingActivity = (MainActivity) getActivity();
-			slidingActivity.showContent();
+//			slidingActivity.showContent();
 		}
 	}
 	
-	protected SlidingMenu getSlidingMenu() {
+	/*protected SlidingMenu getSlidingMenu() {
 		if (getActivity() == null)
 			return null;
 		MainActivity act = (MainActivity) getActivity();
 		return act.getSlidingMenu();
-	}
+	}*/
 
 	@Override
 	public boolean handleMessage(Message msg) {
