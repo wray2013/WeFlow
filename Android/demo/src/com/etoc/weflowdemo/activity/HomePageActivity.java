@@ -31,7 +31,8 @@ public class HomePageActivity extends TitleRootActivity {
 	private void initViews() {
 		setTitleText("微流量");
 		setLeftButtonText("宝典");
-		setRightButtonText("消息");
+		hideRightButton();
+//		setRightButtonText("消息");
 		
 		useFlowLayout = (RelativeLayout) findViewById(R.id.rl_use_flow);
 		discoverLayout = (RelativeLayout) findViewById(R.id.rl_discover);

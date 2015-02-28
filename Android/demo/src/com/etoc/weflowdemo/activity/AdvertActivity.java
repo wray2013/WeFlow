@@ -44,7 +44,8 @@ public class AdvertActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		setTitleText("看视频");
-		setRightButtonText("记录");
+		hideRightButton();
+//		setRightButtonText("记录");
 		
 		viewPager = (AutoScrollViewPager) findViewById(R.id.vp_pager_service);
 		
