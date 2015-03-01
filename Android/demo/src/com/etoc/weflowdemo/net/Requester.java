@@ -46,6 +46,9 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_ADV_INFO = 0xffee2103;
 	public static final String RIA_INTERFACE_ADV_INFO = "/rw/service/getadvinfo.html";
+	
+	public static final int RESPONSE_TYPE_ORDER_LARGESS = 0xffee2104;
+	public static final String RIA_INTERFACE_ORDER_LARGESS = "/interface/service/orderLargess";
 
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -86,6 +89,17 @@ public class Requester {
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_ADV_INFO, getAdvInfoResponse.class);
 		worker.execute(RIA_INTERFACE_ADV_INFO, request);
+	}
+	
+	public static void orderLargess(Handler handler,String phone,String type,String product) {
+		orderLargessRequest request = new orderLargessRequest();
+		request.channelid = "app";
+		request.transid = "" + System.currentTimeMillis();
+		request.productid = product;
+		request.phone = phone;
+		request.opertype = type;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_ORDER_LARGESS, commonResponse.class);
+		worker.execute(RIA_INTERFACE_ORDER_LARGESS, request);
 	}
 	
 	public static class PostWorker extends Thread {

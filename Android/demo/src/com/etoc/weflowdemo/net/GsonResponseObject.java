@@ -24,6 +24,10 @@ public class GsonResponseObject {
 		public boolean isSucceed() {
 			return "0000".equals(code);
 		}
+		
+		public boolean isRunningLow() {
+			return "2012".equals(code);
+		}
 	}
 	
 	public static class loginResponse extends commonResponse {

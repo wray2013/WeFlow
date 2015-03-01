@@ -35,7 +35,7 @@ public class MainApplication extends Application {
     private static MainApplication mInstance = null;
     private LinkedList<Activity> activityList = new LinkedList<Activity>(); 
     private long lastRespNullTs = 0;
-    
+    public static String accountPhone = null;
     
 	@Override
 	public void onCreate() {
