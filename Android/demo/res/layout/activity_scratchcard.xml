@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scv_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray" >
@@ -54,35 +55,40 @@
                 android:textColor="@android:color/black" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_bottom"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_top"
             android:layout_margin="5dp"
             android:background="#868686" >
 
-            <TextView
-                android:id="@+id/tv_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:text="奖品包括"
-                android:textColor="@color/bg_yellow" />
+            <RelativeLayout
+                android:id="@+id/rl_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-            <GridView
-                android:id="@+id/gv_award"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_hint"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:horizontalSpacing="10dp"
-                android:numColumns="3"
-                android:stretchMode="columnWidth"
-                android:verticalSpacing="10dp" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="奖品包括"
+                    android:textColor="@color/bg_yellow" />
+
+                <GridView
+                    android:id="@+id/gv_award"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_hint"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="3"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="10dp" />
+            </RelativeLayout>
+        </ScrollView>
     </RelativeLayout>
 
-</ScrollView>
+</RelativeLayout>

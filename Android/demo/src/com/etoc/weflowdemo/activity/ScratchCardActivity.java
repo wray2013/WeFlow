@@ -105,9 +105,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 	private int getGridViewHeight(GridView gridView) {
 		int count = gridView.getAdapter().getCount();
 		int rowNum = (int)Math.ceil(count / (double)3);
-		View v = gridView.getChildAt(0);
-		int itemheight = v.getMeasuredHeight();
-		int height = itemheight * rowNum  + cn.trinea.android.common.util.ViewUtils.getGridViewVerticalSpacing(gridView) * (rowNum + 1);
+		int height = DisplayUtil.getSize(this, 180) * rowNum  + cn.trinea.android.common.util.ViewUtils.getGridViewVerticalSpacing(gridView) * (rowNum + 1);
 		return height;
 	}
 	
@@ -145,7 +143,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 	private void randomAward() {
 		int i = RandomUtils.getRandom(20);
 		if(i < 6) {
-			stvCard.setText(items[i]);
+			stvCard.setText("恭喜您获得\n" + items[i]);
 		} else {
 			stvCard.setText("谢谢参与");
 		}
