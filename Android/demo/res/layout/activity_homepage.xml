@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/exv_user_info"
             android:layout_marginTop="5dp"
+            android:paddingBottom="8dp"
             android:orientation="vertical" >
 
             <RelativeLayout

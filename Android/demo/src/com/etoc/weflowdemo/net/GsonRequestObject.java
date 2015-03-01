@@ -55,9 +55,13 @@ public class GsonRequestObject {
 	}
 	
 	public static class lotteryRequest {
-		String uuid;
-		String mac; // 手机的mac地址
-		String imei; // 手机imei（手机的唯一标识）
+		String phone;  //用户号码
+		String channelid;//渠道ID
+		String transid;// 交易流水
+		String productid;//产品ID
+		String opertype;//操作类型
+//		String mac; // 手机的mac地址
+//		String imei; // 手机imei（手机的唯一标识）
 	}
 	
 }

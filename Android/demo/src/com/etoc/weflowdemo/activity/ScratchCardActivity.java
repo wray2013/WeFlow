@@ -6,7 +6,11 @@ import java.util.Random;
 
 import cn.trinea.android.common.util.RandomUtils;
 
+import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.net.GsonResponseObject.commonResponse;
+import com.etoc.weflowdemo.net.GsonResponseObject.lotteryResponse;
+import com.etoc.weflowdemo.net.Requester;
 import com.etoc.weflowdemo.util.DisplayUtil;
 import com.etoc.weflowdemo.view.ScratchTextView;
 import com.etoc.weflowdemo.view.ScratchTextView.OnCompletedListener;
@@ -21,6 +25,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ScratchCardActivity extends TitleRootActivity {
 
@@ -28,6 +33,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 	private Button btnStartLottery;
 	private ScratchTextView stvCard;
 	private GridView gvAward;
+	private String Tel = "";
 	
 	private boolean isRetry = false;
 	
@@ -43,6 +49,11 @@ public class ScratchCardActivity extends TitleRootActivity {
 		setLeftButtonBackground(R.drawable.btn_back);
 		hideRightButton();
 		setTitleText("刮刮卡");
+		
+		String phoneNum = getIntent().getStringExtra("phone");
+		if(phoneNum != null) {
+			Tel = phoneNum;
+		}
 		
 		btnStartLottery = (Button) findViewById(R.id.iv_start_lottery);
 		btnStartLottery.setVisibility(View.VISIBLE);
@@ -68,7 +79,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 					@Override
 					public void run() {
 						ivCover.setVisibility(View.GONE);
-						btnStartLottery.setText("再试试");
+						btnStartLottery.setText("再刮一次");
 						btnStartLottery.setTextColor(getResources().getColor(R.color.bg_red));
 						btnStartLottery.setBackgroundResource(R.color.bg_yellow);
 						btnStartLottery.setVisibility(View.VISIBLE);
@@ -130,7 +141,9 @@ public class ScratchCardActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.iv_start_lottery:
-			randomAward();
+			Requester.orderLargess(handler, Tel, "C", "prod_out_flow_50");
+			
+			/*randomAward();
 			stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
 			if(isRetry) {
 //				ivCover.setVisibility(View.VISIBLE);
@@ -139,7 +152,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 				ivCover.setVisibility(View.GONE);
 			}
 			btnStartLottery.setVisibility(View.GONE);
-			isRetry = true;
+			isRetry = true;*/
 			break;
 		case R.id.tv_flow_hint:
 			ivCover.setVisibility(View.VISIBLE);
@@ -149,9 +162,36 @@ public class ScratchCardActivity extends TitleRootActivity {
 		super.onClick(v);
 	}
 	
+	private void startLottery() {
+		randomAward();
+		stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
+		if(isRetry) {
+//			ivCover.setVisibility(View.VISIBLE);
+//			btnStartLottery.setVisibility(View.VISIBLE);
+		} else {
+			ivCover.setVisibility(View.GONE);
+		}
+		btnStartLottery.setVisibility(View.GONE);
+		isRetry = true;
+	}
+	
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_ORDER_LARGESS:
+			commonResponse response = (commonResponse) msg.obj;
+			if(response != null && response.code != null) {
+				if(response.isSucceed()) {
+					startLottery();
+				} else if(response.isRunningLow()) {
+					Toast.makeText(MainApplication.getAppInstance(), "您的流量币余额不足", Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(MainApplication.getAppInstance(), "请求失败 [" + response.code + ":" + response.message + "]", Toast.LENGTH_LONG).show();
+				}
+			}
+			break;
+		}
 		return false;
 	}
 
