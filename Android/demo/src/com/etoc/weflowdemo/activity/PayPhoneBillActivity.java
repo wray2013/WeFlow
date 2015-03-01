@@ -42,6 +42,7 @@ public class PayPhoneBillActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		setTitleText("充话费");
+		hideRightButton();
 		setRightButtonText("已购");
 		
 		tvAttr = (TextView) findViewById(R.id.tv_attribution);

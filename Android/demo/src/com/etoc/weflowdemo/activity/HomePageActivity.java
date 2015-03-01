@@ -30,7 +30,8 @@ public class HomePageActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		setTitleText("微流量");
-		setLeftButtonText("宝典");
+		hideLeftButton();
+//		setLeftButtonText("宝典");
 		hideRightButton();
 //		setRightButtonText("消息");
 		
