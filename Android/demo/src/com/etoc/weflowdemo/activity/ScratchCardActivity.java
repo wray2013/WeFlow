@@ -7,6 +7,7 @@ import cn.trinea.android.common.util.RandomUtils;
 
 import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.net.GsonResponseObject.commonResponse;
 import com.etoc.weflowdemo.net.GsonResponseObject.lotteryResponse;
 import com.etoc.weflowdemo.net.Requester;
 import com.etoc.weflowdemo.util.DisplayUtil;
@@ -155,7 +156,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.iv_start_lottery:
-			Requester.lotteryRequest(handler, Tel);
+			Requester.orderLargess(handler, Tel, "C", "prod_out_flow_50");
 			
 			/*randomAward();
 			stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
@@ -193,12 +194,12 @@ public class ScratchCardActivity extends TitleRootActivity {
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
 		switch(msg.what) {
-		case Requester.RESPONSE_TYPE_LOTTERY:
-			lotteryResponse response = (lotteryResponse) msg.obj;
+		case Requester.RESPONSE_TYPE_ORDER_LARGESS:
+			commonResponse response = (commonResponse) msg.obj;
 			if(response != null && response.code != null) {
-				if(response.code.equals("0000")) {
+				if(response.isSucceed()) {
 					startLottery();
-				} else if(response.code.equals("2012")) {
+				} else if(response.isRunningLow()) {
 					Toast.makeText(MainApplication.getAppInstance(), "您的流量币余额不足", Toast.LENGTH_LONG).show();
 				} else {
 					Toast.makeText(MainApplication.getAppInstance(), "请求失败 [" + response.code + ":" + response.message + "]", Toast.LENGTH_LONG).show();

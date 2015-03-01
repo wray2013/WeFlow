@@ -47,8 +47,8 @@ public class Requester {
 	public static final int RESPONSE_TYPE_ADV_INFO = 0xffee2103;
 	public static final String RIA_INTERFACE_ADV_INFO = "/rw/service/getadvinfo.html";
 	
-	public static final int RESPONSE_TYPE_LOTTERY = 0xffee2105;
-	public static final String RIA_INTERFACE_LOTTERY = "/interface/service/orderLargess";
+	public static final int RESPONSE_TYPE_ORDER_LARGESS = 0xffee2104;
+	public static final String RIA_INTERFACE_ORDER_LARGESS = "/interface/service/orderLargess";
 
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -91,15 +91,15 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_ADV_INFO, request);
 	}
 	
-	public static void lotteryRequest(Handler handler, String tel) {
-		lotteryRequest request = new lotteryRequest();
+	public static void orderLargess(Handler handler,String phone,String type,String product) {
+		orderLargessRequest request = new orderLargessRequest();
 		request.channelid = "app";
 		request.transid = "" + System.currentTimeMillis();
-		request.phone = tel;
-		request.productid = "prod_out_flow_50";
-		request.opertype = "N";
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOTTERY, lotteryResponse.class);
-		worker.execute(RIA_INTERFACE_LOTTERY, request);
+		request.productid = product;
+		request.phone = phone;
+		request.opertype = type;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_ORDER_LARGESS, commonResponse.class);
+		worker.execute(RIA_INTERFACE_ORDER_LARGESS, request);
 	}
 	
 	public static class PostWorker extends Thread {

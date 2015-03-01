@@ -9,23 +9,26 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.dialog.PromptDialog;
-import com.etoc.weflowdemo.util.DisplayUtil;
+import com.etoc.weflowdemo.net.GsonResponseObject.commonResponse;
+import com.etoc.weflowdemo.net.Requester;
 import com.etoc.weflowdemo.util.ViewUtils;
 
 public class PayPhoneBillActivity extends TitleRootActivity {
 
 	private TextView [] textViewArray = null;
-	private TextView tvPhoneNum = null;
+	private EditText etPhoneNum = null;
 	private TextView tvFlowPay = null;
 	private TextView tvAttr = null;
+	private TextView tvPhoneChange = null;
+	private String accountPhone = null;
 	private static float rate = 100.0f;
 	private int[] paymentArray = {10,20,30,50,100,200};
+	private boolean isAccountPhone = true;
 	
 	private static final int HANDLER_MSG_QUERY_RESULT = 0x00185027;
 	
@@ -42,16 +45,18 @@ public class PayPhoneBillActivity extends TitleRootActivity {
 		setRightButtonText("已购");
 		
 		tvAttr = (TextView) findViewById(R.id.tv_attribution);
-		tvPhoneNum = (TextView) findViewById(R.id.tv_account_phone);
-		String phoneNum = getIntent().getStringExtra("phone");
-		if (phoneNum != null) {
-			tvPhoneNum.setText(phoneNum);
-			queryTelAttr(phoneNum);
+		etPhoneNum = (EditText) findViewById(R.id.tv_account_phone);
+		accountPhone = getIntent().getStringExtra("phone");
+		if (accountPhone != null) {
+			etPhoneNum.setText(accountPhone);
+			queryTelAttr(accountPhone);
 		}
 		
 		tvFlowPay = (TextView) findViewById(R.id.tv_flow);
 		tvFlowPay.setText("0流量币");
 		
+		tvPhoneChange = (TextView) findViewById(R.id.tv_account_label);
+		tvPhoneChange.setOnClickListener(this);
 		textViewArray = new TextView[6];
 		textViewArray[0] = (TextView) findViewById(R.id.tv_pay_1);
 		textViewArray[1] = (TextView) findViewById(R.id.tv_pay_2);
@@ -141,6 +146,18 @@ public class PayPhoneBillActivity extends TitleRootActivity {
 				tvAttr.setText(analyzeResult(result));
 			}
 			break;
+		case Requester.RESPONSE_TYPE_ORDER_LARGESS:
+			if (msg.obj != null) {
+				commonResponse resp = (commonResponse) msg.obj;
+				if (resp.isSucceed()) {
+					PromptDialog.Alert(PayPhoneBillActivity.class, "兑换话费成功");
+				} else if (resp.isRunningLow()) {
+					PromptDialog.Alert(PayPhoneBillActivity.class, "余额不足");
+				} else {
+					PromptDialog.Alert(PayPhoneBillActivity.class, "兑换话费失败");
+				}
+			}
+			break;
 		}
 		return false;
 	}
@@ -186,14 +203,33 @@ public class PayPhoneBillActivity extends TitleRootActivity {
 			changeStatus(v);
 			break;
 		case R.id.tv_pay_btn:
-			long curRespNullTs = System.currentTimeMillis();
+			
+			if (PromptDialog.checkPhoneNum(etPhoneNum.getText().toString())) {
+				Requester.orderLargess(handler, etPhoneNum.getText().toString(), "C","prod_out_flow_50");
+			} else {
+				PromptDialog.Dialog(this, "温馨提示", "手机号格式错误", "确定");
+			}
+			break;
+			/*long curRespNullTs = System.currentTimeMillis();
 	        if(curRespNullTs - lastRespNullTs > 3000){
 	        	Toast.makeText(MainApplication.getAppInstance(), "请求失败", Toast.LENGTH_LONG).show();
 		        lastRespNullTs = curRespNullTs;
-	        }
+	        }*/
 			
 //			PromptDialog.Alert(PayPhoneBillActivity.class, "请求失败");
 //			finish();
+		case R.id.tv_account_label:
+			if (isAccountPhone) {
+				tvPhoneChange.setText("帐号绑定号码");
+				etPhoneNum.setText("");
+				etPhoneNum.setEnabled(true);
+			} else {
+				tvPhoneChange.setText("其他手机号码");
+				etPhoneNum.setText(accountPhone);
+				etPhoneNum.setEnabled(false);
+			}
+			isAccountPhone = !isAccountPhone;
+			break;
 		default:
 			break;
 		}

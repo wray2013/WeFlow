@@ -1,7 +1,5 @@
 package com.etoc.weflowdemo.activity;
 
-import com.etoc.weflowdemo.R;
-
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -10,10 +8,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.VideoView;
+
+import com.etoc.weflowdemo.MainApplication;
+import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.dialog.PromptDialog;
+import com.etoc.weflowdemo.net.GsonResponseObject.AdvInfo;
+import com.etoc.weflowdemo.net.GsonResponseObject.commonResponse;
+import com.etoc.weflowdemo.net.Requester;
+import com.google.gson.Gson;
 
 public class AdDetailActivity extends TitleRootActivity {
 
@@ -25,8 +33,7 @@ public class AdDetailActivity extends TitleRootActivity {
 	
 	private DisplayMetrics dm = new DisplayMetrics();
 	
-	private static final String AdUrl = "http://1s.looklook.cn:8082/pub/looklook/video_pub" +
-			"/original/2013/10/11/111343a1958778779745b19b2afca35a891b5d.mp4";
+	private String AdUrl = "http://v.adzop.com/xcp/1412/P190.mp4";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +52,22 @@ public class AdDetailActivity extends TitleRootActivity {
 		ibPlay = (ImageButton) findViewById(R.id.btn_play);
 		ibPlay.setOnClickListener(this);
 		
+		String adInfoStr = getIntent().getStringExtra("adinfo");
+		AdvInfo adInfo = new Gson().fromJson(adInfoStr, AdvInfo.class);
+		TextView tvTitle = (TextView) findViewById(R.id.tv_ad_title);
+		tvTitle.setText(adInfo.title);
+		AdUrl = adInfo.videourl;
+		
 		mediaController=new MediaController(this);
 		vvAdvVideo = (VideoView) findViewById(R.id.vv_ad_video);
 //		vvAdvVideo.setMediaController(mediaController);
 		vvAdvVideo.setOnPreparedListener(mOnPreparedListener);
 		vvAdvVideo.setOnErrorListener(mOnErrorListener);
 		vvAdvVideo.setOnCompletionListener(mOnCompletionListener);
+		
+		
+		TextView tvContent = (TextView) findViewById(R.id.tv_ad_content);
+		tvContent.setText(adInfo.content);
 	}
 	
 	private OnCompletionListener mOnCompletionListener = new OnCompletionListener() {
@@ -60,6 +77,7 @@ public class AdDetailActivity extends TitleRootActivity {
 			// TODO Auto-generated method stub
 			vvAdvVideo.stopPlayback();
 			ibPlay.setVisibility(View.VISIBLE);
+			Requester.orderLargess(handler, MainApplication.accountPhone, "C", "prod_in_charge_10");
 		}
 		
 	};
@@ -91,6 +109,7 @@ public class AdDetailActivity extends TitleRootActivity {
 		switch(v.getId()) {
 		case R.id.btn_play:
 			if(!hasVideoInitialized) {
+				Log.d("=AAA=","url = " + AdUrl);
 				vvAdvVideo.setVideoURI(Uri.parse(AdUrl));
 				hasVideoInitialized = true;
 			} else {
@@ -104,8 +123,20 @@ public class AdDetailActivity extends TitleRootActivity {
 	}
 	
 	@Override
-	public boolean handleMessage(Message arg0) {
+	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_ORDER_LARGESS:
+			if (msg.obj != null) {
+				commonResponse resp = (commonResponse) msg.obj;
+				if (resp.isSucceed()) {
+					PromptDialog.Alert(PayPhoneBillActivity.class, "成功获取20流量币");
+				} else {
+					PromptDialog.Alert(PayPhoneBillActivity.class, "获取流量币失败");
+				}
+			}
+			break;
+		}
 		return false;
 	}
 
