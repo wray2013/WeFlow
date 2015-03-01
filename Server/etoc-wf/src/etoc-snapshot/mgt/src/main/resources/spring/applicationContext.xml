@@ -9,10 +9,10 @@
     http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd"
   default-lazy-init="true">
 
-  <context:component-scan base-package="net.zkbc">
+  <context:component-scan base-package="net.etoc">
     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
-    <context:exclude-filter type="regex" expression=".*ConfigForHessianExporter"/>
+
   </context:component-scan>
 
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -41,12 +41,6 @@
   <beans profile="test,develop">
     <context:property-placeholder ignore-unresolvable="true" file-encoding="UTF-8" 
       location="classpath*:application.test.properties" />
-<!--     <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"> -->
-<!--       <property name="driverClass" value="${jdbc.driver}" /> -->
-<!--       <property name="url" value="${jdbc.url}" /> -->
-<!--       <property name="username" value="${jdbc.username}" /> -->
-<!--       <property name="password" value="${jdbc.password}" /> -->
-<!--     </bean> -->
     
      <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
       <property name="driverClass" value="${jdbc.driver}" />

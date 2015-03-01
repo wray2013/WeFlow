@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="4dip" >
+    android:layout_gravity="center_vertical"
+    android:gravity="center"
+    android:paddingBottom="4dp"
+    android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/iv_item_image"
@@ -19,7 +22,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:text="TextView01"
-        android:textColor="@color/bg_title_gray">
+        android:textColor="@color/bg_yellow">
     </TextView>
 
-</RelativeLayout>
+</LinearLayout>

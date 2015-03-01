@@ -9,7 +9,11 @@
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath*:/net/zkbc/spring/*.xml,classpath:/spring/*.xml</param-value>
+    <param-value>classpath*:/net/etoc/spring/*.xml,classpath:/spring/*.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>spring.profiles.default</param-name>
+    <param-value>production</param-value>
   </context-param>
 
   <listener>
