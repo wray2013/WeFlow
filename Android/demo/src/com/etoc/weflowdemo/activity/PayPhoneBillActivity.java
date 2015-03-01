@@ -151,6 +151,7 @@ public class PayPhoneBillActivity extends TitleRootActivity {
 				commonResponse resp = (commonResponse) msg.obj;
 				if (resp.isSucceed()) {
 					PromptDialog.Alert(PayPhoneBillActivity.class, "兑换话费成功");
+					finish();
 				} else if (resp.isRunningLow()) {
 					PromptDialog.Alert(PayPhoneBillActivity.class, "余额不足");
 				} else {
