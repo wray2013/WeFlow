@@ -105,7 +105,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 	private int getGridViewHeight(GridView gridView) {
 		int count = gridView.getAdapter().getCount();
 		int rowNum = (int)Math.ceil(count / (double)3);
-		int height = DisplayUtil.getSize(this, 180) * rowNum  + cn.trinea.android.common.util.ViewUtils.getGridViewVerticalSpacing(gridView) * (rowNum + 1);
+		int height = DisplayUtil.getSize(this, 220) * rowNum  + cn.trinea.android.common.util.ViewUtils.getGridViewVerticalSpacing(gridView) * (rowNum + 1);
 		return height;
 	}
 	
@@ -113,7 +113,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 		"iphone6",
 		"海外流量卡",
 		"运动手环",
-		"巴厘岛浪漫7日游",
+		"巴厘岛浪漫七日游",
 		"海陆双拼套餐",
 		"罗技键鼠套装"
 	};
