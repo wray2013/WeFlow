@@ -135,7 +135,7 @@ public class AdDetailActivity extends TitleRootActivity {
 			if (msg.obj != null) {
 				commonResponse resp = (commonResponse) msg.obj;
 				if (resp.isSucceed()) {
-					PromptDialog.Alert(PayPhoneBillActivity.class, "成功获取20流量币");
+					PromptDialog.Alert(PayPhoneBillActivity.class, "成功获取10流量币");
 				} else {
 					PromptDialog.Alert(PayPhoneBillActivity.class, "获取流量币失败");
 				}

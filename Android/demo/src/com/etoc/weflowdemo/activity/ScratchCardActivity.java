@@ -107,12 +107,21 @@ public class ScratchCardActivity extends TitleRootActivity {
 		"罗技键鼠套装"
 	};
 	
+	private static int[] resId = {
+		R.drawable.iphone6,
+		R.drawable.hwllk,
+		R.drawable.ydsh,
+		R.drawable.bldlm,
+		R.drawable.hlsptc,
+		R.drawable.ljjstz,
+	};
+	
 	private void makeFakeData(GridView gv) {
 		// 生成动态数组，并且转入数据
 		ArrayList<HashMap<String, Object>> lstImageItem = new ArrayList<HashMap<String, Object>>();
 		for (int i = 0; i < 6; i++) {
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("ItemImage", R.drawable.ic_launcher);// 添加图像资源的ID
+			map.put("ItemImage", resId[i]);// 添加图像资源的ID
 			map.put("ItemText", items[i]);// 按序号做ItemText
 			lstImageItem.add(map);
 		}
