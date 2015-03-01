@@ -37,7 +37,7 @@
                     android:layout_height="56dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:background="#ededed" />
+                    android:background="@drawable/get_flow" />
 
                 <TextView
                     android:id="@+id/tv_make_flow_title"
@@ -82,7 +82,7 @@
                     android:layout_height="56dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:background="#ededed" />
+                    android:background="@drawable/cost_flow" />
 
                 <TextView
                     android:id="@+id/tv_use_flow_title"
@@ -127,7 +127,7 @@
                     android:layout_height="56dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:background="#ededed" />
+                    android:background="@drawable/discover" />
 
                 <TextView
                     android:id="@+id/tv_discover_title"

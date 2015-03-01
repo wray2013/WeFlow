@@ -112,13 +112,35 @@ public class AdvertActivity extends TitleRootActivity {
 		mIndicator.notifyDataSetChanged();
         
         gvRecommentAd = (GridView) findViewById(R.id.gv_recomment_ad);
-        ArrayList<AdInfo> infoList = new ArrayList<AdvertActivity.AdInfo>();
-        int [] resArr = {R.drawable.rec_ad_1,R.drawable.rec_ad_2,R.drawable.rec_ad_3,R.drawable.rec_ad_4};
+        ArrayList<AdvInfo> infoList = new ArrayList<AdvInfo>();
+        
+        String[] grid_imgUrls = {"http://www.adzop.com//uploadpic/xcp/1412/P189.rmvb_20141222_110513.465.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P185.rmvb_20141222_110051.181.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P181.rmvb_20141222_105957.126.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P174.rmvb_20141222_105639.099.jpg"
+        		};
+        String[] grid_contents = {"台湾某酒店高清宣传片 风景酒店大堂茶道餐饮健身实拍素材",
+        		"KOREA韩国SEOUL首尔城市 延时摄影高清实拍素材",
+        		"国内某汽车品牌高清宣传片 出嫁工厂设计流水线 实拍素材",
+        		"台湾瓷艺品牌高清宣传片 瓷器 手工制作烧窑"
+        		};
+        String[] grid_titles = {"酒店高清宣传",
+        		"首尔城市",
+        		"汽车宣传",
+        		"瓷艺宣传"
+        };
+        String[] grid_videoUrls = {
+        		"http://v.adzop.com/xcp/1412/P189.mp4",
+        		"http://v.adzop.com/xcp/1412/P185.mp4",
+        		"http://v.adzop.com/xcp/1412/P181.mp4",
+        		"http://v.adzop.com/xcp/1412/P174.mp4",
+        };
         for(int i = 0;i < 4;i++) {
-        	AdInfo info = new AdInfo();
-        	info.imgId = resArr[i];
-        	info.content = "广告文字...";
-        	info.scroe = (20 + i * 10) + "";
+        	AdvInfo info = new AdvInfo();
+        	info.title = grid_titles[i];
+        	info.content = grid_contents[i];
+        	info.coverurl = grid_imgUrls[i];
+        	info.videourl = grid_videoUrls[i];
         	infoList.add(info);
         }
         adapter = new AdAdapter(this, infoList);
@@ -133,6 +155,8 @@ public class AdvertActivity extends TitleRootActivity {
 					long arg3) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(AdvertActivity.this, AdDetailActivity.class);
+				AdvInfo info = adapter.getItem(arg2);
+				i.putExtra("adinfo", new Gson().toJson(info));
 				startActivity(i);
 				
 			}
@@ -164,15 +188,15 @@ public class AdvertActivity extends TitleRootActivity {
 		info1.content = "某婚纱品牌高清宣传片 情侣婚纱照 ";
 		info1.videourl = "http://v.adzop.com/xcp/1412/P176.mp4";
 		
-		info2.coverurl = "http://www.adzop.com//uploadpic/xcp/X012.rmvb_20140630_104659.890.jpg";
-		info2.title = "排气管宣传";
-		info2.content = "国内某排气管制造公司高清宣传片雨露数控办公拥抱太阳会议";
-		info2.videourl = "http://v.adzop.com/xcp/1412/X012.mp4";
+		info2.coverurl = "http://www.adzop.com//uploadpic/xcp/1412/P188.rmvb_20141222_110458.801.jpg";
+		info2.title = "五金卫浴";
+		info2.content = "国内某五金卫浴品牌高清宣传片 骑马唯美 门锁花洒";
+		info2.videourl = "http://v.adzop.com/xcp/1412/P188.mp4";
 		
-		info3.coverurl = "http://www.adzop.com//uploadpic/xcp/X008.rmvb_20140630_104623.859.jpg";
-		info3.title = "食品特效";
-		info3.content = "食品特效高清素材 水果 咖啡 蔬菜 烤肉 香料 餐具";
-		info3.videourl = "http://v.adzop.com/xcp/1412/X008.mp4";
+		info3.coverurl = "http://www.adzop.com//uploadpic/xcp/1412/P183.rmvb_20141222_110026.111.jpg";
+		info3.title = "印度旅游";
+		info3.content = "India 印度旅游高清宣传片 实拍素材 人文风景 ";
+		info3.videourl = "http://v.adzop.com/xcp/1412/P183.mp4";
 		RelativeLayout rlAd1 = (RelativeLayout) findViewById(R.id.rl_newest_1);
 		RelativeLayout rlAd2 = (RelativeLayout) findViewById(R.id.rl_newest_2);
 		RelativeLayout rlAd3 = (RelativeLayout) findViewById(R.id.rl_newest_3);
@@ -235,12 +259,6 @@ public class AdvertActivity extends TitleRootActivity {
 		return R.layout.activity_advert;
 	}
 	
-	class AdInfo {
-		int imgId;
-		String content;
-		String scroe;
-	}
-	
 	class AdHolder {
 		ImageView imgView;
 		TextView tvContent;
@@ -249,11 +267,11 @@ public class AdvertActivity extends TitleRootActivity {
 	
 	class AdAdapter extends BaseAdapter {
 
-		ArrayList<AdInfo> infoList = new ArrayList<AdInfo>();
+		ArrayList<AdvInfo> infoList = new ArrayList<AdvInfo>();
 		private LayoutInflater inflater;
 		private Context context;
 		
-		public AdAdapter(Context context,ArrayList<AdInfo> list) {
+		public AdAdapter(Context context,ArrayList<AdvInfo> list) {
 			this.infoList = list;
 			this.context = context;
 			inflater = LayoutInflater.from(context);
@@ -266,9 +284,9 @@ public class AdvertActivity extends TitleRootActivity {
 		}
 
 		@Override
-		public Object getItem(int arg0) {
+		public AdvInfo getItem(int position) {
 			// TODO Auto-generated method stub
-			return null;
+			return infoList.get(position);
 		}
 
 		@Override
@@ -289,16 +307,17 @@ public class AdvertActivity extends TitleRootActivity {
 				holder.tvContent = (TextView)convertView.findViewById(R.id.tv_content);
 				holder.tvScore = (TextView)convertView.findViewById(R.id.tv_score);
 				
+				ViewUtils.setSize(holder.imgView, 336, 202);
 				ViewUtils.setHeight(convertView, 202);
 				convertView.setTag(holder);
 			} else {
 				holder = (AdHolder)convertView.getTag();
 			}
 			
-			AdInfo info = infoList.get(position);
-			holder.imgView.setImageResource(info.imgId);
-			holder.tvContent.setText(info.content);
-			holder.tvScore.setText(info.scroe + "流量币");
+			AdvInfo info = infoList.get(position);
+			imageLoader.displayImage(info.coverurl, holder.imgView, imageLoaderOptions);
+			holder.tvContent.setText(info.title);
+			holder.tvScore.setText("10流量币");
 			
 			return convertView;
 		}
