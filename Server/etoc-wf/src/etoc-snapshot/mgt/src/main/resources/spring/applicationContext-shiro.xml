@@ -4,49 +4,20 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
   default-lazy-init="true">
 
-  <bean id="shiroFilter" class="net.zkbc.p2p.shiro.ShiroDbFilterFactoryBean">
+  <bean id="shiroFilter" class="net.etoc.wf.shiro.ShiroDbFilterFactoryBean">
     <property name="securityManager" ref="securityManager" />
     <property name="loginUrl" value="/login" />
     <property name="successUrl" value="/index" />
     <property name="filterChainDefinitions">
       <value>
       	/account/updatePassword = jcaptchaVf[updatePassword]
-        /account/updatePayPassword = jcaptchaVf[updatePayPassword]
-        /registerJcaptcha/registerByPhone = jcaptchaVf[registerByPhone]
-        /borrow/enterprise/applyBorrowJCaptcha = jcaptchaVf[applyBorrowJCaptcha]
-        /registerJcaptcha/registerByUnion = jcaptchaVf[registerByUnion]
-        /invest/investVerfiyCode = jcaptchaVf[investVerfiyCode]
-      
+      	/test/** = anon
         /login = authc
         /account/** = user
         /logout = logout
         /favicon.ico = anon
         / = anon
         /index = anon
-        /index2 = anon
-        /index3 = anon
-        /goRegister = anon
-        /activity = anon
-        /calculate = anon
-        /register/** = anon
-        /static/** = anon
-        /creditMaterial/** = anon
-        
-        /borrow/enterprise-add = anon
-        /borrow/product/enterprise** = anon
-        /borrow/enterprise/addFinanceApply = anon
-        
-        /jcaptcha/** = anon
-        /chinapnr/finish-** = anon
-        /sendVerifyCodeWithNoForward = anon
-        /ul/** = anon
-        /common/** = anon
-        /invest/list = anon
-        /debt/list = anon
-        /registerActive = anon
-        /debt/debtListAjax = anon
-        /loan/** = anon
-        /password/** = anon
         /** = user
         
       </value>
@@ -99,7 +70,7 @@
     <property name="shared" value="true"/>
   </bean>
 
-  <bean id="credentialsMatcher" class="net.zkbc.p2p.shiro.AppCredentialsMatcher"></bean>
+  <bean id="credentialsMatcher" class="net.etoc.core.service.impl.MgtCredentialsMatcher"></bean>
 
   <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 

@@ -4,6 +4,8 @@ dependencies {
   compile "commons-discovery:commons-discovery:$commonsDiscoveryVersion"
   compile "commons-httpclient:commons-httpclient:$commonsHttpclientVersion"
   compile "commons-lang:commons-lang:$commonsLangVersion"
+  compile "commons-io:commons-io:$commonsIOVersion"
+  compile "commons-fileupload:commons-fileupload:$commonsFileuploadVersion"
   compile "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
   compile "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
   compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
@@ -20,6 +22,8 @@ dependencies {
   compile "org.hibernate:hibernate-c3p0:$hibernateVersion"
   compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
   compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+  compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:$hibernateJpaVersion"
+  compile "org.hibernate:hibernate-core:$hibernateVersion"
   compile "org.json:json:$jsonVersion"
   compile "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
   compile "org.springframework:spring-aop:$springVersion"
@@ -35,7 +39,9 @@ dependencies {
   compile "org.springframework:spring-web:$springVersion"
   compile "org.springframework:spring-webmvc:$springVersion"
   compile "taglibs:standard:$standardTaglibsVersion"
-
+  compile "com.octo.captcha:jcaptcha-api:1.0"
+  compile "com.jhlabs:filters:2.0.235"
+  compile files(new File(etocproject.lib, 'jcaptcha/jcaptcha-2.0-alpha-1-SNAPSHOT.jar'))
   testCompile "junit:junit:$junitVersion"
   providedCompile "javax.servlet:servlet-api:$servletVersion"
 }
