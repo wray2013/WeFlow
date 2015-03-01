@@ -2,7 +2,6 @@ package com.etoc.weflowdemo.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 import cn.trinea.android.common.util.RandomUtils;
 
@@ -11,6 +10,7 @@ import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.net.GsonResponseObject.lotteryResponse;
 import com.etoc.weflowdemo.net.Requester;
 import com.etoc.weflowdemo.util.DisplayUtil;
+import com.etoc.weflowdemo.util.ViewUtils;
 import com.etoc.weflowdemo.view.ScratchTextView;
 import com.etoc.weflowdemo.view.ScratchTextView.OnCompletedListener;
 
@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class ScratchCardActivity extends TitleRootActivity {
@@ -62,6 +61,11 @@ public class ScratchCardActivity extends TitleRootActivity {
 		ivCover = (ImageView) findViewById(R.id.iv_cover);
 		ivCover.setVisibility(View.VISIBLE);
 //		ivCover.setOnClickListener(this);
+		LayoutParams coverlp = ivCover.getLayoutParams();
+		coverlp.width  = DisplayUtil.getSize(this, 688);
+		coverlp.height = DisplayUtil.getSize(this, 488);
+		ivCover.setLayoutParams(coverlp);
+		
 		
 		stvCard = (ScratchTextView) findViewById(R.id.stv_card);
 		LayoutParams cardlp = stvCard.getLayoutParams();
@@ -97,6 +101,15 @@ public class ScratchCardActivity extends TitleRootActivity {
 		hint.setOnClickListener(this);*/
 	}
 	
+	private int getGridViewHeight(GridView gridView) {
+		int count = gridView.getAdapter().getCount();
+		int rowNum = (int)Math.ceil(count / (double)3);
+		View v = gridView.getChildAt(0);
+		int itemheight = v.getMeasuredHeight();
+		int height = itemheight * rowNum  + cn.trinea.android.common.util.ViewUtils.getGridViewVerticalSpacing(gridView) * (rowNum + 1);
+		return height;
+	}
+	
 	private static String[] items = {
 		"iphone6",
 		"海外流量卡",
@@ -124,6 +137,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 				new int[] { R.id.iv_item_image, R.id.tv_item_text });
 		// 添加并且显示
 		gv.setAdapter(saImageItems);
+		int gridHeight = getGridViewHeight(gv);
+		ViewUtils.setHeightPixel(gv, gridHeight);
 	}
 	
 	private void randomAward() {
