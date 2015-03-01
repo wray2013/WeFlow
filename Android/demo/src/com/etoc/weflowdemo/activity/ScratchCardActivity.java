@@ -24,15 +24,18 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ScratchCardActivity extends TitleRootActivity {
 
 	private ImageView ivCover;
+	private TextView tvFlow;
 	private Button btnStartLottery;
 	private ScratchTextView stvCard;
 	private GridView gvAward;
-	private String Tel = "";
+	private String Tel  = "n/a";
+	private String Flow = "n/a";
 	
 	private boolean isRetry = false;
 	
@@ -53,6 +56,12 @@ public class ScratchCardActivity extends TitleRootActivity {
 		if(phoneNum != null) {
 			Tel = phoneNum;
 		}
+//		String flowvalue = getIntent().getStringExtra("flow");
+//		if(flowvalue != null) {
+		Flow = MainApplication.totalFlow + "";
+//		}
+		tvFlow = (TextView) findViewById(R.id.tv_flow);
+		tvFlow.setText(Flow);
 		
 		btnStartLottery = (Button) findViewById(R.id.iv_start_lottery);
 		btnStartLottery.setVisibility(View.VISIBLE);
@@ -205,6 +214,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 			commonResponse response = (commonResponse) msg.obj;
 			if(response != null && response.code != null) {
 				if(response.isSucceed()) {
+					tvFlow.setText(MainApplication.totalFlow + "");
 					startLottery();
 				} else if(response.isRunningLow()) {
 					Toast.makeText(MainApplication.getAppInstance(), "您的流量币余额不足", Toast.LENGTH_LONG).show();

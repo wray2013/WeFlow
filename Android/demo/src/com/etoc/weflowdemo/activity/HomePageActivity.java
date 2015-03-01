@@ -46,7 +46,7 @@ public class HomePageActivity extends TitleRootActivity {
 			public void onExpandCompleted() {
 				// TODO Auto-generated method stub
 				if(mtvFlow != null) {
-					mtvFlow.showNumberWithAnimation(98.5f, 1000);
+					mtvFlow.showNumberWithAnimation(MainApplication.totalFlow, 1000);
 				}
 			}
 		});
