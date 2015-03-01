@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.etoc.weflowdemo.activity.MainActivity;
 import com.etoc.weflowdemo.event.DialogUtils;
 import com.etoc.weflowdemo.event.RequestEvent;
+import com.etoc.weflowdemo.net.GsonResponseObject.UserInfo;
 import com.etoc.weflowdemo.util.ConStant;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -36,6 +37,8 @@ public class MainApplication extends Application {
     private LinkedList<Activity> activityList = new LinkedList<Activity>(); 
     private long lastRespNullTs = 0;
     public static String accountPhone = null;
+    public static int totalFlow = 0;
+    public static UserInfo userInfo;
     
 	@Override
 	public void onCreate() {

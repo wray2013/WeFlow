@@ -34,6 +34,11 @@ public class GsonResponseObject {
 		public UserInfo user;//
 	}
 	
+	public static class orderLargessResponse extends commonResponse {
+		public String blance;
+		public String rate;
+	}
+	
 	public static class UserInfo {
 		public String userid;
 		public String phone;

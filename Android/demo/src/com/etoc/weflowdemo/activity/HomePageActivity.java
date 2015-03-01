@@ -1,15 +1,18 @@
 package com.etoc.weflowdemo.activity;
 
-import android.widget.TextView;
-import com.etoc.weflowdemo.view.ExpandableLayout;
-import com.etoc.weflowdemo.view.ExpandableLayout.ExpandListener;
+import java.text.NumberFormat;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
+import com.etoc.weflowdemo.view.ExpandableLayout;
+import com.etoc.weflowdemo.view.ExpandableLayout.ExpandListener;
 import com.etoc.weflowdemo.view.MagicTextView;
 
 public class HomePageActivity extends TitleRootActivity {
@@ -52,6 +55,12 @@ public class HomePageActivity extends TitleRootActivity {
 		discoverLayout.setOnClickListener(this);
 		mtvFlow = (MagicTextView) findViewById(R.id.tv_flow);
 //		mtvFlow.showNumberWithAnimation(98.5f, 1000);
+		TextView tvYesterDayRate = (TextView) findViewById(R.id.tv_yestory_precent);
+		NumberFormat nf   =   NumberFormat.getPercentInstance(); 
+		nf.setMinimumFractionDigits(2); 
+		if (MainApplication.userInfo != null && MainApplication.userInfo.rate != null) {
+			tvYesterDayRate.setText("昨日年化率：" + nf.format(Float.parseFloat(MainApplication.userInfo.rate)));
+		}
 		
 		rlMakeFlow = (RelativeLayout) findViewById(R.id.rl_make_flow);
 		rlMakeFlow.setOnClickListener(this);
@@ -68,7 +77,7 @@ public class HomePageActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		if(mtvFlow != null) {
-			mtvFlow.showNumberWithAnimation(98.5f, 1000);
+			mtvFlow.showNumberWithAnimation(MainApplication.totalFlow, 1000);
 		}
 	}
 	

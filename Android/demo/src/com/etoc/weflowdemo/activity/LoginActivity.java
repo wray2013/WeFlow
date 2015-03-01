@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.dialog.PromptDialog;
+import com.etoc.weflowdemo.net.GsonResponseObject.UserInfo;
 import com.etoc.weflowdemo.net.GsonResponseObject.loginResponse;
 import com.etoc.weflowdemo.net.GsonResponseObject.sendSMSResponse;
 import com.etoc.weflowdemo.net.Requester;
@@ -70,6 +71,14 @@ public class LoginActivity extends TitleRootActivity {
 			loginResponse loginresponse = (loginResponse) msg.obj;
 			if(loginresponse != null) {
 				if(loginresponse.isSucceed()) {
+					UserInfo user = loginresponse.user;
+					if (user != null) {
+						MainApplication.userInfo = user;
+						if (user.blance != null) {
+							MainApplication.totalFlow = Integer.parseInt(user.blance);
+						}
+					}
+					
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
 					finish();
 					Intent homeIntent = new Intent(this,HomePageActivity.class);

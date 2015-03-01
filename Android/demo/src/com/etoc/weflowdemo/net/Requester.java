@@ -16,6 +16,7 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import com.etoc.weflowdemo.Config;
+import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.event.RequestEvent;
 import com.etoc.weflowdemo.net.GsonRequestObject.*;
 import com.etoc.weflowdemo.net.GsonResponseObject.*;
@@ -98,7 +99,7 @@ public class Requester {
 		request.productid = product;
 		request.phone = phone;
 		request.opertype = type;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_ORDER_LARGESS, commonResponse.class);
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_ORDER_LARGESS, orderLargessResponse.class);
 		worker.execute(RIA_INTERFACE_ORDER_LARGESS, request);
 	}
 	
@@ -196,6 +197,13 @@ public class Requester {
 		    if(ret_entity_str!=null){
 		    	try{
 		    		object = gson.fromJson(ret_entity_str, cls);
+		    		
+		    		if (responseType == RESPONSE_TYPE_ORDER_LARGESS) {
+		    			orderLargessResponse resp = (orderLargessResponse) object;
+		    			if (resp != null && resp.blance != null) {
+		    				MainApplication.totalFlow = Integer.parseInt(resp.blance);
+		    			}
+		    		}
 		    	}catch(Exception e){
 		    		e.printStackTrace();
 		    	}
