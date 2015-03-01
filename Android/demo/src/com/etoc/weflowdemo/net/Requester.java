@@ -55,7 +55,7 @@ public class Requester {
 		request.phone  = tel;
 		request.channelid = "app";
 		request.transid = "" + System.currentTimeMillis();
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, commonResponse.class);
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, sendSMSResponse.class);
 		worker.execute(RIA_INTERFACE_SENDSMS, request);
 	}
 	
@@ -66,7 +66,7 @@ public class Requester {
 		request.transid = "" + System.currentTimeMillis();
 		request.phone = tel;
 		request.weixinid = "Wang_JM";
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, commonResponse.class);
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
 		worker.execute(RIA_INTERFACE_LOGIN, request);
 	}
 	
@@ -191,6 +191,8 @@ public class Requester {
 
 		    }
 		    
+		    EventBus.getDefault().post(RequestEvent.LOADING_END);
+		    
 			if (handler != null) {
 				if(object==null){
 					Log.e(TAG, "object is null - ria_command_id:" + ria_command_id);
@@ -207,7 +209,7 @@ public class Requester {
 				Log.e(TAG, "handler is null, data can not callback - ria_command_id:" + ria_command_id);
 			}
 			
-			EventBus.getDefault().post(RequestEvent.LOADING_END);
+			
 		}
 
 	}

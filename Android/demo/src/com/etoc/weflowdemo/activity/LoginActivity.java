@@ -67,7 +67,7 @@ public class LoginActivity extends TitleRootActivity {
 			break;
 			
 		case Requester.RESPONSE_TYPE_LOGIN:
-			commonResponse loginresponse = (commonResponse) msg.obj;
+			loginResponse loginresponse = (loginResponse) msg.obj;
 			if(loginresponse != null) {
 				if(loginresponse.isSucceed()) {
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
@@ -79,11 +79,10 @@ public class LoginActivity extends TitleRootActivity {
 					PromptDialog.Alert(LoginActivity.class, "登录失败");
 				}
 			}
-			PromptDialog.Alert(LoginActivity.class, "请求失败");
 			break;
 			
 		case Requester.RESPONSE_TYPE_SENDSMS:
-			commonResponse smsresponse = (commonResponse) msg.obj;
+			sendSMSResponse smsresponse = (sendSMSResponse) msg.obj;
 			if(smsresponse != null) {
 				if(smsresponse.isSucceed()) {
 					PromptDialog.Alert(LoginActivity.class, "短信发送成功");

@@ -11,9 +11,10 @@ public class GsonResponseObject {
 	public static final int MEDIA_TYPE_TRAVEL = 6;
 	public static final int MEDIA_TYPE_TOPICS = 7;
 
-	public static class sendSMSResponse {
-		public String code;// ":0;
-		public String message;// 
+	public static class sendSMSResponse extends commonResponse{
+		public boolean isSucceed() {
+			return "0000".equals(code) || "2009".equals(code);
+		}
 	}
 	
 	public static class commonResponse {
@@ -21,16 +22,19 @@ public class GsonResponseObject {
 		public String message;// 
 		
 		public boolean isSucceed() {
-			return "0000".equals(code) || "2009".equals(code);
+			return "0000".equals(code);
 		}
 	}
 	
-	public static class loginResponse {
-		public String status;// ":0;
-		public String uuid;  //用户唯一标示
-		public String tel;   //
-		public String pts;   //剩余流量币
-		public String rate;  //年化收益率(%)
+	public static class loginResponse extends commonResponse {
+		public UserInfo user;//
+	}
+	
+	public static class UserInfo {
+		public String userid;
+		public String phone;
+		public String blance;
+		public String rate;
 	}
 	
 	public static class getAccInfoResponse {

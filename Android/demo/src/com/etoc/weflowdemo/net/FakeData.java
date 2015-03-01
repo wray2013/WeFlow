@@ -17,11 +17,11 @@ public class FakeData {
 		map.put(Requester.RIA_INTERFACE_SENDSMS, r0);
 		
 		loginResponse r1 = new loginResponse();
-		r1.status = "0";
+		/*r1.status = "0";
 		r1.uuid   = UUID.randomUUID().toString();
 //		r1.tel    = "";
 		r1.pts    = "95";
-		r1.rate   = "4.31";
+		r1.rate   = "4.31";*/
 		map.put(Requester.RIA_INTERFACE_LOGIN, r1);
 		
 		getAccInfoResponse r2 = new getAccInfoResponse();
