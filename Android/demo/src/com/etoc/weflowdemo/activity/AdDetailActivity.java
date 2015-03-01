@@ -33,7 +33,8 @@ public class AdDetailActivity extends TitleRootActivity {
 	
 	private DisplayMetrics dm = new DisplayMetrics();
 	
-	private String AdUrl = "http://v.adzop.com/xcp/1412/P190.mp4";
+	private String AdUrl = "http://1s.looklook.cn:8082/pub/looklook/video_pub" +
+			"/original/2013/10/11/111343a1958778779745b19b2afca35a891b5d.mp4";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +53,7 @@ public class AdDetailActivity extends TitleRootActivity {
 		ibPlay = (ImageButton) findViewById(R.id.btn_play);
 		ibPlay.setOnClickListener(this);
 		
-		String adInfoStr = getIntent().getStringExtra("adinfo");
-		AdvInfo adInfo = new Gson().fromJson(adInfoStr, AdvInfo.class);
-		TextView tvTitle = (TextView) findViewById(R.id.tv_ad_title);
-		tvTitle.setText(adInfo.title);
-		AdUrl = adInfo.videourl;
+		
 		
 		mediaController=new MediaController(this);
 		vvAdvVideo = (VideoView) findViewById(R.id.vv_ad_video);
@@ -65,7 +62,11 @@ public class AdDetailActivity extends TitleRootActivity {
 		vvAdvVideo.setOnErrorListener(mOnErrorListener);
 		vvAdvVideo.setOnCompletionListener(mOnCompletionListener);
 		
-		
+		String adInfoStr = getIntent().getStringExtra("adinfo");
+		AdvInfo adInfo = new Gson().fromJson(adInfoStr, AdvInfo.class);
+		TextView tvTitle = (TextView) findViewById(R.id.tv_ad_title);
+		tvTitle.setText(adInfo.title);
+		AdUrl = adInfo.videourl;
 		TextView tvContent = (TextView) findViewById(R.id.tv_ad_content);
 		tvContent.setText(adInfo.content);
 	}
@@ -75,9 +76,12 @@ public class AdDetailActivity extends TitleRootActivity {
 		@Override
 		public void onCompletion(MediaPlayer mp) {
 			// TODO Auto-generated method stub
+			Log.d("=AAA=","onCompletion in");
 			vvAdvVideo.stopPlayback();
 			ibPlay.setVisibility(View.VISIBLE);
-			Requester.orderLargess(handler, MainApplication.accountPhone, "C", "prod_in_charge_10");
+			if (hasVideoInitialized) {
+				Requester.orderLargess(handler, MainApplication.accountPhone, "C", "prod_in_charge_10");
+			}
 		}
 		
 	};
@@ -87,7 +91,8 @@ public class AdDetailActivity extends TitleRootActivity {
 		@Override
 		public boolean onError(MediaPlayer mp, int arg1, int arg2) {
 			// TODO Auto-generated method stub
-			vvAdvVideo.stopPlayback();
+			Log.d("=AAA=","onError in");
+//			vvAdvVideo.stopPlayback();
 			hasVideoInitialized = false;
 			ibPlay.setVisibility(View.VISIBLE);
 			return false;
