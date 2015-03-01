@@ -46,6 +46,9 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_ADV_INFO = 0xffee2103;
 	public static final String RIA_INTERFACE_ADV_INFO = "/rw/service/getadvinfo.html";
+	
+	public static final int RESPONSE_TYPE_LOTTERY = 0xffee2105;
+	public static final String RIA_INTERFACE_LOTTERY = "/interface/service/orderLargess";
 
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -86,6 +89,17 @@ public class Requester {
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_ADV_INFO, getAdvInfoResponse.class);
 		worker.execute(RIA_INTERFACE_ADV_INFO, request);
+	}
+	
+	public static void lotteryRequest(Handler handler, String tel) {
+		lotteryRequest request = new lotteryRequest();
+		request.channelid = "app";
+		request.transid = "" + System.currentTimeMillis();
+		request.phone = tel;
+		request.productid = "prod_out_flow_50";
+		request.opertype = "N";
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOTTERY, lotteryResponse.class);
+		worker.execute(RIA_INTERFACE_LOTTERY, request);
 	}
 	
 	public static class PostWorker extends Thread {

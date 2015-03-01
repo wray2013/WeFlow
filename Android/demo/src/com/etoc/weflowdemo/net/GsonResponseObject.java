@@ -62,4 +62,10 @@ public class GsonResponseObject {
 		public String instruction;//活动说明
 		public String flowaward;  //奖励流量币额度
 	}
+	
+	public static class lotteryResponse extends commonResponse {
+		public String phone;
+		public String blance;
+	}
+	
 }
