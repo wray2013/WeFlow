@@ -3,6 +3,7 @@ package com.etoc.weflowdemo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 import com.etoc.weflowdemo.MainApplication;
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.dialog.PromptDialog;
-import com.etoc.weflowdemo.net.GsonResponseObject.commonResponse;
 import com.etoc.weflowdemo.net.GsonResponseObject.loginResponse;
 import com.etoc.weflowdemo.net.GsonResponseObject.sendSMSResponse;
 import com.etoc.weflowdemo.net.Requester;
@@ -38,7 +38,7 @@ public class LoginActivity extends TitleRootActivity {
 	public void initViews() {
 		hideLeftButton();
 		hideRightButton();
-		setTitleText("微流量");
+		setTitleText("流量钱包");
 		
 		etPhone = (EditText) findViewById(R.id.et_phone);
 		etValidCode = (EditText) findViewById(R.id.et_valid);
@@ -67,26 +67,28 @@ public class LoginActivity extends TitleRootActivity {
 			break;
 			
 		case Requester.RESPONSE_TYPE_LOGIN:
-			commonResponse loginresponse = (commonResponse) msg.obj;
+			loginResponse loginresponse = (loginResponse) msg.obj;
 			if(loginresponse != null) {
 				if(loginresponse.isSucceed()) {
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
 					finish();
 					Intent homeIntent = new Intent(this,HomePageActivity.class);
 					homeIntent.putExtra("phone", etPhone.getText().toString());
+					MainApplication.accountPhone = etPhone.getText().toString();
 					startActivity(homeIntent);
 				} else {
 					PromptDialog.Alert(LoginActivity.class, "登录失败");
 				}
 			}
-			PromptDialog.Alert(LoginActivity.class, "请求失败");
 			break;
 			
 		case Requester.RESPONSE_TYPE_SENDSMS:
-			commonResponse smsresponse = (commonResponse) msg.obj;
+			sendSMSResponse smsresponse = (sendSMSResponse) msg.obj;
 			if(smsresponse != null) {
 				if(smsresponse.isSucceed()) {
 					PromptDialog.Alert(LoginActivity.class, "短信发送成功");
+					etValidCode.setText(smsresponse.message);
+					Log.d("=AAA=","message = " + smsresponse.message);
 				} else {
 					PromptDialog.Alert(LoginActivity.class, "短信发送失败");
 				}

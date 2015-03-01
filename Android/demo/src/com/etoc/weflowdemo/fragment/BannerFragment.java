@@ -1,13 +1,7 @@
 package com.etoc.weflowdemo.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -23,8 +17,9 @@ import android.widget.TextView;
 
 import com.etoc.weflowdemo.R;
 import com.etoc.weflowdemo.activity.AdDetailActivity;
-import com.etoc.weflowdemo.util.DisplayUtil;
+import com.etoc.weflowdemo.net.GsonResponseObject.AdvInfo;
 import com.etoc.weflowdemo.util.ViewUtils;
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -37,7 +32,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 	private static final String KEY_NAME = "PlayBillFragment:name";
 	private static final String KEY_ID = "PlayBillFragment:id";
 	private static final String KEY_TYPE = "PlayBillFragment:type";
-	private int imageId = 0;
+	private AdvInfo adInfo = null;
 	MyImageLoader imageLoader = null;
 	DisplayImageOptions imageLoaderOptions = null;
 	ImageView imageView;
@@ -61,8 +56,6 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 				.showImageOnLoading(mDrawable)
 //				.displayer(new SimpleBitmapDisplayer())
 				// .displayer(new CircularBitmapDisplayer()) 圆形图片
-				
-				.displayer(new RoundedBitmapDisplayer(12))// 圆角图片
 				.build();
 		super.onCreate(savedInstanceState);
 		
@@ -70,7 +63,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		
 		if (savedInstanceState != null) {
 			if (savedInstanceState.containsKey(KEY_URL)) {
-				imageId = savedInstanceState.getInt(KEY_URL);
+//				imageId = savedInstanceState.getInt(KEY_URL);
 			}
         }
 		
@@ -92,14 +85,15 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		View view = inflater.inflate(R.layout.item_view_pager, null);
 		imageView = (ImageView)view.findViewById(R.id.iv_playbill);
 		
-		imageView.setImageResource(imageId);
+//		imageView.setImageResource(imageId);
+		imageLoader.displayImage(adInfo.coverurl, imageView, imageLoaderOptions);
 		view.setOnClickListener(this);
 		return view;
 	}
 	
-	public static BannerFragment newInstance(Integer elem,int drawable) {
+	public static BannerFragment newInstance(AdvInfo elem,int drawable) {
 		BannerFragment fragment = new BannerFragment();
-		fragment.imageId = elem;
+		fragment.adInfo = elem;
 		fragment.mDrawable = drawable;
         return fragment;
     }
@@ -108,14 +102,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 	public void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
-		outState.putInt(KEY_URL, imageId);
-	}
-	
-	@Override
-	public void onHiddenChanged(boolean hidden) {
-		// TODO Auto-generated method stub
-		Log.d("=AAA=","RailServiceBanner hidden = " + hidden);
-		super.onHiddenChanged(hidden);
+//		outState.putInt(KEY_URL, imageId);
 	}
 	
 	@Override
@@ -125,6 +112,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		switch(v.getId()) {
 		case R.id.rl_item_view_pager:	
 			Intent i = new Intent(getActivity(), AdDetailActivity.class);
+			i.putExtra("adinfo", (new Gson()).toJson(adInfo));
 			startActivity(i);
 			break;
 		}

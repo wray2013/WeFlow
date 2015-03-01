@@ -1,63 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scv_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray" >
 
     <RelativeLayout
-        android:id="@+id/rl_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp" >
-        <com.etoc.weflowdemo.view.ScratchTextView 
-            android:id="@+id/stv_card"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_centerHorizontal="true"
-        	android:text="谢谢参与！"
-        	android:textSize="30sp"
-        	android:textColor="@color/white"
-        	android:gravity="center"
-        	android:background="@color/bg_red"/>
-        <ImageView 
-            android:id="@+id/iv_cover"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_centerHorizontal="true"
-        	android:background="@drawable/scratchcard_cover"/>
-        <TextView
-            android:id="@+id/tv_flow_hint"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_marginTop="10dp"
-        	android:layout_centerHorizontal="true"
-        	android:layout_below="@+id/stv_card"
-        	android:text="您的账户余额：98.5流量币"
-        	android:textColor="@android:color/black" />
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+
+            <com.etoc.weflowdemo.view.ScratchTextView
+                android:id="@+id/stv_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_scratchcard"
+                android:gravity="center"
+                android:text="谢谢参与！"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/iv_cover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/scratchcard_cover" />
+
+            <Button
+                android:id="@+id/iv_start_lottery"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@+id/stv_card"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="35dp"
+                android:background="@color/bg_red"
+                android:text="试试手气"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_flow_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stv_card"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="您的账户余额：98.5流量币"
+                android:textColor="@android:color/black" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_top"
+            android:layout_margin="5dp"
+            android:background="#868686" >
+
+            <RelativeLayout
+                android:id="@+id/rl_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="奖品包括"
+                    android:textColor="@color/bg_yellow" />
+
+                <GridView
+                    android:id="@+id/gv_award"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_hint"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="3"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="10dp" />
+            </RelativeLayout>
+        </ScrollView>
     </RelativeLayout>
-	<RelativeLayout
-        android:id="@+id/rl_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_top"
-        android:layout_margin="5dp" >
-        <TextView
-            android:id="@+id/tv_hint"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_marginTop="5dp"
-        	android:text="奖品包括（但不限于）"
-        	android:textColor="@color/bg_title_gray" />
-        <GridView 
-            android:id="@+id/gv_award"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_marginTop="15dp"
-        	android:layout_below="@+id/tv_hint"
-        	android:verticalSpacing="10dp"
-        	android:horizontalSpacing="10dp"
-        	android:numColumns="3"
-        	android:stretchMode="columnWidth"
-        	android:gravity="center" />
-	</RelativeLayout>
+
 </RelativeLayout>

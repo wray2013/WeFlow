@@ -40,5 +40,29 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	public static class orderLargessRequest {
+		String channelid;//渠道ID
+		String transid;// 交易流水
+		String phone;// 用户手机号
+		String productid;//产品id
+		String opertype;//操作类型 N：订购 D : 退订  C: 充值
+	}
+	
+	public static class getAwardInfoRequest {
+		String uuid;
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	public static class lotteryRequest {
+		String phone;  //用户号码
+		String channelid;//渠道ID
+		String transid;// 交易流水
+		String productid;//产品ID
+		String opertype;//操作类型
+//		String mac; // 手机的mac地址
+//		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 }
 

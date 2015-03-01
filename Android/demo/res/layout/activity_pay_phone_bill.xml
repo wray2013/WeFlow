@@ -15,15 +15,21 @@
         android:layout_marginRight="8dp"
         >
         
-        <TextView 
+        <EditText 
             android:id="@+id/tv_account_phone"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:maxLength="11"
+            android:background="@drawable/bg_pay_flow_text"
             android:text="18627934685"
             android:textColor="#e60012"
+            android:paddingLeft="10dp"
             android:textSize="16sp"
+            android:enabled="false"
             />
         
         <TextView 
@@ -32,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
-            android:text="账户绑定号码"
-            android:textColor="#adadad"
+            android:text="其他手机号码"
+            android:textColor="@color/color_valid_text"
             android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"

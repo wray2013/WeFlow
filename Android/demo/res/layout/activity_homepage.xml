@@ -21,7 +21,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/exv_user_info"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="8dp"
             android:orientation="vertical" >
 
             <RelativeLayout
@@ -36,7 +37,7 @@
                     android:layout_height="56dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:background="#ededed" />
+                    android:background="@drawable/get_flow" />
 
                 <TextView
                     android:id="@+id/tv_make_flow_title"
@@ -54,9 +55,9 @@
                     android:id="@+id/tv_make_flow_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:layout_alignLeft="@id/tv_make_flow_title"
                     android:layout_below="@id/tv_make_flow_title"
-                    android:layout_marginTop="8dp"
                     android:includeFontPadding="false"
                     android:text="看视频，下软件，玩游戏，轻松赚流量币"
                     android:textColor="#adadad"
@@ -66,7 +67,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_margin="8dp"
+                android:layout_margin="5dp"
                 android:background="#f6f7f7" />
 
             <RelativeLayout
@@ -81,7 +82,7 @@
                     android:layout_height="56dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:background="#ededed" />
+                    android:background="@drawable/cost_flow" />
 
                 <TextView
                     android:id="@+id/tv_use_flow_title"
@@ -99,9 +100,9 @@
                     android:id="@+id/tv_use_flow_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:layout_alignLeft="@id/tv_use_flow_title"
                     android:layout_below="@id/tv_use_flow_title"
-                    android:layout_marginTop="8dp"
                     android:includeFontPadding="false"
                     android:text="充话费，定流量包，流量币大有用途"
                     android:textColor="#adadad"
@@ -111,7 +112,7 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_margin="8dp"
+                android:layout_margin="5dp"
                 android:background="#f6f7f7" />
 
             <RelativeLayout
@@ -126,7 +127,7 @@
                     android:layout_height="56dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:background="#ededed" />
+                    android:background="@drawable/discover" />
 
                 <TextView
                     android:id="@+id/tv_discover_title"
@@ -144,9 +145,9 @@
                     android:id="@+id/tv_discover_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:layout_alignLeft="@id/tv_discover_title"
                     android:layout_below="@id/tv_discover_title"
-                    android:layout_marginTop="8dp"
                     android:includeFontPadding="false"
                     android:text="刮刮卡，更多乐趣等你发现"
                     android:textColor="#adadad"

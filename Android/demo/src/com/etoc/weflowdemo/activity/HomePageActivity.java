@@ -30,8 +30,10 @@ public class HomePageActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		setTitleText("微流量");
-		setLeftButtonText("宝典");
-		setRightButtonText("消息");
+		hideLeftButton();
+//		setLeftButtonText("宝典");
+		hideRightButton();
+//		setRightButtonText("消息");
 		
 		useFlowLayout = (RelativeLayout) findViewById(R.id.rl_use_flow);
 		discoverLayout = (RelativeLayout) findViewById(R.id.rl_discover);
@@ -88,7 +90,9 @@ public class HomePageActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.rl_discover:
-			startActivity(new Intent(this, ScratchCardActivity.class));
+			Intent lotteryIntent = new Intent(this,ScratchCardActivity.class);
+			lotteryIntent.putExtra("phone", tvPhoneNum.getText().toString());
+			startActivity(lotteryIntent);
 			break;
 		case R.id.rl_make_flow:
 			startActivity(new Intent(this, AdvertActivity.class));
