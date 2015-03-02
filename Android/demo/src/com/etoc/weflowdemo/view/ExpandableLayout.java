@@ -151,14 +151,14 @@ public class ExpandableLayout extends RelativeLayout
     private void initContentVisibility() {
     	contentLayout.setVisibility(VISIBLE);
     	contentLayout.measure(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-    	contentLayout.getLayoutParams().height = DisplayUtil.getSize(getContext(), 612);
+    	contentLayout.getLayoutParams().height = DisplayUtil.getSize(getContext(), 522);
     	contentLayout.requestLayout();
     }
 
     private void expand(final View v)
     {
         v.measure(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        final int maxheight = DisplayUtil.getSize(getContext(), 612);
+        final int maxheight = DisplayUtil.getSize(getContext(), 522);
         int tmptargetHeight = v.getMeasuredHeight();
         Log.e("", "maxheight = " + maxheight + ";tmptargetHeight = " + tmptargetHeight);
         final int targetHeight = tmptargetHeight > maxheight ? maxheight : tmptargetHeight;

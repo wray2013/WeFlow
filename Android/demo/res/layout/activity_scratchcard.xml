@@ -75,17 +75,18 @@
             
         </RelativeLayout>
 
-        <ScrollView
+        <!-- ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_top"
-            android:layout_margin="5dp"
-            android:background="#868686" >
+            android:layout_margin="5dp" -->
 
             <RelativeLayout
                 android:id="@+id/rl_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_top"
+                android:layout_margin="5dp" >
 
                 <TextView
                     android:id="@+id/tv_hint"
@@ -94,7 +95,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:text="奖品包括"
-                    android:textColor="@color/bg_yellow" />
+                    android:textColor="@color/bg_title_gray" />
 
                 <GridView
                     android:id="@+id/gv_award"
@@ -108,7 +109,6 @@
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="10dp" />
             </RelativeLayout>
-        </ScrollView>
     </RelativeLayout>
 
 </RelativeLayout>
