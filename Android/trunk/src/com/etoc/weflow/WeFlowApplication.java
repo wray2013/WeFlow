@@ -2,17 +2,27 @@ package com.etoc.weflow;
 
 import java.util.LinkedList;
 
+import com.etoc.weflow.event.DialogUtils;
+import com.etoc.weflow.event.RequestEvent;
+import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
+import de.greenrobot.event.EventBus;
+
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.Toast;
 
 public class WeFlowApplication extends Application {
 	
 	private static WeFlowApplication appinstance;
+	private long lastRespNullTs = 0;
 	private LinkedList<Activity> activityList = new LinkedList<Activity>(); 
 	
 	@Override
@@ -39,14 +49,15 @@ public class WeFlowApplication extends Application {
 		.build();
 
 		ImageLoader.getInstance().init(config);
-		
+		MyImageLoader.getInstance();
+		EventBus.getDefault().register(this);
 	}
 
 	public final static WeFlowApplication getAppInstance() {
 		return appinstance;
 	}
 	
-    // Ìí¼ÓActivityµ½ÈİÆ÷ÖĞ 
+    // ï¿½ï¿½ï¿½Activityï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
     public void addActivity(Activity activity) { 
          activityList.add(activity); 
     } 
@@ -62,7 +73,7 @@ public class WeFlowApplication extends Application {
     	return null;
     }
     
-    // ±éÀúËùÓĞActivity²¢finish 
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Activityï¿½ï¿½finish 
     public void cleanAllActivity() { 
 	    for (Activity activity : activityList) { 
 	    	if(activity!=null){
@@ -71,4 +82,35 @@ public class WeFlowApplication extends Application {
 	        
 	    } 
     }
+    
+    public void onEventMainThread(RequestEvent event) {
+		switch(event) {
+		case RESP_NULL:
+	    	ConnectivityManager manager = (ConnectivityManager) WeFlowApplication.getAppInstance().getSystemService(Context.CONNECTIVITY_SERVICE);  
+	        NetworkInfo mobileInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);  
+	        NetworkInfo wifiInfo = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);  
+	        
+	        boolean isConnected = wifiInfo.isConnected()|mobileInfo.isConnected();
+
+	        long curRespNullTs = System.currentTimeMillis();
+	        if(curRespNullTs - lastRespNullTs > 3000){
+		        if(isConnected){
+			    	Toast.makeText(WeFlowApplication.getAppInstance(), "ç½‘ç»œä¸ä½³ï¼Œè¯·æ£€æŸ¥ç½‘ç»œè¿æ¥", Toast.LENGTH_LONG).show();
+		        }else{
+		        	Toast.makeText(WeFlowApplication.getAppInstance(), "æ²¡æœ‰ç½‘ç»œï¼Œè¯·æ£€æŸ¥ç½‘ç»œè¿æ¥", Toast.LENGTH_LONG).show();
+		        }
+		        lastRespNullTs = curRespNullTs;
+	        }
+
+	        break;
+		case LOADING_START:
+			DialogUtils.SendLoadingDialogStart(this);
+			break;
+		case LOADING_END:
+			DialogUtils.SendLoadingDialogEnd(this);
+			break;
+		default:
+			break;
+		}
+	}
 }
