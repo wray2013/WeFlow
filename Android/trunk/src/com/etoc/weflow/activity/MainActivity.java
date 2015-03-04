@@ -27,7 +27,7 @@ import com.etoc.weflow.version.CheckUpdate;
 
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends TitleMidActivity implements Callback, OnClickListener {
+public class MainActivity extends TitleRootActivity implements Callback, OnClickListener {
 	
 	private final String TAG = "MainActivity";
 

@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
@@ -26,11 +27,8 @@ import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
-public abstract class TitleMidActivity extends BaseActivity implements OnClickListener, Callback {
+public abstract class TitleRootActivity extends BaseActivity implements OnClickListener, Callback {
 
-
-	public abstract int subContentViewId();
-	
 	private RelativeLayout rlyTitle;
 	private FrameLayout rlyContent;
 	protected ImageButton leftButton;
@@ -40,6 +38,9 @@ public abstract class TitleMidActivity extends BaseActivity implements OnClickLi
 	protected TextView title;
 	private ImageView iv_title;
 	protected Handler handler;
+	public final static int GRAVITE_CENTER = 0;
+	public final static int GRAVITE_LEFT = 1;
+	public final static int GRAVITE_RIGHT = 2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,8 @@ public abstract class TitleMidActivity extends BaseActivity implements OnClickLi
 		ViewUtils.setMarginRight(rightButton, 12);
 		ViewUtils.setMarginRight(ivRightButton, 12);
 		ViewUtils.setMarginLeft(tvLeftBtn, 12);
+
+		
 		rightButton.setOnClickListener(this);
 		ivRightButton.setOnClickListener(this);
 		leftButton.setOnClickListener(this);
@@ -73,6 +76,29 @@ public abstract class TitleMidActivity extends BaseActivity implements OnClickLi
 		title.setTextSize(DisplayUtil.textGetSizeSp(this, 45));
 		title.setMaxWidth(DisplayUtil.getSize(this,480));
 		iv_title = (ImageView)findViewById(R.id.iv_title);
+		
+		RelativeLayout.LayoutParams rlParams = (LayoutParams) title.getLayoutParams();
+		switch (graviteType()) {
+		case GRAVITE_CENTER:
+			rlParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+			title.setLayoutParams(rlParams);
+			break;
+		case GRAVITE_LEFT:
+			rlParams.addRule(RelativeLayout.CENTER_VERTICAL | RelativeLayout.ALIGN_PARENT_LEFT);
+			rlParams.addRule(RelativeLayout.RIGHT_OF, R.id.btn_title_left);
+			title.setLayoutParams(rlParams);
+			ViewUtils.setMarginLeft(title, 42);
+			break;
+		case GRAVITE_RIGHT:
+			rlParams.addRule(RelativeLayout.CENTER_VERTICAL | RelativeLayout.ALIGN_PARENT_RIGHT);
+			rlParams.addRule(RelativeLayout.LEFT_OF, R.id.btn_title_left);
+			title.setLayoutParams(rlParams);
+			ViewUtils.setMarginRight(title, 42);
+			break;
+
+		}
+		
+		
 		if(subContentViewId() != 0){
 			LayoutInflater.from(this).inflate(subContentViewId() , rlyContent);
 		}
@@ -87,6 +113,10 @@ public abstract class TitleMidActivity extends BaseActivity implements OnClickLi
 		return R.layout.fragment_title_root;
 	}
 	
+	protected int graviteType() {
+		return GRAVITE_CENTER;
+	}
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -97,47 +127,6 @@ public abstract class TitleMidActivity extends BaseActivity implements OnClickLi
 			break;
 		}
 	}
-	
-	@Override
-	public boolean dispatchTouchEvent(MotionEvent ev) {
-		if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-			View v = getCurrentFocus();
-			if (isShouldHideInputScreen(v, ev)) {
-				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				if (imm != null) {
-					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-				}
-			}
-			return super.dispatchTouchEvent(ev);
-		}
-		// 必不可少，否则所有的组件都不会有TouchEvent了
-		if (getWindow().superDispatchTouchEvent(ev)) {
-			return true;
-		}
-		return onTouchEvent(ev);
-	}
-
-	
-	public  boolean isShouldHideInputScreen(View v, MotionEvent event) {
-		if (v != null && (v instanceof EditText)) {
-			int[] leftTop = { 0, 0 };
-			//获取输入框当前的location位置
-			v.getLocationOnScreen(leftTop);
-			int left = leftTop[0];
-			int top = leftTop[1];
-			int bottom = top + v.getHeight();
-			int right = left + v.getWidth();
-			if (event.getRawX() > left && event.getRawX() < right
-					&& event.getRawY() > top && event.getRawY() < bottom) {
-				// 点击的是输入框区域，保留点击EditText的事件
-				return false;
-			} else {
-				return true;
-			}
-		}
-		return false;
-	}
-	
 	
 	/**
 	 * 返回rlyContent

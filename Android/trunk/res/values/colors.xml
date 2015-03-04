@@ -46,4 +46,6 @@
 	<!-- list item点击色 -->
     <color name="list_item_click_grey">#e8e8e8</color>
     
+    <color name="background_tab_pressed">#6633B5E5</color>
+    
 </resources>
