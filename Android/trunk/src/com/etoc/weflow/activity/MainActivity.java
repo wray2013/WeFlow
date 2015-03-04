@@ -1,5 +1,6 @@
 package com.etoc.weflow.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -320,6 +321,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			break;
 		case R.id.rl_btn_me:
 			switchContent(myselfFragment);
+			break;
+		case R.id.btn_title_right:
+			startActivity(new Intent(this, MakeFlowActivity.class));
 			break;
 		}
 	}

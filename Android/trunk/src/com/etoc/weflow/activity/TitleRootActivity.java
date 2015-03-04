@@ -52,7 +52,7 @@ public abstract class TitleRootActivity extends BaseActivity implements OnClickL
 		
 		int paddingSize = DisplayUtil.getSize(this, 12);
 		RelativeLayout.LayoutParams pm = (RelativeLayout.LayoutParams)rlyTitle.getLayoutParams();
-		pm.height = DisplayUtil.getSize(this, 96);
+		pm.height = DisplayUtil.getSize(this, 112);
 		rlyTitle.setLayoutParams(pm);
 		
 		leftButton = (ImageButton)findViewById(R.id.btn_title_left);

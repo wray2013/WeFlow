@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-package com.astuetz.viewpager.extensions;
+package com.astuetz;
 
 import java.util.Locale;
-
-import com.etoc.weflow.R;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -34,6 +32,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -42,6 +41,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.etoc.weflow.R;
+import com.etoc.weflow.utils.DisplayUtil;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
@@ -223,6 +225,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 				currentPosition = pager.getCurrentItem();
 				scrollToChild(currentPosition, 0);
+				changeTabTextColor();
 			}
 		});
 
@@ -232,6 +235,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 		TextView tab = new TextView(getContext());
 		tab.setText(title);
+		tab.setTextSize(DisplayUtil.textGetSizeSp(getContext(), 26));
+		tab.setTextColor(0xff212324);
 		tab.setFocusable(true);
 		tab.setGravity(Gravity.CENTER);
 		tab.setSingleLine();
@@ -242,9 +247,24 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 				pager.setCurrentItem(position);
 			}
 		});
-
 		tabsContainer.addView(tab);
-
+	}
+	
+	private void changeTabTextColor() {
+		int curPos = pager.getCurrentItem();
+		for (int i = 0;i < tabsContainer.getChildCount();i++) {
+			View childView = tabsContainer.getChildAt(i);
+			if (childView instanceof TextView) {
+				TextView tv = (TextView)childView;
+				Log.d("=AAA=","currentPosition = " + currentPosition + " i = " + i);
+				if (curPos == i) {
+					tv.setTextColor(0xffe94628);
+				} else {
+					tv.setTextColor(0xff212324);
+				}
+			}
+			
+		}
 	}
 
 	private void addIconTab(final int position, int resId) {
@@ -423,6 +443,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			if (delegatePageListener != null) {
 				delegatePageListener.onPageSelected(position);
 			}
+			changeTabTextColor();
+			Log.d("=AAA=","onPageSelected position = " + position);
 		}
 
 	}

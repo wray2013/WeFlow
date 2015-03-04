@@ -8,11 +8,18 @@
     
     <include layout="@layout/root_title_bar" android:id="@+id/inc_title_bar"/>
     
+    <View
+        android:id="@+id/view_top_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#DCDCDD"
+        android:layout_below="@id/inc_title_bar"
+        />
     <FrameLayout
         android:id="@+id/rly_fg_content"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-        android:layout_below="@+id/inc_title_bar"/>
+        android:layout_below="@+id/view_top_line"/>
     
     
 
