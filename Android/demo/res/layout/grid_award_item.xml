@@ -22,7 +22,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:text="TextView01"
-        android:textColor="@color/bg_yellow">
+        android:textColor="@color/bg_title_gray">
     </TextView>
 
 </LinearLayout>

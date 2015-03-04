@@ -122,7 +122,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 		"iphone6",
 		"海外流量卡",
 		"运动手环",
-		"巴厘岛浪漫七日游",
+		"巴厘浪漫七日游",
 		"海陆双拼套餐",
 		"罗技键鼠套装"
 	};
@@ -154,8 +154,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 				new int[] { R.id.iv_item_image, R.id.tv_item_text });
 		// 添加并且显示
 		gv.setAdapter(saImageItems);
-		int gridHeight = getGridViewHeight(gv);
-		ViewUtils.setHeightPixel(gv, gridHeight);
+//		int gridHeight = getGridViewHeight(gv);
+//		ViewUtils.setHeightPixel(gv, gridHeight);
 	}
 	
 	private void randomAward() {
