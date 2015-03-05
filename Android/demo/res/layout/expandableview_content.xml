@@ -73,7 +73,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="9dp"
                 android:includeFontPadding="false"
-                android:text="昨日收益：43流量币"
+                android:text="昨日收益：3流量币"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
@@ -106,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="3398元"
+                        android:text="196元"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -115,7 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="B套餐"
+                        android:text="4G全国套餐"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -139,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="套餐内剩余流量：100M"
+                        android:text="套餐内剩余流量：2.5GB"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
@@ -149,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="6dp"
-                        android:text="套餐外剩余流量：100M"
+                        android:text="套餐外剩余流量：300MB"
                         android:textColor="@color/white"
                         android:textSize="12sp" />
                 </LinearLayout>
