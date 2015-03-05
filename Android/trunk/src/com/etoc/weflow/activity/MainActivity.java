@@ -1,5 +1,6 @@
 package com.etoc.weflow.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -27,7 +28,7 @@ import com.etoc.weflow.version.CheckUpdate;
 
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends FragmentActivity implements Callback, OnClickListener {
+public class MainActivity extends TitleRootActivity implements Callback, OnClickListener {
 	
 	private final String TAG = "MainActivity";
 
@@ -47,8 +48,6 @@ public class MainActivity extends FragmentActivity implements Callback, OnClickL
 	private RelativeLayout rlDiscover;
 	private RelativeLayout rlMe;
 	
-	private TextView tvTitle;
-	
 	private static long back_pressed;
 	
 	@Override
@@ -57,10 +56,6 @@ public class MainActivity extends FragmentActivity implements Callback, OnClickL
 		
 		handler = new Handler(this);
 		dm = getResources().getDisplayMetrics();
-		
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_main);
-		EventBus.getDefault().register(this);
 		
 		initController();
 		initMain(savedInstanceState);
@@ -79,7 +74,6 @@ public class MainActivity extends FragmentActivity implements Callback, OnClickL
 		rlDiscover.setOnClickListener(this);
 		rlMe.setOnClickListener(this);
 		
-		tvTitle = (TextView) findViewById(R.id.tv_title);
 	}
 	
 	private void initMain(Bundle savedInstanceState) {
@@ -270,7 +264,7 @@ public class MainActivity extends FragmentActivity implements Callback, OnClickL
 		String title = "";
 		if(fragment != null) {
 			if(fragment instanceof HomePageFragment) {
-				title = "微流量";
+				title = "流量钱包";
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "流量银行";
 			} else if(fragment instanceof DiscoveryFragment) {
@@ -279,7 +273,7 @@ public class MainActivity extends FragmentActivity implements Callback, OnClickL
 				title = "我";
 			}
 		}
-		tvTitle.setText(title);
+		setTitleText(title);
 	}
 	
 	/*@Override
@@ -305,18 +299,6 @@ public class MainActivity extends FragmentActivity implements Callback, OnClickL
 		back_pressed = System.currentTimeMillis();
 	}
 	
-	/*@Override
-	public void showMenu() {
-		// TODO Auto-generated method stub
-		Log.d(TAG,"showMenu in");
-		super.showMenu();
-	}*/
-	
-	public void onEvent(FragmentEvent event) {
-		switch(event) {
-		
-		}
-	}
 	
 	@Override
 	public boolean handleMessage(Message msg) {
@@ -340,6 +322,15 @@ public class MainActivity extends FragmentActivity implements Callback, OnClickL
 		case R.id.rl_btn_me:
 			switchContent(myselfFragment);
 			break;
+		case R.id.btn_title_right:
+			startActivity(new Intent(this, MakeFlowActivity.class));
+			break;
 		}
+	}
+
+	@Override
+	public int subContentViewId() {
+		// TODO Auto-generated method stub
+		return R.layout.activity_main;
 	}
 }

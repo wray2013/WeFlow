@@ -15,6 +15,15 @@
         android:layout_centerVertical="true"
         />
     
+    <Button
+        android:id="@+id/btn_title_left_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -45,13 +54,12 @@
         android:textColor="@color/btn_right_text"
         android:visibility="visible" />
     
-    <com.etoc.weflow.smoothprogressbar.SmoothProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="fill_parent"
+    <ImageView
+        android:id="@+id/iv_title_right"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        android:indeterminate="true"
-        android:indeterminateOnly="false"/>
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
 
 </RelativeLayout>
