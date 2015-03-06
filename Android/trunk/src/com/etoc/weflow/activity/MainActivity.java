@@ -36,7 +36,6 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	private DisplayMetrics dm = new DisplayMetrics();
 	
 	private XFragment<?> currContentFragment;
-	private MenuFragment menuFragment;
 	
 	private XFragment<?> homePageFragment;
 	private XFragment<?> flowBankFragment;
@@ -77,19 +76,6 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	private void initMain(Bundle savedInstanceState) {
-		
-		// check if the content frame contains the menu frame
-		/*if (findViewById(R.id.menu_frame) == null) {
-			setBehindContentView(R.layout.menu_frame);
-			getSlidingMenu().setSlidingEnabled(true);
-			getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		} else {
-			// add a dummy view
-			View v = new View(this);
-			setBehindContentView(v);
-			getSlidingMenu().setSlidingEnabled(false);
-			getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
-		}*/
 		
 		if(savedInstanceState != null) {
 			
@@ -141,56 +127,6 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		
 		getSupportFragmentManager().beginTransaction()
 		.replace(R.id.content_frame, currContentFragment,currContentFragment.getClass().getName()).commit();
-		// set the Behind View Fragment
-		/*if (menuFragment != null
-				&& null != getSupportFragmentManager().findFragmentByTag(
-						menuFragment.getClass().getName())) {
-			getSupportFragmentManager().beginTransaction().remove(menuFragment);
-		}
-		FragmentTransaction t = this.getSupportFragmentManager()
-				.beginTransaction();
-		if (menuFragment == null) {
-			menuFragment = new MenuFragment();
-		}
-		
-		t.replace(R.id.menu_frame, menuFragment);
-		t.commit();*/
-		
-		// customize the SlidingMenu
-		/*final int leftOffset = 120 * dm.widthPixels / 720;
-		final SlidingMenu sm = getSlidingMenu();
-		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-		sm.setBehindOffset(leftOffset);
-		sm.setFadeEnabled(false);
-		sm.setBehindScrollScale(0.25f);
-		sm.setFadeDegree(0.25f);
-		sm.setShadowDrawable(R.drawable.shadow_left);
-		sm.setTopShadowDrawable(R.drawable.shadow_top);
-		sm.setBottomShadowDrawable(R.drawable.shadow_bottom);
-		sm.setShadowWidth(DisplayUtil.getSize(this, 30));
-		
-		sm.setBackgroundImage(R.drawable.img_frame_background);
-		
-		final float defaultPercent = 910.0f/(1280 - 50);
-		final float defaultMidPos = (577.0f) * dm.heightPixels / 1280;
-		sm.setTopEdge((int) (defaultMidPos * (1 - defaultPercent)));
-		Log.d(TAG,"defaultMidPos = " + defaultMidPos);
-		sm.setBehindCanvasTransformer(new SlidingMenu.CanvasTransformer() {
-			@Override
-			public void transformCanvas(Canvas canvas, float percentOpen) {
-				float scale = (float) (percentOpen * (1 - defaultPercent) + defaultPercent);
-				canvas.scale(scale, scale, -canvas.getWidth() / 2,
-						defaultMidPos);
-			}
-		});
-
-		sm.setAboveCanvasTransformer(new SlidingMenu.CanvasTransformer() {
-			@Override
-			public void transformCanvas(Canvas canvas, float percentOpen) {
-				float scale = (float) (1 - percentOpen * (1 - defaultPercent));
-				canvas.scale(scale, scale, 0, defaultMidPos);
-			}
-		});*/
 	}
 	
 	@Override
@@ -205,20 +141,12 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 
 		}
 		
-		if (outState != null && menuFragment != null) {
-			Log.d(TAG, "onSaveInstanceState menuFragment="
-					+ menuFragment);
-//			getSupportFragmentManager().putFragment(outState, menuFragment.getClass()
-//					.getName(), menuFragment);
-//			getSupportFragmentManager().beginTransaction().remove(menuFragment).commit();
-		}
 		super.onSaveInstanceState(outState);
 	}
 	
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
-//		init(savedInstanceState);
 	}
 	
 	public void switchContent(XFragment<?> fragment) {
@@ -257,7 +185,6 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		showTitle(fragment);
 		currContentFragment = fragment;
 		ft.commitAllowingStateLoss();
-//		showContent();
 	}
 	
 	private void showTitle(XFragment<?> fragment) {

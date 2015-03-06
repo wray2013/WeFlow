@@ -34,7 +34,7 @@ public class MakeFlowActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		setTitleText("赚流量");
-		setRightButtonText("消息");
+		setRightButtonText("记录");
 	}
 	
 	@Override
