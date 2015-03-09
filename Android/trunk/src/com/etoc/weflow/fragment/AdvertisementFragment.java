@@ -26,7 +26,7 @@ import android.widget.RelativeLayout;
 public class AdvertisementFragment extends Fragment implements OnClickListener {
 
 	private final String TAG = "AdvertisementFragment";
-	
+	private View mView;
 	private AutoScrollViewPager viewPager = null;
 	private PageIndicator mIndicator;
 	
@@ -43,8 +43,16 @@ public class AdvertisementFragment extends Fragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		if(mView != null){
+		    ViewGroup parent = (ViewGroup) mView.getParent();  
+		    if (parent != null) {  
+		        parent.removeView(mView);  
+		    }   
+		    return mView;
+		}
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.fragment_advertisement, null);
+		mView = v;
 		initView(v);
 		
 		return v;

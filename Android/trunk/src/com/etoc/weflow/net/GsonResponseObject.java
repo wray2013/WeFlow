@@ -86,6 +86,12 @@ public class GsonResponseObject {
 	/****************************************************
 	 *                      B.花流量币
 	 ****************************************************/
+	public static class RechargePhoneResp {
+		public String chargesid;//产品id
+		public String money;// 充值面额
+		public String cost;// 话费流量币
+		
+	}
 	/****************************************************
 	 *                      C.流量银行
 	 ****************************************************/

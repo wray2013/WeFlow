@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f4f4"
+     >
+    
+    <RadioGroup 
+            android:id="@+id/rg_period_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="8dp"
+            android:orientation="horizontal"
+            >
+            
+            <RadioButton 
+                android:id="@+id/rb_phone"
+                android:layout_width="77dp"
+                android:layout_height="32dp"
+                android:text="充话费"
+                android:gravity="center"
+                android:checked="true"
+                android:button="@null"
+                android:background="@drawable/bg_left_corner"
+                android:textColor="@color/radio_text_color"
+                />
+            
+            <RadioButton 
+                android:id="@+id/rb_qq"
+                android:layout_width="77dp"
+                android:layout_height="32dp"
+                android:text="充Q币"
+                android:gravity="center"
+                android:button="@null"
+                android:background="@drawable/bg_right_corner"
+                android:textColor="@color/radio_text_color"
+                />
+            
+        </RadioGroup>
+        
+    <FrameLayout 
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rg_period_radio"
+        >
+        
+    </FrameLayout>
+    
+
+</RelativeLayout>

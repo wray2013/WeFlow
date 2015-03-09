@@ -23,6 +23,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 
 public class BannerFragment extends Fragment implements OnClickListener, Callback {
+	
 	private final String TAG = "PlayBillFragment";
 	private static final String KEY_URL = "PlayBillFragment:imageUrl";
 	private static final String KEY_NAME = "PlayBillFragment:name";
@@ -79,6 +80,7 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 			ViewGroup container,  Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.item_view_pager, null);
+		
 		imageView = (ImageView)view.findViewById(R.id.iv_playbill);
 		
 //		imageView.setImageResource(imageId);

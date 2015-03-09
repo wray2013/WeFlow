@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F4F4"
+    >
+    
+    <RelativeLayout 
+        android:id="@+id/rl_input_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/bg_input_rect"
+        >
+        
+        <EditText 
+            android:id="@+id/et_phone"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="15dp"
+            android:background="@null"
+            android:hint="请输入手机号码"
+            android:textSize="13sp"
+            />
+        
+    </RelativeLayout>
+    
+    
+    <GridView 
+        android:id="@+id/gv_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/rl_input_phone"
+        android:layout_alignRight="@id/rl_input_phone"
+        android:verticalSpacing="1px"
+       	android:horizontalSpacing="1px"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:gravity="center" 
+        android:layout_below="@id/rl_input_phone"
+        android:layout_marginTop="40dp"
+        android:background="#E5E6E6"
+        android:numColumns="3"
+        >
+    </GridView>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_cost_coins"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/gv_menu"
+        >
+        
+        <TextView 
+            android:id="@+id/tv_cost_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="充值将话费您"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="8dp"
+            android:textSize="16sp"
+            />
+        
+        <TextView
+            android:id="@+id/tv_cost_coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5000流量币"
+            android:textColor="@color/pagertab_color_green" 
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            />
+        
+    </RelativeLayout>
+    
+    
+    <TextView
+        android:id="@+id/tv_btn_order"
+        android:layout_width="276dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_order"
+        android:text="点击换购"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="34dp"      
+        />
+    
+
+</RelativeLayout>
