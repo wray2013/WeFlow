@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
+import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
 
 public class MakeFlowActivity extends TitleRootActivity {
@@ -33,7 +34,7 @@ public class MakeFlowActivity extends TitleRootActivity {
 	}
 	
 	private void initViews() {
-		setTitleText("赚流量");
+		setTitleText("赚流量币");
 		setRightButtonText("记录");
 	}
 	
@@ -57,7 +58,7 @@ public class MakeFlowActivity extends TitleRootActivity {
 	
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "视频", "软件", "游戏", "交友"};
+		private final String[] TITLES = { "视频", "软件", "游戏"/*, "交友"*/};
 
 		public MyPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -75,7 +76,16 @@ public class MakeFlowActivity extends TitleRootActivity {
 
 		@Override
 		public Fragment getItem(int position) {
-			return SuperAwesomeCardFragment.newInstance(position);
+			Fragment frag = null;
+			switch (position) {
+			case 0:
+				frag = new AdvertisementFragment();
+				break;
+			default:
+				frag = SuperAwesomeCardFragment.newInstance(position);
+				break;
+			}
+			return frag;
 		}
 
 	}

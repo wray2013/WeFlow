@@ -1,14 +1,19 @@
 package com.etoc.weflow;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import com.etoc.weflow.event.DialogUtils;
 import com.etoc.weflow.event.RequestEvent;
+import com.etoc.weflow.utils.ConStant;
 import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
+import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import de.greenrobot.event.EventBus;
 
@@ -24,6 +29,7 @@ public class WeFlowApplication extends Application {
 	private static WeFlowApplication appinstance;
 	private long lastRespNullTs = 0;
 	private LinkedList<Activity> activityList = new LinkedList<Activity>(); 
+	public static int totalFlow = 0;
 	
 	@Override
 	public void onCreate() {
@@ -39,14 +45,15 @@ public class WeFlowApplication extends Application {
 		/**
 		 * ImageLoader Initalizing
 		 */
+		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), ConStant.getImageLoaderCachePath());
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
-		.threadPriority(Thread.NORM_PRIORITY - 2)
-		.memoryCache(new WeakMemoryCache())
-		.denyCacheImageMultipleSizesInMemory()
-		.tasksProcessingOrder(QueueProcessingType.LIFO)
-//		.discCacheFileNameGenerator(new Md5FileNameGenerator())
-//		.enableLogging() // Not necessary in common
-		.build();
+			.threadPriority(Thread.NORM_PRIORITY - 2)
+//			.memoryCache(new WeakMemoryCache())
+			.memoryCache(new LRULimitedMemoryCache(5*1024*1024))
+			.denyCacheImageMultipleSizesInMemory()
+			.diskCache(new UnlimitedDiscCache(cacheDir))
+			.tasksProcessingOrder(QueueProcessingType.FIFO)
+			.build();
 
 		ImageLoader.getInstance().init(config);
 		MyImageLoader.getInstance();

@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dip"
         android:background="@color/white"
+        android:textColor="@color/pagertab_color_red"
         app:dividerColor="#00000000"
         app:indicatorColor="#FFE94628"
         app:underlineHeight="0px"

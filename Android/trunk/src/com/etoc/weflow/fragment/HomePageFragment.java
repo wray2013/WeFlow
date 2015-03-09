@@ -7,14 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.etoc.weflow.R;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 
-public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener {
+public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ListView> {
 
 	private final String TAG = "HomePageFragment";
 	
 	private DisplayMetrics dm = new DisplayMetrics();
+	
+	//UI Component
+	private PullToRefreshListView mPullRefreshListView;
+	private ListView mListView;
 	
 	/*@Override
 	public int subContentViewId() {
@@ -35,6 +43,11 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private void initView(View view) {
 		dm = getResources().getDisplayMetrics();
 		
+		mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.xlv_homepage_list);
+		mPullRefreshListView.setShowIndicator(false);
+		mPullRefreshListView.setOnRefreshListener(this);
+		
+		mListView = mPullRefreshListView.getRefreshableView();
 	}
 	
 	@Override
@@ -61,6 +74,18 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	@Override
 	public void onShow() {
 		Log.d(TAG, "onShow IN!");
+	}
+
+	@Override
+	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

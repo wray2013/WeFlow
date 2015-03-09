@@ -139,7 +139,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		tabTextColor = a.getColor(1, tabTextColor);
 
 		a.recycle();
-
+		
 		// get custom attrs
 
 		a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
@@ -258,7 +258,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 				TextView tv = (TextView)childView;
 				Log.d("=AAA=","currentPosition = " + currentPosition + " i = " + i);
 				if (curPos == i) {
-					tv.setTextColor(0xffe94628);
+					tv.setTextColor(indicatorColor);
 				} else {
 					tv.setTextColor(0xff212324);
 				}
