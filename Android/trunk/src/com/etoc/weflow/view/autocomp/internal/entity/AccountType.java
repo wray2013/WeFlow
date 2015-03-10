@@ -15,7 +15,8 @@ import android.content.res.TypedArray;
 public enum AccountType {
     ANY(0, new AccountFilterImpl(".*")),
     EMAIL(1, new AccountFilterImpl("[a-zA-Z0-9._%+-][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,3}")),
-    PHONE_NUMBER(2, new AccountFilterImpl("[0-9]{11,12}"));
+    PHONE_NUMBER(2, new AccountFilterImpl("[0-9]{11,12}")),
+    QQ_NUMBER(3,new AccountFilterImpl("[1-9][0-9]{5,10}"));
 
     private final int mTypeId;
     private final AccountFilter mFilter;

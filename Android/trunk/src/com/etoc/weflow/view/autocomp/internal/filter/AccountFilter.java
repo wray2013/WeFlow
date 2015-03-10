@@ -7,5 +7,5 @@ import android.accounts.Account;
  * @since 2014/03/05
  */
 public interface AccountFilter {
-    public String filter(Account account);
+    public String filter(String account);
 }

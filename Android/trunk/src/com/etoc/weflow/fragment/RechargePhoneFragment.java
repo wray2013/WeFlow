@@ -3,6 +3,7 @@ package com.etoc.weflow.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -10,25 +11,53 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.adapter.RechargeAdapter;
+import com.etoc.weflow.dao.DaoMaster;
+import com.etoc.weflow.dao.DaoSession;
+import com.etoc.weflow.dao.FrequentPhone;
+import com.etoc.weflow.dao.FrequentPhoneDao;
+import com.etoc.weflow.dao.FrequentQQ;
+import com.etoc.weflow.dao.FrequentQQDao;
+import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
 
-public class RechargePhoneFragment extends Fragment {
+public class RechargePhoneFragment extends Fragment implements OnClickListener {
 	private View mView;
 	GridView gvPhoneMenu = null;
 	RechargeAdapter adapter = null;
 	TextView tvCostCoins = null;
+	TextView tvCommit = null;
+	EditText etPhone = null;
 	List<RechargePhoneResp> itemList = new ArrayList<GsonResponseObject.RechargePhoneResp>();
+	
+	private FrequentPhoneDao phoneDao;
+	
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		
+		DevOpenHelper helper = new DaoMaster.DevOpenHelper(WeFlowApplication.getAppInstance(), "weflowdb", null);
+		SQLiteDatabase db = helper.getWritableDatabase();
+		DaoMaster daoMaster = new DaoMaster(db);
+		DaoSession daoSession = daoMaster.newSession();
+        phoneDao = daoSession.getFrequentPhoneDao();
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -86,6 +115,23 @@ public class RechargePhoneFragment extends Fragment {
 		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
 		tvCostCoins.setText(adapter.getSelectCost());
 		
+		tvCommit = (TextView) view.findViewById(R.id.tv_btn_order);
+		tvCommit.setOnClickListener(this);
+		ViewUtils.setSize(tvCommit, 552, 96);
+		ViewUtils.setMarginBottom(tvCommit, 68);
+		tvCommit.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+		
+		etPhone = (EditText) view.findViewById(R.id.et_phone);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.tv_btn_order:
+			phoneDao.insert(new FrequentPhone(null, etPhone.getText().toString()));
+			break;
+		}
 	}
 
 }

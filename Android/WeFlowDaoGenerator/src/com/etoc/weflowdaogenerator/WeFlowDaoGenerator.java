@@ -31,7 +31,7 @@ import de.greenrobot.daogenerator.Schema;
 public class WeFlowDaoGenerator {
 
     public static void main(String[] args) throws Exception {
-    	Schema schema = new Schema(1, "com.etoc.weflow.dao");
+    	Schema schema = new Schema(2, "com.etoc.weflow.dao");
 
     	addFrequentPhone(schema);
     	addFrequentQQ(schema);
@@ -42,13 +42,13 @@ public class WeFlowDaoGenerator {
     private static void addFrequentPhone(Schema schema) {
     	Entity note = schema.addEntity("FrequentPhone");
         note.addIdProperty().primaryKey().autoincrement();
-        note.addStringProperty("phone_num").notNull();
+        note.addStringProperty("phone_num").notNull().primaryKey();
     }
     
     private static void addFrequentQQ(Schema schema) {
-    	Entity note = schema.addEntity("FrequentContacts");
+    	Entity note = schema.addEntity("FrequentQQ");
         note.addIdProperty().primaryKey().autoincrement();
-        note.addStringProperty("qq_num").notNull();
+        note.addStringProperty("qq_num").notNull().primaryKey();
     }
 
 }

@@ -14,7 +14,7 @@
         android:background="@drawable/bg_input_rect"
         >
         
-        <EditText 
+        <!-- <EditText 
             android:id="@+id/et_phone"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -22,7 +22,22 @@
             android:background="@null"
             android:hint="请输入手机号码"
             android:textSize="13sp"
-            />
+            /> -->
+        
+        <com.etoc.weflow.view.autocomp.AccountAutoCompleteEditText
+	        xmlns:tools="http://schemas.android.com/tools"
+    		xmlns:app="http://schemas.android.com/apk/res-auto"
+	        android:id="@+id/et_phone"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:paddingLeft="15dp"
+            android:background="@null"
+            android:textSize="13sp"
+            android:inputType="phone"
+            android:maxLength="11"
+	        android:imeOptions="actionDone"
+	        android:hint="@string/hint_phone_number"
+	        app:accountType="phoneNumber"/>
         
     </RelativeLayout>
     

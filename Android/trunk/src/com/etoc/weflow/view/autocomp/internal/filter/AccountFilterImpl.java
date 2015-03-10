@@ -20,9 +20,9 @@ public class AccountFilterImpl implements AccountFilter {
     }
 
     @Override
-    public String filter(Account account) {
-        if (getPattern().matcher(account.name).find()) {
-            return account.name;
+    public String filter(String name) {
+        if (getPattern().matcher(name).find()) {
+            return name;
         }
         return null;
     }
