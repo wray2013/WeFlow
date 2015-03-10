@@ -71,6 +71,8 @@ public class AdvertisementFragment extends Fragment implements OnClickListener {
         bannerAdapter = new BannerAdapter(getActivity().getSupportFragmentManager(), R.drawable.small_pic_default, makeFakeData());
         viewPager.setAdapter(bannerAdapter);
         
+        
+        
         mIndicator.setViewPager(viewPager);
 		mIndicator.notifyDataSetChanged();
 		

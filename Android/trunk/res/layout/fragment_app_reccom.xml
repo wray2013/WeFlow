@@ -1,0 +1,61 @@
+<com.handmark.pulltorefresh.library.PullToRefreshScrollView  
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ptr_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:fillViewport="true"
+    ptr:ptrHeaderTextColor="#212324"
+    ptr:ptrAnimationStyle="flip"
+    ptr:ptrMode="pullUpFromBottom"
+    >
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        
+        <RelativeLayout 
+	        android:id="@+id/rl_view_pager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="180dp"
+	        >
+	        
+		    <com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager
+		        android:id="@+id/vp_pager_service"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        />
+		    
+	        <com.viewpagerindicator.CirclePageIndicator
+		        android:id="@+id/indicator_service"
+		        android:padding="10dp"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"
+		        android:layout_centerHorizontal="true"
+		    	android:layout_alignParentBottom="true"
+		        style="@style/CirclePageIndicator"
+		        />
+	        
+	        <ImageView 
+	            android:id="@+id/iv_net_error"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:visibility="gone"
+	            />
+	        
+	    </RelativeLayout>
+	    
+        <ListView 
+            android:id="@+id/lv_app_recomm"
+            android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+            android:layout_below="@id/rl_view_pager"
+            >
+            
+        </ListView>
+        
+        
+    </RelativeLayout>
+
+</com.handmark.pulltorefresh.library.PullToRefreshScrollView >

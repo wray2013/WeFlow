@@ -26,9 +26,6 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 	
 	private final String TAG = "PlayBillFragment";
 	private static final String KEY_URL = "PlayBillFragment:imageUrl";
-	private static final String KEY_NAME = "PlayBillFragment:name";
-	private static final String KEY_ID = "PlayBillFragment:id";
-	private static final String KEY_TYPE = "PlayBillFragment:type";
 	private AdvInfo adInfo = null;
 	MyImageLoader imageLoader = null;
 	DisplayImageOptions imageLoaderOptions = null;

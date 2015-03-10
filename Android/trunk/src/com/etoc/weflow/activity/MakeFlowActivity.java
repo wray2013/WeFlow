@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
 import com.etoc.weflow.fragment.AdvertisementFragment;
+import com.etoc.weflow.fragment.AppReccomFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
 
 public class MakeFlowActivity extends TitleRootActivity {
@@ -80,6 +81,9 @@ public class MakeFlowActivity extends TitleRootActivity {
 			switch (position) {
 			case 0:
 				frag = new AdvertisementFragment();
+				break;
+			case 1:
+				frag = new AppReccomFragment();
 				break;
 			default:
 				frag = SuperAwesomeCardFragment.newInstance(position);
