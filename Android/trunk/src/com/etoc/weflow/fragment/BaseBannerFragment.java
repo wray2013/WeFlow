@@ -22,16 +22,17 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 
-public class BannerFragment extends Fragment implements OnClickListener, Callback {
+public abstract class BaseBannerFragment extends Fragment implements OnClickListener {
 	
-	private final String TAG = "PlayBillFragment";
+	private final String TAG = "BaseBannerFragment";
 	private static final String KEY_URL = "PlayBillFragment:imageUrl";
-	private AdvInfo adInfo = null;
 	MyImageLoader imageLoader = null;
 	DisplayImageOptions imageLoaderOptions = null;
 	ImageView imageView;
 	private int mDrawable = 0;
-	private Handler handler = null;
+	private String picUrl= null;
+	
+	private View mView;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,26 +47,29 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 				.showImageForEmptyUri(mDrawable)
 				.showImageOnFail(mDrawable)
 				.showImageOnLoading(mDrawable)
-//				.displayer(new SimpleBitmapDisplayer())
-				// .displayer(new CircularBitmapDisplayer()) 圆形图片
 				.build();
 		super.onCreate(savedInstanceState);
 		
-//		EventBus.getDefault().register(this);
 		
 		if (savedInstanceState != null) {
 			if (savedInstanceState.containsKey(KEY_URL)) {
-//				imageId = savedInstanceState.getInt(KEY_URL);
+				picUrl = savedInstanceState.getString(KEY_URL);
 			}
         }
 		
-		handler = new Handler(this);
+	}
+	
+	
+	public BaseBannerFragment(String url,int drawable) {
+		// TODO Auto-generated constructor stub
+		picUrl = url;
+		mDrawable = drawable;
+		Log.d("=AAA=","picUrl = " + picUrl);
 	}
 	
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
-//		EventBus.getDefault().unregister(this);
 		Log.d("=AAA=","RailServiceBannerFragment onDestroy in");
 		super.onDestroy();
 	}
@@ -74,48 +78,29 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container,  Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		/*if(mView != null){
+		    ViewGroup parent = (ViewGroup) mView.getParent();  
+		    if (parent != null) {  
+		        parent.removeView(mView);  
+		    }   
+		    return mView;
+		}*/
+		
 		View view = inflater.inflate(R.layout.item_view_pager, null);
 		
 		imageView = (ImageView)view.findViewById(R.id.iv_playbill);
 		
-//		imageView.setImageResource(imageId);
-		imageLoader.displayImage(adInfo.coverurl, imageView, imageLoaderOptions);
+		imageLoader.displayImage(picUrl, imageView, imageLoaderOptions);
 		view.setOnClickListener(this);
+		mView = view;
 		return view;
 	}
-	
-	public static BannerFragment newInstance(AdvInfo elem,int drawable) {
-		BannerFragment fragment = new BannerFragment();
-		fragment.adInfo = elem;
-		fragment.mDrawable = drawable;
-        return fragment;
-    }
 	
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
-//		outState.putInt(KEY_URL, imageId);
-	}
-	
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
-		switch(v.getId()) {
-		case R.id.rl_item_view_pager:	
-			/*Intent i = new Intent(getActivity(), AdDetailActivity.class);
-			i.putExtra("adinfo", (new Gson()).toJson(adInfo));
-			startActivity(i);*/
-			break;
-		}
+		outState.putString(KEY_URL, picUrl);
 	}
 
-	@Override
-	public boolean handleMessage(Message msg) {
-		// TODO Auto-generated method stub
-		switch(msg.what){
-		}
-		return false;
-	}
 }

@@ -3,6 +3,14 @@ package com.etoc.weflow.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.etoc.weflow.R;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeGiftResp;
+import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
+import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.imbryk.viewPager.LoopViewPager;
+import com.viewpagerindicator.PageIndicator;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,25 +20,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.etoc.weflow.R;
-import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
-import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-import com.imbryk.viewPager.LoopViewPager;
-import com.viewpagerindicator.PageIndicator;
-
-public class AppReccomFragment extends Fragment {
+public class ExchangeGiftFragment extends Fragment {
 	private View mView;
 	private AutoScrollViewPager viewPager = null;
 	private PageIndicator mIndicator;
-	private AppBannerAdapter bannerAdapter;
+	private GiftBannerAdapter bannerAdapter;
 	private PullToRefreshScrollView ptrScrollView = null;
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,10 +40,10 @@ public class AppReccomFragment extends Fragment {
 		}
 		super.onCreateView(inflater, container, savedInstanceState);
 		
-		View v = inflater.inflate(R.layout.fragment_app_reccom, null);
-		mView = v;
-		initView(v);
-		return v;
+		View view = inflater.inflate(R.layout.fragment_exchange_gift, null);
+		mView = view;
+		initView(view);
+		return view;
 	}
 	
 	private void initView(View view) {
@@ -60,7 +55,7 @@ public class AppReccomFragment extends Fragment {
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         mIndicator = (PageIndicator) view.findViewById(R.id.indicator_service);
         
-        bannerAdapter = new AppBannerAdapter(getChildFragmentManager(),  makeFakeData());
+        bannerAdapter = new GiftBannerAdapter(getChildFragmentManager(),  makeFakeData());
         viewPager.setAdapter(bannerAdapter);
         
         mIndicator.setViewPager(viewPager);
@@ -71,8 +66,8 @@ public class AppReccomFragment extends Fragment {
 		ptrScrollView.setReleaseLabel("松开加载更多");
 	}
 	
-	private List<SoftInfoResp> makeFakeData() {
-		List<SoftInfoResp> list = new ArrayList<SoftInfoResp>();
+	private List<ExchangeGiftResp> makeFakeData() {
+		List<ExchangeGiftResp> list = new ArrayList<ExchangeGiftResp>();
 		
 		String[] imgUrls = {"http://www.adzop.com//uploadpic/xcp/1412/P190.rmvb_20141222_110554.306.jpg",
         		"http://www.adzop.com//uploadpic/xcp/1412/P186.rmvb_20141222_110108.278.jpg",
@@ -80,19 +75,19 @@ public class AppReccomFragment extends Fragment {
         		"http://www.adzop.com//uploadpic/xcp/1412/P176.rmvb_20141222_105653.404.jpg"
         		};
 		for (int i = 0;i < 4;i++) {
-			SoftInfoResp resp = new SoftInfoResp();
-			resp.appid = i + "";
-			resp.appbannerpic = imgUrls[i];
+			ExchangeGiftResp resp = new ExchangeGiftResp();
+			resp.giftid = i + "";
+			resp.imgsrc = imgUrls[i];
 			list.add(resp);
 		}
 		return list;
 	}
 	
-	private class AppBannerAdapter extends FragmentPagerAdapter {
+	private class GiftBannerAdapter extends FragmentPagerAdapter {
 
-		private List<SoftInfoResp> appList = null;
+		private List<ExchangeGiftResp> appList = null;
 		
-		public AppBannerAdapter(FragmentManager fm,List<SoftInfoResp> list) {
+		public GiftBannerAdapter(FragmentManager fm,List<ExchangeGiftResp> list) {
 			// TODO Auto-generated constructor stub
 			super(fm);
 			
@@ -103,7 +98,7 @@ public class AppReccomFragment extends Fragment {
 			// TODO Auto-generated method stub
 			position = LoopViewPager.toRealPosition(position, getCount());
 			Log.d("=AAA=","position = " + position);
-			return new AppBannerFragment(appList.get(position));
+			return new GiftBannerFragment(appList.get(position));
 		}
 
 		@Override
@@ -114,11 +109,11 @@ public class AppReccomFragment extends Fragment {
 		
 	}
 	
-	private class AppBannerFragment extends BaseBannerFragment {
-		public SoftInfoResp appInfo = null;
+	private class GiftBannerFragment extends BaseBannerFragment {
+		public ExchangeGiftResp appInfo = null;
 		
-		public AppBannerFragment(SoftInfoResp info) {
-			super(info.appbannerpic, R.drawable.small_pic_default);
+		public GiftBannerFragment(ExchangeGiftResp info) {
+			super(info.imgsrc, R.drawable.small_pic_default);
 			appInfo = info;
 		}
 		

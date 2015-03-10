@@ -83,6 +83,23 @@ public class GsonResponseObject {
 	/****************************************************
 	 *                      A.赚流量币
 	 ****************************************************/
+	public static class SoftInfoResp {
+		public String appid;
+		public String title;
+		public String version;
+		public String appicon;
+		public String appbannerpic;//banner展示图片地址
+		public String[] apppreview;//软件预览图地址数组
+		public String introduction;//软件产品介绍
+		public String instruction;//赚流量币说明
+		public String flowcoins;//流量币
+		public String sharecoins;//分享赚流量币
+		public String size;
+		public String isdownloadfinished;//是否完成下载(赚币) 0-未完成 1-已完成
+		public String downloadfinishtime;//下载完成时间ms
+		public String issharefinished;//是否完成分享(赚币) 0-未完成 1-已完成
+		public String sharefinishtime;//分享完成时间ms
+	}
 	/****************************************************
 	 *                      B.花流量币
 	 ****************************************************/
@@ -91,6 +108,12 @@ public class GsonResponseObject {
 		public String money;// 充值面额
 		public String cost;// 话费流量币
 		
+	}
+	
+	public static class ExchangeGiftResp {
+		public String giftid;
+		public String imgsrc;
+		public String gifturl;
 	}
 	/****************************************************
 	 *                      C.流量银行
