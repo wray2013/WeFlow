@@ -26,6 +26,7 @@ import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.FrequentPhone;
 import com.etoc.weflow.dao.FrequentPhoneDao;
+import com.etoc.weflow.dao.FrequentPhoneDao.Properties;
 import com.etoc.weflow.dao.FrequentQQ;
 import com.etoc.weflow.dao.FrequentQQDao;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
@@ -33,6 +34,8 @@ import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
+
+import de.greenrobot.dao.query.QueryBuilder;
 
 public class RechargePhoneFragment extends Fragment implements OnClickListener {
 	private View mView;
@@ -129,7 +132,12 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.tv_btn_order:
-			phoneDao.insert(new FrequentPhone(null, etPhone.getText().toString()));
+			QueryBuilder<FrequentPhone> build = phoneDao.queryBuilder();
+			build.where(Properties.Phone_num.eq(etPhone.getText().toString()));
+			if (build.buildCount().count() ==0) {
+				Log.d("=AAA=","buildCount = 0");
+				phoneDao.insert(new FrequentPhone(null, etPhone.getText().toString()));
+			}
 			break;
 		}
 	}

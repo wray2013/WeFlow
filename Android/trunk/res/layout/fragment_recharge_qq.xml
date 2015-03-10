@@ -14,15 +14,30 @@
         android:background="@drawable/bg_input_rect"
         >
         
-        <EditText 
+        <!-- <EditText 
             android:id="@+id/et_phone"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:paddingLeft="15dp"
             android:background="@null"
             android:hint="请输入QQ号"
-            android:textSize="13sp"
-            />
+            android:textSize="15sp"
+            /> -->
+        
+        <com.etoc.weflow.view.autocomp.AccountAutoCompleteEditText
+	        xmlns:tools="http://schemas.android.com/tools"
+    		xmlns:app="http://schemas.android.com/apk/res-auto"
+	        android:id="@+id/et_qq"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:paddingLeft="15dp"
+            android:background="@null"
+            android:textSize="15sp"
+            android:inputType="phone"
+            android:maxLength="11"
+	        android:imeOptions="actionDone"
+	        android:hint="@string/hint_qq_number"
+	        app:accountType="qqNumber"/>
         
     </RelativeLayout>
     

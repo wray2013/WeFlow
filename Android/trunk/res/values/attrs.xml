@@ -141,6 +141,7 @@
             <enum name="any" value="0"/>
             <enum name="email" value="1"/>
             <enum name="phoneNumber" value="2"/>
+            <enum name="qqNumber" value="3"></enum>
         </attr>
     </declare-styleable>
 
