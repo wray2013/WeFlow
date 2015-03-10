@@ -135,5 +135,13 @@
         <attr name="shouldExpand" format="boolean" />
         <attr name="textAllCaps" format="boolean" />
     </declare-styleable>
+    
+	 <declare-styleable name="AccountAutoCompleteEditText">
+        <attr name="accountType">
+            <enum name="any" value="0"/>
+            <enum name="email" value="1"/>
+            <enum name="phoneNumber" value="2"/>
+        </attr>
+    </declare-styleable>
 
 </resources>

@@ -250,8 +250,8 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			switchContent(myselfFragment);
 			break;
 		case R.id.btn_title_right:
-			startActivity(new Intent(this, MakeFlowActivity.class));
-//			startActivity(new Intent(this, ExpenseFlowActivity.class));
+//			startActivity(new Intent(this, MakeFlowActivity.class));
+			startActivity(new Intent(this, ExpenseFlowActivity.class));
 			break;
 		}
 	}

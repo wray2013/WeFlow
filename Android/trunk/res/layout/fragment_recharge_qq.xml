@@ -20,7 +20,7 @@
             android:layout_height="fill_parent"
             android:paddingLeft="15dp"
             android:background="@null"
-            android:hint="请输入手机号码"
+            android:hint="请输入QQ号"
             android:textSize="13sp"
             />
         

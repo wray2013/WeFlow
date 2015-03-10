@@ -26,6 +26,14 @@ public class RechargeAdapter extends BaseAdapter {
 		curselected = pos;
 	}
 	
+	public int getSelect() {
+		return curselected;
+	}
+	
+	public String getSelectCost() {
+		return getItem(getSelect()).cost;
+	}
+	
 	class RechargeViewHolder {
 		TextView tvMoney;
 		ImageView ivSelected;
@@ -79,7 +87,7 @@ public class RechargeAdapter extends BaseAdapter {
 		}
 		
 		RechargePhoneResp item = itemList.get(position);
-		holder.tvMoney.setText(item.money + "元");
+		holder.tvMoney.setText(item.money);
 		
 		if (curselected == position) {
 			holder.ivSelected.setVisibility(View.VISIBLE);
