@@ -194,6 +194,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				title = "流量钱包";
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "流量银行";
+				setRightButtonText("攻略");
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
 			} else if(fragment instanceof MyselfFragment) {

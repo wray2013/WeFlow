@@ -1,24 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:layout_centerInParent="true"
-    	android:text="FlowBank Fragment"
-    	android:textColor="@color/black"
-        />
-    <com.etoc.weflow.view.MagicTextView
-        android:id="@+id/mtv_money" 
-        android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:layout_centerHorizontal="true"
-    	android:text="123456"
-    	android:textSize="60sp"/>
-    
-</RelativeLayout>
+    android:background="@color/background_grey" >
 
+    <RelativeLayout
+        android:id="@+id/rl_bank_top"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="@color/orange"
+        android:padding="15dp" >
+
+        <TextView
+            android:id="@+id/tv_yest_income_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昨日收益（流量币）"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_yest_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_yest_income_hint"
+            android:layout_below="@+id/tv_yest_income_hint"
+            android:layout_marginTop="18dp"
+            android:text="暂无收益"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bank_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_bank_top"
+        android:layout_above="@+id/ll_bank_bottom"
+        android:padding="15dp" >
+
+        <TextView
+            android:id="@+id/tv_total_money_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总金额（流量币）"
+            android:textColor="@color/black" />
+
+        <com.etoc.weflow.view.MagicTextView
+            android:id="@+id/mtv_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_total_money_hint"
+            android:layout_above="@+id/ll_total_money"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="2600"
+            android:textColor="@color/black"
+            android:textSize="42sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_total_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/tv_yest_rate_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="昨日年化利率"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_yest_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_yest_rate_hint"
+                    android:layout_centerHorizontal="true"
+                    android:text="3.03%"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/tv_total_income_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="累积收益"
+                    android:textColor="@color/black" />
+
+                <com.etoc.weflow.view.MagicTextView
+                    android:id="@+id/mtv_total_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_total_income_hint"
+                    android:layout_centerHorizontal="true"
+                    android:text="102"
+                    android:textColor="@color/black"
+                    android:textSize="35sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/ll_bank_bottom"
+        android:background="@color/black"/>
+    <LinearLayout
+        android:id="@+id/ll_bank_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp" >
+
+        <TextView
+            android:id="@+id/tv_pop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="提取"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="存入"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</RelativeLayout>

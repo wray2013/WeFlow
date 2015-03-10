@@ -12,6 +12,7 @@
     
     <color name="pagertab_color_red">#FF666666</color>
     <color name="pagertab_color_green">#FF14ae67</color>
+    <color name="pagertab_color_orange">#FFE94628</color>
     
     <color name="title_bar_text_color">#212434</color>
     <color name="title_text_color">#666666</color>
@@ -52,5 +53,6 @@
     <color name="list_item_click_grey">#e8e8e8</color>
     
     <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="background_grey">#F3F4F4</color>
     
 </resources>
