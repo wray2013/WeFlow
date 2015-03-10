@@ -60,6 +60,13 @@
         </activity>
         
         <activity
+            android:name="com.etoc.weflow.activity.DrawFlowActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        
+        <activity
             android:name="com.etoc.weflow.activity.ExpenseFlowActivity"
             android:theme="@android:style/Theme.NoTitleBar"
             android:screenOrientation="portrait"

@@ -1,7 +1,6 @@
 package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
-import com.etoc.weflow.view.ScratchTextView;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -17,7 +16,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	private DisplayMetrics dm = new DisplayMetrics();
 	
-	private ScratchTextView stvCard;
+//	private ScratchTextView stvCard;
 	/*@Override
 	public int subContentViewId() {
 		// TODO Auto-generated method stub
@@ -36,10 +35,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	private void initView(View view) {
 		dm = getResources().getDisplayMetrics();
-		
-		stvCard = (ScratchTextView) view.findViewById(R.id.stv_card);
-		stvCard.initScratchCard(getResources().getColor(R.color.blue), 15, 1f);
-		stvCard.setCompletePercent(20);
+
 	}
 	
 	@Override

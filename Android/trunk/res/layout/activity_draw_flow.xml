@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey" >
+
+    <RelativeLayout
+        android:id="@+id/rl_draw_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/tv_draw_top_tel_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您的手机号"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_draw_top_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_draw_top_tel_hint"
+            android:text="18502717626"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_draw_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_draw_bottom"
+        android:layout_below="@+id/rl_draw_top"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:padding="10dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/tv_draw_center_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="可提取额度"
+            android:textColor="@color/black" />
+
+        <GridView
+            android:id="@+id/gv_draw_values"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_draw_center_values"
+            android:background="@color/white"
+            android:gravity="center"
+            android:horizontalSpacing="1px"
+            android:numColumns="3"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical"
+            android:verticalSpacing="1px" >
+        </GridView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_draw_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:background="@color/white" >
+		<TextView
+            android:id="@+id/tv_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="余额未达到最小额度"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tv_btn_draw"
+            android:layout_width="276dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/tv_warning"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_draw_flow"
+            android:gravity="center"
+            android:text="提  取"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
