@@ -1,0 +1,38 @@
+dependencies {
+  compile "ch.qos.logback:logback-classic:$logbackVersion"
+  compile "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
+  compile "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+  compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+  compile "com.google.code.findbugs:jsr305:$findbugsVersion"
+  compile "com.google.guava:guava:$guavaVersion"
+  compile "commons-lang:commons-lang:$commonsLangVersion"
+  compile "commons-codec:commons-codec:$commonsCodecVersion"
+  compile "commons-fileupload:commons-fileupload:$commonsFileuploadVersion"
+  compile "junit:junit:$junitVersion"
+  compile "org.apache.shiro:shiro-core:$shiroVersion"
+  compile "org.apache.shiro:shiro-ehcache:$shiroVersion"
+  compile "org.apache.shiro:shiro-spring:$shiroVersion"
+  compile "org.bouncycastle:bcprov-jdk16:$bcprovVersion"
+  compile "org.codehaus.groovy:groovy-all:$groovyVersion"
+  compile "org.freemarker:freemarker:$freemarkerVersion"
+  compile "org.hibernate:hibernate-c3p0:$hibernateVersion"
+  compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
+  compile "org.hibernate:hibernate-validator:$hibernateValidatorVersion"
+  compile "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
+  compile "org.springframework:spring-context-support:$springVersion"
+  compile "org.springframework:spring-context:$springVersion"
+  compile "org.springframework:spring-jdbc:$springVersion"
+  compile "org.springframework:spring-orm:$springVersion"
+  compile "org.springframework:spring-test:$springVersion"
+  compile "org.springframework:spring-tx:$springVersion"
+  compile "org.springframework:spring-webmvc:$springVersion"
+  compile "com.octo.captcha:jcaptcha-api:1.0"
+  compile "com.jhlabs:filters:2.0.235"
+  compile files(new File(etocproject.lib, 'jcaptcha/jcaptcha-2.0-alpha-1-SNAPSHOT.jar'))
+  testCompile "junit:junit:$junitVersion"
+  providedCompile "javax.servlet:servlet-api:$servletVersion"
+}
+
+jar {
+  exclude 'application.properties'
+}

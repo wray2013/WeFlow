@@ -1,0 +1,62 @@
+import org.gradle.api.plugins.jetty.internal.JettyPluginWebAppContext
+
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+task cleanEclipseOutput(type: Delete) {
+  delete eclipse.classpath.defaultOutputDir
+}
+
+task processV3Resources(type: Copy) {
+  from(new File(project(':api').buildDir, 'resources/main'))
+  into(new File(project.buildDir, 'resources/main'))
+  include 'application.properties'
+}
+
+dependencies {
+  compile project(":api")
+  compile "javax.mail:mail:$javaxMailVersion"
+  runtime "jstl:jstl:$jstlVersion"
+  providedCompile configurations.jdbc
+}
+
+processResources.dependsOn processV3Resources
+
+war {
+  //直接生成ROOT.war
+  baseName="ROOT"
+  from(etocproject.mgt.webapp) {
+    exclude { details -> 
+      if ( details.isDirectory() ) {
+        return false
+      }
+      def target = new File(project.webAppDir, details.path)
+      return target.exists() && target.isFile()
+    }
+  }
+}
+
+jettyRun.dependsOn cleanEclipseOutput
+
+jettyRun {
+  httpPort = 8080
+  contextPath = ''
+  reload = 'manual'
+  //scanIntervalSeconds = 1
+  classpath = files(eclipse.classpath.defaultOutputDir) + classpath + configurations.jdbc
+}
+
+jettyRun.doFirst {
+  def shell = new GroovyShell(JettyPluginWebAppContext.class.classLoader, new Binding([jettyRun: jettyRun]))
+
+  def jettyConfRoot = new File(etocproject.conf, 'jetty')
+  
+  def context = shell.evaluate(new File(jettyConfRoot, 'jetty-context.groovy'))
+
+  context.baseResource.setResources([
+    project.webAppDir.path
+  ] as String[])
+
+  jettyRun.webAppConfig = context
+  jettyRun.webDefaultXml = new File(jettyConfRoot, 'jetty-webdefault.xml')
+}

@@ -1,0 +1,126 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+project.ext {
+  version = '1.0'
+  antVersion = '1.9.3'
+  freemarkerVersion = '2.3.19'
+  junitVersion = '4.11'
+  logbackVersion = '1.0.12'
+  slf4jVersion = '1.6.2'
+  servletVersion = '2.5'
+  springVersion = '3.2.2.RELEASE'
+  springDataJPAVersion = '1.4.3.RELEASE'
+  hibernateVersion = '4.2.1.Final'
+  hibernateValidatorVersion = '4.3.1.Final'
+  shiroVersion = '1.2.2'
+  commonscodecVersion = '1.8'
+  commonsfileuploadVersion = '1.3'
+  commonslang3Version = '3.1'
+  findbugsVersion = '2.0.1'
+  guavaVersion = '14.0.1'
+  jacksonVersion = '2.2.2'
+  notnoopApnsVersion = '0.2.3'
+  mqttv3Version = '1.0.2'
+  quartzVersion = '1.8.3'
+}
+
+subprojects {
+  apply plugin: 'java'
+  apply plugin: 'eclipse'
+  apply plugin: 'sonar-runner'
+  apply plugin: 'war'
+  
+  sonarRunner {
+    sonarProperties {
+      property "sonar.sourceEncoding", "UTF-8"
+      property "sonar.host.url", "http://localhost:9000"
+      property "sonar.jdbc.url", "jdbc:h2:tcp://localhost:9092/sonar"
+      property "sonar.jdbc.driverClassName", "org.h2.Driver"
+      property "sonar.username", "sonar"
+      property "sonar.password", "sonar"
+    }
+  }
+
+  configurations {
+    jdbc
+    h2
+    mysql
+    oracle
+    db2
+    sql_server
+  }
+
+  project.ext {
+    application = [
+      properties: new Properties(),
+      test: [
+        properties: new Properties()
+      ]
+    ]
+    
+    def appConf = file("src/main/resources/application.properties")
+    if (appConf.exists()) {
+      appConf.withInputStream { stream ->
+        application.properties.load(stream) 
+      }
+    }
+
+    application.test.properties << application.properties
+    
+    def testConf = file("src/test/resources/application.test.properties")
+    if (testConf.exists()) {
+      testConf.withInputStream { stream ->
+        application.test.properties.load(stream) 
+      }
+    }
+  }
+
+  eclipse {
+    classpath {
+      defaultOutputDir = file("build/eclipse")
+    }
+  }
+
+  sourceSets {
+    main {
+      java {
+        srcDir 'src/main/java'
+      }
+      resources {
+        srcDir 'src/main/resources'
+      }
+    }
+  }
+
+  [compileJava, compileTestJava]*.options.collect { options -> 
+    options.encoding = 'UTF-8'
+  }
+
+  dependencies {
+    def lib = new File(project(':').projectDir.parentFile, 'lib')
+    
+    h2 "com.h2database:h2:1.3.171"
+    mysql "mysql:mysql-connector-java:5.1.24"
+    oracle "com.oracle:ojdbc6:11.2.0.3"
+    db2 files(new File(lib, 'db2/db2jcc.jar'))
+    sql_server files(new File(lib, 'sql_server/sqljdbc4.jar'))
+    
+    def database = project.application.properties['jdbc.database'] ?: 'mysql'
+    jdbc configurations[database.toLowerCase()]
+
+    database = project.application.test.properties['jdbc.database'] ?: 'mysql'
+    testRuntime configurations[database.toLowerCase()]
+  }
+
+  repositories {
+    maven {
+      url "http://localhost:8081/nexus/content/groups/public/"
+    }
+    mavenCentral name:'codehaus', artifactUrls: ["http://repository.codehaus.org/"]
+    mavenCentral name:'ibiblio', artifactUrls: ["http://mirrors.ibiblio.org/pub/mirrors/maven2/"]
+    mavenCentral name:'apache', artifactUrls: ["http://people.apache.org/repo/m2-ibiblio-rsync-repository/"]
+    mavenCentral name:'maven', artifactUrls: ["http://repo2.maven.org/maven2/"]
+    mavenCentral name:'lds', artifactUrls: ["https://code.lds.org/nexus/content/repositories/thirdparty/"]
+    mavenCentral name:'m2m', artifactUrls: ["http://repository.m2m.io:8081/nexus/content/groups/public/"]
+  }
+}
