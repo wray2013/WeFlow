@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp" 
+    android:background="#FFFFFF"
+    >
+    
+    <View 
+        android:id="@+id/view_height"
+        android:layout_width="1dp"
+        android:layout_height="72dp"
+        android:visibility="invisible"
+        />
+    
+    <View 
+        android:id="@+id/view_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#E5E6E6"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        />
+    
+    <ImageView 
+        android:id="@+id/iv_img"
+        android:layout_width="100dp"
+        android:layout_height="57dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:background="#F3F4F4"
+        android:scaleType="fitXY"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_gift_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        android:text="LISHA美容院礼券"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@id/iv_img"
+        android:includeFontPadding="false"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_gift_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:textSize="10.5sp"
+        android:text="1元吃喝玩乐"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_alignLeft="@id/tv_gift_name"
+        android:layout_below="@id/tv_gift_name"
+        android:includeFontPadding="false"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="92dp"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_gift_exchange"
+        android:layout_width="56dp"
+        android:layout_height="25dp"
+        android:background="@drawable/bg_gift_exchange"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="兑换"
+        android:textSize="13sp"
+        android:textColor="@color/pagertab_color_green"
+        android:gravity="center"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_flow_coins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/tv_gift_exchange"
+        android:layout_below="@id/tv_gift_exchange"
+        android:layout_marginTop="16dp"
+        android:text="1000流量币"
+        android:textSize="10sp"
+        android:textColor="#E94628"
+        android:includeFontPadding="false"
+        />
+    
+
+</RelativeLayout>

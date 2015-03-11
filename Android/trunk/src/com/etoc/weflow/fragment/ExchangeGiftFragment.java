@@ -3,14 +3,8 @@ package com.etoc.weflow.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.etoc.weflow.R;
-import com.etoc.weflow.net.GsonResponseObject.ExchangeGiftResp;
-import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
-import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-import com.imbryk.viewPager.LoopViewPager;
-import com.viewpagerindicator.PageIndicator;
-
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +13,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.etoc.weflow.R;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeGiftResp;
+import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.ViewUtils;
+import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.imbryk.viewPager.LoopViewPager;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.viewpagerindicator.PageIndicator;
 
 public class ExchangeGiftFragment extends Fragment {
 	private View mView;
@@ -26,6 +36,9 @@ public class ExchangeGiftFragment extends Fragment {
 	private PageIndicator mIndicator;
 	private GiftBannerAdapter bannerAdapter;
 	private PullToRefreshScrollView ptrScrollView = null;
+	
+	private ListView listView = null;
+	private GiftAdatper adapter = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +77,48 @@ public class ExchangeGiftFragment extends Fragment {
 		ptrScrollView = (PullToRefreshScrollView) view.findViewById(R.id.ptr_scroll_view);
 		ptrScrollView.setPullLabel("加载更多");
 		ptrScrollView.setReleaseLabel("松开加载更多");
+		
+		listView = (ListView) view.findViewById(R.id.lv_gift_exchange);
+		adapter = new GiftAdatper(getActivity(), makeGiftData());
+		listView.setAdapter(adapter);
+		
+		ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 144)));
+	}
+	
+	private List<ExchangeGiftResp> makeGiftData() {
+		List<ExchangeGiftResp> list = new ArrayList<ExchangeGiftResp>();
+		
+		String[] imgUrls = {"http://pic7.nipic.com/20100526/3726655_170231009273_2.jpg",
+        		"http://pic5.nipic.com/20100102/3759236_100017502126_2.jpg",
+        		"http://pic8.nipic.com/20100722/4235094_143649006971_2.jpg",
+        		"http://pic1.nipic.com/2008-12-23/2008122312587944_2.jpg",
+        		"http://img1.imgtn.bdimg.com/it/u=3517413395,2250230838&fm=21&gp=0.jpg"
+        		};
+		String[] titles = {"庐山月饼",
+				"菲尼迪100元礼券",
+				"乐行仕优惠券",
+				"茅台礼券",
+				"阳澄湖大闸蟹"
+		};
+		
+		String[] descs = {
+				"9月6日下午14:00-16:30，新湖庐山国际将浓情上演中秋月饼DIY家庭聚会",
+				"菲妮迪女装 2014秋装新款 经典简约菱格时尚撞色薄款棉衣外套",
+				"乐行仕作为目前国内休闲皮鞋网络第一品牌,自成立之初,便始终对男士高档皮鞋及配套耐用",
+				"大曲酱香型白酒的鼻祖，有“国酒”之称，是中国最高端白酒之一",
+				"蟹身不沾泥，俗称清水大闸蟹，体大膘肥，青壳白肚，金爪黄毛",
+		};
+		for (int i = 0;i < 5;i++) {
+			ExchangeGiftResp resp = new ExchangeGiftResp();
+			resp.giftid = i + "";
+			resp.imgsrc = imgUrls[i];
+			resp.title = titles[i];
+			resp.giftdesc = descs[i];
+			resp.flowcoins = ((i + 1) * 1000) + "";
+			list.add(resp);
+		}
+		
+		return list;
 	}
 	
 	private List<ExchangeGiftResp> makeFakeData() {
@@ -125,5 +180,102 @@ public class ExchangeGiftFragment extends Fragment {
 				break;
 			}
 		}
+	}
+	
+	class GiftViewHolder {
+		ImageView ivImg;
+		TextView tvName;
+		TextView tvDesc;
+		TextView tvExchange;
+		TextView tvFlowCoins;
+	}
+	
+	private class GiftAdatper extends BaseAdapter {
+
+		MyImageLoader imageLoader = null;
+		DisplayImageOptions imageLoaderOptions = null;
+		
+		private List<ExchangeGiftResp> appList = null;
+		Context context;
+		private LayoutInflater inflater;
+		
+		public GiftAdatper(Context context,List<ExchangeGiftResp> list) {
+			// TODO Auto-generated constructor stub
+			this.context = context;
+			inflater = LayoutInflater.from(context);
+			appList = list;
+			imageLoader = MyImageLoader.getInstance();
+
+			imageLoaderOptions = new DisplayImageOptions.Builder()
+					.cacheInMemory(true)
+					.cacheOnDisc(true)
+					.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+					.bitmapConfig(Bitmap.Config.RGB_565)
+					.showImageForEmptyUri(R.drawable.small_pic_default)
+					.showImageOnFail(R.drawable.small_pic_default)
+					.showImageOnLoading(R.drawable.small_pic_default)
+					.build();
+		}
+		
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return appList.size();
+		}
+
+		@Override
+		public ExchangeGiftResp getItem(int arg0) {
+			// TODO Auto-generated method stub
+			return appList.get(arg0);
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			GiftViewHolder holder = null;
+			if (convertView == null) {
+				holder = new GiftViewHolder();
+				convertView = inflater.inflate(R.layout.item_gift_exchange, null);
+				holder.ivImg = (ImageView) convertView.findViewById(R.id.iv_img);
+				holder.tvName = (TextView) convertView.findViewById(R.id.tv_gift_name);
+				holder.tvDesc = (TextView) convertView.findViewById(R.id.tv_gift_desc);
+				holder.tvExchange = (TextView) convertView.findViewById(R.id.tv_gift_exchange);
+				holder.tvFlowCoins = (TextView) convertView.findViewById(R.id.tv_flow_coins);
+				
+				ViewUtils.setHeight(convertView.findViewById(R.id.view_height), 144);
+				ViewUtils.setSize(holder.ivImg, 200, 114);
+				ViewUtils.setSize(holder.tvExchange, 112, 50);
+				ViewUtils.setMarginLeft(holder.ivImg, 20);
+				ViewUtils.setMarginLeft(holder.tvName, 22);
+				ViewUtils.setMarginTop(holder.tvName, 26);
+				ViewUtils.setMarginTop(holder.tvDesc, 24);
+				ViewUtils.setMarginRight(holder.tvExchange, 16);
+				ViewUtils.setMarginTop(holder.tvFlowCoins, 16);
+				
+				ViewUtils.setTextSize(holder.tvName, 26);
+				ViewUtils.setTextSize(holder.tvDesc, 21);
+				ViewUtils.setTextSize(holder.tvExchange, 26);
+				ViewUtils.setTextSize(holder.tvFlowCoins, 21);
+				
+				convertView.setTag(holder);
+				
+			} else {
+				holder = (GiftViewHolder) convertView.getTag();
+			}
+			
+			ExchangeGiftResp item = appList.get(position);
+			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
+			holder.tvName.setText(item.title);
+			holder.tvDesc.setText(item.giftdesc);
+			holder.tvFlowCoins.setText(item.flowcoins + "流量币");
+			return convertView;
+		}
+		
 	}
 }

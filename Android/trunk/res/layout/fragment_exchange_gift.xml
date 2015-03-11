@@ -47,10 +47,12 @@
 	    </RelativeLayout>
 	    
         <ListView 
-            android:id="@+id/lv_app_recomm"
+            android:id="@+id/lv_gift_exchange"
             android:layout_width="fill_parent"
 	        android:layout_height="fill_parent"
             android:layout_below="@id/rl_view_pager"
+            android:dividerHeight="0dp"
+            android:divider="@android:color/transparent"
             >
             
         </ListView>

@@ -54,5 +54,6 @@
     
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="background_grey">#F3F4F4</color>
+    <color name="text_grey">#919292</color>
     
 </resources>

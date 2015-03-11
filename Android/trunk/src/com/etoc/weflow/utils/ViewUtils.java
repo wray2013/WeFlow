@@ -3,9 +3,15 @@ package com.etoc.weflow.utils;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.text.GetChars;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class ViewUtils {
 	public static boolean setMarginLeft(View view,int px) {
@@ -88,6 +94,11 @@ public class ViewUtils {
 		return flag;
 	}
 	
+	public static boolean setTextSize(TextView tv,int size) {
+		tv.setTextSize(DisplayUtil.textGetSizeSp(tv.getContext(), size));
+		return true;
+	}
+	
 	public static boolean setHeightPixel(View view,int height) {
 		ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
 		boolean flag = false;
@@ -111,6 +122,7 @@ public class ViewUtils {
 		return flag;
 	}
 	
+	
 	public static void releasePicture(ImageView imageView) {
 		if (imageView != null) {
 			Drawable d = imageView.getDrawable();  
@@ -125,6 +137,15 @@ public class ViewUtils {
 			imageView.setImageDrawable(null);  
 			imageView.setBackgroundDrawable(null);
 		}
+	}
+	
+	public static int getListHeight(ListView listView,int itemHeight) {
+		int count = listView.getAdapter().getCount();
+		int height = 0;
+		if (count > 0) {
+			height =  count* itemHeight + listView.getDividerHeight() * (count - 1);
+		} 
+		return height;
 	}
 	
 	private static long lastClickTime;

@@ -114,6 +114,9 @@ public class GsonResponseObject {
 		public String giftid;
 		public String imgsrc;
 		public String gifturl;
+		public String giftdesc;
+		public String title;
+		public String flowcoins;//流量币
 	}
 	/****************************************************
 	 *                      C.流量银行
