@@ -1,9 +1,0 @@
-delete from msg_request;
-delete from msg_response;
-delete from msg_main;
-delete from cfg_valuetype;
-insert into cfg_valuetype(db_type,java_type,objc_type)values('varchar','String','NSString*');
-insert into cfg_valuetype(db_type,java_type,objc_type)values('integer','Integer','int');
-insert into cfg_valuetype(db_type,java_type,objc_type)values('bigint','Long','long');
-insert into cfg_valuetype(db_type,java_type,objc_type)values('double','Double','double');
-insert into cfg_valuetype(db_type,java_type,objc_type)values('bytes','byte[]','char[]');
