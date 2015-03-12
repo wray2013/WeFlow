@@ -8,18 +8,23 @@
     <RelativeLayout 
         android:id="@+id/rl_me_top"
         android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
+    	android:layout_height="111dp"
     	android:background="@color/white" >
         <TextView 
             android:id="@+id/tv_account_hint"
             android:layout_width="wrap_content"
-    		android:layout_height="wrap_content"
+    		android:layout_height="70dp"
+    		android:gravity="center"
     		android:text="账号："
     		android:textColor="@color/black" />
         <TextView 
+            android:id="@+id/tv_account_tel"
             android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:layout_toRightOf="@+id/tv_account_hint"
+    		android:layout_alignTop="@+id/tv_account_hint"
+    		android:layout_alignBottom="@+id/tv_account_hint"
+    		android:gravity="center_vertical"
     		android:text="18502717626"
     		android:textColor="@color/black" />
         <View 
@@ -27,10 +32,11 @@
             android:layout_width="match_parent"
     		android:layout_height="1dp"
     		android:layout_below="@+id/tv_account_hint"
-    		android:background="@color/background_grey"/>
+    		android:background="@color/divider_grey"/>
         <LinearLayout 
             android:layout_width="match_parent"
-    		android:layout_height="wrap_content"
+    		android:layout_height="match_parent"
+    		android:gravity="center_vertical"
     		android:layout_below="@+id/view_divide_v">
             <RelativeLayout 
                 android:layout_width="0dp"
@@ -43,6 +49,7 @@
 		    		android:text="流量币"
 		    		android:textColor="@color/black" />
 		        <TextView 
+		            android:id="@+id/tv_flow"
 		            android:layout_width="wrap_content"
 		    		android:layout_height="wrap_content"
 		    		android:layout_toRightOf="@+id/tv_flow_hint"
@@ -55,7 +62,7 @@
 	            android:id="@+id/view_divide_h"
 	            android:layout_width="1dp"
 	    		android:layout_height="match_parent"
-	    		android:background="@color/background_grey"/>
+	    		android:background="@color/divider_grey"/>
             <RelativeLayout 
                 android:layout_width="0dp"
     			android:layout_height="wrap_content"
@@ -67,6 +74,7 @@
 		    		android:text="流量券"
 		    		android:textColor="@color/black" />
 		        <TextView 
+		            android:id="@+id/tv_flow_paper"
 		            android:layout_width="wrap_content"
 		    		android:layout_height="wrap_content"
 		    		android:layout_toRightOf="@+id/tv_flow_paper_hint"
@@ -82,13 +90,13 @@
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:layout_below="@+id/rl_me_top"
-    	android:layout_marginTop="10dp"
-    	android:padding="15dp"
+    	android:layout_marginTop="8dp"
     	android:background="@color/white" >
         <RelativeLayout 
             android:id="@+id/rl_me_msg"
             android:layout_width="match_parent"
-    		android:layout_height="wrap_content">
+    		android:layout_height="56dp"
+    		android:gravity="center_vertical">
             <ImageView 
                 android:id="@+id/iv_me_msg"
                 android:layout_width="50dp"
@@ -96,6 +104,7 @@
     			android:scaleType="fitXY"
     			android:background="@color/orange" />
             <TextView 
+                android:id="@+id/tv_msg"
                 android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
     			android:layout_toRightOf="@+id/iv_me_msg"
@@ -109,12 +118,14 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/rl_me_msg"
-            android:background="@color/background_grey" />
+            android:background="@color/divider_grey" />
 
         <RelativeLayout 
+            android:id="@+id/rl_me_bill"
             android:layout_width="match_parent"
-    		android:layout_height="wrap_content"
-    		android:layout_below="@+id/view_divide_h_center">
+    		android:layout_height="56dp"
+    		android:layout_below="@+id/view_divide_h_center"
+    		android:gravity="center_vertical">
             <ImageView 
                 android:id="@+id/iv_me_bill"
                 android:layout_width="50dp"
@@ -122,6 +133,7 @@
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 
+                android:id="@+id/tv_bill"
                 android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
     			android:layout_toRightOf="@+id/iv_me_bill"
@@ -136,13 +148,13 @@
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:layout_below="@+id/rl_me_center_a"
-    	android:layout_marginTop="10dp"
-    	android:padding="15dp"
+    	android:layout_marginTop="8dp"
     	android:background="@color/white" >
         <RelativeLayout 
             android:id="@+id/rl_me_sign"
             android:layout_width="match_parent"
-    		android:layout_height="wrap_content">
+    		android:layout_height="56dp"
+    		android:gravity="center_vertical">
             <ImageView 
                 android:id="@+id/iv_me_sign"
                 android:layout_width="50dp"
@@ -150,6 +162,7 @@
     			android:scaleType="fitXY"
     			android:background="@color/orange" />
             <TextView 
+                android:id="@+id/tv_sign"
                 android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
     			android:layout_toRightOf="@+id/iv_me_sign"
@@ -163,12 +176,13 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/rl_me_sign"
-            android:background="@color/background_grey" />
+            android:background="@color/divider_grey" />
 
         <RelativeLayout 
             android:id="@+id/rl_me_invite"
             android:layout_width="match_parent"
-    		android:layout_height="wrap_content"
+    		android:layout_height="56dp"
+    		android:gravity="center_vertical"
     		android:layout_below="@+id/view_divide_h_centerb">
             <ImageView 
                 android:id="@+id/iv_me_invite"
@@ -177,6 +191,7 @@
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 
+                android:id="@+id/tv_invite"
                 android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
     			android:layout_toRightOf="@+id/iv_me_invite"
@@ -190,11 +205,12 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/rl_me_invite"
-            android:background="@color/background_grey" />
+            android:background="@color/divider_grey" />
         <RelativeLayout 
             android:id="@+id/rl_me_feedback"
             android:layout_width="match_parent"
-    		android:layout_height="wrap_content"
+    		android:layout_height="56dp"
+    		android:gravity="center_vertical"
     		android:layout_below="@+id/view_divide_h_centerb2">
             <ImageView 
                 android:id="@+id/iv_me_feedback"
@@ -203,6 +219,7 @@
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 
+                android:id="@+id/tv_feedback"
                 android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
     			android:layout_toRightOf="@+id/iv_me_feedback"
@@ -217,13 +234,13 @@
         android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:layout_below="@+id/rl_me_center_b"
-    	android:layout_marginTop="10dp"
-    	android:padding="15dp"
+    	android:layout_marginTop="8dp"
     	android:background="@color/white" >
         <RelativeLayout 
             android:id="@+id/rl_me_settings"
             android:layout_width="match_parent"
-    		android:layout_height="wrap_content" >
+    		android:layout_height="56dp"
+    		android:gravity="center_vertical" >
             <ImageView 
                 android:id="@+id/iv_me_settings"
                 android:layout_width="50dp"
@@ -231,6 +248,7 @@
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 
+                android:id="@+id/tv_settings"
                 android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
     			android:layout_toRightOf="@+id/iv_me_settings"

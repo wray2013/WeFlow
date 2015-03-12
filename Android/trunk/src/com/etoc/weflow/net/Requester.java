@@ -34,6 +34,8 @@ public class Requester {
 	private static final int isDebug = 0;
 	
 	///////////////////////////////////////Response code:
+	public static final int RESPONSE_TYPE_TEST = 0xffee2000;
+	public static final String RIA_INTERFACE_TEST = "/test/ct";
 	
 	//2.1.1 车上虚拟注册
 	public static final int RESPONSE_TYPE_SENDSMS = 0xffee2100;
@@ -53,6 +55,14 @@ public class Requester {
 
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
+	
+	public static void test(Handler handler) {
+		testRequest request = new testRequest();
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_TEST, testResponse.class);
+		worker.execute(RIA_INTERFACE_TEST, request);
+	}
 	
 	public static void sendSMS(Handler handler, String tel) {
 		sendSMSRequest request = new sendSMSRequest();
