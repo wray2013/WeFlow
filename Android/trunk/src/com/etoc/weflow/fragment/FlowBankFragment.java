@@ -2,6 +2,7 @@ package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.DepositFlowActivity;
+import com.etoc.weflow.activity.DrawFlowActivity;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.testResponse;
 import com.etoc.weflow.utils.ViewUtils;
@@ -94,9 +95,9 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		case R.id.btn_title_left:
 			break;
 		case R.id.tv_pop:
-			Requester.test(handler);
-//			startActivity(new Intent(getActivity(), DrawFlowActivity.class));
-//			getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+//			Requester.test(handler);
+			startActivity(new Intent(getActivity(), DrawFlowActivity.class));
+			getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
 		case R.id.tv_save:
 			Intent depositIntent = new Intent(getActivity(), DepositFlowActivity.class);
@@ -114,8 +115,8 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		case Requester.RESPONSE_TYPE_TEST:
 			if(msg.obj != null) {
 				testResponse response = (testResponse) msg.obj;
-				Log.d(TAG, "response = " + response.status);
-				if(response.status.equals("0")) {
+				Log.d(TAG, "response = " + response.status + ";id = " + response.id);
+				if(response.status != null && response.status.equals("0")) {
 					
 				}
 			}
