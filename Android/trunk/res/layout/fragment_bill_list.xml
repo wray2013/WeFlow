@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    >
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/xlv_mybill_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:overScrollMode="never"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="@null"
+        android:background="@color/black"
+        ptr:ptrPinnedListViewEnabled="false"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="pullUpFromBottom" />    
+</RelativeLayout>
+

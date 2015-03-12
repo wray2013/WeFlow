@@ -11,6 +11,10 @@ public class GsonResponseObject {
 	public static final int MEDIA_TYPE_TRAVEL = 6;
 	public static final int MEDIA_TYPE_TOPICS = 7;
 
+	public static class testResponse {
+		public String status;// ":0;
+	}
+	
 	public static class sendSMSResponse extends commonResponse{
 		public boolean isSucceed() {
 			return "0000".equals(code) || "2009".equals(code);
@@ -127,6 +131,20 @@ public class GsonResponseObject {
 	/****************************************************
 	 *                      E.我的
 	 ****************************************************/
+	//2.9.2 我的账单
+	public static class MyBillListResp {
+		public String status;
+		public BillList[] myBills;
+	}
 	
+	
+	
+	public static class BillList {
+		public String type;
+		public String productid;
+		public String title;
+		public String flowcoins;
+		public String time;
+	}
 	
 }

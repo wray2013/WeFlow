@@ -16,7 +16,7 @@
             android:id="@+id/tv_draw_top_tel_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="您的手机号"
+            android:text="您的账户"
             android:textColor="@color/black" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:layout_height="48dp"
             android:layout_below="@+id/tv_warning"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/bg_draw_flow"
+            android:background="@drawable/shape_corner_recentage_orange"
             android:gravity="center"
             android:text="提  取"
             android:textColor="@android:color/white"

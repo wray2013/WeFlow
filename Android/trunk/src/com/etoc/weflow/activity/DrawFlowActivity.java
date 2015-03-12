@@ -21,7 +21,14 @@ public class DrawFlowActivity extends TitleRootActivity {
 	
 	private void initView() {
 		// TODO Auto-generated method stub
-		
+		setTitleText("取流量币");
+		hideRightButton();
+	}
+	
+	@Override
+	protected int graviteType() {
+		// TODO Auto-generated method stub
+		return GRAVITE_LEFT;
 	}
 
 	@Override
