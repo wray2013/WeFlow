@@ -18,6 +18,20 @@ public class RechargeFragment extends Fragment {
 	private RechargePhoneFragment phoneFragment;
 	private RechargeQQFragment qqFragment;
 	public Fragment currFragment;
+	private final static String TAG = "RechargeFragment";
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		
+		if(savedInstanceState != null) {
+			phoneFragment = (RechargePhoneFragment)getChildFragmentManager().getFragment(
+					savedInstanceState, RechargePhoneFragment.class.getName());
+			qqFragment = (RechargeQQFragment)getChildFragmentManager().getFragment(
+					savedInstanceState, RechargeQQFragment.class.getName());
+		}
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,10 +44,39 @@ public class RechargeFragment extends Fragment {
 		if (phoneFragment == null) {
 			phoneFragment = new RechargePhoneFragment();
 		}
-		currFragment = phoneFragment;
-		getChildFragmentManager().beginTransaction().replace(R.id.fl_content, phoneFragment,phoneFragment.getClass().getName()).commit();
-		radioGroup.check(R.id.rb_phone);
+		if (qqFragment == null) {
+			qqFragment = new RechargeQQFragment();
+		}
+		if (currFragment == null) {
+			currFragment = phoneFragment;
+		}
+		if (null != getChildFragmentManager().findFragmentByTag(
+				currFragment.getClass().getName())) {
+			getChildFragmentManager().beginTransaction().remove(currFragment);
+		}
+		getChildFragmentManager().beginTransaction().replace(R.id.fl_content, currFragment,currFragment.getClass().getName()).commit();
+		if (currFragment instanceof RechargePhoneFragment) {
+			radioGroup.check(R.id.rb_phone);
+		} else {
+			radioGroup.check(R.id.rb_qq);
+		}
+		
 		return v;
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		if (outState != null && currFragment != null) {
+			Log.d(TAG, "onSaveInstanceState currContentFragment="
+					+ currFragment);
+			outState.putString("content", currFragment.getClass()
+					.getName());
+			getChildFragmentManager().putFragment(outState, currFragment.getClass()
+					.getName(), currFragment);
+
+		}
+		super.onSaveInstanceState(outState);
 	}
 	
 	private void initView(View view) {
