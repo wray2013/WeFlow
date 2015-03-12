@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="72dp" 
+    android:layout_height="76dp" 
     android:background="#FFFFFF"
     >
     
     <View 
         android:id="@+id/view_height"
         android:layout_width="1dp"
-        android:layout_height="72dp"
+        android:layout_height="76dp"
         android:visibility="invisible"
         />
     
@@ -26,7 +26,7 @@
         android:id="@+id/iv_img"
         android:layout_width="100dp"
         android:layout_height="57dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="16dp"
         android:layout_centerVertical="true"
         android:background="#F3F4F4"
         android:scaleType="fitXY"
@@ -67,7 +67,7 @@
         android:layout_height="25dp"
         android:background="@drawable/bg_gift_exchange"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:text="兑换"
         android:textSize="13sp"

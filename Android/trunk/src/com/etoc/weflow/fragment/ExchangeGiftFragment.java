@@ -82,7 +82,7 @@ public class ExchangeGiftFragment extends Fragment {
 		adapter = new GiftAdatper(getActivity(), makeGiftData());
 		listView.setAdapter(adapter);
 		
-		ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 144)));
+		ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
 	}
 	
 	private List<ExchangeGiftResp> makeGiftData() {
@@ -248,18 +248,21 @@ public class ExchangeGiftFragment extends Fragment {
 				holder.tvExchange = (TextView) convertView.findViewById(R.id.tv_gift_exchange);
 				holder.tvFlowCoins = (TextView) convertView.findViewById(R.id.tv_flow_coins);
 				
-				ViewUtils.setHeight(convertView.findViewById(R.id.view_height), 144);
-				ViewUtils.setSize(holder.ivImg, 200, 114);
+				ViewUtils.setHeight(convertView.findViewById(R.id.view_height), 152);
+				ViewUtils.setSize(holder.ivImg, 200, 120);
 				ViewUtils.setSize(holder.tvExchange, 112, 50);
-				ViewUtils.setMarginLeft(holder.ivImg, 20);
+				ViewUtils.setMarginLeft(holder.ivImg, 32);
 				ViewUtils.setMarginLeft(holder.tvName, 22);
 				ViewUtils.setMarginTop(holder.tvName, 26);
-				ViewUtils.setMarginTop(holder.tvDesc, 24);
-				ViewUtils.setMarginRight(holder.tvExchange, 16);
-				ViewUtils.setMarginTop(holder.tvFlowCoins, 16);
+				ViewUtils.setMarginTop(holder.tvDesc, 18);
+				ViewUtils.setMarginTop(holder.tvExchange, 28);
+				ViewUtils.setMarginRight(holder.tvExchange, 32);
+				ViewUtils.setMarginTop(holder.tvFlowCoins, 20);
+				ViewUtils.setMarginLeft(convertView.findViewById(R.id.view_bottom), 32);
+				ViewUtils.setMarginRight(convertView.findViewById(R.id.view_bottom), 32);
 				
-				ViewUtils.setTextSize(holder.tvName, 26);
-				ViewUtils.setTextSize(holder.tvDesc, 21);
+				ViewUtils.setTextSize(holder.tvName, 28);
+				ViewUtils.setTextSize(holder.tvDesc, 23);
 				ViewUtils.setTextSize(holder.tvExchange, 26);
 				ViewUtils.setTextSize(holder.tvFlowCoins, 21);
 				

@@ -94,8 +94,10 @@ public class ViewUtils {
 		return flag;
 	}
 	
-	public static boolean setTextSize(TextView tv,int size) {
-		tv.setTextSize(DisplayUtil.textGetSizeSp(tv.getContext(), size));
+	public static boolean setTextSize(View tv,int size) {
+		if (tv instanceof TextView) {
+			((TextView)tv).setTextSize(DisplayUtil.textGetSizeSp(tv.getContext(), size));
+		}
 		return true;
 	}
 	

@@ -11,6 +11,7 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
 import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.ExchangeGiftFragment;
+import com.etoc.weflow.fragment.MobileFlowFragment;
 import com.etoc.weflow.fragment.RechargeFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
 
@@ -84,6 +85,9 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 			switch (position) {
 			case 0:
 				frag = new RechargeFragment();
+				break;
+			case 1:
+				frag = new MobileFlowFragment();
 				break;
 			case 3:
 				frag = new ExchangeGiftFragment();

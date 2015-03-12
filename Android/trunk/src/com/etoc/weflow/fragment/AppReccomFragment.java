@@ -253,12 +253,15 @@ public class AppReccomFragment extends Fragment {
 				ViewUtils.setHeight(convertView.findViewById(R.id.view_height), 152);
 				ViewUtils.setSize(holder.ivIcon, 100, 100);
 				ViewUtils.setSize(holder.tvDownload, 112, 50);
-				ViewUtils.setMarginLeft(holder.ivIcon, 20);
+				ViewUtils.setMarginLeft(holder.ivIcon, 32);
 				ViewUtils.setMarginLeft(holder.tvName, 40);
 				ViewUtils.setMarginTop(holder.tvName, 40);
 				ViewUtils.setMarginTop(holder.tvDesc, 14);
-				ViewUtils.setMarginRight(holder.tvDownload, 16);
+				ViewUtils.setMarginTop(holder.tvDownload, 28);
+				ViewUtils.setMarginRight(holder.tvDownload, 32);
 				ViewUtils.setMarginTop(holder.tvFlowCoins, 20);
+				ViewUtils.setMarginLeft(convertView.findViewById(R.id.view_bottom), 32);
+				ViewUtils.setMarginRight(convertView.findViewById(R.id.view_bottom), 32);
 				
 				ViewUtils.setTextSize(holder.tvName, 32);
 				ViewUtils.setTextSize(holder.tvDesc, 24);

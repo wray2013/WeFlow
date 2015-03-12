@@ -87,7 +87,7 @@ public abstract class TitleRootActivity extends BaseActivity implements OnClickL
 			rlParams.addRule(RelativeLayout.CENTER_VERTICAL | RelativeLayout.ALIGN_PARENT_LEFT);
 			rlParams.addRule(RelativeLayout.RIGHT_OF, R.id.btn_title_left);
 			title.setLayoutParams(rlParams);
-			ViewUtils.setMarginLeft(title, 42);
+			ViewUtils.setMarginLeft(title, 36);
 			break;
 		case GRAVITE_RIGHT:
 			rlParams.addRule(RelativeLayout.CENTER_VERTICAL | RelativeLayout.ALIGN_PARENT_RIGHT);

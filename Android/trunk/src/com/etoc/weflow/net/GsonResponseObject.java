@@ -114,6 +114,14 @@ public class GsonResponseObject {
 		
 	}
 	
+	public static class MobileFlowResp {
+		public String flowpkgid;
+		public String title;
+		public String desc;
+		public String imgsrc;
+		public String cost;
+	}
+	
 	public static class ExchangeGiftResp {
 		public String giftid;
 		public String imgsrc;

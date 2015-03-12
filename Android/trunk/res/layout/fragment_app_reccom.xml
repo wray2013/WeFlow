@@ -8,11 +8,13 @@
     ptr:ptrHeaderTextColor="#212324"
     ptr:ptrAnimationStyle="flip"
     ptr:ptrMode="pullUpFromBottom"
+    
     >
     
     <RelativeLayout 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="@color/background_grey"
         >
         
         <RelativeLayout 
@@ -53,6 +55,7 @@
             android:layout_below="@id/rl_view_pager"
             android:dividerHeight="0dp"
             android:divider="@android:color/transparent"
+            android:layout_marginTop="8dp"
             >
             
         </ListView>

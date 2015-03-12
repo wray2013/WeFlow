@@ -19,6 +19,7 @@ public class RechargeFragment extends Fragment {
 	private RechargeQQFragment qqFragment;
 	public Fragment currFragment;
 	private final static String TAG = "RechargeFragment";
+	private View mView;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,17 @@ public class RechargeFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		if(mView != null){
+		    ViewGroup parent = (ViewGroup) mView.getParent();  
+		    if (parent != null) {  
+		        parent.removeView(mView);  
+		    }   
+		    return mView;
+		}
+		
 		super.onCreateView(inflater, container, savedInstanceState);
 		View v = inflater.inflate(R.layout.fragment_recharge, null);
+		mView = v;
 		initView(v);
 		
 		if (phoneFragment == null) {
