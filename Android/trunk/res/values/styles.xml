@@ -39,5 +39,34 @@
         <item name="android:windowEnterAnimation">@anim/popup_enter</item>
         <item name="android:windowExitAnimation">@anim/popup_exit</item>
     </style>
+    
+	<style name="CalendarTitle">
+    <item name="android:textSize">@dimen/calendar_text_medium</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">#464342</item>
+  </style>
+
+  <style name="CalendarCell">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_weight">1</item>
+    <item name="android:gravity">top|left</item>
+    <item name="android:includeFontPadding">false</item>
+    <item name="android:paddingLeft">3dp</item>
+    <!-- <item name="android:textAlignment">center</item> -->
+  </style>
+
+  <style name="CalendarCell.DayHeader">
+    <item name="android:textSize">@dimen/calendar_text_small</item>
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:paddingBottom">4.5dp</item>
+    <item name="android:paddingTop">4.5dp</item>
+  </style>
+
+  <style name="CalendarCell.CalendarDate">
+    <item name="android:textSize">@dimen/calendar_text_medium</item>
+    <item name="android:clickable">false</item>
+    <item name="android:textStyle">bold</item>
+  </style>
 
 </resources>

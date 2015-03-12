@@ -9,4 +9,9 @@
     <string name="tab_me">我</string>
     <string name="hint_phone_number">请输入手机号码</string>
     <string name="hint_qq_number">请输入qq号</string>
+    
+    <string name="day_name_format">EEE</string>
+    <string name="invalid_date">Date must be between %1$s and %2$s.</string>
+  	<string name="month_name_format">MMMM yyyy</string>
+  	
 </resources>
