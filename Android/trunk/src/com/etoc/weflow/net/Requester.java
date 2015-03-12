@@ -9,6 +9,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
@@ -169,17 +170,23 @@ public class Requester {
 			if(object==null){
 
 			    HttpPost httpPostRequest = new HttpPost(url);
+//			    httpPostRequest.addHeader("Content-Type", "application/json");
 			    DefaultHttpClient httpClient = new DefaultHttpClient();
 			    ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
 
 			    String json = gson.toJson(request);
 			    
-			    parameters.add(new BasicNameValuePair("requestApp", json));
-				
+			    String saltstr = MD5.encodeByMd5AndSalt(json);
+			    
+			    parameters.add(new BasicNameValuePair("json", json));
+			    parameters.add(new BasicNameValuePair("sign", saltstr));
+			    
+//			    String securityJson = "{\"json\": \"" + json + "\", \"sign\":\"" + saltstr + "\"}";
 			    
 			    try {
 					httpPostRequest.setEntity(new UrlEncodedFormEntity(parameters, HTTP.UTF_8));
-				   
+					//httpPostRequest.setEntity(new StringEntity(securityJson/*json*/, HTTP.UTF_8));
+
 					httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 10000);
 					httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
 					

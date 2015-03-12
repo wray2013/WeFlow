@@ -13,6 +13,7 @@ public class GsonResponseObject {
 
 	public static class testResponse {
 		public String status;// ":0;
+		public String id;
 	}
 	
 	public static class sendSMSResponse extends commonResponse{

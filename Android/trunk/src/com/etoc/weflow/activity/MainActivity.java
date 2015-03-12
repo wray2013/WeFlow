@@ -1,10 +1,15 @@
 package com.etoc.weflow.activity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
+import android.provider.Contacts.People;
+import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
@@ -252,8 +257,13 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			break;
 		case R.id.btn_title_right:
 //			startActivity(new Intent(this, MakeFlowActivity.class));
-			startActivity(new Intent(this, ShakeShakeActivity.class));
-//			startActivity(new Intent(this, ExpenseFlowActivity.class));
+//			startActivity(new Intent(this, ShakeShakeActivity.class));
+			startActivity(new Intent(this, ExpenseFlowActivity.class));
+			
+			/*Intent intent = new Intent();
+	        intent.setAction(Intent.ACTION_PICK);
+	        intent.setData(ContactsContract.Contacts.CONTENT_URI);
+	        startActivityForResult(intent, 1);*/
 			break;
 		}
 	}
@@ -262,5 +272,43 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	public int subContentViewId() {
 		// TODO Auto-generated method stub
 		return R.layout.activity_main;
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		if(resultCode != RESULT_OK || data == null) return;
+		if (requestCode == 1) {
+			Uri result = data.getData();
+			String contactId = result.getLastPathSegment();
+			String contactnumber = getPhoneContacts(contactId);
+			Toast.makeText(this, "phone number = " + contactnumber, Toast.LENGTH_LONG).show();
+		}
+
+	}
+	
+	@SuppressWarnings("deprecation")
+	private String getPhoneContacts(String contactId) {
+		Cursor cursor = null;
+		String number = "";
+		try {
+			Uri uri = Phone.CONTENT_URI;
+			cursor = getContentResolver().query(uri, null, Phone.CONTACT_ID + "=" + contactId , null, null);
+			if (cursor.moveToFirst()) {
+				number = cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
+				// Toast.makeText(this, name, Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(this, "No contact found.", Toast.LENGTH_LONG)
+						.show();
+			}
+		} catch (Exception e) {
+			number = "";
+			e.printStackTrace();
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+		return number;
 	}
 }
