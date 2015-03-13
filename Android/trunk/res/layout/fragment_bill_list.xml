@@ -3,7 +3,7 @@
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/white"
     >
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="#00000000"
-        android:divider="@null"
+        android:divider="@color/divider_grey"
         android:overScrollMode="never"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="@null"
-        android:background="@color/black"
+        android:background="@color/white"
         ptr:ptrPinnedListViewEnabled="false"
         ptr:ptrAnimationStyle="flip"
         ptr:ptrMode="pullUpFromBottom" />    

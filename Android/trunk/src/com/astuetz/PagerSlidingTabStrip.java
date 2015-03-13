@@ -44,6 +44,7 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.ViewUtils;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
@@ -91,10 +92,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int tabPadding = 24;
 	private int dividerWidth = 1;
 
-	private int tabTextSize = 12;
+	private int tabTextSize = 32;
 	private int tabTextColor = 0xFF666666;
 	private Typeface tabTypeface = null;
-	private int tabTypefaceStyle = Typeface.BOLD;
+	private int tabTypefaceStyle = Typeface.NORMAL;
 
 	private int lastScrollX = 0;
 
@@ -129,15 +130,15 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		dividerPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerPadding, dm);
 		tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
 		dividerWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerWidth, dm);
-		tabTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tabTextSize, dm);
+//		tabTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tabTextSize, dm);
 
 		// get system attrs (android:textSize and android:textColor)
 
 		TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
 
-		tabTextSize = a.getDimensionPixelSize(0, tabTextSize);
+//		tabTextSize = a.getDimensionPixelSize(0, tabTextSize);
 		tabTextColor = a.getColor(1, tabTextColor);
-
+		
 		a.recycle();
 		
 		// get custom attrs
@@ -301,7 +302,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			if (v instanceof TextView) {
 
 				TextView tab = (TextView) v;
-				tab.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
+//				tab.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize);
+				ViewUtils.setTextSize(tab, tabTextSize);
 				tab.setTypeface(tabTypeface, tabTypefaceStyle);
 				tab.setTextColor(tabTextColor);
 

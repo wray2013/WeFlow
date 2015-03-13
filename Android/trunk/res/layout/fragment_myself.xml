@@ -101,6 +101,7 @@
                 android:id="@+id/iv_me_msg"
                 android:layout_width="50dp"
     			android:layout_height="50dp"
+    			android:layout_centerVertical="true"
     			android:scaleType="fitXY"
     			android:background="@color/orange" />
             <TextView 
@@ -130,6 +131,7 @@
                 android:id="@+id/iv_me_bill"
                 android:layout_width="50dp"
     			android:layout_height="50dp"
+    			android:layout_centerVertical="true"
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 
@@ -159,6 +161,7 @@
                 android:id="@+id/iv_me_sign"
                 android:layout_width="50dp"
     			android:layout_height="50dp"
+    			android:layout_centerVertical="true"
     			android:scaleType="fitXY"
     			android:background="@color/orange" />
             <TextView 
@@ -188,6 +191,7 @@
                 android:id="@+id/iv_me_invite"
                 android:layout_width="50dp"
     			android:layout_height="50dp"
+    			android:layout_centerVertical="true"
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 
@@ -216,6 +220,7 @@
                 android:id="@+id/iv_me_feedback"
                 android:layout_width="50dp"
     			android:layout_height="50dp"
+    			android:layout_centerVertical="true"
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 
@@ -245,6 +250,7 @@
                 android:id="@+id/iv_me_settings"
                 android:layout_width="50dp"
     			android:layout_height="50dp"
+    			android:layout_centerVertical="true"
     			android:scaleType="fitXY"
     			android:background="@color/orange"/>
             <TextView 

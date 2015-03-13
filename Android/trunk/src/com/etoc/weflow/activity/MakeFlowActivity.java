@@ -12,6 +12,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.AppReccomFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
+import com.etoc.weflow.utils.DisplayUtil;
 
 public class MakeFlowActivity extends TitleRootActivity {
 
@@ -27,6 +28,8 @@ public class MakeFlowActivity extends TitleRootActivity {
 		
 		titleTab = (PagerSlidingTabStrip) findViewById(R.id.tabs);
 		viewPage = (ViewPager) findViewById(R.id.pager);
+		
+		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 50));
 		
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
 		viewPage.setAdapter(adapter);
@@ -59,7 +62,7 @@ public class MakeFlowActivity extends TitleRootActivity {
 	
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "视频", "软件", "游戏"/*, "交友"*/};
+		private final String[] TITLES = { "看广告", "下软件", "玩游戏"/*, "交友"*/};
 
 		public MyPagerAdapter(FragmentManager fm) {
 			super(fm);

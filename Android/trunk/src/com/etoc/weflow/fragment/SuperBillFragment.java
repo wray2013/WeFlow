@@ -22,6 +22,7 @@ import java.util.List;
 import com.etoc.weflow.R;
 import com.etoc.weflow.adapter.MyBillAdapter;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
+import com.etoc.weflow.utils.DisplayUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import android.os.Bundle;
@@ -72,6 +73,7 @@ public class SuperBillFragment extends Fragment {
 	private void initView(View view) {
 		xlvMyBill = (PullToRefreshListView) view.findViewById(R.id.xlv_mybill_list);
 		lvBillList = xlvMyBill.getRefreshableView();
+		lvBillList.setDividerHeight(DisplayUtil.getSize(getActivity(), 2));
 		
 		adapter = new MyBillAdapter(getActivity());
 		adapter.setData(makeFakeData());

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.net.GsonResponseObject.*;
+import com.etoc.weflow.utils.ViewUtils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -64,7 +65,7 @@ public class MyBillAdapter extends BaseAdapter {
 				holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
 				holder.tvCoins = (TextView) convertView.findViewById(R.id.tv_coins);
 				holder.tvDate  = (TextView) convertView.findViewById(R.id.tv_date);
-				initViews(holder);
+				initViews(convertView);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
@@ -74,8 +75,16 @@ public class MyBillAdapter extends BaseAdapter {
 		return convertView;
 	}
 	
-	private void initViews(ViewHolder holder) {
+	private void initViews(View View) {
 		// TODO Auto-generated method stub
+		ViewUtils.setHeight(View.findViewById(R.id.rl_bill_right), 145);
+		ViewUtils.setMarginBottom(View.findViewById(R.id.tv_date), 20);
+		ViewUtils.setMarginTop(View.findViewById(R.id.tv_title), 20);
+		ViewUtils.setMarginLeft(View.findViewById(R.id.tv_title), 32);
+		
+		ViewUtils.setTextSize(View.findViewById(R.id.tv_title), 30);
+		ViewUtils.setTextSize(View.findViewById(R.id.tv_coins), 30);
+		ViewUtils.setTextSize(View.findViewById(R.id.tv_date), 18);
 	}
 	
 	private void bindBill(ViewHolder holder, BillList mybill) {

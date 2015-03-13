@@ -3,7 +3,6 @@ package com.etoc.weflow.activity;
 import java.io.IOException;
 import java.util.Vector;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +16,7 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.os.Vibrator;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -30,7 +30,7 @@ import com.etoc.weflow.view.ViewfinderView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
-public class CaptureActivity extends Activity implements Callback
+public class CaptureActivity extends TitleRootActivity implements Callback
 {
 
 	private com.etoc.weflow.qr.decode.CaptureActivityHandler handler;
@@ -49,7 +49,9 @@ public class CaptureActivity extends Activity implements Callback
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_qr_capture);
+		setTitleText("扫一扫");
+		hideRightButton();
+		
 		// 初始化 CameraManager
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
@@ -258,5 +260,17 @@ public class CaptureActivity extends Activity implements Callback
 			mediaPlayer.seekTo(0);
 		}
 	};
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int subContentViewId() {
+		// TODO Auto-generated method stub
+		return R.layout.activity_qr_capture;
+	}
 
 }
