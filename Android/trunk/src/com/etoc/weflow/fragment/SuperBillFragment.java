@@ -81,14 +81,30 @@ public class SuperBillFragment extends Fragment {
 		
 	}
 	
+	private static final long MONTH_TIME = 30 * 12 * 60 * 60 * 1000;
 	private List<BillList> makeFakeData() {
 		List<BillList> list = new ArrayList<BillList>();
 		for(int i = 0; i < 10; i ++) {
 			BillList item = new BillList();
-			item.title = "";
-			item.flowcoins = "20";
-			item.time = System.currentTimeMillis() + "";
-			list.add(item);
+			item.title = "观看监狱风云";
+			int coins = i % 2 == 0 ? (20 + i) * -1: (20 + i);
+			item.flowcoins = coins + "";
+			item.time = (System.currentTimeMillis() - MONTH_TIME * i) + "";
+			switch(position) {
+			case POSITION_TOTAL:
+				list.add(item);
+				break;
+			case POSITION_INCOME:
+				if(coins >= 0) {
+					list.add(item);
+				}
+				break;
+			case POSITION_PAY:
+				if(coins < 0) {
+					list.add(item);
+				}
+				break;
+			}
 		}
 		return list;
 	}

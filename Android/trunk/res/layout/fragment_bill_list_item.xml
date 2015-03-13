@@ -5,10 +5,26 @@
     android:layout_height="wrap_content"
     android:background="@color/white" >
 
+    <RelativeLayout 
+        android:id="@+id/rl_subtitle"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:background="@color/background_grey" >
+	    <TextView 
+	        android:id="@+id/tv_subtitle"
+	        android:layout_width="match_parent"
+	        android:layout_height="32dp"
+	        android:paddingLeft="16dp"
+	        android:gravity="center_vertical"
+	        android:text="本月"
+	        android:textColor="@color/black"
+	        android:visibility="gone" />
+    </RelativeLayout>
     <ImageView
         android:id="@+id/iv_type_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_below="@+id/rl_subtitle"
         android:layout_centerVertical="true"
         android:background="@color/orange"
         android:scaleType="fitXY"
@@ -18,11 +34,13 @@
         android:id="@+id/rl_bill_right"
         android:layout_width="match_parent"
         android:layout_height="72dp"
+        android:layout_below="@+id/rl_subtitle"
         android:layout_marginLeft="16dp"
         android:gravity="center_vertical"
         android:layout_toRightOf="@+id/iv_type_icon" >
 
         <RelativeLayout
+            android:id="@+id/rl_bill_right_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/tv_date" >
@@ -45,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/tv_title"
+                android:layout_marginRight="16dp"
                 android:gravity="right"
                 android:text="+10流量币"
                 android:textColor="@color/pagertab_color_orange" />
@@ -55,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
+            android:layout_alignLeft="@+id/rl_bill_right_title"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical"
