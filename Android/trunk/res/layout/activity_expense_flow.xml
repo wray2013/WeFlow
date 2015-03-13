@@ -13,7 +13,7 @@
         app:dividerColor="#00000000"
         app:indicatorColor="@color/pagertab_color_green"
         app:underlineHeight="1px"
-        app:indicatorHeight="2dp"
+        app:indicatorHeight="3dp"
         app:underlineColor="#E8E9E9"
          />
 

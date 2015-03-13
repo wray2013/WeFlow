@@ -106,6 +106,23 @@ public class DateUtils {
 		return "";
 	}
 	
+	public static String getYMStringFromMilli(String milli) {
+		String format = "yyyy-MM";
+		try{
+			if (null != milli && !"".equals(milli)) {
+				
+				Date date = new Date(Long.parseLong(milli));
+				
+				SimpleDateFormat sdf = new SimpleDateFormat(format);
+				return sdf.format(date);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	
+		return "";
+	}
+	
 	public static String getDayStringFromMilli(String milli){
 		String format = "yyyy-M-dd";
 		try{

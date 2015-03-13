@@ -1,6 +1,7 @@
 package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.CaptureActivity;
 import com.etoc.weflow.activity.SignInActivity;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
@@ -42,6 +43,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		view.findViewById(R.id.rl_me_sign).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_invite).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_feedback).setOnClickListener(this);
+		view.findViewById(R.id.rl_me_settings).setOnClickListener(this);
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_top), 222);
 		ViewUtils.setHeight(view.findViewById(R.id.tv_account_hint), 141);
@@ -107,6 +109,9 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			break;
 		case R.id.rl_me_feedback:
 			startActivity(new Intent(getActivity(),MakeFlowActivity.class));
+			break;
+		case R.id.rl_me_settings:
+			startActivity(new Intent(getActivity(),CaptureActivity.class));
 			break;
 		}
 	}

@@ -114,7 +114,7 @@
         <activity
             android:name="com.etoc.weflow.activity.CaptureActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="stateAlwaysHidden" >
 

@@ -3,6 +3,7 @@ package com.etoc.weflow.activity;
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
 import com.etoc.weflow.fragment.SuperBillFragment;
+import com.etoc.weflow.utils.DisplayUtil;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -31,6 +32,8 @@ public class MyBillListActivity extends TitleRootActivity {
 		
 		titleTab = (PagerSlidingTabStrip) findViewById(R.id.mybill_tabs);
 		viewPage = (ViewPager) findViewById(R.id.mybill_pager);
+		
+		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 50));
 		
 		adapter = new MyBillPagerAdapter(getSupportFragmentManager());
 		viewPage.setAdapter(adapter);

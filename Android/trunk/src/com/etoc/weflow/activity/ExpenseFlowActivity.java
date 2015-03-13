@@ -14,6 +14,7 @@ import com.etoc.weflow.fragment.ExchangeGiftFragment;
 import com.etoc.weflow.fragment.MobileFlowFragment;
 import com.etoc.weflow.fragment.RechargeFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
+import com.etoc.weflow.utils.DisplayUtil;
 
 public class ExpenseFlowActivity extends TitleRootActivity {
 
@@ -31,6 +32,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 		viewPage = (ViewPager) findViewById(R.id.pager);
 		
 		titleTab.setTextColorResource(R.color.pagertab_color_green);
+		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 40));
 		
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
 		viewPage.setAdapter(adapter);
@@ -63,7 +65,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "充值", "订流量包", "换游戏币", "购礼券"};
+		private final String[] TITLES = { "充话费", "流量包", "游戏币", "礼品券"};
 
 		public MyPagerAdapter(FragmentManager fm) {
 			super(fm);
