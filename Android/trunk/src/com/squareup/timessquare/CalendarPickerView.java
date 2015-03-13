@@ -75,7 +75,6 @@ public class CalendarPickerView extends ListView {
   final List<MonthCellDescriptor> selectedCells = new ArrayList<MonthCellDescriptor>();
   final List<MonthCellDescriptor> highlightedCells = new ArrayList<MonthCellDescriptor>();
   final List<Calendar> selectedCals = new ArrayList<Calendar>();
-  final List<Calendar> selectableCals = new ArrayList<Calendar>();
   final List<Calendar> highlightedCals = new ArrayList<Calendar>();
   final Map<String,String> datePriceMap = new HashMap<String, String>();
   private Locale locale;
@@ -116,10 +115,10 @@ public class CalendarPickerView extends ListView {
     dayTextColorResId = a.getResourceId(R.styleable.CalendarPickerView_dayTextColor,
         R.color.calendar_text_selector);
     titleTextColor = a.getColor(R.styleable.CalendarPickerView_titleTextColor,
-        res.getColor(R.color.calendar_title_text_color));
+        res.getColor(R.color.calendar_text_active));
     displayHeader = a.getBoolean(R.styleable.CalendarPickerView_displayHeader, true);
     headerTextColor = a.getColor(R.styleable.CalendarPickerView_headerTextColor,
-        res.getColor(R.color.calendar_title_text_color));
+        res.getColor(R.color.calendar_text_active));
     a.recycle();
 
     adapter = new MonthAdapter();
@@ -143,10 +142,6 @@ public class CalendarPickerView extends ListView {
       init(new Date(), nextYear.getTime()) //
           .withSelectedDate(new Date());
     }
-  }
-  
-  public void addSelectableDate(Calendar cal) {
-	  selectableCals.add(cal);
   }
 
   /**
@@ -848,10 +843,7 @@ public class CalendarPickerView extends ListView {
   }
 
   private boolean isDateSelectable(Date date) {
-	  if (dateConfiguredListener == null) {
-		  return false;
-	  }
-	  return dateConfiguredListener.isDateSelectable(date);
+    return dateConfiguredListener == null || dateConfiguredListener.isDateSelectable(date);
   }
 
   public void setOnDateSelectedListener(OnDateSelectedListener listener) {
@@ -917,7 +909,7 @@ public class CalendarPickerView extends ListView {
       String errMessage =
           getResources().getString(R.string.invalid_date, fullDateFormat.format(minCal.getTime()),
               fullDateFormat.format(maxCal.getTime()));
-      Toast.makeText(getContext(), errMessage, Toast.LENGTH_SHORT).show();
+      Toast.makeText(getContext(), errMessage + fullDateFormat.format(date.getTime()), Toast.LENGTH_SHORT).show();
     }
   }
 }

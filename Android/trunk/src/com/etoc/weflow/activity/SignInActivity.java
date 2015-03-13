@@ -93,11 +93,17 @@ public class SignInActivity extends TitleRootActivity {
 	}
 	
 	@Override
+	protected int graviteType() {
+		// TODO Auto-generated method stub
+		return GRAVITE_LEFT;
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		setTitleText("选择日期");
+		setTitleText("签到");
 		setRightButtonText("确定>>");
 		getRightButton().setEnabled(false);
 		
@@ -107,14 +113,16 @@ public class SignInActivity extends TitleRootActivity {
 	private void initViews() {
 		final Calendar todayCal = Calendar.getInstance();
 		today = todayCal.getTime();
+		todayCal.set(Calendar.DAY_OF_MONTH,1);//设置为1号,当前日期既为本月第一天 
+        Date firstDay = todayCal.getTime();
 		Log.d("=AAA=","firstDate = " + today.getTime());
 	    
 	    final Calendar endDate = Calendar.getInstance();
 	    endDate.set(Calendar.DAY_OF_MONTH, endDate.getMaximum(Calendar.DAY_OF_MONTH));
 	    
 	    calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
-	    initCalendarView(today, endDate.getTime());
-	    calendar.setOnInvalidDateSelectedListener(new OnInvalidDateSelectedListener() {
+	    initCalendarView(firstDay, endDate.getTime());
+	    /*calendar.setOnInvalidDateSelectedListener(new OnInvalidDateSelectedListener() {
 			@Override
 			public void onInvalidDateSelected(Date date) {
 				// TODO Auto-generated method stub
@@ -149,12 +157,20 @@ public class SignInActivity extends TitleRootActivity {
 				selectedDate = date;
 				getRightButton().setEnabled(true);
 			}
-		});
+		});*/
 	}
 	
 	private void initCalendarView(Date minDate,Date maxDate) {
+		ArrayList<Date> dateList = new ArrayList<Date>();
+		final Calendar todayCal = Calendar.getInstance();
+		for (int i = 0;i < 3;i++) {
+			todayCal.add(Calendar.DATE, -1);
+			dateList.add(todayCal.getTime());
+		}
 		calendar.init(minDate, maxDate) //
-        .inMode(SelectionMode.SINGLE);
+		.setShortWeekdays(new String[]{"","周日","周一","周二","周三","周四","周五","周六"})
+        .inMode(SelectionMode.MULTIPLE)
+        .withSelectedDates(dateList);
 	}
 	
 	@Override

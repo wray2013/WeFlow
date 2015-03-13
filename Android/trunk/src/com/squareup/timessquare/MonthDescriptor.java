@@ -36,14 +36,6 @@ class MonthDescriptor {
   void setLabel(String label) {
     this.label = label;
   }
-  
-  public boolean isCurrentMonth() {
-	  Calendar cal = Calendar.getInstance();
-	  if (year == cal.get(Calendar.YEAR) && month == cal.get(Calendar.MONTH)) {
-		  return true;
-	  }
-	  return false;
-  }
 
   @Override public String toString() {
     return "MonthDescriptor{"

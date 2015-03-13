@@ -91,18 +91,20 @@ public class CalendarCellView extends TextView {
     if (isSelectable) {
       mergeDrawableStates(drawableState, STATE_SELECTABLE);
     }
+    
 
     if (isCurrentMonth) {
       mergeDrawableStates(drawableState, STATE_CURRENT_MONTH);
     }
 
     if (isToday) {
-//      mergeDrawableStates(drawableState, STATE_TODAY);
+      mergeDrawableStates(drawableState, STATE_TODAY);
     }
 
     if (isHighlighted) {
       mergeDrawableStates(drawableState, STATE_HIGHLIGHTED);
     }
+    
 
     if (rangeState == MonthCellDescriptor.RangeState.FIRST) {
       mergeDrawableStates(drawableState, STATE_RANGE_FIRST);

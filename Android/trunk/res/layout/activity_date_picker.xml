@@ -15,4 +15,42 @@
 	    android:background="#FFFFFF"
 	    />
 	
+	<TextView 
+	    android:id="@+id/tv_sign_in_tips"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_below="@id/calendar_view"
+	    android:layout_marginTop="24dp"
+	    android:textSize="16sp"
+	    android:textColor="@android:color/black"
+	    android:text="本月签到21次；获得42流量币"
+	    />
+	
+	<TextView 
+	    android:id="@+id/tv_sign_in"
+	    android:layout_width="94dp"
+	    android:layout_height="94dp"
+	    android:background="@drawable/sign_in"
+	    android:gravity="center"
+	    android:text="签到"
+	    android:textColor="@color/white"
+	    android:textSize="17sp"
+	    android:layout_centerHorizontal="true"
+	    android:layout_alignParentBottom="true"
+	    android:layout_marginBottom="90dp"
+	    />
+	
+	<TextView 
+	    android:id="@+id/tv_sign_in_flag"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="今日未签到"
+	    android:textSize="15sp"
+	    android:layout_centerHorizontal="true"
+	    android:layout_alignParentBottom="true"
+	    android:textColor="@color/text_grey"
+	    android:layout_marginBottom="66dp"
+	    />
+	
 </RelativeLayout>

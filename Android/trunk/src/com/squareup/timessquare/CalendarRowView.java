@@ -33,7 +33,7 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     final int totalWidth = MeasureSpec.getSize(widthMeasureSpec);
     cellSize = totalWidth / 7;
     int cellWidthSpec = makeMeasureSpec(cellSize, EXACTLY);
-    int cellHeightSpec = isHeaderRow ? makeMeasureSpec(cellSize, AT_MOST) : cellWidthSpec;
+    int cellHeightSpec = isHeaderRow ? makeMeasureSpec(cellSize, AT_MOST) : makeMeasureSpec((int)(cellSize * 0.8), EXACTLY);;
     int rowHeight = 0;
     for (int c = 0, numChildren = getChildCount(); c < numChildren; c++) {
       final View child = getChildAt(c);
