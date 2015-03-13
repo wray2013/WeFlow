@@ -1,24 +1,19 @@
 package com.etoc.weflow.activity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.squareup.timessquare.CalendarPickerView;
-import com.squareup.timessquare.CalendarPickerView.DateSelectableFilter;
-import com.squareup.timessquare.CalendarPickerView.OnDateSelectedListener;
-import com.squareup.timessquare.CalendarPickerView.OnInvalidDateSelectedListener;
 import com.squareup.timessquare.CalendarPickerView.SelectionMode;
 
 public class SignInActivity extends TitleRootActivity {
@@ -28,6 +23,8 @@ public class SignInActivity extends TitleRootActivity {
 	private Date today = new Date();
 	private Date selectedDate = null;
 	private HashMap<String, LinePrice> priceMap = new HashMap<String, SignInActivity.LinePrice>();
+	private TextView tvSignIn;
+	private TextView tvSignInFlag;
 	
 	class LinePrice{
 		String adultPrice;
@@ -122,6 +119,11 @@ public class SignInActivity extends TitleRootActivity {
 	    
 	    calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
 	    initCalendarView(firstDay, endDate.getTime());
+	    
+	    tvSignIn = (TextView) findViewById(R.id.tv_sign_in);
+	    tvSignInFlag = (TextView) findViewById(R.id.tv_sign_in_flag);
+	    
+	    tvSignIn.setOnClickListener(this);
 	    /*calendar.setOnInvalidDateSelectedListener(new OnInvalidDateSelectedListener() {
 			@Override
 			public void onInvalidDateSelected(Date date) {
@@ -164,10 +166,11 @@ public class SignInActivity extends TitleRootActivity {
 		ArrayList<Date> dateList = new ArrayList<Date>();
 		final Calendar todayCal = Calendar.getInstance();
 		for (int i = 0;i < 3;i++) {
-			todayCal.add(Calendar.DATE, -1);
+			todayCal.add(Calendar.DATE, -3);
 			dateList.add(todayCal.getTime());
 		}
 		calendar.init(minDate, maxDate) //
+		.displayOnly()
 		.setShortWeekdays(new String[]{"","周日","周一","周二","周三","周四","周五","周六"})
         .inMode(SelectionMode.MULTIPLE)
         .withSelectedDates(dateList);
@@ -178,6 +181,11 @@ public class SignInActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.btn_title_right:
+			break;
+		case R.id.tv_sign_in:
+			tvSignIn.setText("已签");
+			tvSignInFlag.setText("今日已签到");
+			calendar.selectDate(new Date());
 			break;
 		}
 		super.onClick(v);

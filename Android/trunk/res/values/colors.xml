@@ -62,13 +62,14 @@
 	<color name="calendar_bg">#ffffffff</color>
 	<color name="calendar_divider">#00000000</color>
 	<color name="calendar_inactive_month_bg">#ffffff</color>
-	<color name="calendar_selected_day_bg">#ff379bff</color>
+	<color name="calendar_selected_day_bg">#ffffff</color>
     <color name="calendar_highlighted_day_bg">#ccffcc</color>
     <color name="calendar_selected_range_bg">#ff96caff</color>
 	<color name="calendar_text_inactive">#40778088</color>
 	<color name="calendar_text_active">#ff000000</color>
+	<color name="calendar_text_today_color">#ffffff</color>
 	<color name="calendar_title_text_color">#464342</color>
-	<color name="calendar_text_selected">#ffff0000</color>
+	<color name="calendar_text_selected">#ff000000</color>
 	<color name="calendar_text_unselectable">#ff000000</color>
     
 </resources>

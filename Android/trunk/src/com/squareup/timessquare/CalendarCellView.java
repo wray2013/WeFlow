@@ -43,17 +43,19 @@ public class CalendarCellView extends TextView {
   private boolean isToday = false;
   private boolean isHighlighted = false;
   private RangeState rangeState = RangeState.NONE;
-  private String priceStr;
   
   private Paint datePaint;
+  private Paint todayPaint;
 
   @SuppressWarnings("UnusedDeclaration")
   public CalendarCellView(Context context, AttributeSet attrs) {
     super(context, attrs);
     
     datePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    datePaint.setTextSize(DisplayUtil.getSize(context, 24));
-    datePaint.setColor(0xfff65c00);
+    datePaint.setColor(0xffff0000);
+    
+    todayPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    todayPaint.setColor(0xffffffff);
   }
 
   public void setSelectable(boolean isSelectable) {
@@ -76,10 +78,6 @@ public class CalendarCellView extends TextView {
     refreshDrawableState();
   }
   
-  public void setPriceStr(String str) {
-	  this.priceStr = str;
-  }
-
   public void setHighlighted(boolean highlighted) {
     isHighlighted = highlighted;
     refreshDrawableState();
@@ -120,12 +118,23 @@ public class CalendarCellView extends TextView {
   @Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
+	  	if (isToday) {
+			canvas.drawCircle(getWidth() / 2 + DisplayUtil.getSize(getContext(), 3), DisplayUtil.getSize(getContext(), 34), DisplayUtil.getSize(getContext(), 32), datePaint);
+			
+			canvas.drawCircle(getWidth() / 2 + DisplayUtil.getSize(getContext(), 3), getHeight() - DisplayUtil.getSize(getContext(), 30), DisplayUtil.getSize(getContext(), 8), todayPaint);
+		}
 		super.onDraw(canvas);
-		if (isSelectable) {
+		/*if (isSelectable) {
 			int height = getHeight();
 			FontMetrics fm = datePaint.getFontMetrics();   
 	//        Log.d("=AAA=","leading = " + fm.leading + " ascent = " + fm.ascent + " descent = " + fm.descent);
 			canvas.drawText(priceStr + "元", DisplayUtil.getSize(getContext(), 6), height - fm.descent - DisplayUtil.getSize(getContext(), 3), datePaint);
+		}*/
+		
+		
+		
+		if (isSelected() && !isToday) {
+			canvas.drawCircle(getWidth() / 2 + DisplayUtil.getSize(getContext(), 3), getHeight() - DisplayUtil.getSize(getContext(), 30), DisplayUtil.getSize(getContext(), 8), datePaint);
 		}
 	}
 }

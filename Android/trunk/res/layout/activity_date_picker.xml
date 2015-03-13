@@ -9,7 +9,6 @@
 	    android:id="@+id/calendar_view"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:paddingLeft="16dp"
 	    android:scrollbarStyle="outsideOverlay"
 	    android:clipToPadding="false"
 	    android:background="#FFFFFF"

@@ -84,7 +84,7 @@ public class MonthView extends LinearLayout {
           cellView.setEnabled(cell.isCurrentMonth());
           cellView.setClickable(!displayOnly);
           
-          cellView.setPadding(DisplayUtil.getSize(cellView.getContext(), 24), 0, 0, 0);
+//          cellView.setPadding(DisplayUtil.getSize(cellView.getContext(), 24), 0, 0, 0);
           cellView.setSelectable(cell.isSelectable());
           cellView.setSelected(cell.isSelected());
           cellView.setCurrentMonth(cell.isCurrentMonth());
