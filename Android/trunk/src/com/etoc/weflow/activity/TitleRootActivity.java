@@ -305,6 +305,12 @@ public abstract class TitleRootActivity extends BaseActivity implements OnClickL
 
 	}
 	
+	protected void setTitleSize(int sizepx){
+		if(title!=null) {
+			ViewUtils.setTextSize(title, sizepx);
+		}
+	}
+	
 	protected void setTitleText(String str){
 		if(title!=null){
 			title.setBackgroundColor(Color.TRANSPARENT);
