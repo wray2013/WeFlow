@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,18 +14,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
-import com.etoc.weflow.R.id;
-import com.etoc.weflow.activity.MainActivity;
+import com.etoc.weflow.activity.SoftDetailActivity;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
+import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.imbryk.viewPager.LoopViewPager;
 import com.nostra13.universalimageloader.api.MyImageLoader;
@@ -90,6 +94,19 @@ public class AppReccomFragment extends Fragment {
 		adapter = new AppAdatper(getActivity(), makeAppData());
 		listView.setAdapter(adapter);
 		
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getActivity(),SoftDetailActivity.class);
+				SoftInfoResp item = (SoftInfoResp)listView.getAdapter().getItem(position);
+				intent.putExtra(ConStant.INTENT_SOFT_DETAIL, new Gson().toJson(item));
+				startActivity(intent);
+			}
+		});
+		
 		ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
 	}
 	
@@ -110,13 +127,24 @@ public class AppReccomFragment extends Fragment {
 		String[] descs = {
 				"沟通无极限","做最美的自己","高富帅必备","叔叔约约约","没有你买不到的。"
 		};
+		
+		String[] previewImgs = {
+				"http://img1.cache.netease.com/catchpic/8/87/874214114CEDF430D823A37FFAF49017.png",
+				"http://ent.southcn.com/8/images/attachement/jpg/site4/20140724/13/6975532463546479561.jpg",
+				"http://img.faruanwen.net/2015/02/12/14237124635714.jpg",
+				"http://himg2.huanqiu.com/attachment2010/2014/0826/20140826053243814.jpg"
+		};
 		for (int i = 0;i < 5;i++) {
 			SoftInfoResp resp = new SoftInfoResp();
 			resp.appid = i + "";
 			resp.appicon = icons[i];
 			resp.title = titles[i];
+			resp.size = "11.2M";
+			resp.version = "2.1.0";
+			resp.instruction = "分享微信朋友圈可获得10流量币\n安装软件体验2分钟以上即可获得流量币";
 			resp.introduction = descs[i];
 			resp.flowcoins = (i*10 + 10) + "";
+			resp.apppreview = previewImgs;
 			list.add(resp);
 		}
 		return list;

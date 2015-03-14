@@ -17,4 +17,7 @@
   	<dimen name="calendar_month_title_bottommargin">18dp</dimen>
   	<dimen name="calendar_text_medium">16sp</dimen>
   	<dimen name="calendar_text_small">15sp</dimen>
+  	
+  	<dimen name="corner_radius">2dp</dimen>
+    <dimen name="layer_padding">3dp</dimen>
 </resources>
