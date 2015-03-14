@@ -30,6 +30,27 @@ public class WfMgtUser implements Serializable {
 	@Column
 	private String roleid;
 
+	private String status;
+
+	/**
+	 * status
+	 *
+	 * @return the status
+	 * @since 1.0.0
+	 */
+
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status
+	 *            the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public WfMgtUser() {
 	}
 

@@ -1,7 +1,7 @@
 package mgt;
 
-import net.etoc.crm.entity.WfCrmProduct;
-import net.etoc.crm.service.WfCrmProductService;
+import net.etoc.crm.product.entity.WfCrmProduct;
+import net.etoc.crm.product.service.WfCrmProductService;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Before;

@@ -4,9 +4,9 @@
  * 
  * 
  */
-package net.etoc.crm.repository;
+package net.etoc.crm.product.repository;
 
-import net.etoc.crm.entity.WfCrmProduct;
+import net.etoc.crm.product.entity.WfCrmProduct;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

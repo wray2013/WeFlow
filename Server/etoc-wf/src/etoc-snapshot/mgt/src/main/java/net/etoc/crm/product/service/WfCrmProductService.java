@@ -4,9 +4,9 @@
  * 
  * 
  */
-package net.etoc.crm.service;
+package net.etoc.crm.product.service;
 
-import net.etoc.crm.entity.WfCrmProduct;
+import net.etoc.crm.product.entity.WfCrmProduct;
 
 /**
  * 

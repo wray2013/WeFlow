@@ -39,7 +39,7 @@ war {
 jettyRun.dependsOn cleanEclipseOutput
 
 jettyRun {
-  httpPort = 8080
+  httpPort = 9080
   contextPath = ''
   reload = 'manual'
   //scanIntervalSeconds = 1
