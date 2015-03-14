@@ -124,6 +124,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener {
 		ViewUtils.setMarginBottom(tvCommit, 68);
 		tvCommit.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
 		
+		ViewUtils.setMarginLeft(view.findViewById(R.id.rl_input_phone), 32);
+		ViewUtils.setMarginRight(view.findViewById(R.id.rl_input_phone), 32);
+		
 		etPhone = (EditText) view.findViewById(R.id.et_phone);
 	}
 

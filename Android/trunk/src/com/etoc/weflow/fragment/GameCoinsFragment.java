@@ -1,5 +1,8 @@
 package com.etoc.weflow.fragment;
 
+import com.etoc.weflow.R;
+import com.etoc.weflow.utils.ViewUtils;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,16 +14,14 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-import com.etoc.weflow.R;
-import com.etoc.weflow.utils.ViewUtils;
+public class GameCoinsFragment extends Fragment {
 
-public class RechargeFragment extends Fragment {
 	RadioGroup radioGroup = null;
-	private RechargePhoneFragment phoneFragment;
-	private RechargeQQFragment qqFragment;
 	public Fragment currFragment;
 	private final static String TAG = "RechargeFragment";
 	private View mView;
+	private GameGiftFragment giftFragment;
+	private GameRechargeFragment rechargeFragment;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,10 +29,10 @@ public class RechargeFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		
 		if(savedInstanceState != null) {
-			phoneFragment = (RechargePhoneFragment)getChildFragmentManager().getFragment(
-					savedInstanceState, RechargePhoneFragment.class.getName());
-			qqFragment = (RechargeQQFragment)getChildFragmentManager().getFragment(
-					savedInstanceState, RechargeQQFragment.class.getName());
+			giftFragment = (GameGiftFragment)getChildFragmentManager().getFragment(
+					savedInstanceState, GameGiftFragment.class.getName());
+			rechargeFragment = (GameRechargeFragment)getChildFragmentManager().getFragment(
+					savedInstanceState, GameRechargeFragment.class.getName());
 		}
 	}
 	
@@ -46,35 +47,36 @@ public class RechargeFragment extends Fragment {
 		    }   
 		    return mView;
 		}
-		
 		super.onCreateView(inflater, container, savedInstanceState);
-		View v = inflater.inflate(R.layout.fragment_recharge, null);
+		
+		View v = inflater.inflate(R.layout.fragment_game_coins, null);
 		mView = v;
 		initView(v);
 		
-		if (phoneFragment == null) {
-			phoneFragment = new RechargePhoneFragment();
+		if (giftFragment == null) {
+			giftFragment = new GameGiftFragment();
 		}
-		if (qqFragment == null) {
-			qqFragment = new RechargeQQFragment();
+		if (rechargeFragment == null) {
+			rechargeFragment = new GameRechargeFragment();
 		}
 		if (currFragment == null) {
-			currFragment = phoneFragment;
+			currFragment = giftFragment;
 		}
 		if (null != getChildFragmentManager().findFragmentByTag(
 				currFragment.getClass().getName())) {
 			getChildFragmentManager().beginTransaction().remove(currFragment);
 		}
 		getChildFragmentManager().beginTransaction().replace(R.id.fl_content, currFragment,currFragment.getClass().getName()).commit();
-		if (currFragment instanceof RechargePhoneFragment) {
-			radioGroup.check(R.id.rb_phone);
+		if (currFragment instanceof GameGiftFragment) {
+			radioGroup.check(R.id.rb_game_gift);
 		} else {
-			radioGroup.check(R.id.rb_qq);
+			radioGroup.check(R.id.rb_game_recharge);
 		}
 		
 		return v;
 	}
 	
+
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
@@ -107,23 +109,23 @@ public class RechargeFragment extends Fragment {
 				}
 				Fragment fragment = null;
 				switch(checkedId) {
-				case R.id.rb_phone:
-					fragment = fm.findFragmentByTag(RechargePhoneFragment.class.getName());
+				case R.id.rb_game_gift:
+					fragment = fm.findFragmentByTag(GameGiftFragment.class.getName());
 					if (fragment == null) {
-						fragment = new RechargePhoneFragment();
-						phoneFragment = (RechargePhoneFragment) fragment;
-						ft.add(R.id.fl_content, fragment, RechargePhoneFragment.class.getName());
+						fragment = new GameGiftFragment();
+						giftFragment = (GameGiftFragment) fragment;
+						ft.add(R.id.fl_content, fragment, GameGiftFragment.class.getName());
 					} else {
 						ft.show(fragment);
 					}
 					break;
-				case R.id.rb_qq:
+				case R.id.rb_game_recharge:
 					Log.d("=AAA=","rb_previous_period");
-					fragment = fm.findFragmentByTag(RechargeQQFragment.class.getName());
+					fragment = fm.findFragmentByTag(GameRechargeFragment.class.getName());
 					if (fragment == null) {
-						fragment = new RechargeQQFragment();
-						qqFragment = (RechargeQQFragment) fragment;
-						ft.add(R.id.fl_content, fragment, RechargeQQFragment.class.getName());
+						fragment = new GameRechargeFragment();
+						rechargeFragment = (GameRechargeFragment) fragment;
+						ft.add(R.id.fl_content, fragment, GameRechargeFragment.class.getName());
 					} else {
 						ft.show(fragment);
 					}
@@ -134,5 +136,4 @@ public class RechargeFragment extends Fragment {
 			}
 		});
 	}
-
 }

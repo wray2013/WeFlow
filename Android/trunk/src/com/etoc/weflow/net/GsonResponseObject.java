@@ -123,6 +123,14 @@ public class GsonResponseObject {
 		public String cost;
 	}
 	
+	public static class GameGiftResp {
+		public String gamepkgid;
+		public String title;
+		public String leave;
+		public String icon;
+		public String cost;
+	}
+	
 	public static class ExchangeGiftResp {
 		public String giftid;
 		public String imgsrc;

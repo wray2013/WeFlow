@@ -15,10 +15,10 @@
             >
             
             <RadioButton 
-                android:id="@+id/rb_phone"
+                android:id="@+id/rb_game_gift"
                 android:layout_width="77dp"
                 android:layout_height="32dp"
-                android:text="充话费"
+                android:text="游戏礼包"
                 android:gravity="center"
                 android:checked="true"
                 android:button="@null"
@@ -27,10 +27,10 @@
                 />
             
             <RadioButton 
-                android:id="@+id/rb_qq"
+                android:id="@+id/rb_game_recharge"
                 android:layout_width="77dp"
                 android:layout_height="32dp"
-                android:text="充Q币"
+                android:text="游戏充值"
                 android:gravity="center"
                 android:button="@null"
                 android:background="@drawable/bg_right_corner"
