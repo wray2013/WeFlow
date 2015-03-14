@@ -4,7 +4,7 @@
  * 
  * 
  */
-package net.etoc.crm.entity;
+package net.etoc.crm.product.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

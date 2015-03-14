@@ -24,4 +24,7 @@ public class AppVars {
 	@Value("${app.shiro.hashIterations:1}")
 	public Integer hashIterations;
 
+	@Value("default")
+	public String theme;
+
 }

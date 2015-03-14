@@ -4,11 +4,11 @@
  * 
  * 
  */
-package net.etoc.crm.service.impl;
+package net.etoc.crm.product.service.impl;
 
-import net.etoc.crm.entity.WfCrmProduct;
-import net.etoc.crm.repository.WfCrmProductRepository;
-import net.etoc.crm.service.WfCrmProductService;
+import net.etoc.crm.product.entity.WfCrmProduct;
+import net.etoc.crm.product.repository.WfCrmProductRepository;
+import net.etoc.crm.product.service.WfCrmProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
