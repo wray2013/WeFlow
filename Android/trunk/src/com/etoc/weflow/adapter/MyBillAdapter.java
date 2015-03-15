@@ -16,6 +16,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * 账单/记录 通用适配器
+ * @author Ray
+ *
+ */
 public class MyBillAdapter extends BaseAdapter {
 
 	private LayoutInflater inflater;
@@ -67,6 +72,7 @@ public class MyBillAdapter extends BaseAdapter {
 				holder.ivTypeIcon = (ImageView) convertView.findViewById(R.id.iv_type_icon);
 				holder.tvSubTitle = (TextView) convertView.findViewById(R.id.tv_subtitle);
 				holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
+				holder.tvContent = (TextView) convertView.findViewById(R.id.tv_content);
 				holder.tvCoins = (TextView) convertView.findViewById(R.id.tv_coins);
 				holder.tvDate  = (TextView) convertView.findViewById(R.id.tv_date);
 				initViews(convertView);
@@ -81,23 +87,34 @@ public class MyBillAdapter extends BaseAdapter {
 	
 	private void initViews(View View) {
 		// TODO Auto-generated method stub
-		ViewUtils.setHeight(View.findViewById(R.id.rl_bill_right), 145);
+		ViewUtils.setHeight(View.findViewById(R.id.view_height), 145);
 		ViewUtils.setHeight(View.findViewById(R.id.tv_subtitle), 65);
 		ViewUtils.setMarginBottom(View.findViewById(R.id.tv_date), 20);
 		ViewUtils.setMarginTop(View.findViewById(R.id.tv_title), 20);
 		ViewUtils.setMarginLeft(View.findViewById(R.id.rl_bill_right_title), 32);
 		ViewUtils.setMarginLeft(View.findViewById(R.id.tv_subtitle), 32);
 		ViewUtils.setMarginRight(View.findViewById(R.id.tv_coins), 32);
+		ViewUtils.setMarginRight(View.findViewById(R.id.tv_date), 32);
 		
 		ViewUtils.setTextSize(View.findViewById(R.id.tv_title), 30);
+		ViewUtils.setTextSize(View.findViewById(R.id.tv_content), 30);
 		ViewUtils.setTextSize(View.findViewById(R.id.tv_coins), 30);
-		ViewUtils.setTextSize(View.findViewById(R.id.tv_date), 18);
+		ViewUtils.setTextSize(View.findViewById(R.id.tv_date), 20);
 	}
 	
 	private void bindBill(ViewHolder holder, BillList mybill) {
 		// TODO Auto-generated method stub
 		holder.ivTypeIcon.setBackgroundResource(R.drawable.ic_launcher);
 		holder.tvTitle.setText(mybill.title);
+		
+		if(mybill.content != null && !mybill.content.equals("")) {
+			holder.tvContent.setText(mybill.content);
+			holder.tvContent.setVisibility(View.VISIBLE);
+		} else {
+			holder.tvContent.setText("空");
+			holder.tvContent.setVisibility(View.INVISIBLE);
+		}
+		
 		int coins = 0;
 		if(mybill.flowcoins != null) {
 			try {
@@ -137,11 +154,9 @@ public class MyBillAdapter extends BaseAdapter {
 	}
 
 
-
-
 	public class ViewHolder {
 		ImageView ivTypeIcon;
-		TextView tvSubTitle, tvTitle, tvCoins, tvDate;
+		TextView tvSubTitle, tvTitle, tvContent, tvCoins, tvDate;
 	}
 
 }

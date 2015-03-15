@@ -24,8 +24,8 @@ import com.etoc.weflow.adapter.MyBillAdapter;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,15 +37,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-public class SuperBillFragment extends Fragment implements OnRefreshListener2<ListView>, Callback {
+public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2<ListView>, Callback {
 
 	private static final String ARG_POSITION = "position";
 
-	private static final int POSITION_TOTAL  = 0;
-	private static final int POSITION_INCOME = 1;
-	private static final int POSITION_PAY    = 2;
+	private static final int POSITION_ADV      = 0; //看广告
+	private static final int POSITION_SOFTWARE = 1; //下软件
+	private static final int POSITION_GAME     = 2; //玩游戏
 	
-	private int position = POSITION_TOTAL;
+	private int position = POSITION_ADV;
 	
 	private PullToRefreshListView xlvMyBill;
 	private ListView lvBillList;
@@ -53,8 +53,8 @@ public class SuperBillFragment extends Fragment implements OnRefreshListener2<Li
 	
 	private Handler myHandler;
 
-	public static SuperBillFragment newInstance(int position) {
-		SuperBillFragment f = new SuperBillFragment();
+	public static MakeFlowBillFragment newInstance(int position) {
+		MakeFlowBillFragment f = new MakeFlowBillFragment();
 		Bundle b = new Bundle();
 		b.putInt(ARG_POSITION, position);
 		f.setArguments(b);
@@ -100,18 +100,19 @@ public class SuperBillFragment extends Fragment implements OnRefreshListener2<Li
 			BillList item = new BillList();
 			item.title = "观看监狱风云";
 			int coins = i % 2 == 0 ? (20 + i) * -1: (20 + i);
+			item.content = "到底是监狱风云还是澳门风云撒？";
 			item.flowcoins = coins + "";
 			item.time = (System.currentTimeMillis() - MONTH_TIME * i) + "";
 			switch(position) {
-			case POSITION_TOTAL:
+			case POSITION_ADV:
 				list.add(item);
 				break;
-			case POSITION_INCOME:
+			case POSITION_SOFTWARE:
 				if(coins >= 0) {
 					list.add(item);
 				}
 				break;
-			case POSITION_PAY:
+			case POSITION_GAME:
 				if(coins < 0) {
 					list.add(item);
 				}

@@ -24,8 +24,8 @@ import com.etoc.weflow.adapter.MyBillAdapter;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,15 +37,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-public class SuperBillFragment extends Fragment implements OnRefreshListener2<ListView>, Callback {
+public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListener2<ListView>, Callback {
 
 	private static final String ARG_POSITION = "position";
 
-	private static final int POSITION_TOTAL  = 0;
-	private static final int POSITION_INCOME = 1;
-	private static final int POSITION_PAY    = 2;
+	private static final int POSITION_PHONEBILL = 0; //充话费
+	private static final int POSITION_FLOWPKG   = 1; //流量包
+	private static final int POSITION_GAME      = 2; //游戏币
+	private static final int POSITION_GIFT      = 3; //礼品券
 	
-	private int position = POSITION_TOTAL;
+	private int position = POSITION_PHONEBILL;
 	
 	private PullToRefreshListView xlvMyBill;
 	private ListView lvBillList;
@@ -53,8 +54,8 @@ public class SuperBillFragment extends Fragment implements OnRefreshListener2<Li
 	
 	private Handler myHandler;
 
-	public static SuperBillFragment newInstance(int position) {
-		SuperBillFragment f = new SuperBillFragment();
+	public static ExpenseFlowBillFragment newInstance(int position) {
+		ExpenseFlowBillFragment f = new ExpenseFlowBillFragment();
 		Bundle b = new Bundle();
 		b.putInt(ARG_POSITION, position);
 		f.setArguments(b);
@@ -100,21 +101,15 @@ public class SuperBillFragment extends Fragment implements OnRefreshListener2<Li
 			BillList item = new BillList();
 			item.title = "观看监狱风云";
 			int coins = i % 2 == 0 ? (20 + i) * -1: (20 + i);
+			item.content = "成功兑换WOW15元点卡\nDHWO23AG3HAWZ21SQ\n请尽快使用";
 			item.flowcoins = coins + "";
 			item.time = (System.currentTimeMillis() - MONTH_TIME * i) + "";
 			switch(position) {
-			case POSITION_TOTAL:
+			case POSITION_PHONEBILL:
+			case POSITION_FLOWPKG:
+			case POSITION_GAME:
+			case POSITION_GIFT:
 				list.add(item);
-				break;
-			case POSITION_INCOME:
-				if(coins >= 0) {
-					list.add(item);
-				}
-				break;
-			case POSITION_PAY:
-				if(coins < 0) {
-					list.add(item);
-				}
 				break;
 			}
 		}

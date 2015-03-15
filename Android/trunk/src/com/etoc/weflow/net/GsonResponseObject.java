@@ -160,6 +160,7 @@ public class GsonResponseObject {
 		public String type;
 		public String productid;
 		public String title;
+		public String content;
 		public String flowcoins;
 		public String time;
 	}

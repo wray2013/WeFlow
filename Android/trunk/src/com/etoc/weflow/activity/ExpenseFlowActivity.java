@@ -1,20 +1,20 @@
 package com.etoc.weflow.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
-import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.ExchangeGiftFragment;
 import com.etoc.weflow.fragment.GameCoinsFragment;
 import com.etoc.weflow.fragment.MobileFlowFragment;
 import com.etoc.weflow.fragment.RechargeFragment;
-import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 
@@ -49,6 +49,19 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	private void initViews() {
 		setTitleText("花流量币");
 		setRightButtonText("记录");
+	}
+	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()) {
+		case R.id.btn_title_right:
+			Intent ExpenseIntent = new Intent(this, ExpenseBillListActivity.class);
+			ExpenseIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, viewPage.getCurrentItem());
+			startActivity(ExpenseIntent);
+			break;
+		}
+		super.onClick(v);
 	}
 	
 	@Override
