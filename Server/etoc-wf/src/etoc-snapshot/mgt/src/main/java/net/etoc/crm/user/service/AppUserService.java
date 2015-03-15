@@ -6,7 +6,10 @@
  */
 package net.etoc.crm.user.service;
 
-import java.util.Map;
+import net.etoc.wf.ctapp.base.ResponseBase;
+import net.etoc.wf.ctapp.user.entity.AppCrmUserRequest;
+import net.etoc.wf.ctapp.user.entity.AppCrmUserResponse;
+import net.etoc.wf.ctapp.user.entity.AuthCodeRequest;
 
 /**
  * 
@@ -18,5 +21,8 @@ import java.util.Map;
  * 
  */
 public interface AppUserService {
-	public String getAuthCode(Map<String, Object> param);
+	public ResponseBase getAuthCode(String methodSuffix, AuthCodeRequest ar);
+
+	public AppCrmUserResponse loginORregister(String methodSuffix,
+			AppCrmUserRequest ar);
 }

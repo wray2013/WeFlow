@@ -18,6 +18,7 @@
         /favicon.ico = anon
         / = anon
         /index = anon
+        /vs/api/** = anon
         /** = user
         
       </value>
