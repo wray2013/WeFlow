@@ -1,71 +1,133 @@
 package com.etoc.weflow.activity.login;
 
-import com.etoc.weflow.R;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class LoginActivity extends Activity implements OnClickListener {
-	
-	private final String TAG = "LoginActivity";
-	
-	private DisplayMetrics dm = new DisplayMetrics();
-	
-	private TextView tvForgetPass;
-	private Button btnRegister;
-	
-	private RelativeLayout rlBack;
-	
-	private Activity activity;
+import com.etoc.weflow.R;
+import com.etoc.weflow.activity.TitleRootActivity;
+
+public class LoginActivity extends TitleRootActivity {
+
+	private EditText edAccount, edPass;
+	private TextView tvForget, tvBtnLogin, tvRegister;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		dm = getResources().getDisplayMetrics();
-		activity = this;
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setTitleText("登录");
+		hideRightButton();
 		
-		setContentView(R.layout.activity_login);
-		
-		tvForgetPass = (TextView) findViewById(R.id.tv_login_pass_forget);
-		tvForgetPass.setOnClickListener(this);
-		
-		btnRegister = (Button) findViewById(R.id.btn_register);
-		btnRegister.setOnClickListener(this);
-		
-		rlBack = (RelativeLayout) findViewById(R.id.rl_login_title);
-		rlBack.setOnClickListener(this);
+		initView();
 		
 	}
-
+	
+	
+	private void initView() {
+		// TODO Auto-generated method stub
+		edAccount = (EditText) findViewById(R.id.et_account);
+		edPass = (EditText) findViewById(R.id.et_password);
+		edAccount.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) {
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int arg1, int arg2,
+					int arg3) {
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				refreshBtnStatus();
+			}
+		});
+		
+		edPass.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) {
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int arg1, int arg2,
+					int arg3) {
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				refreshBtnStatus();
+			}
+		});
+		
+		tvForget   = (TextView) findViewById(R.id.tv_forget_pass);
+		tvBtnLogin = (TextView) findViewById(R.id.tv_login_btn);
+		tvRegister = (TextView) findViewById(R.id.tv_register);
+		
+		tvForget.setOnClickListener(this);
+		tvBtnLogin.setOnClickListener(this);
+		tvRegister.setOnClickListener(this);
+		
+		refreshBtnStatus();
+	}
+	
+	private void refreshBtnStatus() {
+		String a = edAccount.getText().toString();
+		String p = edPass.getText().toString();
+		if(a != null && p != null
+				&& a.length() > 0 && p.length() > 0) {
+			tvBtnLogin.setClickable(true);
+			tvBtnLogin.setBackgroundResource(R.drawable.shape_corner_recentage_orange);
+		} else {
+			tvBtnLogin.setClickable(false);
+			tvBtnLogin.setBackgroundResource(R.drawable.shape_corner_recentage_grey);
+		}
+	}
+	
+	@Override
+	protected int graviteType() {
+		// TODO Auto-generated method stub
+		return GRAVITE_LEFT;
+	}
+	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
-		case R.id.tv_login_pass_forget:
-			Intent iforget = new Intent(this, RegisterActivity.class);
-			iforget.putExtra("jumptype", RegisterActivity.JUMP_TYPE_PASSFORGET);
-			startActivity(iforget);
-			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+		case R.id.tv_forget_pass:
+			Intent forgetIntent = new Intent(this, RegisterResetActivity.class);
+			forgetIntent.putExtra("type", RegisterResetActivity.TYPE_RESET);
+			startActivity(forgetIntent);
 			break;
-		case R.id.btn_register:
-			Intent iregister = new Intent(this, RegisterActivity.class);
-			iregister.putExtra("jumptype", RegisterActivity.JUMP_TYPE_REGISTER);
-			startActivity(iregister);
-			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+		case R.id.tv_login_btn:
 			break;
-		case R.id.rl_login_title:
-			finish();
-			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+		case R.id.tv_register:
+			Intent registerIntent = new Intent(this, RegisterResetActivity.class);
+			registerIntent.putExtra("type", RegisterResetActivity.TYPE_REGIST);
+			startActivity(registerIntent);
 			break;
 		}
+		super.onClick(v);
 	}
+
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int subContentViewId() {
+		// TODO Auto-generated method stub
+		return R.layout.activity_login;
+	}
+
 }

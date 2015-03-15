@@ -50,6 +50,20 @@
         <activity
             android:name="com.etoc.weflow.activity.login.LoginActivity"
             android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:launchMode="singleTask" >
+        </activity>
+        
+        <activity
+            android:name="com.etoc.weflow.activity.login.LoginActivity2"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask" >
+        </activity>
+        
+        <activity
+            android:name="com.etoc.weflow.activity.login.RegisterResetActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
             android:launchMode="singleTask" >
         </activity>
         
@@ -166,6 +180,14 @@
         
         <activity
             android:name="com.etoc.weflow.activity.ExpenseBillListActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            >
+        </activity>
+        
+        <activity
+            android:name="com.etoc.weflow.activity.SettingsActivity"
             android:theme="@android:style/Theme.NoTitleBar"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"

@@ -113,6 +113,30 @@ public abstract class TitleRootActivity extends BaseActivity implements OnClickL
 		return R.layout.fragment_title_root;
 	}
 	
+	protected void setTitleGravity(int gravity) {
+		RelativeLayout.LayoutParams rlParams = (LayoutParams) title.getLayoutParams();
+		switch (gravity) {
+		case GRAVITE_CENTER:
+			rlParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+			title.setLayoutParams(rlParams);
+			break;
+		case GRAVITE_LEFT:
+			rlParams.addRule(RelativeLayout.CENTER_VERTICAL | RelativeLayout.ALIGN_PARENT_LEFT);
+			rlParams.addRule(RelativeLayout.RIGHT_OF, R.id.btn_title_left);
+			title.setLayoutParams(rlParams);
+			ViewUtils.setMarginLeft(title, 36);
+			break;
+		case GRAVITE_RIGHT:
+			rlParams.addRule(RelativeLayout.CENTER_VERTICAL | RelativeLayout.ALIGN_PARENT_RIGHT);
+			rlParams.addRule(RelativeLayout.LEFT_OF, R.id.btn_title_left);
+			title.setLayoutParams(rlParams);
+			ViewUtils.setMarginRight(title, 42);
+			break;
+
+		}
+	}
+	
+	
 	protected int graviteType() {
 		return GRAVITE_CENTER;
 	}

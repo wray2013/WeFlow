@@ -3,6 +3,7 @@ package com.etoc.weflow.fragment;
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.CaptureActivity;
 import com.etoc.weflow.activity.FeedBackActivity;
+import com.etoc.weflow.activity.SettingsActivity;
 import com.etoc.weflow.activity.SignInActivity;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
@@ -103,15 +104,15 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			startActivity(new Intent(getActivity(), MyBillListActivity.class));
 			break;
 		case R.id.rl_me_sign:
-			startActivity(new Intent(getActivity(),SignInActivity.class));
+			startActivity(new Intent(getActivity(), SignInActivity.class));
 			break;
 		case R.id.rl_me_invite:
 			break;
 		case R.id.rl_me_feedback:
-			startActivity(new Intent(getActivity(),FeedBackActivity.class));
+			startActivity(new Intent(getActivity(), FeedBackActivity.class));
 			break;
 		case R.id.rl_me_settings:
-			startActivity(new Intent(getActivity(),CaptureActivity.class));
+			startActivity(new Intent(getActivity(), SettingsActivity.class));
 			break;
 		}
 	}

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey" >
+
+    <RelativeLayout
+        android:id="@+id/rl_settings_top"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/tv_settings_push"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="接收推送"
+            android:textColor="@color/black" />
+        
+        <com.etoc.weflow.view.SwitchButton
+            android:id="@+id/switch_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+
+        <View
+            android:id="@+id/view_divide_v"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tv_settings_push"
+            android:background="@color/divider_grey" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_settings_center_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_settings_top"
+        android:layout_marginTop="8dp"
+        android:background="@color/white" >
+
+        <RelativeLayout
+            android:id="@+id/rl_settings_cache"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_cache_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="清除缓存"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_cache"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_cache_hint"
+                android:gravity="center_vertical|right"
+                android:includeFontPadding="false"
+                android:text="24M"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_divide_h_center"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rl_settings_cache"
+            android:background="@color/divider_grey" />
+
+        <RelativeLayout
+            android:id="@+id/rl_settings_upgrade"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_below="@+id/view_divide_h_center"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_upgrade_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="检查更新"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_upgrade_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_upgrade_hint"
+                android:gravity="center_vertical|right"
+                android:includeFontPadding="false"
+                android:text="Ver1.0.0"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_divide_h_center2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rl_settings_upgrade"
+            android:background="@color/divider_grey" />
+
+        <RelativeLayout
+            android:id="@+id/rl_settings_about"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_below="@+id/view_divide_h_center2"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_about_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="关于"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+        
+        <View
+            android:id="@+id/view_divide_h_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rl_settings_about"
+            android:background="@color/divider_grey" />
+    </RelativeLayout>
+
+</RelativeLayout>

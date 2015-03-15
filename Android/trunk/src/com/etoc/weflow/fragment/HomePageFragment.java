@@ -18,6 +18,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.WebViewActivity;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;

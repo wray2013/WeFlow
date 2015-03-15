@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey" >
+
+    <LinearLayout
+        android:id="@+id/ll_login_top"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:background="@color/white" >
+        <TextView 
+            android:id="@+id/tv_step1"
+            android:layout_width="0dp"
+        	android:layout_height="match_parent"
+        	android:layout_weight="1"
+        	android:gravity="center"
+        	android:text="1.验证手机号"
+        	android:textColor="@color/text_grey" />
+        <View 
+            android:id="@+id/view_divier_v"
+            android:layout_width="1dp"
+        	android:layout_height="24dp"
+        	android:layout_gravity="center_vertical"
+        	android:background="@color/background_grey" />
+        <TextView 
+            android:id="@+id/tv_step2"
+            android:layout_width="0dp"
+        	android:layout_height="match_parent"
+        	android:layout_weight="1"
+        	android:gravity="center"
+        	android:text="2.设置密码"
+        	android:textColor="@color/text_grey" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_login_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_login_top" >
+
+        <RelativeLayout
+            android:id="@+id/rl_account"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"
+			android:layout_marginTop="16dp"
+			android:background="@color/white" >
+
+            <EditText
+                android:id="@+id/et_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/view_line"
+                android:background="@color/white"
+                android:paddingLeft="3dp"
+                android:hint="请输入手机号"
+                android:inputType="phone"
+                android:maxLength="11" />
+            
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tv_valid_code"
+                android:background="@color/background_grey" />
+            
+            <TextView
+                android:id="@+id/tv_valid_code"
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="获取验证码"
+                android:textColor="@color/pagertab_color_orange"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_below="@+id/rl_account"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/white"
+            android:paddingLeft="3dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_login_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_login_center"
+        android:layout_marginTop="18dp" >
+        <TextView
+            android:id="@+id/tv_next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/shape_corner_recentage_orange"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</RelativeLayout>

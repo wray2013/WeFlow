@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.event.FragmentEvent;
 import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
@@ -266,7 +267,8 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		case R.id.btn_title_right:
 //			startActivity(new Intent(this, MakeFlowActivity.class));
 //			startActivity(new Intent(this, ShakeShakeActivity.class));
-			startActivity(new Intent(this, ExpenseFlowActivity.class));
+//			startActivity(new Intent(this, ExpenseFlowActivity.class));
+			startActivity(new Intent(this, LoginActivity.class));
 			
 			/*Intent intent = new Intent();
 	        intent.setAction(Intent.ACTION_PICK);

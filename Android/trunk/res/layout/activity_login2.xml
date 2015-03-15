@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <RelativeLayout
+        android:id="@+id/rl_login_title"
+        android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:gravity="left" > 
+        <ImageView
+            android:id="@+id/iv_login_back"
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_centerVertical="true"
+    		android:layout_margin="5dp"
+    		android:background="@drawable/btn_login_back"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_toRightOf="@+id/iv_login_back"
+    		android:layout_centerVertical="true"
+    		android:textSize="18sp"
+    		android:text="用户登录"/>
+	</RelativeLayout>
+
+	<ImageView
+	    android:id="@+id/iv_divider"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/rl_login_title"
+	    android:background="@drawable/title_shadow" />
+
+    <RelativeLayout 
+        android:id="@+id/rl_login_weflow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/iv_divider">
+        
+        <EditText
+            android:id="@+id/et_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_edit_bg_account"
+            android:textColor="@color/black"
+            android:hint="微流量账号(邮箱/手机号)"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true" />
+        
+		<EditText
+            android:id="@+id/et_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_account"
+            android:background="@drawable/login_edit_bg_password"
+            android:textColor="@color/black"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:singleLine="true" />
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/rl_login_weflow">
+        <Button 
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:textColor="@color/white"
+        	android:text="登  录"
+        	android:background="@drawable/btn_red_selector"/>
+        <TextView 
+            android:id="@+id/tv_login_pass_forget"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentRight="true"
+        	android:layout_below="@+id/btn_login"
+        	android:layout_marginTop="5dp"
+        	android:textColor="@color/black"
+        	android:text="忘记密码？" />
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_login_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" >
+        <Button
+            android:id="@+id/btn_register" 
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:textColor="@color/white"
+        	android:text="注  册"
+        	android:background="@drawable/btn_yellow_selector"/>
+	</RelativeLayout>
+</RelativeLayout>
