@@ -1,34 +1,37 @@
 package com.etoc.weflow.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.activity.MakeFlowActivity;
+import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.ViewUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 
 public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ListView> {
 
 	private final String TAG = "HomePageFragment";
 	
-	private DisplayMetrics dm = new DisplayMetrics();
+	private LinearLayout makeFLowLayout;
+	private LinearLayout expenseFlowLayout;
+	private LayoutInflater inflater;
+	private int makeFlowId = 0xffeecc00;
+	private int expenseFlowId = 0xffeedd00;
 	
 	//UI Component
-	private PullToRefreshListView mPullRefreshListView;
-	private ListView mListView;
-	
-	/*@Override
-	public int subContentViewId() {
-		// TODO Auto-generated method stub
-		return R.layout.fragment_homepage;
-	}*/
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,13 +44,39 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	}
 	
 	private void initView(View view) {
-		dm = getResources().getDisplayMetrics();
+		inflater = LayoutInflater.from(getActivity());
+		makeFLowLayout = (LinearLayout) view.findViewById(R.id.ll_make_flow);
+		expenseFlowLayout =(LinearLayout) view.findViewById(R.id.ll_expense_flow);
 		
-		mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.xlv_homepage_list);
-		mPullRefreshListView.setShowIndicator(false);
-		mPullRefreshListView.setOnRefreshListener(this);
+		String [] makeFlows = {"赚流量","看视频","下软件","玩游戏"};
+		String [] expenseFlows = {"花流量","充值","订流量包","花流量币","换礼券"};
+		for (int i = 0;i < 4;i++) {
+			RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.include_flow_buttons_stub,null);
+			
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
+			layout.setLayoutParams(params);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 180);
+			ViewUtils.setMarginRight(layout, 2);
+			layout.setId(makeFlowId + i);
+			layout.setOnClickListener(this);
+			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
+			tvName.setText(makeFlows[i]);
+			makeFLowLayout.addView(layout);
+		}
 		
-		mListView = mPullRefreshListView.getRefreshableView();
+		for (int i = 0;i < 5;i++) {
+			RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.include_flow_buttons_stub,null);
+			
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
+			layout.setLayoutParams(params);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 180);
+			ViewUtils.setMarginRight(layout, 2);
+			layout.setId(expenseFlowId + i);
+			layout.setOnClickListener(this);
+			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
+			tvName.setText(expenseFlows[i]);
+			expenseFlowLayout.addView(layout);
+		}
 	}
 	
 	@Override
@@ -62,6 +91,23 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		switch (v.getId()) {
 		case R.id.btn_title_left:
 			
+			break;
+		case 0xffeecc00:
+		case 0xffeecc01:
+		case 0xffeecc02:
+		case 0xffeecc03:
+			Intent makeFlowIntent = new Intent(getActivity(),MakeFlowActivity.class);
+			makeFlowIntent.putExtra(ConStant.INTENT_MAKE_FLOW, v.getId() & 0xff);
+			startActivity(makeFlowIntent);
+			break;
+		case 0xffeedd00:
+		case 0xffeedd01:
+		case 0xffeedd02:
+		case 0xffeedd03:
+		case 0xffeedd04:
+			Intent expenseFlowIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
+			expenseFlowIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, v.getId() & 0xff);
+			startActivity(expenseFlowIntent);
 			break;
 		}
 	}

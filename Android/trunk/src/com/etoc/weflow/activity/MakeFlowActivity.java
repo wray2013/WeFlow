@@ -12,6 +12,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.AppReccomFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 
 public class MakeFlowActivity extends TitleRootActivity {
@@ -35,6 +36,10 @@ public class MakeFlowActivity extends TitleRootActivity {
 		viewPage.setAdapter(adapter);
 		
 		titleTab.setViewPager(viewPage);
+		
+		int index = getIntent().getIntExtra(ConStant.INTENT_MAKE_FLOW, 0);
+		index = index == 0?0:index - 1;
+		viewPage.setCurrentItem(index);
 	}
 	
 	private void initViews() {

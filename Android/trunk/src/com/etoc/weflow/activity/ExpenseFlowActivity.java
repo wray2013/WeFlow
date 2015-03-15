@@ -15,6 +15,7 @@ import com.etoc.weflow.fragment.GameCoinsFragment;
 import com.etoc.weflow.fragment.MobileFlowFragment;
 import com.etoc.weflow.fragment.RechargeFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 
 public class ExpenseFlowActivity extends TitleRootActivity {
@@ -39,6 +40,10 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 		viewPage.setAdapter(adapter);
 		
 		titleTab.setViewPager(viewPage);
+		
+		int index = getIntent().getIntExtra(ConStant.INTENT_EXPENSE_FLOW, 0);
+		index = index == 0?0:index - 1;
+		viewPage.setCurrentItem(index);
 	}
 	
 	private void initViews() {

@@ -1,30 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_root"
+<com.handmark.pulltorefresh.library.PullToRefreshScrollView  
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ptr_scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:layout_height="match_parent" 
+    android:fillViewport="true"
+    ptr:ptrHeaderTextColor="#212324"
+    ptr:ptrAnimationStyle="flip"
+    ptr:ptrMode="pullDownFromTop"
     >
-    <TextView
-        android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:layout_centerInParent="true"
-    	android:text="HomePage Fragment"
-    	android:textColor="@color/white"
-        />
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/xlv_homepage_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="#00000000"
-        android:divider="@null"
-        android:overScrollMode="never"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="@null"
-        android:background="@color/black"
-        ptr:ptrPinnedListViewEnabled="true"
-        ptr:ptrAnimationStyle="flip"
-        ptr:ptrMode="both" />    
-</RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_root"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/background_grey"
+        >
+        
+        <RelativeLayout
+            android:id="@+id/rl_title_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:background="@drawable/bg_user_info"
+            >
+
+            <RelativeLayout
+                android:id="@+id/rl_flow_account"
+                android:layout_width="103dp"
+                android:layout_height="103dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/liuliang" >
+
+                <com.etoc.weflow.view.MagicTextView
+                    android:id="@+id/tv_flow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="26dp"
+                    android:gravity="center"
+                    android:text="98"
+                    android:textColor="@color/white"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/tv_flow_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:text="流量币"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+            
+            <RelativeLayout 
+                android:id="@+id/rl_user_phone"
+	            android:layout_width="wrap_content"
+	        	android:layout_height="29dp"
+	        	android:layout_below="@id/rl_flow_account"
+	        	android:layout_centerHorizontal="true"
+	        	>
+				<TextView
+		            android:id="@+id/tv_phone_num_hint"
+		            android:layout_width="wrap_content"
+		            android:layout_height="fill_parent"
+		            android:gravity="center"
+		            android:text="您的账户："
+		            android:textColor="@color/white"
+		            android:textSize="16sp" />
+		        <TextView
+		            android:id="@+id/tv_phone_num"
+		            android:layout_width="wrap_content"
+		            android:layout_height="fill_parent"
+		            android:layout_toRightOf="@+id/tv_phone_num_hint"
+		            android:gravity="center"
+		            android:text="18627934685"
+		            android:textColor="@color/white"
+		            android:textSize="16sp" />
+	        </RelativeLayout>
+
+            <View
+                android:id="@+id/view_user_line_2"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/rl_user_phone"
+                android:background="#2c384b" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:layout_below="@id/view_user_line_2"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/tv_plans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="196元"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_plans_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="4G全国套餐"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#283345" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/tv_plans_in_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="套餐内剩余流量：2.5GB"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_plans_out_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="6dp"
+                        android:text="套餐外剩余流量：300MB"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        
+        <LinearLayout 
+            android:id="@+id/ll_flow_change"
+            android:layout_width="fill_parent"
+            android:layout_height="180.5dp"
+            android:orientation="vertical"
+            android:layout_below="@id/rl_title_top"
+            android:background="#DCDCDC"
+            >
+            
+            <HorizontalScrollView 
+                android:id="@+id/hsv_make_flow"
+                android:layout_width="fill_parent"
+           		android:layout_height="0dp"
+           		android:layout_weight="1"
+                >
+                
+                <LinearLayout 
+                    android:id="@+id/ll_make_flow"
+                    android:layout_width="fill_parent"
+           			android:layout_height="fill_parent"
+           			android:orientation="horizontal"
+                    >
+                    
+                </LinearLayout>
+                
+            </HorizontalScrollView>
+            
+            <HorizontalScrollView 
+                android:id="@+id/hsv_expense_flow"
+                android:layout_width="fill_parent"
+           		android:layout_height="0dp"
+           		android:layout_weight="1"
+           		android:layout_marginTop="0.5dp"
+                >
+                
+                <LinearLayout 
+                    android:id="@+id/ll_expense_flow"
+                    android:layout_width="fill_parent"
+           			android:layout_height="fill_parent"
+           			android:orientation="horizontal"
+                    >
+                    
+                </LinearLayout>
+                
+            </HorizontalScrollView>
+            <View 
+                android:layout_width="fill_parent"
+        		android:layout_height="0.5dp"
+        		android:background="#DCDCDC"
+                />
+            
+        </LinearLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/rl_activity_recomm"
+            android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="9dp"
+        	android:background="@color/white"
+        	android:layout_below="@id/ll_flow_change"
+            >
+            
+            <TextView 
+	            android:id="@+id/tv_recomm_label"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="@android:color/black"
+	            android:textSize="15sp"
+	            android:layout_marginTop="20dp"
+	            android:layout_marginLeft="16dp"
+	            android:text="活动推荐"
+	            />
+            <View 
+	            android:id="@+id/view_line"
+	            android:layout_width="fill_parent"
+	            android:layout_height="1dp"
+	            android:layout_alignLeft="@id/tv_recomm_label"
+	            android:layout_below="@id/tv_recomm_label"
+	            android:layout_marginTop="13dp"
+	            android:layout_marginRight="16dp"
+	            android:background="#DCDCDC"
+	            />
+            
+            <LinearLayout 
+	            android:id="@+id/ll_recomm"
+	            android:layout_width="fill_parent"
+	            android:layout_height="95dp"
+	            android:layout_alignLeft="@id/view_line"
+	            android:layout_alignRight="@id/view_line"
+	            android:orientation="horizontal"
+	            android:layout_below="@id/view_line"
+            	android:layout_marginTop="9dp"
+            	android:layout_marginBottom="4dp"
+	            >
+	            <ImageView 
+	                android:id="@+id/iv_recomm_1"
+	                android:layout_width="0dp"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:background="#ffff00"
+	                />
+	            
+	            <ImageView 
+	                android:id="@+id/iv_recomm_2"
+	                android:layout_width="0dp"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:layout_marginLeft="8dp"
+	                android:background="#ff00ff"
+	                />
+            
+        </LinearLayout>
+            
+        </RelativeLayout>
+        
+    </RelativeLayout>
+</com.handmark.pulltorefresh.library.PullToRefreshScrollView >
 

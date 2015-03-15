@@ -9,6 +9,8 @@ public class ConStant {
 	public static final int LOAIND_DISSMISS_DALAY = 10000;
 	
 	public static final String INTENT_SOFT_DETAIL = "intent_sort_detail";
+	public static final String INTENT_MAKE_FLOW = "intent_make_flow";
+	public static final String INTENT_EXPENSE_FLOW = "intent_expense_flow";
 	
 	public static String getApkCachePath(){
 		return SD_STORAGE_ROOT + "/" + "apk";

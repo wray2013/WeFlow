@@ -105,10 +105,8 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			startActivity(new Intent(getActivity(),SignInActivity.class));
 			break;
 		case R.id.rl_me_invite:
-			startActivity(new Intent(getActivity(),ExpenseFlowActivity.class));
 			break;
 		case R.id.rl_me_feedback:
-			startActivity(new Intent(getActivity(),MakeFlowActivity.class));
 			break;
 		case R.id.rl_me_settings:
 			startActivity(new Intent(getActivity(),CaptureActivity.class));
