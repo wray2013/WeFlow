@@ -8,24 +8,63 @@
         android:id="@+id/rl_draw_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:padding="10dp"
         android:background="@color/white" >
 
         <TextView
             android:id="@+id/tv_draw_top_tel_hint"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="您的账户"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:gravity="center_vertical"
+            android:text="您的账户 : "
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_draw_top_tel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_draw_top_tel_hint"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/tv_draw_top_tel_hint"
+            android:layout_alignTop="@+id/tv_draw_top_tel_hint"
+            android:layout_alignBottom="@+id/tv_draw_top_tel_hint"
             android:text="18502717626"
             android:textColor="@color/black" />
+        <View
+            android:id="@+id/v_divider_h" 
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/tv_draw_top_tel_hint"
+            android:background="#EEEEEE"/>
+        <TextView
+            android:id="@+id/tv_draw_top_total_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_divider_h"
+            android:layout_marginTop="19dp"
+            android:layout_alignLeft="@+id/v_divider_h"
+            android:text="银行总金额(流量币)"
+            android:textColor="@color/text_grey" />
+
+        <TextView
+            android:id="@+id/tv_draw_top_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_draw_top_total_hint"
+            android:layout_alignLeft="@+id/v_divider_h"
+            android:includeFontPadding="false"
+            android:layout_marginTop="18dp"
+            android:text="5000"
+            android:textColor="#E94628"
+            android:textSize="42sp" />
+        <View
+            android:id="@+id/v_divider_top"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/tv_draw_top_total"
+            android:layout_marginTop="25dp"
+            android:background="#EEEEEE"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -34,27 +73,41 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/rl_draw_bottom"
         android:layout_below="@+id/rl_draw_top"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="10dp"
+        android:layout_marginTop="15dp"
         android:background="@color/white" >
 
         <TextView
             android:id="@+id/tv_draw_center_values"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="可提取额度"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="请选择提取额度(流量币)"
             android:textColor="@color/black" />
+        
+        <View
+            android:id="@+id/v_divider_center_h"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/tv_draw_center_values"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="15dp"
+            android:background="#EEEEEE"/>
 
         <GridView
             android:id="@+id/gv_draw_values"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_draw_center_values"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/v_divider_center_h"
+            android:layout_alignLeft="@+id/v_divider_center_h"
+            android:layout_alignRight="@+id/v_divider_center_h"
+            android:cacheColorHint="@color/transparent"
             android:background="@color/white"
             android:gravity="center"
             android:horizontalSpacing="1px"
-            android:numColumns="3"
+            android:numColumns="auto_fit"
             android:scrollbarStyle="insideOverlay"
             android:scrollbars="vertical"
             android:verticalSpacing="1px" >
@@ -66,29 +119,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
-        android:padding="10dp"
-        android:background="@color/white" >
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="21dp" >
 		<TextView
             android:id="@+id/tv_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="余额未达到最小额度"
-            android:textColor="@color/black"
+            android:text="余额未达到最小额度，无法提取"
+            android:textColor="#E94628"
             android:textSize="16sp" />
         <TextView
             android:id="@+id/tv_btn_draw"
             android:layout_width="276dp"
             android:layout_height="48dp"
             android:layout_below="@+id/tv_warning"
+            android:layout_marginTop="21dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/shape_corner_recentage_orange"
             android:gravity="center"
             android:text="提  取"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </RelativeLayout>

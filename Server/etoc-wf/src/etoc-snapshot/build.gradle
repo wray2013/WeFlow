@@ -23,7 +23,7 @@ project.ext {
   freemarkerVersion = '2.3.20'
   hibernateVersion = '4.3.5.Final'
   hibernateValidatorVersion = '5.1.2.Final'
-  jacksonVersion = '2.3.3'
+  jacksonVersion = '2.4.4'
   javaxMailVersion = '1.4.7'
   jaxwsSpringVersion = '1.9'
   jedisVersion = '2.6.1'

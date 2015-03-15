@@ -8,25 +8,63 @@
         android:id="@+id/rl_deposit_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:padding="10dp"
         android:background="@color/white" >
 
         <TextView
             android:id="@+id/tv_deposit_top_tel_hint"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="您的账户"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:gravity="center_vertical"
+            android:text="您的账户 : "
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_deposit_top_tel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_deposit_top_tel_hint"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/tv_deposit_top_tel_hint"
+            android:layout_alignTop="@+id/tv_deposit_top_tel_hint"
+            android:layout_alignBottom="@+id/tv_deposit_top_tel_hint"
             android:text="18502717626"
-            android:textSize="32sp"
             android:textColor="@color/black" />
+        <View
+            android:id="@+id/v_divider_h" 
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/tv_deposit_top_tel_hint"
+            android:background="#EEEEEE"/>
+        <TextView
+            android:id="@+id/tv_deposit_top_total_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_divider_h"
+            android:layout_marginTop="19dp"
+            android:layout_alignLeft="@+id/v_divider_h"
+            android:text="银行总金额(流量币)"
+            android:textColor="@color/text_grey" />
+
+        <TextView
+            android:id="@+id/tv_deposit_top_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_deposit_top_total_hint"
+            android:layout_alignLeft="@+id/v_divider_h"
+            android:includeFontPadding="false"
+            android:layout_marginTop="18dp"
+            android:text="5000"
+            android:textColor="#E94628"
+            android:textSize="42sp" />
+        <View
+            android:id="@+id/v_divider_top"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/tv_deposit_top_total"
+            android:layout_marginTop="25dp"
+            android:background="#EEEEEE"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -35,32 +73,14 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/rl_deposit_bottom"
         android:layout_below="@+id/rl_deposit_top"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="10dp"
-        android:background="@color/white" >
-
-        <TextView
-            android:id="@+id/tv_deposit_center_values_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="总余额"
-            android:textColor="@color/black" />
-        <TextView
-            android:id="@+id/tv_deposit_center_values"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_deposit_center_values_hint"
-            android:text="18000"
-            android:textSize="42sp"
-            android:textColor="@color/black" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" >
 
         <TextView
             android:id="@+id/tv_deposit_center_values_input_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_deposit_center_values"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:text="请输入存入币数"
             android:textColor="@color/black" />
         <EditText
@@ -78,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ed_deposit_center_values_input"
             android:layout_marginTop="30dp"
+            android:gravity="center_vertical"
             android:text="最低存入额度"
             android:textColor="@color/black" />        
         <TextView
@@ -86,10 +107,18 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/tv_deposit_center_values_min_hint"
             android:layout_alignBaseline="@+id/tv_deposit_center_values_min_hint"
-            android:layout_alignParentRight="true"
-            android:gravity="right"
+            android:gravity="center_vertical"
             android:text="10000"
             android:textSize="32sp"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/tv_deposit_center_values_min_hint2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_deposit_center_values_min"
+            android:layout_alignBaseline="@+id/tv_deposit_center_values_min"
+            android:gravity="center_vertical"
+            android:text="流量币"
             android:textColor="@color/black" />
     </RelativeLayout>
 

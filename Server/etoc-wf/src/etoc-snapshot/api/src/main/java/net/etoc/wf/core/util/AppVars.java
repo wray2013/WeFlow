@@ -27,4 +27,7 @@ public class AppVars {
 	@Value("default")
 	public String theme;
 
+	@Value("${crm.url:http://113.57.243.18:8090/interface/service/}")
+	public String crmUrl;
+
 }

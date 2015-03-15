@@ -96,12 +96,17 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			break;
 		case R.id.tv_pop:
 //			Requester.test(handler);
-			startActivity(new Intent(getActivity(), DrawFlowActivity.class));
+			String[] values = new String[] {"14000", "18000", "60000"};
+			Intent drawIntent = new Intent(getActivity(), DrawFlowActivity.class);
+			drawIntent.putExtra("values", values);
+			drawIntent.putExtra("total", 50000);
+			startActivity(drawIntent);
 			getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
 		case R.id.tv_save:
 			Intent depositIntent = new Intent(getActivity(), DepositFlowActivity.class);
 			depositIntent.putExtra("minValue", 10000);
+			depositIntent.putExtra("total", 50000);
 			startActivity(depositIntent);
 			getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			break;
