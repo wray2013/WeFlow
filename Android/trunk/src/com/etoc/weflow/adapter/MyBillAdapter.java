@@ -131,6 +131,7 @@ public class MyBillAdapter extends BaseAdapter {
 			}
 		}
 		
+		String currentYearMonth = DateUtils.getYMStringFromMilli(System.currentTimeMillis() + "");
 		String YM = DateUtils.getYMStringFromMilli(mybill.time);
 		int index = billList.indexOf(mybill);
 		if(index > 0) {
@@ -145,7 +146,16 @@ public class MyBillAdapter extends BaseAdapter {
 			showSubTitle(holder, true);
 		}
 		holder.tvDate.setText(DateUtils.getStringFromMilli(mybill.time, DateUtils.DATE_FORMAT_NORMAL_1));
-		holder.tvSubTitle.setText(DateUtils.getStringFromMilli(mybill.time, "M") + "月");
+		
+		String subtitle = DateUtils.getStringFromMilli(mybill.time, "M月");
+		if (currentYearMonth.equals(YM)) {
+			subtitle = "本月";
+		} else if (!DateUtils.getStringFromMilli(
+				System.currentTimeMillis() + "", "yyyy").equals(
+				DateUtils.getStringFromMilli(mybill.time, "yyyy"))) {
+			subtitle = DateUtils.getStringFromMilli(mybill.time, "yyyy年M月");
+		}
+		holder.tvSubTitle.setText(subtitle);
 	}
 	
 	private void showSubTitle(ViewHolder holder, boolean isShow) {
