@@ -1,12 +1,14 @@
 package com.etoc.weflow.utils;
 
+import java.lang.reflect.Field;
+
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.GetChars;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -149,6 +151,59 @@ public class ViewUtils {
 		} 
 		return height;
 	}
+	
+    /**
+     * get AbsListView height according to every children
+     * 
+     * @param view
+     * @return
+     */
+    public static int getAbsListViewHeightBasedOnChildren(AbsListView view) {
+        ListAdapter adapter;
+        if (view == null || (adapter = view.getAdapter()) == null) {
+            return 0;
+        }
+
+        int height = 0;
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View item = adapter.getView(i, null, view);
+            if (item instanceof ViewGroup) {
+                item.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            }
+            item.measure(0, 0);
+            height += item.getMeasuredHeight();
+        }
+        height += view.getPaddingTop() + view.getPaddingBottom();
+        return height;
+    }
+    
+    private static final String CLASS_NAME_GRID_VIEW        = "android.widget.GridView";
+    private static final String FIELD_NAME_VERTICAL_SPACING = "mVerticalSpacing";
+    /**
+     * get GridView vertical spacing
+     * 
+     * @param view
+     * @return
+     */
+    public static int getGridViewVerticalSpacing(GridView view) {
+        // get mVerticalSpacing by android.widget.GridView
+        Class<?> demo = null;
+        int verticalSpacing = 0;
+        try {
+            demo = Class.forName(CLASS_NAME_GRID_VIEW);
+            Field field = demo.getDeclaredField(FIELD_NAME_VERTICAL_SPACING);
+            field.setAccessible(true);
+            verticalSpacing = (Integer)field.get(view);
+            return verticalSpacing;
+        } catch (Exception e) {
+            /**
+             * accept all exception, include ClassNotFoundException, NoSuchFieldException, InstantiationException,
+             * IllegalArgumentException, IllegalAccessException, NullPointException
+             */
+            e.printStackTrace();
+        }
+        return verticalSpacing;
+    }
 	
 	private static long lastClickTime;
 

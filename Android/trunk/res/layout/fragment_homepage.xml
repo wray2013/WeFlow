@@ -24,43 +24,12 @@
             android:layout_height="wrap_content" 
             android:background="@drawable/bg_user_info"
             >
-
-            <RelativeLayout
-                android:id="@+id/rl_flow_account"
-                android:layout_width="103dp"
-                android:layout_height="103dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/liuliang" >
-
-                <com.etoc.weflow.view.MagicTextView
-                    android:id="@+id/tv_flow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="26dp"
-                    android:gravity="center"
-                    android:text="98"
-                    android:textColor="@color/white"
-                    android:textSize="28sp" />
-
-                <TextView
-                    android:id="@+id/tv_flow_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="20dp"
-                    android:text="流量币"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </RelativeLayout>
             
             <RelativeLayout 
                 android:id="@+id/rl_user_phone"
 	            android:layout_width="wrap_content"
 	        	android:layout_height="29dp"
-	        	android:layout_below="@id/rl_flow_account"
+	        	android:layout_marginTop="10dp"
 	        	android:layout_centerHorizontal="true"
 	        	>
 				<TextView
@@ -81,12 +50,45 @@
 		            android:textColor="@color/white"
 		            android:textSize="16sp" />
 	        </RelativeLayout>
+			
+			<RelativeLayout
+			    android:id="@+id/rl_flow_account"
+			    android:layout_width="103dp"
+			    android:layout_height="103dp"
+			    android:layout_centerHorizontal="true"
+			    android:layout_marginTop="10dp"
+			    android:layout_below="@id/rl_user_phone"
+			    android:background="@drawable/liuliang" >
+			
+			    <com.etoc.weflow.view.MagicTextView
+			        android:id="@+id/mtv_flow"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_centerHorizontal="true"
+			        android:layout_marginTop="26dp"
+			        android:gravity="center"
+			        android:text="98"
+			        android:textColor="@color/white"
+			        android:textSize="28sp" />
+			
+			    <TextView
+			        android:id="@+id/tv_flow_text"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignParentBottom="true"
+			        android:layout_centerHorizontal="true"
+			        android:layout_marginBottom="20dp"
+			        android:text="流量币"
+			        android:textColor="@color/white"
+			        android:textSize="14sp" />
+			</RelativeLayout>
 
             <View
                 android:id="@+id/view_user_line_2"
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/rl_user_phone"
+                android:layout_below="@id/rl_flow_account"
+                android:layout_marginTop="10dp"
                 android:background="#2c384b" />
 
             <LinearLayout

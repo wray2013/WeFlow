@@ -82,4 +82,7 @@
     <color name="holo_green_light">#ff99cc00</color>
     <color name="holo_orange_light">#ffffbb33</color>
     <color name="holo_red_light">#ffff4444</color>
+    
+    <color name="scratch_bg_red">#e60012</color>
+    <color name="scratch_bg_yellow">#fdce00</color>
 </resources>

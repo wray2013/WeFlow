@@ -11,6 +11,7 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
 import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.AppReccomFragment;
+import com.etoc.weflow.fragment.PlayGameFragment;
 import com.etoc.weflow.fragment.SuperAwesomeCardFragment;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
@@ -94,7 +95,7 @@ public class MakeFlowActivity extends TitleRootActivity {
 				frag = new AppReccomFragment();
 				break;
 			default:
-				frag = SuperAwesomeCardFragment.newInstance(position);
+				frag = new PlayGameFragment(); //SuperAwesomeCardFragment.newInstance(position);
 				break;
 			}
 			return frag;

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
+import com.etoc.weflow.activity.AdDetailActivity;
 import com.etoc.weflow.adapter.BannerAdapter;
 import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
+import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -13,6 +15,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.viewpagerindicator.PageIndicator;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -173,6 +176,10 @@ public class AdvertisementFragment extends Fragment implements OnClickListener {
 		case R.id.rl_newest_1:
 		case R.id.rl_newest_2:
 		case R.id.rl_newest_3:
+			AdvInfo info = (AdvInfo) v.getTag();
+			Intent i = new Intent(getActivity(), AdDetailActivity.class);
+			i.putExtra("adinfo", new Gson().toJson(info));
+			startActivity(i);
 			break;
 		}
 	}

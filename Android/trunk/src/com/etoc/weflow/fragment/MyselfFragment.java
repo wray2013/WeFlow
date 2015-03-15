@@ -2,6 +2,7 @@ package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.CaptureActivity;
+import com.etoc.weflow.activity.FeedBackActivity;
 import com.etoc.weflow.activity.SignInActivity;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
@@ -59,7 +60,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_account_tel), 35);
 		
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_hint), 35);
-		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow), 35);
+		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_value), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_paper_hint), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_paper), 35);
 		
@@ -74,7 +75,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_hint), 52);
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_paper_hint), 52);
 		
-		ViewUtils.setMarginRight((TextView) view.findViewById(R.id.tv_flow), 25);
+		ViewUtils.setMarginRight((TextView) view.findViewById(R.id.tv_flow_value), 25);
 		ViewUtils.setMarginRight((TextView) view.findViewById(R.id.tv_flow_paper), 25);
 		
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_msg), 10);
@@ -107,6 +108,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		case R.id.rl_me_invite:
 			break;
 		case R.id.rl_me_feedback:
+			startActivity(new Intent(getActivity(),FeedBackActivity.class));
 			break;
 		case R.id.rl_me_settings:
 			startActivity(new Intent(getActivity(),CaptureActivity.class));

@@ -8,24 +8,23 @@
     android:fillViewport="true"
     ptr:ptrHeaderTextColor="#212324"
     ptr:ptrAnimationStyle="flip"
-    ptr:ptrMode="pullUpFromBottom"
-    >
+    ptr:ptrMode="pullUpFromBottom" >
     
-    <RelativeLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         >
         
         <RelativeLayout 
 	        android:id="@+id/rl_view_pager"
-	        android:layout_width="fill_parent"
+	        android:layout_width="match_parent"
 	        android:layout_height="169dp"
 	        >
 	        
 		    <com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager
 		        android:id="@+id/vp_pager_service"
-		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
 		        />
 		    
 	        <com.viewpagerindicator.CirclePageIndicator
@@ -40,8 +39,8 @@
 	        
 	        <ImageView 
 	            android:id="@+id/iv_net_error"
-	            android:layout_width="fill_parent"
-	            android:layout_height="fill_parent"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
 	            android:visibility="gone"
 	            />
 	        
@@ -62,7 +61,7 @@
         
         <View 
             android:id="@+id/view_line_newest_ad"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#EEEEEE"
             android:layout_below="@id/tv_newest_ad"
@@ -73,7 +72,7 @@
         
         <LinearLayout 
             android:id="@+id/ll_newest_add"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="73dp"
             android:orientation="horizontal"
             android:layout_below="@id/view_line_newest_ad"
@@ -85,88 +84,142 @@
             <RelativeLayout 
                 android:id="@+id/rl_newest_1"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 >
                 
                 <ImageView 
 			        android:id="@+id/iv_ad_img_1"
-			        android:layout_width="fill_parent"
-			        android:layout_height="fill_parent"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
 			        android:scaleType="fitXY"
 			        />
 			    
-			    <TextView 
-			        android:id="@+id/tv_content_1"
-			        android:layout_width="fill_parent"
-			        android:layout_height="24dp"
-			        android:text="20流量币"
-			        android:textColor="#ff000000"
-			        android:layout_alignParentBottom="true"
-			        android:gravity="center_vertical"
-			        android:textSize="10sp"
-			        android:paddingLeft="8dp"
-			        android:background="@drawable/bottom_corner_recentage"
-			        />
+                <RelativeLayout 
+                    android:id="@+id/rl_ad_flow_1"
+                    android:layout_width="32dp"
+                    android:layout_height="42dp"
+                    android:layout_alignRight="@id/iv_ad_img_1"
+                    android:background="#ff0000"
+                    >
+                    <TextView
+                        android:id="@+id/tv_content_1"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="7dp"
+	                    android:text="20"
+	                    android:textSize="14sp"
+	                    android:layout_centerHorizontal="true"
+	                    android:textColor="@color/white"
+	                	/>
+                    
+                    <TextView 
+                        android:id="@+id/tv_ad_flow_label_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_content_1"
+                        android:text="流量币"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_centerHorizontal="true"
+                        />
+                    
+                </RelativeLayout>
                 
             </RelativeLayout>
             
             <RelativeLayout 
                 android:id="@+id/rl_newest_2"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginLeft="7.5dp"
                 >
 			    <ImageView 
 			        android:id="@+id/iv_ad_img_2"
-			        android:layout_width="fill_parent"
-			        android:layout_height="fill_parent"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
 			        android:scaleType="fitXY"
 			        />
 			    
-			    <TextView 
-			        android:id="@+id/tv_content_2"
-			        android:layout_width="fill_parent"
-			        android:layout_height="24dp"
-			        android:text="20流量币"
-			        android:textColor="#ff000000"
-			        android:textSize="10sp"
-			        android:layout_alignParentBottom="true"
-			        android:gravity="center_vertical"
-			        android:paddingLeft="8dp"
-			        android:background="@drawable/bottom_corner_recentage"
-			        />
+			    <RelativeLayout 
+                    android:id="@+id/rl_ad_flow_2"
+                    android:layout_width="32dp"
+                    android:layout_height="42dp"
+                    android:layout_alignRight="@id/iv_ad_img_2"
+                    android:background="#ff0000"
+                    >
+                    <TextView
+                        android:id="@+id/tv_content_2"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="7dp"
+	                    android:text="20"
+	                    android:textSize="14sp"
+	                    android:layout_centerHorizontal="true"
+	                    android:textColor="@color/white"
+	                	/>
+                    
+                    <TextView 
+                        android:id="@+id/tv_ad_flow_label_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_content_2"
+                        android:text="流量币"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_centerHorizontal="true"
+                        />
+                    
+                </RelativeLayout>
                 
             </RelativeLayout>
             
             <RelativeLayout 
                 android:id="@+id/rl_newest_3"
                 android:layout_width="0dp"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginLeft="7.5dp"
                 >
 			    
                 <ImageView 
 			        android:id="@+id/iv_ad_img_3"
-			        android:layout_width="fill_parent"
-			        android:layout_height="fill_parent"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
 			        android:scaleType="fitXY"
 			        />
 			    
-			    <TextView 
-			        android:id="@+id/tv_content_3"
-			        android:layout_width="fill_parent"
-			        android:layout_height="24dp"
-			        android:text="20流量币"
-			        android:textColor="#ff000000"
-			        android:textSize="10sp"
-			        android:layout_alignParentBottom="true"
-			        android:gravity="center_vertical"
-			        android:paddingLeft="8dp"
-			        android:background="@drawable/bottom_corner_recentage"
-			        />
+			    <RelativeLayout 
+                    android:id="@+id/rl_ad_flow_3"
+                    android:layout_width="32dp"
+                    android:layout_height="42dp"
+                    android:layout_alignRight="@id/iv_ad_img_3"
+                    android:background="#ff0000"
+                    >
+                    <TextView
+                        android:id="@+id/tv_content_3"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="7dp"
+	                    android:text="20"
+	                    android:textSize="14sp"
+	                    android:layout_centerHorizontal="true"
+	                    android:textColor="@color/white"
+	                	/>
+                    
+                    <TextView 
+                        android:id="@+id/tv_ad_flow_label_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_content_3"
+                        android:text="流量币"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        android:layout_centerHorizontal="true"
+                        />
+                    
+                </RelativeLayout>
                 
             </RelativeLayout>
             
@@ -174,7 +227,7 @@
         
         <View 
             android:id="@+id/view_line_recomment_ad"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignLeft="@id/view_line_newest_ad"
             android:layout_alignRight="@id/view_line_newest_ad"
@@ -198,7 +251,7 @@
         
         <View 
             android:id="@+id/view_line_recomment_ad_bottom"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#EEEEEE"
             android:layout_below="@id/tv_recomment_ad"
@@ -206,21 +259,19 @@
             android:layout_alignRight="@id/view_line_newest_ad"
             android:layout_marginTop="11dp"
             />
-        <GridView
-            android:id="@+id/gv_recomment_ad"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+        <ListView
+            android:id="@+id/lv_recomment_ad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:verticalSpacing="8dp"
         	android:horizontalSpacing="8dp"
 	        android:scrollbars="vertical"
 	        android:scrollbarStyle="insideOverlay"
 	        android:gravity="center" 
 	        android:layout_below="@id/view_line_recomment_ad_bottom"
-	        android:numColumns="2"
             >
-            
-        </GridView>
+        </ListView>
         
     </RelativeLayout>
 
-</com.handmark.pulltorefresh.library.PullToRefreshScrollView >
+</com.handmark.pulltorefresh.library.PullToRefreshScrollView>

@@ -88,10 +88,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_deposit_center_values_input_hint"
+            android:paddingLeft="3dp"
             android:layout_marginTop="10dp"
             android:inputType="number"
             android:text="10000"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:background="@drawable/shape_square_recentage_grey" />
         <TextView
             android:id="@+id/tv_deposit_center_values_min_hint"
             android:layout_width="wrap_content"
@@ -109,7 +111,6 @@
             android:layout_alignBaseline="@+id/tv_deposit_center_values_min_hint"
             android:gravity="center_vertical"
             android:text="10000"
-            android:textSize="32sp"
             android:textColor="@color/black" />
         <TextView
             android:id="@+id/tv_deposit_center_values_min_hint2"

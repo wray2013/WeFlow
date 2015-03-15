@@ -7,7 +7,7 @@ public class Config {
 	/*
 	 *  生产环境，勿启用
 	 **/
-	public static final String SERVER_URL    = "http://123.56.104.49:7085";//"http://113.57.243.18:8088/base-web/dg"; 
+	public static final String SERVER_URL    = "http://61.51.147.204:9080";//"http://123.56.104.49:7085";//"http://113.57.243.18:8088/base-web/dg"; 
 	public static final int UDP_PORT = 8765;
 	
 	/*

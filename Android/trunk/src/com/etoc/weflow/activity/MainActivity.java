@@ -194,16 +194,24 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	
 	private void showTitle(XFragment<?> fragment) {
 		String title = "";
+		showLeftButton();
+		showRightButton();
 		if(fragment != null) {
 			if(fragment instanceof HomePageFragment) {
 				title = "流量钱包";
+				setRightButtonText("宝典");
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "流量银行";
 				setRightButtonText("攻略");
+				hideLeftButton();
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
+				hideLeftButton();
+				hideRightButton();
 			} else if(fragment instanceof MyselfFragment) {
 				title = "我";
+				hideLeftButton();
+				hideRightButton();
 			}
 		}
 		setTitleText(title);

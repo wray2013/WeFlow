@@ -1,6 +1,7 @@
 package com.etoc.weflow.activity;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.utils.ViewUtils;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -84,15 +85,40 @@ public class DepositFlowActivity extends TitleRootActivity {
 				}
 			}
 		});
+		
+		ViewUtils.setHeight(findViewById(R.id.tv_deposit_top_tel_hint), 96);
+		ViewUtils.setMarginLeft(findViewById(R.id.tv_deposit_top_tel_hint), 32);
+		
+		ViewUtils.setMarginLeft(findViewById(R.id.v_divider_h), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.v_divider_h), 32);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.tv_deposit_top_total_hint), 38);
+		ViewUtils.setMarginTop(findViewById(R.id.tv_deposit_top_total), 50);
+		ViewUtils.setMarginTop(findViewById(R.id.v_divider_top), 50);
+		
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_top_tel_hint), 32);
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_top_tel), 32);
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_top_total_hint), 32);
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_top_total), 85);
+		
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_center_values_input_hint), 32);
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_center_values_min_hint), 32);
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_center_values_min), 32);
+		ViewUtils.setTextSize(findViewById(R.id.tv_deposit_center_values_min_hint2), 32);
+		ViewUtils.setTextSize(findViewById(R.id.ed_deposit_center_values_input), 38);
+		
+		ViewUtils.setHeight(findViewById(R.id.ed_deposit_center_values_input), 100);
 	}
 	
 	private void refreshBtnStatus(int currValue) {
 		if(currValue < minValue) {
 			tvBtnDeposit.setClickable(false);
 			tvBtnDeposit.setBackgroundResource(R.drawable.shape_corner_recentage_grey);
+			edDeposit.setBackgroundResource(R.drawable.shape_square_recentage_grey);
 		} else {
 			tvBtnDeposit.setClickable(true);
 			tvBtnDeposit.setBackgroundResource(R.drawable.shape_corner_recentage_orange);
+			edDeposit.setBackgroundResource(R.drawable.shape_square_recentage_orange);
 		}
 	}
 	
