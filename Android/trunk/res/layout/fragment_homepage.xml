@@ -162,6 +162,32 @@
             </LinearLayout>
         </RelativeLayout>
         
+        <RelativeLayout 
+            android:id="@+id/rl_not_login"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignTop="@id/rl_title_top"
+            android:layout_alignBottom="@id/rl_title_top"
+            android:background="#121C34"
+            android:visibility="gone"
+            >
+            
+            <TextView
+            	android:id="@+id/tv_login_btn"
+            	android:layout_width="121dp"
+            	android:layout_height="36dp"
+            	android:text="开通流量钱包"
+            	android:textColor="#FFFFFF"
+            	android:textSize="15sp"
+            	android:gravity="center"
+            	android:layout_alignParentBottom="true"
+            	android:layout_centerHorizontal="true"
+            	android:layout_marginBottom="28dp"
+            	android:background="@drawable/bg_round_login_btn"
+                />
+            
+    	</RelativeLayout>
+        
         <LinearLayout 
             android:id="@+id/ll_flow_change"
             android:layout_width="fill_parent"

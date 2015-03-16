@@ -76,7 +76,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_user_phone), 20);
 		ViewUtils.setSize(view.findViewById(R.id.rl_flow_account), 206,206);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_flow_account), 20);
-		ViewUtils.setMarginTop(mtvFlow, 20);
+		ViewUtils.setMarginTop(mtvFlow, 52);
 		ViewUtils.setTextSize(mtvFlow, 56);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_flow_text), 28);
 		ViewUtils.setMarginBottom(view.findViewById(R.id.tv_flow_text), 40);
@@ -90,7 +90,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ViewUtils.setTextSize(tvInFlow, 26);
 		ViewUtils.setTextSize(tvOutFlow, 26);
 		
-		ViewUtils.setHeight(view.findViewById(R.id.ll_flow_change), 361);
+		ViewUtils.setHeight(view.findViewById(R.id.ll_flow_change), 401);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_activity_recomm), 18);
 		ViewUtils.setMarginTop(view.findViewById(R.id.tv_recomm_label), 40);
 		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_recomm_label), 32);
@@ -105,20 +105,24 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		
 		String [] makeFlows = {"赚流量","看视频","下软件","玩游戏"};
 		String [] expenseFlows = {"花流量","充值","订流量包","花流量币","换礼券"};
+		int [] makeflowsIds = {R.drawable.make_flow,R.drawable.watch_video,R.drawable.download_apk,R.drawable.play_game};
+		int [] expenseFlowsIds = {R.drawable.expense_flow,R.drawable.recharge,R.drawable.order_flow_pkg,R.drawable.exchange_game_coins,R.drawable.exchange_gift};
 		for (int i = 0;i < 4;i++) {
 			RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.include_flow_buttons_stub,null);
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 180);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
 			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(makeFlowId + i);
 			layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(makeFlows[i]);
 			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
-			ViewUtils.setSize(ivModules, 68, 68);
-			ViewUtils.setMarginBottom(tvName, 26);
+			ViewUtils.setSize(ivModules, 96, 96);
+			ivModules.setImageResource(makeflowsIds[i]);
+			ViewUtils.setMarginBottom(tvName, 32);
+			ViewUtils.setMarginTop(ivModules, 40);
 			ViewUtils.setTextSize(tvName, 28);
 			makeFLowLayout.addView(layout);
 		}
@@ -128,12 +132,18 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 180);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
 			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(expenseFlowId + i);
 			layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(expenseFlows[i]);
+			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
+			ViewUtils.setSize(ivModules, 96, 96);
+			ivModules.setImageResource(expenseFlowsIds[i]);
+			ViewUtils.setMarginBottom(tvName, 32);
+			ViewUtils.setMarginTop(ivModules, 40);
+			ViewUtils.setTextSize(tvName, 28);
 			expenseFlowLayout.addView(layout);
 		}
 		
