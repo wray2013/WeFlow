@@ -13,13 +13,14 @@
             android:layout_width="match_parent"
         	android:layout_height="wrap_content"
         	android:layout_margin="16dp"
-        	android:text="摇一摇"/>
+        	android:text="摇一摇"
+        	android:textColor="@color/black" />
         <ImageView 
             android:id="@+id/iv_game_shake"
             android:layout_width="match_parent"
-        	android:layout_height="100dp"
+        	android:layout_height="wrap_content"
         	android:layout_below="@+id/tv_game_shake"
-        	android:background="@color/pagertab_color_green" />
+        	android:background="@drawable/shake_banner" />
         
     </RelativeLayout>
 
@@ -33,13 +34,14 @@
             android:layout_width="match_parent"
         	android:layout_height="wrap_content"
         	android:layout_margin="16dp"
-        	android:text="刮刮卡"/>
+        	android:text="刮刮卡"
+        	android:textColor="@color/black" />
         <ImageView 
             android:id="@+id/iv_scratch_card"
             android:layout_width="match_parent"
-        	android:layout_height="100dp"
+        	android:layout_height="wrap_content"
         	android:layout_below="@+id/tv_scratch_card"
-        	android:background="@color/pagertab_color_green" />
+        	android:background="@drawable/scratch_banner" />
         
     </RelativeLayout>
 

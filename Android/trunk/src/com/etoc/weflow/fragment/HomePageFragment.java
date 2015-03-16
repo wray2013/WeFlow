@@ -93,8 +93,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ivRecB = (ImageView) view.findViewById(R.id.iv_recomm_2);
 		ivRecB.setOnClickListener(this);
 		
-		ImageLoader.getInstance().displayImage("http://detail.amap.com/telecom/images/AMAP_05.jpg", ivRecA);
-		ImageLoader.getInstance().displayImage("http://detail.amap.com/telecom/images/AMAP_05.jpg", ivRecB);
+		ivRecA.setBackgroundResource(R.drawable.scratch_banner);
+		ivRecB.setBackgroundResource(R.drawable.shake_banner);
+		/*ImageLoader.getInstance().displayImage("http://detail.amap.com/telecom/images/AMAP_05.jpg", ivRecA);
+		ImageLoader.getInstance().displayImage("http://detail.amap.com/telecom/images/AMAP_05.jpg", ivRecB);*/
 	}
 	
 	@Override

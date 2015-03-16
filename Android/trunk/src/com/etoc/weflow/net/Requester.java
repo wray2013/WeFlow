@@ -40,10 +40,10 @@ public class Requester {
 	
 	//2.1.1 车上虚拟注册
 	public static final int RESPONSE_TYPE_SENDSMS = 0xffee2100;
-	public static final String RIA_INTERFACE_SENDSMS = "/interface/service/getAuthCode";
+	public static final String RIA_INTERFACE_SENDSMS = "/vs/api/getAuthCode";
 	
 	public static final int RESPONSE_TYPE_LOGIN = 0xffee2101;
-	public static final String RIA_INTERFACE_LOGIN = "/interface/service/login";
+	public static final String RIA_INTERFACE_LOGIN = "/vs/api/user/login";
 	
 	public static final int RESPONSE_TYPE_ACC_INFO = 0xffee2102;
 	public static final String RIA_INTERFACE_ACC_INFO = "/rw/service/getaccountinfo.html";
@@ -53,7 +53,13 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_ORDER_LARGESS = 0xffee2104;
 	public static final String RIA_INTERFACE_ORDER_LARGESS = "/interface/service/orderLargess";
+	
+	public static final int RESPONSE_TYPE_REGISTER = 0xffee2105;
+	public static final String RIA_INTERFACE_REGISTER = "/vs/api/user/register";
 
+	public static final int RESPONSE_TYPE_VERIFY_CODE = 0xffee2106;
+	public static final String RIA_INTERFACE_VERIFY_CODE = "/vs/api/user/verifyAuthCode";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -65,7 +71,48 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_TEST, request);
 	}
 	
-	public static void sendSMS(Handler handler, String tel) {
+	public static void sendSMS(Handler handler, String tel, String type) {
+		getAuthCodeRequest request = new getAuthCodeRequest();
+		request.tel  = tel;
+		request.type = type;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, sendSMSResponse.class);
+		worker.execute(RIA_INTERFACE_SENDSMS, request);
+	}
+	
+	public static void verifyAuthCode(Handler handler, String tel, String authcode, String type) {
+		verifyAuthCodeRequest request = new verifyAuthCodeRequest();
+		request.tel  = tel;
+		request.authcode = authcode;
+		request.type = type;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_VERIFY_CODE, verifyAuthCodeResponse.class);
+		worker.execute(RIA_INTERFACE_VERIFY_CODE, request);
+	}
+	
+	public static void login(Handler handler, String tel, String pass) {
+		loginRequest request = new loginRequest();
+		request.tel = tel;
+		request.password = "app";
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
+		worker.execute(RIA_INTERFACE_LOGIN, request);
+	}
+	
+	public static void register(Handler handler, String tel, String pass) {
+		registerRequest request = new registerRequest();
+		request.tel = tel;
+		request.password = pass;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
+		worker.execute(RIA_INTERFACE_REGISTER, request);
+	}
+	
+/*	public static void sendSMS(Handler handler, String tel) {
 		sendSMSRequest request = new sendSMSRequest();
 		request.phone  = tel;
 		request.channelid = "app";
@@ -112,7 +159,7 @@ public class Requester {
 		request.opertype = type;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_ORDER_LARGESS, orderLargessResponse.class);
 		worker.execute(RIA_INTERFACE_ORDER_LARGESS, request);
-	}
+	}*/
 	
 	public static class PostWorker extends Thread {
 		private static final String TAG = "Requester";
@@ -215,12 +262,12 @@ public class Requester {
 		    	try{
 		    		object = gson.fromJson(ret_entity_str, cls);
 		    		
-		    		if (responseType == RESPONSE_TYPE_ORDER_LARGESS) {
+		    		/*if (responseType == RESPONSE_TYPE_ORDER_LARGESS) {
 		    			orderLargessResponse resp = (orderLargessResponse) object;
 		    			if (resp != null && resp.blance != null) {
 		    				WeFlowApplication.totalFlow = Integer.parseInt(resp.blance);
 		    			}
-		    		}
+		    		}*/
 		    	}catch(Exception e){
 		    		e.printStackTrace();
 		    	}

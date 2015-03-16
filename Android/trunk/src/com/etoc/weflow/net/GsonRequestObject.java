@@ -7,7 +7,7 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	//example:
-	public static class configInfo{
+/*	public static class configInfo{
 		String userid; // "9876543212345678",
 		String os; //客户端系统类型 1IOS 2Andriod
 		String mac; // 手机的mac地址
@@ -66,7 +66,7 @@ public class GsonRequestObject {
 		String opertype;//操作类型
 //		String mac; // 手机的mac地址
 //		String imei; // 手机imei（手机的唯一标识）
-	}
+	}*/
 	
 	
 	/****************************************************
@@ -98,7 +98,7 @@ public class GsonRequestObject {
 	}
 	
 	//2.1.4 用户登录
-	public static class login2Request {
+	public static class loginRequest {
 		String tel;  //用户号码
 		String password; //密码
 		String mac; // 手机的mac地址

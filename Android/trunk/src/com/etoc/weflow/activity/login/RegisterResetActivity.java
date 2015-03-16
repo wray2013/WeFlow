@@ -10,14 +10,19 @@ import android.widget.TextView;
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.TitleRootActivity;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonRequestObject.getAuthCodeRequest;
+import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
+import com.etoc.weflow.net.GsonResponseObject.registerResponse;
+import com.etoc.weflow.net.GsonResponseObject.verifyAuthCodeResponse;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.TickDownHelper;
 import com.etoc.weflow.utils.ViewUtils;
 
 public class RegisterResetActivity extends TitleRootActivity {
 
-	public static final int TYPE_REGIST = 0;
-	public static final int TYPE_RESET  = 1;
+	public static final int TYPE_REGIST = 1;
+	public static final int TYPE_RESET  = 2;
 	
 	private static final int STEP_ONE = 1;
 	private static final int STEP_TWO = 2;
@@ -110,7 +115,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 			if (StringUtils.isEmpty(edAccount.getText().toString())) {
 				PromptDialog.Dialog(this, "温馨提示", "请填写手机号", "确定");
 			} else if (PromptDialog.checkPhoneNum(edAccount.getText().toString())) {
-//				Requester.sendSMS(handler, edAccount.getText().toString());
+				Requester.sendSMS(handler, edAccount.getText().toString(), currentType + "");
 				hasGetValidCode = true;
 				tvValidCode.setEnabled(false);
 				tvValidCode.setText("重新发送(60)");
@@ -134,10 +139,14 @@ public class RegisterResetActivity extends TitleRootActivity {
 				PromptDialog.Dialog(this, "温馨提示", "请填写手机号", "确定");
 			} else if(!PromptDialog.checkPhoneNum(edAccount.getText().toString())) {
 				PromptDialog.Dialog(this, "温馨提示", "手机号格式错误", "确定");
+			} else if(StringUtils.isEmpty(edValidCode.getText().toString())) {
+				PromptDialog.Dialog(this, "温馨提示", "请填写收到的验证码", "确定");
 			} else {
-			// ……
-				currentStep = STEP_TWO;
-				refreshViewStatus();
+				
+				Requester.verifyAuthCode(handler, edAccount.getText().toString(), edValidCode.getText().toString(), currentType + "");
+				
+				/*currentStep = STEP_TWO;
+				refreshViewStatus();*/
 			}
 			break;
 		case STEP_TWO:
@@ -148,7 +157,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 					.equals(edValidCode.getText().toString())) {
 				PromptDialog.Dialog(this, "温馨提示", "两次密码输入不一致，请重新设置", "确定");
 			} else {
-				
+				Requester.register(handler, edAccount.getText().toString(), edValidCode.getText().toString());
 			}
 			break;
 		}
@@ -231,6 +240,37 @@ public class RegisterResetActivity extends TitleRootActivity {
 			Integer secStop = (Integer)msg.obj;
 			tvValidCode.setEnabled(true);
 			tvValidCode.setText("获取验证码");
+			break;
+		case Requester.RESPONSE_TYPE_SENDSMS:
+			getAuthCodeResponse getAuthResp = (getAuthCodeResponse) msg.obj;
+			if(getAuthResp != null) {
+				if("0".equals(getAuthResp.status)) { //发送成功
+					PromptDialog.Alert(LoginActivity.class, "验证码发送成功，请查收");
+				}
+			} else {
+				PromptDialog.Alert(LoginActivity.class, "请求失败");
+			}
+			break;
+		case Requester.RESPONSE_TYPE_VERIFY_CODE:
+			verifyAuthCodeResponse codeResp = (verifyAuthCodeResponse) msg.obj;
+			if(codeResp != null) {
+				if("0".equals(codeResp.status)) { //验证成功
+					currentStep = STEP_TWO;
+					refreshViewStatus();
+				}
+			} else {
+				PromptDialog.Alert(LoginActivity.class, "请求失败");
+			}
+			break;
+		case Requester.RESPONSE_TYPE_REGISTER:
+			registerResponse regResp = (registerResponse) msg.obj;
+			if(regResp != null) {
+				if("0".equals(regResp.status)) { //注册成功
+					PromptDialog.Alert(LoginActivity.class, "成功注册");
+				}
+			} else {
+				PromptDialog.Alert(LoginActivity.class, "请求失败");
+			}
 			break;
 		}
 		return false;

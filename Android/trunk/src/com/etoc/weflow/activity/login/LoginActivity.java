@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.TitleRootActivity;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.loginResponse;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
 
 public class LoginActivity extends TitleRootActivity {
@@ -138,6 +141,7 @@ public class LoginActivity extends TitleRootActivity {
 			startActivity(forgetIntent);
 			break;
 		case R.id.tv_login_btn:
+			Requester.login(handler, edAccount.getText().toString(), edPass.getText().toString());
 			break;
 		case R.id.tv_register:
 			Intent registerIntent = new Intent(this, RegisterResetActivity.class);
@@ -152,6 +156,19 @@ public class LoginActivity extends TitleRootActivity {
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_LOGIN:
+			loginResponse loginResp = (loginResponse) msg.obj;
+			if(loginResp != null) {
+				if("0".equals(loginResp.status)) { //登录成功
+					PromptDialog.Alert(LoginActivity.class, "登录成功");
+					
+				}
+			} else {
+				PromptDialog.Alert(LoginActivity.class, "请求失败");
+			}
+			break;
+		}
 		return false;
 	}
 
