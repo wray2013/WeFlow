@@ -114,7 +114,7 @@ public class GsonRequestObject {
 	
 	//2.1.6 重设密码
 	public static class resetPasswordRequest {
-		String userid;  //用户号码
+		String tel;  //用户号码
 		String newpassword; //密码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
