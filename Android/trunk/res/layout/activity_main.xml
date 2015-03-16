@@ -15,8 +15,8 @@
     <View 
         android:id="@+id/view_bottom_line"
         android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:background="#F6F7F7"
+        android:layout_height="1dp"
+        android:background="#DCDCDC"
         android:layout_above="@+id/ll_controller"
         />
 

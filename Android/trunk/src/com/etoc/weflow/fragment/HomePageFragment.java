@@ -24,7 +24,6 @@ import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ListView> {
 
@@ -44,6 +43,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private TextView tvPlainType = null;
 	private TextView tvInFlow = null;
 	private TextView tvOutFlow = null;
+	private RelativeLayout rlNotLogin = null;
+	private TextView btnLogin = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,9 +69,19 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		tvPlainType = (TextView) view.findViewById(R.id.tv_plans_type);
 		tvInFlow = (TextView) view.findViewById(R.id.tv_plans_in_left);
 		tvOutFlow = (TextView) view.findViewById(R.id.tv_plans_out_left);
-		
+		rlNotLogin = (RelativeLayout) view.findViewById(R.id.rl_not_login);
+		btnLogin = (TextView) view.findViewById(R.id.tv_login_btn);
+		btnLogin.setOnClickListener(this);
 		
 		ViewUtils.setTextSize(tvCellPhone, 32);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_title_top), 432);
+		ViewUtils.setHeight(rlNotLogin, 432);
+		ViewUtils.setSize(view.findViewById(R.id.iv_image), 138, 138);
+		ViewUtils.setSize(btnLogin, 242, 72);
+		ViewUtils.setTextSize(btnLogin,36);
+		ViewUtils.setMarginTop(view.findViewById(R.id.iv_image), 80);
+		ViewUtils.setMarginBottom(btnLogin, 56);
+		
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_phone_num_hint), 32);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_user_phone), 58);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_user_phone), 20);
@@ -199,6 +210,9 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			Intent recIntent2 = new Intent(getActivity(), WebViewActivity.class);
 			recIntent2.putExtra("pageurl", "http://detail.amap.com/telecom/");
 			startActivity(recIntent2);
+			break;
+		case R.id.tv_login_btn:
+			startActivity(new Intent(getActivity(), LoginActivity.class));
 			break;
 		}
 	}

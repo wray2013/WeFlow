@@ -55,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:layout_toLeftOf="@+id/view_line"
                 android:background="@color/white"
-                android:paddingLeft="3dp"
+                android:paddingLeft="8dp"
                 android:hint="请输入手机号"
                 android:inputType="phone"
                 android:maxLength="11" />
@@ -89,7 +89,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="18dp"
             android:background="@color/white"
-            android:paddingLeft="3dp"
+            android:paddingLeft="8dp"
             android:hint="请输入验证码"
             android:inputType="textPassword" />
     </RelativeLayout>

@@ -48,7 +48,6 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		view.findViewById(R.id.rl_me_settings).setOnClickListener(this);
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_top), 222);
-		ViewUtils.setHeight(view.findViewById(R.id.tv_account_hint), 141);
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_msg), 112);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_bill), 112);
@@ -57,8 +56,6 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_feedback), 112);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_settings), 112);
 		
-		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_account_hint), 35);
-		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_account_tel), 35);
 		
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_hint), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_value), 35);
@@ -72,7 +69,6 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_feedback), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_settings), 35);
 		
-		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_account_hint), 52);
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_hint), 52);
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_paper_hint), 52);
 		
@@ -104,7 +100,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			startActivity(new Intent(getActivity(), MyBillListActivity.class));
 			break;
 		case R.id.rl_me_sign:
-			startActivity(new Intent(getActivity(), SignInActivity.class));
+//			startActivity(new Intent(getActivity(), SignInActivity.class));
 			break;
 		case R.id.rl_me_invite:
 			break;
