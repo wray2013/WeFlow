@@ -8,7 +8,6 @@
     ptr:ptrHeaderTextColor="#212324"
     ptr:ptrAnimationStyle="flip"
     ptr:ptrMode="pullUpFromBottom"
-    
     >
     
     <RelativeLayout 

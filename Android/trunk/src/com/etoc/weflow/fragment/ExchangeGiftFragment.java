@@ -41,6 +41,12 @@ public class ExchangeGiftFragment extends Fragment {
 	private GiftAdatper adapter = null;
 	
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+	
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -48,7 +54,7 @@ public class ExchangeGiftFragment extends Fragment {
 		    ViewGroup parent = (ViewGroup) mView.getParent();  
 		    if (parent != null) {  
 		        parent.removeView(mView);  
-		    }   
+		    }  
 		    return mView;
 		}
 		super.onCreateView(inflater, container, savedInstanceState);

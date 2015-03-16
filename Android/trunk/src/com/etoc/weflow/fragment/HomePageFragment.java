@@ -39,6 +39,11 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	//UI Component
 	private ImageView ivRecA, ivRecB;
 	private MagicTextView mtvFlow;
+	private TextView tvCellPhone = null;
+	private TextView tvPlain = null;
+	private TextView tvPlainType = null;
+	private TextView tvInFlow = null;
+	private TextView tvOutFlow = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +63,46 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		
 		mtvFlow.showNumberWithAnimation(98, 1000);
 		
+		tvCellPhone = (TextView) view.findViewById(R.id.tv_phone_num);
+		tvPlain = (TextView) view.findViewById(R.id.tv_plans);
+		tvPlainType = (TextView) view.findViewById(R.id.tv_plans_type);
+		tvInFlow = (TextView) view.findViewById(R.id.tv_plans_in_left);
+		tvOutFlow = (TextView) view.findViewById(R.id.tv_plans_out_left);
+		
+		
+		ViewUtils.setTextSize(tvCellPhone, 32);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_phone_num_hint), 32);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_user_phone), 58);
+		ViewUtils.setMarginTop(view.findViewById(R.id.rl_user_phone), 20);
+		ViewUtils.setSize(view.findViewById(R.id.rl_flow_account), 206,206);
+		ViewUtils.setMarginTop(view.findViewById(R.id.rl_flow_account), 20);
+		ViewUtils.setMarginTop(mtvFlow, 20);
+		ViewUtils.setTextSize(mtvFlow, 56);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_flow_text), 28);
+		ViewUtils.setMarginBottom(view.findViewById(R.id.tv_flow_text), 40);
+		ViewUtils.setMarginTop(view.findViewById(R.id.view_user_line_2), 20);
+		
+		ViewUtils.setHeight(view.findViewById(R.id.ll_account_desc), 112);
+		ViewUtils.setTextSize(tvPlain, 28);
+		ViewUtils.setTextSize(tvPlainType, 28);
+		ViewUtils.setMarginBottom(view.findViewById(R.id.view_1dp_width), 32);
+		ViewUtils.setMarginTop(view.findViewById(R.id.view_1dp_width), 32);
+		ViewUtils.setTextSize(tvInFlow, 26);
+		ViewUtils.setTextSize(tvOutFlow, 26);
+		
+		ViewUtils.setHeight(view.findViewById(R.id.ll_flow_change), 361);
+		ViewUtils.setMarginTop(view.findViewById(R.id.rl_activity_recomm), 18);
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_recomm_label), 40);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_recomm_label), 32);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_recomm_label), 30);
+		ViewUtils.setMarginTop(view.findViewById(R.id.view_line), 26);
+		ViewUtils.setMarginRight(view.findViewById(R.id.view_line), 32);
+		ViewUtils.setHeight(view.findViewById(R.id.ll_recomm), 190);
+		ViewUtils.setMarginTop(view.findViewById(R.id.ll_recomm), 18);
+		ViewUtils.setMarginBottom(view.findViewById(R.id.ll_recomm), 8);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.iv_recomm_2), 16);
+		
+		
 		String [] makeFlows = {"赚流量","看视频","下软件","玩游戏"};
 		String [] expenseFlows = {"花流量","充值","订流量包","花流量币","换礼券"};
 		for (int i = 0;i < 4;i++) {
@@ -71,6 +116,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(makeFlows[i]);
+			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
+			ViewUtils.setSize(ivModules, 68, 68);
+			ViewUtils.setMarginBottom(tvName, 26);
+			ViewUtils.setTextSize(tvName, 28);
 			makeFLowLayout.addView(layout);
 		}
 		
