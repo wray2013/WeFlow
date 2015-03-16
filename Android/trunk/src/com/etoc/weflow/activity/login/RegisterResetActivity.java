@@ -2,6 +2,7 @@ package com.etoc.weflow.activity.login;
 
 import android.os.Bundle;
 import android.os.Message;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import com.etoc.weflow.activity.TitleRootActivity;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.TickDownHelper;
+import com.etoc.weflow.utils.ViewUtils;
 
 public class RegisterResetActivity extends TitleRootActivity {
 
@@ -72,6 +74,32 @@ public class RegisterResetActivity extends TitleRootActivity {
 		tvBtnNext.setOnClickListener(this);
 		
 		tickDown = new TickDownHelper(handler);
+		
+		ViewUtils.setHeight(findViewById(R.id.ll_login_top), 72);
+		ViewUtils.setHeight(findViewById(R.id.view_divier_v), 48);
+		ViewUtils.setHeight(findViewById(R.id.view_line), 48);
+		ViewUtils.setHeight(tvBtnNext, 113);
+		ViewUtils.setHeight(findViewById(R.id.rl_account), 113);
+		ViewUtils.setHeight(edValidCode, 113);
+		ViewUtils.setWidth(tvValidCode, 192);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.rl_account), 32);
+		ViewUtils.setMarginLeft(findViewById(R.id.rl_account), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.rl_account), 32);
+		
+		ViewUtils.setMarginTop(edValidCode, 36);
+		ViewUtils.setMarginLeft(edValidCode, 32);
+		ViewUtils.setMarginRight(edValidCode, 32);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.rl_login_bottom), 36);
+		ViewUtils.setMarginLeft(tvBtnNext, 32);
+		ViewUtils.setMarginRight(tvBtnNext, 32);
+		
+		ViewUtils.setTextSize(edAccount, 32);
+		ViewUtils.setTextSize(edValidCode, 32);
+		ViewUtils.setTextSize(tvBtnNext, 32);
+		ViewUtils.setTextSize(tvStep1, 32);
+		ViewUtils.setTextSize(tvStep2, 32);
 	}
 
 	@Override
@@ -113,12 +141,21 @@ public class RegisterResetActivity extends TitleRootActivity {
 			}
 			break;
 		case STEP_TWO:
-			
+			if (StringUtils.isEmpty(edAccount.getText().toString()) ||
+					StringUtils.isEmpty(edValidCode.getText().toString())) {
+				PromptDialog.Dialog(this, "温馨提示", "请设置密码", "确定");
+			} else if (!edAccount.getText().toString()
+					.equals(edValidCode.getText().toString())) {
+				PromptDialog.Dialog(this, "温馨提示", "两次密码输入不一致，请重新设置", "确定");
+			} else {
+				
+			}
 			break;
 		}
 	}
 	
 	private void refreshViewStatus() {
+		edAccount.requestFocus();
 		edAccount.setText("");
 		edValidCode.setText("");
 		switch(currentType) {
@@ -132,6 +169,8 @@ public class RegisterResetActivity extends TitleRootActivity {
 				
 				edAccount.setHint("请输入手机号");
 				edValidCode.setHint("请输入验证码");
+				edAccount.setInputType(InputType.TYPE_CLASS_PHONE);
+				edValidCode.setInputType(InputType.TYPE_CLASS_NUMBER);
 				tvBtnNext.setText("下一步");
 				
 			} else if(currentStep == STEP_TWO) {
@@ -142,7 +181,9 @@ public class RegisterResetActivity extends TitleRootActivity {
 				
 				edAccount.setHint("请输入密码");
 				edValidCode.setHint("再次输入密码");
-				tvBtnNext.setText("完成");
+				edAccount.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+				edValidCode.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+				tvBtnNext.setText("完  成");
 				
 			}
 			break;
@@ -156,6 +197,8 @@ public class RegisterResetActivity extends TitleRootActivity {
 				
 				edAccount.setHint("请输入手机号");
 				edValidCode.setHint("请输入验证码");
+				edAccount.setInputType(InputType.TYPE_CLASS_PHONE);
+				edValidCode.setInputType(InputType.TYPE_CLASS_NUMBER);
 				tvBtnNext.setText("下一步");
 				
 			} else if(currentStep == STEP_TWO) {
@@ -166,6 +209,8 @@ public class RegisterResetActivity extends TitleRootActivity {
 				
 				edAccount.setHint("请输入新密码");
 				edValidCode.setHint("再次输入新密码");
+				edAccount.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+				edValidCode.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 				tvBtnNext.setText("完成");
 				
 			}

@@ -90,7 +90,7 @@
             android:layout_marginTop="18dp"
             android:background="@color/white"
             android:paddingLeft="3dp"
-            android:hint="请输入密码"
+            android:hint="请输入验证码"
             android:inputType="textPassword" />
     </RelativeLayout>
 

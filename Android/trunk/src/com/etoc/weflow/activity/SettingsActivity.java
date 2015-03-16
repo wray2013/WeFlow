@@ -9,9 +9,11 @@ import com.etoc.weflow.utils.VMobileInfo;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.SwitchButton;
 import com.etoc.weflow.view.SwitchButton.OnChangeListener;
+import com.nostra13.universalimageloader.api.MyImageLoader;
 
 import android.os.Bundle;
 import android.os.Message;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,14 +50,17 @@ public class SettingsActivity extends TitleRootActivity {
 			}
 		});
 		
-		/*File cacheFile = new File(ConStant.getImageLoaderCachePath());
-		long size = FileUtils.getFolderSize(cacheFile);
-		String cache = FileUtils.getFormatSize(size);*/
+		findViewById(R.id.rl_settings_cache).setOnClickListener(this);  //清缓存
+		findViewById(R.id.rl_settings_upgrade).setOnClickListener(this);//检查更新
 		
-		tvCache.setText("24M");
+		File cacheFile = MyImageLoader.getInstance().getDiskCache().getDirectory();
+		long size = FileUtils.getFolderSize(cacheFile);
+		String cache = FileUtils.getFormatSize(size);
+		
+		tvCache.setText(cache);
 		
 		String ver = VMobileInfo.getAppVersionName(this);
-		tvVersion.setText("Version " + ver);
+		tvVersion.setText("v" + ver);
 		
 		ViewUtils.setHeight(findViewById(R.id.rl_settings_top), 113);
 		ViewUtils.setHeight(findViewById(R.id.rl_settings_cache), 113);
@@ -79,6 +84,17 @@ public class SettingsActivity extends TitleRootActivity {
 		ViewUtils.setMarginRight(findViewById(R.id.tv_cache), 32);
 		ViewUtils.setMarginRight(findViewById(R.id.tv_upgrade_version), 32);
 		ViewUtils.setMarginRight(findViewById(R.id.switch_push), 32);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()) {
+		case R.id.rl_settings_cache:
+			
+			break;
+		}
+		super.onClick(v);
 	}
 	
 	@Override
