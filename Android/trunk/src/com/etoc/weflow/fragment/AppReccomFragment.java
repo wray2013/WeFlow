@@ -245,6 +245,7 @@ public class AppReccomFragment extends Fragment {
 					.showImageOnFail(R.drawable.small_pic_default)
 					.showImageOnLoading(R.drawable.small_pic_default)
 					.build();
+			
 		}
 		
 		@Override
