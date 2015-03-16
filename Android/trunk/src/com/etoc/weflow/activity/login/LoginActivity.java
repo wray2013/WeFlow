@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.TitleRootActivity;
+import com.etoc.weflow.utils.ViewUtils;
 
 public class LoginActivity extends TitleRootActivity {
 
@@ -74,6 +75,36 @@ public class LoginActivity extends TitleRootActivity {
 		tvForget.setOnClickListener(this);
 		tvBtnLogin.setOnClickListener(this);
 		tvRegister.setOnClickListener(this);
+		
+		ViewUtils.setHeight(findViewById(R.id.et_account), 113);
+		ViewUtils.setHeight(findViewById(R.id.et_password), 113);
+		ViewUtils.setHeight(findViewById(R.id.tv_login_btn), 113);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.et_account), 32);
+		ViewUtils.setMarginLeft(findViewById(R.id.et_account), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.et_account), 32);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.et_password), 36);
+		ViewUtils.setMarginLeft(findViewById(R.id.et_password), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.et_password), 32);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.rl_login_bottom), 36);
+		ViewUtils.setMarginLeft(findViewById(R.id.tv_forget_pass), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.tv_forget_pass), 32);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.tv_login_btn), 36);
+		ViewUtils.setMarginLeft(findViewById(R.id.tv_login_btn), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.tv_login_btn), 32);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.tv_register), 36);
+		ViewUtils.setMarginLeft(findViewById(R.id.tv_register), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.tv_register), 32);
+		
+		ViewUtils.setTextSize(edAccount, 32);
+		ViewUtils.setTextSize(edPass, 32);
+		ViewUtils.setTextSize(tvBtnLogin, 32);
+		ViewUtils.setTextSize(tvForget, 28);
+		ViewUtils.setTextSize(tvRegister, 28);
 		
 		refreshBtnStatus();
 	}

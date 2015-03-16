@@ -15,24 +15,27 @@ public class FileUtils {
 	 */
 	public static long getFolderSize(File file) {
 
-		long size = 0;
-		try {
-			java.io.File[] fileList = file.listFiles();
-			for (int i = 0; i < fileList.length; i++) {
-				if (fileList[i].isDirectory()) {
-					size = size + getFolderSize(fileList[i]);
-
-				} else {
-					size = size + fileList[i].length();
-
-				}
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		File[] fs = file.listFiles();
+		long total_du = 0;
+		
+		if(fs==null || fs.length<=0){
+			return 0;
 		}
-		// return size/1048576;
-		return size;
+		
+		for (int i = 0; i < fs.length; i++) {
+			if (fs[i].isDirectory()) {
+				try {
+					total_du += getFolderSize(fs[i]);
+
+				} catch (Exception e) {
+				}
+
+			} else {
+				total_du += fs[i].length();
+			}
+		}
+
+		return total_du;
 	}
 
 	/**
