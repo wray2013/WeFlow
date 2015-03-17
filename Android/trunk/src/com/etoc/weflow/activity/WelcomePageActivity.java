@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.GuideActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
@@ -40,6 +41,15 @@ public class WelcomePageActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		hideTitlebar();
+		
+		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+		SharedPreferences sp=getSharedPreferences(GuideActivity.SP_NAME, MODE_PRIVATE);
+		if(sp.getInt(GuideActivity.SP_KEY, 0) == 0){
+			Intent intent = new Intent(this, GuideActivity.class);
+			startActivity(intent);
+			this.finish();
+			return;
+		}
 		
 		initView();
 		

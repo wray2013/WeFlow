@@ -68,6 +68,10 @@ public class LoginActivity extends TitleRootActivity {
 			break;
 			
 		case Requester.RESPONSE_TYPE_LOGIN:
+			Intent homeIntent = new Intent(this,HomePageActivity.class);
+			homeIntent.putExtra("phone", etPhone.getText().toString());
+			MainApplication.accountPhone = etPhone.getText().toString();
+			startActivity(homeIntent);
 			loginResponse loginresponse = (loginResponse) msg.obj;
 			if(loginresponse != null) {
 				if(loginresponse.isSucceed()) {
@@ -81,10 +85,10 @@ public class LoginActivity extends TitleRootActivity {
 					
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
 					finish();
-					Intent homeIntent = new Intent(this,HomePageActivity.class);
+					/*Intent homeIntent = new Intent(this,HomePageActivity.class);
 					homeIntent.putExtra("phone", etPhone.getText().toString());
 					MainApplication.accountPhone = etPhone.getText().toString();
-					startActivity(homeIntent);
+					startActivity(homeIntent);*/
 				} else {
 					PromptDialog.Alert(LoginActivity.class, "登录失败");
 				}
