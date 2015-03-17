@@ -210,6 +210,16 @@ public class GsonResponseObject {
 	/****************************************************
 	 *                      C.流量银行
 	 ****************************************************/
+	//2.7.1 查询流量银行
+		public static class QueryBankResp {
+			public String status;
+			public String thresholdpop;
+			public String thresholdpush;
+			public String flowbankcoins;
+			public String yestdincome;
+			public String yestdrate;
+			public String totalincome;
+		}
 	/****************************************************
 	 *                      D.发现
 	 ****************************************************/

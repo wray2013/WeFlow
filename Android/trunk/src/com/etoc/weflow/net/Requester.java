@@ -66,6 +66,9 @@ public class Requester {
 	public static final int RESPONSE_TYPE_AUTO_LOGIN = 0xffee2108;
 	public static final String RIA_INTERFACE_AUTO_LOGIN = "/vs/api/user/autoLogin";
 	
+	public static final int RESPONSE_TYPE_QUERY_BANK = 0xffee2109;
+	public static final String RIA_INTERFACE_QUERY_BANK = "/vs/api/user/queryBank";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -135,6 +138,15 @@ public class Requester {
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_AUTO_LOGIN, autoLoginResponse.class);
 		worker.execute(RIA_INTERFACE_AUTO_LOGIN, request);
+	}
+	
+	public static void queryBank(Handler handler, String userid) {
+		queryBankRequest request = new queryBankRequest();
+		request.userid = userid;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_QUERY_BANK, QueryBankResp.class);
+		worker.execute(RIA_INTERFACE_QUERY_BANK, request);
 	}
 	
 /*	public static void sendSMS(Handler handler, String tel) {
