@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    >
+    <RelativeLayout 
+        android:id="@+id/rl_content"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="@color/white"
+	    android:layout_marginTop="8dp"
+	    android:layout_marginLeft="6dp"
+	    android:layout_marginRight="6dp"
+	    android:layout_marginBottom="6dp"
+	    >
+	    <TextView 
+	        android:id="@+id/tv_line_a"
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:background="#f65c00"
+	        android:layout_alignParentTop="true"
+	        />
+    	
+    
+    	<EditText 
+        android:id="@+id/et_nickname"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/tv_line_a"
+        android:gravity="center_vertical"
+        android:hint="请输入昵称"
+        android:paddingLeft="10dp"
+        android:background="@drawable/order_confirm_edit_bg"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="6dp"
+	    android:layout_marginRight="6dp"
+	    android:singleLine="true"
+	    android:textColorHint="#888888"
+	    android:maxLength="10"
+	    />
+			    
+       <ImageView 
+        android:id="@+id/iv_input_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/et_nickname"
+        android:layout_alignBottom="@+id/et_nickname"
+        android:layout_alignRight="@+id/et_nickname"
+        android:src="@drawable/btn_input_cancel_selector"
+        />
+		
+
+    </RelativeLayout>
+</RelativeLayout>
+
+    
+

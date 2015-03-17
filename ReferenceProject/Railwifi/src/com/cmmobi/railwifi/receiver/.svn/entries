@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="zhangwei"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/cmmobi/railwifi/receiver"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2226"
+   kind="dir"
+   committed-date="2015-03-12T03:51:40.828000Z"/>
+<entry
+   name="PhoneReceiver.java"
+   checksum="3e098efcb9b0d07158d08f73799c9f4c"
+   last-author="zhangwei"
+   committed-rev="1945"
+   text-time="2015-02-09T01:43:25.905000Z"
+   kind="file"
+   committed-date="2015-02-09T01:43:25.905375Z"
+   prop-time="2015-02-09T08:07:42.579000Z"/>
+<entry
+   name="PushReceiver.java"
+   checksum="a8aa9b03984bc8d93634ffb36c6b8b73"
+   last-author="zhangwei"
+   committed-rev="2226"
+   text-time="2015-03-12T03:51:40.828000Z"
+   kind="file"
+   committed-date="2015-03-12T03:51:40.828000Z"
+   prop-time="2014-11-20T07:26:23.259000Z"/>
+</wc-entries>

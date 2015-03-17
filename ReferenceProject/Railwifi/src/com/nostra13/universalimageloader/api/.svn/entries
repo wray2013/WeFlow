@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="zhangwei"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/nostra13/universalimageloader/api"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2037"
+   kind="dir"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="AnimateFirstDisplayListener.java"
+   checksum="8c70401c87736408d318835403001f16"
+   last-author="zhangwei"
+   committed-rev="110"
+   text-time="2014-11-17T06:06:34.169000Z"
+   kind="file"
+   committed-date="2014-11-17T06:06:34.169875Z"
+   prop-time="2014-11-20T07:26:24.571000Z"/>
+<entry
+   name="Blur.java"
+   checksum="5579ede8e394949d4971b0594b8e8d03"
+   last-author="zhangwei"
+   text-time="2015-01-17T08:11:42.800000Z"
+   committed-rev="1611"
+   kind="file"
+   committed-date="2015-01-17T08:11:42.800750Z"
+   prop-time="2015-01-16T07:38:41.234000Z"/>
+<entry
+   name="BlurBitmapDisplayer.java"
+   checksum="85991f25383c60902014093a35aee0bb"
+   last-author="zhangwei"
+   committed-rev="1611"
+   text-time="2015-01-17T08:11:42.800000Z"
+   kind="file"
+   committed-date="2015-01-17T08:11:42.800750Z"
+   prop-time="2015-01-16T07:38:41.250000Z"/>
+<entry
+   name="CustomRoundedBitmapDisplayer.java"
+   checksum="849797881b839b22719d173477da40ac"
+   last-author="wangjm"
+   committed-rev="1523"
+   text-time="2015-01-14T04:10:51.957000Z"
+   kind="file"
+   committed-date="2015-01-15T06:12:55.691000Z"/>
+<entry
+   name="FadeInAnimateDisplayListener.java"
+   checksum="d3d6139f9571fd64e21a05afa9f4c44d"
+   last-author="zhangwei"
+   committed-rev="1513"
+   text-time="2015-01-13T09:30:49.456000Z"
+   kind="file"
+   committed-date="2015-01-13T09:30:49.456875Z"
+   prop-time="2015-01-15T06:10:07.020000Z"/>
+<entry
+   name="MyImageLoader.java"
+   checksum="a48eefac175bc8bdeb4359edda3948cf"
+   last-author="zhangwei"
+   text-time="2015-02-13T03:49:55.031000Z"
+   committed-rev="2037"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"
+   prop-time="2014-12-22T08:05:35.278000Z"/>
+<entry
+   name="RoundedBorderBitmapDisplayer.java"
+   checksum="27d5b70a6b0664d7114c8f63b064b186"
+   last-author="zhangwei"
+   text-time="2014-12-05T02:42:51.861000Z"
+   committed-rev="603"
+   kind="file"
+   committed-date="2014-12-05T02:42:51.861125Z"
+   prop-time="2014-12-05T04:21:32.624000Z"/>
+</wc-entries>

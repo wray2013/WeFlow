@@ -85,4 +85,5 @@
     
     <color name="scratch_bg_red">#e60012</color>
     <color name="scratch_bg_yellow">#fdce00</color>
+    <color name="text_gray">#888888</color>
 </resources>

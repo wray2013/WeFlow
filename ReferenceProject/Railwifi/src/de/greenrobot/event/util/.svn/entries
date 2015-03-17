@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/de/greenrobot/event/util"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="9"
+   kind="dir"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="AsyncExecutor.java"
+   checksum="beaa288a9eb8f6ec6e7e77221e338cb3"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="ErrorDialogConfig.java"
+   checksum="c9a9ff49e95b3142f3cddf29c9a6f567"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="ErrorDialogFragmentFactory.java"
+   checksum="d0126d3a9c0cb68930b5f612f5d0ef5f"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="ErrorDialogFragments.java"
+   checksum="870c8da58604e58dda1ca02b3daeff5f"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="ErrorDialogManager.java"
+   checksum="aae5a676c8add59460838321bc7f323d"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="ExceptionToResourceMapping.java"
+   checksum="5e9745a07564fc27338beb5afe195549"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="HasExecutionScope.java"
+   checksum="3d9ff10b05b0155ee762f9a9c0fdff70"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="ThrowableFailureEvent.java"
+   checksum="11a759111c8709dfddf53dab616db66e"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+</wc-entries>

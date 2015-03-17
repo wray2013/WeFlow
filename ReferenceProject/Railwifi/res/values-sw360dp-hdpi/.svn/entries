@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="wangjm"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/values-sw360dp-hdpi"
+   committed-rev="710"
+   kind="dir"
+   committed-date="2014-12-10T01:23:58.642375Z"/>
+<entry
+   name="dimens.xml"
+   checksum="88bf5ae155ede1c11d5f32de19d87581"
+   last-author="wangjm"
+   text-time="2014-12-09T09:47:40.909000Z"
+   committed-rev="710"
+   kind="file"
+   committed-date="2014-12-10T01:23:58.642000Z"/>
+</wc-entries>

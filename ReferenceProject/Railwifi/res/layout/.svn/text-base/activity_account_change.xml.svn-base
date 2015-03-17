@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    >
+    <RelativeLayout 
+        android:id="@+id/rl_content"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@color/white"
+	    android:layout_marginTop="8dp"
+	    android:layout_marginLeft="6dp"
+	    android:layout_marginRight="6dp"
+	    >
+	    <TextView 
+	        android:id="@+id/tv_line_a"
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:background="#f65c00"
+	        android:layout_alignParentTop="true"
+	        />    
+    	<EditText 
+        android:id="@+id/et_account"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/tv_line_a"
+        android:gravity="center_vertical"
+        android:hint="请输入原手机号码"
+        android:maxLength="11"
+        android:paddingLeft="10dp"
+        android:background="@drawable/order_confirm_edit_bg"
+        android:layout_marginLeft="6dp"
+	    android:layout_marginRight="6dp"
+	    android:layout_marginTop="6dp"
+	    android:singleLine="true"
+	    android:textColorHint="#888888"
+	    android:inputType="number"
+	    />
+			    
+       <ImageView 
+        android:id="@+id/iv_account_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/et_account"
+        android:layout_alignBottom="@+id/et_account"
+        android:layout_alignRight="@+id/et_account"
+        android:src="@drawable/icon_input_error"
+        android:visibility="gone"
+        />
+			  
+           	<EditText 
+        android:id="@+id/et_newaccount"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/et_account"
+        android:gravity="center_vertical"
+        android:hint="请输入新手机号码"
+        android:maxLength="11"
+        android:paddingLeft="10dp"
+        android:background="@drawable/order_confirm_edit_bg"
+        android:layout_marginLeft="6dp"
+	    android:layout_marginRight="6dp"
+	    android:layout_marginTop="15dp"
+	    android:singleLine="true"
+	    android:textColorHint="#888888"
+	    android:inputType="number"
+	    />
+			    
+       <ImageView 
+        android:id="@+id/iv_newaccount_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/et_newaccount"
+        android:layout_alignBottom="@+id/et_newaccount"
+        android:layout_alignRight="@+id/et_newaccount"
+        android:src="@drawable/icon_input_error"
+        android:visibility="gone"
+        />
+    
+    	<Button 
+    	    android:id="@+id/btn_get_code"
+    	    android:layout_width="175dp"
+    	    android:layout_height="42dp"
+    	    android:layout_marginTop="25dp"
+    	    android:layout_below="@+id/et_newaccount"
+    	    android:layout_centerHorizontal="true"
+    	    android:background="@drawable/btn_access_code_selector"
+    	    android:text="获取验证码"
+    	    android:textColor="@color/white"
+    	    />
+    
+ 	<EditText 
+        android:id="@+id/et_code"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/btn_get_code"
+        android:gravity="center_vertical"
+        android:hint="请输入短信验证码"
+        android:paddingLeft="10dp"
+        android:background="@drawable/order_confirm_edit_bg"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="6dp"
+	    android:layout_marginRight="6dp"
+	    android:layout_marginBottom="35dp"
+	    android:singleLine="true"
+	    android:textColorHint="#888888"
+   />
+ 		
+ 	<TextView 
+ 	    android:id="@+id/tv_line_b"
+ 	    android:layout_width="fill_parent"
+ 	    android:layout_height="1dp"
+ 	    android:background="#a1a1a1"
+ 	    android:layout_below="@+id/et_code"
+ 	    />
+    </RelativeLayout>
+</RelativeLayout>
+
+    
+

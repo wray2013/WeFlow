@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2401"
+   last-author="wangrui"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifiDaoGenerator"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2399"
+   kind="dir"
+   committed-date="2015-03-16T08:57:41.546750Z"/>
+<entry
+   name=".classpath"
+   checksum="053c46d74098c1fa3b015d2db889ada0"
+   last-author="youtian"
+   committed-rev="41"
+   text-time="2014-11-13T08:50:11.826000Z"
+   kind="file"
+   committed-date="2014-11-13T08:50:11.826125Z"/>
+<entry
+   name=".project"
+   checksum="e300bce07224cf59adcc3a51fc4502e4"
+   last-author="youtian"
+   committed-rev="39"
+   text-time="2014-11-13T08:45:25.685000Z"
+   kind="file"
+   committed-date="2014-11-13T08:45:25.685500Z"/>
+<entry
+   name=".settings"
+   kind="dir"/>
+<entry
+   name="bin"
+   kind="dir"/>
+<entry
+   name="libs"
+   kind="dir"/>
+<entry
+   name="src"
+   kind="dir"/>
+</wc-entries>

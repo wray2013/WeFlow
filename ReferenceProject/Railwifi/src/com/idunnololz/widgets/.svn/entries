@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/idunnololz/widgets"
+   committed-rev="434"
+   kind="dir"
+   committed-date="2014-12-01T04:57:34.689000Z"/>
+<entry
+   name="AnimatedExpandableListView.java"
+   checksum="43aaf47537d927cf9d82d08d74e08607"
+   last-author="wangjm"
+   committed-rev="434"
+   text-time="2014-10-31T20:40:18.000000Z"
+   kind="file"
+   committed-date="2014-12-01T04:57:34.689000Z"/>
+</wc-entries>

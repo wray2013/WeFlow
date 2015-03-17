@@ -139,7 +139,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener {
 			build.where(Properties.Phone_num.eq(etPhone.getText().toString()));
 			if (build.buildCount().count() ==0) {
 				Log.d("=AAA=","buildCount = 0");
-				phoneDao.insert(new FrequentPhone(null, etPhone.getText().toString()));
+				phoneDao.insert(new FrequentPhone(etPhone.getText().toString()));
 			}
 			break;
 		}

@@ -1,0 +1,3480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="youtian"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/drawable-xhdpi"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2410"
+   kind="dir"
+   committed-date="2015-03-16T10:24:19.109250Z"/>
+<entry
+   name="add_icon.png"
+   checksum="869d92d2f5de1a933afec5b1eef13758"
+   last-author="wangjm"
+   committed-rev="1814"
+   text-time="2015-02-02T07:01:19.883000Z"
+   kind="file"
+   committed-date="2015-02-02T07:21:24.113000Z"
+   prop-time="2015-01-16T07:39:41.817000Z"/>
+<entry
+   name="add_icon_alliance.png"
+   checksum="47d619dd11d6a042b5333f520650d7d0"
+   last-author="wangjm"
+   committed-rev="2026"
+   text-time="2015-02-12T08:53:57.283000Z"
+   kind="file"
+   committed-date="2015-02-12T08:59:51.842000Z"
+   prop-time="2015-01-16T07:39:41.775000Z"/>
+<entry
+   name="add_icon_city.png"
+   checksum="10c00ee56a39ad942ec3a56dab2f4f1a"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T01:53:08.994000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2015-01-16T07:39:41.675000Z"/>
+<entry
+   name="add_icon_funny.png"
+   checksum="02ea6fdc0003689fbe9b53757f673b8c"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T01:53:08.997000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2015-01-16T07:39:41.796000Z"/>
+<entry
+   name="add_icon_movie.png"
+   checksum="14485ecf2d6ebcd6ce084aa26859f95c"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T01:53:09.000000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2015-01-16T07:39:41.695000Z"/>
+<entry
+   name="add_icon_music.png"
+   checksum="f169aaaeefdb41d6f166b819fdc4e80f"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T01:53:09.003000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2015-01-16T07:39:41.743000Z"/>
+<entry
+   name="add_icon_shopping.png"
+   checksum="4afb0ef1687915579f735fc9e32c16e5"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T01:53:08.984000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2015-01-16T07:39:41.806000Z"/>
+<entry
+   name="add_icon_train_serve.png"
+   checksum="b3bef557dab7243bce43f656ebeb303c"
+   last-author="wangjm"
+   committed-rev="1807"
+   text-time="2015-02-02T03:21:26.450000Z"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2015-01-17T02:01:20.283000Z"/>
+<entry
+   name="back_1.png"
+   checksum="31480ffcc38c78aa3b31a7314e8f705e"
+   last-author="youtian"
+   text-time="2015-02-02T02:57:45.503000Z"
+   committed-rev="1804"
+   kind="file"
+   committed-date="2015-02-02T02:57:45.503875Z"
+   prop-time="2014-11-20T07:26:39.949000Z"/>
+<entry
+   name="back_2.png"
+   checksum="c28b19878e9d773c966c20910c1877bb"
+   last-author="youtian"
+   text-time="2015-02-02T02:57:45.503000Z"
+   committed-rev="1804"
+   kind="file"
+   committed-date="2015-02-02T02:57:45.503875Z"
+   prop-time="2014-11-20T07:26:40.028000Z"/>
+<entry
+   name="bg_individual_center.png"
+   checksum="e7f90ab31d6402985de8c70398138b6f"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:28.115000Z"/>
+<entry
+   name="bg_me_space.png"
+   checksum="2685cb7601d9b1508c75247447f8d6e0"
+   last-author="wangjm"
+   text-time="2014-12-18T02:27:32.429000Z"
+   committed-rev="1005"
+   kind="file"
+   committed-date="2014-12-18T02:32:52.837000Z"
+   prop-time="2014-12-18T02:32:28.977000Z"/>
+<entry
+   name="bg_tag_color_a.9.png"
+   checksum="f3adf823e9056b7b4d541f1ac74fa6a2"
+   last-author="wangjm"
+   committed-rev="713"
+   text-time="2014-12-10T02:13:08.718000Z"
+   kind="file"
+   committed-date="2014-12-10T02:15:02.658000Z"
+   prop-time="2014-12-10T02:15:06.639000Z"/>
+<entry
+   name="bg_tag_color_b.9.png"
+   checksum="f23bd63dd99281e83cee4d68c10f9d08"
+   last-author="wangjm"
+   committed-rev="713"
+   text-time="2014-12-10T02:13:08.720000Z"
+   kind="file"
+   committed-date="2014-12-10T02:15:02.658000Z"
+   prop-time="2014-12-10T02:15:06.616000Z"/>
+<entry
+   name="bg_tag_color_c.9.png"
+   checksum="b659768513828070fec3f7b47f484fef"
+   last-author="wangjm"
+   committed-rev="713"
+   text-time="2014-12-10T02:13:08.722000Z"
+   kind="file"
+   committed-date="2014-12-10T02:15:02.658000Z"
+   prop-time="2014-12-10T02:15:06.626000Z"/>
+<entry
+   name="bg_tag_color_d.9.png"
+   checksum="170bf78f207a8d5bae1b005f244c3e2c"
+   last-author="wangjm"
+   committed-rev="713"
+   text-time="2014-12-10T02:13:08.714000Z"
+   kind="file"
+   committed-date="2014-12-10T02:15:02.658000Z"
+   prop-time="2014-12-10T02:15:06.652000Z"/>
+<entry
+   name="bg_tag_color_e.9.png"
+   checksum="94fb6a6b51c45e022f2ced62c470fbc4"
+   last-author="wangjm"
+   committed-rev="713"
+   text-time="2014-12-10T02:13:08.716000Z"
+   kind="file"
+   committed-date="2014-12-10T02:15:02.658000Z"
+   prop-time="2014-12-10T02:15:06.605000Z"/>
+<entry
+   name="bottom_btn_game_normal.png"
+   checksum="8e06a25894f1dce532110b1129a2bd6d"
+   last-author="wangjm"
+   text-time="2014-12-04T06:28:15.247000Z"
+   committed-rev="572"
+   kind="file"
+   committed-date="2014-12-04T07:31:02.611000Z"
+   prop-time="2014-12-04T07:30:49.174000Z"/>
+<entry
+   name="bottom_btn_game_pressed.png"
+   checksum="8eda683f192ae3b33320ec83f05f97c8"
+   last-author="wangjm"
+   text-time="2014-12-04T06:28:15.247000Z"
+   committed-rev="572"
+   kind="file"
+   committed-date="2014-12-04T07:31:02.611000Z"
+   prop-time="2014-12-04T07:30:49.189000Z"/>
+<entry
+   name="bottom_btn_general_grey_normal.9.png"
+   checksum="31284ff5feb9b9591d8f4bd38b8d60c3"
+   last-author="wangjm"
+   text-time="2015-03-12T03:53:48.647000Z"
+   committed-rev="2228"
+   kind="file"
+   committed-date="2015-03-12T04:05:52.437000Z"
+   prop-time="2015-03-12T04:05:41.671000Z"/>
+<entry
+   name="bottom_btn_general_grey_selected.9.png"
+   checksum="5ef924cbf98b3cc68a35abe889d353de"
+   last-author="wangjm"
+   text-time="2015-03-12T03:53:48.649000Z"
+   committed-rev="2228"
+   kind="file"
+   committed-date="2015-03-12T04:05:52.437000Z"
+   prop-time="2015-03-12T04:05:41.698000Z"/>
+<entry
+   name="bottom_btn_goshopping_normal.png"
+   checksum="473da4168183ecf996ef8e9c7d5e4bc3"
+   last-author="wangjm"
+   text-time="2014-12-04T03:52:38.418000Z"
+   committed-rev="572"
+   kind="file"
+   committed-date="2014-12-04T07:31:02.611000Z"
+   prop-time="2014-12-04T07:30:49.225000Z"/>
+<entry
+   name="bottom_btn_goshopping_pressed.png"
+   checksum="021ee4e9096ce08b470f6a4838f9a89e"
+   last-author="wangjm"
+   text-time="2014-12-04T03:52:38.416000Z"
+   committed-rev="572"
+   kind="file"
+   committed-date="2014-12-04T07:31:02.611000Z"
+   prop-time="2014-12-04T07:30:49.238000Z"/>
+<entry
+   name="bottom_btn_white_normal.9.png"
+   checksum="239807ffd2f717fc29b61f34e2d80b1f"
+   last-author="wangjm"
+   text-time="2015-03-12T03:53:48.650000Z"
+   committed-rev="2228"
+   kind="file"
+   committed-date="2015-03-12T04:05:52.437000Z"
+   prop-time="2015-03-12T04:05:41.724000Z"/>
+<entry
+   name="bottom_btn_white_selected.9.png"
+   checksum="02898147fd8be59078bc71aea91cca50"
+   last-author="wangjm"
+   text-time="2015-03-12T03:53:48.651000Z"
+   committed-rev="2228"
+   kind="file"
+   committed-date="2015-03-12T04:05:52.437000Z"
+   prop-time="2015-03-12T04:05:41.644000Z"/>
+<entry
+   name="btn_access_code.9.png"
+   checksum="992f966be83fd735688a3e3c1a4b8cc6"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:27.991000Z"/>
+<entry
+   name="btn_access_code_select.9.png"
+   checksum="2cc2e84872e5024f7bb49b6a684b7faa"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:28.071000Z"/>
+<entry
+   name="btn_add_disable.png"
+   checksum="1553cfb41a525d96cc2b0d013d313ea7"
+   last-author="wangjm"
+   committed-rev="1954"
+   text-time="2015-02-09T03:12:10.788000Z"
+   kind="file"
+   committed-date="2015-02-09T03:30:02.546000Z"
+   prop-time="2015-02-09T03:29:36.339000Z"/>
+<entry
+   name="btn_again.png"
+   checksum="bacf95360f02b1ae3802e37a6477f9d8"
+   last-author="youtian"
+   text-time="2014-11-24T02:30:29.722000Z"
+   committed-rev="277"
+   kind="file"
+   committed-date="2014-11-24T02:30:29.722000Z"
+   prop-time="2014-11-24T04:24:18.527000Z"/>
+<entry
+   name="btn_again_selected.png"
+   checksum="0b94e9f23523edd4e4d88e128c578fa2"
+   last-author="youtian"
+   text-time="2014-11-24T02:30:29.722000Z"
+   committed-rev="277"
+   kind="file"
+   committed-date="2014-11-24T02:30:29.722000Z"
+   prop-time="2014-11-24T04:24:18.519000Z"/>
+<entry
+   name="btn_before_normal.png"
+   checksum="ab0f6b021c3c80d4f95d7dc97ed0efda"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T04:01:43.685000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.696000Z"/>
+<entry
+   name="btn_before_pressed.png"
+   checksum="0068061d7e585199d6360418f5b32df0"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T04:01:43.688000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.636000Z"/>
+<entry
+   name="btn_book_normal.png"
+   checksum="1f57bca869d4048ee6feb145ac6d9804"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T02:17:34.820000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.621000Z"/>
+<entry
+   name="btn_book_pressed.png"
+   checksum="c6f923791dc8a11103028b07ddf499f3"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T02:17:34.823000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.416000Z"/>
+<entry
+   name="btn_cancel.png"
+   checksum="0952a92dde8abd5a02d3eaaebae7c5f9"
+   last-author="youtian"
+   text-time="2014-11-26T08:12:10.675000Z"
+   committed-rev="372"
+   kind="file"
+   committed-date="2014-11-26T08:12:10.675125Z"
+   prop-time="2014-11-24T07:07:39.439000Z"/>
+<entry
+   name="btn_cancel_selected.png"
+   checksum="8652fb4cbfb8d40ba22715208f5b5b70"
+   last-author="youtian"
+   text-time="2014-11-26T08:12:10.675000Z"
+   committed-rev="372"
+   kind="file"
+   committed-date="2014-11-26T08:12:10.675125Z"
+   prop-time="2014-11-24T07:07:39.422000Z"/>
+<entry
+   name="btn_close.png"
+   checksum="686efc5d56cd4ee4c13e16324e611fe8"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:41.780000Z"/>
+<entry
+   name="btn_close_normal.png"
+   checksum="5dcf464dd4765d9a77d26e754eef5027"
+   last-author="wangjm"
+   committed-rev="1531"
+   text-time="2015-01-15T10:03:06.355000Z"
+   kind="file"
+   committed-date="2015-01-15T10:11:28.941000Z"
+   prop-time="2015-01-15T10:10:48.491000Z"/>
+<entry
+   name="btn_close_pressed.png"
+   checksum="4a31961986ad7603c65ee5bf7d33f070"
+   last-author="wangjm"
+   committed-rev="1531"
+   text-time="2015-01-15T10:03:06.355000Z"
+   kind="file"
+   committed-date="2015-01-15T10:11:28.941000Z"
+   prop-time="2015-01-15T10:10:48.518000Z"/>
+<entry
+   name="btn_collect.png"
+   checksum="36ed77cb1ad88d892a0bf9e208d1c190"
+   last-author="youtian"
+   committed-rev="190"
+   text-time="2014-11-19T08:29:54.654000Z"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"
+   prop-time="2014-11-20T07:26:46.214000Z"/>
+<entry
+   name="btn_collect_selected.png"
+   checksum="7665320e83b1287f8c767ced8608202d"
+   last-author="youtian"
+   committed-rev="190"
+   text-time="2014-11-19T08:29:54.654000Z"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"
+   prop-time="2014-11-20T07:26:44.954000Z"/>
+<entry
+   name="btn_confirm.png"
+   checksum="9b5fe1240661d79a0a1ab0908082d7f8"
+   last-author="youtian"
+   committed-rev="372"
+   text-time="2014-11-26T08:12:10.675000Z"
+   kind="file"
+   committed-date="2014-11-26T08:12:10.675125Z"
+   prop-time="2014-11-26T10:32:12.923000Z"/>
+<entry
+   name="btn_confirm_selected.png"
+   checksum="154baa3df04047cc791c604b92b35a35"
+   last-author="youtian"
+   committed-rev="372"
+   text-time="2014-11-26T08:12:10.675000Z"
+   kind="file"
+   committed-date="2014-11-26T08:12:10.675125Z"
+   prop-time="2014-11-26T10:32:12.946000Z"/>
+<entry
+   name="btn_confirmed.png"
+   checksum="4e79228be6e501ec129cca274d579162"
+   last-author="wangjm"
+   committed-rev="182"
+   text-time="2014-11-19T06:15:15.623000Z"
+   kind="file"
+   committed-date="2014-11-19T06:15:15.623000Z"
+   prop-time="2014-11-20T07:26:41.926000Z"/>
+<entry
+   name="btn_delete_normal.png"
+   checksum="6c388fd51975580ea5b8e8766fbcd8c3"
+   last-author="wangjm"
+   text-time="2015-03-10T08:37:44.988000Z"
+   committed-rev="2145"
+   kind="file"
+   committed-date="2015-03-10T08:56:33.578000Z"
+   prop-time="2015-03-10T08:56:17.890000Z"/>
+<entry
+   name="btn_delete_pressed.png"
+   checksum="ed6eae9b8a2eaae0230140335ed115bc"
+   last-author="wangjm"
+   text-time="2015-03-10T08:37:44.985000Z"
+   committed-rev="2145"
+   kind="file"
+   committed-date="2015-03-10T08:56:33.578000Z"
+   prop-time="2015-03-10T08:56:17.866000Z"/>
+<entry
+   name="btn_fav_normal.png"
+   checksum="d9808615490cc126dd6d38af0bc62385"
+   last-author="zhangwei"
+   text-time="2014-12-11T03:54:29.033000Z"
+   committed-rev="779"
+   kind="file"
+   committed-date="2014-12-11T03:54:29.033000Z"
+   prop-time="2014-12-08T06:18:43.515000Z"/>
+<entry
+   name="btn_fav_selected.png"
+   checksum="76b303d287cb10480e0ae32d20b31130"
+   last-author="zhangwei"
+   committed-rev="779"
+   text-time="2014-12-11T03:54:29.033000Z"
+   kind="file"
+   committed-date="2014-12-11T03:54:29.033000Z"
+   prop-time="2014-12-05T04:21:32.141000Z"/>
+<entry
+   name="btn_film_play_normal.png"
+   checksum="0d4885375a95be4ffd1a0aad10791da4"
+   last-author="wangjm"
+   committed-rev="644"
+   text-time="2014-11-21T12:38:31.497000Z"
+   kind="file"
+   committed-date="2014-12-08T06:19:15.126000Z"
+   prop-time="2014-12-08T06:19:16.452000Z"/>
+<entry
+   name="btn_film_play_pressed.png"
+   checksum="e29e1d055e40aea6e3e767779f42ef17"
+   last-author="wangjm"
+   committed-rev="644"
+   text-time="2014-11-21T12:39:55.049000Z"
+   kind="file"
+   committed-date="2014-12-08T06:19:15.126000Z"
+   prop-time="2014-12-08T06:19:16.484000Z"/>
+<entry
+   name="btn_help.png"
+   checksum="9cc3525d1b44f1c76e67d4c58624359e"
+   last-author="youtian"
+   committed-rev="319"
+   text-time="2014-11-25T01:27:36.800000Z"
+   kind="file"
+   committed-date="2014-11-25T01:27:36.800125Z"
+   prop-time="2014-11-25T01:38:20.449000Z"/>
+<entry
+   name="btn_help_selected.png"
+   checksum="7748803472becf4d9607eec02f053c7d"
+   last-author="youtian"
+   committed-rev="319"
+   text-time="2014-11-25T01:27:36.800000Z"
+   kind="file"
+   committed-date="2014-11-25T01:27:36.800125Z"
+   prop-time="2014-11-25T01:38:20.508000Z"/>
+<entry
+   name="btn_history_order.png"
+   checksum="fd62ce3fe04bc4e27633d76909978007"
+   last-author="wangjm"
+   committed-rev="108"
+   text-time="2014-11-17T04:11:35.232000Z"
+   kind="file"
+   committed-date="2014-11-17T04:11:35.232375Z"
+   prop-time="2014-11-20T07:26:46.426000Z"/>
+<entry
+   name="btn_index_information_normal.png"
+   checksum="2cf45f87a4065e60b1168608eb8ea133"
+   last-author="wangjm"
+   committed-rev="1807"
+   text-time="2015-02-02T03:21:26.453000Z"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2014-11-20T07:26:47.508000Z"/>
+<entry
+   name="btn_index_information_pressed.png"
+   checksum="6e7c1687fb53cb62f7444756e80ccdf0"
+   last-author="wangjm"
+   committed-rev="1807"
+   text-time="2015-02-02T03:21:26.455000Z"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2014-11-20T07:26:41.124000Z"/>
+<entry
+   name="btn_index_prompt_normal.png"
+   checksum="e9193922b5804fbc7656450ebb3033b5"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T02:24:08.309000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-20T07:26:42.431000Z"/>
+<entry
+   name="btn_index_prompt_pressed.png"
+   checksum="7d21e1e51552ea7aae2ee31fe9f1529f"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T02:24:08.312000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-20T07:26:46.445000Z"/>
+<entry
+   name="btn_index_service_normal.png"
+   checksum="874c83fdc1a2bdf3862da803ab36b026"
+   last-author="wangjm"
+   text-time="2015-02-02T03:21:26.458000Z"
+   committed-rev="1807"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2015-01-26T06:28:30.976000Z"/>
+<entry
+   name="btn_index_service_pressed.png"
+   checksum="eb342857be584ce540f96686c6af0647"
+   last-author="wangjm"
+   text-time="2015-02-02T03:21:26.460000Z"
+   committed-rev="1807"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2015-01-26T06:28:30.964000Z"/>
+<entry
+   name="btn_index_shopping_normal.png"
+   checksum="84640a839bc60f235dd12dc6958baac3"
+   last-author="wangjm"
+   text-time="2015-01-30T02:24:08.318000Z"
+   committed-rev="1800"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2015-01-27T03:16:30.119000Z"/>
+<entry
+   name="btn_index_shopping_pressed.png"
+   checksum="70a2e5d91dedf8e1b217833f29a71e20"
+   last-author="wangjm"
+   text-time="2015-01-30T02:24:08.320000Z"
+   committed-rev="1800"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2015-01-27T03:16:30.130000Z"/>
+<entry
+   name="btn_index_tourism_normal.png"
+   checksum="f57cae0436874dc9bbcc67231dc6a45c"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T02:24:08.322000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-20T10:07:31.075000Z"/>
+<entry
+   name="btn_index_tourism_pressed.png"
+   checksum="c9c4832b4adb866490c91fbd5ff8f0e3"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T02:24:08.300000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-20T10:07:31.085000Z"/>
+<entry
+   name="btn_list_app_normal.png"
+   checksum="4c3dece574288753f38c8a6f44d8d38c"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:40.122000Z"/>
+<entry
+   name="btn_list_app_pressed.png"
+   checksum="4e77fd16b5c74dcf1e3f1dd4e0945e4c"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:40.865000Z"/>
+<entry
+   name="btn_list_csfc_normal.png"
+   checksum="01b77477fe23689241942fdbb6d2e498"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.191000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.212000Z"/>
+<entry
+   name="btn_list_csfc_pressed.png"
+   checksum="2cddb6814646466987d023f9ae100b1e"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.193000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.156000Z"/>
+<entry
+   name="btn_list_cssh_normal.png"
+   checksum="3c7de7866a46fd19deca27a25df1fb3a"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:45.264000Z"/>
+<entry
+   name="btn_list_cssh_preesd.png"
+   checksum="90b2f76d25e94ff0241ba59e9bc3944b"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:46.471000Z"/>
+<entry
+   name="btn_list_home_normal.png"
+   checksum="53342f335140f7c564fe7c02f9ef521b"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.193000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.198000Z"/>
+<entry
+   name="btn_list_home_pressed.png"
+   checksum="e8f26d3e6c37b0597270da4168178161"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.194000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.182000Z"/>
+<entry
+   name="btn_list_lcfw_normal.png"
+   checksum="2a9ac4e75166f4e9b092749b21b86912"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.195000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.236000Z"/>
+<entry
+   name="btn_list_lcfw_pressed.png"
+   checksum="f6d4c2d2a1d2828e4c9b94dff0a70b34"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.195000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.260000Z"/>
+<entry
+   name="btn_list_tllm_normal.png"
+   checksum="99eff9abb39186fb2ab54dfec389baf6"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.188000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.248000Z"/>
+<entry
+   name="btn_list_tllm_pressed.png"
+   checksum="7fac23e3b499c025ba0868dd68a1cb13"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.190000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.293000Z"/>
+<entry
+   name="btn_list_yxsj_normal.png"
+   checksum="e3cfa9ec5a811aa041251fb9ae5d54f6"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.197000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.168000Z"/>
+<entry
+   name="btn_list_yxsj_pressed.png"
+   checksum="7dcccf22a5a8682b8a4814b651f558cb"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.187000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.282000Z"/>
+<entry
+   name="btn_list_yyyl_normal.png"
+   checksum="07d31c6e0afd3ee1f7a9150c3cf6a4f7"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.196000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.225000Z"/>
+<entry
+   name="btn_list_yyyl_pressed.png"
+   checksum="aa3d95db07245ff6a79ce6ec663a75b1"
+   last-author="wangjm"
+   text-time="2015-01-30T01:55:57.196000Z"
+   committed-rev="1801"
+   kind="file"
+   committed-date="2015-02-02T01:50:11.878000Z"
+   prop-time="2015-02-02T01:50:02.271000Z"/>
+<entry
+   name="btn_log_out.png"
+   checksum="6e58d06dffe9d51e0b97be8bab7bbcac"
+   last-author="youtian"
+   text-time="2015-03-13T06:27:44.140000Z"
+   committed-rev="2305"
+   kind="file"
+   committed-date="2015-03-13T06:27:44.140500Z"
+   prop-time="2015-03-14T09:00:19.224000Z"/>
+<entry
+   name="btn_log_out_select.png"
+   checksum="96ee9c7e83a3b9cfb9d6fb363a7e6bd9"
+   last-author="youtian"
+   text-time="2015-03-13T06:27:44.140000Z"
+   committed-rev="2305"
+   kind="file"
+   committed-date="2015-03-13T06:27:44.140500Z"
+   prop-time="2015-03-14T09:00:19.236000Z"/>
+<entry
+   name="btn_login.png"
+   checksum="c7e0ceab995b0cb60ff8c27a94103f2f"
+   last-author="youtian"
+   text-time="2015-03-16T04:26:33.124000Z"
+   committed-rev="2377"
+   kind="file"
+   committed-date="2015-03-16T04:26:33.124875Z"
+   prop-time="2015-03-10T07:03:28.001000Z"/>
+<entry
+   name="btn_login_select.png"
+   checksum="e7a9710fa3bc4409d28bc1085df1d12c"
+   last-author="youtian"
+   committed-rev="2377"
+   text-time="2015-03-16T04:26:33.124000Z"
+   kind="file"
+   committed-date="2015-03-16T04:26:33.124875Z"
+   prop-time="2015-03-16T05:25:09.490000Z"/>
+<entry
+   name="btn_menu_message.png"
+   checksum="0e7589be89fc955e99684458ba1d671d"
+   last-author="youtian"
+   text-time="2015-03-10T07:00:38.109000Z"
+   committed-rev="2137"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2014-11-20T07:26:42.007000Z"/>
+<entry
+   name="btn_menu_message_pressed.png"
+   checksum="a32c5a5a33b51a83649e533204201e20"
+   last-author="youtian"
+   text-time="2015-03-10T07:00:38.109000Z"
+   committed-rev="2137"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2014-11-20T07:26:46.479000Z"/>
+<entry
+   name="btn_minus_disable.png"
+   checksum="421b92e06e0820c57a57b747f61fdd92"
+   last-author="wangjm"
+   committed-rev="1954"
+   text-time="2015-02-09T03:12:10.785000Z"
+   kind="file"
+   committed-date="2015-02-09T03:30:02.546000Z"
+   prop-time="2015-02-09T03:29:36.319000Z"/>
+<entry
+   name="btn_minus_normal.png"
+   checksum="3d139e0d237670a9c40d6924fc6edf33"
+   last-author="wangjm"
+   committed-rev="140"
+   text-time="2014-11-18T01:07:16.279000Z"
+   kind="file"
+   committed-date="2014-11-18T01:07:16.279250Z"
+   prop-time="2014-11-20T07:26:45.306000Z"/>
+<entry
+   name="btn_minus_pressed.png"
+   checksum="35c4a4301de99329f9423abb67a04b55"
+   last-author="wangjm"
+   committed-rev="140"
+   text-time="2014-11-18T01:07:16.279000Z"
+   kind="file"
+   committed-date="2014-11-18T01:07:16.279250Z"
+   prop-time="2014-11-20T07:26:45.654000Z"/>
+<entry
+   name="btn_movie_normal.png"
+   checksum="e8623c67f972535c477f8d87b17fb3cd"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-02-02T01:49:57.300000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.427000Z"/>
+<entry
+   name="btn_movie_pressed.png"
+   checksum="8c5e609a3c9fea224c9aa8aea6f4478f"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-02-02T01:49:57.300000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.345000Z"/>
+<entry
+   name="btn_music_normal.png"
+   checksum="fa1a0cfe54bc411520b9f5f22921a3c5"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-02-02T01:49:57.300000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.671000Z"/>
+<entry
+   name="btn_music_pressed.png"
+   checksum="4677f014372ae58403e609746597dbfb"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-02-02T01:49:57.300000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.512000Z"/>
+<entry
+   name="btn_open.png"
+   checksum="b8448d9a2e4edbfbdc3e080f5ab1bc4c"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:39.756000Z"/>
+<entry
+   name="btn_open_normal.png"
+   checksum="99ec86dc45dc4d4aa6d6faa7a6163bcb"
+   last-author="wangjm"
+   committed-rev="1531"
+   text-time="2015-01-15T10:03:06.355000Z"
+   kind="file"
+   committed-date="2015-01-15T10:11:28.941000Z"
+   prop-time="2015-01-15T10:10:48.548000Z"/>
+<entry
+   name="btn_open_pressed.png"
+   checksum="a920de7519835108106dba0fc02db8d9"
+   last-author="wangjm"
+   committed-rev="1531"
+   text-time="2015-01-15T10:03:06.355000Z"
+   kind="file"
+   committed-date="2015-01-15T10:11:28.941000Z"
+   prop-time="2015-01-15T10:10:48.535000Z"/>
+<entry
+   name="btn_pay.png"
+   checksum="7d9050c853adf9e429714d89c2077d06"
+   last-author="youtian"
+   committed-rev="190"
+   text-time="2014-11-19T08:29:54.654000Z"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"
+   prop-time="2014-11-20T07:26:40.327000Z"/>
+<entry
+   name="btn_pay_selected.png"
+   checksum="5b779f5e5580885c623321cf026dd252"
+   last-author="youtian"
+   committed-rev="190"
+   text-time="2014-11-19T08:29:54.654000Z"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"
+   prop-time="2014-11-20T07:26:39.793000Z"/>
+<entry
+   name="btn_payment.png"
+   checksum="3ee103308799b833dd2901e178f3cda9"
+   last-author="youtian"
+   committed-rev="190"
+   text-time="2014-11-19T08:29:54.654000Z"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"
+   prop-time="2014-11-20T07:26:42.268000Z"/>
+<entry
+   name="btn_payment_selected.png"
+   checksum="eb54b8f2d706836849f184088d43e4d3"
+   last-author="youtian"
+   committed-rev="190"
+   text-time="2014-11-19T08:29:54.654000Z"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"
+   prop-time="2014-11-20T07:26:40.196000Z"/>
+<entry
+   name="btn_payment_success.png"
+   checksum="43bfe58013683b93bae5bceec5c533c7"
+   last-author="youtian"
+   text-time="2014-11-20T10:03:19.779000Z"
+   committed-rev="227"
+   kind="file"
+   committed-date="2014-11-20T10:03:19.779250Z"
+   prop-time="2014-11-20T10:04:44.177000Z"/>
+<entry
+   name="btn_play_funny_normal.png"
+   checksum="7623faf81bf997e96d34ae225f6f71af"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-02-02T01:49:57.300000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.385000Z"/>
+<entry
+   name="btn_play_funny_pressed.png"
+   checksum="d4c42b5973452744cbb175f266c0b52d"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-02-02T01:49:57.300000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T01:46:01.474000Z"/>
+<entry
+   name="btn_plus_normal.png"
+   checksum="b2e33b7a49f44b58b050e5623e11b9f7"
+   last-author="wangjm"
+   committed-rev="140"
+   text-time="2014-11-18T01:07:16.279000Z"
+   kind="file"
+   committed-date="2014-11-18T01:07:16.279250Z"
+   prop-time="2014-11-20T07:26:40.335000Z"/>
+<entry
+   name="btn_plus_pressed.png"
+   checksum="ff97c9efccef46ba53c4118133076b9b"
+   last-author="wangjm"
+   committed-rev="140"
+   text-time="2014-11-18T01:07:16.279000Z"
+   kind="file"
+   committed-date="2014-11-18T01:07:16.279250Z"
+   prop-time="2014-11-20T07:26:42.016000Z"/>
+<entry
+   name="btn_recharge.png"
+   checksum="73adf95fd3628f86ba5ea4d1eb092122"
+   last-author="youtian"
+   committed-rev="2150"
+   text-time="2015-03-10T09:25:25.265000Z"
+   kind="file"
+   committed-date="2015-03-10T09:25:25.265500Z"
+   prop-time="2015-03-10T09:49:29.239000Z"/>
+<entry
+   name="btn_recharge_select.png"
+   checksum="f5387e025efe7406b6abc4810633f91b"
+   last-author="youtian"
+   committed-rev="2150"
+   text-time="2015-03-10T09:25:25.265000Z"
+   kind="file"
+   committed-date="2015-03-10T09:25:25.265500Z"
+   prop-time="2015-03-10T09:49:29.231000Z"/>
+<entry
+   name="btn_recommend_normal.png"
+   checksum="630a4f3a935334cdcf1f11387dde5353"
+   last-author="wangjm"
+   committed-rev="2291"
+   text-time="2015-03-12T09:54:48.383000Z"
+   kind="file"
+   committed-date="2015-03-13T04:10:24.437000Z"
+   prop-time="2014-11-28T01:46:01.501000Z"/>
+<entry
+   name="btn_recommend_pressed.png"
+   checksum="802d994b445237dfd61f1086ac1a3739"
+   last-author="wangjm"
+   committed-rev="2291"
+   text-time="2015-03-12T09:54:48.385000Z"
+   kind="file"
+   committed-date="2015-03-13T04:10:24.437000Z"
+   prop-time="2014-11-28T01:46:01.358000Z"/>
+<entry
+   name="btn_record.png"
+   checksum="eb204507d08174e2912de3048e513fa4"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:28.036000Z"/>
+<entry
+   name="btn_recorded.png"
+   checksum="3d823725eb4547282b6c412bfb06520f"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:28.040000Z"/>
+<entry
+   name="btn_red_disabled.9.png"
+   checksum="ee5610421d3ee57dafd318eb0f2937c3"
+   last-author="zhangwei"
+   committed-rev="1870"
+   text-time="2015-02-04T07:36:50.628000Z"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:40.442000Z"/>
+<entry
+   name="btn_red_normal.9.png"
+   checksum="a31e09d083fff6bbc523e33da3584472"
+   last-author="zhangwei"
+   committed-rev="1870"
+   text-time="2015-02-04T07:36:50.628000Z"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:40.406000Z"/>
+<entry
+   name="btn_red_pressed.9.png"
+   checksum="5c29b626619cdb4b2441bfb3a1c61337"
+   last-author="zhangwei"
+   committed-rev="1870"
+   text-time="2015-02-04T07:36:50.628000Z"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:40.433000Z"/>
+<entry
+   name="btn_redownload_normal.png"
+   checksum="af91c5ab2b17f0b60cef4b6944516905"
+   last-author="wangjm"
+   committed-rev="2153"
+   text-time="2015-03-10T09:16:46.642000Z"
+   kind="file"
+   committed-date="2015-03-10T09:38:49.187000Z"
+   prop-time="2015-03-10T09:38:27.691000Z"/>
+<entry
+   name="btn_redownload_pressed.png"
+   checksum="ff1e0d01b86d77689c580f11e130a217"
+   last-author="wangjm"
+   committed-rev="2153"
+   text-time="2015-03-10T09:16:46.641000Z"
+   kind="file"
+   committed-date="2015-03-10T09:38:49.187000Z"
+   prop-time="2015-03-10T09:38:27.715000Z"/>
+<entry
+   name="btn_registered.png"
+   checksum="e2322981ef88e058cef16cd9b8d7d92e"
+   last-author="youtian"
+   committed-rev="2377"
+   text-time="2015-03-16T04:26:33.124000Z"
+   kind="file"
+   committed-date="2015-03-16T04:26:33.124875Z"
+   prop-time="2015-03-16T05:25:09.498000Z"/>
+<entry
+   name="btn_registered_select.png"
+   checksum="9db47225d6b85a1255f9fc68ecc3bffb"
+   last-author="youtian"
+   committed-rev="2377"
+   text-time="2015-03-16T04:26:33.124000Z"
+   kind="file"
+   committed-date="2015-03-16T04:26:33.124875Z"
+   prop-time="2015-03-16T05:25:09.468000Z"/>
+<entry
+   name="btn_remove_normal.png"
+   checksum="29988bcf1e8705c52f427e08d713935a"
+   last-author="wangjm"
+   text-time="2014-11-18T01:07:16.279000Z"
+   committed-rev="2291"
+   kind="file"
+   committed-date="2015-03-13T04:10:24.437000Z"
+   prop-time="2015-03-13T04:10:14.334000Z"/>
+<entry
+   name="btn_remove_pressed.png"
+   checksum="34b5d2b04ff18cc31c742ea78f071544"
+   last-author="wangjm"
+   text-time="2014-11-18T01:07:16.279000Z"
+   committed-rev="2291"
+   kind="file"
+   committed-date="2015-03-13T04:10:24.437000Z"
+   prop-time="2015-03-13T04:10:14.310000Z"/>
+<entry
+   name="btn_satisfaction_survey_normal.png"
+   checksum="f57cae0436874dc9bbcc67231dc6a45c"
+   last-author="wangjm"
+   text-time="2015-02-02T03:21:26.463000Z"
+   committed-rev="1807"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2015-01-27T03:16:30.144000Z"/>
+<entry
+   name="btn_satisfaction_survey_pressed.png"
+   checksum="c9c4832b4adb866490c91fbd5ff8f0e3"
+   last-author="wangjm"
+   text-time="2015-02-02T03:21:26.466000Z"
+   committed-rev="1807"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2015-01-27T03:16:30.157000Z"/>
+<entry
+   name="btn_setting_normal.png"
+   checksum="4d47d3216431f0f956c7246ce2c459ab"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:47.517000Z"/>
+<entry
+   name="btn_setting_pressed.png"
+   checksum="232077eb25920bfa38abdff4c5baa137"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:45.219000Z"/>
+<entry
+   name="btn_train_complain_normal.png"
+   checksum="34095c8a8bc38afe8f3796473629267d"
+   last-author="wangjm"
+   committed-rev="1807"
+   text-time="2015-02-02T03:21:26.468000Z"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2015-01-26T06:28:04.136000Z"/>
+<entry
+   name="btn_train_complain_pressed.png"
+   checksum="4f0f4481f849f3f768fb8be6b9244763"
+   last-author="wangjm"
+   committed-rev="1807"
+   text-time="2015-02-02T03:21:26.471000Z"
+   kind="file"
+   committed-date="2015-02-02T03:23:36.894000Z"
+   prop-time="2015-01-26T06:28:04.121000Z"/>
+<entry
+   name="btn_try_again_code.9.png"
+   checksum="cd8d8a1729eb0d52099e805f2783f3f2"
+   last-author="youtian"
+   text-time="2015-03-16T10:24:19.109000Z"
+   committed-rev="2410"
+   kind="file"
+   committed-date="2015-03-16T10:24:19.109250Z"
+   prop-time="2015-03-17T01:51:24.113000Z"/>
+<entry
+   name="btn_unconfirmed.png"
+   checksum="71637fde82b1c07cdba1f4bdc1a175c5"
+   last-author="wangjm"
+   committed-rev="182"
+   text-time="2014-11-19T06:15:15.623000Z"
+   kind="file"
+   committed-date="2014-11-19T06:15:15.623000Z"
+   prop-time="2014-11-20T07:26:45.413000Z"/>
+<entry
+   name="close_ad.png"
+   checksum="4bf8936564752931c550e1a32908c9ed"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.288000Z"/>
+<entry
+   name="content_discard.png"
+   checksum="ca8f8a097b66fae69e81b54028702eea"
+   last-author="wangjm"
+   text-time="2014-03-31T18:23:01.000000Z"
+   committed-rev="1591"
+   kind="file"
+   committed-date="2015-01-17T04:55:01.175000Z"
+   prop-time="2015-01-17T04:53:54.654000Z"/>
+<entry
+   name="content_pic_default.png"
+   checksum="331738fb5bee69d269500ea4c135568b"
+   last-author="wangjm"
+   committed-rev="2033"
+   text-time="2015-02-12T09:30:58.988000Z"
+   kind="file"
+   committed-date="2015-02-12T09:52:58.483000Z"
+   prop-time="2014-11-20T07:26:39.885000Z"/>
+<entry
+   name="content_pic_default_9.9.png"
+   checksum="0d0f05ce6227cfb0d08d13d310c66548"
+   last-author="wangjm"
+   committed-rev="2053"
+   text-time="2015-02-13T09:37:17.467000Z"
+   kind="file"
+   committed-date="2015-02-13T09:39:33.386000Z"
+   prop-time="2015-02-03T08:17:22.098000Z"/>
+<entry
+   name="default_ptr_flip.png"
+   checksum="1da89f723f0e8d58593100ae9fdd794b"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:40.074000Z"/>
+<entry
+   name="default_ptr_rotate.png"
+   checksum="7f2b369f133af03f703c4302032fc353"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:46.123000Z"/>
+<entry
+   name="details_bg_vip_normal.9.png"
+   checksum="fec71241d177af71c3680fadcb9905cf"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.458000Z"/>
+<entry
+   name="details_bg_vip_pressed.9.png"
+   checksum="0fb4c8e8db103c276550cd76d43bb564"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.320000Z"/>
+<entry
+   name="details_btn_red_playmark.png"
+   checksum="b538b09983fee56318811a5c6e55f922"
+   last-author="zhangwei"
+   committed-rev="1870"
+   text-time="2015-02-04T07:36:50.628000Z"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:40.416000Z"/>
+<entry
+   name="details_icon_back.png"
+   checksum="5161ced6222a3fbf18cf6037ec24ec48"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.409000Z"/>
+<entry
+   name="details_icon_close.png"
+   checksum="a34e08bfa18f49d1be20924e950140d7"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.241000Z"/>
+<entry
+   name="details_icon_fullscreen_normal.png"
+   checksum="04e3edb8d4c7871c4b82c43b75389cd0"
+   last-author="zhangwei"
+   committed-rev="1870"
+   text-time="2015-02-04T07:36:50.628000Z"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:40.425000Z"/>
+<entry
+   name="details_icon_fullscreen_pressed.png"
+   checksum="f60eaaaaf05b0425e96cdbb4a469cddb"
+   last-author="zhangwei"
+   committed-rev="1870"
+   text-time="2015-02-04T07:36:50.628000Z"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:40.450000Z"/>
+<entry
+   name="details_icon_windowplay_normal.png"
+   checksum="d553f0904426b83f11c96aa8c998e3de"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.376000Z"/>
+<entry
+   name="details_icon_windowplay_pressed.png"
+   checksum="5008c983e57556268116f3c92dd2e730"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.385000Z"/>
+<entry
+   name="dot_big.png"
+   checksum="fea747c220018a9f88040fdef3dcbd2d"
+   last-author="wangjm"
+   committed-rev="2162"
+   text-time="2014-01-07T02:09:48.750000Z"
+   kind="file"
+   committed-date="2015-03-10T12:55:10.921000Z"
+   prop-time="2015-03-10T12:54:51.877000Z"/>
+<entry
+   name="download_bg_progress.png"
+   checksum="b61688894da990568741ce71e80b7160"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.020000Z"/>
+<entry
+   name="download_bg_progressgray.png"
+   checksum="4becd319a2bfeca8937e5980125ecfd0"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.156000Z"/>
+<entry
+   name="download_bg_progressgreen.png"
+   checksum="ff29eccfd6690a40282046fc0b3c645c"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.351000Z"/>
+<entry
+   name="download_start.png"
+   checksum="2e5cc87e91024e690bf1e5225a35ea42"
+   last-author="wangjm"
+   committed-rev="2131"
+   text-time="2015-03-09T07:21:14.193000Z"
+   kind="file"
+   committed-date="2015-03-10T01:34:51.968000Z"
+   prop-time="2015-03-10T01:34:34.218000Z"/>
+<entry
+   name="drawer_list_bg_1.png"
+   checksum="0d5e9925dcc23ad704b4ac3e6e478f35"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T03:29:48.917000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-20T07:26:41.772000Z"/>
+<entry
+   name="drawer_list_bg_2.png"
+   checksum="0aae2472d376fa428fdb334b81adbe9c"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:41.806000Z"/>
+<entry
+   name="drawer_list_bg_3.png"
+   checksum="d83b7ec1e0612e5cd208a799940c56bb"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:41.934000Z"/>
+<entry
+   name="drawer_list_bg_4.png"
+   checksum="debb320985b426593821103cc247c241"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:41.941000Z"/>
+<entry
+   name="drawer_list_bg_5.png"
+   checksum="8ced8378fc3f5d991ac1c83de3fcc5d2"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:42.024000Z"/>
+<entry
+   name="drawer_list_bg_6.png"
+   checksum="5ef302e7b872624da7b85071d8ef20d5"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:42.139000Z"/>
+<entry
+   name="drawer_message_bg_6.png"
+   checksum="607eb05b4c94ee2f5cb5fb7a2faa32b8"
+   last-author="wangjm"
+   committed-rev="69"
+   text-time="2014-11-14T10:07:28.216000Z"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"
+   prop-time="2014-11-20T07:26:47.207000Z"/>
+<entry
+   name="film.png"
+   checksum="ef2715e061f1626fd6c1b221e5ee8d1b"
+   last-author="wangjm"
+   committed-rev="17"
+   text-time="2014-11-11T08:32:39.638000Z"
+   kind="file"
+   committed-date="2014-11-11T08:32:39.638625Z"
+   prop-time="2014-11-20T07:26:40.138000Z"/>
+<entry
+   name="frame.9.png"
+   checksum="c6befea1f38d3a9b6465a4399e6f1a09"
+   last-author="youtian"
+   text-time="2014-11-25T08:28:47.909000Z"
+   committed-rev="345"
+   kind="file"
+   committed-date="2014-11-25T08:28:47.909500Z"
+   prop-time="2014-11-26T00:53:33.209000Z"/>
+<entry
+   name="funny_list_icon_sound_normal.png"
+   checksum="51d1d9d446e34f5db7d3387c550aac04"
+   last-author="wangjm"
+   text-time="2014-12-09T06:10:42.865000Z"
+   committed-rev="678"
+   kind="file"
+   committed-date="2014-12-09T07:00:38.829000Z"
+   prop-time="2014-12-09T07:00:41.397000Z"/>
+<entry
+   name="funny_list_icon_sound_pressed.png"
+   checksum="fdfbde1c409de11754f802b62d151627"
+   last-author="wangjm"
+   text-time="2014-12-09T06:10:42.865000Z"
+   committed-rev="678"
+   kind="file"
+   committed-date="2014-12-09T07:00:38.829000Z"
+   prop-time="2014-12-09T07:00:41.424000Z"/>
+<entry
+   name="homepage_default.9.png"
+   checksum="d84e94bc0565c9ef000c1d65be8a250d"
+   last-author="wangjm"
+   text-time="2015-02-26T02:45:58.419000Z"
+   committed-rev="2076"
+   kind="file"
+   committed-date="2015-02-26T02:51:34.494000Z"
+   prop-time="2015-02-03T06:18:52.705000Z"/>
+<entry
+   name="ic_launcher.png"
+   checksum="6386a986decf047603af9f8b12c48a19"
+   last-author="wangjm"
+   committed-rev="1495"
+   text-time="2014-12-31T05:17:23.825000Z"
+   kind="file"
+   committed-date="2014-12-31T05:39:50.173000Z"
+   prop-time="2014-12-31T05:39:49.737000Z"/>
+<entry
+   name="icon_arrow.png"
+   checksum="fb391d59e6027cf7c1f0f3f0a3284ed7"
+   last-author="zhangwei"
+   committed-rev="300"
+   text-time="2014-11-24T08:07:22.753000Z"
+   kind="file"
+   committed-date="2014-11-24T08:07:22.753250Z"
+   prop-time="2014-11-24T08:33:34.067000Z"/>
+<entry
+   name="icon_clock.png"
+   checksum="32823faadfce84c1f2b16a4d22073648"
+   last-author="youtian"
+   committed-rev="220"
+   text-time="2014-11-20T07:23:19.091000Z"
+   kind="file"
+   committed-date="2014-11-20T07:23:19.091750Z"
+   prop-time="2014-11-20T07:26:45.019000Z"/>
+<entry
+   name="icon_find.png"
+   checksum="ea5ed902f09edc7088328afd3a9684df"
+   last-author="wangjm"
+   committed-rev="1544"
+   text-time="2015-01-16T02:54:43.278000Z"
+   kind="file"
+   committed-date="2015-01-16T07:40:36.653000Z"
+   prop-time="2015-01-16T07:39:41.723000Z"/>
+<entry
+   name="icon_input_error.png"
+   checksum="3732bc4717b24a7b8cd4c9c6c0d17bbc"
+   last-author="wangjm"
+   committed-rev="371"
+   text-time="2014-11-26T06:32:51.654000Z"
+   kind="file"
+   committed-date="2014-11-26T07:56:54.440000Z"
+   prop-time="2014-11-26T07:56:17.499000Z"/>
+<entry
+   name="icon_lk_coin.png"
+   checksum="122dac91cf6fa765a82ae1ada4f7617a"
+   last-author="youtian"
+   committed-rev="2141"
+   text-time="2015-03-10T07:55:43.218000Z"
+   kind="file"
+   committed-date="2015-03-10T07:55:43.218625Z"
+   prop-time="2015-03-10T08:01:09.391000Z"/>
+<entry
+   name="icon_lk_integral.png"
+   checksum="b008e33759cd69226e74e102cedc7f83"
+   last-author="youtian"
+   committed-rev="2141"
+   text-time="2015-03-10T07:55:43.218000Z"
+   kind="file"
+   committed-date="2015-03-10T07:55:43.218625Z"
+   prop-time="2015-03-10T08:01:09.379000Z"/>
+<entry
+   name="icon_order_form.png"
+   checksum="ec3409c0a992891175af04dc4b4c120e"
+   last-author="wangjm"
+   text-time="2014-12-23T03:30:08.946000Z"
+   committed-rev="1198"
+   kind="file"
+   committed-date="2014-12-23T03:37:14.345000Z"
+   prop-time="2014-12-23T03:36:54.003000Z"/>
+<entry
+   name="icon_prompt.png"
+   checksum="aa7f62370ad1615a8d87e94a884a6c6e"
+   last-author="wangjm"
+   committed-rev="2145"
+   text-time="2015-03-10T08:40:34.271000Z"
+   kind="file"
+   committed-date="2015-03-10T08:56:33.578000Z"
+   prop-time="2014-11-20T07:26:40.204000Z"/>
+<entry
+   name="icon_select.png"
+   checksum="cf3630319c04c8ed2030fd9291ebb8c5"
+   last-author="wangjm"
+   committed-rev="1544"
+   text-time="2015-01-16T03:57:15.398000Z"
+   kind="file"
+   committed-date="2015-01-16T07:40:36.653000Z"
+   prop-time="2015-01-16T07:39:41.710000Z"/>
+<entry
+   name="icon_setting_normal.png"
+   checksum="d8cc7f12d8579557e51545e89715df1a"
+   last-author="wangjm"
+   committed-rev="1206"
+   text-time="2014-12-23T03:50:29.052000Z"
+   kind="file"
+   committed-date="2014-12-23T03:56:56.142000Z"
+   prop-time="2014-12-23T03:56:34.332000Z"/>
+<entry
+   name="icon_setting_pressed.png"
+   checksum="af8b7a2428007dd6b213716cd5f49864"
+   last-author="wangjm"
+   committed-rev="1206"
+   text-time="2014-12-23T03:50:29.051000Z"
+   kind="file"
+   committed-date="2014-12-23T03:56:56.142000Z"
+   prop-time="2014-12-23T03:56:34.317000Z"/>
+<entry
+   name="icon_sex_female.png"
+   checksum="5911119fdb56a601e42244623d4f1460"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:28.142000Z"/>
+<entry
+   name="icon_sex_male.png"
+   checksum="5c3c439e699115da4574b66885c5531c"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:28.125000Z"/>
+<entry
+   name="icon_sex_neutral.png"
+   checksum="0f9e3929b87aff42bdc98bc3fd48b5a8"
+   last-author="youtian"
+   committed-rev="2137"
+   text-time="2015-03-10T07:00:38.109000Z"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2015-03-10T07:03:28.055000Z"/>
+<entry
+   name="icon_smile.png"
+   checksum="f29866aabca665ea6aeca946bf6e542d"
+   last-author="youtian"
+   committed-rev="195"
+   text-time="2014-11-19T10:50:11.904000Z"
+   kind="file"
+   committed-date="2014-11-19T10:50:11.904250Z"
+   prop-time="2014-11-20T07:26:45.646000Z"/>
+<entry
+   name="icon_star_default.png"
+   checksum="51b5192edbe09874a0e67b1c342ff52a"
+   last-author="wangjm"
+   committed-rev="309"
+   text-time="2014-11-24T08:18:01.473000Z"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"
+   prop-time="2014-11-24T10:02:47.459000Z"/>
+<entry
+   name="icon_star_selected.png"
+   checksum="917c115002520437a6fccff31dfcf19c"
+   last-author="wangjm"
+   committed-rev="309"
+   text-time="2014-11-24T08:18:01.470000Z"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"
+   prop-time="2014-11-24T10:02:47.413000Z"/>
+<entry
+   name="icon_status_complete.png"
+   checksum="8b65748628e3a4533af39e8bf13b5326"
+   last-author="zhangwei"
+   committed-rev="2367"
+   text-time="2015-03-16T03:19:21.859000Z"
+   kind="file"
+   committed-date="2015-03-16T03:19:21.859250Z"
+   prop-time="2015-03-16T03:19:31.365000Z"/>
+<entry
+   name="icon_status_download.png"
+   checksum="97117b990a304ebfc00fa92e9aeb11ef"
+   last-author="zhangwei"
+   committed-rev="2367"
+   text-time="2015-03-16T03:19:21.859000Z"
+   kind="file"
+   committed-date="2015-03-16T03:19:21.859250Z"
+   prop-time="2015-03-16T03:19:31.356000Z"/>
+<entry
+   name="icon_status_error.png"
+   checksum="776b4f622f0050aaeb07236636ea0647"
+   last-author="zhangwei"
+   committed-rev="2367"
+   text-time="2015-03-16T03:19:21.859000Z"
+   kind="file"
+   committed-date="2015-03-16T03:19:21.859250Z"
+   prop-time="2015-03-16T03:19:31.374000Z"/>
+<entry
+   name="icon_success.png"
+   checksum="d60c60baeaa98aa8fcb24e2ada56c795"
+   last-author="youtian"
+   committed-rev="195"
+   text-time="2014-11-19T10:50:11.904000Z"
+   kind="file"
+   committed-date="2014-11-19T10:50:11.904250Z"
+   prop-time="2014-11-20T07:26:42.276000Z"/>
+<entry
+   name="icon_ticket.png"
+   checksum="28a07ac6975e2575c7f61ae238e721dc"
+   last-author="youtian"
+   committed-rev="190"
+   text-time="2014-11-19T08:29:54.654000Z"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"
+   prop-time="2014-11-20T07:26:40.210000Z"/>
+<entry
+   name="icon_time.png"
+   checksum="7f22b0184fa83d5da973ee68ca799e1d"
+   last-author="wangjm"
+   text-time="2015-01-30T04:08:40.696000Z"
+   committed-rev="1800"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-28T06:13:59.766000Z"/>
+<entry
+   name="icon_time_selected.png"
+   checksum="20d2713b5f999299e9be4371d51d6601"
+   last-author="wangjm"
+   committed-rev="1800"
+   text-time="2015-01-30T04:08:40.699000Z"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"
+   prop-time="2014-11-20T07:26:45.524000Z"/>
+<entry
+   name="icon_waring.png"
+   checksum="d02d1f4779807ca43d7721873011f79c"
+   last-author="youtian"
+   committed-rev="319"
+   text-time="2014-11-25T01:27:36.800000Z"
+   kind="file"
+   committed-date="2014-11-25T01:27:36.800125Z"
+   prop-time="2014-11-25T01:38:20.476000Z"/>
+<entry
+   name="image_construction.png"
+   checksum="4a11195685a47f575c2fc0bbbcb1e975"
+   last-author="wangjm"
+   text-time="2014-12-04T06:20:36.929000Z"
+   committed-rev="572"
+   kind="file"
+   committed-date="2014-12-04T07:31:02.611000Z"
+   prop-time="2014-12-04T07:30:49.250000Z"/>
+<entry
+   name="image_no_content.png"
+   checksum="cc10520c54d81c2e039a0da997be2382"
+   last-author="wangjm"
+   committed-rev="2026"
+   text-time="2015-02-12T08:44:54.090000Z"
+   kind="file"
+   committed-date="2015-02-12T08:59:51.842000Z"
+   prop-time="2014-12-22T09:12:16.870000Z"/>
+<entry
+   name="image_no_network.png"
+   checksum="0e254caf1e9ce67bd21365d8b45d50c1"
+   last-author="wangjm"
+   committed-rev="2026"
+   text-time="2015-02-12T08:43:32.984000Z"
+   kind="file"
+   committed-date="2015-02-12T08:59:51.842000Z"
+   prop-time="2014-12-24T02:59:35.872000Z"/>
+<entry
+   name="image_order.png"
+   checksum="a34a5ae67747c249ca1a3d2dbccc5d5d"
+   last-author="wangjm"
+   text-time="2015-02-12T08:45:19.701000Z"
+   committed-rev="2026"
+   kind="file"
+   committed-date="2015-02-12T08:59:51.842000Z"
+   prop-time="2014-12-04T07:30:49.212000Z"/>
+<entry
+   name="image_playgame.png"
+   checksum="9889e6c38951bf9bd369bb763578fada"
+   last-author="wangjm"
+   text-time="2015-02-12T08:45:52.775000Z"
+   committed-rev="2026"
+   kind="file"
+   committed-date="2015-02-12T08:59:51.842000Z"
+   prop-time="2014-12-04T07:30:49.312000Z"/>
+<entry
+   name="image_shopping.png"
+   checksum="c34939838c662c429de8f3addbae0fe4"
+   last-author="wangjm"
+   text-time="2015-02-12T08:46:05.619000Z"
+   committed-rev="2026"
+   kind="file"
+   committed-date="2015-02-12T08:59:51.842000Z"
+   prop-time="2014-12-23T07:15:07.656000Z"/>
+<entry
+   name="indicator_arrow.png"
+   checksum="c0c2e487bd86d29fc7e84c25f120fb8e"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:40.078000Z"/>
+<entry
+   name="input_box_page.png"
+   checksum="df9e6fa15bc8379eb04cda86f247d108"
+   last-author="wangjm"
+   committed-rev="182"
+   text-time="2014-11-19T06:15:15.623000Z"
+   kind="file"
+   committed-date="2014-11-19T06:15:15.623000Z"
+   prop-time="2014-11-20T07:26:45.092000Z"/>
+<entry
+   name="input_btn_cancel.png"
+   checksum="c49ed2f9d08e9ee5e45c8f74ec8c0050"
+   last-author="youtian"
+   committed-rev="2189"
+   text-time="2015-03-11T07:59:49.796000Z"
+   kind="file"
+   committed-date="2015-03-11T07:59:49.796750Z"
+   prop-time="2015-03-12T01:25:55.210000Z"/>
+<entry
+   name="input_btn_cancel_select.png"
+   checksum="5d3ad24bdaea2186f23a436a790ddd6c"
+   last-author="youtian"
+   committed-rev="2189"
+   text-time="2015-03-11T07:59:49.796000Z"
+   kind="file"
+   committed-date="2015-03-11T07:59:49.796750Z"
+   prop-time="2015-03-12T01:25:55.195000Z"/>
+<entry
+   name="jok.png"
+   checksum="31d4950aa081a88e3f4ae9a1d72456b8"
+   last-author="wangjm"
+   committed-rev="17"
+   text-time="2014-11-11T08:32:39.638000Z"
+   kind="file"
+   committed-date="2014-11-11T08:32:39.638625Z"
+   prop-time="2014-11-20T07:26:40.070000Z"/>
+<entry
+   name="line_a.png"
+   checksum="6d6d909aaa38956251c9564c8bc466b5"
+   last-author="zhangwei"
+   committed-rev="115"
+   text-time="2014-11-17T07:37:39.732000Z"
+   kind="file"
+   committed-date="2014-11-17T07:37:39.732375Z"
+   prop-time="2014-11-20T07:26:43.042000Z"/>
+<entry
+   name="line_b.png"
+   checksum="3093c43d4d4a28cd34dc773e9f891425"
+   last-author="youtian"
+   text-time="2015-03-13T02:04:01.312000Z"
+   committed-rev="2281"
+   kind="file"
+   committed-date="2015-03-13T02:04:01.312375Z"
+   prop-time="2014-11-20T07:26:43.050000Z"/>
+<entry
+   name="list_movie_pic_default.png"
+   revision="2430"
+   checksum="6c402cd23ebf2ebac5f4d9692e75a24f"
+   last-author="wangjm"
+   text-time="2015-03-17T04:10:12.947000Z"
+   committed-rev="2430"
+   kind="file"
+   committed-date="2015-03-17T04:24:06.546000Z"
+   prop-time="2015-03-17T04:23:30.223000Z"/>
+<entry
+   name="listenmusic.png"
+   checksum="a6c9669f30ef5229d90bbc77a6c751a1"
+   last-author="wangjm"
+   committed-rev="17"
+   text-time="2014-11-11T08:32:39.638000Z"
+   kind="file"
+   committed-date="2014-11-11T08:32:39.638625Z"
+   prop-time="2014-11-20T07:26:39.742000Z"/>
+<entry
+   name="loading_1.png"
+   checksum="83a8a1a0490591bd7675b8b1334d3324"
+   last-author="wangjm"
+   committed-rev="962"
+   text-time="2014-12-16T07:51:32.100000Z"
+   kind="file"
+   committed-date="2014-12-16T09:21:25.243000Z"
+   prop-time="2014-12-16T09:20:59.231000Z"/>
+<entry
+   name="loading_2.png"
+   checksum="9165340ae04392307d72102d3b9b5860"
+   last-author="wangjm"
+   committed-rev="962"
+   text-time="2014-12-16T07:51:32.097000Z"
+   kind="file"
+   committed-date="2014-12-16T09:21:25.243000Z"
+   prop-time="2014-12-16T09:20:59.220000Z"/>
+<entry
+   name="loading_progressbar_dark.png"
+   checksum="245af4b62c8d584e4fba07328b54aee0"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.426000Z"/>
+<entry
+   name="loading_progressbar_red.png"
+   checksum="61a86e2097144824fc3ed210f77ad5d0"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.534000Z"/>
+<entry
+   name="me_list_btn_normal.png"
+   checksum="573a24955e45a9174b9e3111c92f1cea"
+   last-author="zhangwei"
+   text-time="2014-12-09T07:36:46.158000Z"
+   committed-rev="680"
+   kind="file"
+   committed-date="2014-12-09T07:36:46.158000Z"
+   prop-time="2014-12-10T02:14:52.198000Z"/>
+<entry
+   name="me_list_btn_play_selected.png"
+   checksum="5a07118c178a1b6f341c14f033c3aa44"
+   last-author="zhangwei"
+   text-time="2014-12-09T07:36:46.158000Z"
+   committed-rev="680"
+   kind="file"
+   committed-date="2014-12-09T07:36:46.158000Z"
+   prop-time="2014-12-10T02:14:52.211000Z"/>
+<entry
+   name="mileage_record_corner.png"
+   checksum="45ceb75323a951fb2e0cafbb03e52366"
+   last-author="wangrui"
+   committed-rev="2213"
+   text-time="2015-03-11T12:12:31.656000Z"
+   kind="file"
+   committed-date="2015-03-11T12:12:31.656125Z"
+   prop-time="2015-03-12T01:25:55.229000Z"/>
+<entry
+   name="movie_btn_flyingshuttle.png"
+   checksum="e93480eef5797ec9f2698d80b47fad9e"
+   last-author="youtian"
+   text-time="2014-12-09T08:53:06.345000Z"
+   committed-rev="698"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"
+   prop-time="2014-12-10T02:14:52.247000Z"/>
+<entry
+   name="movie_btn_flyingshuttle_selected.png"
+   checksum="1dea515b96e2710221491a1b45b45f5b"
+   last-author="youtian"
+   text-time="2014-12-09T08:53:06.345000Z"
+   committed-rev="698"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"
+   prop-time="2014-12-10T02:14:52.205000Z"/>
+<entry
+   name="movie_btn_lock.png"
+   checksum="657bd39356b91b21d2ef908fadf98bc4"
+   last-author="youtian"
+   text-time="2014-12-09T08:53:06.345000Z"
+   committed-rev="698"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"
+   prop-time="2014-12-10T02:14:52.182000Z"/>
+<entry
+   name="movie_btn_pause.png"
+   checksum="7b05f9b20b5e5a3fac3f8d4957e8418b"
+   last-author="youtian"
+   text-time="2014-12-09T08:53:06.345000Z"
+   committed-rev="698"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"
+   prop-time="2014-12-10T02:14:52.228000Z"/>
+<entry
+   name="movie_btn_pause_selected.png"
+   checksum="cd4364a21b2cc380922d63c079a65656"
+   last-author="youtian"
+   text-time="2014-12-09T08:53:06.345000Z"
+   committed-rev="698"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"
+   prop-time="2014-12-10T02:14:52.220000Z"/>
+<entry
+   name="movie_btn_play.png"
+   checksum="f5c86d91924b490e6f7d067b28f9d6fe"
+   last-author="zhangwei"
+   text-time="2014-12-04T01:46:11.345000Z"
+   committed-rev="541"
+   kind="file"
+   committed-date="2014-12-04T01:46:11.345500Z"
+   prop-time="2014-12-05T04:21:32.127000Z"/>
+<entry
+   name="movie_btn_play_selected.png"
+   checksum="af96b341ccf41c88ebbd61116ad90d7e"
+   last-author="zhangwei"
+   text-time="2014-12-04T01:46:11.345000Z"
+   committed-rev="541"
+   kind="file"
+   committed-date="2014-12-04T01:46:11.345500Z"
+   prop-time="2014-12-05T04:21:32.166000Z"/>
+<entry
+   name="movie_btn_unlock.png"
+   checksum="128bab515e99cef36b06d05119c569f2"
+   last-author="youtian"
+   text-time="2014-12-09T08:53:06.345000Z"
+   committed-rev="698"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"
+   prop-time="2014-12-10T02:14:52.192000Z"/>
+<entry
+   name="movie_top_back.png"
+   checksum="1455a3cfd17d3d26194e2a1f1cf9eb7e"
+   last-author="youtian"
+   committed-rev="748"
+   text-time="2014-12-10T09:35:48.501000Z"
+   kind="file"
+   committed-date="2014-12-10T09:35:48.501750Z"
+   prop-time="2014-12-11T02:54:36.481000Z"/>
+<entry
+   name="movie_top_back_selected.png"
+   checksum="973d8140191ef9aa6eced9b3448fa020"
+   last-author="youtian"
+   committed-rev="748"
+   text-time="2014-12-10T09:35:48.501000Z"
+   kind="file"
+   committed-date="2014-12-10T09:35:48.501750Z"
+   prop-time="2014-12-11T02:54:36.496000Z"/>
+<entry
+   name="music_b_control_back.png"
+   checksum="778078f96d50915fa77fda393acb5bcc"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.410000Z"/>
+<entry
+   name="music_b_control_back_default.png"
+   checksum="62efa019f3ea2da2e48a93d1cbb7c8bc"
+   last-author="youtian"
+   committed-rev="1957"
+   text-time="2015-02-09T06:30:11.827000Z"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"
+   prop-time="2015-02-09T08:07:41.975000Z"/>
+<entry
+   name="music_b_control_back_selected.png"
+   checksum="40e7e1933c29813e02c57438028ffce5"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.462000Z"/>
+<entry
+   name="music_b_control_next.png"
+   checksum="d612d969f554486f4c1b9b367f89d42a"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.084000Z"/>
+<entry
+   name="music_b_control_next_default.png"
+   checksum="293db200c85f3a58a6fcc923e3237dc4"
+   last-author="youtian"
+   committed-rev="1957"
+   text-time="2015-02-09T06:30:11.827000Z"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"
+   prop-time="2015-02-09T08:07:41.993000Z"/>
+<entry
+   name="music_b_control_next_selected.png"
+   checksum="877be848aae18237a04a889cadff138d"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.583000Z"/>
+<entry
+   name="music_b_control_pause.png"
+   checksum="fbb5f135dc4440ed6ce0eafec7987308"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.244000Z"/>
+<entry
+   name="music_b_control_pause_selected.png"
+   checksum="2cd2d6e92684ecdaa269d70487b837e5"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.188000Z"/>
+<entry
+   name="music_b_control_play.png"
+   checksum="6d661f6e9c2e42a67de9baf276f11660"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.103000Z"/>
+<entry
+   name="music_b_control_play_selected.png"
+   checksum="ba85b17f117653bd6f43cf3bf5696532"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.523000Z"/>
+<entry
+   name="music_control_back.png"
+   checksum="c2833070f7b0f073f38ce23d2ca0901c"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.362000Z"/>
+<entry
+   name="music_control_back_default.png"
+   checksum="3a3ab0afc5ec8fdcf43395483b786b1e"
+   last-author="youtian"
+   committed-rev="1957"
+   text-time="2015-02-09T06:30:11.827000Z"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"
+   prop-time="2015-02-09T08:07:41.942000Z"/>
+<entry
+   name="music_control_back_selected.png"
+   checksum="89f1b7698285cc267ff2006e0805f75a"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.253000Z"/>
+<entry
+   name="music_control_next.png"
+   checksum="059b1ee4973c0a27e9cba84741775473"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.075000Z"/>
+<entry
+   name="music_control_next_default.png"
+   checksum="b3366e1fed529a0ba353aa5e0670a6e1"
+   last-author="youtian"
+   committed-rev="1957"
+   text-time="2015-02-09T06:30:11.827000Z"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"
+   prop-time="2015-02-09T08:07:41.984000Z"/>
+<entry
+   name="music_control_next_selected.png"
+   checksum="fab62a0aa9901be10b83747c4dada9e8"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.353000Z"/>
+<entry
+   name="music_control_pause.png"
+   checksum="b818566f150ff544b8f7ce7d30b4a89d"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.196000Z"/>
+<entry
+   name="music_control_pause_selected.png"
+   checksum="70f603dc5bcff150dca22fd4b15e5947"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.659000Z"/>
+<entry
+   name="music_control_play.png"
+   checksum="2db2ae181236623e268cddd0b2d2d8d9"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.093000Z"/>
+<entry
+   name="music_control_play_selected.png"
+   checksum="471deaff3e765403f43844c6c4ee656e"
+   last-author="youtian"
+   committed-rev="1530"
+   text-time="2015-01-15T09:55:33.894000Z"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"
+   prop-time="2015-01-15T10:11:05.300000Z"/>
+<entry
+   name="navigation.png"
+   checksum="bbcf3e7c4f1b5b284a511b0f5dfafb9c"
+   last-author="youtian"
+   committed-rev="70"
+   text-time="2014-11-15T02:00:26.888000Z"
+   kind="file"
+   committed-date="2014-11-15T02:00:26.888625Z"
+   prop-time="2014-11-20T07:26:46.435000Z"/>
+<entry
+   name="navigation_selected.png"
+   checksum="87d75f4d03791b33a3ab4cc499798d64"
+   last-author="youtian"
+   committed-rev="70"
+   text-time="2014-11-15T02:00:26.888000Z"
+   kind="file"
+   committed-date="2014-11-15T02:00:26.888625Z"
+   prop-time="2014-11-20T07:26:41.765000Z"/>
+<entry
+   name="pb_foxtail_large_1.png"
+   checksum="ec85559382e383037138db959578b48c"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.540000Z"/>
+<entry
+   name="pb_foxtail_large_10.png"
+   checksum="4b3579be3d951a83802813ee79242f81"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.094000Z"/>
+<entry
+   name="pb_foxtail_large_11.png"
+   checksum="f33f0507225e1037a2a55943f944b061"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.256000Z"/>
+<entry
+   name="pb_foxtail_large_12.png"
+   checksum="79514a70b18e9adea07339c48d23f865"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.397000Z"/>
+<entry
+   name="pb_foxtail_large_2.png"
+   checksum="a8be84cb1d4f8640c3282b75321e2aea"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.125000Z"/>
+<entry
+   name="pb_foxtail_large_3.png"
+   checksum="96fe422e9ff71a687669e2f12ea57613"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.301000Z"/>
+<entry
+   name="pb_foxtail_large_4.png"
+   checksum="17bd72a895b1b223ec5aae39e33067ac"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.420000Z"/>
+<entry
+   name="pb_foxtail_large_5.png"
+   checksum="9f8e8e8bb5d971f450d8ee63ee07741b"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.546000Z"/>
+<entry
+   name="pb_foxtail_large_6.png"
+   checksum="5999fa54f8fdc4a1f8626664e9b6b6a2"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.147000Z"/>
+<entry
+   name="pb_foxtail_large_7.png"
+   checksum="c18f8d8f592726031dcdcab5edb99363"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.307000Z"/>
+<entry
+   name="pb_foxtail_large_8.png"
+   checksum="9d5be31ebd75d7e167116565d3e4308d"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.432000Z"/>
+<entry
+   name="pb_foxtail_large_9.png"
+   checksum="b551bde0f6ed0fb18cd714f4e746f832"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.598000Z"/>
+<entry
+   name="pb_foxtail_small_1.png"
+   checksum="62ea24b7e8b49cb00c5e931ba08e3001"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.249000Z"/>
+<entry
+   name="pb_foxtail_small_10.png"
+   checksum="315f95acdb6e856e40e321ec5a528fb3"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.326000Z"/>
+<entry
+   name="pb_foxtail_small_11.png"
+   checksum="0ef5d372076a69b2227e4082fb652d94"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.446000Z"/>
+<entry
+   name="pb_foxtail_small_12.png"
+   checksum="62ea24b7e8b49cb00c5e931ba08e3001"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.032000Z"/>
+<entry
+   name="pb_foxtail_small_2.png"
+   checksum="b8538888cd3ca2f6cb0d917f3d9de40f"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.391000Z"/>
+<entry
+   name="pb_foxtail_small_3.png"
+   checksum="631a026844edd63e8982dcdff527ef9b"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.516000Z"/>
+<entry
+   name="pb_foxtail_small_4.png"
+   checksum="aca721909dfe1f01ccc70ae2bae40431"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.104000Z"/>
+<entry
+   name="pb_foxtail_small_5.png"
+   checksum="606060335f6554a26103e2bf145371e7"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.265000Z"/>
+<entry
+   name="pb_foxtail_small_6.png"
+   checksum="7b0ae1baa9c01270589057126dc774e8"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.403000Z"/>
+<entry
+   name="pb_foxtail_small_7.png"
+   checksum="6505cc105419a23643bc6247a4189c88"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.522000Z"/>
+<entry
+   name="pb_foxtail_small_8.png"
+   checksum="066bd9be35b091156940046c5afda361"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.114000Z"/>
+<entry
+   name="pb_foxtail_small_9.png"
+   checksum="1019a1ed0f517cabc6cd81b0805cf795"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.272000Z"/>
+<entry
+   name="pic_entertainment_default.png"
+   checksum="b1cc8ae3221294b774a3387b9deea0b0"
+   last-author="wangjm"
+   text-time="2015-02-12T08:51:02.708000Z"
+   committed-rev="2026"
+   kind="file"
+   committed-date="2015-02-12T08:59:51.842000Z"
+   prop-time="2014-12-11T10:11:27.237000Z"/>
+<entry
+   name="pic_index_default.png"
+   checksum="ddc32b106a34a76816291badbf912f7d"
+   last-author="wangjm"
+   text-time="2014-12-11T09:28:57.062000Z"
+   committed-rev="835"
+   kind="file"
+   committed-date="2014-12-11T10:11:22.736000Z"
+   prop-time="2014-12-11T10:11:27.282000Z"/>
+<entry
+   name="pic_index_title_bg.9.png"
+   checksum="a58de6bebbeda28ee24b31bb10443928"
+   last-author="wangjm"
+   committed-rev="1873"
+   text-time="2015-02-04T08:13:42.803000Z"
+   kind="file"
+   committed-date="2015-02-04T08:28:32.519000Z"
+   prop-time="2015-02-04T08:28:25.817000Z"/>
+<entry
+   name="pic_list_default.png"
+   checksum="185d1d1cc0f43162eb467a8c25735d63"
+   last-author="zhangwei"
+   text-time="2014-11-27T05:00:30.222000Z"
+   committed-rev="390"
+   kind="file"
+   committed-date="2014-11-27T05:00:30.222000Z"
+   prop-time="2014-11-27T05:00:12.828000Z"/>
+<entry
+   name="player_backward.png"
+   checksum="08ea1859997a40cc754738b81561cca8"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.612000Z"/>
+<entry
+   name="player_bg.9.png"
+   checksum="905387f4bacca4a2d78394270e0df119"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.471000Z"/>
+<entry
+   name="player_bg_definition_disable.png"
+   checksum="221ace6ab3096ae1a896f8217e3442ae"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.197000Z"/>
+<entry
+   name="player_bg_definition_highlighted.png"
+   checksum="0634b04dfcee3cff85b1e43bbc8a58d3"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.345000Z"/>
+<entry
+   name="player_bg_definition_normal.png"
+   checksum="e0d33e5129a060346ee8c20ea52a1cf8"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.357000Z"/>
+<entry
+   name="player_bg_triangle.png"
+   checksum="70c517175318d52859b3dc623c52499f"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.369000Z"/>
+<entry
+   name="player_bg_triangle_kandian.png"
+   checksum="385b201d95594bc8328c38924e886aa2"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.495000Z"/>
+<entry
+   name="player_checkbox.png"
+   checksum="43e244233bfbd31207f15ddfa1396ed0"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.226000Z"/>
+<entry
+   name="player_checkbox_selected.png"
+   checksum="597ac5a76255a36af46184be424b4ce9"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.528000Z"/>
+<entry
+   name="player_definition_line.png"
+   checksum="e31084068a769824a13571c58cb2cb36"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.294000Z"/>
+<entry
+   name="player_forward.png"
+   checksum="8bcf0c8357921b97f336912076fe511e"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.072000Z"/>
+<entry
+   name="player_forward_disable.png"
+   checksum="1e76b39efe0b169bef4e3906b8178687"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.440000Z"/>
+<entry
+   name="player_forward_normal.png"
+   checksum="95c52495cca5ca0fb6d4291aec8aea99"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.452000Z"/>
+<entry
+   name="player_gesture_bg.9.png"
+   checksum="8d622430b95b8a7d349ca84b9e4657dc"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.489000Z"/>
+<entry
+   name="player_icon_advanced.png"
+   checksum="d926027dd36abc6db2450688d13aa1c7"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.503000Z"/>
+<entry
+   name="player_icon_brightness.png"
+   checksum="912371e846f01f0be97f0cf25681304a"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.510000Z"/>
+<entry
+   name="player_icon_bug.png"
+   checksum="6bd4f0001830c65a7947383b114f0c93"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.483000Z"/>
+<entry
+   name="player_icon_dlna.png"
+   checksum="80b0be7e8fedb0ffa70157933cb9b2a6"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.082000Z"/>
+<entry
+   name="player_icon_electricize.png"
+   checksum="c66c68f7613c4d7a9d567009598831c3"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.364000Z"/>
+<entry
+   name="player_icon_floatingwindow.png"
+   checksum="d8c15ebe61a34edf647670195db29776"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.414000Z"/>
+<entry
+   name="player_icon_pause.png"
+   checksum="aa53dd2c181b26f0291edcead1d0ede1"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.166000Z"/>
+<entry
+   name="player_icon_play.png"
+   checksum="fe1788046a0bc5a2f33a81018a25daaa"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.210000Z"/>
+<entry
+   name="player_icon_slider.png"
+   checksum="71b1bc12f23b37ca5fae5303f468b60d"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.232000Z"/>
+<entry
+   name="player_icon_slider_pressed.png"
+   checksum="6ce30e18a849e11ca71f3b219864e5bd"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.313000Z"/>
+<entry
+   name="player_icon_stop.png"
+   checksum="c437c30b006b87270daf143c303b1368"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.466000Z"/>
+<entry
+   name="player_line_buffer.png"
+   checksum="fa3f2236d84aea4efcd9670950d82094"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.187000Z"/>
+<entry
+   name="player_line_down.png"
+   checksum="270c1f8400c160099018b2e131bd10eb"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.042000Z"/>
+<entry
+   name="player_line_red.png"
+   checksum="1767d4eae7e1dfa46c43e59dd0af4a3b"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.477000Z"/>
+<entry
+   name="player_locked.png"
+   checksum="27e7bd7f5cefb8f1b4c970ccd281e016"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.062000Z"/>
+<entry
+   name="player_selected_bg.9.png"
+   checksum="b7b22543b1b216bcfe8f12d5044ea245"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.332000Z"/>
+<entry
+   name="player_silence.png"
+   checksum="0d769a6dd6a4916edf403cf81e5db515"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.217000Z"/>
+<entry
+   name="player_unlock.png"
+   checksum="8b5a6166b06148c321d48b722371b613"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.175000Z"/>
+<entry
+   name="player_unlock_highlighted.png"
+   checksum="c71918ff92126ed194fbd60037c865d0"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.280000Z"/>
+<entry
+   name="player_volume.png"
+   checksum="7a9d69a6ab0adf64f6f80e4087c97886"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.134000Z"/>
+<entry
+   name="pop_box_btn_white_cancel.png"
+   checksum="bd96e7e7e31ec41089b98a441d4a74b2"
+   last-author="zhangwei"
+   text-time="2015-03-13T09:29:59.749000Z"
+   committed-rev="2337"
+   kind="file"
+   committed-date="2015-03-13T09:29:59.749875Z"
+   prop-time="2015-03-14T09:00:19.214000Z"/>
+<entry
+   name="pop_up_box_selected_bg.9.png"
+   checksum="6f475a6df0a26d42122ea058731f77ba"
+   last-author="youtian"
+   committed-rev="149"
+   text-time="2014-11-18T06:16:15.701000Z"
+   kind="file"
+   committed-date="2014-11-18T06:16:15.701125Z"
+   prop-time="2014-11-20T07:26:46.510000Z"/>
+<entry
+   name="pop_window_bg.9.png"
+   checksum="224b7db30f152edb35c8a232dd8ad8a0"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:39.751000Z"/>
+<entry
+   name="progress_image_fox_tail.png"
+   checksum="096b0145934d7c29dd2a64bda6ad459a"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.339000Z"/>
+<entry
+   name="radio_checked.png"
+   checksum="05a4db06844ac9749de3c59ed5326618"
+   last-author="wangjm"
+   text-time="2015-01-15T07:22:46.240000Z"
+   committed-rev="1525"
+   kind="file"
+   committed-date="2015-01-15T07:57:08.206000Z"
+   prop-time="2015-01-15T07:56:26.911000Z"/>
+<entry
+   name="radio_unchecked.png"
+   checksum="83f299504c3e11f027416f07b7a134ed"
+   last-author="wangjm"
+   text-time="2015-01-15T07:22:46.241000Z"
+   committed-rev="1525"
+   kind="file"
+   committed-date="2015-01-15T07:57:08.206000Z"
+   prop-time="2015-01-15T07:56:26.901000Z"/>
+<entry
+   name="railway_ordering.png"
+   checksum="e3746d5fa1010311b5f8c38f133f8bf1"
+   last-author="wangjm"
+   committed-rev="30"
+   text-time="2014-11-13T02:46:23.544000Z"
+   kind="file"
+   committed-date="2014-11-13T02:46:23.544875Z"
+   prop-time="2014-11-20T07:26:40.509000Z"/>
+<entry
+   name="railway_shoping.png"
+   checksum="5cbdd22a1c4453e7f2dcee5059425df0"
+   last-author="wangjm"
+   committed-rev="30"
+   text-time="2014-11-13T02:46:23.544000Z"
+   kind="file"
+   committed-date="2014-11-13T02:46:23.544875Z"
+   prop-time="2014-11-20T07:26:40.353000Z"/>
+<entry
+   name="railway_zixun.png"
+   checksum="d676205956270625547b567e66cada10"
+   last-author="wangjm"
+   committed-rev="30"
+   text-time="2014-11-13T02:46:23.544000Z"
+   kind="file"
+   committed-date="2014-11-13T02:46:23.544875Z"
+   prop-time="2014-11-20T07:26:41.669000Z"/>
+<entry
+   name="readbook.png"
+   checksum="68b9c2c167a589c2081bfa79842daed3"
+   last-author="wangjm"
+   committed-rev="17"
+   text-time="2014-11-11T08:32:39.638000Z"
+   kind="file"
+   committed-date="2014-11-11T08:32:39.638625Z"
+   prop-time="2014-11-20T07:26:43.034000Z"/>
+<entry
+   name="refresh_progress_rotate_image.png"
+   checksum="a8619f6428c0746f346b00e33aaedd06"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:03.053000Z"/>
+<entry
+   name="rescue.png"
+   checksum="61ee069b15450f2f97abd457137fab32"
+   last-author="youtian"
+   text-time="2015-02-02T02:57:45.503000Z"
+   committed-rev="1804"
+   kind="file"
+   committed-date="2015-02-02T02:57:45.503875Z"
+   prop-time="2014-11-20T07:26:42.439000Z"/>
+<entry
+   name="rescue_selected.png"
+   checksum="25f6486d1af3c6b768fba586a90368d9"
+   last-author="youtian"
+   text-time="2015-02-02T02:57:45.503000Z"
+   committed-rev="1804"
+   kind="file"
+   committed-date="2015-02-02T02:57:45.503875Z"
+   prop-time="2014-11-20T07:26:46.296000Z"/>
+<entry
+   name="service_introduce.png"
+   checksum="dac79f876de94315ff26a68108666dda"
+   last-author="wangjm"
+   committed-rev="30"
+   text-time="2014-11-13T02:46:23.544000Z"
+   kind="file"
+   committed-date="2014-11-13T02:46:23.544875Z"
+   prop-time="2014-11-20T07:26:39.929000Z"/>
+<entry
+   name="shadow.png"
+   checksum="7ab6ba10c89964ed69050f8c1c68abce"
+   last-author="wangjm"
+   committed-rev="357"
+   text-time="2014-11-25T09:10:17.871000Z"
+   kind="file"
+   committed-date="2014-11-26T00:54:54.128000Z"
+   prop-time="2014-11-25T05:08:40.341000Z"/>
+<entry
+   name="shadow_down.png"
+   checksum="2112a43952f4b8374f23dad583caf053"
+   last-author="wangjm"
+   text-time="2014-11-25T10:07:31.758000Z"
+   committed-rev="357"
+   kind="file"
+   committed-date="2014-11-26T00:54:54.128000Z"
+   prop-time="2014-11-26T00:53:10.429000Z"/>
+<entry
+   name="shadow_left.png"
+   checksum="1f6dc73dcab1a01405fec9f0e320bfd2"
+   last-author="wangjm"
+   committed-rev="368"
+   text-time="2014-11-26T03:02:43.418000Z"
+   kind="file"
+   committed-date="2014-11-26T06:01:51.737000Z"
+   prop-time="2014-11-26T06:01:17.565000Z"/>
+<entry
+   name="shadow_top.png"
+   checksum="fea10ee1a50acfd312ecdffe888405b9"
+   last-author="wangjm"
+   text-time="2014-11-25T10:07:31.758000Z"
+   committed-rev="357"
+   kind="file"
+   committed-date="2014-11-26T00:54:54.128000Z"
+   prop-time="2014-11-26T00:53:10.445000Z"/>
+<entry
+   name="shopping_item_bg.9.png"
+   checksum="80115212929d591f1f57fd1a125a0add"
+   last-author="wangjm"
+   committed-rev="152"
+   text-time="2014-11-18T07:07:48.482000Z"
+   kind="file"
+   committed-date="2014-11-18T07:07:48.482375Z"
+   prop-time="2014-11-20T07:26:47.200000Z"/>
+<entry
+   name="single_icon_empty.png"
+   checksum="9081b4ecbfa1c3e2ac899c97607d14db"
+   last-author="youtian"
+   committed-rev="762"
+   text-time="2014-12-11T02:08:37.001000Z"
+   kind="file"
+   committed-date="2014-12-11T02:08:37.001750Z"
+   prop-time="2014-12-11T02:54:36.513000Z"/>
+<entry
+   name="single_icon_general.png"
+   checksum="dfa38ee80d0dcb3edf761189114dbb70"
+   last-author="youtian"
+   committed-rev="762"
+   text-time="2014-12-11T02:08:37.001000Z"
+   kind="file"
+   committed-date="2014-12-11T02:08:37.001750Z"
+   prop-time="2014-12-11T02:54:36.473000Z"/>
+<entry
+   name="single_icon_low.png"
+   checksum="6dcca164cd96939d2bacc975032abdb7"
+   last-author="youtian"
+   committed-rev="762"
+   text-time="2014-12-11T02:08:37.001000Z"
+   kind="file"
+   committed-date="2014-12-11T02:08:37.001750Z"
+   prop-time="2014-12-11T02:54:36.465000Z"/>
+<entry
+   name="single_icon_nice.png"
+   checksum="7d85b7f1d74370def129bc659837d38f"
+   last-author="youtian"
+   committed-rev="762"
+   text-time="2014-12-11T02:08:37.001000Z"
+   kind="file"
+   committed-date="2014-12-11T02:08:37.001750Z"
+   prop-time="2014-12-11T02:54:36.457000Z"/>
+<entry
+   name="single_icon_poor.png"
+   checksum="51434d2d18387779212f96a115110b74"
+   last-author="youtian"
+   committed-rev="762"
+   text-time="2014-12-11T02:08:37.001000Z"
+   kind="file"
+   committed-date="2014-12-11T02:08:37.001750Z"
+   prop-time="2014-12-11T02:54:36.488000Z"/>
+<entry
+   name="single_icon_strong.png"
+   checksum="de710c2f80e067b81b853463279fd054"
+   last-author="youtian"
+   committed-rev="762"
+   text-time="2014-12-11T02:08:37.001000Z"
+   kind="file"
+   committed-date="2014-12-11T02:08:37.001750Z"
+   prop-time="2014-12-11T02:54:36.503000Z"/>
+<entry
+   name="small_btn_bg_normal.png"
+   checksum="85afecb6f3adc98ae0e3528e0d317316"
+   last-author="wangjm"
+   committed-rev="152"
+   text-time="2014-11-18T07:07:48.482000Z"
+   kind="file"
+   committed-date="2014-11-18T07:07:48.482375Z"
+   prop-time="2014-11-20T07:26:40.243000Z"/>
+<entry
+   name="small_btn_bg_pressed.png"
+   checksum="63799eb7232f76a5f92886ffebdaabba"
+   last-author="wangjm"
+   committed-rev="152"
+   text-time="2014-11-18T07:07:48.482000Z"
+   kind="file"
+   committed-date="2014-11-18T07:07:48.482375Z"
+   prop-time="2014-11-20T07:26:45.322000Z"/>
+<entry
+   name="small_pic_default.png"
+   checksum="352db654177d73c0df7170212a028cdb"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:41.756000Z"/>
+<entry
+   name="state_btn_send_again_normal.png"
+   checksum="2e0380d70d12cf45f27390f96ed89bcc"
+   last-author="wangjm"
+   committed-rev="885"
+   text-time="2014-12-12T08:34:27.463000Z"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"
+   prop-time="2014-12-12T10:20:19.616000Z"/>
+<entry
+   name="state_btn_send_again_pressed.png"
+   checksum="dd98dd29bc299efe0fd35f9a63e90c35"
+   last-author="wangjm"
+   committed-rev="885"
+   text-time="2014-12-12T08:34:27.464000Z"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"
+   prop-time="2014-12-12T10:20:19.632000Z"/>
+<entry
+   name="state_icon_net_error_normal.png"
+   checksum="54c8404e58ce3e4c8ecc65f9af966c86"
+   last-author="wangjm"
+   committed-rev="885"
+   text-time="2014-12-12T08:34:27.464000Z"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"
+   prop-time="2014-12-12T10:20:19.666000Z"/>
+<entry
+   name="state_icon_net_error_pressed.png"
+   checksum="d5ce244fb3a4db9d758756fbf9847d50"
+   last-author="wangjm"
+   committed-rev="885"
+   text-time="2014-12-12T10:06:27.109000Z"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"
+   prop-time="2014-12-12T10:20:19.603000Z"/>
+<entry
+   name="state_icon_processing.png"
+   checksum="49972aa1e85dbc995055dd1c84604ea6"
+   last-author="wangjm"
+   committed-rev="885"
+   text-time="2014-12-12T08:34:27.465000Z"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"
+   prop-time="2014-12-12T10:20:19.676000Z"/>
+<entry
+   name="state_icon_success.png"
+   checksum="4eb1f5bc36435c05e175b4fef380ea49"
+   last-author="wangjm"
+   committed-rev="885"
+   text-time="2014-12-12T08:34:27.460000Z"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"
+   prop-time="2014-12-12T10:20:19.645000Z"/>
+<entry
+   name="table_left_default_3.9.png"
+   checksum="778899c1625b8ddf564040becfc125d5"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:40.344000Z"/>
+<entry
+   name="table_left_selected_3.9.png"
+   checksum="c422cca1661f3c1af65b65300186c9b5"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:39.747000Z"/>
+<entry
+   name="table_middle_default_3.png"
+   checksum="58e4095c0981747e2b9dfd89ad19c1c5"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:40.250000Z"/>
+<entry
+   name="table_middle_selected_3.png"
+   checksum="d57be2e129e3186157886c08f097287f"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:39.734000Z"/>
+<entry
+   name="table_right_default_3.9.png"
+   checksum="48cbb3b5fb508a8db0d1972470cda9ca"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:39.953000Z"/>
+<entry
+   name="table_right_selected_3.9.png"
+   checksum="10bf84fec8f74a2442af04caddce10b7"
+   last-author="youtian"
+   committed-rev="164"
+   text-time="2014-11-18T12:05:10.169000Z"
+   kind="file"
+   committed-date="2014-11-18T12:05:10.169875Z"
+   prop-time="2014-11-20T07:26:46.053000Z"/>
+<entry
+   name="tag_pic_a.9.png"
+   checksum="a2c6fa716f1d6c13cb44fbad2dd6f71d"
+   last-author="zhangwei"
+   committed-rev="311"
+   text-time="2014-11-24T10:15:09.925000Z"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-24T09:31:30.589000Z"/>
+<entry
+   name="tag_pic_b.9.png"
+   checksum="dadc9d8e46e4ba4f530e0ffeb5831036"
+   last-author="zhangwei"
+   committed-rev="311"
+   text-time="2014-11-24T10:15:09.925000Z"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-24T09:31:30.576000Z"/>
+<entry
+   name="tag_pic_c.9.png"
+   checksum="987e1bffac1cea701b5a943cdcb353e2"
+   last-author="zhangwei"
+   committed-rev="311"
+   text-time="2014-11-24T10:15:09.925000Z"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-24T09:31:30.595000Z"/>
+<entry
+   name="tag_pic_d.9.png"
+   checksum="23750c825c8d777fd5ed82a60eb82623"
+   last-author="zhangwei"
+   committed-rev="311"
+   text-time="2014-11-24T10:15:09.925000Z"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-24T09:31:30.582000Z"/>
+<entry
+   name="tag_pic_e.9.png"
+   checksum="e0c8a4245731a42b816d7d20a6ec422a"
+   last-author="zhangwei"
+   committed-rev="311"
+   text-time="2014-11-24T10:15:09.925000Z"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-24T09:31:30.601000Z"/>
+<entry
+   name="tag_pic_title_a.png"
+   checksum="c56ebeaf1b62b4ccd5a8e349ec83d527"
+   last-author="zhangwei"
+   committed-rev="115"
+   text-time="2014-11-17T07:37:39.732000Z"
+   kind="file"
+   committed-date="2014-11-17T07:37:39.732375Z"
+   prop-time="2014-11-20T07:26:45.314000Z"/>
+<entry
+   name="tag_pic_title_b.png"
+   checksum="bc69578e7416fbf1fced7c755faaf3b4"
+   last-author="zhangwei"
+   committed-rev="115"
+   text-time="2014-11-17T07:37:39.732000Z"
+   kind="file"
+   committed-date="2014-11-17T07:37:39.732375Z"
+   prop-time="2014-11-20T07:26:45.381000Z"/>
+<entry
+   name="tag_pic_title_c.png"
+   checksum="5dd0d589b84a0a76c98e1f0034744455"
+   last-author="zhangwei"
+   committed-rev="115"
+   text-time="2014-11-17T07:37:39.732000Z"
+   kind="file"
+   committed-date="2014-11-17T07:37:39.732375Z"
+   prop-time="2014-11-20T07:26:45.389000Z"/>
+<entry
+   name="tag_pic_title_d.png"
+   checksum="962b7f054dba8882cf92a20bcf7136e4"
+   last-author="zhangwei"
+   committed-rev="115"
+   text-time="2014-11-17T07:37:39.732000Z"
+   kind="file"
+   committed-date="2014-11-17T07:37:39.732375Z"
+   prop-time="2014-11-20T07:26:45.397000Z"/>
+<entry
+   name="tag_pic_title_e.png"
+   checksum="0f784fe8e9d8957a165846ec5607d606"
+   last-author="zhangwei"
+   committed-rev="115"
+   text-time="2014-11-17T07:37:39.732000Z"
+   kind="file"
+   committed-date="2014-11-17T07:37:39.732375Z"
+   prop-time="2014-11-20T07:26:45.405000Z"/>
+<entry
+   name="title_bg.png"
+   checksum="a64a86c2d911eccf964c72b33586239d"
+   last-author="youtian"
+   committed-rev="195"
+   text-time="2014-11-19T10:50:11.904000Z"
+   kind="file"
+   committed-date="2014-11-19T10:50:11.904250Z"
+   prop-time="2014-11-20T07:26:46.262000Z"/>
+<entry
+   name="title_btn_sending.png"
+   checksum="408916b5edc51d4b5bf2cc9adb3a2d2f"
+   last-author="zhangwei"
+   text-time="2014-12-01T09:56:52.095000Z"
+   committed-rev="449"
+   kind="file"
+   committed-date="2014-12-01T09:56:52.095500Z"
+   prop-time="2014-11-25T01:38:20.524000Z"/>
+<entry
+   name="title_btn_sending_disable.png"
+   checksum="7ec35c62f47a9de190106c056d7483bd"
+   last-author="zhangwei"
+   text-time="2014-12-22T06:22:34.814000Z"
+   committed-rev="1145"
+   kind="file"
+   committed-date="2014-12-22T06:22:34.814500Z"
+   prop-time="2014-12-22T08:05:34.246000Z"/>
+<entry
+   name="title_btn_sending_selected.png"
+   checksum="eed7793efbda2759fbf81b5b6338db79"
+   last-author="zhangwei"
+   text-time="2014-12-01T09:56:52.095000Z"
+   committed-rev="449"
+   kind="file"
+   committed-date="2014-12-01T09:56:52.095500Z"
+   prop-time="2014-11-25T01:38:20.432000Z"/>
+<entry
+   name="title_funny_bg_a.9.png"
+   checksum="d0996ff0d49eeb69227c1252c91b29e2"
+   last-author="wangjm"
+   text-time="2014-12-11T09:23:09.658000Z"
+   committed-rev="835"
+   kind="file"
+   committed-date="2014-12-11T10:11:22.736000Z"
+   prop-time="2014-12-11T10:11:27.270000Z"/>
+<entry
+   name="title_funny_bg_b.9.png"
+   checksum="4099b0392c49985740101a838b7e07d0"
+   last-author="wangjm"
+   text-time="2014-12-11T09:24:02.135000Z"
+   committed-rev="835"
+   kind="file"
+   committed-date="2014-12-11T10:11:22.736000Z"
+   prop-time="2014-12-11T10:11:27.305000Z"/>
+<entry
+   name="title_funny_bg_c.9.png"
+   checksum="b5cf3c2ace1590df93e9ef464bd874c9"
+   last-author="wangjm"
+   text-time="2014-12-11T09:24:47.158000Z"
+   committed-rev="835"
+   kind="file"
+   committed-date="2014-12-11T10:11:22.736000Z"
+   prop-time="2014-12-11T10:11:27.259000Z"/>
+<entry
+   name="title_funny_bg_d.9.png"
+   checksum="5ff836431c2cd4bed1596b94722ce352"
+   last-author="wangjm"
+   text-time="2014-12-11T09:25:19.149000Z"
+   committed-rev="835"
+   kind="file"
+   committed-date="2014-12-11T10:11:22.736000Z"
+   prop-time="2014-12-11T10:11:27.294000Z"/>
+<entry
+   name="title_funny_bg_e.9.png"
+   checksum="cec7aecf1e65f77d8aaae0b7ef2130ed"
+   last-author="wangjm"
+   text-time="2014-12-11T09:25:47.179000Z"
+   committed-rev="835"
+   kind="file"
+   committed-date="2014-12-11T10:11:22.736000Z"
+   prop-time="2014-12-11T10:11:27.248000Z"/>
+<entry
+   name="title_icon_coin.png"
+   checksum="32a5564a7a3f85f66b2238592d7dade6"
+   last-author="wangjm"
+   committed-rev="2252"
+   text-time="2015-03-12T09:56:49.292000Z"
+   kind="file"
+   committed-date="2015-03-12T10:42:03.749000Z"
+   prop-time="2015-03-12T10:41:51.884000Z"/>
+<entry
+   name="top_close.png"
+   checksum="4734fdf688126600f026ff6c757b795c"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:46.131000Z"/>
+<entry
+   name="top_ico_collect.png"
+   checksum="52bd3edd3fea001aee6b869c0fa80272"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:40.515000Z"/>
+<entry
+   name="top_ico_collect_selected.png"
+   checksum="f6975d2490b09431c2f8020b7052995c"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:41.891000Z"/>
+<entry
+   name="top_ico_tag.png"
+   checksum="a0c0e3c1283109c59ad86d9d8f2e9dfa"
+   last-author="zhangwei"
+   committed-rev="311"
+   text-time="2014-11-24T10:15:09.925000Z"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-25T01:38:20.513000Z"/>
+<entry
+   name="top_ico_tag_selected.png"
+   checksum="b9565c9f68ebef30579f659cd7d44620"
+   last-author="zhangwei"
+   committed-rev="311"
+   text-time="2014-11-24T10:15:09.925000Z"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-25T01:38:20.457000Z"/>
+<entry
+   name="top_open.png"
+   checksum="dc41f44a11140424a730f4498ef695b2"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:45.662000Z"/>
+<entry
+   name="tourism_pic_bg_default.9.png"
+   checksum="c388fab41fec5b29a29502565f022222"
+   last-author="zhangwei"
+   text-time="2015-02-12T09:23:36.624000Z"
+   committed-rev="2029"
+   kind="file"
+   committed-date="2015-02-12T09:23:36.624125Z"
+   prop-time="2015-02-03T08:17:22.122000Z"/>
+<entry
+   name="tourism_pic_title_a.png"
+   checksum="c56ebeaf1b62b4ccd5a8e349ec83d527"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:44.804000Z"/>
+<entry
+   name="tourism_pic_title_b.png"
+   checksum="bc69578e7416fbf1fced7c755faaf3b4"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:44.811000Z"/>
+<entry
+   name="tourism_pic_title_c.png"
+   checksum="5dd0d589b84a0a76c98e1f0034744455"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:44.838000Z"/>
+<entry
+   name="tourism_pic_title_d.png"
+   checksum="962b7f054dba8882cf92a20bcf7136e4"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:44.962000Z"/>
+<entry
+   name="tourism_pic_title_e.png"
+   checksum="0f784fe8e9d8957a165846ec5607d606"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:45.011000Z"/>
+<entry
+   name="tourism_title_a.png"
+   checksum="75e9ae9ed6d380880ae21336548333a9"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:46.514000Z"/>
+<entry
+   name="tourism_title_b.png"
+   checksum="c1cad7f07d8d77f41748344b78d348ca"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:46.518000Z"/>
+<entry
+   name="tourism_title_c.png"
+   checksum="83c3b360769441222944da805d255f91"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:46.522000Z"/>
+<entry
+   name="tourism_title_d.png"
+   checksum="a052cf660eaa12c24ccba29547d7efc2"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:46.568000Z"/>
+<entry
+   name="tourism_title_e.png"
+   checksum="a68174f79c02e1dc69a4529f46830229"
+   last-author="youtian"
+   committed-rev="121"
+   text-time="2014-11-17T08:53:39.294000Z"
+   kind="file"
+   committed-date="2014-11-17T08:53:39.294875Z"
+   prop-time="2014-11-20T07:26:46.576000Z"/>
+<entry
+   name="user_head.png"
+   checksum="d132389d9d50111002cc5862d35fba79"
+   last-author="youtian"
+   text-time="2015-03-12T03:25:49.999000Z"
+   committed-rev="2225"
+   kind="file"
+   committed-date="2015-03-12T03:25:49.999875Z"
+   prop-time="2014-11-20T07:26:40.379000Z"/>
+<entry
+   name="user_head_default.png"
+   checksum="79ad06331afab15f936499a96237407f"
+   last-author="youtian"
+   text-time="2015-03-10T07:00:38.109000Z"
+   committed-rev="2137"
+   kind="file"
+   committed-date="2015-03-10T07:00:38.109250Z"
+   prop-time="2014-11-20T07:26:45.211000Z"/>
+<entry
+   name="video_brightness_bg_app.png"
+   checksum="25b8a2927bf56fc5939afbb474e42177"
+   last-author="youtian"
+   committed-rev="1986"
+   text-time="2015-02-10T09:37:10.608000Z"
+   kind="file"
+   committed-date="2015-02-10T09:37:10.608500Z"
+   prop-time="2015-02-10T09:38:28.826000Z"/>
+<entry
+   name="video_num_bg_app.png"
+   checksum="7f16d85ef48e4a216edd6b25bbee6a9a"
+   last-author="youtian"
+   text-time="2014-12-22T09:49:53.283000Z"
+   committed-rev="1177"
+   kind="file"
+   committed-date="2014-12-22T09:49:53.283250Z"
+   prop-time="2014-12-22T09:49:43.834000Z"/>
+<entry
+   name="video_num_front_app.png"
+   checksum="96e263fd2b336b424656d5b9965f97ac"
+   last-author="youtian"
+   text-time="2014-12-22T09:49:53.283000Z"
+   committed-rev="1177"
+   kind="file"
+   committed-date="2014-12-22T09:49:53.283250Z"
+   prop-time="2014-12-22T09:49:43.840000Z"/>
+<entry
+   name="video_volumn_bg_app.png"
+   checksum="38c8236fb8cfb196e757e2faa95caae4"
+   last-author="youtian"
+   text-time="2014-12-22T09:49:53.283000Z"
+   committed-rev="1177"
+   kind="file"
+   committed-date="2014-12-22T09:49:53.283250Z"
+   prop-time="2014-12-22T09:49:43.847000Z"/>
+<entry
+   name="warm_tips.png"
+   checksum="bbe174958453e6b4da4119232abf2362"
+   last-author="wangjm"
+   committed-rev="30"
+   text-time="2014-11-13T02:46:23.544000Z"
+   kind="file"
+   committed-date="2014-11-13T02:46:23.544875Z"
+   prop-time="2014-11-20T07:26:39.834000Z"/>
+</wc-entries>

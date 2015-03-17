@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="wangjm"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/imbryk/viewPager"
+   committed-rev="1432"
+   kind="dir"
+   committed-date="2014-12-29T10:26:07.705125Z"/>
+<entry
+   name="LoopPagerAdapterWrapper.java"
+   checksum="012258bcb907349cb2ca9c414686f6d7"
+   last-author="wangjm"
+   committed-rev="1051"
+   text-time="2014-12-18T10:13:36.544000Z"
+   kind="file"
+   committed-date="2014-12-19T01:26:25.390000Z"/>
+<entry
+   name="LoopViewPager.java"
+   checksum="3e7172c629168a34afbfd7b879d449fb"
+   last-author="wangjm"
+   committed-rev="1432"
+   text-time="2014-12-29T09:46:34.596000Z"
+   kind="file"
+   committed-date="2014-12-29T10:26:07.705000Z"/>
+</wc-entries>

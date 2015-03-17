@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="trunk/gen"/>
+	<classpathentry kind="src" path="trunk/src"/>
+	<classpathentry kind="lib" path="trunk/bin/dexedLibs/android-support-v4-51da316ce176a751267d2c629944a102.jar"/>
+	<classpathentry kind="lib" path="trunk/bin/dexedLibs/greendao-1.3.0-beta-1-f33640d39a44e2f9699bde912b3eb5af.jar"/>
+	<classpathentry kind="lib" path="trunk/bin/dexedLibs/gson-2.2.3-a910538d8277f0f75ddc7892e7796da0.jar"/>
+	<classpathentry kind="lib" path="trunk/bin/dexedLibs/universal-image-loader-1.9.3-27f8fb0a293288ac1915b2ec5d99d45e.jar"/>
+	<classpathentry kind="lib" path="trunk/bin/dexedLibs/zxing-908a4cf716de71b4dbd9358127a8bd52.jar"/>
+	<classpathentry kind="lib" path="trunk/libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="trunk/libs/greendao-1.3.0-beta-1.jar"/>
+	<classpathentry kind="lib" path="trunk/libs/gson-2.2.3.jar"/>
+	<classpathentry kind="lib" path="trunk/libs/universal-image-loader-1.9.3.jar"/>
+	<classpathentry kind="lib" path="trunk/libs/zxing.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="trunk/bin/classes"/>
+</classpath>

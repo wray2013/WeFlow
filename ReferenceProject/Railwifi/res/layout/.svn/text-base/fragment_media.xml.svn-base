@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#f0f0f0" 
+    >
+    <RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    >
+	    
+	    <RelativeLayout 
+	        android:id="@+id/ll_view_pager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="232dp"
+	        android:layout_marginLeft="5dp"
+		    android:layout_marginRight="5dp"
+		    android:layout_marginTop="6dp"
+	        >
+	        
+		    <com.cmmobi.railwifi.view.autoscrollviewpager.AutoScrollViewPager
+		        android:id="@+id/vp_pager"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        />
+		    <com.viewpagerindicator.CirclePageIndicator
+		        android:id="@+id/indicator"
+		        android:padding="10dp"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:layout_alignParentBottom="true"
+		        android:layout_marginRight="10dp"
+		        android:layout_marginBottom="5dp"
+		        style="@style/CirclePageIndicator"
+		        />
+		    
+		    <ImageView 
+	            android:id="@+id/iv_net_error"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:visibility="gone"
+	            />
+	    </RelativeLayout>
+	    
+		    
+	        <LinearLayout 
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:orientation="vertical"
+	            android:layout_below="@id/ll_view_pager"
+	            >
+	            
+	            <RelativeLayout 
+			        android:id="@+id/rl_recommend"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginTop="6dp"
+			        android:layout_marginLeft="6dp"
+			        android:layout_marginRight="6dp"
+			        >
+			        
+	                <View 
+			            android:id="@+id/iv_previous_period"
+			            android:layout_width="94dp"
+			            android:layout_height="wrap_content"
+			            android:background="@drawable/btn_before"
+			            android:layout_alignParentRight="true"
+			            />
+				    
+			        <View 
+			            android:id="@+id/iv_period"
+			            android:layout_width="283dp"
+			            android:layout_height="wrap_content"
+			            android:background="@drawable/btn_recommendation"
+			            android:layout_toLeftOf="@id/iv_previous_period"
+			            android:layout_marginRight="-20dp"
+			            />
+			        
+			    </RelativeLayout>
+			    
+	            <LinearLayout 
+	                android:id="@+id/ll_two_rows"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:orientation="vertical"
+	                android:layout_marginLeft="6dp"
+			        android:layout_marginRight="6dp"
+			        android:layout_marginTop="6dp"
+			        android:layout_marginBottom="6dp"
+	                >
+			        
+	                <LinearLayout 
+				        android:id="@+id/ll_row1"
+				        android:layout_width="fill_parent"
+				        android:layout_height="fill_parent"
+				        android:layout_weight="1"
+				        android:orientation="horizontal"
+				        >
+				        
+				        <ImageView 
+				            android:id="@+id/iv_watch_film"
+				            android:layout_width="0dp"
+				            android:layout_height="fill_parent"
+				            android:layout_weight="1"
+				            android:background="@drawable/btn_movies"
+				            />
+				        
+				        <ImageView 
+				            android:id="@+id/iv_read_book"
+				            android:layout_width="0dp"
+				            android:layout_height="fill_parent"
+				            android:layout_weight="1"
+				            android:background="@drawable/btn_books"
+				            android:layout_marginLeft="5dp"
+				            />
+				        
+				    </LinearLayout>
+				    
+				    <LinearLayout 
+				        android:id="@+id/ll_row2"
+				        android:layout_width="fill_parent"
+				        android:layout_height="fill_parent"
+				        android:layout_weight="1"
+				        android:orientation="horizontal"
+				        android:layout_marginTop="6dp"
+				        >
+				        
+				        <ImageView 
+				            android:id="@+id/iv_play_jok"
+				            android:layout_width="0dp"
+				            android:layout_height="fill_parent"
+				            android:layout_weight="1"
+				            android:background="@drawable/btn_joks"
+				            />
+				        
+				        <ImageView 
+				            android:id="@+id/iv_listenmusic"
+				            android:layout_width="0dp"
+				            android:layout_height="fill_parent"
+				            android:layout_weight="1"
+				            android:background="@drawable/btn_musics"
+				            android:layout_marginLeft="5dp"
+				            />
+				    </LinearLayout>
+	            </LinearLayout>
+			    
+			    
+	        </LinearLayout>
+		    
+	
+	</RelativeLayout>
+    
+</ScrollView>

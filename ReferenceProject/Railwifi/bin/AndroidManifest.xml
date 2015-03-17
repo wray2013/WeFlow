@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cmmobi.railwifi"
     android:versionCode="1"
-    android:versionName="1.0.0" >
+    android:versionName="1.1.0" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -266,11 +266,73 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
+            android:name="com.cmmobi.railwifi.activity.DownloadManageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="com.cmmobi.railwifi.activity.DownloadManageActivity1"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
             android:name="com.alipay.android.app.sdk.WapPayActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.cmmobi.railwifi.activity.GameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+         <activity
+            android:name="com.cmmobi.railwifi.activity.LoginFromMainpageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+        <activity
+            android:name="com.cmmobi.railwifi.activity.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+        <activity
+            android:name="com.cmmobi.railwifi.activity.NicknameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+         
+        <activity
+            android:name="com.cmmobi.railwifi.activity.UserInfoAcitivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+        <activity
+            android:name="com.cmmobi.railwifi.activity.CheckCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+         <activity
+            android:name="com.cmmobi.railwifi.activity.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+        <activity
+            android:name="com.cmmobi.railwifi.activity.AccountChangeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+        <activity
+            android:name="com.cmmobi.railwifi.activity.PhotoClipActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        
+        <activity
+            android:name="com.cmmobi.railwifi.activity.IDCardActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
@@ -387,6 +449,27 @@
                 <data android:mimeType="application/vnd.apple.mpegurl" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.cmmobi.railwifi.activity.MileageRecordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+		<activity
+            android:name="com.cmmobi.railwifi.activity.AddressSelectorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name="com.cmmobi.railwifi.activity.ReceiptAddressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity
+            android:name="com.cmmobi.railwifi.activity.NewReceiptAddressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+
         <service
             android:name="com.cmmobi.railwifi.service.PromtService" >
         </service>

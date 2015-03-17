@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/cn/trinea/android/common/util"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="1334"
+   kind="dir"
+   committed-date="2014-12-26T04:58:03.564500Z"/>
+<entry
+   name="AppUtils.java"
+   checksum="498a036c3460d854850692b766ad9e6b"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.764000Z"/>
+<entry
+   name="ArrayUtils.java"
+   checksum="d93c652ebaaeaff76e5a85c93357cb51"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.534000Z"/>
+<entry
+   name="AssetDatabaseOpenHelper.java"
+   checksum="c64c09a9fd23fb96fa9ee536a5eb6c87"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.351000Z"/>
+<entry
+   name="CollectionUtils.java"
+   checksum="92ad3917f788202bff01e40e3b48bfbf"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.041000Z"/>
+<entry
+   name="DigestUtils.java"
+   checksum="7b3b893ab0aff4ab7e844eb422ed3a94"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.551000Z"/>
+<entry
+   name="DownloadManagerPro.java"
+   checksum="cd1b4b6dea435fce33d6f72e0f6b112b"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.335000Z"/>
+<entry
+   name="FileUtils.java"
+   checksum="ef6ae36ef91ad6ac242c0b4c72d44918"
+   last-author="wangjm"
+   committed-rev="225"
+   text-time="2014-11-20T09:32:19.355000Z"
+   kind="file"
+   committed-date="2014-11-20T09:51:32.013000Z"
+   prop-time="2014-11-20T07:26:18.578000Z"/>
+<entry
+   name="ImageUtils.java"
+   checksum="4ba30b9181f71cc2829a785f568c2ab3"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.844000Z"/>
+<entry
+   name="JSONUtils.java"
+   checksum="de2936911d4425187bcc37a39d054d01"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.781000Z"/>
+<entry
+   name="ListUtils.java"
+   checksum="44c86610c5ab7068a249de88a69d10ae"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.864000Z"/>
+<entry
+   name="MapUtils.java"
+   checksum="06917f224b1bada765f4b866d3c98a8a"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.946000Z"/>
+<entry
+   name="NetWorkUtils.java"
+   checksum="2f82f2bec651e236d29b5ef37aa08090"
+   last-author="wangjm"
+   committed-rev="1334"
+   text-time="2014-12-26T04:22:13.275000Z"
+   kind="file"
+   committed-date="2014-12-26T04:58:03.564000Z"
+   prop-time="2014-11-20T07:26:18.887000Z"/>
+<entry
+   name="ObjectUtils.java"
+   checksum="a8cf5ba4a9a1b50c15fd7c9d5e105b15"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.433000Z"/>
+<entry
+   name="PackageUtils.java"
+   checksum="4164ccfe386e1070ca14aaf0d9e21e8e"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.114000Z"/>
+<entry
+   name="ParcelUtils.java"
+   checksum="2ac14de83656c9bca67381cf371fb1ff"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.424000Z"/>
+<entry
+   name="PreferencesUtils.java"
+   checksum="81f51a32bf363459b20fd335b0b3fce6"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.237000Z"/>
+<entry
+   name="RandomUtils.java"
+   checksum="a70ddde91e0f740008fbfece79b2ed0c"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.755000Z"/>
+<entry
+   name="ResourceUtils.java"
+   checksum="5e91d13dea9e359c87bc5c9eeed1c9ab"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.883000Z"/>
+<entry
+   name="ScreenUtils.java"
+   checksum="4d591358eeabc98da82340f880909cc2"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.542000Z"/>
+<entry
+   name="SerializeUtils.java"
+   checksum="ebc205f0d43e354ee1bb6c01d4d383c8"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.861000Z"/>
+<entry
+   name="ShellUtils.java"
+   checksum="8f5161d0150ab83fc48a802b610648c7"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.686000Z"/>
+<entry
+   name="SingletonUtils.java"
+   checksum="a52c9d31b37afa091cb274fd37cf2592"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.343000Z"/>
+<entry
+   name="SizeUtils.java"
+   checksum="add57118e596f46638636c685aa10b13"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.790000Z"/>
+<entry
+   name="StreamUtils.java"
+   checksum="890c10f1a2c1a38ceef1ac2a5a811ebf"
+   last-author="zhangwei"
+   committed-rev="208"
+   text-time="2014-11-20T02:56:52.654000Z"
+   kind="file"
+   committed-date="2014-11-20T02:56:52.654250Z"
+   prop-time="2014-11-20T07:26:19.032000Z"/>
+<entry
+   name="StringUtils.java"
+   checksum="9493e1bcb4dc9f32d86ac34a7325b340"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.469000Z"/>
+<entry
+   name="SystemUtils.java"
+   checksum="52b0a453ed9b3785ac4300a44cdb69d2"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:18.852000Z"/>
+<entry
+   name="TimeUtils.java"
+   checksum="a82d3d14a2c0536d31c57a9650166ee1"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.122000Z"/>
+<entry
+   name="ToastUtils.java"
+   checksum="12230ad9c07b25b378a266140e390468"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2014-11-20T01:04:44.326000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.024000Z"/>
+<entry
+   name="ViewUtils.java"
+   checksum="cc04eb8b7962d0078d7da238a13f39cf"
+   last-author="zhangwei"
+   committed-rev="203"
+   text-time="2015-01-16T07:28:20.461000Z"
+   kind="file"
+   committed-date="2014-11-20T01:04:44.326125Z"
+   prop-time="2014-11-20T07:26:19.818000Z"/>
+</wc-entries>

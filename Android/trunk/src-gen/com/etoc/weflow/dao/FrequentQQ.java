@@ -6,28 +6,14 @@ package com.etoc.weflow.dao;
  */
 public class FrequentQQ {
 
-    private Long id;
     /** Not-null value. */
     private String qq_num;
 
     public FrequentQQ() {
     }
 
-    public FrequentQQ(Long id) {
-        this.id = id;
-    }
-
-    public FrequentQQ(Long id, String qq_num) {
-        this.id = id;
+    public FrequentQQ(String qq_num) {
         this.qq_num = qq_num;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /** Not-null value. */

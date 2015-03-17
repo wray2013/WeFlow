@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/drawable-hdpi"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2291"
+   kind="dir"
+   committed-date="2015-03-13T04:10:24.437375Z"/>
+<entry
+   name="btn_add_normal.png"
+   checksum="1de1b0174905945bb93e5923483b79d7"
+   last-author="wangjm"
+   committed-rev="140"
+   text-time="2014-11-18T01:07:16.279000Z"
+   kind="file"
+   committed-date="2014-11-18T01:07:16.279250Z"
+   prop-time="2014-11-20T07:26:37.047000Z"/>
+<entry
+   name="btn_add_pressed.png"
+   checksum="1150abca69137781173af37a09984b21"
+   last-author="wangjm"
+   committed-rev="140"
+   text-time="2014-11-18T01:07:16.279000Z"
+   kind="file"
+   committed-date="2014-11-18T01:07:16.279250Z"
+   prop-time="2014-11-20T07:26:36.557000Z"/>
+<entry
+   name="btn_setting_normal.png"
+   checksum="43ece8bdc55743eb5c7adae5b7ed1935"
+   last-author="wangjm"
+   committed-rev="71"
+   text-time="2014-11-15T02:07:13.451000Z"
+   kind="file"
+   committed-date="2014-11-15T02:07:13.451125Z"
+   prop-time="2014-11-20T07:26:38.896000Z"/>
+<entry
+   name="btn_setting_pressed.png"
+   checksum="1d624f1016396e0746cd4c28053a0f50"
+   last-author="wangjm"
+   committed-rev="71"
+   text-time="2014-11-15T02:07:13.451000Z"
+   kind="file"
+   committed-date="2014-11-15T02:07:13.451125Z"
+   prop-time="2014-11-20T07:26:36.347000Z"/>
+<entry
+   name="default_ptr_flip.png"
+   checksum="972a1ac5c9d6e973b4b1d3c15ae4d82a"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:36.566000Z"/>
+<entry
+   name="default_ptr_rotate.png"
+   checksum="d62dc27b80e14c3f5c4ab9be5e50a8f4"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:36.804000Z"/>
+<entry
+   name="drawer_message_bg_6.png"
+   checksum="bda3503cb1da7cd0797417967a6135b5"
+   last-author="wangjm"
+   committed-rev="71"
+   text-time="2014-11-15T02:07:13.451000Z"
+   kind="file"
+   committed-date="2014-11-15T02:07:13.451125Z"
+   prop-time="2014-11-20T07:26:38.811000Z"/>
+<entry
+   name="empty_photo.png"
+   checksum="472ee7ba478628eba1f92c697dab2571"
+   last-author="wangjm"
+   committed-rev="1523"
+   text-time="2013-05-16T09:24:39.000000Z"
+   kind="file"
+   committed-date="2015-01-15T06:12:55.691000Z"
+   prop-time="2015-01-15T06:09:48.271000Z"/>
+<entry
+   name="ic_launcher.png"
+   checksum="ebb83b85d1b9f4689e21a9ae98f360ad"
+   last-author="wangjm"
+   committed-rev="1495"
+   text-time="2014-12-31T05:37:21.146000Z"
+   kind="file"
+   committed-date="2014-12-31T05:39:50.173000Z"
+   prop-time="2014-12-31T05:39:49.709000Z"/>
+<entry
+   name="indicator_arrow.png"
+   checksum="09e9a51ed1cf1ddfc42a93af2f8ccbf1"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:36.767000Z"/>
+<entry
+   name="news_item_bg.9.png"
+   checksum="17731934f46f1379a2d8eacc653bfa02"
+   last-author="wangjm"
+   committed-rev="1523"
+   text-time="2013-05-16T09:24:39.000000Z"
+   kind="file"
+   committed-date="2015-01-15T06:12:55.691000Z"
+   prop-time="2015-01-15T06:09:48.251000Z"/>
+<entry
+   name="tou.png"
+   checksum="4c176a5270248a280009dd8165179bd9"
+   last-author="youtian"
+   committed-rev="21"
+   text-time="2014-11-12T08:20:23.888000Z"
+   kind="file"
+   committed-date="2014-11-12T08:20:23.888625Z"
+   prop-time="2014-11-20T07:26:37.441000Z"/>
+<entry
+   name="transparent.9.png"
+   checksum="8e82d963bac9ed387603b22c5499b7c1"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:04.374000Z"/>
+<entry
+   name="xlistview_arrow.png"
+   checksum="9f4a22c018870abcb9d3bdf1924eca67"
+   last-author="wangjm"
+   committed-rev="1523"
+   text-time="2013-05-16T09:24:39.000000Z"
+   kind="file"
+   committed-date="2015-01-15T06:12:55.691000Z"
+   prop-time="2015-01-15T06:09:48.229000Z"/>
+</wc-entries>

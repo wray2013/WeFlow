@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="wangjm"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/drawable-xxhdpi"
+   committed-rev="1495"
+   kind="dir"
+   committed-date="2014-12-31T05:39:50.173875Z"/>
+<entry
+   name="ic_launcher.png"
+   checksum="6c291c6e3e059e1f8caf5e77ffea37d8"
+   last-author="wangjm"
+   committed-rev="1495"
+   text-time="2014-12-31T05:35:53.153000Z"
+   kind="file"
+   committed-date="2014-12-31T05:39:50.173000Z"
+   prop-time="2014-12-31T05:39:49.725000Z"/>
+</wc-entries>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#b0000000"
+    >
+    
+    <RelativeLayout 
+        android:id="@+id/rl_popupwindow"
+        android:layout_width="fill_parent"
+        android:layout_height="190dp"
+        android:background="#FFFFFFFF"
+        android:layout_alignParentBottom="true"
+        >
+        <View 
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#D8000000"
+            />
+        <Button
+	    	android:id="@+id/btn_cancel"
+	     	android:layout_width="fill_parent"
+	   		android:layout_height="45dp"
+		   	android:text="@string/cancel"
+		   	android:textColor="#888888"
+		   	android:textSize="17sp"
+		   	android:layout_alignParentBottom="true"
+		   	android:layout_marginBottom="20dp"
+		   	android:layout_marginLeft="35dp"
+		   	android:layout_marginRight="35dp"
+		   	android:background="@drawable/bg_cancel_choose"
+	    	/>
+	        
+	    <Button
+	    	android:id="@+id/btn_from_pictures"
+	        android:layout_width="fill_parent"
+	       	android:layout_height="45dp"
+	       	android:layout_marginBottom="10dp"
+	       	android:text="从相册选择头像"
+	       	android:textColor="#888888"
+		   	android:textSize="17sp"
+	       	android:layout_above="@+id/btn_cancel"
+	       	android:layout_alignLeft="@id/btn_cancel"
+	       	android:layout_alignRight="@id/btn_cancel"
+		   	android:background="@drawable/bg_pic_choose"
+	        />
+	         
+	    <Button
+	        android:id="@+id/btn_from_camera"
+	        android:layout_width="fill_parent"
+	       	android:layout_height="45dp"
+	       	android:layout_marginBottom="10dp"
+	       	android:text="拍照上传"
+	       	android:textColor="#888888"
+		   	android:textSize="17sp"
+	       	android:layout_above="@+id/btn_from_pictures"
+		   	android:background="@drawable/bg_pic_choose"
+		   	android:layout_alignLeft="@id/btn_cancel"
+	       	android:layout_alignRight="@id/btn_cancel"
+	        />
+        
+    </RelativeLayout>
+    
+   
+
+</RelativeLayout>

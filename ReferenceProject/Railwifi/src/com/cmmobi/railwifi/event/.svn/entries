@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="zhangwei"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/cmmobi/railwifi/event"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2419"
+   kind="dir"
+   committed-date="2015-03-17T03:10:05.296750Z"/>
+<entry
+   name="DialogEvent.java"
+   checksum="3fa0e8824ec8d31773b70e5c061fb661"
+   last-author="zhangwei"
+   text-time="2015-03-16T08:53:02.281000Z"
+   committed-rev="2397"
+   kind="file"
+   committed-date="2015-03-16T08:53:02.281125Z"
+   prop-time="2014-12-24T02:59:36.072000Z"/>
+<entry
+   name="FragmentEvent.java"
+   checksum="f5496090f8a2a60206ab0439c0731c45"
+   last-author="wangjm"
+   text-time="2015-01-15T06:11:39.564000Z"
+   committed-rev="1523"
+   kind="file"
+   committed-date="2015-01-15T06:12:55.691000Z"/>
+<entry
+   name="FragmentStatusEvent.java"
+   checksum="45855c3a2955e995b9bef9fb22d37950"
+   last-author="wangjm"
+   committed-rev="2001"
+   text-time="2015-02-11T03:12:06.773000Z"
+   kind="file"
+   committed-date="2015-02-11T07:35:54.374000Z"/>
+<entry
+   name="MusicEvent.java"
+   checksum="7e0efff6bc8d59e50db4456c54ae3ffa"
+   last-author="zhangwei"
+   text-time="2015-01-16T08:44:17.408000Z"
+   committed-rev="1547"
+   kind="file"
+   committed-date="2015-01-16T08:44:17.408624Z"
+   prop-time="2015-01-16T10:08:36.939000Z"/>
+<entry
+   name="NetworkEvent.java"
+   checksum="15588345fb195fe109725b5dd19e14c9"
+   last-author="wangjm"
+   text-time="2015-01-28T06:54:24.281000Z"
+   committed-rev="1800"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"/>
+<entry
+   name="ParallelEvent.java"
+   checksum="621a81fc35d7d1dab3c6ce3c407d0ef7"
+   last-author="zhangwei"
+   committed-rev="526"
+   text-time="2014-12-03T09:21:56.611000Z"
+   kind="file"
+   committed-date="2014-12-03T09:21:56.611125Z"
+   prop-time="2014-11-20T10:02:18.550000Z"/>
+<entry
+   name="RequestEvent.java"
+   checksum="ac2176bfabf98e4c96476e17d8ca0bb7"
+   last-author="zhangwei"
+   committed-rev="2419"
+   text-time="2015-03-17T03:10:05.296000Z"
+   kind="file"
+   committed-date="2015-03-17T03:10:05.296750Z"
+   prop-time="2014-12-22T08:05:34.910000Z"/>
+</wc-entries>

@@ -6,28 +6,14 @@ package com.etoc.weflow.dao;
  */
 public class FrequentPhone {
 
-    private Long id;
     /** Not-null value. */
     private String phone_num;
 
     public FrequentPhone() {
     }
 
-    public FrequentPhone(Long id) {
-        this.id = id;
-    }
-
-    public FrequentPhone(Long id, String phone_num) {
-        this.id = id;
+    public FrequentPhone(String phone_num) {
         this.phone_num = phone_num;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /** Not-null value. */

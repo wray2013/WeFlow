@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="zhangwei"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/jeremyfeinstein/slidingmenu/lib"
+   committed-rev="2058"
+   kind="dir"
+   committed-date="2015-02-15T03:45:23.697750Z"/>
+<entry
+   name="CanvasTransformerBuilder.java"
+   checksum="0dfa4c7e664fc75270a9fe4df3bfcd52"
+   last-author="wangjm"
+   text-time="2014-11-07T07:43:25.858000Z"
+   committed-rev="9"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="CustomViewAbove.java"
+   checksum="894c5165ae097e284e7be8039f243401"
+   last-author="zhangwei"
+   committed-rev="2058"
+   text-time="2015-02-15T03:45:23.697000Z"
+   kind="file"
+   committed-date="2015-02-15T03:45:23.697750Z"/>
+<entry
+   name="CustomViewBehind.java"
+   checksum="8327c5b6d1d9a099ac9648ac92ebe1f7"
+   last-author="wangjm"
+   text-time="2014-12-02T06:57:40.184000Z"
+   committed-rev="489"
+   kind="file"
+   committed-date="2014-12-02T07:17:16.611000Z"/>
+<entry
+   name="MenuInterface.java"
+   checksum="0b5dd525bcc17b53344a3d3312a6eb7c"
+   last-author="wangjm"
+   text-time="2014-11-07T07:43:25.858000Z"
+   committed-rev="9"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="SlidingMenu.java"
+   checksum="e02ed73d98db5693118fb0f83d176c74"
+   last-author="wangjm"
+   text-time="2014-12-02T06:55:31.657000Z"
+   committed-rev="489"
+   kind="file"
+   committed-date="2014-12-02T07:17:16.611000Z"/>
+<entry
+   name="app"
+   kind="dir"/>
+</wc-entries>

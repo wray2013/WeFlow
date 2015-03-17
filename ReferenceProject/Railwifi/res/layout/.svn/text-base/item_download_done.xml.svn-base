@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/white"
+    >
+    
+    <RelativeLayout 
+        android:id="@+id/rl_download_done"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        >
+        <TextView
+	        android:id="@+id/tv_type"
+	        android:layout_width="60dp"
+	        android:layout_height="18dp"
+	        android:layout_marginLeft="10.5dp"
+	        android:layout_marginTop="14dp"
+	        android:text="APP"
+	        android:textSize="12sp"
+	        android:textColor="@color/white"
+	        android:gravity="center"
+	        android:background="@drawable/bg_download_item_app"
+	        />
+	    
+	    <TextView 
+	        android:id="@+id/tv_title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@id/tv_type"
+	        android:layout_toRightOf="@id/tv_type"
+	        android:layout_marginLeft="9dp"
+	        android:text="大众点评"
+	        android:textColor="@color/title_bar_text_color"
+	        android:textSize="17sp"
+	        
+	        />
+	    
+	    <View 
+	        android:id="@+id/view_line_bottom"
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dp"
+	        android:layout_marginLeft="6dp"
+	        android:layout_marginRight="6dp"
+	        android:layout_alignParentBottom="true"
+	        android:background="#dcdcdc"
+	        />
+	    
+	    <ImageView 
+	        android:id="@+id/iv_delete"
+	        android:layout_width="44dp"
+	        android:layout_height="44dp"
+	        android:src="@drawable/btn_delete"
+	        android:layout_centerVertical="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="12dp"
+	        />
+	    
+	    
+	    <TextView 
+	        android:id="@+id/tv_size"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginBottom="20dp"
+	        android:layout_alignLeft="@id/tv_title"
+	        android:layout_marginLeft="4dp"
+	        android:text="33.8M"
+	        android:textSize="12sp"
+	        android:textColor="#888888"
+	        />
+        
+    </RelativeLayout>
+
+</RelativeLayout>

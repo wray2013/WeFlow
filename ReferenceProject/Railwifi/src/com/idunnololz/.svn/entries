@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/idunnololz"
+   committed-rev="434"
+   kind="dir"
+   committed-date="2014-12-01T04:57:34.689000Z"/>
+<entry
+   name="widgets"
+   kind="dir"/>
+</wc-entries>

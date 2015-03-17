@@ -130,7 +130,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener{
 			build.where(Properties.Qq_num.eq(etQQ.getText().toString()));
 			if (build.buildCount().count() ==0) {
 				Log.d("=AAA=","buildCount = 0");
-				qqDao.insert(new FrequentQQ(null, etQQ.getText().toString()));
+				qqDao.insert(new FrequentQQ(etQQ.getText().toString()));
 			}
 			break;
 		}
