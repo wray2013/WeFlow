@@ -1,5 +1,7 @@
 package com.etoc.weflow.fragment;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,18 +18,26 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.WebViewActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
 public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ListView> {
 
 	private final String TAG = "HomePageFragment";
+	
+	private AccountInfo currentAccount = null;
+	
+	private boolean isLogin = false;
 	
 	private LinearLayout makeFLowLayout;
 	private LinearLayout expenseFlowLayout;
@@ -36,6 +46,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private int expenseFlowId = 0xffeedd00;
 	
 	//UI Component
+	private PullToRefreshScrollView ptrScrollView;
 	private ImageView ivRecA, ivRecB;
 	private MagicTextView mtvFlow;
 	private TextView tvCellPhone = null;
@@ -43,14 +54,28 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private TextView tvPlainType = null;
 	private TextView tvInFlow = null;
 	private TextView tvOutFlow = null;
+	private RelativeLayout rlLogin    = null;
 	private RelativeLayout rlNotLogin = null;
 	private TextView btnLogin = null;
+	
+	private MainActivity mainActivity = null;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreateView(inflater, container, savedInstanceState);
+//		super.onCreateView(inflater, container, savedInstanceState);
+		if(getActivity() instanceof MainActivity) {
+			mainActivity = (MainActivity) getActivity();
+		} else {
+			Log.e("XXX", "wrong attached activity " + getActivity().getClass().getName());
+		}
 		View v = inflater.inflate(R.layout.fragment_homepage, null);
 		initView(v);
 		return v;
@@ -60,9 +85,12 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		inflater = LayoutInflater.from(getActivity());
 		makeFLowLayout = (LinearLayout) view.findViewById(R.id.ll_make_flow);
 		expenseFlowLayout =(LinearLayout) view.findViewById(R.id.ll_expense_flow);
+		ptrScrollView = (PullToRefreshScrollView) view.findViewById(R.id.ptr_scroll_view);
+		ptrScrollView.setPullLabel("下拉加载最新");
+		ptrScrollView.setReleaseLabel("释放加载");
 		mtvFlow = (MagicTextView) view.findViewById(R.id.mtv_flow);
 		
-		mtvFlow.showNumberWithAnimation(98, 1000);
+//		mtvFlow.showNumberWithAnimation(98, 1000);
 		
 		tvCellPhone = (TextView) view.findViewById(R.id.tv_phone_num);
 		tvPlain = (TextView) view.findViewById(R.id.tv_plans);
@@ -70,6 +98,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		tvInFlow = (TextView) view.findViewById(R.id.tv_plans_in_left);
 		tvOutFlow = (TextView) view.findViewById(R.id.tv_plans_out_left);
 		rlNotLogin = (RelativeLayout) view.findViewById(R.id.rl_not_login);
+		rlLogin = (RelativeLayout) view.findViewById(R.id.rl_title_top);
 		btnLogin = (TextView) view.findViewById(R.id.tv_login_btn);
 		btnLogin.setOnClickListener(this);
 		
@@ -167,6 +196,58 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ivRecB.setBackgroundResource(R.drawable.shake_banner);
 		/*ImageLoader.getInstance().displayImage("http://detail.amap.com/telecom/images/AMAP_05.jpg", ivRecA);
 		ImageLoader.getInstance().displayImage("http://detail.amap.com/telecom/images/AMAP_05.jpg", ivRecB);*/
+		isLogin = false;
+		
+		AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
+		if(accountInfoDao != null && accountInfoDao.count() > 0) {
+			List<AccountInfo> aiList = accountInfoDao.loadAll();
+			currentAccount = aiList.get(0);
+			if(currentAccount != null && currentAccount.getUserid() != null && !currentAccount.getUserid().equals("")) {
+				isLogin = true;
+			}
+		}
+		loginView(isLogin);
+
+	}
+	
+	private void loginView(boolean isLogin) {
+		if(isLogin) {
+			//已登录
+			rlNotLogin.setVisibility(View.GONE);
+			rlLogin.setVisibility(View.VISIBLE);
+			
+			tvCellPhone.setText(currentAccount.getTel());
+			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+			
+			if("0".equals(currentAccount.getIsregistration())) { //未签到
+				
+			} else {
+				
+			}
+			
+			loadConfig(currentAccount.getMakeflow(), currentAccount.getUseflow());
+			
+		} else {
+			//未登录
+			rlNotLogin.setVisibility(View.VISIBLE);
+			rlLogin.setVisibility(View.GONE);
+			
+		}
+	}
+	
+	/**
+	 * 读栏目配置
+	 * @param makeConf
+	 * @param UseConf
+	 */
+	private void loadConfig(String makeConf, String UseConf) {
+		
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
 	}
 	
 	@Override
@@ -174,8 +255,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
-		if(mtvFlow != null)
-			mtvFlow.showNumberWithAnimation(98, 1000);
+		if(mtvFlow != null && isLogin)
+			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 	}
 	
 	@Override
@@ -189,6 +270,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		case 0xffeecc02:
 		case 0xffeecc03:
 			Intent makeFlowIntent = new Intent(getActivity(),MakeFlowActivity.class);
+			makeFlowIntent.putExtra("isLogin", isLogin);
 			makeFlowIntent.putExtra(ConStant.INTENT_MAKE_FLOW, v.getId() & 0xff);
 			startActivity(makeFlowIntent);
 			break;
@@ -199,6 +281,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		case 0xffeedd04:
 			Intent expenseFlowIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
 			expenseFlowIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, v.getId() & 0xff);
+			expenseFlowIntent.putExtra("isLogin", isLogin);
 			startActivity(expenseFlowIntent);
 			break;
 		case R.id.iv_recomm_1:
@@ -225,8 +308,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	@Override
 	public void onShow() {
 		Log.d(TAG, "onShow IN!");
-		if(mtvFlow != null)
-			mtvFlow.showNumberWithAnimation(98, 1000);
+		if(mtvFlow != null && isLogin)
+			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 	}
 
 	@Override

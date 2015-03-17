@@ -1,13 +1,19 @@
 package com.etoc.weflow.fragment;
 
+import java.util.List;
+
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.CaptureActivity;
 import com.etoc.weflow.activity.FeedBackActivity;
+import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.SettingsActivity;
 import com.etoc.weflow.activity.SignInActivity;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.MyBillListActivity;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.utils.ViewUtils;
 
 import android.content.Intent;
@@ -27,11 +33,20 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	private RelativeLayout rlMyBill;
 	
+	private MainActivity mainActivity = null;
+	
+	private boolean isLogin = false;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreateView(inflater, container, savedInstanceState);
+		if(getActivity() instanceof MainActivity) {
+			mainActivity = (MainActivity) getActivity();
+		} else {
+			Log.e("XXX", "wrong attached activity " + getActivity().getClass().getName());
+		}
 		View v = inflater.inflate(R.layout.fragment_myself, null);
 		initView(v);
 		return v;
@@ -81,6 +96,25 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_invite), 10);
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_feedback), 10);
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_settings), 10);
+		
+		checkLogin();
+	}
+	
+	
+	private void checkLogin() {
+		isLogin = false;
+		if (mainActivity != null) {
+			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
+			if (accountInfoDao != null && accountInfoDao.count() > 0) {
+				List<AccountInfo> aiList = accountInfoDao.loadAll();
+				AccountInfo current = aiList.get(0);
+				if (current != null && current.getUserid() != null
+						&& !current.getUserid().equals("")) {
+					Log.e("XXX", "已登录");
+					isLogin = true;
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -92,6 +126,10 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	@Override
 	public void onClick(View v) {
+		if(!isLogin) {
+			startActivity(new Intent(getActivity(), LoginActivity.class));
+			return;
+		}
 		switch (v.getId()) {
 		case R.id.btn_title_left:
 			

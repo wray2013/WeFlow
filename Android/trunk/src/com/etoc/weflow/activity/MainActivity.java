@@ -2,6 +2,7 @@ package com.etoc.weflow.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,10 @@ import android.widget.Toast;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfoDao;
+import com.etoc.weflow.dao.DaoMaster;
+import com.etoc.weflow.dao.DaoSession;
+import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.event.FragmentEvent;
 import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
@@ -54,6 +59,11 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	private RelativeLayout rlDiscover;
 	private RelativeLayout rlMe;
 	
+	private DaoMaster daoMaster;
+	private DaoSession daoSession;
+	private SQLiteDatabase db;
+	private AccountInfoDao accountInfoDao;
+	
 	private static long back_pressed;
 	
 	@Override
@@ -63,11 +73,33 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		handler = new Handler(this);
 		dm = getResources().getDisplayMetrics();
 		
+		initDataBase();
 		initController();
 		initMain(savedInstanceState);
 		setLeftButtonBackground(R.drawable.btn_message);
 		//检查更新
 		CheckUpdate.getInstance(this).update();
+	}
+	
+	private void initDataBase() {
+		DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+        db = helper.getWritableDatabase();
+        daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+        
+        accountInfoDao = daoSession.getAccountInfoDao();
+	}
+	
+	public AccountInfoDao getAccountInfoDao() {
+		return accountInfoDao;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if(db != null)
+			db.close();
 	}
 	
 	private void initController() {
