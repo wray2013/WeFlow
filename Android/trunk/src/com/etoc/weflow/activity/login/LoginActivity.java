@@ -218,5 +218,12 @@ public class LoginActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		return R.layout.activity_login;
 	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if(db != null) db.close();
+	}
 
 }

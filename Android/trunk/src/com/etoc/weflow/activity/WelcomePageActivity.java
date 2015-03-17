@@ -64,7 +64,6 @@ public class WelcomePageActivity extends TitleRootActivity {
         		return;
         	}
         }
-        
 		handler.postDelayed(runnable, INTV_TIME);
 	}
 	
@@ -73,6 +72,13 @@ public class WelcomePageActivity extends TitleRootActivity {
 	private void initView() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if(db != null) db.close();
 	}
 
 	Runnable runnable = new Runnable() {

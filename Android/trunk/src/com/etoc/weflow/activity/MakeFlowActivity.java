@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.AppReccomFragment;
 import com.etoc.weflow.fragment.PlayGameFragment;
@@ -22,6 +23,8 @@ public class MakeFlowActivity extends TitleRootActivity {
 	private PagerSlidingTabStrip titleTab;
 	private ViewPager viewPage;
 	private MyPagerAdapter adapter;
+	
+	private boolean isLogin = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,9 @@ public class MakeFlowActivity extends TitleRootActivity {
 		int index = getIntent().getIntExtra(ConStant.INTENT_MAKE_FLOW, 0);
 		index = index == 0?0:index - 1;
 		viewPage.setCurrentItem(index);
+		
+		isLogin = getIntent().getBooleanExtra("isLogin", false);
+		
 	}
 	
 	private void initViews() {
@@ -54,9 +60,14 @@ public class MakeFlowActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.btn_title_right:
-			Intent makeIntent = new Intent(this, MakeBillListActivity.class);
-			makeIntent.putExtra(ConStant.INTENT_MAKE_FLOW, viewPage.getCurrentItem());
-			startActivity(makeIntent);
+			if(isLogin) {
+				Intent makeIntent = new Intent(this, MakeBillListActivity.class);
+				makeIntent.putExtra(ConStant.INTENT_MAKE_FLOW, viewPage.getCurrentItem());
+				startActivity(makeIntent);
+			} else {
+				startActivity(new Intent(this, LoginActivity.class));
+				finish();
+			}
 			break;
 		}
 		super.onClick(v);

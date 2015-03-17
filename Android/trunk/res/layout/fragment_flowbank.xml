@@ -55,7 +55,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="2600"
+            android:text="0"
             android:textColor="#e94628"
             android:textSize="42sp"
             android:background="@drawable/shape_ring_bg" />
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_yest_rate_hint"
                     android:layout_centerHorizontal="true"
-                    android:text="3.03%"
+                    android:text="0%"
                     android:textColor="@color/black"
                     android:textSize="35sp" />
             </RelativeLayout>
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_total_income_hint"
                     android:layout_centerHorizontal="true"
-                    android:text="102"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="35sp" />
             </RelativeLayout>

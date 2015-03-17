@@ -21,6 +21,17 @@ public class MagicTextView extends TextView {
 	}
 
 	@TargetApi(11)
+	public void showNumberWithAnimation(String number, int duration) {
+		int num = 0;
+		try {
+			num = Integer.parseInt(number);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		showNumberWithAnimation(num, duration);
+	}
+	
+	@TargetApi(11)
 	public void showNumberWithAnimation(int number, int duration) {
 		if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
 			// 修改number属性，会调用setNumber方法
