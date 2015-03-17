@@ -10,26 +10,21 @@
         android:layout_width="fill_parent"
         android:layout_height="80dp"
         >
-        <TextView
-	        android:id="@+id/tv_type"
-	        android:layout_width="60dp"
-	        android:layout_height="18dp"
-	        android:layout_marginLeft="10.5dp"
-	        android:layout_marginTop="14dp"
-	        android:text="APP"
-	        android:textSize="12sp"
-	        android:textColor="@color/white"
-	        android:gravity="center"
-	        android:background="@drawable/bg_download_item_app"
+        <ImageView
+	        android:id="@+id/iv_head"
+	        android:layout_width="48dp"
+	        android:layout_height="48dp"
+	        android:layout_marginLeft="16dp"
+	        android:layout_centerVertical="true"
 	        />
 	    
 	    <TextView 
 	        android:id="@+id/tv_title"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignBottom="@id/tv_type"
-	        android:layout_toRightOf="@id/tv_type"
-	        android:layout_marginLeft="9dp"
+	        android:layout_toRightOf="@id/iv_head"
+	        android:layout_alignTop="@id/iv_head"
+	        android:layout_marginLeft="16dp"
 	        android:text="大众点评"
 	        android:textColor="@color/title_bar_text_color"
 	        android:textSize="17sp"
@@ -40,8 +35,8 @@
 	        android:id="@+id/view_line_bottom"
 	        android:layout_width="fill_parent"
 	        android:layout_height="1dp"
-	        android:layout_marginLeft="6dp"
-	        android:layout_marginRight="6dp"
+	        android:layout_marginLeft="16dp"
+	        android:layout_marginRight="16dp"
 	        android:layout_alignParentBottom="true"
 	        android:background="#dcdcdc"
 	        />
@@ -53,7 +48,7 @@
 	        android:src="@drawable/btn_delete"
 	        android:layout_centerVertical="true"
 	        android:layout_alignParentRight="true"
-	        android:layout_marginRight="12dp"
+	        android:layout_marginRight="16dp"
 	        />
 	    
 	    
@@ -62,7 +57,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentBottom="true"
-	        android:layout_marginBottom="20dp"
+	        android:layout_marginBottom="18dp"
 	        android:layout_alignLeft="@id/tv_title"
 	        android:layout_marginLeft="4dp"
 	        android:text="33.8M"
