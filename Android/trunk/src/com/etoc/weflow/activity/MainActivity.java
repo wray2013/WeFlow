@@ -10,6 +10,7 @@ import android.os.Message;
 import android.provider.Contacts.People;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
@@ -64,6 +65,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		
 		initController();
 		initMain(savedInstanceState);
+		setLeftButtonBackground(R.drawable.btn_message);
 		//检查更新
 		CheckUpdate.getInstance(this).update();
 	}
@@ -78,7 +80,30 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		rlBank.setOnClickListener(this);
 		rlDiscover.setOnClickListener(this);
 		rlMe.setOnClickListener(this);
-		
+	}
+	
+	private void switchStatus(XFragment fragment) {
+		if (fragment instanceof HomePageFragment) {
+			rlHomePage.setSelected(true);
+			rlBank.setSelected(false);
+			rlDiscover.setSelected(false);
+			rlMe.setSelected(false);
+		} else if (fragment instanceof FlowBankFragment) {
+			rlHomePage.setSelected(false);
+			rlBank.setSelected(true);
+			rlDiscover.setSelected(false);
+			rlMe.setSelected(false);
+		} else if (fragment instanceof DiscoveryFragment) {
+			rlHomePage.setSelected(false);
+			rlBank.setSelected(false);
+			rlDiscover.setSelected(true);
+			rlMe.setSelected(false);
+		} else if (fragment instanceof MyselfFragment) {
+			rlHomePage.setSelected(false);
+			rlBank.setSelected(false);
+			rlDiscover.setSelected(false);
+			rlMe.setSelected(true);
+		}
 	}
 	
 	private void initMain(Bundle savedInstanceState) {
@@ -131,6 +156,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			getSupportFragmentManager().beginTransaction().remove(currContentFragment);
 		}
 		
+		switchStatus(currContentFragment);
+		
+		
 		getSupportFragmentManager().beginTransaction()
 		.replace(R.id.content_frame, currContentFragment,currContentFragment.getClass().getName()).commit();
 	}
@@ -176,6 +204,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			Log.d(TAG,"switchContent hide");
 			ft.hide(currContentFragment);
 			fragment.onShow();
+			switchStatus(fragment);
 		}
 		
 		if (null == getSupportFragmentManager().findFragmentByTag(
@@ -248,6 +277,8 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
 
 	@Override
 	public void onClick(View v) {

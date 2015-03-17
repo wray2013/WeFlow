@@ -15,9 +15,10 @@
     		android:layout_marginTop="16dp"
     		android:layout_marginLeft="16dp"
     		android:layout_marginRight="16dp"
+    		android:paddingLeft="16dp"
     		android:inputType="phone"
     		android:maxLength="11"
-    		android:drawableLeft="@drawable/ic_launcher"
+    		android:drawableLeft="@drawable/drawable_username"
     		android:background="@color/white" />
         <EditText 
             android:id="@+id/et_password"
@@ -28,7 +29,8 @@
     		android:layout_marginLeft="16dp"
     		android:layout_marginRight="16dp"
     		android:inputType="textPassword"
-    		android:drawableLeft="@drawable/ic_launcher"
+    		android:drawableLeft="@drawable/drawable_password"
+    		android:paddingLeft="16dp"
     		android:hint="请输入密码"
     		android:background="@color/white" />
 	</RelativeLayout>

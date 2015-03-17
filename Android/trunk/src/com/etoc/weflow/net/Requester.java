@@ -60,6 +60,9 @@ public class Requester {
 	public static final int RESPONSE_TYPE_VERIFY_CODE = 0xffee2106;
 	public static final String RIA_INTERFACE_VERIFY_CODE = "/vs/api/user/verifyAuthCode";
 	
+	public static final int RESPONSE_TYPE_RESET_PWD = 0xffee2107;
+	public static final String RIA_INTERFACE_RESET_PWD = "/vs/api/user/resetPassword";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -77,7 +80,7 @@ public class Requester {
 		request.type = type;
 		request.imei = IMEI;
 		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, sendSMSResponse.class);
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_SENDSMS, getAuthCodeResponse.class);
 		worker.execute(RIA_INTERFACE_SENDSMS, request);
 	}
 	
@@ -110,6 +113,16 @@ public class Requester {
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
 		worker.execute(RIA_INTERFACE_REGISTER, request);
+	}
+	
+	public static void resetPassword(Handler handler, String tel, String newPass) {
+		resetPasswordRequest request = new resetPasswordRequest();
+		request.tel = tel;
+		request.newpassword = newPass;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_RESET_PWD, resetPasswordResponse.class);
+		worker.execute(RIA_INTERFACE_RESET_PWD, request);
 	}
 	
 /*	public static void sendSMS(Handler handler, String tel) {

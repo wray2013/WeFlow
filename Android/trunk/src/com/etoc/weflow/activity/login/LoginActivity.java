@@ -30,6 +30,13 @@ public class LoginActivity extends TitleRootActivity {
 		
 		initView();
 		
+		if(getIntent() != null) {
+			String tel = getIntent().getStringExtra("tel");
+			if(tel != null && !tel.equals("")) {
+				edAccount.setText(tel);
+			}
+		}
+		
 	}
 	
 	
@@ -165,7 +172,7 @@ public class LoginActivity extends TitleRootActivity {
 					
 				}
 			} else {
-				PromptDialog.Alert(LoginActivity.class, "请求失败");
+				PromptDialog.Alert(LoginActivity.class, "您的网络不给力啊！");
 			}
 			break;
 		}

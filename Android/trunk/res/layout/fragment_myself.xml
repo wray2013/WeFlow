@@ -10,34 +10,45 @@
         android:layout_width="match_parent"
     	android:layout_height="111dp"
     	android:background="@color/white" >
-        <TextView 
-            android:id="@+id/tv_account_hint"
-            android:layout_width="wrap_content"
-    		android:layout_height="70dp"
-    		android:gravity="center"
-    		android:text="账号："
-    		android:textColor="@color/black" />
-        <TextView 
-            android:id="@+id/tv_account_tel"
-            android:layout_width="wrap_content"
-    		android:layout_height="wrap_content"
-    		android:layout_toRightOf="@+id/tv_account_hint"
-    		android:layout_alignTop="@+id/tv_account_hint"
-    		android:layout_alignBottom="@+id/tv_account_hint"
-    		android:gravity="center_vertical"
-    		android:text="18502717626"
-    		android:textColor="@color/black" />
-        <View 
-            android:id="@+id/view_divide_v"
-            android:layout_width="match_parent"
-    		android:layout_height="1dp"
-    		android:layout_below="@+id/tv_account_hint"
-    		android:background="@color/divider_grey"/>
+    	
+        <RelativeLayout 
+            android:id="@+id/rl_account_info"
+            android:layout_width="fill_parent"
+            android:layout_height="72dp"
+            android:background="#121C34"
+            >
+            
+            <ImageView 
+                android:id="@+id/iv_head"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/drawable_head"
+                />
+	        <TextView
+            	android:id="@+id/tv_login_btn"
+            	android:layout_width="121dp"
+            	android:layout_height="36dp"
+            	android:text="开通流量钱包"
+            	android:textColor="#FFFFFF"
+            	android:layout_toRightOf="@id/iv_head"
+            	android:layout_marginLeft="47dp"
+            	android:textSize="15sp"
+            	android:gravity="center"
+            	android:layout_alignParentBottom="true"
+            	android:layout_marginBottom="18dp"
+            	android:background="@drawable/bg_round_login_btn"
+                />
+            
+        </RelativeLayout>
+        
         <LinearLayout 
             android:layout_width="match_parent"
     		android:layout_height="match_parent"
     		android:gravity="center_vertical"
-    		android:layout_below="@+id/view_divide_v">
+    		android:layout_below="@+id/rl_account_info">
             <RelativeLayout 
                 android:layout_width="0dp"
     			android:layout_height="wrap_content"

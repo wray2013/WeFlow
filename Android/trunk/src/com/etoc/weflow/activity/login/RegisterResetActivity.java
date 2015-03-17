@@ -1,5 +1,6 @@
 package com.etoc.weflow.activity.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.InputType;
@@ -10,9 +11,9 @@ import android.widget.TextView;
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.TitleRootActivity;
 import com.etoc.weflow.dialog.PromptDialog;
-import com.etoc.weflow.net.GsonRequestObject.getAuthCodeRequest;
 import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
 import com.etoc.weflow.net.GsonResponseObject.registerResponse;
+import com.etoc.weflow.net.GsonResponseObject.resetPasswordResponse;
 import com.etoc.weflow.net.GsonResponseObject.verifyAuthCodeResponse;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.StringUtils;
@@ -29,6 +30,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 	
 	private int currentType = TYPE_REGIST;
 	private int currentStep = STEP_ONE;
+	private String currentTel = "";
 	
 	private TickDownHelper tickDown = null;
 	private boolean hasGetValidCode = false;
@@ -119,6 +121,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 				hasGetValidCode = true;
 				tvValidCode.setEnabled(false);
 				tvValidCode.setText("重新发送(60)");
+				tvValidCode.setTextColor(getResources().getColor(R.color.text_grey));
 				tickDown.start(60);
 			} else {
 				PromptDialog.Dialog(this, "温馨提示", "手机号格式错误", "确定");
@@ -143,8 +146,8 @@ public class RegisterResetActivity extends TitleRootActivity {
 				PromptDialog.Dialog(this, "温馨提示", "请填写收到的验证码", "确定");
 			} else {
 				
-				Requester.verifyAuthCode(handler, edAccount.getText().toString(), edValidCode.getText().toString(), currentType + "");
-				
+				currentTel =  edAccount.getText().toString();
+				Requester.verifyAuthCode(handler, currentTel, edValidCode.getText().toString(), currentType + "");
 				/*currentStep = STEP_TWO;
 				refreshViewStatus();*/
 			}
@@ -157,7 +160,11 @@ public class RegisterResetActivity extends TitleRootActivity {
 					.equals(edValidCode.getText().toString())) {
 				PromptDialog.Dialog(this, "温馨提示", "两次密码输入不一致，请重新设置", "确定");
 			} else {
-				Requester.register(handler, edAccount.getText().toString(), edValidCode.getText().toString());
+				if(currentType == TYPE_REGIST) { //注册
+					Requester.register(handler, edAccount.getText().toString(), edValidCode.getText().toString());
+				} else if(currentType == TYPE_RESET) { //密码重置
+					Requester.resetPassword(handler, currentTel, edValidCode.getText().toString());
+				}
 			}
 			break;
 		}
@@ -234,21 +241,23 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case TickDownHelper.HANDLER_FLAG_TICK_DOWN:
 			Integer sec = (Integer)msg.obj;
 			tvValidCode.setText("重新发送(" + sec + ")");
+			tvValidCode.setTextColor(getResources().getColor(R.color.text_grey));
 			break;
 		case TickDownHelper.HANDLER_FLAG_TICK_STOP:
 			hasGetValidCode = false;
 			Integer secStop = (Integer)msg.obj;
 			tvValidCode.setEnabled(true);
 			tvValidCode.setText("获取验证码");
+			tvValidCode.setTextColor(getResources().getColor(R.color.pagertab_color_orange));
 			break;
 		case Requester.RESPONSE_TYPE_SENDSMS:
 			getAuthCodeResponse getAuthResp = (getAuthCodeResponse) msg.obj;
 			if(getAuthResp != null) {
 				if("0".equals(getAuthResp.status)) { //发送成功
-					PromptDialog.Alert(LoginActivity.class, "验证码发送成功，请查收");
+					PromptDialog.Alert(RegisterResetActivity.class, "验证码发送成功，请查收");
 				}
 			} else {
-				PromptDialog.Alert(LoginActivity.class, "请求失败");
+				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
 			}
 			break;
 		case Requester.RESPONSE_TYPE_VERIFY_CODE:
@@ -259,17 +268,34 @@ public class RegisterResetActivity extends TitleRootActivity {
 					refreshViewStatus();
 				}
 			} else {
-				PromptDialog.Alert(LoginActivity.class, "请求失败");
+				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
 			}
 			break;
 		case Requester.RESPONSE_TYPE_REGISTER:
 			registerResponse regResp = (registerResponse) msg.obj;
 			if(regResp != null) {
 				if("0".equals(regResp.status)) { //注册成功
-					PromptDialog.Alert(LoginActivity.class, "成功注册");
+					PromptDialog.Alert(RegisterResetActivity.class, "成功注册");
+					//TODO:跳转主页
+					
 				}
 			} else {
-				PromptDialog.Alert(LoginActivity.class, "请求失败");
+				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
+			}
+			break;
+		case Requester.RESPONSE_TYPE_RESET_PWD:
+			resetPasswordResponse resetResp = (resetPasswordResponse) msg.obj;
+			if(resetResp != null) {
+				if("0".equals(resetResp.status)) { //重置成功
+					PromptDialog.Alert(RegisterResetActivity.class, "密码修改成功,请重新登录");
+					//TODO:跳转登录页
+					Intent loginIntent = new Intent(this, LoginActivity.class);
+					loginIntent.putExtra("tel", currentTel);
+					startActivity(loginIntent);
+					finish();
+				}
+			} else {
+				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
 			}
 			break;
 		}

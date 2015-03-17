@@ -24,7 +24,6 @@ import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ListView> {
 
@@ -44,6 +43,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private TextView tvPlainType = null;
 	private TextView tvInFlow = null;
 	private TextView tvOutFlow = null;
+	private RelativeLayout rlNotLogin = null;
+	private TextView btnLogin = null;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,15 +69,25 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		tvPlainType = (TextView) view.findViewById(R.id.tv_plans_type);
 		tvInFlow = (TextView) view.findViewById(R.id.tv_plans_in_left);
 		tvOutFlow = (TextView) view.findViewById(R.id.tv_plans_out_left);
-		
+		rlNotLogin = (RelativeLayout) view.findViewById(R.id.rl_not_login);
+		btnLogin = (TextView) view.findViewById(R.id.tv_login_btn);
+		btnLogin.setOnClickListener(this);
 		
 		ViewUtils.setTextSize(tvCellPhone, 32);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_title_top), 432);
+		ViewUtils.setHeight(rlNotLogin, 432);
+		ViewUtils.setSize(view.findViewById(R.id.iv_image), 138, 138);
+		ViewUtils.setSize(btnLogin, 242, 72);
+		ViewUtils.setTextSize(btnLogin,36);
+		ViewUtils.setMarginTop(view.findViewById(R.id.iv_image), 80);
+		ViewUtils.setMarginBottom(btnLogin, 56);
+		
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_phone_num_hint), 32);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_user_phone), 58);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_user_phone), 20);
 		ViewUtils.setSize(view.findViewById(R.id.rl_flow_account), 206,206);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_flow_account), 20);
-		ViewUtils.setMarginTop(mtvFlow, 20);
+		ViewUtils.setMarginTop(mtvFlow, 52);
 		ViewUtils.setTextSize(mtvFlow, 56);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_flow_text), 28);
 		ViewUtils.setMarginBottom(view.findViewById(R.id.tv_flow_text), 40);
@@ -90,7 +101,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ViewUtils.setTextSize(tvInFlow, 26);
 		ViewUtils.setTextSize(tvOutFlow, 26);
 		
-		ViewUtils.setHeight(view.findViewById(R.id.ll_flow_change), 361);
+		ViewUtils.setHeight(view.findViewById(R.id.ll_flow_change), 401);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_activity_recomm), 18);
 		ViewUtils.setMarginTop(view.findViewById(R.id.tv_recomm_label), 40);
 		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_recomm_label), 32);
@@ -105,20 +116,24 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		
 		String [] makeFlows = {"赚流量","看视频","下软件","玩游戏"};
 		String [] expenseFlows = {"花流量","充值","订流量包","花流量币","换礼券"};
+		int [] makeflowsIds = {R.drawable.make_flow,R.drawable.watch_video,R.drawable.download_apk,R.drawable.play_game};
+		int [] expenseFlowsIds = {R.drawable.expense_flow,R.drawable.recharge,R.drawable.order_flow_pkg,R.drawable.exchange_game_coins,R.drawable.exchange_gift};
 		for (int i = 0;i < 4;i++) {
 			RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.include_flow_buttons_stub,null);
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 180);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
 			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(makeFlowId + i);
 			layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(makeFlows[i]);
 			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
-			ViewUtils.setSize(ivModules, 68, 68);
-			ViewUtils.setMarginBottom(tvName, 26);
+			ViewUtils.setSize(ivModules, 96, 96);
+			ivModules.setImageResource(makeflowsIds[i]);
+			ViewUtils.setMarginBottom(tvName, 32);
+			ViewUtils.setMarginTop(ivModules, 40);
 			ViewUtils.setTextSize(tvName, 28);
 			makeFLowLayout.addView(layout);
 		}
@@ -128,12 +143,18 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 180);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
 			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(expenseFlowId + i);
 			layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(expenseFlows[i]);
+			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
+			ViewUtils.setSize(ivModules, 96, 96);
+			ivModules.setImageResource(expenseFlowsIds[i]);
+			ViewUtils.setMarginBottom(tvName, 32);
+			ViewUtils.setMarginTop(ivModules, 40);
+			ViewUtils.setTextSize(tvName, 28);
 			expenseFlowLayout.addView(layout);
 		}
 		
@@ -189,6 +210,9 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			Intent recIntent2 = new Intent(getActivity(), WebViewActivity.class);
 			recIntent2.putExtra("pageurl", "http://detail.amap.com/telecom/");
 			startActivity(recIntent2);
+			break;
+		case R.id.tv_login_btn:
+			startActivity(new Intent(getActivity(), LoginActivity.class));
 			break;
 		}
 	}

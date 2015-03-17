@@ -20,8 +20,8 @@
         
         <RelativeLayout
             android:id="@+id/rl_title_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
+            android:layout_width="fill_parent"
+            android:layout_height="216dp"
             android:background="@drawable/bg_user_info"
             >
             
@@ -160,12 +160,46 @@
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
+            
         </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/rl_not_login"
+            android:layout_width="fill_parent"
+            android:layout_height="216dp"
+            android:background="#121C34"
+            >
+            
+            <ImageView 
+		        android:id="@+id/iv_image"
+		        android:layout_width="69dp"
+		        android:layout_height="69dp"
+		        android:src="@drawable/bg_not_login"
+		        android:layout_centerHorizontal="true"
+        		android:layout_marginTop="40dp"
+		        />
+            
+            <TextView
+            	android:id="@+id/tv_login_btn"
+            	android:layout_width="121dp"
+            	android:layout_height="36dp"
+            	android:text="开通流量钱包"
+            	android:textColor="#FFFFFF"
+            	android:textSize="15sp"
+            	android:gravity="center"
+            	android:layout_alignParentBottom="true"
+            	android:layout_centerHorizontal="true"
+            	android:layout_marginBottom="28dp"
+            	android:background="@drawable/bg_round_login_btn"
+                />
+            
+    	</RelativeLayout>
+        
         
         <LinearLayout 
             android:id="@+id/ll_flow_change"
             android:layout_width="fill_parent"
-            android:layout_height="180.5dp"
+            android:layout_height="200.5dp"
             android:orientation="vertical"
             android:layout_below="@id/rl_title_top"
             android:background="#DCDCDC"

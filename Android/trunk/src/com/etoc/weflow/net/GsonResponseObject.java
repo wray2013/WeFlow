@@ -137,6 +137,10 @@ public class GsonResponseObject {
 		public String useflow;
 	}
 	
+	public static class resetPasswordResponse {
+		public String status;
+	}
+	
 	/****************************************************
 	 *                      A.赚流量币
 	 ****************************************************/
