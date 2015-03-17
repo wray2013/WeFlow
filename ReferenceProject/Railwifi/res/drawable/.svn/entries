@@ -1,0 +1,1469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="wangjm"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/drawable"
+   committed-rev="2418"
+   kind="dir"
+   committed-date="2015-03-17T03:06:23.749875Z"/>
+<entry
+   name="above_shadow.xml"
+   checksum="a3c9e4376f3152109f694f183615b3e1"
+   last-author="zhangwei"
+   text-time="2014-11-28T04:20:51.728000Z"
+   committed-rev="410"
+   kind="file"
+   committed-date="2014-11-28T04:20:51.728481Z"
+   prop-time="2014-11-28T06:13:24.259000Z"/>
+<entry
+   name="below_shadow.xml"
+   checksum="222b186d548de4dc14f766b04d95f7be"
+   last-author="zhangwei"
+   text-time="2014-11-28T04:20:51.728000Z"
+   committed-rev="410"
+   kind="file"
+   committed-date="2014-11-28T04:20:51.728481Z"
+   prop-time="2014-11-28T06:13:24.266000Z"/>
+<entry
+   name="bg_cancel_choose.xml"
+   checksum="d65d1fa6963d3e6b75ba0fdd0f2554e7"
+   last-author="wangjm"
+   text-time="2015-03-12T03:55:33.480000Z"
+   committed-rev="2228"
+   kind="file"
+   committed-date="2015-03-12T04:05:52.437000Z"/>
+<entry
+   name="bg_details_icon_fullscreen.xml"
+   checksum="41ac375b952d5a531604366d609e50dd"
+   last-author="zhangwei"
+   text-time="2015-02-04T07:36:50.628000Z"
+   committed-rev="1870"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:41.475000Z"/>
+<entry
+   name="bg_dlna_btn.xml"
+   checksum="63ddc12ea7f9ecd30579f5fd35290ebb"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.750000Z"/>
+<entry
+   name="bg_download_item_app.xml"
+   checksum="70315bd133f11884557df60ba9ca7142"
+   last-author="wangjm"
+   text-time="2015-03-09T10:33:12.609000Z"
+   committed-rev="2131"
+   kind="file"
+   committed-date="2015-03-10T01:34:51.968000Z"/>
+<entry
+   name="bg_download_item_souhu.xml"
+   checksum="e44e7c39fe893247aae578815b335390"
+   last-author="wangjm"
+   text-time="2015-03-09T09:03:43.080000Z"
+   committed-rev="2131"
+   kind="file"
+   committed-date="2015-03-10T01:34:51.968000Z"/>
+<entry
+   name="bg_homepage_item.xml"
+   checksum="677b6d2e8f4548e1229eba7d1e67e2be"
+   last-author="wangjm"
+   committed-rev="1666"
+   text-time="2015-01-21T01:16:18.241000Z"
+   kind="file"
+   committed-date="2015-01-21T08:10:35.285000Z"/>
+<entry
+   name="bg_homepage_item_alliance.xml"
+   checksum="a942f8f8d95a8aeb1afc6681250f8b56"
+   last-author="wangjm"
+   committed-rev="1648"
+   text-time="2015-01-20T03:33:16.306000Z"
+   kind="file"
+   committed-date="2015-01-20T10:20:06.550000Z"/>
+<entry
+   name="bg_homepage_item_city_intro.xml"
+   checksum="74143ec231ff512a97eab679112486ae"
+   last-author="wangjm"
+   committed-rev="1648"
+   text-time="2015-01-20T03:36:16.932000Z"
+   kind="file"
+   committed-date="2015-01-20T10:20:06.550000Z"/>
+<entry
+   name="bg_homepage_item_jok.xml"
+   checksum="dd6ecefb3ac7e91155be7b7afc1a73a1"
+   last-author="wangjm"
+   committed-rev="1648"
+   text-time="2015-01-20T03:25:12.625000Z"
+   kind="file"
+   committed-date="2015-01-20T10:20:06.550000Z"/>
+<entry
+   name="bg_homepage_item_movie.xml"
+   checksum="80115624ade8d88b21ccc2c699a3a222"
+   last-author="wangjm"
+   committed-rev="1648"
+   text-time="2015-01-20T03:33:12.979000Z"
+   kind="file"
+   committed-date="2015-01-20T10:20:06.550000Z"/>
+<entry
+   name="bg_homepage_item_music.xml"
+   checksum="891c98297d4d0d0eb23ca6f6cfe32241"
+   last-author="wangjm"
+   committed-rev="1648"
+   text-time="2015-01-20T03:35:13.993000Z"
+   kind="file"
+   committed-date="2015-01-20T10:20:06.550000Z"/>
+<entry
+   name="bg_homepage_item_news.xml"
+   checksum="bf6705cc7e3eea82ea766c44501274db"
+   last-author="wangjm"
+   committed-rev="1648"
+   text-time="2015-01-20T03:35:44.325000Z"
+   kind="file"
+   committed-date="2015-01-20T10:20:06.550000Z"/>
+<entry
+   name="bg_homepage_item_normal.xml"
+   checksum="291cfab6bb794fc96c059bb0672defc4"
+   last-author="wangjm"
+   text-time="2015-01-20T03:17:57.376000Z"
+   committed-rev="1665"
+   kind="file"
+   committed-date="2015-01-21T08:10:21.113000Z"/>
+<entry
+   name="bg_homepage_item_pressed.xml"
+   checksum="445149ba04b0909d8212a1c6a62b1db5"
+   last-author="wangjm"
+   committed-rev="1665"
+   text-time="2015-01-21T01:15:19.756000Z"
+   kind="file"
+   committed-date="2015-01-21T08:10:21.113000Z"/>
+<entry
+   name="bg_item_tag.xml"
+   checksum="d9a3cb7872d97d756ee974b0ab0efee1"
+   last-author="wangjm"
+   text-time="2015-01-16T08:09:30.164000Z"
+   committed-rev="1573"
+   kind="file"
+   committed-date="2015-01-17T02:02:29.378000Z"/>
+<entry
+   name="bg_item_tag_add.xml"
+   checksum="3ae31d1cc23ac331ee83965c7d8530a4"
+   last-author="wangjm"
+   committed-rev="1814"
+   text-time="2015-02-02T07:15:59.388000Z"
+   kind="file"
+   committed-date="2015-02-02T07:21:24.113000Z"/>
+<entry
+   name="bg_left_corner.xml"
+   checksum="993a8e38deb29df69a380ace8591e817"
+   last-author="wangjm"
+   text-time="2014-11-27T08:07:11.416000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_left_corner_normal.xml"
+   checksum="a118c6e570efcba935e1bdd2db37cc20"
+   last-author="wangjm"
+   text-time="2014-11-27T07:34:40.566000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_left_corner_pressed.xml"
+   checksum="949d44bcc1f5b3607fcc1bf8aca832f1"
+   last-author="wangjm"
+   text-time="2014-11-27T07:36:40.862000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_menu_root.xml"
+   checksum="159b759664ae0e0c05f5643f2da18977"
+   last-author="wangjm"
+   text-time="2015-03-13T06:17:26.750000Z"
+   committed-rev="2303"
+   kind="file"
+   committed-date="2015-03-13T06:25:01.093000Z"/>
+<entry
+   name="bg_module_add.xml"
+   checksum="077cec398489f988cbb67e405d2800d4"
+   last-author="wangjm"
+   committed-rev="1636"
+   text-time="2015-01-19T02:27:00.883000Z"
+   kind="file"
+   committed-date="2015-01-20T02:30:54.410000Z"/>
+<entry
+   name="bg_module_add_normal.xml"
+   checksum="88ecd464c34f491b414788a32e8b483a"
+   last-author="wangjm"
+   committed-rev="1636"
+   text-time="2015-01-19T03:34:27.320000Z"
+   kind="file"
+   committed-date="2015-01-20T02:30:54.410000Z"/>
+<entry
+   name="bg_module_add_pressed.xml"
+   checksum="f403bba044aaf354d1cf0707a4f721d3"
+   last-author="wangjm"
+   committed-rev="1636"
+   text-time="2015-01-19T09:09:23.401000Z"
+   kind="file"
+   committed-date="2015-01-20T02:30:54.410000Z"/>
+<entry
+   name="bg_pic_choose.xml"
+   checksum="33ed9bc8d42e9fa473ad5c4558352cc1"
+   last-author="wangjm"
+   text-time="2015-03-12T03:54:50.417000Z"
+   committed-rev="2229"
+   kind="file"
+   committed-date="2015-03-12T04:06:19.046000Z"/>
+<entry
+   name="bg_pic_choose_normal.xml"
+   checksum="c8ca475b0ffeecf30ba4285fc0de7a79"
+   last-author="wangjm"
+   committed-rev="2162"
+   text-time="2015-03-10T10:25:56.235000Z"
+   kind="file"
+   committed-date="2015-03-10T12:55:10.921000Z"/>
+<entry
+   name="bg_pic_choose_pressed.xml"
+   checksum="4d2546c881ac0b4bd11c03c46b98bfcd"
+   last-author="wangjm"
+   committed-rev="2162"
+   text-time="2015-03-10T10:29:31.314000Z"
+   kind="file"
+   committed-date="2015-03-10T12:55:10.921000Z"/>
+<entry
+   name="bg_player_btn.xml"
+   checksum="53fea60a73fe88ce46f579b71c3f4db7"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.734000Z"/>
+<entry
+   name="bg_recommendation_header_text.xml"
+   checksum="11fc08bfa92897f00feecc91d4722a22"
+   last-author="wangjm"
+   text-time="2014-11-27T10:38:34.466000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_recommendation_header_text_collapse.xml"
+   checksum="c730e26c3a48492663912728d484d310"
+   last-author="wangjm"
+   text-time="2014-12-01T04:57:34.689000Z"
+   committed-rev="434"
+   kind="file"
+   committed-date="2014-12-01T04:57:34.689000Z"/>
+<entry
+   name="bg_recommendation_img.xml"
+   checksum="9783120eb7b6259fdf14ed902fe0f57e"
+   last-author="wangjm"
+   text-time="2014-11-27T09:58:25.691000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_right_corner.xml"
+   checksum="b1a804bc1a553b69877785e4e9f3ea80"
+   last-author="wangjm"
+   text-time="2014-11-27T08:07:35.018000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_right_corner_normal.xml"
+   checksum="54f0c75535d715a6060e548d9acc2212"
+   last-author="wangjm"
+   text-time="2014-11-27T07:30:16.263000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_right_corner_pressed.xml"
+   checksum="ce768aea9561bed1c74ffac5a0014fa1"
+   last-author="wangjm"
+   text-time="2014-11-27T07:33:47.503000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="bg_user_mainpage_title_pressed.xml"
+   checksum="8c68946f1c0c0576d06d779a22bb81b0"
+   last-author="youtian"
+   text-time="2015-03-13T06:27:44.140000Z"
+   committed-rev="2305"
+   kind="file"
+   committed-date="2015-03-13T06:27:44.140500Z"/>
+<entry
+   name="bg_userinfo_item_pressed.xml"
+   checksum="4f674c74a37df3b768dd0360a1f69088"
+   last-author="youtian"
+   committed-rev="2150"
+   text-time="2015-03-10T09:25:25.265000Z"
+   kind="file"
+   committed-date="2015-03-10T09:25:25.265500Z"/>
+<entry
+   name="bg_viewpager_text.xml"
+   checksum="10ff40a6ed7eb6b159e0532c3820cee1"
+   last-author="wangjm"
+   text-time="2014-11-27T07:10:23.170000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="btn_access_code_selector.xml"
+   checksum="97a07b9153c84fcbe445b44de9733f6b"
+   last-author="youtian"
+   committed-rev="2410"
+   text-time="2015-03-16T10:24:19.109000Z"
+   kind="file"
+   committed-date="2015-03-16T10:24:19.109250Z"/>
+<entry
+   name="btn_add_one.xml"
+   checksum="5d5182ec6aa7fd9a32bfb4479ed1680b"
+   last-author="wangjm"
+   text-time="2015-02-09T03:13:30.457000Z"
+   committed-rev="1954"
+   kind="file"
+   committed-date="2015-02-09T03:30:02.546000Z"/>
+<entry
+   name="btn_back.xml"
+   checksum="dd1e01930bacd073284dfcffd4b3fe58"
+   last-author="youtian"
+   text-time="2014-11-15T06:49:58.419000Z"
+   committed-rev="81"
+   kind="file"
+   committed-date="2014-11-15T06:49:58.419875Z"/>
+<entry
+   name="btn_before.xml"
+   checksum="845e480f575970e9bd68967dd6ec9d27"
+   last-author="wangjm"
+   text-time="2014-11-28T01:15:13.077000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="btn_books.xml"
+   checksum="b570c8a5d354055d2b2f8b9f5ec343b7"
+   last-author="wangjm"
+   text-time="2014-11-28T01:09:14.504000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="btn_bottom_game.xml"
+   checksum="391310cba32ad50e80bc7b4d7b833681"
+   last-author="wangjm"
+   text-time="2014-12-04T06:29:24.393000Z"
+   committed-rev="572"
+   kind="file"
+   committed-date="2014-12-04T07:31:02.611000Z"/>
+<entry
+   name="btn_bottom_shopping.xml"
+   checksum="1532a2976cc75c54cb5bde21478c149b"
+   last-author="wangjm"
+   text-time="2014-12-04T03:58:35.737000Z"
+   committed-rev="572"
+   kind="file"
+   committed-date="2014-12-04T07:31:02.611000Z"/>
+<entry
+   name="btn_cancel_selector.xml"
+   checksum="518e40e435be0742fbd51fb181bcdf95"
+   last-author="youtian"
+   committed-rev="295"
+   text-time="2014-11-24T07:05:22.472000Z"
+   kind="file"
+   committed-date="2014-11-24T07:05:22.472000Z"/>
+<entry
+   name="btn_collapse.xml"
+   checksum="03f7da2e928583574fbde15d92bf581a"
+   last-author="wangjm"
+   text-time="2015-01-15T10:06:09.880000Z"
+   committed-rev="1531"
+   kind="file"
+   committed-date="2015-01-15T10:11:28.941000Z"/>
+<entry
+   name="btn_complaint.xml"
+   checksum="3fd3b489b28cac00d10daa704245d814"
+   last-author="wangjm"
+   text-time="2015-01-26T06:11:35.055000Z"
+   committed-rev="1710"
+   kind="file"
+   committed-date="2015-01-26T06:28:38.738000Z"/>
+<entry
+   name="btn_csfc.xml"
+   checksum="e722cdb07a216239db6937f5a56d99b6"
+   last-author="wangjm"
+   text-time="2014-11-14T10:07:28.216000Z"
+   committed-rev="69"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"/>
+<entry
+   name="btn_cssh.xml"
+   checksum="146d8f7d57e483445266a3889f8388ac"
+   last-author="wangjm"
+   text-time="2014-11-14T10:07:28.216000Z"
+   committed-rev="69"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"/>
+<entry
+   name="btn_delete.xml"
+   checksum="78057b3d4898783fa855c1fdd223b99c"
+   last-author="wangjm"
+   committed-rev="2145"
+   text-time="2015-03-10T08:39:44.953000Z"
+   kind="file"
+   committed-date="2015-03-10T08:56:33.578000Z"/>
+<entry
+   name="btn_expansion.xml"
+   checksum="ab2ac2032afb53893ba5ea5ce2286e94"
+   last-author="wangjm"
+   text-time="2015-01-15T10:06:15.244000Z"
+   committed-rev="1531"
+   kind="file"
+   committed-date="2015-01-15T10:11:28.941000Z"/>
+<entry
+   name="btn_fav.xml"
+   checksum="e1e5e69290671c1a310137b924a2d1ce"
+   last-author="zhangwei"
+   text-time="2014-12-05T07:31:31.329000Z"
+   committed-rev="617"
+   kind="file"
+   committed-date="2014-12-05T07:31:31.329875Z"
+   prop-time="2014-12-08T06:18:43.427000Z"/>
+<entry
+   name="btn_film_play.xml"
+   checksum="e989af58ee9c5093fdaee49b11cf31b9"
+   last-author="wangjm"
+   committed-rev="644"
+   text-time="2014-12-08T03:08:50.615000Z"
+   kind="file"
+   committed-date="2014-12-08T06:19:15.126000Z"/>
+<entry
+   name="btn_help_selector.xml"
+   checksum="3eeba68d1073c9c92c3f26755bd1b122"
+   last-author="youtian"
+   text-time="2014-11-25T01:27:36.800000Z"
+   committed-rev="319"
+   kind="file"
+   committed-date="2014-11-25T01:27:36.800125Z"/>
+<entry
+   name="btn_history_order_form.xml"
+   checksum="c090cc98441c2416c1222a5197dab58b"
+   last-author="wangjm"
+   text-time="2014-11-18T07:07:48.482000Z"
+   committed-rev="152"
+   kind="file"
+   committed-date="2014-11-18T07:07:48.482375Z"/>
+<entry
+   name="btn_home.xml"
+   checksum="1666523f631a31cabe7262e89c407991"
+   last-author="wangjm"
+   committed-rev="1525"
+   text-time="2015-01-15T06:55:07.534000Z"
+   kind="file"
+   committed-date="2015-01-15T07:57:08.206000Z"/>
+<entry
+   name="btn_index_shopping.xml"
+   checksum="5f6482cca91f2b51c76a604d3f1d9fe8"
+   last-author="wangjm"
+   committed-rev="1665"
+   text-time="2014-11-15T03:09:46.185000Z"
+   kind="file"
+   committed-date="2015-01-21T08:10:21.113000Z"/>
+<entry
+   name="btn_information.xml"
+   checksum="8646d7aae29df2efa704b2093133758d"
+   last-author="wangjm"
+   text-time="2014-11-15T03:09:46.185000Z"
+   committed-rev="75"
+   kind="file"
+   committed-date="2014-11-15T03:09:46.185500Z"/>
+<entry
+   name="btn_input_cancel_selector.xml"
+   checksum="b216d712368a4022b8c0a42fdcafc311"
+   last-author="youtian"
+   committed-rev="2189"
+   text-time="2015-03-11T07:59:49.796000Z"
+   kind="file"
+   committed-date="2015-03-11T07:59:49.796750Z"/>
+<entry
+   name="btn_joks.xml"
+   checksum="09dc87b999159873b6b26af03db704be"
+   last-author="wangjm"
+   text-time="2014-11-28T01:11:25.398000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="btn_lcfw.xml"
+   checksum="053e8a0f0afafa7b0b960eb6cbccd7ea"
+   last-author="wangjm"
+   text-time="2014-11-14T10:07:28.216000Z"
+   committed-rev="69"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"/>
+<entry
+   name="btn_login_out_selector.xml"
+   checksum="de76ec77441817f5a61fba4d8bf37676"
+   last-author="youtian"
+   text-time="2015-03-13T06:27:44.140000Z"
+   committed-rev="2305"
+   kind="file"
+   committed-date="2015-03-13T06:27:44.140500Z"/>
+<entry
+   name="btn_login_selector.xml"
+   checksum="0fc8bde28e79ea66e8d11d50aeba7f3c"
+   last-author="youtian"
+   committed-rev="2377"
+   text-time="2015-03-16T04:26:33.124000Z"
+   kind="file"
+   committed-date="2015-03-16T04:26:33.124875Z"/>
+<entry
+   name="btn_make_sure_disabled.xml"
+   checksum="34e6716a03b0b4d35fc7cd5e6dc227fe"
+   last-author="wangjm"
+   text-time="2015-03-16T07:48:44.414000Z"
+   committed-rev="2409"
+   kind="file"
+   committed-date="2015-03-16T10:15:02.546000Z"/>
+<entry
+   name="btn_make_sure_selector.xml"
+   checksum="857c5051ad4de6790a92a38a659c3f63"
+   last-author="wangjm"
+   text-time="2015-03-16T07:45:49.322000Z"
+   committed-rev="2407"
+   kind="file"
+   committed-date="2015-03-16T09:51:24.109000Z"/>
+<entry
+   name="btn_message.xml"
+   checksum="8e5eec3ad610ef2bdfc7a9e271e4a75b"
+   last-author="wangjm"
+   text-time="2014-11-14T10:07:28.216000Z"
+   committed-rev="69"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"/>
+<entry
+   name="btn_minus_one.xml"
+   checksum="d90ea197294a449f1499d8568733224b"
+   last-author="wangjm"
+   text-time="2015-02-09T03:13:52.960000Z"
+   committed-rev="1954"
+   kind="file"
+   committed-date="2015-02-09T03:30:02.546000Z"/>
+<entry
+   name="btn_movie_back.xml"
+   checksum="b9f90b291b5fbc80be0ab55da3ce7c09"
+   last-author="youtian"
+   text-time="2014-12-10T09:35:48.501000Z"
+   committed-rev="748"
+   kind="file"
+   committed-date="2014-12-10T09:35:48.501750Z"/>
+<entry
+   name="btn_movie_play.xml"
+   checksum="e8f687f99903bf4b0f9126e361dba461"
+   last-author="zhangwei"
+   text-time="2014-12-05T07:31:31.329000Z"
+   committed-rev="617"
+   kind="file"
+   committed-date="2014-12-05T07:31:31.329875Z"
+   prop-time="2014-12-08T06:18:43.420000Z"/>
+<entry
+   name="btn_movies.xml"
+   checksum="cd687cd3cba823619114d3c4f42d8313"
+   last-author="wangjm"
+   text-time="2014-11-28T01:07:44.142000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="btn_music_back.xml"
+   checksum="58229506e5185f5bac512aecd517c558"
+   last-author="youtian"
+   text-time="2015-02-09T06:30:11.827000Z"
+   committed-rev="1957"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"/>
+<entry
+   name="btn_music_big_back.xml"
+   checksum="906beaa509b084bfbb7d13735708d060"
+   last-author="youtian"
+   text-time="2015-02-09T06:30:11.827000Z"
+   committed-rev="1957"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"/>
+<entry
+   name="btn_music_big_next.xml"
+   checksum="a565a6506142d566411759ac93cea118"
+   last-author="youtian"
+   text-time="2015-02-09T06:30:11.827000Z"
+   committed-rev="1957"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"/>
+<entry
+   name="btn_music_big_pause.xml"
+   checksum="1c6a4a1f3c0092d9f242f573d556a8ee"
+   last-author="youtian"
+   text-time="2015-01-15T09:55:33.894000Z"
+   committed-rev="1530"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"/>
+<entry
+   name="btn_music_big_play.xml"
+   checksum="2c94066f8a4dab651902c3b53b1752ac"
+   last-author="youtian"
+   text-time="2015-01-15T09:55:33.894000Z"
+   committed-rev="1530"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"/>
+<entry
+   name="btn_music_next.xml"
+   checksum="9b98cb1a8e97bb48d5ae721c073f736e"
+   last-author="youtian"
+   text-time="2015-02-09T06:30:11.827000Z"
+   committed-rev="1957"
+   kind="file"
+   committed-date="2015-02-09T06:30:11.827250Z"/>
+<entry
+   name="btn_music_pause.xml"
+   checksum="7603d351a1d57852a32bab8474d7c56c"
+   last-author="youtian"
+   text-time="2015-01-15T09:55:33.894000Z"
+   committed-rev="1530"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"/>
+<entry
+   name="btn_music_play.xml"
+   checksum="86e144174b6c17b893724f6145316fc5"
+   last-author="youtian"
+   text-time="2015-01-15T09:55:33.894000Z"
+   committed-rev="1530"
+   kind="file"
+   committed-date="2015-01-15T09:55:33.894375Z"/>
+<entry
+   name="btn_musics.xml"
+   checksum="912bdbfeba2391f1d840178d8541b792"
+   last-author="wangjm"
+   text-time="2014-11-28T01:33:52.775000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="btn_navigation.xml"
+   checksum="81b3dc4c372ba854b5dfef8038668504"
+   last-author="youtian"
+   text-time="2014-11-15T02:00:26.888000Z"
+   committed-rev="70"
+   kind="file"
+   committed-date="2014-11-15T02:00:26.888625Z"/>
+<entry
+   name="btn_net_error.xml"
+   checksum="ba30a043b09e6a205c45b74813515fb2"
+   last-author="wangjm"
+   text-time="2014-12-12T10:07:47.701000Z"
+   committed-rev="885"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"/>
+<entry
+   name="btn_order_add_one.xml"
+   checksum="eaf564e00aea861e5f08f5cfe7858d33"
+   last-author="wangjm"
+   text-time="2014-11-18T01:07:16.279000Z"
+   committed-rev="140"
+   kind="file"
+   committed-date="2014-11-18T01:07:16.279250Z"/>
+<entry
+   name="btn_order_minus_one.xml"
+   checksum="117ba2e8f5fdbfbc2bab244687a84264"
+   last-author="wangjm"
+   text-time="2015-03-13T02:36:56.383000Z"
+   committed-rev="2291"
+   kind="file"
+   committed-date="2015-03-13T04:10:24.437000Z"/>
+<entry
+   name="btn_pay_later.xml"
+   checksum="9a58d7152973361e3223cf3a6127cc3c"
+   last-author="youtian"
+   text-time="2014-11-19T08:29:54.654000Z"
+   committed-rev="190"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"/>
+<entry
+   name="btn_pay_selector.xml"
+   checksum="bb49fb2ed1437218f5e2d811800a051f"
+   last-author="youtian"
+   text-time="2014-11-19T08:29:54.654000Z"
+   committed-rev="190"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"/>
+<entry
+   name="btn_paymant_restart_selector.xml"
+   checksum="2415ca01b6cb315cf6f1871a8f943dc0"
+   last-author="youtian"
+   text-time="2014-11-24T02:30:29.722000Z"
+   committed-rev="277"
+   kind="file"
+   committed-date="2014-11-24T02:30:29.722000Z"/>
+<entry
+   name="btn_paymant_selector.xml"
+   checksum="29e1ea9c6841bf0132a00675ea718d13"
+   last-author="youtian"
+   text-time="2014-11-19T08:29:54.654000Z"
+   committed-rev="190"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"/>
+<entry
+   name="btn_play_history.xml"
+   checksum="1e2675f8548c0de9ffdad66b0d45b461"
+   last-author="zhangwei"
+   committed-rev="680"
+   text-time="2014-12-09T07:36:46.158000Z"
+   kind="file"
+   committed-date="2014-12-09T07:36:46.158000Z"
+   prop-time="2014-12-10T02:14:52.099000Z"/>
+<entry
+   name="btn_prompt.xml"
+   checksum="baf853b89d71bbe20bec782fe4e470d8"
+   last-author="wangjm"
+   text-time="2014-11-15T03:09:46.185000Z"
+   committed-rev="75"
+   kind="file"
+   committed-date="2014-11-15T03:09:46.185500Z"/>
+<entry
+   name="btn_protocal_text_drawable.xml"
+   checksum="0795b1a6ab6421c9d9ba76903db4dbb1"
+   last-author="wangjm"
+   text-time="2014-11-19T08:56:39.794000Z"
+   committed-rev="191"
+   kind="file"
+   committed-date="2014-11-19T08:56:39.794875Z"/>
+<entry
+   name="btn_protocal_text_drawable_normal.xml"
+   checksum="f60e81456ba0596e3935a5667a600434"
+   last-author="wangjm"
+   text-time="2014-11-19T08:56:39.794000Z"
+   committed-rev="191"
+   kind="file"
+   committed-date="2014-11-19T08:56:39.794875Z"/>
+<entry
+   name="btn_protocal_text_drawable_pressed.xml"
+   checksum="dd3c62890021e435d9d6bd5662122379"
+   last-author="wangjm"
+   text-time="2014-11-19T08:56:39.794000Z"
+   committed-rev="191"
+   kind="file"
+   committed-date="2014-11-19T08:56:39.794875Z"/>
+<entry
+   name="btn_radio.xml"
+   checksum="5ce39d0fa9315d66d0818a6e8c903b5f"
+   last-author="wangjm"
+   committed-rev="1525"
+   text-time="2015-01-15T07:26:26.589000Z"
+   kind="file"
+   committed-date="2015-01-15T07:57:08.206000Z"/>
+<entry
+   name="btn_receipt_new_addr.xml"
+   checksum="5a7d1f6f59a1149c1b2d994b6da75339"
+   last-author="wangrui"
+   committed-rev="2213"
+   text-time="2015-03-11T12:12:31.656000Z"
+   kind="file"
+   committed-date="2015-03-11T12:12:31.656125Z"/>
+<entry
+   name="btn_recharge_selector.xml"
+   checksum="da0b4dab1b10a0fabae715fecd9f4d19"
+   last-author="youtian"
+   committed-rev="2150"
+   text-time="2015-03-10T09:25:25.265000Z"
+   kind="file"
+   committed-date="2015-03-10T09:25:25.265500Z"/>
+<entry
+   name="btn_recommendation.xml"
+   checksum="aecd672e511ef67cfc16dafc758debb4"
+   last-author="wangjm"
+   text-time="2014-11-28T01:15:43.716000Z"
+   committed-rev="408"
+   kind="file"
+   committed-date="2014-11-28T01:46:35.817000Z"/>
+<entry
+   name="btn_red.xml"
+   checksum="d0e5c894f39794590265f93839eda5b8"
+   last-author="zhangwei"
+   text-time="2015-02-04T07:36:50.628000Z"
+   committed-rev="1870"
+   kind="file"
+   committed-date="2015-02-04T07:36:50.628875Z"
+   prop-time="2015-02-05T05:54:41.486000Z"/>
+<entry
+   name="btn_redownload.xml"
+   checksum="875e6894a548f40434ffddfdeeb37e25"
+   last-author="wangjm"
+   committed-rev="2153"
+   text-time="2015-03-10T09:18:41.248000Z"
+   kind="file"
+   committed-date="2015-03-10T09:38:49.187000Z"/>
+<entry
+   name="btn_register_selector.xml"
+   checksum="838d22fea2c09b6c47b7bf8cf00e4fb0"
+   last-author="youtian"
+   text-time="2015-03-16T04:26:33.124000Z"
+   committed-rev="2377"
+   kind="file"
+   committed-date="2015-03-16T04:26:33.124875Z"/>
+<entry
+   name="btn_rescure.xml"
+   checksum="e738d0feab2446a475b2d369e1df23b2"
+   last-author="youtian"
+   text-time="2014-11-15T02:00:26.888000Z"
+   committed-rev="70"
+   kind="file"
+   committed-date="2014-11-15T02:00:26.888625Z"/>
+<entry
+   name="btn_rmyy.xml"
+   checksum="bdbc19abecf267966238a9a5c63bc2d9"
+   last-author="wangjm"
+   text-time="2014-11-14T10:07:28.216000Z"
+   committed-rev="69"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"/>
+<entry
+   name="btn_satisfaction_survey.xml"
+   checksum="0976ca204ae3392c7840c4724d7b8fb8"
+   last-author="wangjm"
+   text-time="2015-01-16T01:22:36.312000Z"
+   committed-rev="1544"
+   kind="file"
+   committed-date="2015-01-16T07:40:36.653000Z"/>
+<entry
+   name="btn_send_again.xml"
+   checksum="00a5ce5d8a73c300b13df6b46c67c8d1"
+   last-author="wangjm"
+   text-time="2014-12-12T08:50:24.255000Z"
+   committed-rev="885"
+   kind="file"
+   committed-date="2014-12-12T10:21:10.484000Z"/>
+<entry
+   name="btn_send_selector.xml"
+   checksum="ab7c4a0c61a7e4d9b76da7596d473d63"
+   last-author="youtian"
+   text-time="2014-11-24T10:14:51.768000Z"
+   committed-rev="310"
+   kind="file"
+   committed-date="2014-11-24T10:14:51.768875Z"/>
+<entry
+   name="btn_sending.xml"
+   checksum="2ebf59b7915e7278c6badcb1357baee9"
+   last-author="zhangwei"
+   committed-rev="1145"
+   text-time="2014-12-22T06:22:34.814000Z"
+   kind="file"
+   committed-date="2014-12-22T06:22:34.814500Z"
+   prop-time="2014-12-02T07:02:41.277000Z"/>
+<entry
+   name="btn_service.xml"
+   checksum="13dd10856bcc3e426fa15561f4fe7952"
+   last-author="wangjm"
+   text-time="2014-11-15T03:09:46.185000Z"
+   committed-rev="75"
+   kind="file"
+   committed-date="2014-11-15T03:09:46.185500Z"/>
+<entry
+   name="btn_setting.xml"
+   checksum="b647d8b3ee14d3c8f5393a20b940eb11"
+   last-author="wangjm"
+   text-time="2014-12-23T03:53:56.761000Z"
+   committed-rev="1206"
+   kind="file"
+   committed-date="2014-12-23T03:56:56.142000Z"/>
+<entry
+   name="btn_sign_selector.xml"
+   checksum="38e8bfd07e8bdf6b8c5b520317532477"
+   last-author="youtian"
+   text-time="2015-03-16T10:24:19.109000Z"
+   committed-rev="2410"
+   kind="file"
+   committed-date="2015-03-16T10:24:19.109250Z"/>
+<entry
+   name="btn_survey_type.xml"
+   checksum="bc849adb4dbb0d8e5e885bd6bb56aacb"
+   last-author="wangjm"
+   text-time="2014-11-24T08:42:45.014000Z"
+   committed-rev="309"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="btn_tag.xml"
+   checksum="5ee5ead37df419cca6fd4cb3056f965f"
+   last-author="zhangwei"
+   text-time="2014-11-24T10:15:09.925000Z"
+   committed-rev="311"
+   kind="file"
+   committed-date="2014-11-24T10:15:09.925125Z"
+   prop-time="2014-11-25T01:38:20.353000Z"/>
+<entry
+   name="btn_tllm.xml"
+   checksum="ede2cdf4b03cc583cf3ef7bb437ea14e"
+   last-author="wangjm"
+   committed-rev="1525"
+   text-time="2015-01-15T06:54:37.421000Z"
+   kind="file"
+   committed-date="2015-01-15T07:57:08.206000Z"/>
+<entry
+   name="btn_top_collect_selector.xml"
+   checksum="5348fc1465906f33f18cccc5169127ad"
+   last-author="youtian"
+   text-time="2014-11-19T08:29:54.654000Z"
+   committed-rev="190"
+   kind="file"
+   committed-date="2014-11-19T08:29:54.654250Z"/>
+<entry
+   name="btn_tourism.xml"
+   checksum="3fc9346ea195859cc459e27e44bdfa31"
+   last-author="wangjm"
+   text-time="2014-11-15T03:09:46.185000Z"
+   committed-rev="75"
+   kind="file"
+   committed-date="2014-11-15T03:09:46.185500Z"/>
+<entry
+   name="btn_unlock_screen_bg.xml"
+   checksum="4c8fa780c4e78d47869a72ce19f6c7b5"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.776000Z"/>
+<entry
+   name="btn_yxsj.xml"
+   checksum="0842f1441b65187b3bc8fb2f5bfe9ac9"
+   last-author="wangjm"
+   text-time="2014-11-14T10:07:28.216000Z"
+   committed-rev="69"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"/>
+<entry
+   name="btn_yyyl.xml"
+   checksum="97a5663cde7be38a689a88007b625d63"
+   last-author="wangjm"
+   text-time="2014-11-14T10:07:28.216000Z"
+   committed-rev="69"
+   kind="file"
+   committed-date="2014-11-14T10:07:28.216750Z"/>
+<entry
+   name="calendar_bg_selector.xml"
+   checksum="cca45c19e5e32dd1f4e7c4a4b6aeec88"
+   last-author="wangjm"
+   text-time="2014-11-20T07:18:32.263000Z"
+   committed-rev="219"
+   kind="file"
+   committed-date="2014-11-20T07:18:32.263625Z"/>
+<entry
+   name="calendar_title_bg.xml"
+   checksum="76bf550c1faa39b878f3e53db3ff4f93"
+   last-author="wangjm"
+   committed-rev="309"
+   text-time="2014-11-24T06:35:45.883000Z"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="calendar_title_bg_selected.xml"
+   checksum="e4b2ca13fa32586c06f3629b1b7b9afd"
+   last-author="wangjm"
+   committed-rev="309"
+   text-time="2014-11-24T06:34:51.179000Z"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="card_item_bg.xml"
+   checksum="b6c4c329fd35ab00a4e9d5cee20704df"
+   last-author="wangjm"
+   text-time="2014-11-19T12:47:11.326000Z"
+   committed-rev="198"
+   kind="file"
+   committed-date="2014-11-19T12:47:11.326125Z"/>
+<entry
+   name="corner_shape.xml"
+   checksum="1c10556c4004da77517f069bdf5bbea5"
+   last-author="zhangwei"
+   committed-rev="307"
+   text-time="2014-11-24T08:57:00.737000Z"
+   kind="file"
+   committed-date="2014-11-24T08:57:00.737625Z"
+   prop-time="2014-11-24T09:31:30.540000Z"/>
+<entry
+   name="details_bg_vip.xml"
+   checksum="da2c38945ea9136c082174cca70a5f1f"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.809000Z"/>
+<entry
+   name="details_icon_windowplay.xml"
+   checksum="c3d302897268fd4d67e8c2d6ef9a03be"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.706000Z"/>
+<entry
+   name="div_line.xml"
+   checksum="57a7b2e1defc0f9f3e3b87b48860d220"
+   last-author="zhangwei"
+   text-time="2014-11-24T08:07:22.753000Z"
+   committed-rev="300"
+   kind="file"
+   committed-date="2014-11-24T08:07:22.753250Z"
+   prop-time="2014-11-24T08:32:54.511000Z"/>
+<entry
+   name="drawable_download_progress.xml"
+   checksum="58f653b01e8d9abc74ac81b7003898f1"
+   last-author="wangjm"
+   text-time="2015-03-09T07:10:41.177000Z"
+   committed-rev="2131"
+   kind="file"
+   committed-date="2015-03-10T01:34:51.968000Z"/>
+<entry
+   name="drawable_download_progress_low_space.xml"
+   revision="2430"
+   checksum="8273ccc95258ee32a235155b8b9fd9e3"
+   last-author="wangjm"
+   text-time="2015-03-17T03:10:31.521000Z"
+   committed-rev="2430"
+   kind="file"
+   committed-date="2015-03-17T04:24:06.546000Z"/>
+<entry
+   name="funny_list_icon_sound.xml"
+   checksum="e3723150073def5f8e8dd123d1d77f35"
+   last-author="wangjm"
+   committed-rev="678"
+   text-time="2014-12-09T06:14:58.823000Z"
+   kind="file"
+   committed-date="2014-12-09T07:00:38.829000Z"/>
+<entry
+   name="good_add_bg.xml"
+   checksum="529c170656b95849c6ce741c96cee970"
+   last-author="wangjm"
+   text-time="2014-11-18T02:26:33.638000Z"
+   committed-rev="143"
+   kind="file"
+   committed-date="2014-11-18T02:26:33.638625Z"/>
+<entry
+   name="good_add_selected_bg.xml"
+   checksum="a77df70e393f1836c7eeaa7991062f0e"
+   last-author="wangjm"
+   text-time="2014-11-18T02:26:33.638000Z"
+   committed-rev="143"
+   kind="file"
+   committed-date="2014-11-18T02:26:33.638625Z"/>
+<entry
+   name="indicator_bg_bottom.xml"
+   checksum="55d3bf1ebb167ab2f0434641ba406ded"
+   last-author="wangjm"
+   text-time="2014-11-07T07:43:25.858000Z"
+   committed-rev="9"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="indicator_bg_top.xml"
+   checksum="447460073ce024b2de6618479afc45b8"
+   last-author="wangjm"
+   text-time="2014-11-07T07:43:25.858000Z"
+   committed-rev="9"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="list_dialog_item_normal.xml"
+   checksum="231993062ea36418f1ccd3537978b15d"
+   last-author="wangjm"
+   text-time="2014-11-24T09:40:49.430000Z"
+   committed-rev="309"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="list_dialog_item_pressed.xml"
+   checksum="5ee95f07e1ac4659f2b0b2c2dafde8af"
+   last-author="wangjm"
+   text-time="2014-11-24T09:44:20.052000Z"
+   committed-rev="309"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="list_dialog_item_selector.xml"
+   checksum="28d289b764e3b65fbb7f9f12e4eaa585"
+   last-author="wangjm"
+   text-time="2014-11-24T09:42:36.588000Z"
+   committed-rev="309"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="list_item_bg.xml"
+   checksum="fa61670617716b9e89890d2f1293bf4d"
+   last-author="zhangwei"
+   committed-rev="794"
+   text-time="2014-12-11T06:58:09.454000Z"
+   kind="file"
+   committed-date="2014-12-11T06:58:09.454875Z"
+   prop-time="2014-12-11T07:00:47.107000Z"/>
+<entry
+   name="list_item_with_shape.xml"
+   checksum="c34404a5eca223757cdb9a7c3416a5e6"
+   last-author="zhangwei"
+   text-time="2014-11-24T08:07:22.753000Z"
+   committed-rev="300"
+   kind="file"
+   committed-date="2014-11-24T08:07:22.753250Z"
+   prop-time="2014-11-24T08:32:54.499000Z"/>
+<entry
+   name="loading.png"
+   checksum="bd0f3fa35ce22721863b75743d0d299c"
+   last-author="youtian"
+   committed-rev="1972"
+   text-time="2015-02-10T02:35:50.077000Z"
+   kind="file"
+   committed-date="2015-02-10T02:35:50.077250Z"
+   prop-time="2015-02-10T09:15:03.111000Z"/>
+<entry
+   name="mediacontroller_pause_button.xml"
+   checksum="4b122fec8cbf41b791b8598cca362e97"
+   last-author="youtian"
+   committed-rev="698"
+   text-time="2014-12-09T08:53:06.345000Z"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"/>
+<entry
+   name="mediacontroller_play_button.xml"
+   checksum="102fa5b07f5bdfff16fab50bec7652a3"
+   last-author="youtian"
+   committed-rev="698"
+   text-time="2014-12-09T08:53:06.345000Z"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"/>
+<entry
+   name="mediacontroller_seekbar.xml"
+   checksum="b46838dcea8ff5a76f417256dd268c40"
+   last-author="youtian"
+   committed-rev="698"
+   text-time="2014-12-09T08:53:06.345000Z"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"/>
+<entry
+   name="mediacontroller_seekbar_thumb.xml"
+   checksum="2b7700fd7605bf5f1eeb46269f0ecc11"
+   last-author="youtian"
+   committed-rev="698"
+   text-time="2014-12-09T08:53:06.345000Z"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"/>
+<entry
+   name="order_confirm_edit_bg.xml"
+   checksum="b36baa7a1fd8315c0b3a4a27b8027256"
+   last-author="wangjm"
+   text-time="2014-11-25T04:13:41.549000Z"
+   committed-rev="330"
+   kind="file"
+   committed-date="2014-11-25T04:21:30.784000Z"/>
+<entry
+   name="order_confirm_edit_bg_left.xml"
+   checksum="69ebe5b40b643e04b95fd85b38907c3f"
+   last-author="wangjm"
+   committed-rev="330"
+   text-time="2014-11-25T04:14:10.500000Z"
+   kind="file"
+   committed-date="2014-11-25T04:21:30.784000Z"/>
+<entry
+   name="order_confirm_edit_bg_pressed.xml"
+   checksum="e03363c581ea65ee978fa8df5038396a"
+   last-author="wangjm"
+   text-time="2014-11-25T04:14:22.487000Z"
+   committed-rev="330"
+   kind="file"
+   committed-date="2014-11-25T04:21:30.784000Z"/>
+<entry
+   name="order_confirm_edit_bg_right.xml"
+   checksum="c95480732449184a5889f09d360f5939"
+   last-author="wangjm"
+   committed-rev="330"
+   text-time="2014-11-25T04:14:30.694000Z"
+   kind="file"
+   committed-date="2014-11-25T04:21:30.784000Z"/>
+<entry
+   name="order_confirm_edit_bg_top.xml"
+   checksum="503b9096629ec2f2b73db3783ebce414"
+   last-author="wangjm"
+   committed-rev="330"
+   text-time="2014-11-25T04:14:35.623000Z"
+   kind="file"
+   committed-date="2014-11-25T04:21:30.784000Z"/>
+<entry
+   name="order_confirm_edit_bg_white.xml"
+   checksum="c4ae1eb85c0757ceb0e7fa3e361bc785"
+   last-author="wangjm"
+   text-time="2014-11-25T04:14:49.310000Z"
+   committed-rev="330"
+   kind="file"
+   committed-date="2014-11-25T04:21:30.784000Z"/>
+<entry
+   name="order_img_bg.xml"
+   checksum="239676b945ea98c9dd61f0c18f48331e"
+   last-author="wangjm"
+   text-time="2014-11-18T02:26:33.638000Z"
+   committed-rev="143"
+   kind="file"
+   committed-date="2014-11-18T02:26:33.638625Z"/>
+<entry
+   name="player_bg_definition.xml"
+   checksum="84598e8f10fab597d76a36e7331fdb81"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.715000Z"/>
+<entry
+   name="player_forward_bg.xml"
+   checksum="b4c8c3ab70a7207369345207e871108c"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.767000Z"/>
+<entry
+   name="player_text_color.xml"
+   checksum="fe9e2f97f8cb94bd82def8c1b0396fb9"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.792000Z"/>
+<entry
+   name="pop_box_cancel.xml"
+   checksum="cfcf014a46a640e4e47a7355850b2086"
+   last-author="zhangwei"
+   text-time="2015-03-13T09:29:59.749000Z"
+   committed-rev="2337"
+   kind="file"
+   committed-date="2015-03-13T09:29:59.749875Z"
+   prop-time="2015-03-14T09:00:18.865000Z"/>
+<entry
+   name="progress_bar_fox_tail.xml"
+   checksum="1a9e68a961f0ddae0c4bde8254e3fe26"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.760000Z"/>
+<entry
+   name="progress_style_loading.xml"
+   checksum="5e94522396f96c58a4ff2c41784c134d"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.783000Z"/>
+<entry
+   name="progress_style_play.xml"
+   checksum="d91b8afb10689a8e07b083915d090d32"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.800000Z"/>
+<entry
+   name="progressbar_foxtail_large.xml"
+   checksum="12737c79cea95bb0319b28d82546f5cd"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.679000Z"/>
+<entry
+   name="progressbar_foxtail_small.xml"
+   checksum="beca101217c72c1773341bac7e066d49"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.742000Z"/>
+<entry
+   name="rb_confirm_selector.xml"
+   checksum="15aba7beae5a760824ba47cc5b9bde2b"
+   last-author="wangjm"
+   text-time="2014-11-19T10:53:28.091000Z"
+   committed-rev="196"
+   kind="file"
+   committed-date="2014-11-19T10:53:28.091750Z"/>
+<entry
+   name="rect_read_status.xml"
+   checksum="d052062feb2ee108699c92a1441df6e4"
+   last-author="zhangwei"
+   text-time="2015-03-13T09:29:59.749000Z"
+   committed-rev="2337"
+   kind="file"
+   committed-date="2015-03-13T09:29:59.749875Z"
+   prop-time="2015-03-14T09:00:18.859000Z"/>
+<entry
+   name="rect_unread_status.xml"
+   checksum="9aca19c10ced865882e2bac5f6a8da9e"
+   last-author="zhangwei"
+   text-time="2015-03-13T09:29:59.749000Z"
+   committed-rev="2337"
+   kind="file"
+   committed-date="2015-03-13T09:29:59.749875Z"
+   prop-time="2015-03-14T09:00:18.839000Z"/>
+<entry
+   name="root_title_bar.xml"
+   checksum="7c57a42be06c19c19d68b622532acd66"
+   last-author="youtian"
+   text-time="2014-11-15T04:22:46.841000Z"
+   committed-rev="77"
+   kind="file"
+   committed-date="2014-11-15T04:22:46.841750Z"/>
+<entry
+   name="round_corner_background.xml"
+   checksum="474cecff73ece77f9acdd4d91f40c046"
+   last-author="wangjm"
+   committed-rev="309"
+   text-time="2014-11-24T09:28:18.196000Z"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="round_corner_top_background.xml"
+   checksum="fdaff1fd9fcd392d0fa3b879ff822de8"
+   last-author="youtian"
+   committed-rev="2189"
+   text-time="2015-03-11T07:59:49.796000Z"
+   kind="file"
+   committed-date="2015-03-11T07:59:49.796750Z"/>
+<entry
+   name="seekbar_not_play.xml"
+   checksum="9b83a89493a394d27b5b62f98562b18c"
+   last-author="youtian"
+   committed-rev="698"
+   text-time="2014-12-09T08:53:06.345000Z"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"/>
+<entry
+   name="seekbar_played.xml"
+   checksum="25f1f4810328ab8e86e257f2ef88a984"
+   last-author="youtian"
+   committed-rev="698"
+   text-time="2014-12-09T08:53:06.345000Z"
+   kind="file"
+   committed-date="2014-12-09T08:53:06.345500Z"/>
+<entry
+   name="seekbar_style_drawable.xml"
+   checksum="c4836faedbfabc196aafd0e8763e7926"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.696000Z"/>
+<entry
+   name="seekbar_thumb_style.xml"
+   checksum="3c6bc693e852f6a232ee6e12da144c80"
+   last-author="zhangwei"
+   committed-rev="1855"
+   text-time="2015-02-03T10:21:32.988000Z"
+   kind="file"
+   committed-date="2015-02-03T10:21:32.988250Z"
+   prop-time="2015-02-04T03:58:02.690000Z"/>
+<entry
+   name="shape_corner_recentage.xml"
+   revision="2430"
+   checksum="2a51a6b6cf7f9f3c752e01f199759bca"
+   last-author="wangjm"
+   text-time="2015-03-17T04:15:29.982000Z"
+   committed-rev="2430"
+   kind="file"
+   committed-date="2015-03-17T04:24:06.546000Z"
+   prop-time="2014-12-08T06:18:43.414000Z"/>
+<entry
+   name="shape_gray.xml"
+   checksum="191977838496d1b87a7426f75320dc6b"
+   last-author="zhangwei"
+   text-time="2014-11-24T08:07:22.753000Z"
+   committed-rev="300"
+   kind="file"
+   committed-date="2014-11-24T08:07:22.753250Z"
+   prop-time="2014-11-24T08:32:54.505000Z"/>
+<entry
+   name="shape_pic_list.xml"
+   revision="2430"
+   checksum="380c0987643c71f95d6fb90ff96212fe"
+   last-author="wangjm"
+   committed-rev="2430"
+   text-time="2015-03-17T04:14:21.440000Z"
+   kind="file"
+   committed-date="2015-03-17T04:24:06.546000Z"/>
+<entry
+   name="shape_white.xml"
+   checksum="357bef4d7957d09cbd84e1e2cb70ad80"
+   last-author="zhangwei"
+   text-time="2014-11-24T08:07:22.753000Z"
+   committed-rev="300"
+   kind="file"
+   committed-date="2014-11-24T08:07:22.753250Z"
+   prop-time="2014-11-24T08:32:54.493000Z"/>
+<entry
+   name="star_bg.xml"
+   checksum="34988cf34c75f687fa9e2ee676c736d0"
+   last-author="wangjm"
+   text-time="2014-11-24T08:02:35.103000Z"
+   committed-rev="309"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="stoke_rectangle.xml"
+   checksum="037b915aa14679d1bbde7b0323ce59cb"
+   last-author="zhangwei"
+   text-time="2014-12-01T09:56:52.095000Z"
+   committed-rev="449"
+   kind="file"
+   committed-date="2014-12-01T09:56:52.095500Z"
+   prop-time="2014-12-02T07:02:41.268000Z"/>
+<entry
+   name="top_titile_menu_selector.xml"
+   checksum="3f5065efa57991580db698f38c44a9cb"
+   last-author="youtian"
+   text-time="2014-11-18T06:16:15.701000Z"
+   committed-rev="149"
+   kind="file"
+   committed-date="2014-11-18T06:16:15.701125Z"/>
+<entry
+   name="user_mainpage_title_selector.xml"
+   checksum="5b6895fc5488cdbfb2e4bf1fca12d3ea"
+   last-author="youtian"
+   text-time="2015-03-13T06:27:44.140000Z"
+   committed-rev="2305"
+   kind="file"
+   committed-date="2015-03-13T06:27:44.140500Z"/>
+<entry
+   name="userinfo_item_selector.xml"
+   checksum="90fabf09169e650a256b695e8cff26ac"
+   last-author="youtian"
+   committed-rev="2150"
+   text-time="2015-03-10T09:25:25.265000Z"
+   kind="file"
+   committed-date="2015-03-10T09:25:25.265500Z"/>
+</wc-entries>

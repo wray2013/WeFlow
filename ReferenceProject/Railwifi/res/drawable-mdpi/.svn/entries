@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/drawable-mdpi"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="1495"
+   kind="dir"
+   committed-date="2014-12-31T05:39:50.173875Z"/>
+<entry
+   name="default_ptr_flip.png"
+   checksum="56bbec9b749c4f6622c31f56927d4373"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:39.659000Z"/>
+<entry
+   name="default_ptr_rotate.png"
+   checksum="055b2e2502053d4e47c83cb6b0deac7d"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:39.671000Z"/>
+<entry
+   name="ic_launcher.png"
+   checksum="500785aee325b876f22752ca1b078693"
+   last-author="wangjm"
+   committed-rev="1495"
+   text-time="2014-12-31T05:37:56.121000Z"
+   kind="file"
+   committed-date="2014-12-31T05:39:50.173000Z"
+   prop-time="2014-12-31T05:39:49.745000Z"/>
+<entry
+   name="indicator_arrow.png"
+   checksum="448b078477f76b3ec9ca5c4b2c11c231"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"
+   prop-time="2014-11-20T07:26:39.663000Z"/>
+</wc-entries>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/squareup/timessquare"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="1173"
+   kind="dir"
+   committed-date="2014-12-22T09:25:39.252000Z"/>
+<entry
+   name="CalendarCellView.java"
+   checksum="dc7875c61e34eeb544003c21b6c66633"
+   last-author="wangjm"
+   committed-rev="768"
+   text-time="2014-12-11T02:56:40.329000Z"
+   kind="file"
+   committed-date="2014-12-11T02:56:40.329000Z"/>
+<entry
+   name="CalendarGridView.java"
+   checksum="43d56a708d4a550e25a6600f93462c5e"
+   last-author="wangjm"
+   committed-rev="219"
+   text-time="2014-11-20T07:18:32.263000Z"
+   kind="file"
+   committed-date="2014-11-20T07:18:32.263625Z"/>
+<entry
+   name="CalendarPickerView.java"
+   checksum="a0c4ea3c2e0a1630d3f4ce4d4ff08794"
+   last-author="wangjm"
+   committed-rev="1173"
+   text-time="2014-12-22T09:08:43.022000Z"
+   kind="file"
+   committed-date="2014-12-22T09:25:39.252000Z"/>
+<entry
+   name="CalendarRowView.java"
+   checksum="adcc9a50276ef5cac0784c9ea3f679f0"
+   last-author="wangjm"
+   committed-rev="219"
+   text-time="2014-11-24T03:20:10.749000Z"
+   kind="file"
+   committed-date="2014-11-20T07:18:32.263625Z"/>
+<entry
+   name="Logr.java"
+   checksum="dc70c4e075ea059de352d3867fcf12f0"
+   last-author="wangjm"
+   committed-rev="219"
+   text-time="2014-11-20T07:18:32.263000Z"
+   kind="file"
+   committed-date="2014-11-20T07:18:32.263625Z"/>
+<entry
+   name="MonthCellDescriptor.java"
+   checksum="d30b18e2c99cd8ac8497251c433c7dd5"
+   last-author="wangjm"
+   committed-rev="219"
+   text-time="2014-11-20T07:18:32.263000Z"
+   kind="file"
+   committed-date="2014-11-20T07:18:32.263625Z"/>
+<entry
+   name="MonthDescriptor.java"
+   checksum="0371bcbfebf9b916f9df067564b7deaf"
+   last-author="wangjm"
+   committed-rev="309"
+   text-time="2014-11-24T06:41:51.231000Z"
+   kind="file"
+   committed-date="2014-11-24T10:03:30.972000Z"/>
+<entry
+   name="MonthView.java"
+   checksum="9993f944f552128e7523db433a6edd12"
+   last-author="wangjm"
+   committed-rev="289"
+   text-time="2014-11-24T06:56:18.801000Z"
+   kind="file"
+   committed-date="2014-11-24T04:25:19.706000Z"/>
+</wc-entries>

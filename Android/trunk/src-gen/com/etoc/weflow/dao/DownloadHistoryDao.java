@@ -27,13 +27,14 @@ public class DownloadHistoryDao extends AbstractDao<DownloadHistory, String> {
         public final static Property DownloadType = new Property(1, Integer.class, "downloadType", false, "DOWNLOAD_TYPE");
         public final static Property DownloadStatus = new Property(2, Integer.class, "downloadStatus", false, "DOWNLOAD_STATUS");
         public final static Property DownloadSize = new Property(3, Integer.class, "downloadSize", false, "DOWNLOAD_SIZE");
-        public final static Property Path = new Property(4, String.class, "path", false, "PATH");
-        public final static Property Title = new Property(5, String.class, "title", false, "TITLE");
-        public final static Property Detail = new Property(6, String.class, "detail", false, "DETAIL");
-        public final static Property PicUrl = new Property(7, String.class, "picUrl", false, "PIC_URL");
-        public final static Property MediaId = new Property(8, String.class, "mediaId", false, "MEDIA_ID");
-        public final static Property Source = new Property(9, String.class, "source", false, "SOURCE");
-        public final static Property Data = new Property(10, String.class, "data", false, "DATA");
+        public final static Property WholeSize = new Property(4, Integer.class, "wholeSize", false, "WHOLE_SIZE");
+        public final static Property Path = new Property(5, String.class, "path", false, "PATH");
+        public final static Property Title = new Property(6, String.class, "title", false, "TITLE");
+        public final static Property Detail = new Property(7, String.class, "detail", false, "DETAIL");
+        public final static Property PicUrl = new Property(8, String.class, "picUrl", false, "PIC_URL");
+        public final static Property MediaId = new Property(9, String.class, "mediaId", false, "MEDIA_ID");
+        public final static Property Source = new Property(10, String.class, "source", false, "SOURCE");
+        public final static Property Data = new Property(11, String.class, "data", false, "DATA");
     };
 
 
@@ -53,13 +54,14 @@ public class DownloadHistoryDao extends AbstractDao<DownloadHistory, String> {
                 "'DOWNLOAD_TYPE' INTEGER," + // 1: downloadType
                 "'DOWNLOAD_STATUS' INTEGER," + // 2: downloadStatus
                 "'DOWNLOAD_SIZE' INTEGER," + // 3: downloadSize
-                "'PATH' TEXT," + // 4: path
-                "'TITLE' TEXT," + // 5: title
-                "'DETAIL' TEXT," + // 6: detail
-                "'PIC_URL' TEXT," + // 7: picUrl
-                "'MEDIA_ID' TEXT," + // 8: mediaId
-                "'SOURCE' TEXT," + // 9: source
-                "'DATA' TEXT);"); // 10: data
+                "'WHOLE_SIZE' INTEGER," + // 4: wholeSize
+                "'PATH' TEXT," + // 5: path
+                "'TITLE' TEXT," + // 6: title
+                "'DETAIL' TEXT," + // 7: detail
+                "'PIC_URL' TEXT," + // 8: picUrl
+                "'MEDIA_ID' TEXT," + // 9: mediaId
+                "'SOURCE' TEXT," + // 10: source
+                "'DATA' TEXT);"); // 11: data
     }
 
     /** Drops the underlying database table. */
@@ -93,39 +95,44 @@ public class DownloadHistoryDao extends AbstractDao<DownloadHistory, String> {
             stmt.bindLong(4, downloadSize);
         }
  
+        Integer wholeSize = entity.getWholeSize();
+        if (wholeSize != null) {
+            stmt.bindLong(5, wholeSize);
+        }
+ 
         String path = entity.getPath();
         if (path != null) {
-            stmt.bindString(5, path);
+            stmt.bindString(6, path);
         }
  
         String title = entity.getTitle();
         if (title != null) {
-            stmt.bindString(6, title);
+            stmt.bindString(7, title);
         }
  
         String detail = entity.getDetail();
         if (detail != null) {
-            stmt.bindString(7, detail);
+            stmt.bindString(8, detail);
         }
  
         String picUrl = entity.getPicUrl();
         if (picUrl != null) {
-            stmt.bindString(8, picUrl);
+            stmt.bindString(9, picUrl);
         }
  
         String mediaId = entity.getMediaId();
         if (mediaId != null) {
-            stmt.bindString(9, mediaId);
+            stmt.bindString(10, mediaId);
         }
  
         String source = entity.getSource();
         if (source != null) {
-            stmt.bindString(10, source);
+            stmt.bindString(11, source);
         }
  
         String data = entity.getData();
         if (data != null) {
-            stmt.bindString(11, data);
+            stmt.bindString(12, data);
         }
     }
 
@@ -143,13 +150,14 @@ public class DownloadHistoryDao extends AbstractDao<DownloadHistory, String> {
             cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // downloadType
             cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // downloadStatus
             cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // downloadSize
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // path
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // title
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // detail
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // picUrl
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // mediaId
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // source
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // data
+            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // wholeSize
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // path
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // title
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // detail
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // picUrl
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // mediaId
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // source
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11) // data
         );
         return entity;
     }
@@ -161,13 +169,14 @@ public class DownloadHistoryDao extends AbstractDao<DownloadHistory, String> {
         entity.setDownloadType(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
         entity.setDownloadStatus(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
         entity.setDownloadSize(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
-        entity.setPath(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setTitle(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setDetail(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setPicUrl(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setMediaId(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setSource(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setData(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setWholeSize(cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4));
+        entity.setPath(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setTitle(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setDetail(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setPicUrl(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setMediaId(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setSource(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setData(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
      }
     
     /** @inheritdoc */

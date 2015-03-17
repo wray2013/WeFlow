@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="zhangwei"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/cmmobi/railwifi/music"
+   committed-rev="2040"
+   kind="dir"
+   committed-date="2015-02-13T07:06:30.501749Z"/>
+<entry
+   name="MusicPlayListener.java"
+   checksum="b2b8316f8f0219de6d07b7c20ad1baef"
+   last-author="zhangwei"
+   text-time="2015-02-05T08:05:56.988000Z"
+   committed-rev="1899"
+   kind="file"
+   committed-date="2015-02-05T08:05:56.988250Z"
+   prop-time="2015-01-17T04:07:03.217000Z"/>
+<entry
+   name="MusicService.java"
+   checksum="4dd1952fd88a263bb1c192e146f0d7c1"
+   last-author="zhangwei"
+   committed-rev="2040"
+   text-time="2015-02-13T07:06:30.501000Z"
+   kind="file"
+   committed-date="2015-02-13T07:06:30.501749Z"/>
+<entry
+   name="Player.java"
+   checksum="810efb0db3d5b6adea5d90537f9c4cd8"
+   last-author="zhangwei"
+   text-time="2015-01-28T08:10:02.675000Z"
+   committed-rev="1752"
+   kind="file"
+   committed-date="2015-01-28T08:10:02.675750Z"
+   prop-time="2015-01-16T10:08:36.913000Z"/>
+</wc-entries>

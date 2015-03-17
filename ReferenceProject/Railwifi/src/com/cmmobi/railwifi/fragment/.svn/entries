@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="wangjm"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/cmmobi/railwifi/fragment"
+   committed-rev="2418"
+   kind="dir"
+   committed-date="2015-03-17T03:06:23.749875Z"/>
+<entry
+   name="CityIntroductionFragment.java"
+   checksum="1780ed773ee149fa03ab4e37ece8e571"
+   last-author="wangjm"
+   text-time="2015-02-13T02:43:55.904000Z"
+   committed-rev="2036"
+   kind="file"
+   committed-date="2015-02-13T03:16:02.480000Z"
+   prop-time="2014-11-20T07:26:23.176000Z"/>
+<entry
+   name="CityLifeFragment.java"
+   checksum="e3025eb843cfe1cbf6eeca48a835beb0"
+   last-author="wangjm"
+   committed-rev="914"
+   text-time="2014-12-15T02:03:30.936000Z"
+   kind="file"
+   committed-date="2014-12-15T08:20:59.509000Z"/>
+<entry
+   name="GameWorldFragment.java"
+   checksum="434b6f66d81dbc0c3e32ddbdb82bffcb"
+   last-author="wangjm"
+   text-time="2015-01-30T09:30:03.674000Z"
+   committed-rev="1800"
+   kind="file"
+   committed-date="2015-02-02T01:49:57.300000Z"/>
+<entry
+   name="HomePageFragment.java"
+   checksum="c22a324ffba0ff1f7088111d69d40f89"
+   last-author="zhangwei"
+   text-time="2015-03-12T03:51:40.828000Z"
+   committed-rev="2226"
+   kind="file"
+   committed-date="2015-03-12T03:51:40.828000Z"/>
+<entry
+   name="MediaFragment.java"
+   checksum="a4cc9760926d231c28242de23a171cb8"
+   last-author="zhangwei"
+   text-time="2015-02-13T03:49:55.031000Z"
+   committed-rev="2037"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="MenuFragment.java"
+   checksum="d13972f17511fc3ced962a023be006d8"
+   last-author="youtian"
+   committed-rev="2410"
+   text-time="2015-03-16T10:24:19.109000Z"
+   kind="file"
+   committed-date="2015-03-16T10:24:19.109250Z"/>
+<entry
+   name="PeriodRecommendationFragment.java"
+   checksum="d4e91782eeb929c178d284d7d1b34c5f"
+   last-author="wangjm"
+   committed-rev="2418"
+   text-time="2015-03-17T02:24:20.965000Z"
+   kind="file"
+   committed-date="2015-03-17T03:06:23.749000Z"/>
+<entry
+   name="PlayBillFragment.java"
+   checksum="f99f559d869483982867df329f62623d"
+   last-author="zhangwei"
+   text-time="2015-02-13T03:49:55.031000Z"
+   committed-rev="2037"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="PopularAppFragment.java"
+   checksum="9ffc9eb805c5161fcc62257e527f9d21"
+   last-author="wangjm"
+   committed-rev="627"
+   text-time="2014-12-05T09:40:27.973000Z"
+   kind="file"
+   committed-date="2014-12-05T10:06:22.892000Z"/>
+<entry
+   name="PreviousRecommendationFragment.java"
+   checksum="c89f34b8515300339047949462c05cbc"
+   last-author="wangjm"
+   text-time="2015-03-17T02:26:20.140000Z"
+   committed-rev="2418"
+   kind="file"
+   committed-date="2015-03-17T03:06:23.749000Z"/>
+<entry
+   name="RailServiceBannerFragment.java"
+   checksum="92f4fe1f34191cd54f86ccef1114a6c2"
+   last-author="zhangwei"
+   committed-rev="2226"
+   text-time="2015-03-12T03:51:40.828000Z"
+   kind="file"
+   committed-date="2015-03-12T03:51:40.828000Z"/>
+<entry
+   name="RailServiceFragment.java"
+   checksum="74a65d592c636f385be38736a3702b98"
+   last-author="zhangwei"
+   committed-rev="2037"
+   text-time="2015-02-13T03:49:55.031000Z"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="RailTravelBannerFragment.java"
+   checksum="f6cfd1257d8cd1614633e0354299aa6f"
+   last-author="zhangwei"
+   committed-rev="2037"
+   text-time="2015-02-13T03:49:55.031000Z"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="RailTravelCheckOneFragment.java"
+   checksum="8004cb8377ccb369f07c38f3b617bef9"
+   last-author="zhangwei"
+   committed-rev="2037"
+   text-time="2015-02-13T03:49:55.031000Z"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="RailTravelCheckThreeFragment.java"
+   checksum="235da6115e4873106d96b2ae39de8bbd"
+   last-author="youtian"
+   committed-rev="364"
+   text-time="2014-11-26T02:52:11.425000Z"
+   kind="file"
+   committed-date="2014-11-26T02:52:11.425125Z"/>
+<entry
+   name="RailTravelCheckTwoFragment.java"
+   checksum="4bcd9d2fa5b81ce98560c4a2ad2fa720"
+   last-author="youtian"
+   committed-rev="389"
+   text-time="2014-11-27T04:31:31.706000Z"
+   kind="file"
+   committed-date="2014-11-27T04:31:31.706375Z"/>
+<entry
+   name="RailTravelFragment.java"
+   checksum="0ebd6b4eac3577e07bf9558dfe7a1793"
+   last-author="zhangwei"
+   committed-rev="2057"
+   text-time="2015-02-15T03:34:55.541000Z"
+   kind="file"
+   committed-date="2015-02-15T03:34:55.541500Z"/>
+<entry
+   name="RailTravelOrderCheckFragment.java"
+   checksum="51b3e27809757f5c38c87a8dd2e6bda0"
+   last-author="youtian"
+   text-time="2014-12-11T10:07:01.861000Z"
+   committed-rev="834"
+   kind="file"
+   committed-date="2014-12-11T10:07:01.861125Z"/>
+<entry
+   name="TitleRootFragment.java"
+   checksum="d9dde899e32a28b3893e9f78349f3e47"
+   last-author="zhangwei"
+   text-time="2015-02-25T01:09:35.744000Z"
+   committed-rev="2074"
+   kind="file"
+   committed-date="2015-02-25T01:09:35.744625Z"/>
+<entry
+   name="UserCollectionFragment.java"
+   checksum="9ab2d847a74d782516f8629bcdc736da"
+   last-author="youtian"
+   committed-rev="1363"
+   text-time="2014-12-26T10:02:23.064000Z"
+   kind="file"
+   committed-date="2014-12-26T10:02:23.064500Z"/>
+<entry
+   name="UserHistoryFragment.java"
+   checksum="b27f5ac054984143b7f827ee2122e53e"
+   last-author="youtian"
+   committed-rev="1363"
+   text-time="2014-12-26T10:02:23.064000Z"
+   kind="file"
+   committed-date="2014-12-26T10:02:23.064500Z"/>
+<entry
+   name="XFragment.java"
+   checksum="6281720d39ab4b671473b1a6c9939597"
+   last-author="zhangwei"
+   committed-rev="1462"
+   text-time="2015-02-04T06:25:04.362000Z"
+   kind="file"
+   committed-date="2014-12-30T08:00:37.970750Z"/>
+</wc-entries>

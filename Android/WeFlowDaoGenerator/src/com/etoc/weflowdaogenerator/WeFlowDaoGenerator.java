@@ -59,6 +59,8 @@ public class WeFlowDaoGenerator {
         note.addIntProperty("downloadType"); //MOVIE=1,MUSIC=2,BOOK=3,APP=4
         note.addIntProperty("downloadStatus"); //WAIT=1,PERPARE=2,RUN=3,PAUSE=4,DONE=5,FAIL=6
         note.addIntProperty("downloadSize");
+        note.addIntProperty("wholeSize");
+
         note.addStringProperty("path"); //
         note.addStringProperty("title"); //
         note.addStringProperty("detail"); //
@@ -67,6 +69,8 @@ public class WeFlowDaoGenerator {
         note.addStringProperty("mediaId"); //
         note.addStringProperty("source"); //
         note.addStringProperty("data"); //
+
+
     }
 
     private static void addAccount(Schema schema) {

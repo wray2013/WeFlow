@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="zhangwei"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/cmmobi/railwifi/network"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2421"
+   kind="dir"
+   committed-date="2015-03-17T03:14:16.609250Z"/>
+<entry
+   name="CRMRequester.java"
+   checksum="2486547cf2e684b4090d603710ea47ec"
+   last-author="zhangwei"
+   text-time="2015-03-17T03:14:16.609000Z"
+   committed-rev="2421"
+   kind="file"
+   committed-date="2015-03-17T03:14:16.609250Z"
+   prop-time="2014-11-20T07:26:23.574000Z"/>
+<entry
+   name="CRM_Object.java"
+   checksum="2a0c69bc0467d8dfd8a5d8647f514c9e"
+   last-author="zhangwei"
+   committed-rev="35"
+   text-time="2014-11-13T04:21:09.982000Z"
+   kind="file"
+   committed-date="2014-11-13T04:21:09.982375Z"
+   prop-time="2014-11-20T07:26:23.653000Z"/>
+<entry
+   name="FakeData.java"
+   checksum="77c6f0cd73ec8346176f8ad452d2cefe"
+   last-author="youtian"
+   text-time="2015-03-16T10:24:19.109000Z"
+   committed-rev="2410"
+   kind="file"
+   committed-date="2015-03-16T10:24:19.109250Z"
+   prop-time="2014-11-20T07:26:23.526000Z"/>
+<entry
+   name="GsonRequestObject.java"
+   checksum="b0e651d145ed4a1aa7167b7094f269fd"
+   last-author="youtian"
+   committed-rev="2372"
+   text-time="2015-03-16T03:48:58.046000Z"
+   kind="file"
+   committed-date="2015-03-16T03:48:58.046750Z"
+   prop-time="2014-11-20T07:26:23.644000Z"/>
+<entry
+   name="GsonResponseObject.java"
+   checksum="c002e815c78607204a772e455ae64107"
+   last-author="youtian"
+   text-time="2015-03-16T10:24:19.109000Z"
+   committed-rev="2410"
+   kind="file"
+   committed-date="2015-03-16T10:24:19.109250Z"
+   prop-time="2014-11-20T07:26:23.688000Z"/>
+<entry
+   name="Requester.java"
+   checksum="522f1f940a9e1a959459e9eceb40adc8"
+   last-author="zhangwei"
+   text-time="2015-03-17T03:14:16.609000Z"
+   committed-rev="2421"
+   kind="file"
+   committed-date="2015-03-17T03:14:16.609250Z"
+   prop-time="2014-11-20T07:26:23.476000Z"/>
+</wc-entries>

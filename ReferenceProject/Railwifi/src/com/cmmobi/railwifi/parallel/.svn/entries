@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="zhangwei"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/cmmobi/railwifi/parallel"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2413"
+   kind="dir"
+   committed-date="2015-03-17T01:50:57.859250Z"/>
+<entry
+   name="DiscScanTask.java"
+   checksum="7a5487ce3e414b661ec7f53ae6e73b65"
+   last-author="zhangwei"
+   committed-rev="2413"
+   text-time="2015-03-17T01:50:57.859000Z"
+   kind="file"
+   committed-date="2015-03-17T01:50:57.859250Z"
+   prop-time="2014-11-20T10:02:18.614000Z"/>
+<entry
+   name="DiskCleanTask.java"
+   checksum="03de349b394b9add8df2cffafb2ba72b"
+   last-author="zhangwei"
+   committed-rev="526"
+   text-time="2014-12-03T09:21:56.611000Z"
+   kind="file"
+   committed-date="2014-12-03T09:21:56.611125Z"
+   prop-time="2014-11-24T07:07:39.732000Z"/>
+<entry
+   name="IYTask.java"
+   checksum="b8cc63f6db3869af0920e6c98c15ea74"
+   last-author="zhangwei"
+   text-time="2015-03-05T06:58:29.505000Z"
+   committed-rev="2087"
+   kind="file"
+   committed-date="2015-03-05T06:58:29.505500Z"
+   prop-time="2014-11-20T10:02:18.602000Z"/>
+<entry
+   name="ParallelManager.java"
+   checksum="3186d528d67c8a130a7e7398a3c219f6"
+   last-author="zhangwei"
+   committed-rev="2087"
+   text-time="2015-03-05T06:58:29.505000Z"
+   kind="file"
+   committed-date="2015-03-05T06:58:29.505500Z"
+   prop-time="2014-11-20T10:02:18.608000Z"/>
+<entry
+   name="UpdateTask.java"
+   checksum="7cccafe74f84b328007c7dd18793dd27"
+   last-author="zhangwei"
+   text-time="2014-12-04T01:46:11.345000Z"
+   committed-rev="541"
+   kind="file"
+   committed-date="2014-12-04T01:46:11.345500Z"
+   prop-time="2014-12-04T01:15:28.067000Z"/>
+</wc-entries>

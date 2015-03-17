@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/values-v11"
+   committed-rev="730"
+   kind="dir"
+   committed-date="2014-12-10T06:44:53.876000Z"/>
+<entry
+   name="styles.xml"
+   checksum="47547853533b9b640acff085803bdfa2"
+   last-author="wangjm"
+   committed-rev="730"
+   text-time="2014-12-10T06:44:53.876000Z"
+   kind="file"
+   committed-date="2014-12-10T06:44:53.876000Z"/>
+</wc-entries>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res/anim"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="962"
+   kind="dir"
+   committed-date="2014-12-16T09:21:25.243875Z"/>
+<entry
+   name="loading_rotate.xml"
+   checksum="256bb68385650b37d0ad3d88a06bc472"
+   last-author="wangjm"
+   text-time="2014-12-16T08:40:51.031000Z"
+   committed-rev="962"
+   kind="file"
+   committed-date="2014-12-16T09:21:25.243000Z"/>
+<entry
+   name="option_entry_from_bottom.xml"
+   checksum="3d2f3fa1bd99a33bc1bf3443ab4f8f34"
+   last-author="youtian"
+   committed-rev="733"
+   text-time="2014-12-10T07:11:50.111000Z"
+   kind="file"
+   committed-date="2014-12-10T07:11:50.111125Z"/>
+<entry
+   name="option_entry_from_top.xml"
+   checksum="1adac6c1324759c3c887a47a738c4c0c"
+   last-author="youtian"
+   committed-rev="733"
+   text-time="2014-12-10T07:11:50.111000Z"
+   kind="file"
+   committed-date="2014-12-10T07:11:50.111125Z"/>
+<entry
+   name="option_leave_from_bottom.xml"
+   checksum="ac35b478934ebea5b6f0971f2cf7deb8"
+   last-author="youtian"
+   committed-rev="733"
+   text-time="2014-12-10T07:11:50.111000Z"
+   kind="file"
+   committed-date="2014-12-10T07:11:50.111125Z"/>
+<entry
+   name="option_leave_from_top.xml"
+   checksum="9dde0f7022e9ce3dd175ac6111bfeb43"
+   last-author="youtian"
+   committed-rev="733"
+   text-time="2014-12-10T07:11:50.111000Z"
+   kind="file"
+   committed-date="2014-12-10T07:11:50.111125Z"/>
+<entry
+   name="slide_in_from_bottom.xml"
+   checksum="ea13be906c762301e921a22fbee75c7d"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="slide_in_from_top.xml"
+   checksum="ec5a0b2c61cfee4e112af9baddfe944f"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="slide_out_to_bottom.xml"
+   checksum="1d36edab98cdc05d0c3d576206515093"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+<entry
+   name="slide_out_to_top.xml"
+   checksum="952fc334a6106be4ef80c3ed3a7545be"
+   last-author="wangjm"
+   committed-rev="9"
+   text-time="2014-11-07T07:43:25.858000Z"
+   kind="file"
+   committed-date="2014-11-07T07:43:25.858139Z"/>
+</wc-entries>

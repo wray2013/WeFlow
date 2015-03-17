@@ -10,6 +10,7 @@ public class DownloadHistory {
     private Integer downloadType;
     private Integer downloadStatus;
     private Integer downloadSize;
+    private Integer wholeSize;
     private String path;
     private String title;
     private String detail;
@@ -25,11 +26,12 @@ public class DownloadHistory {
         this.url = url;
     }
 
-    public DownloadHistory(String url, Integer downloadType, Integer downloadStatus, Integer downloadSize, String path, String title, String detail, String picUrl, String mediaId, String source, String data) {
+    public DownloadHistory(String url, Integer downloadType, Integer downloadStatus, Integer downloadSize, Integer wholeSize, String path, String title, String detail, String picUrl, String mediaId, String source, String data) {
         this.url = url;
         this.downloadType = downloadType;
         this.downloadStatus = downloadStatus;
         this.downloadSize = downloadSize;
+        this.wholeSize = wholeSize;
         this.path = path;
         this.title = title;
         this.detail = detail;
@@ -69,6 +71,14 @@ public class DownloadHistory {
 
     public void setDownloadSize(Integer downloadSize) {
         this.downloadSize = downloadSize;
+    }
+
+    public Integer getWholeSize() {
+        return wholeSize;
+    }
+
+    public void setWholeSize(Integer wholeSize) {
+        this.wholeSize = wholeSize;
     }
 
     public String getPath() {

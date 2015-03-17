@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="http://192.168.100.13/svn/railwifi"
+   revision="2429"
+   last-author="wangjm"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/res"
+   committed-rev="2418"
+   kind="dir"
+   committed-date="2015-03-17T03:06:23.749875Z"/>
+<entry
+   name="anim"
+   kind="dir"/>
+<entry
+   name="color"
+   kind="dir"/>
+<entry
+   name="drawable"
+   kind="dir"/>
+<entry
+   name="drawable-hdpi"
+   kind="dir"/>
+<entry
+   name="drawable-ldpi"
+   kind="dir"/>
+<entry
+   name="drawable-mdpi"
+   kind="dir"/>
+<entry
+   name="drawable-sw480dp-hdpi"
+   kind="dir"/>
+<entry
+   name="drawable-xhdpi"
+   kind="dir"/>
+<entry
+   name="drawable-xxhdpi"
+   kind="dir"/>
+<entry
+   name="layout"
+   kind="dir"/>
+<entry
+   name="values"
+   kind="dir"/>
+<entry
+   name="values-sw320dp-hdpi"
+   kind="dir"/>
+<entry
+   name="values-sw360dp-hdpi"
+   kind="dir"/>
+<entry
+   name="values-sw480dp-hdpi"
+   kind="dir"/>
+<entry
+   name="values-v11"
+   kind="dir"/>
+<entry
+   name="values-zh"
+   kind="dir"/>
+</wc-entries>

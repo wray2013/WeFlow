@@ -1,5 +1,7 @@
 package com.etoc.weflow.utils;
 
+import java.util.UUID;
+
 import android.os.Environment;
 
 
@@ -22,5 +24,21 @@ public class ConStant {
 	
 	public static String getImageLoaderCachePath() {
 		return SD_STORAGE_ROOT + "/" + "imageloader/cache";
+	}
+	
+	public static String getPicAbsoluteDirPath() {
+		return getAbsolutePath() + "/pic/";
+	}
+	
+	public static String getDownloadCachePath() {
+		return SD_STORAGE_ROOT + "/" + "downloads";
+	}
+	
+	/**
+	 * 获取一个新的UUID;
+	 * @return
+	 */
+	public static String getNextUUID() {
+		return UUID.randomUUID().toString().replace("-", "");
 	}
 }

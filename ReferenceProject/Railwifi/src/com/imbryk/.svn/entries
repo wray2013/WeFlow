@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/imbryk"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="1432"
+   kind="dir"
+   committed-date="2014-12-29T10:26:07.705125Z"/>
+<entry
+   name="viewPager"
+   kind="dir"/>
+</wc-entries>

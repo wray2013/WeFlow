@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="http://192.168.100.13/svn/railwifi"
+   name=""
+   revision="2429"
+   last-author="wangjm"
+   url="http://192.168.100.13/svn/railwifi/client/android/RailWifi/src/com/cmmobi/railwifi/adapter"
+   uuid="d00a27c5-5959-0d4c-bf55-77a50f24fd86"
+   committed-rev="2418"
+   kind="dir"
+   committed-date="2015-03-17T03:06:23.749875Z"/>
+<entry
+   name="CityIntroAdapter.java"
+   checksum="6a24e6120a88fb4ef2d161471485ac1e"
+   last-author="zhangwei"
+   committed-rev="1124"
+   text-time="2014-12-22T02:12:43.408000Z"
+   kind="file"
+   committed-date="2014-12-22T02:12:43.408250Z"
+   prop-time="2014-11-20T07:26:22.054000Z"/>
+<entry
+   name="CollectionListAdapter.java"
+   revision="2430"
+   checksum="58d3f63c477691a6b5e763fc5748d605"
+   last-author="wangjm"
+   committed-rev="2430"
+   text-time="2015-03-17T04:21:40.403000Z"
+   kind="file"
+   committed-date="2015-03-17T04:24:06.546000Z"/>
+<entry
+   name="GoodAdapter.java"
+   checksum="2c73fd76f71ccb75a9b63402a1735b59"
+   last-author="zhangwei"
+   committed-rev="2037"
+   text-time="2015-02-13T03:49:55.031000Z"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="HistoryOrderFormAdapter.java"
+   checksum="796781463487cda77dc601b1427c97ac"
+   last-author="wangjm"
+   committed-rev="1607"
+   text-time="2015-01-17T07:29:51.747000Z"
+   kind="file"
+   committed-date="2015-01-17T07:36:28.613000Z"/>
+<entry
+   name="ImagePagerAdapter.java"
+   checksum="d0e3b34b7b6c77a59ac23a18354c7325"
+   last-author="zhangwei"
+   text-time="2015-02-13T03:49:55.031000Z"
+   committed-rev="2037"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"
+   prop-time="2014-11-20T07:26:21.968000Z"/>
+<entry
+   name="JokeListAdapter.java"
+   checksum="97a30d41d0133dd474d4d18826f74d75"
+   last-author="youtian"
+   committed-rev="1486"
+   text-time="2014-12-31T02:30:01.861000Z"
+   kind="file"
+   committed-date="2014-12-31T02:30:01.861375Z"
+   prop-time="2014-11-20T07:26:22.063000Z"/>
+<entry
+   name="MileageRecordAdapter.java"
+   checksum="5ea2cbf03d095d4e928c9cbd166e58d9"
+   last-author="wangrui"
+   text-time="2015-03-16T09:02:45.999000Z"
+   committed-rev="2400"
+   kind="file"
+   committed-date="2015-03-16T09:02:45.999875Z"/>
+<entry
+   name="MoreAdapter.java"
+   checksum="09d559971060d0c1f6b1a2477093df1d"
+   last-author="youtian"
+   committed-rev="370"
+   text-time="2014-11-26T06:43:31.237000Z"
+   kind="file"
+   committed-date="2014-11-26T06:43:31.237625Z"/>
+<entry
+   name="MoviesListAdapter.java"
+   checksum="05d0ced61645427f3156f9c4232fe427"
+   last-author="wangjm"
+   text-time="2015-03-17T03:00:21.221000Z"
+   committed-rev="2418"
+   kind="file"
+   committed-date="2015-03-17T03:06:23.749000Z"/>
+<entry
+   name="MusicAlbumListAdapter.java"
+   checksum="f3e0ffce4ce24464ae0fa1c6d429e702"
+   last-author="youtian"
+   committed-rev="2042"
+   text-time="2015-02-13T07:43:12.966000Z"
+   kind="file"
+   committed-date="2015-02-13T07:43:12.966009Z"/>
+<entry
+   name="MusicMainPageListAdapter.java"
+   checksum="b957deee7c82b90fec884ee0d1dbed98"
+   last-author="zhangwei"
+   text-time="2015-03-12T03:51:40.828000Z"
+   committed-rev="2226"
+   kind="file"
+   committed-date="2015-03-12T03:51:40.828000Z"/>
+<entry
+   name="OrderConfirmAdapter.java"
+   checksum="c8c3f5f569dc39d03897e01e314de415"
+   last-author="zhangwei"
+   text-time="2015-02-13T03:49:55.031000Z"
+   committed-rev="2037"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="PlayBill2Adapter.java"
+   checksum="a960bcf5c89cfd1440a9f5f2d9debe4a"
+   last-author="wangjm"
+   committed-rev="429"
+   text-time="2014-12-01T02:01:38.622000Z"
+   kind="file"
+   committed-date="2014-12-01T02:14:33.845000Z"
+   prop-time="2014-11-24T04:24:18.717000Z"/>
+<entry
+   name="PlayBillAdapter.java"
+   checksum="e8fa035fdee361f5b29cf09fe171cf69"
+   last-author="zhangwei"
+   committed-rev="2037"
+   text-time="2015-02-13T03:49:55.031000Z"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="PlayHistoryListAdapter.java"
+   checksum="c70b60fdffe57a030a1acad6e3184ba4"
+   last-author="zhangwei"
+   text-time="2014-12-22T02:42:49.127000Z"
+   committed-rev="1129"
+   kind="file"
+   committed-date="2014-12-22T02:42:49.127000Z"
+   prop-time="2014-12-10T02:14:52.429000Z"/>
+<entry
+   name="RailNewsAdapter.java"
+   checksum="751db7bf8d638f0cc4f652270abb4f68"
+   last-author="zhangwei"
+   text-time="2015-02-06T01:56:49.582000Z"
+   committed-rev="1910"
+   kind="file"
+   committed-date="2015-02-06T01:56:49.582266Z"
+   prop-time="2014-11-20T07:26:22.072000Z"/>
+<entry
+   name="RailServiceBannerAdapter.java"
+   checksum="115ba99b77687fe383250a4fd5989330"
+   last-author="wangjm"
+   text-time="2015-02-12T06:55:12.334000Z"
+   committed-rev="2023"
+   kind="file"
+   committed-date="2015-02-12T08:13:21.014000Z"/>
+<entry
+   name="RailTravelBannerAdapter.java"
+   checksum="08d1158ff63f77c5992051530d582440"
+   last-author="wangjm"
+   committed-rev="429"
+   text-time="2014-12-01T01:59:59.544000Z"
+   kind="file"
+   committed-date="2014-12-01T02:14:33.845000Z"/>
+<entry
+   name="RailTravelDetailListAdapter.java"
+   checksum="7d44e10dd84e5c0fd75e16e143e93e77"
+   last-author="youtian"
+   committed-rev="2042"
+   text-time="2015-02-13T07:43:12.966000Z"
+   kind="file"
+   committed-date="2015-02-13T07:43:12.966009Z"/>
+<entry
+   name="RailTravelListAdapter.java"
+   checksum="0aacb30d5a74f11ca84f6671b51e551c"
+   last-author="youtian"
+   text-time="2015-02-13T07:43:12.966000Z"
+   committed-rev="2042"
+   kind="file"
+   committed-date="2015-02-13T07:43:12.966009Z"/>
+<entry
+   name="RailTravelOrderHistoryAdapter.java"
+   checksum="de5fdd8332d9b2e53502538137d4d321"
+   last-author="youtian"
+   text-time="2015-02-13T07:43:12.966000Z"
+   committed-rev="2042"
+   kind="file"
+   committed-date="2015-02-13T07:43:12.966009Z"/>
+<entry
+   name="RecommendLineGridViewAdapter.java"
+   checksum="52f29458d0bb25ff88c26d74c80527ae"
+   last-author="zhangwei"
+   committed-rev="2037"
+   text-time="2015-02-13T03:49:55.031000Z"
+   kind="file"
+   committed-date="2015-02-13T03:49:55.031678Z"/>
+<entry
+   name="RecommendationAdapter.java"
+   checksum="f8816293ab5c8413e1aaaf16047dd625"
+   last-author="zhangwei"
+   text-time="2015-03-12T03:51:40.828000Z"
+   committed-rev="2226"
+   kind="file"
+   committed-date="2015-03-12T03:51:40.828000Z"/>
+<entry
+   name="SatisfactionSurveyAdapter.java"
+   checksum="4a02b3660edbbdabc460f28b2c79fa1a"
+   last-author="wangjm"
+   text-time="2015-01-26T01:53:19.784000Z"
+   committed-rev="1710"
+   kind="file"
+   committed-date="2015-01-26T06:28:38.738000Z"/>
+<entry
+   name="SeriesAdapter.java"
+   checksum="b9df807fad99206d570c60ec1491b4cf"
+   last-author="zhangwei"
+   committed-rev="2384"
+   text-time="2015-03-16T06:31:48.015000Z"
+   kind="file"
+   committed-date="2015-03-16T06:31:48.015500Z"
+   prop-time="2015-03-12T01:25:55.714000Z"/>
+<entry
+   name="TagAdapter.java"
+   checksum="e8b77af4632da389186ae3ddcce65bed"
+   last-author="zhangwei"
+   committed-rev="736"
+   text-time="2014-12-10T07:34:46.423000Z"
+   kind="file"
+   committed-date="2014-12-10T07:34:46.423625Z"
+   prop-time="2014-12-03T09:13:26.001000Z"/>
+</wc-entries>
