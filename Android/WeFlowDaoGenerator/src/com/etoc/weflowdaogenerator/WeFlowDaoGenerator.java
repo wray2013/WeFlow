@@ -71,7 +71,7 @@ public class WeFlowDaoGenerator {
 
     private static void addAccount(Schema schema) {
     	Entity note = schema.addEntity("AccountInfo");
-        note.addIdProperty().primaryKey().autoincrement();
+//        note.addIdProperty().primaryKey().autoincrement();
         note.addStringProperty("tel").notNull().primaryKey();
         note.addStringProperty("userid");
         note.addStringProperty("flowcoins");
