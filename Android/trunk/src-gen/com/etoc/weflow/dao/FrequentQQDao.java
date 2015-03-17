@@ -14,7 +14,7 @@ import com.etoc.weflow.dao.FrequentQQ;
 /** 
  * DAO for table FREQUENT_QQ.
 */
-public class FrequentQQDao extends AbstractDao<FrequentQQ, Long> {
+public class FrequentQQDao extends AbstractDao<FrequentQQ, String> {
 
     public static final String TABLENAME = "FREQUENT_QQ";
 
@@ -23,8 +23,7 @@ public class FrequentQQDao extends AbstractDao<FrequentQQ, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Qq_num = new Property(1, String.class, "qq_num", false, "QQ_NUM");
+        public final static Property Qq_num = new Property(0, String.class, "qq_num", true, "QQ_NUM");
     };
 
 
@@ -40,8 +39,7 @@ public class FrequentQQDao extends AbstractDao<FrequentQQ, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'FREQUENT_QQ' (" + //
-                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "'QQ_NUM' TEXT NOT NULL );"); // 1: qq_num
+                "'QQ_NUM' TEXT PRIMARY KEY NOT NULL );"); // 0: qq_num
     }
 
     /** Drops the underlying database table. */
@@ -54,26 +52,20 @@ public class FrequentQQDao extends AbstractDao<FrequentQQ, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, FrequentQQ entity) {
         stmt.clearBindings();
- 
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
-        }
-        stmt.bindString(2, entity.getQq_num());
+        stmt.bindString(1, entity.getQq_num());
     }
 
     /** @inheritdoc */
     @Override
-    public Long readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
+    public String readKey(Cursor cursor, int offset) {
+        return cursor.getString(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public FrequentQQ readEntity(Cursor cursor, int offset) {
         FrequentQQ entity = new FrequentQQ( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1) // qq_num
+            cursor.getString(offset + 0) // qq_num
         );
         return entity;
     }
@@ -81,22 +73,20 @@ public class FrequentQQDao extends AbstractDao<FrequentQQ, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, FrequentQQ entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setQq_num(cursor.getString(offset + 1));
+        entity.setQq_num(cursor.getString(offset + 0));
      }
     
     /** @inheritdoc */
     @Override
-    protected Long updateKeyAfterInsert(FrequentQQ entity, long rowId) {
-        entity.setId(rowId);
-        return rowId;
+    protected String updateKeyAfterInsert(FrequentQQ entity, long rowId) {
+        return entity.getQq_num();
     }
     
     /** @inheritdoc */
     @Override
-    public Long getKey(FrequentQQ entity) {
+    public String getKey(FrequentQQ entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getQq_num();
         } else {
             return null;
         }

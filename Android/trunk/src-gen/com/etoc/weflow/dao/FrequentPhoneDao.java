@@ -14,7 +14,7 @@ import com.etoc.weflow.dao.FrequentPhone;
 /** 
  * DAO for table FREQUENT_PHONE.
 */
-public class FrequentPhoneDao extends AbstractDao<FrequentPhone, Long> {
+public class FrequentPhoneDao extends AbstractDao<FrequentPhone, String> {
 
     public static final String TABLENAME = "FREQUENT_PHONE";
 
@@ -23,8 +23,7 @@ public class FrequentPhoneDao extends AbstractDao<FrequentPhone, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Phone_num = new Property(1, String.class, "phone_num", false, "PHONE_NUM");
+        public final static Property Phone_num = new Property(0, String.class, "phone_num", true, "PHONE_NUM");
     };
 
 
@@ -40,8 +39,7 @@ public class FrequentPhoneDao extends AbstractDao<FrequentPhone, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'FREQUENT_PHONE' (" + //
-                "'_id' INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "'PHONE_NUM' TEXT NOT NULL );"); // 1: phone_num
+                "'PHONE_NUM' TEXT PRIMARY KEY NOT NULL );"); // 0: phone_num
     }
 
     /** Drops the underlying database table. */
@@ -54,26 +52,20 @@ public class FrequentPhoneDao extends AbstractDao<FrequentPhone, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, FrequentPhone entity) {
         stmt.clearBindings();
- 
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
-        }
-        stmt.bindString(2, entity.getPhone_num());
+        stmt.bindString(1, entity.getPhone_num());
     }
 
     /** @inheritdoc */
     @Override
-    public Long readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
+    public String readKey(Cursor cursor, int offset) {
+        return cursor.getString(offset + 0);
     }    
 
     /** @inheritdoc */
     @Override
     public FrequentPhone readEntity(Cursor cursor, int offset) {
         FrequentPhone entity = new FrequentPhone( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1) // phone_num
+            cursor.getString(offset + 0) // phone_num
         );
         return entity;
     }
@@ -81,22 +73,20 @@ public class FrequentPhoneDao extends AbstractDao<FrequentPhone, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, FrequentPhone entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setPhone_num(cursor.getString(offset + 1));
+        entity.setPhone_num(cursor.getString(offset + 0));
      }
     
     /** @inheritdoc */
     @Override
-    protected Long updateKeyAfterInsert(FrequentPhone entity, long rowId) {
-        entity.setId(rowId);
-        return rowId;
+    protected String updateKeyAfterInsert(FrequentPhone entity, long rowId) {
+        return entity.getPhone_num();
     }
     
     /** @inheritdoc */
     @Override
-    public Long getKey(FrequentPhone entity) {
+    public String getKey(FrequentPhone entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getPhone_num();
         } else {
             return null;
         }

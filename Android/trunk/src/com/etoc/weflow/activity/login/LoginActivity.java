@@ -1,6 +1,7 @@
 package com.etoc.weflow.activity.login;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.Editable;
@@ -10,7 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.TitleRootActivity;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dao.AccountInfoDao;
+import com.etoc.weflow.dao.DaoMaster;
+import com.etoc.weflow.dao.DaoSession;
+import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.loginResponse;
 import com.etoc.weflow.net.Requester;
@@ -18,6 +25,12 @@ import com.etoc.weflow.utils.ViewUtils;
 
 public class LoginActivity extends TitleRootActivity {
 
+	private DaoMaster daoMaster;
+	private DaoSession daoSession;
+	private SQLiteDatabase db;
+	private AccountInfoDao accountInfoDao;
+	
+	
 	private EditText edAccount, edPass;
 	private TextView tvForget, tvBtnLogin, tvRegister;
 	
@@ -36,6 +49,13 @@ public class LoginActivity extends TitleRootActivity {
 				edAccount.setText(tel);
 			}
 		}
+		
+		DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+        db = helper.getWritableDatabase();
+        daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+        
+        accountInfoDao = daoSession.getAccountInfoDao();
 		
 	}
 	
@@ -169,7 +189,21 @@ public class LoginActivity extends TitleRootActivity {
 			if(loginResp != null) {
 				if("0".equals(loginResp.status)) { //登录成功
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
+					AccountInfo acc = new AccountInfo();
+					acc.setIsregistration(loginResp.isregistration);
+					acc.setFlowcoins(loginResp.flowcoins);
+					acc.setMakeflow(loginResp.makeflow);
+					acc.setUseflow(loginResp.useflow);
+					acc.setUserid(loginResp.userid);
+					acc.setTel(loginResp.tel);
+					accountInfoDao.deleteAll();
+					accountInfoDao.insertOrReplace(acc);
 					
+					Intent intent = new Intent();
+					intent.setClass(this, MainActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+					finish();
 				}
 			} else {
 				PromptDialog.Alert(LoginActivity.class, "您的网络不给力啊！");
