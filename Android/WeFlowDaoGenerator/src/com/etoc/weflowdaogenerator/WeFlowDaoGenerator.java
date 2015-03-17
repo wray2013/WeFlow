@@ -42,13 +42,11 @@ public class WeFlowDaoGenerator {
     
     private static void addFrequentPhone(Schema schema) {
     	Entity note = schema.addEntity("FrequentPhone");
-        note.addIdProperty().primaryKey().autoincrement();
         note.addStringProperty("phone_num").notNull().primaryKey();
     }
     
     private static void addFrequentQQ(Schema schema) {
     	Entity note = schema.addEntity("FrequentQQ");
-        note.addIdProperty().primaryKey().autoincrement();
         note.addStringProperty("qq_num").notNull().primaryKey();
     }
     
