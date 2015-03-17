@@ -9,20 +9,10 @@
         android:id="@+id/rl_input_phone"
         android:layout_width="fill_parent"
         android:layout_height="56dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/bg_input_rect"
         >
-        
-        <!-- <EditText 
-            android:id="@+id/et_phone"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:paddingLeft="15dp"
-            android:background="@null"
-            android:hint="请输入QQ号"
-            android:textSize="15sp"
-            /> -->
         
         <com.etoc.weflow.view.autocomp.AccountAutoCompleteEditText
 	        xmlns:tools="http://schemas.android.com/tools"

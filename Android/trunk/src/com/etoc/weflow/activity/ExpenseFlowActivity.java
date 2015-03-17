@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -133,6 +134,13 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 			return frag;
 		}
 
+	}
+	
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		// TODO Auto-generated method stub
+		Log.d("=AAA=","***********爷爷***************");
+		super.onActivityResult(arg0, arg1, arg2);
 	}
 	
 }
