@@ -43,5 +43,15 @@
         
         />
     
+    <ImageView 
+    	android:id="@+id/iv_sign_in"
+    	android:layout_width="71dp"
+    	android:layout_height="37.5dp"
+    	android:layout_alignParentRight="true"
+    	android:layout_marginTop="20dp"
+    	android:layout_marginRight="16dp"
+    	android:src="@drawable/btn_sign_in_selector"
+    	/>
+    
 
 </RelativeLayout>

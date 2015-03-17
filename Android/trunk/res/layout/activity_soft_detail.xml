@@ -114,19 +114,20 @@
                 
                 <RelativeLayout 
                     android:id="@+id/rl_app_flow"
-                    android:layout_width="32dp"
-                    android:layout_height="42dp"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
                     android:layout_alignRight="@id/view_base_info_bottom_line"
-                    android:background="#ff0000"
+                    android:background="@drawable/flow_tag"
                     >
                     <TextView
                         android:id="@+id/tv_app_flow"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
-	                    android:layout_marginTop="7dp"
+	                    android:layout_marginTop="6dp"
 	                    android:text="25"
-	                    android:textSize="14sp"
+	                    android:textSize="15sp"
 	                    android:layout_centerHorizontal="true"
+	                    android:includeFontPadding="false"
 	                    android:textColor="@color/white"
 	                	/>
                     
@@ -135,6 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_app_flow"
+                        android:includeFontPadding="false"
                         android:text="流量币"
                         android:textSize="10sp"
                         android:textColor="@color/white"

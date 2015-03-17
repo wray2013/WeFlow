@@ -68,6 +68,7 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 	}
 	
 	private void initViews() {
+		hideRightButton();
 		tvTitle = (TextView) findViewById(R.id.tv_app_name);
 		tvSize = (TextView) findViewById(R.id.tv_app_size);
 		tvVersion = (TextView) findViewById(R.id.tv_app_vision);
@@ -91,8 +92,8 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 		ViewUtils.setMarginTop(tvTitle, 40);
 		ViewUtils.setMarginBottom(tvSize, 24);
 		ViewUtils.setMarginLeft(tvVersion, 24);
-		ViewUtils.setSize(findViewById(R.id.rl_app_flow), 64, 84);
-		ViewUtils.setMarginTop(tvFlow, 14);
+		ViewUtils.setSize(findViewById(R.id.rl_app_flow), 72, 96);
+		ViewUtils.setMarginTop(tvFlow, 12);
 		ViewUtils.setHeight(findViewById(R.id.rl_app_flow_desc), 100);
 		ViewUtils.setHeight(findViewById(R.id.tv_pic_intro_label), 66);
 		ViewUtils.setHeight(findViewById(R.id.hsv_pic_intro), 398);
@@ -104,7 +105,7 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 		ViewUtils.setTextSize(tvTitle, 36);
 		ViewUtils.setTextSize(tvSize, 26);
 		ViewUtils.setTextSize(tvVersion, 26);
-		ViewUtils.setTextSize(tvFlow, 28);
+		ViewUtils.setTextSize(tvFlow, 30);
 		ViewUtils.setTextSize(findViewById(R.id.tv_app_flow_label), 20);
 		ViewUtils.setTextSize(tvFlowDesc, 26);
 		ViewUtils.setTextSize(findViewById(R.id.tv_pic_intro_label), 30);

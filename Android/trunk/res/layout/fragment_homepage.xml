@@ -25,6 +25,16 @@
                 android:layout_width="fill_parent"
                 android:layout_height="216dp"
                 android:background="@drawable/bg_user_info" >
+                
+                <ImageView 
+			    	android:id="@+id/iv_sign_in"
+			    	android:layout_width="71dp"
+			    	android:layout_height="37.5dp"
+			    	android:layout_alignParentRight="true"
+			    	android:layout_marginTop="32dp"
+			    	android:layout_marginRight="16dp"
+			    	android:src="@drawable/btn_sign_in_selector"
+			    	/>
 
                 <RelativeLayout
                     android:id="@+id/rl_user_phone"
@@ -168,7 +178,9 @@
                 android:id="@+id/rl_not_login"
                 android:layout_width="fill_parent"
                 android:layout_height="216dp"
-                android:background="@drawable/bg_user_info" >
+                android:background="@drawable/bg_user_info" 
+                android:visibility="gone"
+                >
 
                 <ImageView
                     android:id="@+id/iv_image"
@@ -185,7 +197,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="28dp"
-                    android:background="@drawable/bg_round_login_btn"
+                    android:background="@drawable/bg_round_login"
                     android:gravity="center"
                     android:text="开通流量钱包"
                     android:textColor="#FFFFFF"

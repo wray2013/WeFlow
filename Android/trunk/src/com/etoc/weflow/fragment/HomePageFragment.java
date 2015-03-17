@@ -57,6 +57,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private RelativeLayout rlLogin    = null;
 	private RelativeLayout rlNotLogin = null;
 	private TextView btnLogin = null;
+	private ImageView ivSignIn = null;
 	
 	private MainActivity mainActivity = null;
 	
@@ -90,6 +91,9 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ptrScrollView.setReleaseLabel("释放加载");
 		mtvFlow = (MagicTextView) view.findViewById(R.id.mtv_flow);
 		
+		ivSignIn = (ImageView) view.findViewById(R.id.iv_sign_in);
+		ivSignIn.setOnClickListener(this);
+		
 //		mtvFlow.showNumberWithAnimation(98, 1000);
 		
 		tvCellPhone = (TextView) view.findViewById(R.id.tv_phone_num);
@@ -102,6 +106,9 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		btnLogin = (TextView) view.findViewById(R.id.tv_login_btn);
 		btnLogin.setOnClickListener(this);
 		
+		ViewUtils.setSize(ivSignIn, 142, 75);
+		ViewUtils.setMarginRight(ivSignIn, 32);
+		ViewUtils.setMarginTop(ivSignIn, 64);
 		ViewUtils.setTextSize(tvCellPhone, 32);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_title_top), 432);
 		ViewUtils.setHeight(rlNotLogin, 432);

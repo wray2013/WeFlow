@@ -57,7 +57,7 @@
                 android:background="@drawable/register_edit_bg_account"
                 android:hint="请输入您的手机号"
                 android:inputType="phone"
-                android:padding="5dp"
+                android:padding="8dp"
                 android:singleLine="true"
                 android:textColor="@color/black" />
         </RelativeLayout>
@@ -135,7 +135,7 @@
                 android:background="@drawable/register_edit_bg_account"
                 android:hint="请填写数字验证码"
                 android:inputType="text"
-                android:padding="5dp"
+                android:padding="8dp"
                 android:singleLine="true"
                 android:textColor="@color/black" />
         </RelativeLayout>

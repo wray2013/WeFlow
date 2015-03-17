@@ -97,16 +97,18 @@
 			    
                 <RelativeLayout 
                     android:id="@+id/rl_ad_flow_1"
-                    android:layout_width="32dp"
-                    android:layout_height="42dp"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
                     android:layout_alignRight="@id/iv_ad_img_1"
-                    android:background="#ff0000"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/flow_tag"
                     >
                     <TextView
                         android:id="@+id/tv_content_1"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
-	                    android:layout_marginTop="7dp"
+	                   	android:layout_marginTop="6dp"
+	                    android:includeFontPadding="false"
 	                    android:text="20"
 	                    android:textSize="14sp"
 	                    android:layout_centerHorizontal="true"
@@ -144,16 +146,18 @@
 			    
 			    <RelativeLayout 
                     android:id="@+id/rl_ad_flow_2"
-                    android:layout_width="32dp"
-                    android:layout_height="42dp"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="8dp"
                     android:layout_alignRight="@id/iv_ad_img_2"
-                    android:background="#ff0000"
+                    android:background="@drawable/flow_tag"
                     >
                     <TextView
                         android:id="@+id/tv_content_2"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
-	                    android:layout_marginTop="7dp"
+	                    android:layout_marginTop="6dp"
+	                	android:includeFontPadding="false"
 	                    android:text="20"
 	                    android:textSize="14sp"
 	                    android:layout_centerHorizontal="true"
@@ -192,16 +196,18 @@
 			    
 			    <RelativeLayout 
                     android:id="@+id/rl_ad_flow_3"
-                    android:layout_width="32dp"
-                    android:layout_height="42dp"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="8dp"
                     android:layout_alignRight="@id/iv_ad_img_3"
-                    android:background="#ff0000"
+                    android:background="@drawable/flow_tag"
                     >
                     <TextView
                         android:id="@+id/tv_content_3"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
-	                    android:layout_marginTop="7dp"
+	                    android:layout_marginTop="6dp"
+	                    android:includeFontPadding="false"
 	                    android:text="20"
 	                    android:textSize="14sp"
 	                    android:layout_centerHorizontal="true"
