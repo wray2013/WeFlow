@@ -253,7 +253,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_SENDSMS:
 			getAuthCodeResponse getAuthResp = (getAuthCodeResponse) msg.obj;
 			if(getAuthResp != null) {
-				if("0".equals(getAuthResp.status)) { //发送成功
+				if("0000".equals(getAuthResp.status)) { //发送成功
 					PromptDialog.Alert(RegisterResetActivity.class, "验证码发送成功，请查收");
 				}
 			} else {
@@ -263,7 +263,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_VERIFY_CODE:
 			verifyAuthCodeResponse codeResp = (verifyAuthCodeResponse) msg.obj;
 			if(codeResp != null) {
-				if("0".equals(codeResp.status)) { //验证成功
+				if("0000".equals(codeResp.status)) { //验证成功
 					currentStep = STEP_TWO;
 					refreshViewStatus();
 				}
@@ -274,7 +274,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_REGISTER:
 			registerResponse regResp = (registerResponse) msg.obj;
 			if(regResp != null) {
-				if("0".equals(regResp.status)) { //注册成功
+				if("0000".equals(regResp.status)) { //注册成功
 					PromptDialog.Alert(RegisterResetActivity.class, "成功注册");
 					//TODO:跳转主页
 					
@@ -286,7 +286,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_RESET_PWD:
 			resetPasswordResponse resetResp = (resetPasswordResponse) msg.obj;
 			if(resetResp != null) {
-				if("0".equals(resetResp.status)) { //重置成功
+				if("0000".equals(resetResp.status)) { //重置成功
 					PromptDialog.Alert(RegisterResetActivity.class, "密码修改成功,请重新登录");
 					//TODO:跳转登录页
 					Intent loginIntent = new Intent(this, LoginActivity.class);

@@ -145,7 +145,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		Log.d(TAG, "onResume");
 //		checkLogin();
 		if(mtvMoney != null)
-			mtvMoney.showNumberWithAnimation(2600, 1000);
+			mtvMoney.showNumberWithAnimation(mtvMoney.getText().toString(), 1000);
 	}
 	
 	@Override
@@ -242,7 +242,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			checkLogin();
 		}
 		if(mtvMoney != null)
-			mtvMoney.showNumberWithAnimation(2600, 1000);
+			mtvMoney.showNumberWithAnimation(mtvMoney.getText().toString(), 1000);
 	}
 	
 }
