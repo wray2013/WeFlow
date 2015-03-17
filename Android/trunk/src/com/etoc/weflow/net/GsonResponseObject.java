@@ -122,6 +122,7 @@ public class GsonResponseObject {
 	public static class loginResponse {
 		public String status;
 		public String userid;
+		public String tel;
 		public String flowcoins;
 		public String isregistration;
 		public String makeflow;
@@ -131,6 +132,7 @@ public class GsonResponseObject {
 	public static class registerResponse {
 		public String status;
 		public String userid;
+		public String tel;
 		public String flowcoins;
 		public String isregistration;
 		public String makeflow;
@@ -139,6 +141,16 @@ public class GsonResponseObject {
 	
 	public static class resetPasswordResponse {
 		public String status;
+	}
+	
+	public static class autoLoginResponse {
+		public String status;
+		public String userid;
+		public String tel;
+		public String flowcoins;
+		public String isregistration;
+		public String makeflow;
+		public String useflow;
 	}
 	
 	/****************************************************

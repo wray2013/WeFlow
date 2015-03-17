@@ -31,14 +31,22 @@
         android:label="@string/app_name" >
         
         <activity
-            android:name="com.etoc.weflow.activity.MainActivity"
+            android:name="com.etoc.weflow.activity.WelcomePageActivity"
             android:screenOrientation="portrait"
+            android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.etoc.weflow.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         
         <activity

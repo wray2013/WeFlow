@@ -63,6 +63,9 @@ public class Requester {
 	public static final int RESPONSE_TYPE_RESET_PWD = 0xffee2107;
 	public static final String RIA_INTERFACE_RESET_PWD = "/vs/api/user/resetPassword";
 	
+	public static final int RESPONSE_TYPE_AUTO_LOGIN = 0xffee2108;
+	public static final String RIA_INTERFACE_AUTO_LOGIN = "/vs/api/user/autoLogin";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -98,7 +101,7 @@ public class Requester {
 	public static void login(Handler handler, String tel, String pass) {
 		loginRequest request = new loginRequest();
 		request.tel = tel;
-		request.password = "app";
+		request.password = pass;
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
@@ -123,6 +126,15 @@ public class Requester {
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_RESET_PWD, resetPasswordResponse.class);
 		worker.execute(RIA_INTERFACE_RESET_PWD, request);
+	}
+	
+	public static void autoLogin(Handler handler, String userid) {
+		autoLoginRequest request = new autoLoginRequest();
+		request.userid = userid;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_AUTO_LOGIN, autoLoginResponse.class);
+		worker.execute(RIA_INTERFACE_AUTO_LOGIN, request);
 	}
 	
 /*	public static void sendSMS(Handler handler, String tel) {
