@@ -66,7 +66,7 @@
 		    		android:layout_toRightOf="@+id/tv_flow_hint"
 		    		android:layout_alignParentRight="true"
 		    		android:gravity="right|center_vertical"
-		    		android:text="2600"
+		    		android:text="0"
 		    		android:textColor="@color/black" />
             </RelativeLayout>
             <View 

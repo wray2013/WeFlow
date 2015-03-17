@@ -10,6 +10,8 @@ import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonRequestObject.queryBankRequest;
+import com.etoc.weflow.net.GsonResponseObject.QueryBankResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.testResponse;
 import com.etoc.weflow.utils.ViewUtils;
@@ -36,11 +38,14 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	
 	private MagicTextView mtvMoney;
 	
-	private TextView tvDrawFlow, tvSaveFlow;
+	private TextView tvDrawFlow, tvSaveFlow, tvYestIncome, tvYestRate, tvTotalIncome;
 	
 	private MainActivity mainActivity = null;
 	
 	private boolean isLogin = false;
+	
+	private String[] trdPop; //取币阈值
+	private int trdPush = 0; //存币阈值
 	
 	/*@Override
 	public int subContentViewId() {
@@ -69,6 +74,9 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		mtvMoney = (MagicTextView) view.findViewById(R.id.mtv_total_money);
 //		mtvMoney.setNumber(2600);
 //		mtvMoney.showNumberWithAnimation(21985.2f, 1000);
+		tvYestIncome  = (TextView) view.findViewById(R.id.tv_yest_income);
+		tvYestRate    = (TextView) view.findViewById(R.id.tv_yest_rate);
+		tvTotalIncome = (TextView) view.findViewById(R.id.mtv_total_income);
 		
 		tvDrawFlow = (TextView) view.findViewById(R.id.tv_pop);
 		tvSaveFlow = (TextView) view.findViewById(R.id.tv_save);
@@ -92,10 +100,11 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 						&& !current.getUserid().equals("")) {
 					Log.e("XXX", "已登录");
 					isLogin = true;
+					Requester.queryBank(handler, current.getUserid());
 					return;
 				}
 			}
-			popWarningDialog();
+//			popWarningDialog();
 		}
 	}
 	
@@ -147,25 +156,30 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		case R.id.tv_pop:
 //			Requester.test(handler);
 			if(isLogin) {
-				String[] values = new String[] {"14000", "18000", "60000"};
+				if(trdPop == null) {
+					trdPop = new String[] {"0"};
+				}
+//				String[] values = new String[] {"14000", "18000", "60000"};
 				Intent drawIntent = new Intent(getActivity(), DrawFlowActivity.class);
-				drawIntent.putExtra("values", values);
-				drawIntent.putExtra("total", 50000);
+				drawIntent.putExtra("values", trdPop);
+				drawIntent.putExtra("total", (int)mtvMoney.getNumber());
 				startActivity(drawIntent);
 				getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			} else {
-				popWarningDialog();
+//				popWarningDialog();
+				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}
 			break;
 		case R.id.tv_save:
 			if(isLogin) {
 				Intent depositIntent = new Intent(getActivity(), DepositFlowActivity.class);
-				depositIntent.putExtra("minValue", 10000);
-				depositIntent.putExtra("total", 50000);
+				depositIntent.putExtra("minValue", trdPush);
+				depositIntent.putExtra("total", (int)mtvMoney.getNumber());
 				startActivity(depositIntent);
 				getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			} else {
-				popWarningDialog();
+//				popWarningDialog();
+				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}
 			break;
 		}
@@ -182,6 +196,34 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				if(response.status != null && response.status.equals("0")) {
 					
 				}
+			}
+		case Requester.RESPONSE_TYPE_QUERY_BANK:
+			QueryBankResp qbResp = (QueryBankResp) msg.obj;
+			if(qbResp != null) {
+				if("0".equals(qbResp.status)) {
+					if(qbResp.flowbankcoins != null) {
+						mtvMoney.showNumberWithAnimation(qbResp.flowbankcoins, 1000);
+					}
+					tvYestIncome.setText(qbResp.yestdincome);
+					tvYestRate.setText(qbResp.yestdrate);
+					tvTotalIncome.setText(qbResp.totalincome);
+					
+					if(qbResp.thresholdpop != null) {
+						trdPop = qbResp.thresholdpop.split(",");
+					}
+					if(qbResp.thresholdpush != null) {
+						try {
+							trdPush = Integer.parseInt(qbResp.thresholdpush);
+						} catch(NumberFormatException e) {
+							e.printStackTrace();
+						}
+						
+					}
+				} else {
+					
+				}
+			} else {
+				PromptDialog.Alert(MainActivity.class, "您的网络不给力啊！");
 			}
 			break;
 		}
