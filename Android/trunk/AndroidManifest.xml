@@ -74,6 +74,13 @@
         </activity>
         
         <activity
+            android:name="com.etoc.weflow.activity.login.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:launchMode="singleTask" >
+        </activity>
+        
+        <activity
             android:name="com.etoc.weflow.activity.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
