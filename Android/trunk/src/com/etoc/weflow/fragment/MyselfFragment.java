@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.CaptureActivity;
+import com.etoc.weflow.activity.DownloadManageActivity;
 import com.etoc.weflow.activity.FeedBackActivity;
 import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.SettingsActivity;
@@ -35,7 +36,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	private MainActivity mainActivity = null;
 	
-	private boolean isLogin = false;
+	private boolean isLogin = true;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +58,9 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		rlMyBill.setOnClickListener(this);
 		
 		
+		view.findViewById(R.id.rl_me_msg).setOnClickListener(this);
+		view.findViewById(R.id.rl_me_bill).setOnClickListener(this);
+		view.findViewById(R.id.rl_me_download).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_sign).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_feedback).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_settings).setOnClickListener(this);
@@ -65,6 +69,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_msg), 112);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_bill), 112);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_me_download), 112);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_sign), 112);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_feedback), 112);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_settings), 112);
@@ -80,6 +85,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_sign), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_feedback), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_settings), 35);
+		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_download), 35);
 		
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_hint), 52);
 		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_paper_hint), 52);
@@ -112,7 +118,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	
 	private void checkLogin() {
-		isLogin = false;
+//		isLogin = false;
 		if (mainActivity != null) {
 			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
 			if (accountInfoDao != null && accountInfoDao.count() > 0) {
@@ -155,6 +161,9 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			break;
 		case R.id.rl_me_settings:
 			startActivity(new Intent(getActivity(), SettingsActivity.class));
+			break;
+		case R.id.rl_me_download:
+			startActivity(new Intent(getActivity(),DownloadManageActivity.class));
 			break;
 		}
 	}

@@ -42,7 +42,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class DownloadManageActivity1 extends TitleRootActivity {
+public class DownloadManageActivity extends TitleRootActivity {
 
 	private String TAG = "DownloadManageActivity1";
 	private SlidingUpPanelLayout mLayout;
@@ -123,7 +123,7 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 							pm.getPackageInfo(appPkg.trim(), PackageManager.GET_ACTIVITIES);
 							
 						}catch(NameNotFoundException e){
-							DownloadManager.installFromPath(DownloadManageActivity1.this,item.path);
+							DownloadManager.installFromPath(DownloadManageActivity.this,item.path);
 						}
 					}
 				} else {
@@ -267,7 +267,7 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 	}
 	
 	class DownloadingViewHolder {
-		TextView tvType;
+		ImageView ivHead;
 		TextView tvTitle;
 		TextView tvProgress;
 		TextView tvStatus;
@@ -314,7 +314,7 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 			if (convertView == null) {
 				holder = new DownloadingViewHolder();
 				convertView = inflater.inflate(R.layout.item_downloading, null);
-				holder.tvType = (TextView) convertView.findViewById(R.id.tv_type);
+				holder.ivHead = (ImageView) convertView.findViewById(R.id.iv_head);
 				holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
 				holder.tvProgress = (TextView) convertView.findViewById(R.id.tv_download_progress);
 				holder.tvStatus = (TextView) convertView.findViewById(R.id.tv_download_status);
@@ -323,39 +323,36 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 				holder.ivStart = (ImageView) convertView.findViewById(R.id.iv_download_start);
 				holder.pbDownloading = (ProgressBar) convertView.findViewById(R.id.pb_download);
 				
-				ViewUtils.setSize(holder.tvType, 120, 36);
-				ViewUtils.setMarginLeft(holder.tvType, 21);
-				ViewUtils.setMarginTop(holder.tvType, 28);
-				holder.tvType.setTextSize(DisplayUtil.textGetSizeSp(context, 24));
+				ViewUtils.setSize(holder.ivHead, 96, 96);
+				ViewUtils.setMarginLeft(holder.ivHead, 32);
 				
-				ViewUtils.setMarginLeft(holder.tvTitle, 18);
+				ViewUtils.setMarginLeft(holder.tvTitle, 32);
 				holder.tvTitle.setTextSize(DisplayUtil.textGetSizeSp(context, 34));
 				
-				ViewUtils.setMarginBottom(holder.tvProgress, 18);
-				ViewUtils.setMarginLeft(holder.tvProgress, 34);
+				ViewUtils.setMarginLeft(convertView.findViewById(R.id.view_line_bottom), 32);
+				ViewUtils.setMarginRight(convertView.findViewById(R.id.view_line_bottom), 32);
+				
+				ViewUtils.setMarginBottom(holder.tvProgress, 36);
 				holder.tvProgress.setTextSize(DisplayUtil.textGetSizeSp(context, 20));
 				
-				ViewUtils.setMarginRight(holder.tvStatus, 138);
-				ViewUtils.setMarginBottom(holder.tvStatus, 18);
+				ViewUtils.setMarginRight(holder.tvStatus, 196);
 				holder.tvStatus.setTextSize(DisplayUtil.textGetSizeSp(context, 24));
 				
-				ViewUtils.setMarginRight(holder.tvSpeed, 138);
-				ViewUtils.setMarginBottom(holder.tvSpeed, 18);
+				ViewUtils.setMarginRight(holder.tvSpeed, 196);
 				holder.tvSpeed.setTextSize(DisplayUtil.textGetSizeSp(context, 20));
 				
 				ViewUtils.setSize(holder.ivDelete, 88, 88);
-				ViewUtils.setMarginRight(holder.ivDelete, 24);
+				ViewUtils.setMarginRight(holder.ivDelete, 32);
 				
 				ViewUtils.setSize(holder.ivStart, 60, 60);
 				ViewUtils.setMarginRight(holder.ivStart, 12);
 				ViewUtils.setMarginTop(holder.ivStart, 30);
 				
 				ViewUtils.setHeight(holder.pbDownloading, 12);
-				ViewUtils.setMarginLeft(holder.pbDownloading, 21);
-				ViewUtils.setMarginBottom(holder.pbDownloading, 48);
-				ViewUtils.setMarginRight(holder.pbDownloading, 132);
+				ViewUtils.setMarginBottom(holder.pbDownloading, 66);
+				ViewUtils.setMarginRight(holder.pbDownloading, 168);
 				
-				ViewUtils.setHeight(convertView.findViewById(R.id.rl_downloading), 160);
+				ViewUtils.setHeight(convertView.findViewById(R.id.rl_downloading), 170);
 				convertView.setTag(holder);
 				
 			} else {
@@ -365,12 +362,8 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 			final DownloadItem item = itemList.get(position);
 			switch (item.downloadType) {
 			case APP:
-				holder.tvType.setText("APP");
-				holder.tvType.setBackgroundResource(R.drawable.bg_download_item_app);
 				break;
 			case MOVIE:
-				holder.tvType.setText("搜狐视频");
-				holder.tvType.setBackgroundResource(R.drawable.bg_download_item_souhu);
 				break;
 
 			}
@@ -404,7 +397,7 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							// TODO Auto-generated method stub
-							DownloadManageActivity1.this.onClick(getRightButton());
+							DownloadManageActivity.this.onClick(getRightButton());
 						}
 					}, null);
 					holder.ivStart.setVisibility(View.VISIBLE);
@@ -466,7 +459,7 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 	}
 	
 	class DownloadDoneViewHolder {
-		TextView tvType;
+		ImageView ivHead;
 		TextView tvTitle;
 		TextView tvSize;
 		ImageView ivDelete;
@@ -510,28 +503,27 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 			if (convertView == null) {
 				holder = new DownloadDoneViewHolder();
 				convertView = inflater.inflate(R.layout.item_download_done, null);
-				holder.tvType = (TextView) convertView.findViewById(R.id.tv_type);
+				holder.ivHead = (ImageView) convertView.findViewById(R.id.iv_head);
 				holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
 				holder.tvSize = (TextView) convertView.findViewById(R.id.tv_size);
 				holder.ivDelete = (ImageView) convertView.findViewById(R.id.iv_delete);
 				
-				ViewUtils.setSize(holder.tvType, 120, 36);
-				ViewUtils.setMarginLeft(holder.tvType, 21);
-				ViewUtils.setMarginTop(holder.tvType, 28);
-				holder.tvType.setTextSize(DisplayUtil.textGetSizeSp(context, 24));
+				ViewUtils.setSize(holder.ivHead, 96, 96);
+				ViewUtils.setMarginLeft(holder.ivHead, 32);
 				
-				ViewUtils.setMarginLeft(holder.tvTitle, 18);
+				ViewUtils.setMarginLeft(holder.tvTitle, 32);
 				holder.tvTitle.setTextSize(DisplayUtil.textGetSizeSp(context, 34));
 				
 				ViewUtils.setMarginLeft(holder.tvSize, 8);
 				holder.tvSize.setTextSize(DisplayUtil.textGetSizeSp(context, 24));
 				
+				ViewUtils.setMarginLeft(convertView.findViewById(R.id.view_line_bottom), 32);
+				ViewUtils.setMarginRight(convertView.findViewById(R.id.view_line_bottom), 32);
 				
 				ViewUtils.setSize(holder.ivDelete, 88, 88);
-				ViewUtils.setMarginRight(holder.ivDelete, 24);
+				ViewUtils.setMarginRight(holder.ivDelete, 32);
 				
-				
-				ViewUtils.setHeight(convertView.findViewById(R.id.rl_download_done), 160);
+				ViewUtils.setHeight(convertView.findViewById(R.id.rl_download_done), 170);
 				convertView.setTag(holder);
 				
 			} else {
@@ -541,12 +533,8 @@ public class DownloadManageActivity1 extends TitleRootActivity {
 			final DownloadItem item = itemList.get(position);
 			switch (item.downloadType) {
 			case APP:
-				holder.tvType.setText("APP");
-				holder.tvType.setBackgroundResource(R.drawable.bg_download_item_app);
 				break;
 			case MOVIE:
-				holder.tvType.setText("搜狐视频");
-				holder.tvType.setBackgroundResource(R.drawable.bg_download_item_souhu);
 				break;
 
 			}
