@@ -35,23 +35,40 @@ public class WeFlowDaoGenerator {
 
     	addFrequentPhone(schema);
     	addFrequentQQ(schema);
-    	addAccount(schema);
-    	
+		addDownloadHistory(schema);
+		addAccount(schema);    	
         new DaoGenerator().generateAll(schema, "../trunk/src-gen");
     }
     
     private static void addFrequentPhone(Schema schema) {
     	Entity note = schema.addEntity("FrequentPhone");
-        note.addIdProperty().primaryKey().autoincrement();
         note.addStringProperty("phone_num").notNull().primaryKey();
     }
     
     private static void addFrequentQQ(Schema schema) {
     	Entity note = schema.addEntity("FrequentQQ");
-        note.addIdProperty().primaryKey().autoincrement();
         note.addStringProperty("qq_num").notNull().primaryKey();
     }
     
+    private static void addDownloadHistory(Schema schema) {
+        Entity note = schema.addEntity("DownloadHistory");
+//        note.addLongProperty("seqNo").primaryKey();
+//        note.addIdProperty().primaryKey().autoincrement();
+        note.addStringProperty("url").primaryKey(); //
+        
+        note.addIntProperty("downloadType"); //MOVIE=1,MUSIC=2,BOOK=3,APP=4
+        note.addIntProperty("downloadStatus"); //WAIT=1,PERPARE=2,RUN=3,PAUSE=4,DONE=5,FAIL=6
+        note.addIntProperty("downloadSize");
+        note.addStringProperty("path"); //
+        note.addStringProperty("title"); //
+        note.addStringProperty("detail"); //
+        note.addStringProperty("picUrl"); //
+        
+        note.addStringProperty("mediaId"); //
+        note.addStringProperty("source"); //
+        note.addStringProperty("data"); //
+    }
+
     private static void addAccount(Schema schema) {
     	Entity note = schema.addEntity("AccountInfo");
         note.addIdProperty().primaryKey().autoincrement();
