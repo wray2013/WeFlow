@@ -27,6 +27,12 @@ public class ViewUtils {
 		return flag;
 	}
 	
+	public static boolean setPaddingLeft(View view,int px) {
+		int convertPx = DisplayUtil.getSize(view.getContext(), px);
+		view.setPadding(convertPx, view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
+		return true;
+	}
+	
 	public static boolean setMarginRight(View view,int px) {
 		int convertPx = DisplayUtil.getSize(view.getContext(), px);
 		ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
