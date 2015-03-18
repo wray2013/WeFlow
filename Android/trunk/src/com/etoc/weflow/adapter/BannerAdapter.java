@@ -11,20 +11,20 @@ import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 
 import com.etoc.weflow.fragment.BannerFragment;
-import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
+import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.imbryk.viewPager.LoopViewPager;
 
 public class BannerAdapter extends FragmentPagerAdapter {
 
 	private int mDrawable;
-	public BannerAdapter(FragmentManager fm,int drawable,List<AdvInfo> list) {
+	public BannerAdapter(FragmentManager fm,int drawable,List<AdverInfo> list) {
 		super(fm);
 		// TODO Auto-generated constructor stub
 		mDrawable = drawable;
 		playBillImageSites = list;
 	}
 
-	List<AdvInfo> playBillImageSites = new ArrayList<AdvInfo>();
+	List<AdverInfo> playBillImageSites = new ArrayList<AdverInfo>();
 	Activity act;
 	
 	@Override
@@ -42,9 +42,9 @@ public class BannerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Fragment getItem(int position) {
 		// TODO Auto-generated method stub
-		Log.d("RailServiceFragment","getItem in");
+//		Log.d("RailServiceFragment","getItem in");
 		position = LoopViewPager.toRealPosition(position, getCount());
 //        return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
-		return BannerFragment.newInstance(playBillImageSites.get(position),mDrawable);
+		return BannerFragment.newInstance(playBillImageSites.get(position), mDrawable);
 	}
 }

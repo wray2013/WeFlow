@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
@@ -24,14 +25,18 @@ import com.etoc.weflow.activity.WebViewActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.PushMsgUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
-public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ListView> {
+public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ScrollView> {
 
 	private final String TAG = "HomePageFragment";
 	
@@ -89,6 +94,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ptrScrollView = (PullToRefreshScrollView) view.findViewById(R.id.ptr_scroll_view);
 		ptrScrollView.setPullLabel("下拉加载最新");
 		ptrScrollView.setReleaseLabel("释放加载");
+		ptrScrollView.setOnRefreshListener(this);
+		
 		mtvFlow = (MagicTextView) view.findViewById(R.id.mtv_flow);
 		
 		ivSignIn = (ImageView) view.findViewById(R.id.iv_sign_in);
@@ -211,6 +218,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			currentAccount = aiList.get(0);
 			if(currentAccount != null && currentAccount.getUserid() != null && !currentAccount.getUserid().equals("")) {
 				isLogin = true;
+				//TODO:请求套餐
+				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 			}
 		}
 		loginView(isLogin);
@@ -270,7 +279,12 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_title_left:
-			
+			/*PushMsgUtil pushmsg = new PushMsgUtil(handler, 0x88661256);
+            String sendMSG = "{\"n_content\":\"\", " +
+					"\"n_extras\": {\"msgtype\": \"1\", \"msgcontent\" : \"" + "你妹" + "\"," +
+					"\"msghint\" : \"" + "点击查看" + "\"," + 
+					"\"msgtitle\" : \"" + "有新消息" + "\"" +"}}";
+            pushmsg.execute(sendMSG, "weflow");*/
 			break;
 		case 0xffeecc00:
 		case 0xffeecc01:
@@ -318,15 +332,45 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		if(mtvFlow != null && isLogin)
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 	}
-
+	
 	@Override
-	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
-		
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_ACCOUNT_INFO:
+			ptrScrollView.onRefreshComplete();
+			if(msg.obj != null) {
+				AccountInfoResp response = (AccountInfoResp) msg.obj;
+				if(response.equals("0000")) {
+					
+				}
+			} else {
+				PromptDialog.Alert(MainActivity.class, "您的网络不给力啊！");
+			}
+			break;
+		}
+		return false;
 	}
 
 	@Override
-	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+	public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+		// TODO Auto-generated method stub
+		if(isLogin) {
+			Requester.queryAccountInfo(handler, currentAccount.getUserid());
+		} else {
+			handler.postDelayed(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					ptrScrollView.onRefreshComplete();
+				}
+			}, 500);
+		}
+	}
+
+	@Override
+	public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
 		// TODO Auto-generated method stub
 		
 	}

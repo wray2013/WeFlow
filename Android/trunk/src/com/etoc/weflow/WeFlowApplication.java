@@ -1,7 +1,9 @@
 package com.etoc.weflow;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -24,6 +26,7 @@ import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.widget.Toast;
 
 public class WeFlowApplication extends Application {
@@ -38,6 +41,13 @@ public class WeFlowApplication extends Application {
 		super.onCreate();
 		JPushInterface.setDebugMode(true); 	//设置开启日志,发布时请关闭日志
         JPushInterface.init(this);     		// 初始化 JPush
+        
+        Set<String> tags = new HashSet<String>();
+        tags.add("weflow");
+//		tags.add("");
+		JPushInterface.setTags(this, tags, null);
+//		Log.i(TAG, "JPushInterface setTags " + tags.toString());
+		
 		appinstance = this;
 		
 		/**

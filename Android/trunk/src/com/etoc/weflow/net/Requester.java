@@ -9,7 +9,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
@@ -17,7 +16,6 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import com.etoc.weflow.Config;
-import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.net.GsonRequestObject.*;
 import com.etoc.weflow.net.GsonResponseObject.*;
@@ -68,6 +66,15 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_QUERY_BANK = 0xffee2109;
 	public static final String RIA_INTERFACE_QUERY_BANK = "/vs/api/user/queryBank";
+	
+	public static final int RESPONSE_TYPE_ACCOUNT_INFO = 0xffee2110;
+	public static final String RIA_INTERFACE_ACCOUNT_INFO = "/vs/api/user/accountInfo";
+	
+	public static final int RESPONSE_TYPE_ADV_LIST = 0xffee2111;
+	public static final String RIA_INTERFACE_ADV_LIST = "/vs/api/user/videoHome";
+	
+	public static final int RESPONSE_TYPE_ADV_MORE = 0xffee2112;
+	public static final String RIA_INTERFACE_ADV_MORE = "/vs/api/user/wonderfulVideos";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -149,6 +156,36 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_QUERY_BANK, request);
 	}
 	
+	public static void queryAccountInfo(Handler handler, String userid) {
+		queryAccountInfo(true, handler, userid);
+	}
+	
+	public static void queryAccountInfo(boolean hasLoading, Handler handler, String userid) {
+		accountInfoRequest request = new accountInfoRequest();
+		request.userid = userid;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ACCOUNT_INFO, AccountInfoResp.class);
+		worker.execute(RIA_INTERFACE_ACCOUNT_INFO, request);
+	}
+	
+	public static void getAdvList(boolean hasLoading, Handler handler) {
+		advHomeRequest request = new advHomeRequest();
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_LIST, AdvListResp.class);
+		worker.execute(RIA_INTERFACE_ADV_LIST, request);
+	}
+	
+	public static void getMoreAdvList(boolean hasLoading, Handler handler, String pageno) {
+		advMoreRequest request = new advMoreRequest();
+		request.pageno = pageno;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_MORE, AdvListMoreResp.class);
+		worker.execute(RIA_INTERFACE_ADV_MORE, request);
+	}
+	
 /*	public static void sendSMS(Handler handler, String tel) {
 		sendSMSRequest request = new sendSMSRequest();
 		request.phone  = tel;
@@ -206,8 +243,15 @@ public class Requester {
 		private int responseType;
 		private String ria_command_id;
 		private Object request;
-//		private boolean use_dc;
+		private boolean hasLoading = true;
 
+		public PostWorker(boolean hasLoading, Handler handler, int responseType, Class<?> cls) {
+			this.hasLoading = hasLoading;
+			this.handler = handler;
+			this.responseType = responseType;
+			this.cls = cls;
+			this.gson = new Gson();
+		}
 		/**
 		 * 
 		 * @param handler
@@ -233,7 +277,8 @@ public class Requester {
 
 		@Override
 		public void run() {
-			EventBus.getDefault().post(RequestEvent.LOADING_START);
+			if(hasLoading)
+				EventBus.getDefault().post(RequestEvent.LOADING_START);
 			String url = /*(use_dc?Config.SERVER_DC_URL:Config.SERVER_RIA_URL)*/Config.SERVER_URL + ria_command_id;
 			System.out.println("url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
 		    Log.v(TAG,"request url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
@@ -313,8 +358,8 @@ public class Requester {
 		    	EventBus.getDefault().post(RequestEvent.RESP_NULL);
 
 		    }
-		    
-		    EventBus.getDefault().post(RequestEvent.LOADING_END);
+		    if(hasLoading)
+		    	EventBus.getDefault().post(RequestEvent.LOADING_END);
 		    
 			if (handler != null) {
 				if(object==null){

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.etoc.weflow.R;
-import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
+import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.google.gson.Gson;
 
 public class AdDetailActivity extends TitleRootActivity {
@@ -59,10 +59,10 @@ public class AdDetailActivity extends TitleRootActivity {
 		vvAdvVideo.setOnCompletionListener(mOnCompletionListener);
 		
 		String adInfoStr = getIntent().getStringExtra("adinfo");
-		AdvInfo adInfo = new Gson().fromJson(adInfoStr, AdvInfo.class);
+		AdverInfo adInfo = new Gson().fromJson(adInfoStr, AdverInfo.class);
 		TextView tvTitle = (TextView) findViewById(R.id.tv_ad_title);
 		tvTitle.setText(adInfo.title);
-		AdUrl = adInfo.videourl;
+		AdUrl = adInfo.video;
 		TextView tvContent = (TextView) findViewById(R.id.tv_ad_content);
 		tvContent.setText(adInfo.content);
 	}

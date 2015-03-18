@@ -1,6 +1,5 @@
 package com.etoc.weflow.fragment;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,10 +12,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.etoc.weflow.R;
-import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
+import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -24,9 +22,9 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 public class BannerFragment extends Fragment implements OnClickListener, Callback {
 	
-	private final String TAG = "PlayBillFragment";
+	private final String TAG = "BannerFragment";
 	private static final String KEY_URL = "PlayBillFragment:imageUrl";
-	private AdvInfo adInfo = null;
+	private AdverInfo adInfo = null;
 	MyImageLoader imageLoader = null;
 	DisplayImageOptions imageLoaderOptions = null;
 	ImageView imageView;
@@ -79,12 +77,12 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		imageView = (ImageView)view.findViewById(R.id.iv_playbill);
 		
 //		imageView.setImageResource(imageId);
-		imageLoader.displayImage(adInfo.coverurl, imageView, imageLoaderOptions);
+		imageLoader.displayImage(adInfo.cover, imageView, imageLoaderOptions);
 		view.setOnClickListener(this);
 		return view;
 	}
 	
-	public static BannerFragment newInstance(AdvInfo elem,int drawable) {
+	public static BannerFragment newInstance(AdverInfo elem,int drawable) {
 		BannerFragment fragment = new BannerFragment();
 		fragment.adInfo = elem;
 		fragment.mDrawable = drawable;

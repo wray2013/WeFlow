@@ -65,12 +65,7 @@ public class FeedBackActivity extends TitleRootActivity {
 	}
 	
 	private void refreshBtnStatus(boolean canSubmit) {
-		if(canSubmit) {
-			tvBtnSubmit.setBackgroundResource(R.drawable.shape_corner_recentage_orange);
-		} else {
-			tvBtnSubmit.setBackgroundResource(R.drawable.shape_corner_recentage_grey);
-		}
-		tvBtnSubmit.setClickable(canSubmit);
+		tvBtnSubmit.setEnabled(canSubmit);
 	}
 	
 	@Override
@@ -90,7 +85,7 @@ public class FeedBackActivity extends TitleRootActivity {
 	}
 	
 	@Override
-	public boolean handleMessage(Message arg0) {
+	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
 		return false;
 	}

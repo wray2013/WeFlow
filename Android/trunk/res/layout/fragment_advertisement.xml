@@ -8,7 +8,7 @@
     android:fillViewport="true"
     ptr:ptrHeaderTextColor="#212324"
     ptr:ptrAnimationStyle="flip"
-    ptr:ptrMode="pullUpFromBottom" >
+    ptr:ptrMode="both" >
     
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"

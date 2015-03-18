@@ -35,6 +35,6 @@
     	android:gravity="center"
     	android:text="提  交"
     	android:textColor="@color/white"
-    	android:background="@drawable/shape_corner_recentage_orange" />
+    	android:background="@drawable/btn_login_or_register" />
 
 </RelativeLayout>

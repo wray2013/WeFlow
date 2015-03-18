@@ -255,6 +255,10 @@ public class RegisterResetActivity extends TitleRootActivity {
 			if(getAuthResp != null) {
 				if("0000".equals(getAuthResp.status)) { //发送成功
 					PromptDialog.Alert(RegisterResetActivity.class, "验证码发送成功，请查收");
+				} else if("2009".equals(getAuthResp.status)) {
+					PromptDialog.Alert(RegisterResetActivity.class, "您发送验证码太频繁，请稍后再试");
+				} else if("2007".equals(getAuthResp.status)) {
+					PromptDialog.Alert(RegisterResetActivity.class, "该手机已被注册");
 				}
 			} else {
 				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
@@ -266,6 +270,8 @@ public class RegisterResetActivity extends TitleRootActivity {
 				if("0000".equals(codeResp.status)) { //验证成功
 					currentStep = STEP_TWO;
 					refreshViewStatus();
+				} else if("2001".equals(codeResp.status)) {
+					PromptDialog.Alert(RegisterResetActivity.class, "验证码错误，请检查后重新输入");
 				}
 			} else {
 				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");

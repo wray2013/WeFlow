@@ -280,6 +280,10 @@
                 <category android:name="com.etoc.weflow" />
             </intent-filter>
         </activity>
+        
+        
+        <service android:name="com.etoc.weflow.service.PushService" />
+        
         <!-- Required  SDK核心功能-->
         <service
             android:name="cn.jpush.android.service.DownloadService"

@@ -153,9 +153,35 @@ public class GsonResponseObject {
 		public String useflow;
 	}
 	
+	public static class AccountInfoResp {
+		public String status;
+		public String flowcoins;
+		public String yestdrate;
+		public String yestdincome;
+		public String isregistration;
+		public String menumoney;
+		public String menutype;
+		public String inflowleft;
+		public String outflowleft;
+	}
+	
 	/****************************************************
 	 *                      A.赚流量币
 	 ****************************************************/
+	public static class AdvListResp {
+		public String status;
+		public AdverInfo[] bannerlist;
+		public AdverInfo[] newestlist;
+		public AdverInfo[] wonderfullist;
+	}
+	
+	public static class AdvListMoreResp {
+		public String status;
+		public String hasnextpage;
+		public AdverInfo[] list;
+	}
+	
+	
 	public static class SoftInfoResp {
 		public String appid;
 		public String title;
@@ -211,15 +237,15 @@ public class GsonResponseObject {
 	 *                      C.流量银行
 	 ****************************************************/
 	//2.7.1 查询流量银行
-		public static class QueryBankResp {
-			public String status;
-			public String thresholdpop;
-			public String thresholdpush;
-			public String flowbankcoins;
-			public String yestdincome;
-			public String yestdrate;
-			public String totalincome;
-		}
+	public static class QueryBankResp {
+		public String status;
+		public String thresholdpop;
+		public String thresholdpush;
+		public String flowbankcoins;
+		public String yestdincome;
+		public String yestdrate;
+		public String totalincome;
+	}
 	/****************************************************
 	 *                      D.发现
 	 ****************************************************/
@@ -232,7 +258,26 @@ public class GsonResponseObject {
 		public BillList[] myBills;
 	}
 	
-	
+	/****************************************************
+	 *                      F.附录-主要数据结构
+	 ****************************************************/
+	public static class AdverInfo {
+		public String videoid;      //广告id
+//		public String advtype;    //广告类型
+		public String title;      //标题
+		public String cover;   //封面
+		public String video;   //视频广告url
+		
+		public String flowcoins;  //流量币
+		public String content;    //内容描述
+		public String duration;   //广告时长s
+		public String isfinished;   //是否完成观看(赚币) 0-未完成 1-已完成
+		
+		public String finishtime;      //完成时间ms
+		public String publishtime;   //发布时间ms
+		public String vtimestart;   //活动有效期开始ms
+		public String vtimeend;    //活动有效期结束ms
+	}
 	
 	public static class BillList {
 		public String type;
