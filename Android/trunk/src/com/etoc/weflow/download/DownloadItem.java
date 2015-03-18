@@ -62,6 +62,7 @@ public class DownloadItem implements Runnable {
 	
 	private RandomAccessFile outputStream;
 	public boolean cancel = false;
+	private boolean isUserPause = true;
 //	public long seqNo;
 
 	
@@ -76,7 +77,7 @@ public class DownloadItem implements Runnable {
 	}
 
 	public DownloadItem(String mediaid, String title,String url, String picUrl, String descrp,DownloadType type, String source, String data) {
-		this();
+		this.isUserPause = false;
 		this.mediaId = mediaid;
 		this.title = title;
 		this.url = url;
@@ -183,6 +184,7 @@ public class DownloadItem implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		downloadStatus=DownloadStatus.WAIT; 
+		Log.d(TAG, "DownloadItem.java run in");
 		
 		while(true){
 			boolean flag = false;
@@ -301,7 +303,7 @@ public class DownloadItem implements Runnable {
 	}
 	
 	private boolean checkNetWork(){
-		return NetworkTypeUtility.isWifi(WeFlowApplication.getAppInstance());
+		return !"UNKNOWN".equals(NetworkTypeUtility.getNetwork(WeFlowApplication.getAppInstance()));
 	}
 	
 	private boolean checkStorage(){
@@ -331,8 +333,13 @@ public class DownloadItem implements Runnable {
 		
 		int badTry = 3;
 		while (badTry > 0) {
-
-			if (!checkNetWork()) {
+			
+			if (isUserPause) {
+				Log.d(TAG,"EnterPerpare isUserPause true");
+				DownloadStatus r = DownloadStatus.PAUSE;
+				r.setReason(DownloadStatus.REASON_USER_PAUSE);
+				return r;
+			} else if (!checkNetWork()) {
 				DownloadStatus r = DownloadStatus.PAUSE;
 				r.setReason(DownloadStatus.REASON_NETWORK_NO_WIFI);
 				return r;
@@ -375,6 +382,8 @@ public class DownloadItem implements Runnable {
 					}else if(downloadSize == totalSize){
 						return DownloadStatus.DONE;
 					}
+					
+					Log.d(TAG,"EnterPrepare totalSize = " + totalSize + " wholeSize = " + wholeSize);
 					
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
@@ -474,6 +483,18 @@ public class DownloadItem implements Runnable {
 		}
 		
 		return DownloadStatus.PERPARE;
+	}
+	
+	public void pause() {
+		isUserPause = true;
+	}
+	
+	public void resume() {
+		isUserPause = false;
+	}
+	
+	public boolean isPaused() {
+		return isUserPause;
 	}
 
 }

@@ -161,6 +161,7 @@ public class GsonResponseObject {
 		public String title;
 		public String version;
 		public String appicon;
+		public String apkurl;
 		public String appbannerpic;//banner展示图片地址
 		public String[] apppreview;//软件预览图地址数组
 		public String introduction;//软件产品介绍

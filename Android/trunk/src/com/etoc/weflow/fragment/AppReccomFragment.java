@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -23,6 +24,8 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.SoftDetailActivity;
+import com.etoc.weflow.download.DownloadManager;
+import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
@@ -134,6 +137,13 @@ public class AppReccomFragment extends Fragment {
 				"http://img.faruanwen.net/2015/02/12/14237124635714.jpg",
 				"http://himg2.huanqiu.com/attachment2010/2014/0826/20140826053243814.jpg"
 		};
+		String [] apkUrls = {
+				"http://apkdownload.laohu.com/tmp/seiyasds/seiya.apk?v=1",
+				"http://gdown.baidu.com/data/wisegame/74fed1d1e244eb3c/shoujibaidu_16786712.apk",
+				"http://gdown.baidu.com/data/wisegame/309a95d293e02508/ApiDemos.apk",
+				"https://raw.githubusercontent.com/Trinea/trinea-download/master/pull-to-refreshview-demo.apk",
+				"http://dldx.csdn.net/fd.php?i=869170185934783&s=6c844e86feb6a31bae6675eb21cd1fd8",
+		};
 		for (int i = 0;i < 5;i++) {
 			SoftInfoResp resp = new SoftInfoResp();
 			resp.appid = i + "";
@@ -145,6 +155,7 @@ public class AppReccomFragment extends Fragment {
 			resp.introduction = descs[i];
 			resp.flowcoins = (i*10 + 10) + "";
 			resp.apppreview = previewImgs;
+			resp.apkurl = apkUrls[i];
 			list.add(resp);
 		}
 		return list;
@@ -303,11 +314,20 @@ public class AppReccomFragment extends Fragment {
 				holder = (AppViewHolder) convertView.getTag();
 			}
 			
-			SoftInfoResp item = appList.get(position);
+			final SoftInfoResp item = appList.get(position);
 			imageLoader.displayImage(item.appicon, holder.ivIcon,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.introduction);
 			holder.tvFlowCoins.setText("可赚" + item.flowcoins + "流量币");
+			
+			holder.tvDownload.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					DownloadManager.getInstance().addDownloadTask(item.apkurl, "0", item.title, item.appicon, "",  DownloadType.APP, "", "");
+				}
+			});
 			return convertView;
 		}
 		
