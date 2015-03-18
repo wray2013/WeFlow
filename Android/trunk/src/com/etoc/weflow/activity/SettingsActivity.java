@@ -5,8 +5,11 @@ import java.io.File;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.dialog.PromptDialog;
@@ -16,14 +19,12 @@ import com.etoc.weflow.parallel.DiskCleanTask;
 import com.etoc.weflow.parallel.ParallelManager;
 import com.etoc.weflow.utils.VMobileInfo;
 import com.etoc.weflow.utils.ViewUtils;
-import com.etoc.weflow.view.SwitchButton;
-import com.etoc.weflow.view.SwitchButton.OnChangeListener;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 
 public class SettingsActivity extends TitleRootActivity {
 
 	private TextView tvPush, tvCache, tvVersion;
-	private SwitchButton switchPush;
+	private ToggleButton switchPush;
 	private static final long SETTING_CACHE_SCAN_DU = 0x12468321;
 	private static final long SETTING_CACHE_CLEAR = 0x12468322;
 	File cacheFold;
@@ -50,13 +51,22 @@ public class SettingsActivity extends TitleRootActivity {
 		tvCache   = (TextView) findViewById(R.id.tv_cache);
 		tvVersion = (TextView) findViewById(R.id.tv_upgrade_version);
 		
-		switchPush = (SwitchButton) findViewById(R.id.switch_push);
-		switchPush.setOnChangeListener(new OnChangeListener() {
+		switchPush = (ToggleButton) findViewById(R.id.toggle_push);
+		/*switchPush.setOnChangeListener(new OnChangeListener() {
 			
 			@Override
 			public void onChange(SwitchButton sb, boolean state) {
 				// TODO Auto-generated method stub
 				Toast.makeText(SettingsActivity.this, state ? "开启推送":"关闭推送", Toast.LENGTH_SHORT).show();
+			}
+		});*/
+		switchPush.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+//				switchPush.setChecked(isChecked);
+				Toast.makeText(SettingsActivity.this, isChecked ? "开启推送":"关闭推送", Toast.LENGTH_SHORT).show();
 			}
 		});
 		

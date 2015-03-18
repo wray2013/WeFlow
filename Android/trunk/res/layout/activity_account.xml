@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    >
+    
+    <RelativeLayout 
+        android:id="@+id/ll_account"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        >
+        <RelativeLayout 
+            android:id="@+id/rl_account_phone"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:layout_marginRight="16dp"
+            >
+            <TextView 
+                android:id="@+id/tv_phone_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:text="手机号"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                />
+            
+            <TextView 
+                android:id="@+id/tv_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="18627934685"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                />
+            
+        </RelativeLayout>
+        
+        <View 
+            android:id="@+id/view_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="16dp"
+            android:layout_alignRight="@id/rl_account_phone"
+            android:background="@color/line_grey"
+            android:layout_below="@id/rl_account_phone"
+            />
+        
+        <RelativeLayout 
+            android:id="@+id/rl_account_password"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:layout_below="@id/view_line"
+            android:background="@drawable/list_item_with_shape"
+            >
+            <TextView 
+                android:id="@+id/tv_password_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:text="修改密码"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                />
+            <View
+                android:id="@+id/view_password_flag"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/right_arraw"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                />
+            
+        </RelativeLayout>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_login_out"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/ll_account"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/list_item_with_shape"
+        >
+        <TextView 
+            android:id="@+id/tv_login_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="退出账户"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="16dp"
+            android:textSize="15sp"
+            />
+    </RelativeLayout>
+    
+
+</RelativeLayout>

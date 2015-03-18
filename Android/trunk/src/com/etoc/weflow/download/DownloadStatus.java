@@ -14,6 +14,7 @@ public enum DownloadStatus {
 	
 	public static final String REASON_NETWORK_NO_WIFI = "网络非wifi";
 	public static final String REASON_STORAGE_NO_SPACE = "存储不足";
+	public static final String REASON_USER_PAUSE = "用户暂停";
 	
 	private DownloadStatus(int index) {
         this.index = index;

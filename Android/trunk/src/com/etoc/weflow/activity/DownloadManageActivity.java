@@ -15,6 +15,9 @@ import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.SpaceUtils;
 import com.etoc.weflow.utils.SpaceUtils.SpaceInfo;
 import com.etoc.weflow.utils.ViewUtils;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
@@ -25,6 +28,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -80,6 +84,12 @@ public class DownloadManageActivity extends TitleRootActivity {
 		mySharedPreferences = getSharedPreferences("has_new_download", 
 				Activity.MODE_PRIVATE); 
 		initViews();
+	}
+	
+	@Override
+	protected int graviteType() {
+		// TODO Auto-generated method stub
+		return GRAVITE_LEFT;
 	}
 	
 	private void initViews() {
@@ -274,19 +284,33 @@ public class DownloadManageActivity extends TitleRootActivity {
 		TextView tvSpeed;
 		ProgressBar pbDownloading;
 		ImageView ivDelete;
-		ImageView ivStart;
+		ImageView ivPause;
 	}
 	
 	class DownloadingAdapter extends BaseAdapter {
 		List<DownloadItem> itemList = new ArrayList<DownloadItem>();
 		private Context context;
 		private LayoutInflater inflater;
+		MyImageLoader imageLoader = null;
+		DisplayImageOptions imageLoaderOptions = null;
 		
 		public DownloadingAdapter(Context context,List<DownloadItem> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			this.itemList = list;
 			inflater = LayoutInflater.from(context);
+			
+			imageLoader = MyImageLoader.getInstance();
+
+			imageLoaderOptions = new DisplayImageOptions.Builder()
+					.cacheInMemory(true)
+					.cacheOnDisc(true)
+					.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+					.bitmapConfig(Bitmap.Config.RGB_565)
+					.showImageForEmptyUri(R.drawable.small_pic_default)
+					.showImageOnFail(R.drawable.small_pic_default)
+					.showImageOnLoading(R.drawable.small_pic_default)
+					.build();
 		}
 		
 		@Override
@@ -319,8 +343,8 @@ public class DownloadManageActivity extends TitleRootActivity {
 				holder.tvProgress = (TextView) convertView.findViewById(R.id.tv_download_progress);
 				holder.tvStatus = (TextView) convertView.findViewById(R.id.tv_download_status);
 				holder.tvSpeed = (TextView) convertView.findViewById(R.id.tv_download_speed);
+				holder.ivPause = (ImageView) convertView.findViewById(R.id.iv_pause);
 				holder.ivDelete = (ImageView) convertView.findViewById(R.id.iv_delete);
-				holder.ivStart = (ImageView) convertView.findViewById(R.id.iv_download_start);
 				holder.pbDownloading = (ProgressBar) convertView.findViewById(R.id.pb_download);
 				
 				ViewUtils.setSize(holder.ivHead, 96, 96);
@@ -336,17 +360,18 @@ public class DownloadManageActivity extends TitleRootActivity {
 				holder.tvProgress.setTextSize(DisplayUtil.textGetSizeSp(context, 20));
 				
 				ViewUtils.setMarginRight(holder.tvStatus, 196);
+				ViewUtils.setMarginBottom(holder.tvStatus, 36);
 				holder.tvStatus.setTextSize(DisplayUtil.textGetSizeSp(context, 24));
 				
 				ViewUtils.setMarginRight(holder.tvSpeed, 196);
 				holder.tvSpeed.setTextSize(DisplayUtil.textGetSizeSp(context, 20));
 				
-				ViewUtils.setSize(holder.ivDelete, 88, 88);
-				ViewUtils.setMarginRight(holder.ivDelete, 32);
+				ViewUtils.setSize(holder.ivPause, 112, 48);
+				ViewUtils.setMarginRight(holder.ivPause, 32);
+				ViewUtils.setMarginTop(holder.ivPause, 32);
 				
-				ViewUtils.setSize(holder.ivStart, 60, 60);
-				ViewUtils.setMarginRight(holder.ivStart, 12);
-				ViewUtils.setMarginTop(holder.ivStart, 30);
+				ViewUtils.setSize(holder.ivDelete, 48, 48);
+				ViewUtils.setMarginRight(holder.ivDelete, 32);
 				
 				ViewUtils.setHeight(holder.pbDownloading, 12);
 				ViewUtils.setMarginBottom(holder.pbDownloading, 66);
@@ -370,7 +395,8 @@ public class DownloadManageActivity extends TitleRootActivity {
 			
 			holder.tvTitle.setText(item.title);
 			
-			holder.ivStart.setVisibility(View.GONE);
+			imageLoader.displayImage(item.picUrl, holder.ivHead, imageLoaderOptions);
+			
 			Log.d("=AAA=","downloadStatus = " + item.downloadStatus);
 			// TODO
 			switch (item.downloadStatus) {
@@ -400,7 +426,6 @@ public class DownloadManageActivity extends TitleRootActivity {
 							DownloadManageActivity.this.onClick(getRightButton());
 						}
 					}, null);
-					holder.ivStart.setVisibility(View.VISIBLE);
 				} else {
 					if (holder.tvStatus.getVisibility() == View.GONE) {
 						holder.tvStatus.setVisibility(View.VISIBLE);
@@ -426,11 +451,16 @@ public class DownloadManageActivity extends TitleRootActivity {
 
 			}
 			
-			holder.ivStart.setOnClickListener(new OnClickListener() {
+			holder.ivPause.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					if (item.isPaused()) {
+						item.resume();
+					} else {
+						item.pause();
+					}
 					DownloadManager.getInstance().notifyLockItems();
 				}
 			});
@@ -470,12 +500,26 @@ public class DownloadManageActivity extends TitleRootActivity {
 		List<DownloadItem> itemList = new ArrayList<DownloadItem>();
 		private Context context;
 		private LayoutInflater inflater;
+		MyImageLoader imageLoader = null;
+		DisplayImageOptions imageLoaderOptions = null;
 		
 		public DownloadDoneAdapter(Context context,List<DownloadItem> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			this.itemList = list;
 			inflater = LayoutInflater.from(context);
+			
+			imageLoader = MyImageLoader.getInstance();
+
+			imageLoaderOptions = new DisplayImageOptions.Builder()
+					.cacheInMemory(true)
+					.cacheOnDisc(true)
+					.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+					.bitmapConfig(Bitmap.Config.RGB_565)
+					.showImageForEmptyUri(R.drawable.small_pic_default)
+					.showImageOnFail(R.drawable.small_pic_default)
+					.showImageOnLoading(R.drawable.small_pic_default)
+					.build();
 		}
 		
 		@Override
@@ -520,7 +564,7 @@ public class DownloadManageActivity extends TitleRootActivity {
 				ViewUtils.setMarginLeft(convertView.findViewById(R.id.view_line_bottom), 32);
 				ViewUtils.setMarginRight(convertView.findViewById(R.id.view_line_bottom), 32);
 				
-				ViewUtils.setSize(holder.ivDelete, 88, 88);
+				ViewUtils.setSize(holder.ivDelete, 48, 48);
 				ViewUtils.setMarginRight(holder.ivDelete, 32);
 				
 				ViewUtils.setHeight(convertView.findViewById(R.id.rl_download_done), 170);
@@ -539,6 +583,7 @@ public class DownloadManageActivity extends TitleRootActivity {
 
 			}
 			
+			imageLoader.displayImage(item.picUrl, holder.ivHead, imageLoaderOptions);
 			holder.tvTitle.setText(item.title);
 			holder.tvSize.setText(SpaceUtils.getSize(item.wholeSize));
 			
@@ -556,5 +601,6 @@ public class DownloadManageActivity extends TitleRootActivity {
 		}
 		
 	}
+	
 
 }

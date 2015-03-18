@@ -25,7 +25,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:visibility="gone" 
+            />
+        
+        <ToggleButton 
+            android:id="@+id/toggle_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_toggle"
+            android:textOn=""
+            android:textOff=""
+            android:checked="true"
+            />
+        
 
         <View
             android:id="@+id/view_divide_v"

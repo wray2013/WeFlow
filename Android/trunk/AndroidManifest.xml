@@ -113,6 +113,13 @@
             >
         </activity>
         
+         <activity
+            android:name="com.etoc.weflow.activity.AccountActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        
         <activity
             android:name="com.etoc.weflow.activity.DownloadManageActivity"
             android:theme="@android:style/Theme.NoTitleBar"
