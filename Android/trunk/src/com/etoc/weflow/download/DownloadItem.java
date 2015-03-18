@@ -86,6 +86,13 @@ public class DownloadItem implements Runnable {
 		this.downloadType = type;
 		this.source = source;
 		this.data = data;
+		
+		cancel = false;
+		context = WeFlowApplication.getAppInstance();
+		downloadDir = StorageUtils.getOwnCacheDirectory(context, ConStant.getDownloadCachePath());
+		if(!downloadDir.exists()){
+			downloadDir.mkdirs();
+		}
 	}
 
 	public DownloadItem(DownloadHistory item) {
@@ -190,6 +197,7 @@ public class DownloadItem implements Runnable {
 			boolean flag = false;
 			
 			if(downloadStatus==DownloadStatus.WAIT){
+				Log.d(TAG,"DownloadItem run Wait in");
 				downloadStatus = EnterWait();
 			}else if(downloadStatus == DownloadStatus.PERPARE){
 				downloadStatus = EnterPerpare();
@@ -202,6 +210,8 @@ public class DownloadItem implements Runnable {
 			if(downloadStatus == DownloadStatus.DONE){
 				flag = true;
 			}else if(downloadStatus == DownloadStatus.FAIL){
+				flag = true;
+			} else if (downloadStatus == DownloadStatus.USERPAUSE) {
 				flag = true;
 			}
 			
@@ -257,7 +267,7 @@ public class DownloadItem implements Runnable {
 			int readNum = 0;
 
 			while (true) {
-				if(cancel){
+				if(cancel || isUserPause){
 					break;
 				}
 				
@@ -311,7 +321,7 @@ public class DownloadItem implements Runnable {
 	}
 	
 	private DownloadStatus EnterWait(){
-		Log.v(TAG, "EnterWait - " + "downloadDir:" + downloadDir.getPath() + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
+		Log.v(TAG, "EnterWait - " /*+ "downloadDir:" + downloadDir.getPath()*/ + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
 		if(cancel){
 			return DownloadStatus.FAIL;
 		}
@@ -322,7 +332,7 @@ public class DownloadItem implements Runnable {
 	}
 	
 	private DownloadStatus EnterPerpare(){
-		Log.v(TAG, "EnterPerpare - " + "downloadDir:" + downloadDir.getPath() + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
+		Log.d(TAG, "EnterPerpare - " /*+ "downloadDir:" + downloadDir.getPath()*/ + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
 		if(cancel){
 			return DownloadStatus.FAIL;
 		}
@@ -336,10 +346,11 @@ public class DownloadItem implements Runnable {
 			
 			if (isUserPause) {
 				Log.d(TAG,"EnterPerpare isUserPause true");
-				DownloadStatus r = DownloadStatus.PAUSE;
+				DownloadStatus r = DownloadStatus.USERPAUSE;
 				r.setReason(DownloadStatus.REASON_USER_PAUSE);
 				return r;
 			} else if (!checkNetWork()) {
+				Log.d(TAG,"EnterPrepare checkNetWork in");
 				DownloadStatus r = DownloadStatus.PAUSE;
 				r.setReason(DownloadStatus.REASON_NETWORK_NO_WIFI);
 				return r;
@@ -373,17 +384,18 @@ public class DownloadItem implements Runnable {
 						}
 					}
 
-					if(wholeSize<=0){
+					Log.d(TAG,"EnterPrepare totalSize = " + totalSize + " wholeSize = " + wholeSize);
+					if (totalSize <= 0) {
+						return DownloadStatus.WAIT;
+					} else if(wholeSize<=0){
 						wholeSize = totalSize;
-					}else if(wholeSize!=totalSize){
+					}else if(wholeSize!=totalSize && totalSize > 0){
 						downloadFile.delete(); //重新下载
 						wholeSize = totalSize;
 						downloadSize  = 0;
 					}else if(downloadSize == totalSize){
 						return DownloadStatus.DONE;
 					}
-					
-					Log.d(TAG,"EnterPrepare totalSize = " + totalSize + " wholeSize = " + wholeSize);
 					
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
@@ -417,7 +429,7 @@ public class DownloadItem implements Runnable {
 	 * 1）外部唤醒，网络改变，或者重新
 	 * */
 	private DownloadStatus EnterRun(){
-		Log.v(TAG, "EnterRun - " + " downloadDir:" + downloadDir.getPath() + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
+		Log.d(TAG, "EnterRun - " /*+ "downloadDir:" + downloadDir.getPath()*/ + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
 		if(cancel){
 			return DownloadStatus.FAIL;
 		}
@@ -468,7 +480,7 @@ public class DownloadItem implements Runnable {
 	 * 
 	 * */
 	private DownloadStatus EnterPause(){
-		Log.v(TAG, "EnterPause - " + "downloadDir:" + downloadDir.getPath() + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
+		Log.d(TAG, "EnterPause - " /*+ "downloadDir:" + downloadDir.getPath()*/ + ", downloadSize:" + downloadSize + ", wholeSize:" + wholeSize + ", url:" + url + ", path:" + path + ", cancel:" + cancel);
 		if(cancel){
 			return DownloadStatus.FAIL;
 		}
@@ -491,6 +503,8 @@ public class DownloadItem implements Runnable {
 	
 	public void resume() {
 		isUserPause = false;
+		downloadStatus = DownloadStatus.USERRESUME;
+		DownloadManager.getInstance().notifyStatusChanged(this, downloadStatus);
 	}
 	
 	public boolean isPaused() {

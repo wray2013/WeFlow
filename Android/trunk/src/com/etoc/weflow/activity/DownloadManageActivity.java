@@ -412,10 +412,11 @@ public class DownloadManageActivity extends TitleRootActivity {
 				
 				break;
 			case PAUSE:
+				if (holder.tvStatus.getVisibility() == View.GONE) {
+					holder.tvStatus.setVisibility(View.VISIBLE);
+				}
 				if (item.downloadStatus.getReason().equals(DownloadStatus.REASON_STORAGE_NO_SPACE)) {
-					if (holder.tvStatus.getVisibility() == View.GONE) {
-						holder.tvStatus.setVisibility(View.VISIBLE);
-					}
+					
 					holder.tvStatus.setText("空间不足");
 					holder.pbDownloading.setProgressDrawable(getResources().getDrawable(R.drawable.drawable_download_progress_low_space));
 					PromptDialog.Dialog(context, true, "问题反馈", "设备空间不足请尝试清理后重试", "清理", "关闭", new DialogInterface.OnClickListener() {
@@ -426,11 +427,10 @@ public class DownloadManageActivity extends TitleRootActivity {
 							DownloadManageActivity.this.onClick(getRightButton());
 						}
 					}, null);
-				} else {
-					if (holder.tvStatus.getVisibility() == View.GONE) {
-						holder.tvStatus.setVisibility(View.VISIBLE);
-					}
+				} else if (item.downloadStatus.getReason().equals(DownloadStatus.REASON_NETWORK_NO_WIFI)){
 					holder.tvStatus.setText("非wifi");
+				} else {
+					holder.tvStatus.setText("等待下载");
 				}
 				holder.tvStatus.setTextColor(0xffd80000);
 				holder.tvSpeed.setVisibility(View.GONE);
@@ -457,15 +457,15 @@ public class DownloadManageActivity extends TitleRootActivity {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					if (item.isPaused()) {
-						item.resume();
+						DownloadManager.getInstance().resumeItem(item);
 					} else {
-						item.pause();
+						DownloadManager.getInstance().pauseItem(item);
 					}
 					DownloadManager.getInstance().notifyLockItems();
 				}
 			});
 			
-			Log.d("=AAA=","******before******** downloadSize " + item.downloadSize + " wholeSize = " + item.wholeSize);
+//			Log.d("=AAA=","******before******** downloadSize " + item.downloadSize + " wholeSize = " + item.wholeSize);
 			
 			holder.tvProgress.setText(SpaceUtils.getSize(item.downloadSize) + "/" + SpaceUtils.getSize(item.wholeSize));
 			holder.ivDelete.setOnClickListener(new OnClickListener() {
@@ -482,7 +482,7 @@ public class DownloadManageActivity extends TitleRootActivity {
 				progress = (long)(item.downloadSize) * 100 / item.wholeSize;
 				holder.pbDownloading.setProgress((int) progress);
 			}
-			Log.d("=AAA=","******after******** downloadSize " + item.downloadSize + " wholeSize = " + item.wholeSize + " progress = " + progress);
+//			Log.d("=AAA=","******after******** downloadSize " + item.downloadSize + " wholeSize = " + item.wholeSize + " progress = " + progress);
 			
 			return convertView;
 		}

@@ -459,6 +459,22 @@ public class DownloadManager {
 					}
 				}
 			}
+		} else if (status == DownloadStatus.USERPAUSE) {
+			runningSets.remove(item.downloadType);
+			if(runningList.size()>0){
+				for(DownloadItem _item : runningList){
+					if(_item.downloadType == item.downloadType && _item.downloadStatus != DownloadStatus.USERPAUSE){
+						executor.submit(_item);
+						runningSets.put(item.downloadType, item);
+						break;
+					}
+				}
+			}
+		} else if (status == DownloadStatus.USERRESUME) {
+			if (runningSets.size() == 0) {
+				executor.submit(item);
+				runningSets.put(item.downloadType, item);
+			}
 		}
 
 		EventBus.getDefault().post(e);
@@ -517,6 +533,14 @@ public class DownloadManager {
 		qb.where(Properties.DownloadStatus.isNotNull(), Properties.DownloadStatus.eq(status.getIndex()));//, Properties.DownloadType.eq(type.getIndex())).build();
 		List<DownloadHistory> ret =  qb.list();
 		return ret;
+	}
+	
+	public void pauseItem(DownloadItem item) {
+		item.pause();
+	}
+	
+	public void resumeItem(DownloadItem item) {
+		item.resume();
 	}
 
 }

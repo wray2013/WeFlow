@@ -1,7 +1,7 @@
 package com.etoc.weflow.download;
 
 public enum DownloadStatus {
-	WAIT(1),PERPARE(2),RUN(3),PAUSE(4),DONE(5),FAIL(6);
+	WAIT(1),PERPARE(2),RUN(3),PAUSE(4),DONE(5),FAIL(6),USERPAUSE(7),USERRESUME(8);
 	//WAIT,    不在执行队列中
 	//PERPARE, 在执行队列中，开始下载之前（之前没有下载数据或冷启动续传前的对比）
 	//RUN,     下载数据
