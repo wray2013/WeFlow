@@ -53,5 +53,14 @@
     	android:src="@drawable/btn_sign_in_selector"
     	/>
     
+    <ListView 
+	        android:id="@+id/lv_donwloading"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:dividerHeight="0dp"
+	        android:divider="@android:color/transparent"
+	        >
+    	</ListView>
+    
 
 </RelativeLayout>

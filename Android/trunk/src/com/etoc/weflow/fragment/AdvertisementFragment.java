@@ -412,8 +412,21 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 				holder.tvDuration = (TextView)convertView.findViewById(R.id.tv_duration);
 				holder.tvScore = (TextView)convertView.findViewById(R.id.tv_adv_flow);
 				
-				ViewUtils.setSize(holder.imgView, 336, 202);
-				ViewUtils.setHeight(convertView, 202);
+				ViewUtils.setHeight(holder.imgView, 340);
+				ViewUtils.setHeight(convertView.findViewById(R.id.view_space), 452);
+				ViewUtils.setMarginTop(holder.imgView, 16);
+				ViewUtils.setMarginLeft(holder.imgView, 32);
+				ViewUtils.setMarginRight(holder.imgView, 32);
+				ViewUtils.setSize(convertView.findViewById(R.id.rl_flowcoins), 72, 96);
+				ViewUtils.setMarginRight(convertView.findViewById(R.id.rl_flowcoins), 16);
+				ViewUtils.setMarginTop(holder.tvScore, 12);
+				ViewUtils.setTextSize(holder.tvScore, 30);
+				ViewUtils.setTextSize(convertView.findViewById(R.id.tv_app_flow_label), 10);
+				
+				ViewUtils.setMarginTop(convertView.findViewById(R.id.rl_desc), 32);
+				ViewUtils.setTextSize(holder.tvContent, 34);
+				ViewUtils.setTextSize(holder.tvDuration, 24);
+				
 				convertView.setTag(holder);
 			} else {
 				holder = (AdvHolder)convertView.getTag();

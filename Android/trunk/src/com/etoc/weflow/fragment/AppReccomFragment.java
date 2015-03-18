@@ -138,11 +138,11 @@ public class AppReccomFragment extends Fragment {
 				"http://himg2.huanqiu.com/attachment2010/2014/0826/20140826053243814.jpg"
 		};
 		String [] apkUrls = {
-				"http://apkdownload.laohu.com/tmp/seiyasds/seiya.apk?v=1",
+				"https://raw.githubusercontent.com/Trinea/trinea-download/master/pull-to-refreshview-demo.apk",
 				"http://gdown.baidu.com/data/wisegame/74fed1d1e244eb3c/shoujibaidu_16786712.apk",
 				"http://gdown.baidu.com/data/wisegame/309a95d293e02508/ApiDemos.apk",
 				"https://raw.githubusercontent.com/Trinea/trinea-download/master/pull-to-refreshview-demo.apk",
-				"http://dldx.csdn.net/fd.php?i=869170185934783&s=6c844e86feb6a31bae6675eb21cd1fd8",
+				"http://gdown.baidu.com/data/wisegame/309a95d293e02508/ApiDemos.apk",
 		};
 		for (int i = 0;i < 5;i++) {
 			SoftInfoResp resp = new SoftInfoResp();
