@@ -439,7 +439,7 @@ public class MainActivity extends SlidingFragmentActivity implements Callback {
 		String intent_title = intent.getStringExtra(Config.TITLE);
 		String intent_content = intent.getStringExtra(Config.CONTENT);
 		String intent_msgid = intent.getStringExtra(Config.MSGID);
-		String intent_dict_str = intent.getStringExtra(Config.DICT);
+		String intent_dict_str = intent.getStringExtra("");
 
 		if(intent_title!=null && intent_content!=null && !intent_title.equals("") && !intent_content.equals("")){
 			Map<String, String> dict = null;

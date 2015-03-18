@@ -43,7 +43,6 @@ public class PushReceiver extends CmmobiPushRecevier{
      * @param items	 	富媒体数据
      * @param timeStamp 时间戳
      */
-	@Override
 	public void onMessage(Context context, String appId, String userId,
 			String msgId, int notifyId, boolean prompt, String title, String content,
 			List<RichItem> items, String timeStamp, Map<String, String> dict) {
@@ -81,7 +80,6 @@ public class PushReceiver extends CmmobiPushRecevier{
      * @param items		富媒体数据
      * @param timeStamp	时间戳
      */
-	@Override
 	public void onNotificationClicked(final Context context, String appId, String userId, final String msgId, final String title, final String content,
 			List<RichItem> items, String timeStamp, Map<String, String> dict) {
 		// TODO Auto-generated method stub
@@ -102,6 +100,24 @@ public class PushReceiver extends CmmobiPushRecevier{
 		}, 5);
 		
 
+	}
+
+
+	@Override
+	public void onMessage(Context arg0, String arg1, String arg2, String arg3,
+			int arg4, boolean arg5, String arg6, String arg7,
+			List<RichItem> arg8, String arg9) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onNotificationClicked(Context arg0, String arg1, String arg2,
+			String arg3, String arg4, String arg5, List<RichItem> arg6,
+			String arg7) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

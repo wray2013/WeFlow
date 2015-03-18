@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">微流量</string>
+    <string name="app_name">流量钱包</string>
     
     <!-- TAB Text -->
     <string name="tab_weflow">微流量</string>

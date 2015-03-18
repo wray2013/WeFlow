@@ -119,6 +119,9 @@ public class RechargeQQFragment extends Fragment implements OnClickListener{
 		tvCommit.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
 		
 		etQQ = (EditText) view.findViewById(R.id.et_qq);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.rl_input_phone), 32);
+		ViewUtils.setMarginRight(view.findViewById(R.id.rl_input_phone), 32);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_input_phone), 112);
 	}
 
 	@Override

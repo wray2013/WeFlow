@@ -35,6 +35,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	private RelativeLayout rlMyBill;
 	
 	private MainActivity mainActivity = null;
+	private TextView tvLogin = null;
 	
 	private boolean isLogin = true;
 	
@@ -56,7 +57,12 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	private void initView(View view) {
 		rlMyBill = (RelativeLayout) view.findViewById(R.id.rl_me_bill);
 		rlMyBill.setOnClickListener(this);
-		
+		tvLogin = (TextView) view.findViewById(R.id.tv_login_btn);
+		ViewUtils.setSize(tvLogin, 242, 72);
+		ViewUtils.setMarginLeft(tvLogin, 94);
+		ViewUtils.setMarginBottom(tvLogin, 36);
+		ViewUtils.setTextSize(tvLogin, 30);
+		tvLogin.setOnClickListener(this);
 		
 		view.findViewById(R.id.rl_me_msg).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_bill).setOnClickListener(this);
@@ -66,6 +72,10 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		view.findViewById(R.id.rl_me_settings).setOnClickListener(this);
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_top), 222);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_account_info), 144);
+		ViewUtils.setSize(view.findViewById(R.id.iv_head), 112,112);
+		ViewUtils.setMarginBottom(view.findViewById(R.id.iv_head), 16);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.iv_head), 32);
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_msg), 112);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_bill), 112);
@@ -154,7 +164,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			startActivity(new Intent(getActivity(), MyBillListActivity.class));
 			break;
 		case R.id.rl_me_sign:
-//			startActivity(new Intent(getActivity(), SignInActivity.class));
+			startActivity(new Intent(getActivity(), SignInActivity.class));
 			break;
 		case R.id.rl_me_feedback:
 			startActivity(new Intent(getActivity(), FeedBackActivity.class));
@@ -164,6 +174,9 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			break;
 		case R.id.rl_me_download:
 			startActivity(new Intent(getActivity(),DownloadManageActivity.class));
+			break;
+		case R.id.tv_login_btn:
+			startActivity(new Intent(getActivity(), LoginActivity.class));
 			break;
 		}
 	}

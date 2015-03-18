@@ -88,4 +88,11 @@
     <color name="text_gray">#888888</color>
     <color name="bg_seleted">#e5e5e5</color>
     <color name="default_img_grey">#dcdcdc</color>
+    <drawable name="input_default">#E84728</drawable>
+    <drawable name="input_pressed">#CC3412</drawable>
+    <drawable name="input_disable">#C9C9CA</drawable>
+    
+    <color name="color_input_default">#E84728</color>
+    <color name="color_input_pressed">#CC3412</color>
+    <color name="color_input_disable">#C9C9CA</color>
 </resources>

@@ -21,8 +21,8 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 	private DisplayMetrics dm = new DisplayMetrics();
 	
 	//UI Component
-	private PullToRefreshListView mPullRefreshListView;
-	private ListView mListView;
+//	private PullToRefreshListView mPullRefreshListView;
+//	private ListView mListView;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -36,12 +36,12 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 	private void initView(View view) {
 		dm = getResources().getDisplayMetrics();
 		
-		mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.xlv_discovery_list);
+		/*mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.xlv_discovery_list);
 		mPullRefreshListView.setShowIndicator(false);
 		mPullRefreshListView.setOnRefreshListener(this);
 		
-		mListView = mPullRefreshListView.getRefreshableView();
-		initializeAdapter();
+		mListView = mPullRefreshListView.getRefreshableView();*/
+//		initializeAdapter();
 	}
 	
 	@Override
@@ -62,9 +62,9 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 		
 	}
 
-	private void initializeAdapter() {
+	/*private void initializeAdapter() {
 		mListView.setAdapter(new FastScrollAdapter(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1));
-    }
+    }*/
 	
 	@Override
 	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -72,7 +72,7 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 		handler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				mPullRefreshListView.onRefreshComplete();
+//				mPullRefreshListView.onRefreshComplete();
 			}
 		}, 500);
 	}
@@ -83,7 +83,7 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 		handler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				mPullRefreshListView.onRefreshComplete();
+//				mPullRefreshListView.onRefreshComplete();
 			}
 		}, 500);
 	}

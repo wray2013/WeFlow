@@ -1,5 +1,6 @@
 package com.etoc.weflow.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -133,6 +134,18 @@ public class RechargeFragment extends Fragment {
 				ft.commitAllowingStateLoss();
 			}
 		});
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		Log.d("=AAA=","***********爸爸***************");
+		if (requestCode == RechargePhoneFragment.REQUEST_CONTACT_PICK) {
+			if (phoneFragment != null) {
+				phoneFragment.onActivityResult(requestCode, resultCode, data);
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 }

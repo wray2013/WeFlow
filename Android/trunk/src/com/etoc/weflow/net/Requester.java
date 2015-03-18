@@ -58,7 +58,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_REGISTER = "/vs/api/user/register";
 
 	public static final int RESPONSE_TYPE_VERIFY_CODE = 0xffee2106;
-	public static final String RIA_INTERFACE_VERIFY_CODE = "/vs/api/user/verifyAuthCode";
+	public static final String RIA_INTERFACE_VERIFY_CODE = "/vs/api/verifyAuthCode";
 	
 	public static final int RESPONSE_TYPE_RESET_PWD = 0xffee2107;
 	public static final String RIA_INTERFACE_RESET_PWD = "/vs/api/user/resetPassword";

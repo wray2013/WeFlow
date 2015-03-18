@@ -18,6 +18,7 @@
     		android:paddingLeft="16dp"
     		android:inputType="phone"
     		android:maxLength="11"
+    		android:drawablePadding="16dp"
     		android:drawableLeft="@drawable/drawable_username"
     		android:background="@color/white" />
         <EditText 
@@ -31,6 +32,7 @@
     		android:inputType="textPassword"
     		android:drawableLeft="@drawable/drawable_password"
     		android:paddingLeft="16dp"
+    		android:drawablePadding="16dp"
     		android:hint="请输入密码"
     		android:background="@color/white" />
 	</RelativeLayout>
@@ -62,7 +64,7 @@
     		android:gravity="center"
     		android:text="登  录"
     		android:textColor="@color/white"
-    		android:background="@drawable/shape_corner_recentage_orange"/>
+    		android:background="@drawable/btn_login_or_register"/>
         
         <TextView 
     	    android:id="@+id/tv_register"

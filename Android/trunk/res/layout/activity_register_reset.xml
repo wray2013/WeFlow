@@ -90,6 +90,7 @@
             android:layout_marginTop="18dp"
             android:background="@color/white"
             android:paddingLeft="8dp"
+            android:maxLength="6"
             android:hint="请输入验证码"
             android:inputType="textPassword" />
     </RelativeLayout>
@@ -106,7 +107,7 @@
             android:layout_height="57dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:background="@drawable/shape_corner_recentage_orange"
+            android:background="@drawable/btn_login_or_register"
             android:gravity="center"
             android:text="下一步"
             android:textColor="@color/white" />

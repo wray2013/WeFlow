@@ -101,6 +101,7 @@ public class LoginActivity extends TitleRootActivity {
 		tvForget   = (TextView) findViewById(R.id.tv_forget_pass);
 		tvBtnLogin = (TextView) findViewById(R.id.tv_login_btn);
 		tvRegister = (TextView) findViewById(R.id.tv_register);
+		tvBtnLogin.setEnabled(false);
 		
 		tvForget.setOnClickListener(this);
 		tvBtnLogin.setOnClickListener(this);
@@ -144,11 +145,9 @@ public class LoginActivity extends TitleRootActivity {
 		String p = edPass.getText().toString();
 		if(a != null && p != null
 				&& a.length() > 0 && p.length() > 0) {
-			tvBtnLogin.setClickable(true);
-			tvBtnLogin.setBackgroundResource(R.drawable.shape_corner_recentage_orange);
+			tvBtnLogin.setEnabled(true);
 		} else {
-			tvBtnLogin.setClickable(false);
-			tvBtnLogin.setBackgroundResource(R.drawable.shape_corner_recentage_grey);
+			tvBtnLogin.setEnabled(false);
 		}
 	}
 	
