@@ -3,6 +3,7 @@ package com.etoc.weflow.fragment;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.AccountActivity;
 import com.etoc.weflow.activity.CaptureActivity;
 import com.etoc.weflow.activity.DownloadManageActivity;
 import com.etoc.weflow.activity.FeedBackActivity;
@@ -36,7 +37,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	private MainActivity mainActivity = null;
 	private TextView tvLogin = null;
-	
+	private RelativeLayout rlAccountInfo = null;
 	private boolean isLogin = true;
 	
 	@Override
@@ -58,11 +59,14 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		rlMyBill = (RelativeLayout) view.findViewById(R.id.rl_me_bill);
 		rlMyBill.setOnClickListener(this);
 		tvLogin = (TextView) view.findViewById(R.id.tv_login_btn);
+		
+		rlAccountInfo = (RelativeLayout) view.findViewById(R.id.rl_account_info);
 		ViewUtils.setSize(tvLogin, 242, 72);
 		ViewUtils.setMarginLeft(tvLogin, 94);
 		ViewUtils.setMarginBottom(tvLogin, 36);
 		ViewUtils.setTextSize(tvLogin, 30);
 		tvLogin.setOnClickListener(this);
+		rlAccountInfo.setOnClickListener(this);
 		
 		view.findViewById(R.id.rl_me_msg).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_bill).setOnClickListener(this);
@@ -72,7 +76,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		view.findViewById(R.id.rl_me_settings).setOnClickListener(this);
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_me_top), 222);
-		ViewUtils.setHeight(view.findViewById(R.id.rl_account_info), 144);
+		ViewUtils.setHeight(rlAccountInfo, 144);
 		ViewUtils.setSize(view.findViewById(R.id.iv_head), 112,112);
 		ViewUtils.setMarginBottom(view.findViewById(R.id.iv_head), 16);
 		ViewUtils.setMarginLeft(view.findViewById(R.id.iv_head), 32);
@@ -177,6 +181,11 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			break;
 		case R.id.tv_login_btn:
 			startActivity(new Intent(getActivity(), LoginActivity.class));
+			break;
+		case R.id.rl_account_info:
+			if (isLogin) {
+				startActivity(new Intent(getActivity(), AccountActivity.class));
+			}
 			break;
 		}
 	}
