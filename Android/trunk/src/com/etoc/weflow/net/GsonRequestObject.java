@@ -83,7 +83,7 @@ public class GsonRequestObject {
 	//2.1.2 用户注册
 	public static class registerRequest {
 		String tel;  //用户号码
-		String password; //密码，加密MD5
+		String pwd; //密码，加密MD5
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
@@ -100,7 +100,7 @@ public class GsonRequestObject {
 	//2.1.4 用户登录
 	public static class loginRequest {
 		String tel;  //用户号码
-		String password; //密码
+		String pwd; //密码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}

@@ -111,7 +111,7 @@ public class Requester {
 	public static void login(Handler handler, String tel, String pass) {
 		loginRequest request = new loginRequest();
 		request.tel = tel;
-		request.password = pass;
+		request.pwd = pass;
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
@@ -121,7 +121,7 @@ public class Requester {
 	public static void register(Handler handler, String tel, String pass) {
 		registerRequest request = new registerRequest();
 		request.tel = tel;
-		request.password = pass;
+		request.pwd = pass;
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);

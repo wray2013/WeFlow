@@ -1,6 +1,9 @@
 package com.etoc.weflow.activity.login;
 
+import java.util.List;
+
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.InputType;
@@ -9,7 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.TitleRootActivity;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dao.AccountInfoDao;
+import com.etoc.weflow.dao.DaoMaster;
+import com.etoc.weflow.dao.DaoSession;
+import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
 import com.etoc.weflow.net.GsonResponseObject.registerResponse;
@@ -40,6 +49,13 @@ public class RegisterResetActivity extends TitleRootActivity {
 	private View vDivider;
 	private EditText edAccount, edValidCode;
 	
+	private DaoMaster daoMaster;
+	private DaoSession daoSession;
+	private SQLiteDatabase db;
+	private AccountInfoDao accountInfoDao;
+	
+	private AccountInfo accountinfo;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -59,6 +75,22 @@ public class RegisterResetActivity extends TitleRootActivity {
 			setTitleGravity(GRAVITE_LEFT);
 			break;
 		}
+		
+		DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+        db = helper.getWritableDatabase();
+        daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+        
+        accountInfoDao = daoSession.getAccountInfoDao();
+        
+        accountInfoDao = daoSession.getAccountInfoDao();
+		if(accountInfoDao.count() > 0) {
+			List<AccountInfo> list = accountInfoDao.loadAll();
+			accountinfo = list.get(0);
+		} else {
+			accountinfo = new AccountInfo();
+		}
+		
 		hideRightButton();
 		
 		initView();
@@ -280,10 +312,21 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_REGISTER:
 			registerResponse regResp = (registerResponse) msg.obj;
 			if(regResp != null) {
-				if("0000".equals(regResp.status)) { //注册成功
+				if("0000".equals(regResp.status) || "0".equals(regResp.status)) { //注册成功
 					PromptDialog.Alert(RegisterResetActivity.class, "成功注册");
 					//TODO:跳转主页
+//					AccountInfo acc = new AccountInfo();
+					accountinfo.setIsregistration(regResp.isregistration);
+					accountinfo.setFlowcoins(regResp.flowcoins);
+					accountinfo.setMakeflow(regResp.makeflow);
+					accountinfo.setUseflow(regResp.useflow);
+					accountinfo.setUserid(regResp.userid);
+					accountinfo.setTel(regResp.tel);
+//					accountInfoDao.deleteAll();
+					accountInfoDao.insertOrReplace(accountinfo);
 					
+					startActivity(new Intent(this, MainActivity.class));
+					this.finish();
 				}
 			} else {
 				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
@@ -292,7 +335,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_RESET_PWD:
 			resetPasswordResponse resetResp = (resetPasswordResponse) msg.obj;
 			if(resetResp != null) {
-				if("0000".equals(resetResp.status)) { //重置成功
+				if("0000".equals(resetResp.status) || "0".equals(resetResp.status)) { //重置成功
 					PromptDialog.Alert(RegisterResetActivity.class, "密码修改成功,请重新登录");
 					//TODO:跳转登录页
 					Intent loginIntent = new Intent(this, LoginActivity.class);

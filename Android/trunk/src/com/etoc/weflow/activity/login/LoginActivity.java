@@ -1,5 +1,7 @@
 package com.etoc.weflow.activity.login;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ public class LoginActivity extends TitleRootActivity {
 	private SQLiteDatabase db;
 	private AccountInfoDao accountInfoDao;
 	
+	private AccountInfo accountinfo;
 	
 	private EditText edAccount, edPass;
 	private TextView tvForget, tvBtnLogin, tvRegister;
@@ -56,7 +59,12 @@ public class LoginActivity extends TitleRootActivity {
         daoSession = daoMaster.newSession();
         
         accountInfoDao = daoSession.getAccountInfoDao();
-		
+		if(accountInfoDao.count() > 0) {
+			List<AccountInfo> list = accountInfoDao.loadAll();
+			accountinfo = list.get(0);
+		} else {
+			accountinfo = new AccountInfo();
+		}
 	}
 	
 	
@@ -186,17 +194,16 @@ public class LoginActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_LOGIN:
 			loginResponse loginResp = (loginResponse) msg.obj;
 			if(loginResp != null) {
-				if("0".equals(loginResp.status)) { //登录成功
+				if("0".equals(loginResp.status) || "0000".equals(loginResp.status)) { //登录成功
 					PromptDialog.Alert(LoginActivity.class, "登录成功");
-					AccountInfo acc = new AccountInfo();
-					acc.setIsregistration(loginResp.isregistration);
-					acc.setFlowcoins(loginResp.flowcoins);
-					acc.setMakeflow(loginResp.makeflow);
-					acc.setUseflow(loginResp.useflow);
-					acc.setUserid(loginResp.userid);
-					acc.setTel(loginResp.tel);
-					accountInfoDao.deleteAll();
-					accountInfoDao.insertOrReplace(acc);
+					accountinfo.setIsregistration(loginResp.isregistration);
+					accountinfo.setFlowcoins(loginResp.flowcoins);
+					accountinfo.setMakeflow(loginResp.makeflow);
+					accountinfo.setUseflow(loginResp.useflow);
+					accountinfo.setUserid(loginResp.userid);
+					accountinfo.setTel(loginResp.tel);
+//					accountInfoDao.deleteAll();
+					accountInfoDao.insertOrReplace(accountinfo);
 					
 					Intent intent = new Intent();
 					intent.setClass(this, MainActivity.class);
