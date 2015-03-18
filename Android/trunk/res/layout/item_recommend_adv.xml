@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:background="@color/white"
+    >
+    
+    <ImageView 
+        android:id="@+id/iv_adv_img"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content" />
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_alignTop="@+id/iv_adv_img"
+    	android:layout_alignRight="@+id/iv_adv_img"
+    	android:background="@drawable/flow_tag">
+    	<TextView
+            android:id="@+id/tv_adv_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+            android:includeFontPadding="false"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_app_flow_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_adv_flow"
+            android:layout_centerHorizontal="true"
+            android:includeFontPadding="false"
+            android:text="流量币"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/iv_adv_img">
+        <TextView 
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_alignParentLeft="true"
+    		android:layout_toLeftOf="@+id/tv_duration"/>
+        <TextView 
+            android:id="@+id/tv_duration"
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>

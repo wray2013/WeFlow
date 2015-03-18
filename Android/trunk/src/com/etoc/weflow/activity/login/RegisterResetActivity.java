@@ -161,7 +161,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 				PromptDialog.Dialog(this, "温馨提示", "两次密码输入不一致，请重新设置", "确定");
 			} else {
 				if(currentType == TYPE_REGIST) { //注册
-					Requester.register(handler, edAccount.getText().toString(), edValidCode.getText().toString());
+					Requester.register(handler, currentTel, edValidCode.getText().toString());
 				} else if(currentType == TYPE_RESET) { //密码重置
 					Requester.resetPassword(handler, currentTel, edValidCode.getText().toString());
 				}
