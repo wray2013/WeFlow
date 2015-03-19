@@ -1,19 +1,50 @@
 package com.etoc.weflow.activity;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.activity.login.RegisterResetActivity;
+import com.etoc.weflow.dao.AccountInfoDao;
+import com.etoc.weflow.dao.DaoMaster;
+import com.etoc.weflow.dao.DaoSession;
+import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.utils.ViewUtils;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class AccountActivity extends TitleRootActivity {
 
+	private String tel = "";
+	
+	private TextView tvTel;
+	
+	private DaoMaster daoMaster;
+	private DaoSession daoSession;
+	private SQLiteDatabase db;
+	private AccountInfoDao accountInfoDao;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		Intent i = getIntent();
+		if(i != null) {
+			tel = i.getStringExtra("tel");
+		}
+		
+		DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+        db = helper.getWritableDatabase();
+        daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+        
+        accountInfoDao = daoSession.getAccountInfoDao();
+        
 		initViews();
 	}
 	
@@ -43,6 +74,18 @@ public class AccountActivity extends TitleRootActivity {
 		ViewUtils.setTextSize(findViewById(R.id.tv_phone_num), 30);
 		ViewUtils.setTextSize(findViewById(R.id.tv_password_label), 30);
 		ViewUtils.setTextSize(findViewById(R.id.tv_login_out), 30);
+		
+		tvTel = (TextView) findViewById(R.id.tv_phone_number);
+		tvTel.setText(tel);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if(db != null) {
+			db.close();
+		}
 	}
 	
 	@Override
@@ -68,8 +111,16 @@ public class AccountActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.rl_account_password:
+			Intent resetIntent = new Intent(this, RegisterResetActivity.class);
+			resetIntent.putExtra("type", RegisterResetActivity.TYPE_RESET);
+			startActivity(resetIntent);
 			break;
 		case R.id.rl_login_out:
+			accountInfoDao.deleteByKey(tel);
+			Intent i = new Intent(this, LoginActivity.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(i);
+			finish();
 			break;
 		}
 		super.onClick(v);
