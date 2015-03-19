@@ -464,7 +464,15 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 			imageLoader.displayImage(info.cover, holder.imgView, imageLoaderOptions);
 			holder.tvContent.setText(info.title);
 			holder.tvDuration.setText(info.duration + "s");
-			holder.tvScore.setText(info.flowcoins);
+			float coins = 0;
+			if(info.flowcoins != null) {
+				try {
+					coins = Float.parseFloat(info.flowcoins);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			holder.tvScore.setText((int)coins + "");
 			
 			return convertView;
 		}
