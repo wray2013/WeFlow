@@ -254,7 +254,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		request.videoid = videoid;
+		request.productid = videoid;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_FLOW, AdvFlowResp.class);
 		worker.execute(RIA_INTERFACE_ADV_FLOW, request);
 	}
@@ -296,7 +296,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		request.appid = appid;
+		request.productid = appid;
 		request.flowtype = type;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_FLOW, AppFlowResp.class);
 		worker.execute(RIA_INTERFACE_APP_FLOW, request);
@@ -332,7 +332,7 @@ public class Requester {
 		request.tel = phone;
 		request.userid = userid;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_PHONE, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_PHONE, PhoneChargeResp.class);
 		worker.execute(RIA_INTERFACE_RECHARGE_PHONE, request);
 	}
 	
@@ -342,7 +342,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_QRECHARGE_LIST, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_QRECHARGE_LIST, QChargeListResp.class);
 		worker.execute(RIA_INTERFACE_QRECHARGE_LIST, request);
 	}
 	
@@ -355,7 +355,7 @@ public class Requester {
 		request.qqnum = qq;
 		request.userid = userid;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_QQ, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_QQ, QChargeResp.class);
 		worker.execute(RIA_INTERFACE_RECHARGE_QQ, request);
 	}
 	
@@ -365,7 +365,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GAME_PKG_LIST, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GAME_PKG_LIST, GamePkgListResp.class);
 		worker.execute(RIA_INTERFACE_GAME_PKG_LIST, request);
 	}
 	
@@ -377,7 +377,7 @@ public class Requester {
 		request.gamepkgid = productid;
 		request.userid = userid;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_GAME_PKG, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_GAME_PKG, exchangeGamePkgResp.class);
 		worker.execute(RIA_INTERFACE_EXCHANGE_GAME_PKG, request);
 	}
 	
@@ -387,7 +387,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_FLOW_PKG_LIST, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_FLOW_PKG_LIST, FlowPkgListResp.class);
 		worker.execute(RIA_INTERFACE_FLOW_PKG_LIST, request);
 	}
 	
@@ -399,7 +399,7 @@ public class Requester {
 		request.flowpkgid = productid;
 		request.userid = userid;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_FLOW_PKG, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_FLOW_PKG, ExchangeFlowPkgResp.class);
 		worker.execute(RIA_INTERFACE_EXCHANGE_FLOW_PKG, request);
 	}
 	
@@ -409,7 +409,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GIFT_LIST, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GIFT_LIST, GiftListResp.class);
 		worker.execute(RIA_INTERFACE_GIFT_LIST, request);
 	}
 	
@@ -421,7 +421,7 @@ public class Requester {
 		request.giftid = productid;
 		request.userid = userid;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANG_GIFT, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANG_GIFT, ExchangeGiftResp.class);
 		worker.execute(RIA_INTERFACE_EXCHANG_GIFT, request);
 	}
 	
@@ -433,7 +433,7 @@ public class Requester {
 		request.userid = userid;
 		request.type = type;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_COST_FLOW_LIST, AppFlowRecordResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_COST_FLOW_LIST, CostFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_COST_FLOW_LIST, request);
 	}
 	

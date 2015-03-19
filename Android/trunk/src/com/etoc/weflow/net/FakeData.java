@@ -87,6 +87,65 @@ public class FakeData {
 		r5.hasnextpage = "1";
 		r5.list = (SoftInfoResp[])createAppData().toArray(new SoftInfoResp[0]);
 		map.put(Requester.RIA_INTERFACE_APP_LIST, r5);
+		
+		GiftListResp r6 = new GiftListResp();
+		r6.status = "0";
+		r6.bannerlist = (GiftBannerResp[]) createGiftBannerList().toArray(new GiftBannerResp[0]);
+		r6.giftlist = (GiftResp[]) createGiftData().toArray(new GiftResp [0]);
+		map.put(Requester.RIA_INTERFACE_GIFT_LIST, r6);
+	}
+	
+	private static List<GiftResp> createGiftData() {
+		List<GiftResp> list = new ArrayList<GiftResp>();
+		
+		String[] imgUrls = {"http://pic7.nipic.com/20100526/3726655_170231009273_2.jpg",
+        		"http://pic5.nipic.com/20100102/3759236_100017502126_2.jpg",
+        		"http://pic8.nipic.com/20100722/4235094_143649006971_2.jpg",
+        		"http://pic1.nipic.com/2008-12-23/2008122312587944_2.jpg",
+        		"http://img1.imgtn.bdimg.com/it/u=3517413395,2250230838&fm=21&gp=0.jpg"
+        		};
+		String[] titles = {"庐山月饼",
+				"菲尼迪100元礼券",
+				"乐行仕优惠券",
+				"茅台礼券",
+				"阳澄湖大闸蟹"
+		};
+		
+		String[] descs = {
+				"9月6日下午14:00-16:30，新湖庐山国际将浓情上演中秋月饼DIY家庭聚会",
+				"菲妮迪女装 2014秋装新款 经典简约菱格时尚撞色薄款棉衣外套",
+				"乐行仕作为目前国内休闲皮鞋网络第一品牌,自成立之初,便始终对男士高档皮鞋及配套耐用",
+				"大曲酱香型白酒的鼻祖，有“国酒”之称，是中国最高端白酒之一",
+				"蟹身不沾泥，俗称清水大闸蟹，体大膘肥，青壳白肚，金爪黄毛",
+		};
+		for (int i = 0;i < 5;i++) {
+			GiftResp resp = new GiftResp();
+			resp.giftid = i + "";
+			resp.imgsrc = imgUrls[i];
+			resp.title = titles[i];
+			resp.giftdesc = descs[i];
+			resp.flowcoins = ((i + 1) * 1000) + "";
+			list.add(resp);
+		}
+		
+		return list;
+	}
+	
+	private static List<GiftBannerResp> createGiftBannerList() {
+		List<GiftBannerResp> list = new ArrayList<GiftBannerResp>();
+		
+		String[] imgUrls = {"http://www.adzop.com//uploadpic/xcp/1412/P190.rmvb_20141222_110554.306.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P186.rmvb_20141222_110108.278.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P184.rmvb_20141222_110040.713.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P176.rmvb_20141222_105653.404.jpg"
+        		};
+		for (int i = 0;i < 4;i++) {
+			GiftBannerResp resp = new GiftBannerResp();
+			resp.giftid = i + "";
+			resp.imgsrc = imgUrls[i];
+			list.add(resp);
+		}
+		return list;
 	}
 	
 	private static List<SoftInfoResp> createAppData() {

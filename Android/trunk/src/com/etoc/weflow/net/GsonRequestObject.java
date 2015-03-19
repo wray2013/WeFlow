@@ -155,7 +155,7 @@ public class GsonRequestObject {
 	//2.3.4 看广告赚流量币
 	public static class advFlowRequest {
 		String userid;  //用户号码
-		String videoid; //广告id
+		String productid; //广告id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
@@ -183,7 +183,7 @@ public class GsonRequestObject {
 	//2.4.4 下载软件赚流量币
 	public static class appFlowRequest {
 		String userid;  //用户号码
-		String appid; //软件id，后台决定是填productid还是多一层索引
+		String productid; //软件id，后台决定是填productid还是多一层索引
 		String flowtype;  //赚币类型 0-下载 1-分享
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）

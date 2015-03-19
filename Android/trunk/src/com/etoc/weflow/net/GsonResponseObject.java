@@ -237,7 +237,7 @@ public class GsonResponseObject {
 	 ****************************************************/
 	public static class PhoneChargeListResp {
 		public String status;
-		RechargePhoneResp[] chargelist;
+		public RechargePhoneResp[] chargelist;
 	}
 	
 	public static class RechargePhoneResp {
@@ -246,13 +246,30 @@ public class GsonResponseObject {
 		public String cost;// 话费流量币
 	}
 	
+	public static class PhoneChargeResp {
+		public String status;
+		public String flowcoins;
+	}
 	
-	public static class MobileFlowResp {
-		public String flowpkgid;
-		public String title;
-		public String desc;
-		public String imgsrc;
-		public String cost;
+	public static class QChargeListResp {
+		public String status;
+		public RechargeQQResp[] chargelist;
+	}
+	
+	public static class RechargeQQResp {
+		public String chargesid;//产品id
+		public String qcoins;// 充值面额
+		public String cost;// 话费流量币
+	}
+	
+	public static class QChargeResp {
+		public String status;
+		public String flowcoins;
+	}
+	
+	public static class GamePkgListResp {
+		public String status;
+		public GameGiftResp[] list;
 	}
 	
 	public static class GameGiftResp {
@@ -263,13 +280,73 @@ public class GsonResponseObject {
 		public String cost;
 	}
 	
-	public static class ExchangeGiftResp {
+	public static class GamePkgResp {
+		public String productid;
+		public String cost;
+		public String leave;
+		public String icon;
+	}
+	
+	public static class exchangeGamePkgResp {
+		public String status;
+		public String gamecode;
+		public String flowcoins;
+	}
+	
+	public static class FlowPkgListResp {
+		public String status;
+		public MobileFlowResp[] list;
+	}
+	
+	public static class MobileFlowResp {
+		public String flowpkgid;
+		public String title;
+		public String desc;
+		public String imgsrc;
+		public String cost;
+	}
+	
+	public static class ExchangeFlowPkgResp {
+		public String status;
+		public String flowcoins;
+	}
+	
+	public static class GiftListResp {
+		public String status;
+		public GiftBannerResp[] bannerlist;
+		public GiftResp[] giftlist;
+	}
+	
+	public static class GiftBannerResp {
+		public String giftid;
+		public String imgsrc;
+		public String gifturl;
+	}
+	public static class GiftResp {
 		public String giftid;
 		public String imgsrc;
 		public String gifturl;
 		public String giftdesc;
 		public String title;
 		public String flowcoins;//流量币
+	}
+	
+	public static class ExchangeGiftResp {
+		public String status;
+		public String flowcoins;
+	}
+	
+	public static class CostFlowRecordResp {
+		public String status;
+		public RecordResp[] list;
+	}
+	
+	public static class RecordResp {
+		public String type;
+		public String productid;
+		public String cost;
+		public String title;
+		public String imgsrc;
 	}
 	/****************************************************
 	 *                      C.流量银行
