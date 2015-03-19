@@ -1,9 +1,12 @@
 package com.etoc.weflow.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -16,6 +19,9 @@ import android.widget.Toast;
 
 import com.dd.processbutton.iml.SubmitProcessButton;
 import com.etoc.weflow.R;
+import com.etoc.weflow.download.DownloadEvent;
+import com.etoc.weflow.download.DownloadManager;
+import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.ProgressGenerator;
@@ -25,6 +31,9 @@ import com.google.gson.Gson;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
+
+import de.greenrobot.event.EventBus;
 
 public class SoftDetailActivity extends TitleRootActivity implements OnCompleteListener {
 
@@ -64,6 +73,35 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 				.build();
 		
 		initViews();
+		
+		
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+	}
+	
+	public void onEventMainThread(DownloadEvent event) {
+		// TODO Auto-generated method stub
+		Log.d("=AAA=","onEventMainThread eventType = " + event + " type = " + event.getType() 
+				+ " wholeSize = " + event.getWholeSize() + " downloadSize = " + event.getDownloadSize()
+				+ " apkUrl = " + softDetailResp.apkurl + " downlaodUrl = " + event.getUrl());
+		
+		
+		switch (event) {
+		case STATUS_CHANGED:
+		case PROGRESS_CHANGED:
+			if (softDetailResp.apkurl.equals(event.getUrl())) {
+				long progress = 0;
+				if (event.getWholeSize() > 0) {
+					progress = (long)(event.getDownloadSize()) * 100 / event.getWholeSize();
+					btnDownload.setProgress((int)progress);
+				}
+			}
+			break;
+		}
 		
 	}
 	
@@ -148,7 +186,15 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 					llPicIntro.addView(ivPre);
 				}
 			}
+			
+			if (DownloadManager.getInstance().isDownlaoded(softDetailResp.apkurl)) {
+				btnDownload.setProgress(100);
+				btnDownload.setEnabled(false);
+			} else if (DownloadManager.getInstance().isDownlaoding(softDetailResp.apkurl)){
+				btnDownload.setEnabled(false);
+			}
 		}
+		
 	}
 	
 	@Override
@@ -168,8 +214,7 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.btnSubmit:
-			final ProgressGenerator progressGenerator = new ProgressGenerator(this);
-            progressGenerator.start(btnDownload);
+			DownloadManager.getInstance().addDownloadTask(softDetailResp.apkurl, "0", softDetailResp.title, softDetailResp.appicon, "",  DownloadType.APP, "", "");
             btnDownload.setEnabled(false);
 	        break;
 		}

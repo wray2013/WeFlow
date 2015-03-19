@@ -33,7 +33,7 @@
 		        android:text="下载"
 		        android:textColor="@android:color/white"
 		        android:textSize="16sp"
-		        custom:pb_textComplete="正在安装"
+		        custom:pb_textComplete="下载完成"
 		        custom:pb_textProgress="下载中"
 		        custom:pb_textError="错误"/>
         

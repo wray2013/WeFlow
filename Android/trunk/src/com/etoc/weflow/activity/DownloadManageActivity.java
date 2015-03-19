@@ -12,6 +12,7 @@ import com.etoc.weflow.download.DownloadManager;
 import com.etoc.weflow.download.DownloadStatus;
 import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NetworkTypeUtility;
 import com.etoc.weflow.utils.SpaceUtils;
 import com.etoc.weflow.utils.SpaceUtils.SpaceInfo;
 import com.etoc.weflow.utils.ViewUtils;
@@ -181,8 +182,9 @@ public class DownloadManageActivity extends TitleRootActivity {
 					SharedPreferences.Editor editor = mySharedPreferences.edit();
 					editor.putBoolean("has_new", false);
 					editor.commit();
-					ivPrompt.setVisibility(View.GONE);
                 }
+                
+                ivPrompt.setVisibility(View.GONE);
             }
 
             @Override
@@ -452,18 +454,41 @@ public class DownloadManageActivity extends TitleRootActivity {
 			}
 			
 			holder.ivPause.setOnClickListener(new OnClickListener() {
-				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					if (item.isPaused()) {
-						DownloadManager.getInstance().resumeItem(item);
+						if (NetworkTypeUtility.isWifi(WeFlowApplication.getAppInstance())) {
+							DownloadManager.getInstance().resumeItem(item);
+						} else if (!"UNKNOWN".equals(NetworkTypeUtility.getNetwork(WeFlowApplication.getAppInstance()))
+								) {
+							PromptDialog.Dialog(DownloadManageActivity.this, true, "温馨提示", "当前网络不是wifi环境，是否继续？", "是", "否", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									item.permis3G();
+									DownloadManager.getInstance().resumeItem(item);
+								}
+							} , null);
+						} else {
+							PromptDialog.Dialog(DownloadManageActivity.this, false,"温馨提示","请检查网络",null);
+						}
+						
 					} else {
 						DownloadManager.getInstance().pauseItem(item);
 					}
 					DownloadManager.getInstance().notifyLockItems();
 				}
 			});
+			
+			if (item.isPaused()) {
+				holder.ivPause.setBackgroundResource(R.drawable.btn_resume);
+			} else {
+				holder.ivPause.setBackgroundResource(R.drawable.btn_pause);
+			}
+			
+			
 			
 //			Log.d("=AAA=","******before******** downloadSize " + item.downloadSize + " wholeSize = " + item.wholeSize);
 			

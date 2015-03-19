@@ -63,6 +63,7 @@ public class DownloadItem implements Runnable {
 	private RandomAccessFile outputStream;
 	public boolean cancel = false;
 	private boolean isUserPause = true;
+	private boolean is3GPermis = false;
 //	public long seqNo;
 
 	
@@ -313,7 +314,7 @@ public class DownloadItem implements Runnable {
 	}
 	
 	private boolean checkNetWork(){
-		return !"UNKNOWN".equals(NetworkTypeUtility.getNetwork(WeFlowApplication.getAppInstance()));
+		return NetworkTypeUtility.isWifi(WeFlowApplication.getAppInstance()) || is3GPermis;
 	}
 	
 	private boolean checkStorage(){
@@ -498,6 +499,7 @@ public class DownloadItem implements Runnable {
 	}
 	
 	public void pause() {
+		is3GPermis = false;
 		isUserPause = true;
 	}
 	
@@ -509,6 +511,10 @@ public class DownloadItem implements Runnable {
 	
 	public boolean isPaused() {
 		return isUserPause;
+	}
+	
+	public void permis3G() {
+		is3GPermis = true;
 	}
 
 }

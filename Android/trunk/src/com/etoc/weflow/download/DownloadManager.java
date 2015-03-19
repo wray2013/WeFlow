@@ -150,6 +150,24 @@ public class DownloadManager {
 		return null;
 	}
 	
+	public synchronized boolean isDownlaoded(String url) {
+		for(DownloadItem item : doneList){
+			if(item.url.equals(url)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public synchronized boolean isDownlaoding(String url) {
+		for(DownloadItem item : runningList){
+			if(item.url.equals(url)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * 增加一个任务，如果runningList 或 doneList 里有，则不做任何操作
 	 * 
@@ -417,6 +435,10 @@ public class DownloadManager {
 //		}
 		
 		DownloadEvent e = DownloadEvent.PROGRESS_CHANGED;
+		e.setUrl(item.url);
+		e.setDownloadSize(item.downloadSize);
+		e.setWholeSize(item.wholeSize);
+		
 		EventBus.getDefault().post(e);
 		
 		notifyLockItems();
@@ -471,12 +493,18 @@ public class DownloadManager {
 				}
 			}
 		} else if (status == DownloadStatus.USERRESUME) {
+			Log.d(TAG,"status == DownloadStatus.USERRESUME in");
 			if (runningSets.size() == 0) {
+				Log.d(TAG,"status == DownloadStatus.USERRESUME in submit");
 				executor.submit(item);
 				runningSets.put(item.downloadType, item);
 			}
 		}
 
+		e.setUrl(item.url);
+		e.setDownloadSize(item.downloadSize);
+		e.setWholeSize(item.wholeSize);
+		
 		EventBus.getDefault().post(e);
 		
 		//同步数据库
