@@ -76,6 +76,24 @@ public class Requester {
 	public static final int RESPONSE_TYPE_ADV_MORE = 0xffee2112;
 	public static final String RIA_INTERFACE_ADV_MORE = "/vs/api/user/wonderfulVideos";
 	
+	public static final int RESPONSE_TYPE_ADV_FLOW = 0xffee2113;
+	public static final String RIA_INTERFACE_ADV_FLOW = "/vs/api/user/videoflow";
+	
+	public static final int RESPONSE_TYPE_ADV_RECORD = 0xffee2114;
+	public static final String RIA_INTERFACE_ADV_RECORD = "/vs/api/user/videoflowrecord";
+	
+	public static final int RESPONSE_TYPE_APP_HOME = 0xffee2115;
+	public static final String RIA_INTERFACE_APP_HOME = "/vs/api/user/appHome";
+	
+	public static final int RESPONSE_TYPE_APP_LIST = 0xffee2116;
+	public static final String RIA_INTERFACE_APP_LIST = "/vs/api/user/appList";
+	
+	public static final int RESPONSE_TYPE_APP_FLOW = 0xffee2117;
+	public static final String RIA_INTERFACE_APP_FLOW = "/vs/api/user/appflow";
+	
+	public static final int RESPONSE_TYPE_APP_FLOW_RECORD = 0xffee2118;
+	public static final String RIA_INTERFACE_APP_FLOW_RECORD = "/vs/api/user/appflowrecord";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -87,6 +105,7 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_TEST, request);
 	}
 	
+	//2.1.1 获取验证码
 	public static void sendSMS(Handler handler, String tel, String type) {
 		getAuthCodeRequest request = new getAuthCodeRequest();
 		request.tel  = tel;
@@ -97,6 +116,18 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_SENDSMS, request);
 	}
 	
+	//2.1.2 用户注册
+	public static void register(Handler handler, String tel, String pass) {
+		registerRequest request = new registerRequest();
+		request.tel = tel;
+		request.pwd = pass;
+		request.imei = IMEI;
+		request.mac  = MAC;
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
+		worker.execute(RIA_INTERFACE_REGISTER, request);
+	}
+		
+	//2.1.3 验证码验证
 	public static void verifyAuthCode(Handler handler, String tel, String authcode, String type) {
 		verifyAuthCodeRequest request = new verifyAuthCodeRequest();
 		request.tel  = tel;
@@ -108,6 +139,7 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_VERIFY_CODE, request);
 	}
 	
+	//2.1.4 用户登录
 	public static void login(Handler handler, String tel, String pass) {
 		loginRequest request = new loginRequest();
 		request.tel = tel;
@@ -118,16 +150,17 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_LOGIN, request);
 	}
 	
-	public static void register(Handler handler, String tel, String pass) {
-		registerRequest request = new registerRequest();
-		request.tel = tel;
-		request.pwd = pass;
+	//2.1.5 自动登录
+	public static void autoLogin(Handler handler, String userid) {
+		autoLoginRequest request = new autoLoginRequest();
+		request.userid = userid;
 		request.imei = IMEI;
 		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
-		worker.execute(RIA_INTERFACE_REGISTER, request);
+		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_AUTO_LOGIN, autoLoginResponse.class);
+		worker.execute(RIA_INTERFACE_AUTO_LOGIN, request);
 	}
 	
+	//2.1.6 重设密码
 	public static void resetPassword(Handler handler, String tel, String newPass) {
 		resetPasswordRequest request = new resetPasswordRequest();
 		request.tel = tel;
@@ -138,14 +171,6 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_RESET_PWD, request);
 	}
 	
-	public static void autoLogin(Handler handler, String userid) {
-		autoLoginRequest request = new autoLoginRequest();
-		request.userid = userid;
-		request.imei = IMEI;
-		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_AUTO_LOGIN, autoLoginResponse.class);
-		worker.execute(RIA_INTERFACE_AUTO_LOGIN, request);
-	}
 	
 	public static void queryBank(Handler handler, String userid) {
 		queryBankRequest request = new queryBankRequest();
@@ -156,10 +181,12 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_QUERY_BANK, request);
 	}
 	
+	//2.2.1 账户基本信息查询
 	public static void queryAccountInfo(Handler handler, String userid) {
 		queryAccountInfo(true, handler, userid);
 	}
 	
+	//2.2.1 账户基本信息查询
 	public static void queryAccountInfo(boolean hasLoading, Handler handler, String userid) {
 		accountInfoRequest request = new accountInfoRequest();
 		request.userid = userid;
@@ -169,6 +196,7 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_ACCOUNT_INFO, request);
 	}
 	
+	//2.3.1 看广告首页列表
 	public static void getAdvList(boolean hasLoading, Handler handler) {
 		advHomeRequest request = new advHomeRequest();
 		request.imei = IMEI;
@@ -177,6 +205,7 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_ADV_LIST, request);
 	}
 	
+	//2.3.2 精彩广告列表(上拉加载更多精彩广告)
 	public static void getMoreAdvList(boolean hasLoading, Handler handler, String pageno) {
 		advMoreRequest request = new advMoreRequest();
 		request.pageno = pageno;
@@ -184,6 +213,71 @@ public class Requester {
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_MORE, AdvListMoreResp.class);
 		worker.execute(RIA_INTERFACE_ADV_MORE, request);
+	}
+	
+	//2.3.4 看广告赚流量币
+	public static void getAdvFlow(boolean hasLoading,Handler handler,String userid,String videoid) {
+		advFlowRequest request = new advFlowRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.videoid = videoid;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_FLOW, AdvFlowResp.class);
+		worker.execute(RIA_INTERFACE_ADV_FLOW, request);
+	}
+	
+	//2.3.5 获取广告赚取流量币记录
+	public static void getAdvRecord(boolean hasLoading,Handler handler,String userid) {
+		advFlowRecordRequest request = new advFlowRecordRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_RECORD, AdvFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_ADV_RECORD, request);
+	}
+	
+	//2.4.1 下载软件首页
+	public static void getAppHome(boolean hasLoading,Handler handler) {
+		appHomeRequest request = new appHomeRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_HOME, AdvListResp.class);
+		worker.execute(RIA_INTERFACE_APP_HOME, request);
+	}
+	
+	//2.4.2 下载软件列表(上拉加载更多)
+	public static void getMoreAppList(boolean hasLoading, Handler handler, String pageno) {
+		appListRequest request = new appListRequest();
+		request.pageno = pageno;
+		request.imei = IMEI;
+		request.mac = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_LIST, AppListMoreResp.class);
+		worker.execute(RIA_INTERFACE_APP_LIST, request);
+	}
+	
+	//2.4.4 下载软件赚流量币
+	public static void getAppFlow(boolean hasLoading,Handler handler,String userid,String appid,String type) {
+		appFlowRequest request = new appFlowRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.appid = appid;
+		request.flowtype = type;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_FLOW, AppFlowResp.class);
+		worker.execute(RIA_INTERFACE_APP_FLOW, request);
+	}
+	
+	//2.4.5 获取下载软件赚取流量币记录
+	public static void getAppRecord(boolean hasLoading,Handler handler,String userid) {
+		advFlowRecordRequest request = new advFlowRecordRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_FLOW_RECORD, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_APP_FLOW_RECORD, request);
 	}
 	
 /*	public static void sendSMS(Handler handler, String tel) {

@@ -168,19 +168,51 @@ public class GsonResponseObject {
 	/****************************************************
 	 *                      A.赚流量币
 	 ****************************************************/
+	// 2.3.1 广告首页视频
 	public static class AdvListResp {
 		public String status;
 		public AdverInfo[] bannerlist;
 		public AdverInfo[] newestlist;
 		public AdverInfo[] wonderfullist;
 	}
-	
+	//2.3.2 精彩广告列表(上拉加载更多精彩广告)
 	public static class AdvListMoreResp {
 		public String status;
 		public String hasnextpage;
 		public AdverInfo[] list;
 	}
-	
+	// 2.3.4 看广告赚流量币
+	public static class AdvFlowResp {
+		public String status;
+		public String flowcoins;
+	}
+	// 2.3.5 获取广告赚取流量币记录
+	public static class AdvFlowRecordResp {
+		public String status;
+		public AdverInfo[] recordlist;
+	}
+	// 2.4.1 下载软件首页
+	public static class AppHomeResp {
+		public String status;
+		public SoftInfoResp[] bannerlist;
+		public SoftInfoResp[] applist;
+	}
+	// 2.4.2 下载软件列表(上拉加载更多)
+	public static class AppListMoreResp {
+		public String status;
+		public String hasnextpage;
+		public SoftInfoResp[] list;
+	}
+	// 2.4.4 下载软件赚流量币
+	public static class AppFlowResp {
+		public String status;
+		public String flowcoins;
+	}
+	// 2.4.5 获取下载软件赚取流量币记录
+	public static class AppFlowRecordResp {
+		public String status;
+		public SoftInfoResp[] list;
+	}
 	
 	public static class SoftInfoResp {
 		public String appid;
