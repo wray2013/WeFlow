@@ -7,16 +7,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.event.MakeFlowFragmentEvent;
 import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.AppReccomFragment;
 import com.etoc.weflow.fragment.PlayGameFragment;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+
+import de.greenrobot.event.EventBus;
 
 public class MakeFlowActivity extends TitleRootActivity {
 
@@ -25,6 +29,9 @@ public class MakeFlowActivity extends TitleRootActivity {
 	private MyPagerAdapter adapter;
 	
 	private boolean isLogin = false;
+	public final static int INDEX_ADVERTISEMENT = 0;
+	public final static int INDEX_APPRECOMM = 1;
+	public final static int INDEX_PLAYGAME = 2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +53,34 @@ public class MakeFlowActivity extends TitleRootActivity {
 		index = index == 0?0:index - 1;
 		viewPage.setCurrentItem(index);
 		
+		MakeFlowFragmentEvent event  = new MakeFlowFragmentEvent();
+		event.setIndex(index);
+		EventBus.getDefault().post(event);
+		
 		isLogin = getIntent().getBooleanExtra("isLogin", false);
 		
+		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				MakeFlowFragmentEvent event  = new MakeFlowFragmentEvent();
+				event.setIndex(arg0);
+				EventBus.getDefault().post(event);
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 	private void initViews() {

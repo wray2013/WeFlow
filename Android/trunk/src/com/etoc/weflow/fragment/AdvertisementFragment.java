@@ -3,26 +3,6 @@ package com.etoc.weflow.fragment;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.etoc.weflow.R;
-import com.etoc.weflow.utils.DisplayUtil;
-import com.etoc.weflow.utils.ViewUtils;
-import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
-import com.etoc.weflow.activity.AdDetailActivity;
-import com.etoc.weflow.adapter.BannerAdapter;
-import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
-import com.etoc.weflow.net.GsonResponseObject.AdvListMoreResp;
-import com.etoc.weflow.net.GsonResponseObject.AdvListResp;
-import com.etoc.weflow.net.Requester;
-import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-import com.nostra13.universalimageloader.api.MyImageLoader;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
-import com.viewpagerindicator.PageIndicator;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,6 +11,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -41,6 +22,30 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.etoc.weflow.R;
+import com.etoc.weflow.activity.AdDetailActivity;
+import com.etoc.weflow.activity.MakeFlowActivity;
+import com.etoc.weflow.adapter.BannerAdapter;
+import com.etoc.weflow.event.MakeFlowFragmentEvent;
+import com.etoc.weflow.net.GsonResponseObject.AdvListMoreResp;
+import com.etoc.weflow.net.GsonResponseObject.AdvListResp;
+import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
+import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.ViewUtils;
+import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
+import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
+import com.viewpagerindicator.PageIndicator;
+
+import de.greenrobot.event.EventBus;
 
 public class AdvertisementFragment extends Fragment implements OnClickListener, OnRefreshListener2<ScrollView>, Callback {
 
@@ -95,7 +100,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 		
 		return v;
 	}
-
+	
 	private void initView(View view) {
 		// TODO Auto-generated method stub
 		lvRecommentAdv =  (ListView) view.findViewById(R.id.lv_recomment_ad);
@@ -151,8 +156,22 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 		ptrScrollView.setOnRefreshListener(this);
 		
 		refreshView();
+	}
+	
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
 		
-		Requester.getAdvList(true, handler);
+		EventBus.getDefault().register(this);
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
 	}
 	
 	private void refreshView() {
@@ -247,6 +266,15 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 			i.putExtra("adinfo", new Gson().toJson(info));
 			startActivity(i);
 			break;
+		}
+	}
+	
+	public void onEvent(MakeFlowFragmentEvent event) {
+		Log.d("=AAA=","onEvent index = " + event.getIndex());
+		if (event.getIndex() == MakeFlowActivity.INDEX_ADVERTISEMENT) {
+			if (bannerAdapter.getCount() == 0) {
+				Requester.getAdvList(true, handler);
+			}
 		}
 	}
 

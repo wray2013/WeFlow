@@ -70,8 +70,8 @@ public class WelcomePageActivity extends TitleRootActivity {
         	AccountInfo lastAcc = aiList.get(0);
         	if(lastAcc.getUserid() != null && !lastAcc.getUserid().equals("")) {
         		//存在userid
-        		Requester.autoLogin(handler, lastAcc.getUserid());
-        		return;
+//        		Requester.autoLogin(handler, lastAcc.getUserid());
+//        		return;
         	}
         }
 		handler.postDelayed(runnable, INTV_TIME);
