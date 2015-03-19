@@ -1,12 +1,16 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -23,10 +27,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.SoftDetailActivity;
 import com.etoc.weflow.download.DownloadManager;
 import com.etoc.weflow.download.DownloadType;
+import com.etoc.weflow.event.MakeFlowFragmentEvent;
+import com.etoc.weflow.net.GsonResponseObject.AdvListResp;
+import com.etoc.weflow.net.GsonResponseObject.AppHomeResp;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
@@ -39,7 +48,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.viewpagerindicator.PageIndicator;
 
-public class AppReccomFragment extends Fragment {
+public class AppReccomFragment extends Fragment implements Callback {
 	private View mView;
 	private AutoScrollViewPager viewPager = null;
 	private PageIndicator mIndicator;
@@ -47,11 +56,16 @@ public class AppReccomFragment extends Fragment {
 	private PullToRefreshScrollView ptrScrollView = null;
 	private ListView listView = null;
 	private AppAdatper adapter = null;
+	private List<SoftInfoResp> bannerList = new ArrayList<SoftInfoResp>();
+	private List<SoftInfoResp> appLlist = new ArrayList<SoftInfoResp>();
+	private Handler handler = null;
+	private int currentPage = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		handler = new Handler(this);
 	}
 	
 	@Override
@@ -82,8 +96,8 @@ public class AppReccomFragment extends Fragment {
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         mIndicator = (PageIndicator) view.findViewById(R.id.indicator_service);
         
-        bannerAdapter = new AppBannerAdapter(getChildFragmentManager(),  makeFakeData());
-        viewPager.setAdapter(bannerAdapter);
+        bannerAdapter = new AppBannerAdapter(getChildFragmentManager(),  bannerList);
+//        viewPager.setAdapter(bannerAdapter);
         
         mIndicator.setViewPager(viewPager);
 		mIndicator.notifyDataSetChanged();
@@ -94,7 +108,7 @@ public class AppReccomFragment extends Fragment {
 		
 		listView = (ListView) view.findViewById(R.id.lv_app_recomm);
 		
-		adapter = new AppAdatper(getActivity(), makeAppData());
+		adapter = new AppAdatper(getActivity(), appLlist);
 		listView.setAdapter(adapter);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
@@ -113,7 +127,13 @@ public class AppReccomFragment extends Fragment {
 		ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
 	}
 	
-	
+	public void onEvent(MakeFlowFragmentEvent event) {
+		if (event.getIndex() == MakeFlowActivity.INDEX_APPRECOMM) {
+			if (bannerList.size() == 0) {
+				Requester.getAppHome(true, handler);
+			}
+		}
+	}
 	
 	private List<SoftInfoResp> makeAppData() {
 		List<SoftInfoResp> list = new ArrayList<SoftInfoResp>();
@@ -331,6 +351,36 @@ public class AppReccomFragment extends Fragment {
 			return convertView;
 		}
 		
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_APP_HOME:
+			if(msg.obj != null) {
+				AppHomeResp response = (AppHomeResp) msg.obj;
+				if(response.status.equals("0000") || response.status.equals("0")) {
+					currentPage = 0;
+					bannerList.clear();
+					appLlist.clear();
+					if(response.bannerlist != null) {
+						bannerList.addAll(Arrays.asList(response.bannerlist));
+						viewPager.setAdapter(bannerAdapter);
+						bannerAdapter.notifyDataSetChanged();
+					}
+					if(response.applist != null) {
+						appLlist.addAll(Arrays.asList(response.applist));
+						adapter.notifyDataSetChanged();
+					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_APP_LIST:
+			break;
+
+		}
+		return false;
 	}
 	
 	
