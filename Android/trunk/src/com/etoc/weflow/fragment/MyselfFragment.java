@@ -38,7 +38,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	private MainActivity mainActivity = null;
 	private TextView tvLogin = null;
 	private RelativeLayout rlAccountInfo = null;
-	private boolean isLogin = true;
+	private boolean isLogin = false;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -132,7 +132,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	
 	private void checkLogin() {
-//		isLogin = false;
+		isLogin = false;
 		if (mainActivity != null) {
 			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
 			if (accountInfoDao != null && accountInfoDao.count() > 0) {

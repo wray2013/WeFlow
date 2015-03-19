@@ -105,7 +105,7 @@ public class WelcomePageActivity extends TitleRootActivity {
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-		finish();
+		this.finish();
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class WelcomePageActivity extends TitleRootActivity {
 		case Requester.RESPONSE_TYPE_AUTO_LOGIN:
 			autoLoginResponse alogin = (autoLoginResponse) msg.obj;
 			if(alogin != null) {
-				if(alogin.status.equals("0")) { //自动登录成功
+				if(alogin.status.equals("0") || alogin.status.equals("0000")) { //自动登录成功
 					AccountInfo acc = new AccountInfo();
 					acc.setIsregistration(alogin.isregistration);
 					acc.setFlowcoins(alogin.flowcoins);
@@ -122,7 +122,7 @@ public class WelcomePageActivity extends TitleRootActivity {
 					acc.setUseflow(alogin.useflow);
 					acc.setUserid(alogin.userid);
 					acc.setTel(alogin.tel);
-					accountInfoDao.deleteAll();
+//					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(acc);
 					handler.postDelayed(runnable, INTV_TIME);
 				} else {
@@ -132,6 +132,7 @@ public class WelcomePageActivity extends TitleRootActivity {
 						i.putExtra("tel", aiList.get(0).getTel());
 					}
 					startActivity(i);
+					this.finish();
 				}
 			} else {
 				PromptDialog.Alert(WelcomePageActivity.class, "您的网络不给力啊！");

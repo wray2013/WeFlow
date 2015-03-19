@@ -331,6 +331,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		Log.d(TAG, "onShow IN!");
 		if(mtvFlow != null && isLogin)
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+		loginView(isLogin);
 	}
 	
 	@Override
