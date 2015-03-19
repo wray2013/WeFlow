@@ -1,6 +1,8 @@
 package com.etoc.weflow.net;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -73,6 +75,81 @@ public class FakeData {
 			recommendadvs[0] = rinfo;
 		}
 //		map.put(Requester.RIA_INTERFACE_ADV_INFO, r3);
+		
+		AppHomeResp r4 = new AppHomeResp();
+		r4.status = "0";
+		r4.bannerlist = (SoftInfoResp[])createAppBannerData().toArray(new SoftInfoResp[0]);
+		r4.applist = (SoftInfoResp[])createAppData().toArray(new SoftInfoResp[0]);
+		map.put(Requester.RIA_INTERFACE_APP_HOME, r4);
+		
+		AppListMoreResp r5 = new AppListMoreResp();
+		r5.status = "0";
+		r5.hasnextpage = "1";
+		r5.list = (SoftInfoResp[])createAppData().toArray(new SoftInfoResp[0]);
+		map.put(Requester.RIA_INTERFACE_APP_LIST, r5);
+	}
+	
+	private static List<SoftInfoResp> createAppData() {
+		List<SoftInfoResp> list = new ArrayList<SoftInfoResp>();
+		
+		String[] icons = {"http://ico.ooopic.com/ajax/iconpng/?id=137122.png",
+				"http://pic27.nipic.com/20130313/3849388_101225310324_2.jpg",
+				"http://ico.ooopic.com/ajax/iconpng/?id=319307.png",
+				"http://img0.imgtn.bdimg.com/it/u=3348450869,464969419&fm=21&gp=0.jpg",
+				"http://www.sucaijiayuan.com/uploads/file/contents/2014/01/52c6dcfc0c75d.png"
+		};
+		String[] titles = {
+				"微话","美拍","苹果商店","麦当劳","爱买"
+		};
+		String[] descs = {
+				"沟通无极限","做最美的自己","高富帅必备","叔叔约约约","没有你买不到的。"
+		};
+		
+		String[] previewImgs = {
+				"http://img1.cache.netease.com/catchpic/8/87/874214114CEDF430D823A37FFAF49017.png",
+				"http://ent.southcn.com/8/images/attachement/jpg/site4/20140724/13/6975532463546479561.jpg",
+				"http://img.faruanwen.net/2015/02/12/14237124635714.jpg",
+				"http://himg2.huanqiu.com/attachment2010/2014/0826/20140826053243814.jpg"
+		};
+		String [] apkUrls = {
+				"https://raw.githubusercontent.com/Trinea/trinea-download/master/pull-to-refreshview-demo.apk",
+				"http://gdown.baidu.com/data/wisegame/74fed1d1e244eb3c/shoujibaidu_16786712.apk",
+				"http://gdown.baidu.com/data/wisegame/309a95d293e02508/ApiDemos.apk",
+				"https://raw.githubusercontent.com/Trinea/trinea-download/master/pull-to-refreshview-demo.apk",
+				"http://gdown.baidu.com/data/wisegame/309a95d293e02508/ApiDemos.apk",
+		};
+		for (int i = 0;i < 5;i++) {
+			SoftInfoResp resp = new SoftInfoResp();
+			resp.appid = i + "";
+			resp.appicon = icons[i];
+			resp.title = titles[i];
+			resp.size = "11.2M";
+			resp.version = "2.1.0";
+			resp.instruction = "分享微信朋友圈可获得10流量币\n安装软件体验2分钟以上即可获得流量币";
+			resp.introduction = descs[i];
+			resp.flowcoins = (i*10 + 10) + "";
+			resp.apppreview = previewImgs;
+			resp.apkurl = apkUrls[i];
+			list.add(resp);
+		}
+		return list;
+	}
+	
+	private static List<SoftInfoResp> createAppBannerData() {
+		List<SoftInfoResp> list = new ArrayList<SoftInfoResp>();
+		
+		String[] imgUrls = {"http://www.adzop.com//uploadpic/xcp/1412/P190.rmvb_20141222_110554.306.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P186.rmvb_20141222_110108.278.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P184.rmvb_20141222_110040.713.jpg",
+        		"http://www.adzop.com//uploadpic/xcp/1412/P176.rmvb_20141222_105653.404.jpg"
+        		};
+		for (int i = 0;i < 4;i++) {
+			SoftInfoResp resp = new SoftInfoResp();
+			resp.appid = i + "";
+			resp.appbannerpic = imgUrls[i];
+			list.add(resp);
+		}
+		return list;
 	}
 
 }

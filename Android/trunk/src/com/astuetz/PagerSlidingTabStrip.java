@@ -257,7 +257,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			View childView = tabsContainer.getChildAt(i);
 			if (childView instanceof TextView) {
 				TextView tv = (TextView)childView;
-				Log.d("=AAA=","currentPosition = " + currentPosition + " i = " + i);
 				if (curPos == i) {
 					tv.setTextColor(indicatorColor);
 				} else {

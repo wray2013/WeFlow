@@ -34,6 +34,6 @@
     </style>
     
     <style name="CirclePageIndicator">
-		<item name="centered">false</item>    
+		<item name="centered">true</item>    
     </style>
 </resources>

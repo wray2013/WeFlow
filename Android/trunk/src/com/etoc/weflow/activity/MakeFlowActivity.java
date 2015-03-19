@@ -52,10 +52,18 @@ public class MakeFlowActivity extends TitleRootActivity {
 		int index = getIntent().getIntExtra(ConStant.INTENT_MAKE_FLOW, 0);
 		index = index == 0?0:index - 1;
 		viewPage.setCurrentItem(index);
+		final int indexTemp = index;
+		handler.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				MakeFlowFragmentEvent event  = new MakeFlowFragmentEvent();
+				event.setIndex(indexTemp);
+				EventBus.getDefault().post(event);
+			}
+		}, 100);
 		
-		MakeFlowFragmentEvent event  = new MakeFlowFragmentEvent();
-		event.setIndex(index);
-		EventBus.getDefault().post(event);
 		
 		isLogin = getIntent().getBooleanExtra("isLogin", false);
 		

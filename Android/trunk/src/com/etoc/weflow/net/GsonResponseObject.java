@@ -235,12 +235,17 @@ public class GsonResponseObject {
 	/****************************************************
 	 *                      B.花流量币
 	 ****************************************************/
+	public static class PhoneChargeListResp {
+		public String status;
+		RechargePhoneResp[] chargelist;
+	}
+	
 	public static class RechargePhoneResp {
 		public String chargesid;//产品id
 		public String money;// 充值面额
 		public String cost;// 话费流量币
-		
 	}
+	
 	
 	public static class MobileFlowResp {
 		public String flowpkgid;

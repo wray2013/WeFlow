@@ -30,7 +30,7 @@ import android.util.Log;
 
 
 public class Requester {
-	private static final int isDebug = 0;
+	private static final int isDebug = 1;
 	
 	///////////////////////////////////////Response code:
 	public static final int RESPONSE_TYPE_TEST = 0xffee2000;
@@ -93,6 +93,39 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_APP_FLOW_RECORD = 0xffee2118;
 	public static final String RIA_INTERFACE_APP_FLOW_RECORD = "/vs/api/user/appflowrecord";
+	
+	public static final int RESPONSE_TYPE_PHONE_CHARGE_LIST = 0xffee2119;
+	public static final String RIA_INTERFACE_PHONE_CHARGE_LIST = "/vs/api/user/phoneChargeList";
+	
+	public static final int RESPONSE_TYPE_RECHARGE_PHONE = 0xffee2120;
+	public static final String RIA_INTERFACE_RECHARGE_PHONE = "/vs/api/user/rechargePhone";
+	
+	public static final int RESPONSE_TYPE_QRECHARGE_LIST = 0xffee2121;
+	public static final String RIA_INTERFACE_QRECHARGE_LIST = "/vs/api/user/QChargeList";
+	
+	public static final int RESPONSE_TYPE_RECHARGE_QQ = 0xffee2122;
+	public static final String RIA_INTERFACE_RECHARGE_QQ = "/vs/api/user/rechargeQQ";
+	
+	public static final int RESPONSE_TYPE_GAME_PKG_LIST = 0xffee2123;
+	public static final String RIA_INTERFACE_GAME_PKG_LIST = "/vs/api/user/gamePkgList";
+	
+	public static final int RESPONSE_TYPE_EXCHANGE_GAME_PKG = 0xffee2124;
+	public static final String RIA_INTERFACE_EXCHANGE_GAME_PKG = "vs/api/user/exchangeGamePkg";
+	
+	public static final int RESPONSE_TYPE_FLOW_PKG_LIST = 0xffee2125;
+	public static final String RIA_INTERFACE_FLOW_PKG_LIST = "vs/api/user/flowPkgList";
+	
+	public static final int RESPONSE_TYPE_EXCHANGE_FLOW_PKG = 0xffee2126;
+	public static final String RIA_INTERFACE_EXCHANGE_FLOW_PKG = "vs/api/user/exchangeGamePkg";
+	
+	public static final int RESPONSE_TYPE_GIFT_LIST = 0xffee2127;
+	public static final String RIA_INTERFACE_GIFT_LIST = "vs/api/user/giftList";
+	
+	public static final int RESPONSE_TYPE_EXCHANG_GIFT = 0xffee2128;
+	public static final String RIA_INTERFACE_EXCHANG_GIFT = "vs/api/user/exchangeGift";
+	
+	public static final int RESPONSE_TYPE_COST_FLOW_LIST = 0xffee2129;
+	public static final String RIA_INTERFACE_COST_FLOW_LIST = "vs/api/user/costFlowList";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -271,13 +304,137 @@ public class Requester {
 	
 	//2.4.5 获取下载软件赚取流量币记录
 	public static void getAppRecord(boolean hasLoading,Handler handler,String userid) {
-		advFlowRecordRequest request = new advFlowRecordRequest();
+		appFlowRecordRequest request = new appFlowRecordRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_FLOW_RECORD, AppFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_APP_FLOW_RECORD, request);
+	}
+	
+	//2.6.1 获取话费充值列表
+	public static void getPhoneChargeList(boolean hasLoading,Handler handler) {
+		phoneChargeListRequest request = new phoneChargeListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_PHONE_CHARGE_LIST, PhoneChargeListResp.class);
+		worker.execute(RIA_INTERFACE_PHONE_CHARGE_LIST, request);
+	}
+	
+	//2.6.2 话费充值
+	public static void rechargePhone(boolean hasLoading,Handler handler,String userid,String phone,String productid) {
+		rechargePhoneRequest request = new rechargePhoneRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.productid = productid;
+		request.tel = phone;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_PHONE, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_RECHARGE_PHONE, request);
+	}
+	
+	//2.6.4 Q币充值列表
+	public static void getQChargeList(boolean hasLoading,Handler handler) {
+		QChargeListRequest request = new QChargeListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_QRECHARGE_LIST, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_QRECHARGE_LIST, request);
+	}
+	
+	//2.6.5 Q币充值
+	public static void rechargeQQ(boolean hasLoading,Handler handler,String userid,String qq,String productid) {
+		rechargeQQRequest request = new rechargeQQRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.productid = productid;
+		request.qqnum = qq;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_QQ, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_RECHARGE_QQ, request);
+	}
+	
+	//2.6.6 获取游戏礼包兑换列表
+	public static void getGamePkgList(boolean hasLoading,Handler handler) {
+		gamePkgListRequest request = new gamePkgListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GAME_PKG_LIST, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_GAME_PKG_LIST, request);
+	}
+	
+	//2.6.7 游戏礼包兑换
+	public static void exchangeGamePkg(boolean hasLoading,Handler handler,String userid,String productid) {
+		exchangeGamePkgRequest request = new exchangeGamePkgRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.gamepkgid = productid;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_GAME_PKG, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_EXCHANGE_GAME_PKG, request);
+	}
+	
+	//2.6.10 获取流量包列表
+	public static void getFlowPkgList(boolean hasLoading,Handler handler) {
+		flowPkgListRequest request = new flowPkgListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_FLOW_PKG_LIST, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_FLOW_PKG_LIST, request);
+	}
+	
+	//2.6.11 兑换流量包
+	public static void exchangeFlowPkg(boolean hasLoading,Handler handler,String userid,String productid) {
+		exchangeFlowPkgRequest request = new exchangeFlowPkgRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.flowpkgid = productid;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_FLOW_PKG, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_EXCHANGE_FLOW_PKG, request);
+	}
+	
+	//2.6.12 获取礼券兑换列表
+	public static void getGiftList(boolean hasLoading,Handler handler) {
+		giftListRequest request = new giftListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GIFT_LIST, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_GIFT_LIST, request);
+	}
+	
+	//2.6.13 兑换礼券
+	public static void exchangeGift(boolean hasLoading,Handler handler,String userid,String productid) {
+		exchangeGiftRequest request = new exchangeGiftRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.giftid = productid;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANG_GIFT, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_EXCHANG_GIFT, request);
+	}
+	
+	//2.6.14 花流量币记录
+	public static void getCostFlowRecord(boolean hasLoading,Handler handler,String userid,String type) {
+		costFlowRecordRequest request = new costFlowRecordRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.type = type;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_COST_FLOW_LIST, AppFlowRecordResp.class);
+		worker.execute(RIA_INTERFACE_COST_FLOW_LIST, request);
 	}
 	
 /*	public static void sendSMS(Handler handler, String tel) {
@@ -381,7 +538,7 @@ public class Requester {
 		    
 			if(isDebug==1){
 				try {
-					Thread.sleep(100);
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
