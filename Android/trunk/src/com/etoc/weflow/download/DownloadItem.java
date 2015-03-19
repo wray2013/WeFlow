@@ -78,6 +78,7 @@ public class DownloadItem implements Runnable {
 	}
 
 	public DownloadItem(String mediaid, String title,String url, String picUrl, String descrp,DownloadType type, String source, String data) {
+		this();
 		this.isUserPause = false;
 		this.mediaId = mediaid;
 		this.title = title;
@@ -87,13 +88,6 @@ public class DownloadItem implements Runnable {
 		this.downloadType = type;
 		this.source = source;
 		this.data = data;
-		
-		cancel = false;
-		context = WeFlowApplication.getAppInstance();
-		downloadDir = StorageUtils.getOwnCacheDirectory(context, ConStant.getDownloadCachePath());
-		if(!downloadDir.exists()){
-			downloadDir.mkdirs();
-		}
 	}
 
 	public DownloadItem(DownloadHistory item) {

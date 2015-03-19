@@ -95,4 +95,8 @@
     <color name="color_input_default">#E84728</color>
     <color name="color_input_pressed">#CC3412</color>
     <color name="color_input_disable">#C9C9CA</color>
+    <color name="color_red_pressed">#F29A75</color>
+    
+    <color name="color_green_normal">#13AD67</color>
+    <color name="color_green_pressed">#A5D4AC</color>
 </resources>

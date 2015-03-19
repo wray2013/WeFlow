@@ -67,7 +67,7 @@
         android:layout_marginTop="14dp"
         android:text="下载"
         android:textSize="13sp"
-        android:textColor="#F4A394"
+        android:textColor="@color/color_red_text"
         android:gravity="center"
         />
     

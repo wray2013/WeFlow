@@ -2,9 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
     <solid android:color="#ffffff" />
     <stroke android:width="0.5dp"
-        android:color="@color/pagertab_color_green"
+        android:color="@color/color_green_pressed"
         />
-    <corners
+    <corners 
         android:radius="5dp"
         />
 

@@ -56,13 +56,13 @@
         android:id="@+id/tv_gift_exchange"
         android:layout_width="56dp"
         android:layout_height="25dp"
-        android:background="@drawable/bg_gift_exchange"
+        android:background="@drawable/bg_green_btn"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:text="兑换"
         android:textSize="13sp"
-        android:textColor="@color/pagertab_color_green"
+        android:textColor="@color/color_green_text"
         android:gravity="center"
         />
     
