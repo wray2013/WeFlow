@@ -212,7 +212,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ImageLoader.getInstance().displayImage("http://detail.amap.com/telecom/images/AMAP_05.jpg", ivRecB);*/
 		isLogin = false;
 		
-		AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
+		/*AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
 		if(accountInfoDao != null && accountInfoDao.count() > 0) {
 			List<AccountInfo> aiList = accountInfoDao.loadAll();
 			currentAccount = aiList.get(0);
@@ -221,12 +221,35 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				//TODO:请求套餐
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 			}
-		}
-		loginView(isLogin);
+		}*/
+		
+		loginView();
 
 	}
 	
-	private void loginView(boolean isLogin) {
+	private void checkLogin() {
+		isLogin = false;
+		if (mainActivity != null) {
+			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
+			if (accountInfoDao != null && accountInfoDao.count() > 0) {
+				List<AccountInfo> aiList = accountInfoDao.loadAll();
+				currentAccount = aiList.get(0);
+				if (currentAccount != null && currentAccount.getUserid() != null
+						&& !currentAccount.getUserid().equals("")) {
+					Log.e("XXX", "已登录");
+					isLogin = true;
+				}
+			}
+		}
+	}
+	
+	private void loginView() {
+		
+		if(rlNotLogin == null || rlLogin == null ||
+				tvCellPhone == null || mtvFlow == null) return;
+		
+		checkLogin();
+		
 		if(isLogin) {
 			//已登录
 			rlNotLogin.setVisibility(View.GONE);
@@ -271,6 +294,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
+		loginView();
 		if(mtvFlow != null && isLogin)
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 	}
@@ -331,7 +355,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		Log.d(TAG, "onShow IN!");
 		if(mtvFlow != null && isLogin)
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
-		loginView(isLogin);
+		loginView();
 	}
 	
 	@Override
@@ -366,7 +390,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 					// TODO Auto-generated method stub
 					ptrScrollView.onRefreshComplete();
 				}
-			}, 500);
+			}, 10);
 		}
 	}
 
