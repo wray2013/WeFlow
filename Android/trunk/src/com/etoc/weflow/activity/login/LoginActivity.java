@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.TitleRootActivity;
 import com.etoc.weflow.dao.AccountInfo;
@@ -204,12 +205,16 @@ public class LoginActivity extends TitleRootActivity {
 					accountinfo.setTel(loginResp.tel);
 //					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(accountinfo);
-					
+					if(loginResp.tel != null && !loginResp.tel.equals("")) {
+						WeFlowApplication.getAppInstance().addJPushTag(loginResp.tel);
+					}
 					Intent intent = new Intent();
 					intent.setClass(this, MainActivity.class);
 					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					finish();
+				} else if("2003".equals(loginResp.status)) {
+					PromptDialog.Alert(LoginActivity.class, "账号或密码错误，请重新输入！");
 				}
 			} else {
 				PromptDialog.Alert(LoginActivity.class, "您的网络不给力啊！");

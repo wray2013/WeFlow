@@ -22,13 +22,14 @@ public class MagicTextView extends TextView {
 
 	@TargetApi(11)
 	public void showNumberWithAnimation(String number, int duration) {
-		int num = 0;
+		float num = 0;
 		try {
-			num = Integer.parseInt(number);
+			num = Float.parseFloat(number);
 		} catch(Exception e) {
+			
 			e.printStackTrace();
 		}
-		showNumberWithAnimation(num, duration);
+		showNumberWithAnimation((int)num, duration);
 	}
 	
 	@TargetApi(11)

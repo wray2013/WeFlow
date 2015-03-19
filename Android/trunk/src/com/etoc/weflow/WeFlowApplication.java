@@ -35,6 +35,7 @@ public class WeFlowApplication extends Application {
 	private long lastRespNullTs = 0;
 	private LinkedList<Activity> activityList = new LinkedList<Activity>(); 
 	public static int totalFlow = 0;
+	private  Set<String> tags = new HashSet<String>();
 	
 	@Override
 	public void onCreate() {
@@ -42,7 +43,7 @@ public class WeFlowApplication extends Application {
 		JPushInterface.setDebugMode(true); 	//设置开启日志,发布时请关闭日志
         JPushInterface.init(this);     		// 初始化 JPush
         
-        Set<String> tags = new HashSet<String>();
+//        Set<String> tags = new HashSet<String>();
         tags.add("weflow");
 //		tags.add("");
 		JPushInterface.setTags(this, tags, null);
@@ -76,6 +77,11 @@ public class WeFlowApplication extends Application {
 
 	public final static WeFlowApplication getAppInstance() {
 		return appinstance;
+	}
+	
+	public void addJPushTag(String tag) {
+		tags.add(tag);
+		JPushInterface.setTags(this, tags, null);
 	}
 	
     // ���Activity�������� 

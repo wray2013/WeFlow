@@ -70,8 +70,8 @@ public class WelcomePageActivity extends TitleRootActivity {
         	AccountInfo lastAcc = aiList.get(0);
         	if(lastAcc.getUserid() != null && !lastAcc.getUserid().equals("")) {
         		//存在userid
-        		Requester.autoLogin(handler, lastAcc.getUserid());
-        		return;
+//        		Requester.autoLogin(handler, lastAcc.getUserid());
+//        		return;
         	}
         }
 		handler.postDelayed(runnable, INTV_TIME);
@@ -124,6 +124,9 @@ public class WelcomePageActivity extends TitleRootActivity {
 					acc.setTel(alogin.tel);
 //					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(acc);
+					if(alogin.tel != null && !alogin.tel.equals("")) {
+						WeFlowApplication.getAppInstance().addJPushTag(alogin.tel);
+					}
 					handler.postDelayed(runnable, INTV_TIME);
 				} else {
 					PromptDialog.Alert(WelcomePageActivity.class, "登录失败,请重新登录");

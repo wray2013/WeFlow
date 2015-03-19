@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.TitleRootActivity;
 import com.etoc.weflow.dao.AccountInfo;
@@ -324,7 +325,9 @@ public class RegisterResetActivity extends TitleRootActivity {
 					accountinfo.setTel(regResp.tel);
 //					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(accountinfo);
-					
+					if(regResp.tel != null && !regResp.tel.equals("")) {
+						WeFlowApplication.getAppInstance().addJPushTag(regResp.tel);
+					}
 					startActivity(new Intent(this, MainActivity.class));
 					this.finish();
 				}

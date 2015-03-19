@@ -18,11 +18,11 @@ public class SpaceUtils {
         if(Environment.MEDIA_MOUNTED.equals(state)) { 
             File sdcardDir = Environment.getExternalStorageDirectory(); 
             StatFs sf = new StatFs(sdcardDir.getPath()); 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
+            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
                 blockSize = sf.getBlockSizeLong(); 
                 blockCount = sf.getBlockCountLong(); 
                 availCount = sf.getAvailableBlocksLong(); 
-            }else{
+            }else*/{
                 blockSize = sf.getBlockSize(); 
                 blockCount = sf.getBlockCount(); 
                 availCount = sf.getAvailableBlocks(); 
@@ -44,11 +44,11 @@ public class SpaceUtils {
 		
         File root = Environment.getRootDirectory(); 
         StatFs sf = new StatFs(root.getPath()); 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
             blockSize = sf.getBlockSizeLong(); 
             blockCount = sf.getBlockCountLong(); 
             availCount = sf.getAvailableBlocksLong(); 
-        }else{
+        }else*/{
             blockSize = sf.getBlockSize(); 
             blockCount = sf.getBlockCount(); 
             availCount = sf.getAvailableBlocks(); 
@@ -74,11 +74,11 @@ public class SpaceUtils {
         if(Environment.MEDIA_MOUNTED.equals(state)) { 
             File sdcardDir = Environment.getExternalStorageDirectory(); 
             StatFs sf = new StatFs(sdcardDir.getPath()); 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
+            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
                 blockSize = sf.getBlockSizeLong(); 
                 blockCount = sf.getBlockCountLong(); 
                 availCount = sf.getAvailableBlocksLong(); 
-            }else{
+            }else*/{
                 blockSize = sf.getBlockSize(); 
                 blockCount = sf.getBlockCount(); 
                 availCount = sf.getAvailableBlocks(); 
