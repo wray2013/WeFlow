@@ -40,6 +40,8 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	private RelativeLayout rlAccountInfo = null;
 	private boolean isLogin = false;
 	
+	private AccountInfo currentAccount = null;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -126,20 +128,36 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_me_center_a), 20);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_me_center_b), 20);
 		ViewUtils.setMarginTop(view.findViewById(R.id.rl_me_bottom), 20);
-		
-		checkLogin();
+
+		loginView();
 	}
 	
 	
+	private void loginView() {
+		// TODO Auto-generated method stub
+		checkLogin();
+		if(tvLogin == null) return;
+		
+		if(isLogin) {
+			tvLogin.setText(currentAccount.getTel());
+			tvLogin.setClickable(false);
+			tvLogin.setBackgroundResource(0);
+		} else {
+			tvLogin.setText("开通流量钱包");
+			tvLogin.setClickable(true);
+			tvLogin.setBackgroundResource(R.drawable.bg_round_login);
+		}
+	}
+
 	private void checkLogin() {
 		isLogin = false;
 		if (mainActivity != null) {
 			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
 			if (accountInfoDao != null && accountInfoDao.count() > 0) {
 				List<AccountInfo> aiList = accountInfoDao.loadAll();
-				AccountInfo current = aiList.get(0);
-				if (current != null && current.getUserid() != null
-						&& !current.getUserid().equals("")) {
+				currentAccount = aiList.get(0);
+				if (currentAccount != null && currentAccount.getUserid() != null
+						&& !currentAccount.getUserid().equals("")) {
 					Log.e("XXX", "已登录");
 					isLogin = true;
 				}
@@ -147,11 +165,13 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		}
 	}
 	
+	
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
+		loginView();
 	}
 	
 	@Override
@@ -184,7 +204,9 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			break;
 		case R.id.rl_account_info:
 			if (isLogin) {
-				startActivity(new Intent(getActivity(), AccountActivity.class));
+				Intent accountIntent = new Intent(getActivity(), AccountActivity.class);
+				accountIntent.putExtra("tel", currentAccount.getTel());
+				startActivity(accountIntent);
 			}
 			break;
 		}
@@ -198,6 +220,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	@Override
 	public void onShow() {
 		Log.d(TAG, "onShow IN!");
+		loginView();
 	}
 	
 }
