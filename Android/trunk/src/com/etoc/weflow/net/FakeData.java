@@ -18,8 +18,8 @@ import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.net.GsonResponseObject.getAccInfoResponse;
 import com.etoc.weflow.net.GsonResponseObject.getAdvInfoResponse;
+import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
 import com.etoc.weflow.net.GsonResponseObject.loginResponse;
-import com.etoc.weflow.net.GsonResponseObject.sendSMSResponse;
 
 public class FakeData {
 	public static final String HTTP_HOST_PREFIX = "http://test1.mishare.cn:8080/1.1/images";
