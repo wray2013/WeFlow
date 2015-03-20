@@ -1,5 +1,6 @@
 package com.etoc.weflow.fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.AdDetailActivity;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -102,9 +105,9 @@ public class BannerFragment extends Fragment implements OnClickListener, Callbac
 		
 		switch(v.getId()) {
 		case R.id.rl_item_view_pager:	
-			/*Intent i = new Intent(getActivity(), AdDetailActivity.class);
+			Intent i = new Intent(getActivity(), AdDetailActivity.class);
 			i.putExtra("adinfo", (new Gson()).toJson(adInfo));
-			startActivity(i);*/
+			startActivity(i);
 			break;
 		}
 	}

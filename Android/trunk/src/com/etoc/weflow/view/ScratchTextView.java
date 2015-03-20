@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
@@ -80,11 +82,11 @@ public class ScratchTextView extends TextView {
 		ScratchTextView.percent = p;
 	}
 	
-	public void resetScratchCard(final int bgDrawable, final int bgColor) {
+	public void resetScratchCard(int width, int height, final int bgDrawable, final int bgColor) {
 		clearCanvas();
 		if(bgDrawable != 0) {
 			Drawable drawable = getResources().getDrawable(bgDrawable);
-			Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
+			Bitmap bm = zoomDrawable(drawable, width, height);//((BitmapDrawable) drawable).getBitmap();
 			Paint p = new Paint();
 			mCanvas.drawBitmap(bm, 0, 0, p);
 		} else {
@@ -143,7 +145,7 @@ public class ScratchTextView extends TextView {
 
 		if(bgDrawable != 0) {
 			Drawable drawable = getResources().getDrawable(bgDrawable);
-			Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
+			Bitmap bm = zoomDrawable(drawable, w, h);//((BitmapDrawable) drawable).getBitmap();
 			Paint p = new Paint();
 			mCanvas.drawBitmap(bm, 0, 0, p);
 		} else {
@@ -153,6 +155,30 @@ public class ScratchTextView extends TextView {
 		isDraw = true;
 		isComplete = false;
 	}
+	
+	private static Bitmap/*Drawable*/ zoomDrawable(Drawable drawable, int w, int h) {
+        int width = drawable.getIntrinsicWidth();
+        int height = drawable.getIntrinsicHeight();
+        Bitmap oldbmp = drawableToBitmap(drawable);
+        Matrix matrix = new Matrix();
+        float scaleWidth = ((float) w / width);
+        float scaleHeight = ((float) h / height);
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap newbmp = Bitmap.createBitmap(oldbmp, 0, 0, width, height,matrix, true);
+        return newbmp;
+//        return new BitmapDrawable(null, newbmp);
+    }   
+
+    private static Bitmap drawableToBitmap(Drawable drawable) {
+        int width = drawable.getIntrinsicWidth();
+        int height = drawable.getIntrinsicHeight();
+        Bitmap.Config config = drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
+        Bitmap bitmap = Bitmap.createBitmap(width, height, config);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, width, height);
+        drawable.draw(canvas);
+        return bitmap;
+    }
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {

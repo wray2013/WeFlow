@@ -6,17 +6,20 @@ import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.MediaController;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
+import com.etoc.weflow.utils.ViewUtils;
 import com.google.gson.Gson;
 
 public class AdDetailActivity extends TitleRootActivity {
@@ -49,23 +52,63 @@ public class AdDetailActivity extends TitleRootActivity {
 		ibPlay = (ImageButton) findViewById(R.id.btn_play);
 		ibPlay.setOnClickListener(this);
 		
-		
-		
 		mediaController=new MediaController(this);
 		vvAdvVideo = (VideoView) findViewById(R.id.vv_ad_video);
 //		vvAdvVideo.setMediaController(mediaController);
 		vvAdvVideo.setOnPreparedListener(mOnPreparedListener);
 		vvAdvVideo.setOnErrorListener(mOnErrorListener);
 		vvAdvVideo.setOnCompletionListener(mOnCompletionListener);
+		vvAdvVideo.setMediaController(mediaController);
+//		mediaController.setAnchorView(vvAdvVideo);
+		showController.sendEmptyMessageDelayed(0, 1000);
 		
 		String adInfoStr = getIntent().getStringExtra("adinfo");
 		AdverInfo adInfo = new Gson().fromJson(adInfoStr, AdverInfo.class);
-		TextView tvTitle = (TextView) findViewById(R.id.tv_ad_title);
-		tvTitle.setText(adInfo.title);
+//		TextView tvTitle = (TextView) findViewById(R.id.tv_ad_title);
+//		tvTitle.setText(adInfo.title);
+		setTitleText(adInfo.title);
 		AdUrl = adInfo.video;
 		TextView tvContent = (TextView) findViewById(R.id.tv_ad_content);
 		tvContent.setText(adInfo.content);
+		
+		TextView tvCoins = (TextView) findViewById(R.id.tv_content);
+		float coins = 0;
+		try {
+			coins = Float.parseFloat(adInfo.flowcoins);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		tvCoins.setText((int)coins + "");
+		
+		ViewUtils.setHeight(findViewById(R.id.rl_mid), 122);
+		ViewUtils.setWidth(findViewById(R.id.rl_ad_flow), 62);
+		ViewUtils.setHeight(findViewById(R.id.rl_ad_flow), 85);
+		
+		ViewUtils.setMarginLeft(findViewById(R.id.rl_mid), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.rl_mid), 32);
+		
+		ViewUtils.setMarginTop(findViewById(R.id.rl_bottom), 22);
+		ViewUtils.setMarginLeft(findViewById(R.id.rl_bottom), 32);
+		ViewUtils.setMarginRight(findViewById(R.id.rl_bottom), 32);
+		
+		ViewUtils.setTextSize(findViewById(R.id.tv_ad_content), 32);
+		ViewUtils.setTextSize(findViewById(R.id.tv_ad_time), 28);
+		ViewUtils.setTextSize(findViewById(R.id.tv_ad_ins), 28);
+		ViewUtils.setTextSize(findViewById(R.id.tv_content), 23);
+		ViewUtils.setTextSize(findViewById(R.id.tv_ad_flow_label), 18);
 	}
+	
+	@Override
+	protected int graviteType() {
+		// TODO Auto-generated method stub
+		return GRAVITE_LEFT;
+	}
+	
+	private Handler showController = new Handler() {
+		public void handleMessage(Message msg) {
+			mediaController.show(0);
+		}
+	};
 	
 	private OnCompletionListener mOnCompletionListener = new OnCompletionListener() {
 
@@ -100,6 +143,7 @@ public class AdDetailActivity extends TitleRootActivity {
 
 		@Override
 		public void onPrepared(MediaPlayer mp) {
+			vvAdvVideo.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			vvAdvVideo.start();
 		}
 	};

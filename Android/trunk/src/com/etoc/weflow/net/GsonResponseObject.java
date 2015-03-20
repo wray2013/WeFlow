@@ -16,11 +16,11 @@ public class GsonResponseObject {
 		public String id;
 	}
 	
-	public static class sendSMSResponse extends commonResponse{
+	/*public static class sendSMSResponse extends commonResponse{
 		public boolean isSucceed() {
 			return "0000".equals(code) || "2009".equals(code);
 		}
-	}
+	}*/
 	
 	public static class commonResponse {
 		public String code;// ":0;

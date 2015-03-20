@@ -2,42 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_grey" >
+    android:background="@color/white" >
 
     <RelativeLayout
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-        <TextView 
-            android:id="@+id/tv_ad_title"
-            android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_margin="5dp"
-        	android:gravity="center"
-        	android:layout_centerHorizontal="true"
-        	android:text="活的养乐多，越活越开心"
-        	android:textColor="@android:color/black"/>
-        <TextView 
-            android:id="@+id/tv_ad_time"
-            android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_below="@+id/tv_ad_title"
-        	android:gravity="center"
-        	android:layout_centerHorizontal="true"
-        	android:text="发布时间：2015/02/25"
-        	android:textColor="@color/text_grey"/>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rl_mid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_top" >
-        <VideoView 
+        <VideoView
             android:id="@+id/vv_ad_video"
             android:layout_width="match_parent"
-        	android:layout_height="200dp"
-        	android:layout_margin="5dp"/>
+            android:layout_height="200dp"
+            android:minHeight="200dp"/>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,31 +32,99 @@
                 android:contentDescription="图片找不到啦"
                 android:src="@drawable/btn_adv_play" />
         </RelativeLayout>
-        
-        <TextView 
-            android:id="@+id/tv_ad_content"
-            android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_below="@+id/vv_ad_video"
-        	android:layout_margin="5dp"
-        	android:layout_centerHorizontal="true"
-        	android:text="活的养乐多，越活越开心"
-        	android:textColor="@android:color/black"/>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_mid"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_below="@+id/rl_top"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" >
+
+        <RelativeLayout
+            android:id="@+id/rl_ad_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/rl_ad_flow"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+	        <TextView
+	            android:id="@+id/tv_ad_content"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center_vertical"
+	            android:includeFontPadding="false"
+	            android:text="活的养乐多，越活越开心"
+	            android:textColor="@color/black" />
+	
+	        <TextView
+	            android:id="@+id/tv_ad_time"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_below="@+id/tv_ad_content"
+	            android:gravity="center_vertical"
+	            android:includeFontPadding="false"
+	            android:text="发布时间：2015/02/25"
+	            android:textColor="@color/black" />
+		</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_ad_flow"
+            android:layout_width="36dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/flow_tag" >
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:includeFontPadding="false"
+                android:text="20"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_ad_flow_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_content"
+                android:layout_centerHorizontal="true"
+                android:includeFontPadding="false"
+                android:text="流量币"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/rl_mid"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/background_grey" />
 
     <RelativeLayout
         android:id="@+id/rl_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_mid" >
-        <TextView 
+        android:layout_below="@+id/tv_divider"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp" >
+
+        <TextView
             android:id="@+id/tv_ad_ins"
             android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:layout_margin="5dp"
-        	android:layout_centerHorizontal="true"
-        	android:text="温馨提示：\n1.本广告可赚取10流量币；\n2.广告需完整观看后，才能获得流量币奖励"
-        	android:textColor="@color/text_grey"/>
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="温馨提示：\n1.本广告可赚取10流量币；\n2.广告需完整观看后，才能获得流量币奖励"
+            android:textColor="@color/text_grey" />
     </RelativeLayout>
 
 </RelativeLayout>

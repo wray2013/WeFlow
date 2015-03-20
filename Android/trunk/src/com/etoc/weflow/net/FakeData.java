@@ -14,9 +14,9 @@ public class FakeData {
 	
 	public static Map<String, Object> map = new HashMap<String, Object>();
 	static{
-		sendSMSResponse r0 = new sendSMSResponse();
-		r0.code = "0";
-		map.put(Requester.RIA_INTERFACE_SENDSMS, r0);
+		getAuthCodeResponse r0 = new getAuthCodeResponse();
+		r0.status = "0000";
+//		map.put(Requester.RIA_INTERFACE_SENDSMS, r0);
 		
 		loginResponse r1 = new loginResponse();
 		/*r1.status = "0";
@@ -24,7 +24,7 @@ public class FakeData {
 //		r1.tel    = "";
 		r1.pts    = "95";
 		r1.rate   = "4.31";*/
-		map.put(Requester.RIA_INTERFACE_LOGIN, r1);
+//		map.put(Requester.RIA_INTERFACE_LOGIN, r1);
 		
 		getAccInfoResponse r2 = new getAccInfoResponse();
 		r2.status = "0";

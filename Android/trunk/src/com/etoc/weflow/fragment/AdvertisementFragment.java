@@ -116,7 +116,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         mIndicator = (PageIndicator) view.findViewById(R.id.indicator_service);
         
-        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.small_pic_default, bannerlist/*makeFakeData()*/);
+        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.small_pic_default, /*bannerlist*/makeFakeData());
         if(bannerAdapter.getCount() > 0) {
         	viewPager.setAdapter(bannerAdapter);
         	mIndicator.setViewPager(viewPager);
@@ -236,7 +236,8 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         		"病毒扩散"
         };
         String[] videoUrls = {
-        		"http://v.adzop.com/xcp/1412/P190.mp4",
+        		"rtsp://113.57.180.175/test.mp4",
+//        		"http://v.adzop.com/xcp/1412/P190.mp4",
         		"http://v.adzop.com/xcp/1412/P186.mp4",
         		"http://v.adzop.com/xcp/1412/P184.mp4",
         		
@@ -248,6 +249,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         	info.title = titles[i];
         	info.cover = imgUrls[i];
         	info.video = videoUrls[i];
+        	info.flowcoins = (i + 1) + "";
         	
         	adList.add(info);
         }

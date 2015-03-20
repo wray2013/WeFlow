@@ -197,7 +197,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 	
 	private void startLottery() {
 		randomAward();
-		stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
+		LayoutParams cardlp = stvCard.getLayoutParams();
+		stvCard.resetScratchCard(cardlp.width, cardlp.height, R.drawable.scratch_bg, 0);
 		if(isRetry) {
 //			ivCover.setVisibility(View.VISIBLE);
 //			btnStartLottery.setVisibility(View.VISIBLE);

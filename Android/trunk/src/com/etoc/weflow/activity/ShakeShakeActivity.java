@@ -3,6 +3,10 @@ package com.etoc.weflow.activity;
 import com.etoc.weflow.R;
 import com.etoc.weflow.listener.ShakeListener;
 import com.etoc.weflow.listener.ShakeListener.OnShakeListener;
+
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -63,7 +67,23 @@ public class ShakeShakeActivity extends TitleRootActivity {
 			}
 		});
 	}
+	
+	private void loadSound(final Context ctx) {
+		final SoundPool sp = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
+		new Thread() {
+			public void run() {
+				try {
+					sp.load(ctx, R.raw.glass, 1);
+					sp.play(1, 1, 1, 0, 0, 1);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
+
 	public void startAnim () {   //定义摇一摇动画动画
+		loadSound(this);
 		AnimationSet animup = new AnimationSet(true);
 		TranslateAnimation mytranslateanimup0 = new TranslateAnimation(Animation.RELATIVE_TO_SELF,0f,Animation.RELATIVE_TO_SELF,0f,Animation.RELATIVE_TO_SELF,0f,Animation.RELATIVE_TO_SELF,-0.5f);
 		mytranslateanimup0.setDuration(1000);
