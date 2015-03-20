@@ -14,6 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:minHeight="200dp"/>
+        <TextView 
+            android:id="@+id/tv_sec_remains"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/vv_ad_video"
+            android:layout_alignTop="@+id/vv_ad_video"
+            android:layout_margin="5dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
