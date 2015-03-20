@@ -110,22 +110,22 @@ public class Requester {
 	public static final String RIA_INTERFACE_GAME_PKG_LIST = "/vs/api/user/gamePkgList";
 	
 	public static final int RESPONSE_TYPE_EXCHANGE_GAME_PKG = 0xffee2124;
-	public static final String RIA_INTERFACE_EXCHANGE_GAME_PKG = "vs/api/user/exchangeGamePkg";
+	public static final String RIA_INTERFACE_EXCHANGE_GAME_PKG = "/vs/api/user/exchangeGamePkg";
 	
 	public static final int RESPONSE_TYPE_FLOW_PKG_LIST = 0xffee2125;
-	public static final String RIA_INTERFACE_FLOW_PKG_LIST = "vs/api/user/flowPkgList";
+	public static final String RIA_INTERFACE_FLOW_PKG_LIST = "/vs/api/user/flowPkgList";
 	
 	public static final int RESPONSE_TYPE_EXCHANGE_FLOW_PKG = 0xffee2126;
-	public static final String RIA_INTERFACE_EXCHANGE_FLOW_PKG = "vs/api/user/exchangeGamePkg";
+	public static final String RIA_INTERFACE_EXCHANGE_FLOW_PKG = "/vs/api/user/exchangeGamePkg";
 	
 	public static final int RESPONSE_TYPE_GIFT_LIST = 0xffee2127;
-	public static final String RIA_INTERFACE_GIFT_LIST = "vs/api/user/giftList";
+	public static final String RIA_INTERFACE_GIFT_LIST = "/vs/api/user/giftList";
 	
 	public static final int RESPONSE_TYPE_EXCHANG_GIFT = 0xffee2128;
-	public static final String RIA_INTERFACE_EXCHANG_GIFT = "vs/api/user/exchangeGift";
+	public static final String RIA_INTERFACE_EXCHANG_GIFT = "/vs/api/user/exchangeGift";
 	
 	public static final int RESPONSE_TYPE_COST_FLOW_LIST = 0xffee2129;
-	public static final String RIA_INTERFACE_COST_FLOW_LIST = "vs/api/user/costFlowList";
+	public static final String RIA_INTERFACE_COST_FLOW_LIST = "/vs/api/user/costFlowList";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -276,7 +276,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_HOME, AdvListResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_HOME, AppHomeResp.class);
 		worker.execute(RIA_INTERFACE_APP_HOME, request);
 	}
 	

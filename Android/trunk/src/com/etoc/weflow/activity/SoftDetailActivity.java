@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 import com.dd.processbutton.iml.SubmitProcessButton;
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.download.DownloadEvent;
 import com.etoc.weflow.download.DownloadManager;
 import com.etoc.weflow.download.DownloadType;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.ProgressGenerator;
@@ -87,13 +89,13 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 		// TODO Auto-generated method stub
 		Log.d("=AAA=","onEventMainThread eventType = " + event + " type = " + event.getType() 
 				+ " wholeSize = " + event.getWholeSize() + " downloadSize = " + event.getDownloadSize()
-				+ " apkUrl = " + softDetailResp.apkurl + " downlaodUrl = " + event.getUrl());
+				+ " apkUrl = " + softDetailResp.soft + " downlaodUrl = " + event.getUrl());
 		
 		
 		switch (event) {
 		case STATUS_CHANGED:
 		case PROGRESS_CHANGED:
-			if (softDetailResp.apkurl.equals(event.getUrl())) {
+			if (softDetailResp.soft.equals(event.getUrl())) {
 				long progress = 0;
 				if (event.getWholeSize() > 0) {
 					progress = (long)(event.getDownloadSize()) * 100 / event.getWholeSize();
@@ -162,35 +164,38 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 			tvFlowDesc.setText(softDetailResp.instruction);
 			setTitleText(softDetailResp.title);
 			
-			if (softDetailResp.apppreview != null && softDetailResp.apppreview.length > 0) {
-				for (final String url:softDetailResp.apppreview) {
-					ImageView ivPre = new ImageView(this);
-					ivPre.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
-					ViewUtils.setWidth(ivPre, 214);
-					ViewUtils.setMarginRight(ivPre, 12);
-					ivPre.setScaleType(ScaleType.FIT_XY);
-					ivPre.setOnClickListener(new OnClickListener() {
+			if (softDetailResp.apppreview != null) {
+				String [] urls = softDetailResp.apppreview.split(",");
+				if (urls != null && urls.length > 0) {
+					for (final String url:urls) {
+						ImageView ivPre = new ImageView(this);
+						ivPre.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
+						ViewUtils.setWidth(ivPre, 214);
+						ViewUtils.setMarginRight(ivPre, 12);
+						ivPre.setScaleType(ScaleType.FIT_XY);
+						ivPre.setOnClickListener(new OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								Intent intent = new Intent(SoftDetailActivity.this, PicShowActivity.class);
+								intent.putExtra("imageUrl", url);
+								//EventBus.getDefault().post(RequestEvent.LOADING_END);
+								startActivity(intent);
+							}
+						});
 						
-						@Override
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
-							Intent intent = new Intent(SoftDetailActivity.this, PicShowActivity.class);
-							intent.putExtra("imageUrl", url);
-							//EventBus.getDefault().post(RequestEvent.LOADING_END);
-							startActivity(intent);
-						}
-					});
-					
-					
-					imageLoader.displayImage(url, ivPre,imageLoaderOptions);
-					llPicIntro.addView(ivPre);
+						
+						imageLoader.displayImage(url, ivPre,imageLoaderOptions);
+						llPicIntro.addView(ivPre);
+					}
 				}
 			}
 			
-			if (DownloadManager.getInstance().isDownlaoded(softDetailResp.apkurl)) {
+			if (DownloadManager.getInstance().isDownlaoded(softDetailResp.soft)) {
 				btnDownload.setProgress(100);
 				btnDownload.setEnabled(false);
-			} else if (DownloadManager.getInstance().isDownlaoding(softDetailResp.apkurl)){
+			} else if (DownloadManager.getInstance().isDownlaoding(softDetailResp.soft)){
 				btnDownload.setEnabled(false);
 			}
 		}
@@ -214,8 +219,10 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.btnSubmit:
-			DownloadManager.getInstance().addDownloadTask(softDetailResp.apkurl, "0", softDetailResp.title, softDetailResp.appicon, "",  DownloadType.APP, "", "");
-            btnDownload.setEnabled(false);
+//			DownloadManager.getInstance().addDownloadTask(softDetailResp.soft, "0", softDetailResp.title, softDetailResp.appicon, "",  DownloadType.APP, "", "");
+//            btnDownload.setEnabled(false);
+			
+			Requester.getAppFlow(true, handler, WeFlowApplication.accountInfo.getUserid(), softDetailResp.appid, "0");
 	        break;
 		}
 		super.onClick(v);

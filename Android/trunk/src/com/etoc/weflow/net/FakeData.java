@@ -8,9 +8,13 @@ import java.util.Map;
 import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
 import com.etoc.weflow.net.GsonResponseObject.AppHomeResp;
 import com.etoc.weflow.net.GsonResponseObject.AppListMoreResp;
+import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
+import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
+import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
+import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
 import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
@@ -117,6 +121,83 @@ public class FakeData {
 		r8.chargelist = (RechargeQQResp[]) createQQChargeList().toArray(new RechargeQQResp[0]);
 		map.put(Requester.RIA_INTERFACE_QRECHARGE_LIST, r8);
 		
+		FlowPkgListResp r9 = new FlowPkgListResp();
+		r9.status = "0";
+		r9.list = (MobileFlowResp[]) createMoblieFlowList().toArray(new MobileFlowResp[0]);
+		map.put(Requester.RIA_INTERFACE_FLOW_PKG_LIST, r9);
+		
+		GamePkgListResp r10 = new GamePkgListResp();
+		r10.status = "0";
+		r10.list = (GameGiftResp[]) createGameGiftList().toArray(new GameGiftResp[0]);
+		map.put(Requester.RIA_INTERFACE_GAME_PKG_LIST, r10);
+		
+	}
+	
+	private static List<GameGiftResp> createGameGiftList() {
+		List<GameGiftResp> list = new ArrayList<GameGiftResp>();
+		
+		String[] imgUrls = {"http://up.ekoooo.com/uploads2/tubiao/6/20088712119375778013.png",
+        		"http://up.ekoooo.com/uploads2/allimg/080730/03562737.png",
+        		"http://pica.nipic.com/2007-09-18/2007918135853894_2.jpg",
+        		"http://up.ekoooo.com/uploads2/allimg/080730/08455224.png",
+        		"http://up.ekoooo.com/uploads2/tubiao/7/200887197170778030.png"
+        		};
+		
+		String[] leaves = {
+				"189",
+				"189",
+				"189",
+				"189",
+				"189",
+		};
+		for (int i = 0;i < 5;i++) {
+			GameGiftResp resp = new GameGiftResp();
+			resp.gamepkgid = i + "";
+			resp.icon = imgUrls[i];
+			resp.title = "DNF服务器喇叭";
+			resp.leave = leaves[i];
+			resp.cost = ((i + 1) * 100) + "";
+			list.add(resp);
+		}
+		
+		return list;
+	}
+	
+	private static List<MobileFlowResp> createMoblieFlowList() {
+		List<MobileFlowResp> list = new ArrayList<MobileFlowResp>();
+		
+		String[] imgUrls = {"http://img2.imgtn.bdimg.com/it/u=2246142888,482574638&fm=21&gp=0.jpg",
+        		"http://img.ithome.com/newsuploadfiles/2013/7/20130729_082806_654.jpg",
+        		"http://img3.imgtn.bdimg.com/it/u=3520249570,2956679241&fm=21&gp=0.jpg",
+        		"http://img2.imgtn.bdimg.com/it/u=503567143,1320843493&fm=11&gp=0.jpg",
+        		"http://img2.imgtn.bdimg.com/it/u=2461699972,2986826516&fm=21&gp=0.jpg"
+        		};
+		String[] titles = {"10元畅享沃3G",
+				"电信20元流量包",
+				"300M流量包",
+				"50M流量包",
+				"1G流量包"
+		};
+		
+		String[] descs = {
+				"手机上网套餐全新升级，赠送流量包",
+				"手机上网套餐全新升级，赠送流量包",
+				"手机上网套餐全新升级，赠送流量包",
+				"手机上网套餐全新升级，赠送流量包",
+				"手机上网套餐全新升级，赠送流量包",
+		};
+		for (int i = 0;i < 5;i++) {
+			MobileFlowResp resp = new MobileFlowResp();
+			resp.flowpkgid = i + "";
+			resp.imgsrc = imgUrls[i];
+			resp.title = titles[i];
+			resp.desc = descs[i];
+			resp.cost = ((i + 1) * 1000) + "";
+			list.add(resp);
+		}
+		
+		return list;
+		
 	}
 	
 	private static List<RechargeQQResp> createQQChargeList() {
@@ -219,12 +300,10 @@ public class FakeData {
 				"沟通无极限","做最美的自己","高富帅必备","叔叔约约约","没有你买不到的。"
 		};
 		
-		String[] previewImgs = {
-				"http://img1.cache.netease.com/catchpic/8/87/874214114CEDF430D823A37FFAF49017.png",
-				"http://ent.southcn.com/8/images/attachement/jpg/site4/20140724/13/6975532463546479561.jpg",
-				"http://img.faruanwen.net/2015/02/12/14237124635714.jpg",
-				"http://himg2.huanqiu.com/attachment2010/2014/0826/20140826053243814.jpg"
-		};
+		String previewImgs = "http://img1.cache.netease.com/catchpic/8/87/874214114CEDF430D823A37FFAF49017.png"
+				+ ",http://ent.southcn.com/8/images/attachement/jpg/site4/20140724/13/6975532463546479561.jpg"
+				+ ",http://img.faruanwen.net/2015/02/12/14237124635714.jpg"
+				+ ",http://himg2.huanqiu.com/attachment2010/2014/0826/20140826053243814.jpg";
 		String [] apkUrls = {
 				"https://raw.githubusercontent.com/Trinea/trinea-download/master/pull-to-refreshview-demo.apk",
 				"http://gdown.baidu.com/data/wisegame/74fed1d1e244eb3c/shoujibaidu_16786712.apk",
@@ -243,7 +322,7 @@ public class FakeData {
 			resp.introduction = descs[i];
 			resp.flowcoins = (i*10 + 10) + "";
 			resp.apppreview = previewImgs;
-			resp.apkurl = apkUrls[i];
+			resp.soft = apkUrls[i];
 			list.add(resp);
 		}
 		return list;
