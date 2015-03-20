@@ -15,6 +15,7 @@ import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.*;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.VMobileInfo;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.Parcelable;
 import android.util.Log;
+import android.widget.TextView;
 
 public class WelcomePageActivity extends TitleRootActivity {
 
@@ -33,6 +35,8 @@ public class WelcomePageActivity extends TitleRootActivity {
 	private AccountInfoDao accountInfoDao;
 	
 	private List<AccountInfo> aiList = null;
+	
+	private TextView tvVersion;
 	
 	private static final int INTV_TIME = 3 * 1000;
 	
@@ -81,7 +85,9 @@ public class WelcomePageActivity extends TitleRootActivity {
 	
 	private void initView() {
 		// TODO Auto-generated method stub
-		
+		tvVersion = (TextView) findViewById(R.id.tv_version);
+		String ver = VMobileInfo.getAppVersionName(this);
+		tvVersion.setText("v" + ver);
 	}
 	
 	@Override

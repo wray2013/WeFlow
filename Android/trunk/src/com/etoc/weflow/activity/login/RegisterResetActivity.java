@@ -269,6 +269,10 @@ public class RegisterResetActivity extends TitleRootActivity {
 
 	@Override
 	public boolean handleMessage(Message msg) {
+		if(msg.obj == null) {
+			PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
+			return false;
+		}
 		// TODO Auto-generated method stub
 		switch(msg.what) {
 		case TickDownHelper.HANDLER_FLAG_TICK_DOWN:
