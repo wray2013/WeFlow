@@ -96,7 +96,6 @@
             android:id="@+id/tv_cost_coins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5000流量币"
             android:textColor="@color/pagertab_color_green" 
             android:textSize="16sp"
             android:layout_alignParentRight="true"

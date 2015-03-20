@@ -63,6 +63,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		Log.d("=AAA=","qq onCreate");
 		super.onCreate(savedInstanceState);
 		handler = new Handler(this);
 		EventBus.getDefault().register(this);
@@ -71,6 +72,10 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 		DaoMaster daoMaster = new DaoMaster(db);
 		DaoSession daoSession = daoMaster.newSession();
         qqDao = daoSession.getFrequentQQDao();
+        
+        if (itemList.size() == 0) {
+			Requester.getQChargeList(true, handler);
+		}
 	}
 	
 	@Override
@@ -85,6 +90,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 	
 	public void onEvent(RechargeEvent event) {
 		if (event == RechargeEvent.RECHARGE_QQ) {
+			Log.d("=AAA=","RechargeQQFragment onEvent size = " + itemList.size());
 			if (itemList.size() == 0) {
 				Requester.getQChargeList(true, handler);
 			}
@@ -142,8 +148,8 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 		
 		tvCostCoins = (TextView) view.findViewById(R.id.tv_cost_coins);
 		ViewUtils.setMarginRight(tvCostCoins, 16);
-		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
-		tvCostCoins.setText(adapter.getSelectCost());
+//		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+//		tvCostCoins.setText(adapter.getSelectCost());
 		
 		tvCommit = (TextView) view.findViewById(R.id.tv_btn_order);
 		tvCommit.setOnClickListener(this);
@@ -271,6 +277,9 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 						Collections.addAll(itemList, resp.chargelist);
 						
 						adapter.notifyDataSetChanged();
+						
+						tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+						tvCostCoins.setText(adapter.getSelectCost());
 					}
 				}
 			}

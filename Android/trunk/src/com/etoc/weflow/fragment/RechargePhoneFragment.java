@@ -161,8 +161,8 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		
 		tvCostCoins = (TextView) view.findViewById(R.id.tv_cost_coins);
 		ViewUtils.setMarginRight(tvCostCoins, 16);
-		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
-		tvCostCoins.setText(adapter.getSelectCost());
+//		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+//		tvCostCoins.setText(adapter.getSelectCost());
 		
 		tvCommit = (TextView) view.findViewById(R.id.tv_btn_order);
 		tvCommit.setOnClickListener(this);
@@ -270,6 +270,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 					}
 					adapter.setData(unicomList);
 					adapter.notifyDataSetChanged();
+					
+					tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+					tvCostCoins.setText(adapter.getSelectCost());
 				}
 				
 			}
