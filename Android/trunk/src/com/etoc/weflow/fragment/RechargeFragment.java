@@ -13,7 +13,13 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
+import com.etoc.weflow.event.RechargeEvent;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
+
+import de.greenrobot.event.EventBus;
 
 public class RechargeFragment extends Fragment {
 	RadioGroup radioGroup = null;
@@ -27,12 +33,30 @@ public class RechargeFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+		EventBus.getDefault().register(this);
 		if(savedInstanceState != null) {
 			phoneFragment = (RechargePhoneFragment)getChildFragmentManager().getFragment(
 					savedInstanceState, RechargePhoneFragment.class.getName());
 			qqFragment = (RechargeQQFragment)getChildFragmentManager().getFragment(
 					savedInstanceState, RechargeQQFragment.class.getName());
+		}
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
+	public void onEvent(ExpenseFlowFragmentEvent event) {
+		if (event.getIndex() == ExpenseFlowActivity.INDEX_RECHARGE) {
+			if (currFragment instanceof RechargePhoneFragment) {
+				EventBus.getDefault().post(RechargeEvent.RECHARGE_PHONE);
+			} else {
+				EventBus.getDefault().post(RechargeEvent.RECHARGE_QQ);
+			}
+			
 		}
 	}
 	
@@ -117,6 +141,7 @@ public class RechargeFragment extends Fragment {
 					} else {
 						ft.show(fragment);
 					}
+					EventBus.getDefault().post(RechargeEvent.RECHARGE_PHONE);
 					break;
 				case R.id.rb_qq:
 					Log.d("=AAA=","rb_previous_period");
@@ -128,6 +153,7 @@ public class RechargeFragment extends Fragment {
 					} else {
 						ft.show(fragment);
 					}
+					EventBus.getDefault().post(RechargeEvent.RECHARGE_QQ);
 					break;
 				}
 				currFragment = fragment;

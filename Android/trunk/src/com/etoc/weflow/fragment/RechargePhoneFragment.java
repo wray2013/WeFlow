@@ -1,9 +1,11 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +13,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.v4.app.Fragment;
@@ -21,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -37,36 +43,68 @@ import com.etoc.weflow.dao.FrequentPhone;
 import com.etoc.weflow.dao.FrequentPhoneDao;
 import com.etoc.weflow.dao.FrequentPhoneDao.Properties;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
 
 import de.greenrobot.dao.query.QueryBuilder;
+import de.greenrobot.event.EventBus;
 
-public class RechargePhoneFragment extends Fragment implements OnClickListener {
+public class RechargePhoneFragment extends Fragment implements OnClickListener, Callback {
 	private View mView;
 	GridView gvPhoneMenu = null;
-	RechargeAdapter adapter = null;
+	RechargePhoneAdapter adapter = null;
 	TextView tvCostCoins = null;
 	TextView tvCommit = null;
 	EditText etPhone = null;
 	List<RechargePhoneResp> itemList = new ArrayList<GsonResponseObject.RechargePhoneResp>();
+	List<RechargePhoneResp> telecomList = new ArrayList<RechargePhoneResp>();
+	List<RechargePhoneResp> unicomList = new ArrayList<RechargePhoneResp>();
+	List<RechargePhoneResp> mobileList = new ArrayList<RechargePhoneResp>();
 	
 	private FrequentPhoneDao phoneDao;
+	SQLiteDatabase db;
+	private Handler handler;
 	private ImageView ivContact = null;
 	public static final int REQUEST_CONTACT_PICK = 0xddaa;
+	public static final String TELECOM = "1";
+	public static final String UNICOM = "2";
+	public static final String MOBILE = "3";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		EventBus.getDefault().register(this);
 		
 		DevOpenHelper helper = new DaoMaster.DevOpenHelper(WeFlowApplication.getAppInstance(), "weflowdb", null);
-		SQLiteDatabase db = helper.getWritableDatabase();
+		db = helper.getWritableDatabase();
 		DaoMaster daoMaster = new DaoMaster(db);
 		DaoSession daoSession = daoMaster.newSession();
         phoneDao = daoSession.getFrequentPhoneDao();
+        handler = new Handler(this);
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		if (db != null) {
+			db.close();
+		}
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
+	public void onEvent(RechargeEvent event) {
+		if (event == RechargeEvent.RECHARGE_PHONE) {
+			if (itemList.size() == 0) {
+				Requester.getPhoneChargeList(true, handler);
+			}
+		}
 	}
 	
 	@Override
@@ -93,9 +131,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener {
 	private void initView(View view) {
 		gvPhoneMenu = (GridView) view.findViewById(R.id.gv_menu);
 		
-		int [] moneys = {10,20,30,50,100,200};
+//		int [] moneys = {10,20,30,50,100,200};
 		
-		if (itemList.size() == 0) {
+		/*if (itemList.size() == 0) {
 			for (int i = 0;i < 6;i++) {
 				RechargePhoneResp resp = new RechargePhoneResp();
 				resp.chargesid = "" + i;
@@ -103,9 +141,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener {
 				resp.cost = moneys[i] * 100 + "";
 				itemList.add(resp);
 			}
-		}
+		}*/
 		
-		adapter = new RechargeAdapter(getActivity(), itemList);
+		adapter = new RechargePhoneAdapter(getActivity(), itemList);
 		gvPhoneMenu.setAdapter(adapter);
 		
 		gvPhoneMenu.setSelector(new ColorDrawable(Color.TRANSPARENT));
@@ -169,7 +207,6 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		Log.d("=AAA=","***********孙子***************");
 		if(resultCode != Activity.RESULT_OK || data == null) return;
 		if (requestCode == REQUEST_CONTACT_PICK) {
 			Uri result = data.getData();
@@ -206,6 +243,130 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener {
 		}
 		return number;
 	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_PHONE_CHARGE_LIST:
+			if (msg.obj != null) {
+				PhoneChargeListResp resp = (PhoneChargeListResp)msg.obj;
+				if(resp.status.equals("0000") || resp.status.equals("0")) {
+					itemList.clear();
+					telecomList.clear();
+					unicomList.clear();
+					mobileList.clear();
+					if (resp.chargelist != null && resp.chargelist.length > 0) {
+						Collections.addAll(itemList, resp.chargelist);
+						for (RechargePhoneResp item:itemList) {
+							if (TELECOM.equals(item.type)) {
+								telecomList.add(item);
+							} else if (UNICOM.equals(item.type)) {
+								unicomList.add(item);
+							} else if (MOBILE.equals(item.type)) {
+								mobileList.add(item);
+							}
+						}
+					}
+					adapter.setData(unicomList);
+					adapter.notifyDataSetChanged();
+				}
+				
+			}
+			break;
+		}
+		return false;
+	}
 	
+	
+	class RechargePhoneAdapter extends BaseAdapter {
+
+		List<RechargePhoneResp> itemList = null;
+		Context context;
+		private LayoutInflater inflater;
+		private int curselected = 0;
+		
+		public void setSelect(int pos) {
+			curselected = pos;
+		}
+		
+		public int getSelect() {
+			return curselected;
+		}
+		
+		public String getSelectCost() {
+			return getItem(getSelect()).cost;
+		}
+		
+		class RechargeViewHolder {
+			TextView tvMoney;
+			ImageView ivSelected;
+		}
+		
+		public RechargePhoneAdapter(Context context,List<RechargePhoneResp> list) {
+			// TODO Auto-generated constructor stub
+			this.context = context;
+			inflater = LayoutInflater.from(context);
+			this.itemList = list;
+		}
+		
+		public void setData(List<RechargePhoneResp> list) {
+			this.itemList = list;
+		}
+		
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return itemList.size();
+		}
+
+		@Override
+		public RechargePhoneResp getItem(int position) {
+			// TODO Auto-generated method stub
+			return itemList.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			RechargeViewHolder holder = null;
+			if (convertView == null) {
+				holder = new RechargeViewHolder();
+				convertView = inflater.inflate(R.layout.item_recharge_grid, null);
+				holder.tvMoney = (TextView) convertView.findViewById(R.id.tv_recharge_num);
+				holder.ivSelected = (ImageView) convertView.findViewById(R.id.iv_selected);
+				
+				ViewUtils.setMarginTop(holder.ivSelected, 8);
+				ViewUtils.setMarginRight(holder.ivSelected, 8);
+				
+				holder.tvMoney.setTextSize(DisplayUtil.textGetSizeSp(context, 34));
+				ViewUtils.setHeight(holder.tvMoney, 121);
+				ViewUtils.setSize(holder.ivSelected, 54, 54);
+				convertView.setTag(holder);
+				
+			} else {
+				holder = (RechargeViewHolder) convertView.getTag();
+			}
+			
+			RechargePhoneResp item = itemList.get(position);
+			holder.tvMoney.setText(item.money);
+			
+			if (curselected == position) {
+				holder.ivSelected.setVisibility(View.VISIBLE);
+				holder.tvMoney.setTextColor(context.getResources().getColor(R.color.pagertab_color_green));
+			} else {
+				holder.ivSelected.setVisibility(View.GONE);
+				holder.tvMoney.setTextColor(0xff000000);
+			}
+			
+			return convertView;
+		}
+	}
 
 }

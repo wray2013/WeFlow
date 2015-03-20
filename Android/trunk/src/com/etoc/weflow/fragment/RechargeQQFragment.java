@@ -1,12 +1,17 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,8 +20,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
@@ -28,34 +35,60 @@ import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.FrequentQQ;
 import com.etoc.weflow.dao.FrequentQQDao;
 import com.etoc.weflow.dao.FrequentQQDao.Properties;
+import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
+import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
 
 import de.greenrobot.dao.query.QueryBuilder;
+import de.greenrobot.event.EventBus;
 
-public class RechargeQQFragment extends Fragment implements OnClickListener{
+public class RechargeQQFragment extends Fragment implements OnClickListener, Callback{
 
 	private View mView;
 	GridView gvQQMenu = null;
-	RechargeAdapter adapter = null;
+	RechargeQQAdapter adapter = null;
 	TextView tvCostCoins = null;
-	List<RechargePhoneResp> itemList = new ArrayList<GsonResponseObject.RechargePhoneResp>();
+	List<RechargeQQResp> itemList = new ArrayList<GsonResponseObject.RechargeQQResp>();
 	TextView tvCommit = null;
 	private FrequentQQDao qqDao;
 	private EditText etQQ;
+	SQLiteDatabase db;
+	private Handler handler = null;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+		handler = new Handler(this);
+		EventBus.getDefault().register(this);
 		DevOpenHelper helper = new DaoMaster.DevOpenHelper(WeFlowApplication.getAppInstance(), "weflowdb", null);
-		SQLiteDatabase db = helper.getWritableDatabase();
+		db = helper.getWritableDatabase();
 		DaoMaster daoMaster = new DaoMaster(db);
 		DaoSession daoSession = daoMaster.newSession();
         qqDao = daoSession.getFrequentQQDao();
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		if (db != null) {
+			db.close();
+		}
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
+	public void onEvent(RechargeEvent event) {
+		if (event == RechargeEvent.RECHARGE_QQ) {
+			if (itemList.size() == 0) {
+				Requester.getQChargeList(true, handler);
+			}
+		}
 	}
 	
 	@Override
@@ -79,7 +112,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener{
 	private void initView(View view) {
 		gvQQMenu = (GridView) view.findViewById(R.id.gv_menu);
 		
-		int [] moneys = {1,5,10,20,50,100};
+		/*int [] moneys = {1,5,10,20,50,100};
 		
 		if (itemList.size() == 0) {
 			for (int i = 0;i < 6;i++) {
@@ -89,9 +122,9 @@ public class RechargeQQFragment extends Fragment implements OnClickListener{
 				resp.cost = moneys[i] * 100 + "";
 				itemList.add(resp);
 			}
-		}
+		}*/
 		
-		adapter = new RechargeAdapter(getActivity(), itemList);
+		adapter = new RechargeQQAdapter(getActivity(), itemList);
 		gvQQMenu.setAdapter(adapter);
 		
 		gvQQMenu.setSelector(new ColorDrawable(Color.TRANSPARENT));
@@ -137,5 +170,112 @@ public class RechargeQQFragment extends Fragment implements OnClickListener{
 			}
 			break;
 		}
+	}
+	
+	class RechargeQQAdapter extends BaseAdapter {
+
+		List<RechargeQQResp> itemList = null;
+		Context context;
+		private LayoutInflater inflater;
+		private int curselected = 0;
+		
+		public void setSelect(int pos) {
+			curselected = pos;
+		}
+		
+		public int getSelect() {
+			return curselected;
+		}
+		
+		public String getSelectCost() {
+			return getItem(getSelect()).cost;
+		}
+		
+		class RechargeViewHolder {
+			TextView tvMoney;
+			ImageView ivSelected;
+		}
+		
+		public RechargeQQAdapter(Context context,List<RechargeQQResp> list) {
+			// TODO Auto-generated constructor stub
+			this.context = context;
+			inflater = LayoutInflater.from(context);
+			this.itemList = list;
+		}
+		
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return itemList.size();
+		}
+
+		@Override
+		public RechargeQQResp getItem(int position) {
+			// TODO Auto-generated method stub
+			return itemList.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			RechargeViewHolder holder = null;
+			if (convertView == null) {
+				holder = new RechargeViewHolder();
+				convertView = inflater.inflate(R.layout.item_recharge_grid, null);
+				holder.tvMoney = (TextView) convertView.findViewById(R.id.tv_recharge_num);
+				holder.ivSelected = (ImageView) convertView.findViewById(R.id.iv_selected);
+				
+				ViewUtils.setMarginTop(holder.ivSelected, 8);
+				ViewUtils.setMarginRight(holder.ivSelected, 8);
+				
+				holder.tvMoney.setTextSize(DisplayUtil.textGetSizeSp(context, 34));
+				ViewUtils.setHeight(holder.tvMoney, 121);
+				ViewUtils.setSize(holder.ivSelected, 54, 54);
+				convertView.setTag(holder);
+				
+			} else {
+				holder = (RechargeViewHolder) convertView.getTag();
+			}
+			
+			RechargeQQResp item = itemList.get(position);
+			holder.tvMoney.setText(item.qcoins);
+			
+			if (curselected == position) {
+				holder.ivSelected.setVisibility(View.VISIBLE);
+				holder.tvMoney.setTextColor(context.getResources().getColor(R.color.pagertab_color_green));
+			} else {
+				holder.ivSelected.setVisibility(View.GONE);
+				holder.tvMoney.setTextColor(0xff000000);
+			}
+			
+			return convertView;
+		}
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_QRECHARGE_LIST:
+			if (msg.obj != null) {
+				QChargeListResp resp = (QChargeListResp) msg.obj;
+				if(resp.status.equals("0000") || resp.status.equals("0")) {
+					itemList.clear();
+					if (resp.chargelist != null && resp.chargelist.length > 0) {
+						Collections.addAll(itemList, resp.chargelist);
+						
+						adapter.notifyDataSetChanged();
+					}
+				}
+			}
+			break;
+		}
+		return false;
 	}
 }

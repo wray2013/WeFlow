@@ -4,9 +4,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
-import com.etoc.weflow.net.GsonResponseObject.*;
+import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
+import com.etoc.weflow.net.GsonResponseObject.AppHomeResp;
+import com.etoc.weflow.net.GsonResponseObject.AppListMoreResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftResp;
+import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
+import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
+import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
+import com.etoc.weflow.net.GsonResponseObject.getAccInfoResponse;
+import com.etoc.weflow.net.GsonResponseObject.getAdvInfoResponse;
+import com.etoc.weflow.net.GsonResponseObject.loginResponse;
+import com.etoc.weflow.net.GsonResponseObject.sendSMSResponse;
 
 public class FakeData {
 	public static final String HTTP_HOST_PREFIX = "http://test1.mishare.cn:8080/1.1/images";
@@ -93,6 +106,48 @@ public class FakeData {
 		r6.bannerlist = (GiftBannerResp[]) createGiftBannerList().toArray(new GiftBannerResp[0]);
 		r6.giftlist = (GiftResp[]) createGiftData().toArray(new GiftResp [0]);
 		map.put(Requester.RIA_INTERFACE_GIFT_LIST, r6);
+		
+		PhoneChargeListResp r7 = new PhoneChargeListResp();
+		r7.status = "0";
+		r7.chargelist = (RechargePhoneResp[]) createPhoneChargeList().toArray(new RechargePhoneResp[0]);
+		map.put(Requester.RIA_INTERFACE_PHONE_CHARGE_LIST, r7);
+		
+		QChargeListResp r8 = new QChargeListResp();
+		r8.status = "0";
+		r8.chargelist = (RechargeQQResp[]) createQQChargeList().toArray(new RechargeQQResp[0]);
+		map.put(Requester.RIA_INTERFACE_QRECHARGE_LIST, r8);
+		
+	}
+	
+	private static List<RechargeQQResp> createQQChargeList() {
+		List<RechargeQQResp> list = new ArrayList<GsonResponseObject.RechargeQQResp>();
+		String [] money = {"1","2","5","10","20","100"};
+		
+		for (int i = 0;i < 6;i++) {
+			RechargeQQResp item = new RechargeQQResp();
+			item.chargesid = i + "";
+			item.qcoins = money[i];
+			item.cost = Integer.parseInt(item.qcoins) * 100 + "";
+			list.add(item);
+		}
+		return list;
+	}
+	
+	private static List<RechargePhoneResp> createPhoneChargeList() {
+		List<RechargePhoneResp> list = new ArrayList<GsonResponseObject.RechargePhoneResp>();
+		String [] money = {"10","20","30","50","100","200"};
+		
+		for (int i = 0;i < 18;i++) {
+			RechargePhoneResp item = new RechargePhoneResp();
+			item.chargesid = i + "";
+			item.money = money[i % 6];
+			item.cost = Integer.parseInt(item.money) * 100 + "";
+			item.type = (i / 6 + 1) + "";
+			list.add(item);
+		}
+		
+		return list;
+		
 	}
 	
 	private static List<GiftResp> createGiftData() {
