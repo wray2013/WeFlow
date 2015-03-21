@@ -27,6 +27,7 @@ import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
@@ -49,7 +50,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 	private PullToRefreshScrollView ptrScrollView = null;
 	
 	private List<GiftBannerResp> bannerList = new ArrayList<GiftBannerResp>();
-	private List<GiftResp> giftList = new ArrayList<GiftResp>();
+	private List<GiftProduct> giftList = new ArrayList<GiftProduct>();
 	
 	private ListView listView = null;
 	private GiftAdatper adapter = null;
@@ -181,11 +182,11 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 		MyImageLoader imageLoader = null;
 		DisplayImageOptions imageLoaderOptions = null;
 		
-		private List<GiftResp> appList = null;
+		private List<GiftProduct> appList = null;
 		Context context;
 		private LayoutInflater inflater;
 		
-		public GiftAdatper(Context context,List<GiftResp> list) {
+		public GiftAdatper(Context context,List<GiftProduct> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
@@ -210,7 +211,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 		}
 
 		@Override
-		public GiftResp getItem(int arg0) {
+		public GiftProduct getItem(int arg0) {
 			// TODO Auto-generated method stub
 			return appList.get(arg0);
 		}
@@ -258,7 +259,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				holder = (GiftViewHolder) convertView.getTag();
 			}
 			
-			GiftResp item = appList.get(position);
+			GiftProduct item = appList.get(position);
 			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.giftdesc);
@@ -286,7 +287,11 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 						mIndicator.notifyDataSetChanged();
 					}
 					if(response.giftlist != null && response.giftlist.length > 0) {
-						Collections.addAll(giftList, response.giftlist);
+						for (GiftResp item:response.giftlist) {
+							if (item.products != null && item.products.length > 0) {
+								Collections.addAll(giftList, item.products);
+							}
+						}
 						adapter.notifyDataSetChanged();
 						ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
 					}

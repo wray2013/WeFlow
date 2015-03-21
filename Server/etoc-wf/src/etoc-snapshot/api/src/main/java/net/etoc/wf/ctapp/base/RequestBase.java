@@ -29,10 +29,12 @@ public class RequestBase implements Serializable {
 	 */
 
 	private static final long serialVersionUID = 5349107211488567L;
-	private String userid;
+
 	private String tel;
+
 	private String mac;
 	private String imei;
+
 	private String sign;
 	private String channelid;
 	private String transid;
@@ -44,82 +46,6 @@ public class RequestBase implements Serializable {
 		if (StringUtils.isEmpty(transid)) {
 			this.transid = RandomUtils.uuid2();
 		}
-	}
-
-	/**
-	 * userid
-	 *
-	 * @return the userid
-	 * @since 1.0.0
-	 */
-
-	public String getUserid() {
-		return userid;
-	}
-
-	/**
-	 * @param userid
-	 *            the userid to set
-	 */
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-	/**
-	 * tel
-	 *
-	 * @return the tel
-	 * @since 1.0.0
-	 */
-
-	public String getTel() {
-		return tel;
-	}
-
-	/**
-	 * @param tel
-	 *            the tel to set
-	 */
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	/**
-	 * mac
-	 *
-	 * @return the mac
-	 * @since 1.0.0
-	 */
-
-	public String getMac() {
-		return mac;
-	}
-
-	/**
-	 * @param mac
-	 *            the mac to set
-	 */
-	public void setMac(String mac) {
-		this.mac = mac;
-	}
-
-	/**
-	 * imei
-	 *
-	 * @return the imei
-	 * @since 1.0.0
-	 */
-
-	public String getImei() {
-		return imei;
-	}
-
-	/**
-	 * @param imei
-	 *            the imei to set
-	 */
-	public void setImei(String imei) {
-		this.imei = imei;
 	}
 
 	/**
@@ -179,6 +105,63 @@ public class RequestBase implements Serializable {
 	public void setTransid(String transid) {
 		this.transid = transid;
 
+	}
+
+	/**
+	 * tel
+	 *
+	 * @return the tel
+	 * @since 1.0.0
+	 */
+
+	public String getTel() {
+		return tel;
+	}
+
+	/**
+	 * @param tel
+	 *            the tel to set
+	 */
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	/**
+	 * mac
+	 *
+	 * @return the mac
+	 * @since 1.0.0
+	 */
+
+	public String getMac() {
+		return mac;
+	}
+
+	/**
+	 * @param mac
+	 *            the mac to set
+	 */
+	public void setMac(String mac) {
+		this.mac = mac;
+	}
+
+	/**
+	 * imei
+	 *
+	 * @return the imei
+	 * @since 1.0.0
+	 */
+
+	public String getImei() {
+		return imei;
+	}
+
+	/**
+	 * @param imei
+	 *            the imei to set
+	 */
+	public void setImei(String imei) {
+		this.imei = imei;
 	}
 
 }

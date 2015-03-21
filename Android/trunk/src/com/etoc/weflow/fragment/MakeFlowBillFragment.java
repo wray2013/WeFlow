@@ -213,7 +213,9 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 					if(flowResp.list != null) {
 						List<SoftInfoResp> flowlist = Arrays.asList(flowResp.list);
 						List<BillList> blist = new ArrayList<BillList>();
-						
+						for (SoftInfoResp item : flowlist) {
+
+						}
 					}
 				}
 			}
@@ -225,7 +227,9 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 					if(awardResp.list != null) {
 						List<AwardInfoResp> awardlist = Arrays.asList(awardResp.list);
 						List<BillList> blist = new ArrayList<BillList>();
-						
+						for (AwardInfoResp item : awardlist) {
+
+						}
 					}
 				}
 			}

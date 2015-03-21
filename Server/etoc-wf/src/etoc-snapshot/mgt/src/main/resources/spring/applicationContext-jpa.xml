@@ -28,7 +28,7 @@
 		<!-- 指定Entity实体类包路径 -->
 		<property name="packagesToScan">
 			<array>
-				<value>net.etoc.*.entity</value>
+				<value>net.etoc.*.*</value>
 			</array>
 		</property>
 		<!-- 指定JPA属性；如Hibernate中指定是否显示SQL的是否显示、方言等 -->
@@ -46,7 +46,7 @@
 	</bean>
 
 	<!-- 重要配置：启用扫描并自动创建代理的功能 -->
-	<jpa:repositories base-package="net.etoc.*.repository"
+	<jpa:repositories base-package="net.etoc.*.*"
 		transaction-manager-ref="transactionManager"
 		entity-manager-factory-ref="entityManagerFactory" />
 

@@ -299,7 +299,7 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					DownloadManager.getInstance().addDownloadTask(item.soft, "0", item.title, item.appicon, "",  DownloadType.APP, "", "");
+					DownloadManager.getInstance().addDownloadTask(item.soft, item.appid, item.title, item.appicon, "",  DownloadType.APP, "", "");
 				}
 			});
 			return convertView;

@@ -10,15 +10,11 @@
     <property name="successUrl" value="/index" />
     <property name="filterChainDefinitions">
       <value>
-      	/account/updatePassword = jcaptchaVf[updatePassword]
       	/test/** = anon
         /login = authc
-        /account/** = user
-        /logout = logout
         /favicon.ico = anon
-        / = anon
-        /index = anon
-        /** = user
+        /static/** = anon
+        /vs/api/** = anon
         
       </value>
     </property>
