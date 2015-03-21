@@ -1,20 +1,15 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import com.etoc.weflow.R;
-import com.etoc.weflow.fragment.MobileFlowFragment.FlowViewHolder;
-import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
-import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
-import com.etoc.weflow.utils.ViewUtils;
-import com.nostra13.universalimageloader.api.MyImageLoader;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +19,49 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class GameGiftFragment extends Fragment {
+import com.etoc.weflow.R;
+import com.etoc.weflow.event.GameCoinEvent;
+import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
+import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
+import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.ViewUtils;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+
+import de.greenrobot.event.EventBus;
+
+public class GameGiftFragment extends Fragment implements Callback {
 	
 	private View mView;
 	private ListView lvGift;
 	private GameGiftAdatper adapter;
+	private Handler handler = null;
+	private List<GameGiftResp> itemList = new ArrayList<GsonResponseObject.GameGiftResp>();
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		EventBus.getDefault().register(this);
+		handler = new Handler(this);
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
+	public void onEvent(GameCoinEvent event) {
+		if (event == GameCoinEvent.GAMEGIFT) {
+			if (itemList.size() == 0) {
+				Requester.getGamePkgList(true, handler);
+			}
+		}
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,39 +85,10 @@ public class GameGiftFragment extends Fragment {
 	private void initView(View view) {
 		lvGift = (ListView) view.findViewById(R.id.lv_game_gift);
 		
-		adapter = new GameGiftAdatper(getActivity(), makeFlowData());
+		adapter = new GameGiftAdatper(getActivity(), itemList);
 		lvGift.setAdapter(adapter);
 	}
 	
-	private List<GameGiftResp> makeFlowData() {
-		List<GameGiftResp> list = new ArrayList<GameGiftResp>();
-		
-		String[] imgUrls = {"http://up.ekoooo.com/uploads2/tubiao/6/20088712119375778013.png",
-        		"http://up.ekoooo.com/uploads2/allimg/080730/03562737.png",
-        		"http://pica.nipic.com/2007-09-18/2007918135853894_2.jpg",
-        		"http://up.ekoooo.com/uploads2/allimg/080730/08455224.png",
-        		"http://up.ekoooo.com/uploads2/tubiao/7/200887197170778030.png"
-        		};
-		
-		String[] leaves = {
-				"189",
-				"189",
-				"189",
-				"189",
-				"189",
-		};
-		for (int i = 0;i < 5;i++) {
-			GameGiftResp resp = new GameGiftResp();
-			resp.gamepkgid = i + "";
-			resp.icon = imgUrls[i];
-			resp.title = "DNF服务器喇叭";
-			resp.leave = leaves[i];
-			resp.cost = ((i + 1) * 100) + "";
-			list.add(resp);
-		}
-		
-		return list;
-	}
 	
 	
 	class GameGiftViewHolder {
@@ -183,5 +187,26 @@ public class GameGiftFragment extends Fragment {
 			return convertView;
 		}
 		
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_GAME_PKG_LIST:
+			if (msg.obj != null) {
+				GamePkgListResp resp = (GamePkgListResp) msg.obj;
+				if(resp.status.equals("0000") || resp.status.equals("0")) {
+					if (resp.list != null && resp.list.length >0) {
+						itemList.clear();
+						Collections.addAll(itemList, resp.list);
+						
+						adapter.notifyDataSetChanged();
+					}
+				}
+			}
+			break;
+		}
+		return false;
 	}
 }

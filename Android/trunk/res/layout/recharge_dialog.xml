@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="329dp"
+    android:layout_height="140dp"
+    android:background="@drawable/round_corner_background"
+    >
+    <RelativeLayout 
+        android:id="@+id/rl_content"
+   		android:layout_width="329dp"
+    	android:layout_height="140dp"
+        >
+	   	<EditText
+	    	android:id="@+id/et_content"
+	       	android:layout_width="fill_parent"
+	       	android:layout_height="71dp"
+	       	android:textColor="#212434"
+	       	android:textSize="20sp"
+	       	android:singleLine="true"
+	       	android:maxLength="8"
+	       	android:inputType="number"
+	       	android:background="@null"
+	       	android:hint="请输入手机号码"
+	       	android:gravity="center_vertical"
+	       	android:paddingLeft="20dp"
+	    	/>
+	   	
+	   	<View 
+	   	    android:id="@+id/view_middle_line"
+	   	    android:layout_width="fill_parent"
+	   	    android:layout_height="1dp"
+	   	    android:background="#F2F2f2"
+	   	    android:layout_below="@id/et_content"
+	   	    />
+	   	
+	   	<LinearLayout 
+	   	    android:id="@+id/ll_bottom_btns"
+	   	    android:layout_width="fill_parent"
+	   	    android:layout_height="fill_parent"
+	   	    android:orientation="horizontal"
+	   	    android:layout_below="@id/view_middle_line"
+	   	    >
+	   	    
+	   	    <TextView 
+	   	        android:id="@+id/tv_cancle"
+	   	        android:layout_width="0dp"
+	   	        android:layout_height="fill_parent"
+	   	        android:layout_weight="1"
+	   	        android:text="取消"
+	   	        android:gravity="center"
+	   	        android:textSize="18sp"
+	   	        />
+	   	    
+	   	    <View 
+	   	        android:layout_width="1dp"
+	   	        android:layout_height="fill_parent"
+	   	        android:background="#F2F2F2"
+	   	        />
+	   	    
+	   	    <TextView 
+	   	        android:id="@+id/tv_confirm"
+	   	        android:layout_width="0dp"
+	   	        android:layout_height="fill_parent"
+	   	        android:layout_weight="1"
+	   	        android:text="确认订购"
+	   	        android:textColor="@color/color_red_text"
+	   	        android:gravity="center"
+	   	        android:textSize="18sp"
+	   	        />
+	   	    
+	   	</LinearLayout>
+	   	
+	   	    
+    </RelativeLayout>
+    
+</RelativeLayout>

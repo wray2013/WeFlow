@@ -5,29 +5,27 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.Toast;
 import cn.jpush.android.api.JPushInterface;
 
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.DialogUtils;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.utils.ConStant;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import de.greenrobot.event.EventBus;
-
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.util.Log;
-import android.widget.Toast;
 
 public class WeFlowApplication extends Application {
 	
@@ -36,7 +34,7 @@ public class WeFlowApplication extends Application {
 	private LinkedList<Activity> activityList = new LinkedList<Activity>(); 
 	public static int totalFlow = 0;
 	private  Set<String> tags = new HashSet<String>();
-	
+	public static AccountInfo accountInfo;
 	@Override
 	public void onCreate() {
 		super.onCreate();

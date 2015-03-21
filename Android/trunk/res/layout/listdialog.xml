@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:background="@drawable/round_corner_background"
+    >
+    
+    <ListView 
+        android:id="@+id/list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0px"
+        android:layout_marginTop="1dp"
+        >
+    </ListView>
+    
+    
+    <View 
+        android:id="@+id/view_line_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/list_view"
+        android:layout_marginTop="30px"
+        />
+    
+
+</RelativeLayout>

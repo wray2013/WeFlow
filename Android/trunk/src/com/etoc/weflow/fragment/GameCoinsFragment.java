@@ -1,7 +1,13 @@
 package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
+import com.etoc.weflow.event.GameCoinEvent;
+import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.utils.ViewUtils;
+
+import de.greenrobot.event.EventBus;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,12 +33,30 @@ public class GameCoinsFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+		EventBus.getDefault().register(this);
 		if(savedInstanceState != null) {
 			giftFragment = (GameGiftFragment)getChildFragmentManager().getFragment(
 					savedInstanceState, GameGiftFragment.class.getName());
 			rechargeFragment = (GameRechargeFragment)getChildFragmentManager().getFragment(
 					savedInstanceState, GameRechargeFragment.class.getName());
+		}
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
+	public void onEvent(ExpenseFlowFragmentEvent event) {
+		if (event.getIndex() == ExpenseFlowActivity.INDEX_GAME) {
+			if (currFragment instanceof GameGiftFragment) {
+				EventBus.getDefault().post(GameCoinEvent.GAMEGIFT);
+			} else {
+				EventBus.getDefault().post(GameCoinEvent.GAMERECHARGE);
+			}
+			
 		}
 	}
 	
@@ -118,6 +142,7 @@ public class GameCoinsFragment extends Fragment {
 					} else {
 						ft.show(fragment);
 					}
+					EventBus.getDefault().post(GameCoinEvent.GAMEGIFT);
 					break;
 				case R.id.rb_game_recharge:
 					Log.d("=AAA=","rb_previous_period");
@@ -129,6 +154,7 @@ public class GameCoinsFragment extends Fragment {
 					} else {
 						ft.show(fragment);
 					}
+					EventBus.getDefault().post(GameCoinEvent.GAMERECHARGE);
 					break;
 				}
 				currFragment = fragment;

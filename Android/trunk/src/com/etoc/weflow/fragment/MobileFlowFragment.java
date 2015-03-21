@@ -1,11 +1,17 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +22,51 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
-import com.etoc.weflow.net.GsonResponseObject.ExchangeGiftResp;
+import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.dialog.ExchangeFlowDialog;
+import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
+import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
-public class MobileFlowFragment extends Fragment {
+import de.greenrobot.event.EventBus;
+
+public class MobileFlowFragment extends Fragment implements Callback {
 
 	private View mView;
 	private ListView lvFlow;
 	private FlowAdatper adapter;
+	private List<MobileFlowResp> flowList = new ArrayList<GsonResponseObject.MobileFlowResp>();
+	private Handler handler;
+	private ExchangeFlowDialog exchangeDialog = null;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		EventBus.getDefault().register(this);
+		handler = new Handler(this);
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
+	public void onEvent(ExpenseFlowFragmentEvent event) {
+		if (event.getIndex() == ExpenseFlowActivity.INDEX_FLOW) {
+			if (flowList.size() == 0) {
+				Requester.getFlowPkgList(true, handler);
+			}
+		}
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +84,19 @@ public class MobileFlowFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_mobile_flow, null);
 		mView = view;
 		initView(view);
+		initDialog();
 		return view;
+	}
+	
+	private void initDialog() {
+		exchangeDialog = new ExchangeFlowDialog(getActivity(), new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 	private void initView(View view) {
@@ -55,46 +106,9 @@ public class MobileFlowFragment extends Fragment {
 		lvFlow = (ListView) view.findViewById(R.id.lv_flows);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_title_label), 26);
 		
-		adapter = new FlowAdatper(getActivity(), makeFlowData());
+		adapter = new FlowAdatper(getActivity(), flowList);
 		lvFlow.setAdapter(adapter);
 	}
-	
-	private List<MobileFlowResp> makeFlowData() {
-		List<MobileFlowResp> list = new ArrayList<MobileFlowResp>();
-		
-		String[] imgUrls = {"http://img2.imgtn.bdimg.com/it/u=2246142888,482574638&fm=21&gp=0.jpg",
-        		"http://img.ithome.com/newsuploadfiles/2013/7/20130729_082806_654.jpg",
-        		"http://img3.imgtn.bdimg.com/it/u=3520249570,2956679241&fm=21&gp=0.jpg",
-        		"http://img2.imgtn.bdimg.com/it/u=503567143,1320843493&fm=11&gp=0.jpg",
-        		"http://img2.imgtn.bdimg.com/it/u=2461699972,2986826516&fm=21&gp=0.jpg"
-        		};
-		String[] titles = {"10元畅享沃3G",
-				"电信20元流量包",
-				"300M流量包",
-				"50M流量包",
-				"1G流量包"
-		};
-		
-		String[] descs = {
-				"手机上网套餐全新升级，赠送流量包",
-				"手机上网套餐全新升级，赠送流量包",
-				"手机上网套餐全新升级，赠送流量包",
-				"手机上网套餐全新升级，赠送流量包",
-				"手机上网套餐全新升级，赠送流量包",
-		};
-		for (int i = 0;i < 5;i++) {
-			MobileFlowResp resp = new MobileFlowResp();
-			resp.flowpkgid = i + "";
-			resp.imgsrc = imgUrls[i];
-			resp.title = titles[i];
-			resp.desc = descs[i];
-			resp.cost = ((i + 1) * 1000) + "";
-			list.add(resp);
-		}
-		
-		return list;
-	}
-	
 	
 	class FlowViewHolder {
 		ImageView ivImg;
@@ -186,13 +200,43 @@ public class MobileFlowFragment extends Fragment {
 				holder = (FlowViewHolder) convertView.getTag();
 			}
 			
-			MobileFlowResp item = appList.get(position);
+			final MobileFlowResp item = appList.get(position);
 			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.desc);
 			holder.tvFlowCoins.setText(item.cost + "流量币");
+			
+			holder.tvExchange.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					exchangeDialog.show();
+				}
+
+			});
 			return convertView;
 		}
 		
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_FLOW_PKG_LIST:
+			if (msg.obj != null) {
+				FlowPkgListResp resp = (FlowPkgListResp) msg.obj;
+				if(resp.status.equals("0000") || resp.status.equals("0")) {
+					if (resp.list != null && resp.list.length > 0) {
+						Collections.addAll(flowList, resp.list);
+						
+						adapter.notifyDataSetChanged();
+					}
+				}
+			}
+			break;
+		}
+		return false;
 	}
 }
