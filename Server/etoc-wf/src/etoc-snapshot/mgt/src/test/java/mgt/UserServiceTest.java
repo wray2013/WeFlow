@@ -1,15 +1,15 @@
 package mgt;
 
-import net.etoc.user.entity.WfMgtUser;
+import net.etoc.crm.user.service.AppUserService;
 import net.etoc.user.service.WfMgtUserService;
+import net.etoc.wf.core.util.PMerchant;
+import net.etoc.wf.core.util.PType;
+import net.etoc.wf.ctapp.user.entity.AppProductResponse.PhoneChargeListResp;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
@@ -20,6 +20,9 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 public class UserServiceTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	WfMgtUserService wfMgtUserService;
+
+	@Autowired
+	AppUserService appUserService;
 
 	@Before
 	public void before() {
@@ -46,6 +49,10 @@ public class UserServiceTest extends AbstractJUnit4SpringContextTests {
 		 * WfMgtUser u = wfMgtUserService.getMgtUserById(1);
 		 * System.out.println(u.getNickname());
 		 */
+
+		PhoneChargeListResp pcl = appUserService.findAppProduct(
+				PMerchant.fl_charge.getValue(), PType.change_tc.getValue());
+		System.out.println(pcl);
 	}
 
 	@Test
@@ -59,10 +66,11 @@ public class UserServiceTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void del() {
 
-		Page<WfMgtUser> rs = wfMgtUserService.findByNickname("aa",
-				new PageRequest(1, 10,
-						new Sort(Sort.Direction.DESC, "nickname")));
-		System.out.println(rs);
+		/*
+		 * Page<WfMgtUser> rs = wfMgtUserService.findByNickname("aa", new
+		 * PageRequest(1, 10, new Sort(Sort.Direction.DESC, "nickname")));
+		 * System.out.println(rs);
+		 */
 
 	}
 }

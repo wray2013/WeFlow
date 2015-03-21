@@ -25,26 +25,26 @@ public class ResponseBase implements Serializable {
 	 */
 
 	private static final long serialVersionUID = 421368944860988556L;
-	private String code;
+	private String status;
 	private String message;
 
 	/**
-	 * code
+	 * status
 	 *
-	 * @return the code
+	 * @return the status
 	 * @since 1.0.0
 	 */
 
-	public String getCode() {
-		return code;
+	public String getStatus() {
+		return status;
 	}
 
 	/**
-	 * @param code
-	 *            the code to set
+	 * @param status
+	 *            the status to set
 	 */
-	public void setCode(String code) {
-		this.code = code;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	/**

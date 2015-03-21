@@ -26,68 +26,86 @@ public class AppCrmUserRequest extends RequestBase {
 	 */
 
 	private static final long serialVersionUID = -1762554830989958126L;
+	private String userid;
+	private String pwd;
 
-	private String password;
-
-	private String newpassword; // 重置密码
-
-	private String authcode; // 手机验证码
+	private String mac;
+	private String imei;
 
 	/**
-	 * password
+	 * pwd
 	 *
-	 * @return the password
+	 * @return the pwd
 	 * @since 1.0.0
 	 */
 
-	public String getPassword() {
-		return password;
+	public String getPwd() {
+		return pwd;
 	}
 
 	/**
-	 * @param password
-	 *            the password to set
+	 * @param pwd
+	 *            the pwd to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	/**
-	 * newpassword
+	 * mac
 	 *
-	 * @return the newpassword
+	 * @return the mac
 	 * @since 1.0.0
 	 */
 
-	public String getNewpassword() {
-		return newpassword;
+	public String getMac() {
+		return mac;
 	}
 
 	/**
-	 * @param newpassword
-	 *            the newpassword to set
+	 * @param mac
+	 *            the mac to set
 	 */
-	public void setNewpassword(String newpassword) {
-		this.newpassword = newpassword;
+	public void setMac(String mac) {
+		this.mac = mac;
 	}
 
 	/**
-	 * authcode
+	 * imei
 	 *
-	 * @return the authcode
+	 * @return the imei
 	 * @since 1.0.0
 	 */
 
-	public String getAuthcode() {
-		return authcode;
+	public String getImei() {
+		return imei;
 	}
 
 	/**
-	 * @param authcode
-	 *            the authcode to set
+	 * @param imei
+	 *            the imei to set
 	 */
-	public void setAuthcode(String authcode) {
-		this.authcode = authcode;
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+
+	/**
+	 * userid
+	 *
+	 * @return the userid
+	 * @since 1.0.0
+	 */
+
+	public String getUserid() {
+		return userid;
+	}
+
+	/**
+	 * @param userid
+	 *            the userid to set
+	 */
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 }

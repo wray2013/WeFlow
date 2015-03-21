@@ -30,4 +30,48 @@ public class AppVars {
 	@Value("${crm.url:http://113.57.243.18:8090/interface/service/}")
 	public String crmUrl;
 
+	@Value("${website.title:流量银行}")
+	public String websiteTitle;
+
+	@Value("${servicePhone:xxxxxxxxx}")
+	public String servicePhone;
+
+	/**
+	 * servicePhone
+	 *
+	 * @return the servicePhone
+	 * @since 1.0.0
+	 */
+
+	public String getServicePhone() {
+		return servicePhone;
+	}
+
+	/**
+	 * @param servicePhone
+	 *            the servicePhone to set
+	 */
+	public void setServicePhone(String servicePhone) {
+		this.servicePhone = servicePhone;
+	}
+
+	/**
+	 * websiteTitle
+	 *
+	 * @return the websiteTitle
+	 * @since 1.0.0
+	 */
+
+	public String getWebsiteTitle() {
+		return websiteTitle;
+	}
+
+	/**
+	 * @param websiteTitle
+	 *            the websiteTitle to set
+	 */
+	public void setWebsiteTitle(String websiteTitle) {
+		this.websiteTitle = websiteTitle;
+	}
+
 }

@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8"  pageEncoding="UTF-8"%><!doctype html>
-<html class="">
+<%@ page contentType="text/html;charset=UTF-8"  pageEncoding="UTF-8"%>
+<!doctype html>
+<html >
 <!--<![endif]-->
   <head>
     <meta charset="utf-8">
@@ -11,54 +12,41 @@
     <meta name="keywords" content="${self.keywords}">
     <meta name="description" content="${self.description}">
     
+    <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+    <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+    <!--[if !IE]><!-->
     <!-- Web Fonts  -->
-    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" type="text/css">
+    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" type="text/css" />
     
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/vendor/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/vendor/fontawesome/css/font-awesome.css">
+    <!--GLOBAL MANDATORY STYLES -->
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/font-awesome/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" type="text/css" />
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/bootstrap/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/uniform/css/uniform.default.css" type="text/css" />
     
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/css/theme.css">
-    <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/css/theme-elements.css">
-    <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/css/theme-animate.css">
-    
-    <!-- Skin CSS -->
-    <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/css/skins/default.css">
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/global/css/components.css" id="style_components" type="text/css" />
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/global/css/plugins.css" type="text/css" />
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/admin/layout/css/layout.css" type="text/css" />
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/admin/layout/css/themes/default.css" id="style_color" type="text/css" />
+    <link rel="stylesheet" href="${base}/static/libs/metronic/${version.metronic}/assets/admin/layout/css/custom.css" type="text/css" />
+   
     
     <!-- 当前页面插件样式 -->
     <c:if test="${not empty self.css.plugins}">${self.css.plugins}</c:if>
-    
-    <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/css/custom.css">
-    
-    <link rel="stylesheet" href="${base}/static/themes/default/css/app.css">
-    
-    <!-- Head Libs -->
-    <script src="${base}/static/libs/porto/${version.porto}/vendor/modernizr/modernizr.js"></script>
-  
     <!-- 页面css -->
     <c:if test="${not empty self.css.main}">${self.css.main}</c:if>
-    
-    <!--[if IE]>
-      <link rel="stylesheet" href="${base}/static/libs/porto/${version.porto}/css/ie.css">
-    <![endif]-->
-    
-    <!--[if lte IE 8]>
-      <script src="${base}/static/libs/porto/${version.porto}/vendor/respond/respond.js"></script>
-      <script src="${base}/static/libs/porto/${version.porto}/vendor/excanvas/excanvas.js"></script>
-    <![endif]-->
   </head>
   <body>
-  	<div class="body">
+  	<div class="${self.css.body}">
       <!--页面内容头-->
-      <%@ include file="/WEB-INF/views/themes/default/include/header.jsp"%>
+<%--       <%@ include file="/WEB-INF/views/themes/default/include/header.jsp"%> --%>
       <!--页面面包屑-->
       <c:if test="${not empty self.content.contentTitle}">${self.content.contentTitle}</c:if>
       
       <!--页面内容体 -->
       <c:if test="${not empty self.leftNavType}">
-      	<%@ include file="/WEB-INF/views/themes/default/include/accountLeft.jsp"%>	
+      <%-- 	<%@ include file="/WEB-INF/views/themes/default/include/accountLeft.jsp"%>	 --%>
       </c:if>
       <c:if test="${empty self.leftNavType}">
         <c:if test="${not empty self.content.main}"> ${self.content.main} </c:if>
@@ -82,22 +70,25 @@
 	    </div>
 	  </div>
 	</div>
-    
-    <!--页面JS-->
-    <script src="${base}/static/libs/porto/${version.porto}/vendor/jquery/jquery.js"></script> 
-    <script src="${base}/static/libs/porto/${version.porto}/vendor/jquery.appear/jquery.appear.js"></script> 
-    <script src="${base}/static/libs/porto/${version.porto}/vendor/bootstrap/bootstrap.js"></script> 
-    <script src="${base}/static/libs/porto/${version.porto}/vendor/common/common.js"></script> 
-    
-    <!-- Theme Base, Components and Settings --> 
-    <script src="${base}/static/libs/porto/${version.porto}/js/theme.js"></script> 
+	
+    <!-- BEGIN CORE PLUGINS -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/global/plugins/respond.min.js"></script>
+    <script src="../../assets/global/plugins/excanvas.min.js"></script> 
+    <![endif]-->
+    <script src="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/jquery.min.js" type="text/javascript"></script> 
+    <script src="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script> 
+    <script src="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
+    <script src="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script> 
+    <script src="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script> 
+    <script src="${base}/static/libs/metronic/${version.metronic}/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script> 
+    <!-- END CORE PLUGINS -->
     
     <script>
 	    var app = {
 	      base: '${base}', 
 	      version: '${version.app}', 
 	      loginName: '${loginUser.loginName}',
-	      displayPages: '${appVars.displayPages}',
 	      currencySymbol: '${currencySymbol}'
 	    };
 		
@@ -107,9 +98,8 @@
     <c:if test="${not empty self.js.plugins}"> ${self.js.plugins} </c:if>
     
     <!-- Theme Custom --> 
-    <script src="${base}/static/libs/porto/${version.porto}/js/custom.js"></script> 
     <script src="${base}/static/themes/default/js/app.js"></script>
-	<script src="${base}/static/themes/default/js/include/header.js"></script>
+	<%-- <script src="${base}/static/themes/default/js/include/header.js"></script> --%>
 
 	<!--[if lte IE 9]>
 	<script type="text/javascript">
@@ -151,10 +141,8 @@
         }
   </script>
 	<![endif]-->
-    <script src="${base}/static/libs/porto/3.5.1/js/theme.init.js"></script>
     
     <!-- 当前页面js -->
     <c:if test="${not empty self.js.main}"> ${self.js.main} </c:if>
-    <c:if test="${empty notDisplay}"> ${self.js.account} </c:if>
   </body>
 </html>

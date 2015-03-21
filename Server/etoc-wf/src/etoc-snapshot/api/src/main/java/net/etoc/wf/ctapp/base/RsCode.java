@@ -16,7 +16,7 @@ package net.etoc.wf.ctapp.base;
  * 
  */
 public enum RsCode {
-	SignFail("9999", "验签失败");
+	SignFail("9999", "验签失败"), OK("0000", "成功");
 
 	private String code;
 	private String message;

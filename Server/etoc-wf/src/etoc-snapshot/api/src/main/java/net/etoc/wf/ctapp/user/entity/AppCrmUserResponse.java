@@ -19,6 +19,14 @@ import net.etoc.wf.ctapp.base.ResponseBase;
  */
 public class AppCrmUserResponse extends ResponseBase {
 
+	/**
+	 * serialVersionUID:TODO（用一句话描述这个变量表示什么）
+	 *
+	 * @since 1.0.0
+	 */
+
+	private static final long serialVersionUID = 3020909667812688780L;
+
 	private String userid;
 
 	private String flowcoins; // 流量币
@@ -32,6 +40,16 @@ public class AppCrmUserResponse extends ResponseBase {
 	private String makeflow = "1,2,3"; // 主页显示赚流量途径id列表
 
 	private String useflow = "4,5,6"; // 主页显示赚流量途径id列表
+
+	private String menumoney; // 套餐余额
+
+	private String menutype; // 套餐类型
+
+	private String inflowleft; // 套餐内剩余流量K
+
+	private String outflowleft; // 套餐外剩余流量K
+
+	private String tel; // 回传电话
 
 	/**
 	 * userid
@@ -164,6 +182,101 @@ public class AppCrmUserResponse extends ResponseBase {
 	 */
 	public void setUseflow(String useflow) {
 		this.useflow = useflow;
+	}
+
+	/**
+	 * menumoney
+	 *
+	 * @return the menumoney
+	 * @since 1.0.0
+	 */
+
+	public String getMenumoney() {
+		return menumoney;
+	}
+
+	/**
+	 * @param menumoney
+	 *            the menumoney to set
+	 */
+	public void setMenumoney(String menumoney) {
+		this.menumoney = menumoney;
+	}
+
+	/**
+	 * menutype
+	 *
+	 * @return the menutype
+	 * @since 1.0.0
+	 */
+
+	public String getMenutype() {
+		return menutype;
+	}
+
+	/**
+	 * @param menutype
+	 *            the menutype to set
+	 */
+	public void setMenutype(String menutype) {
+		this.menutype = menutype;
+	}
+
+	/**
+	 * inflowleft
+	 *
+	 * @return the inflowleft
+	 * @since 1.0.0
+	 */
+
+	public String getInflowleft() {
+		return inflowleft;
+	}
+
+	/**
+	 * @param inflowleft
+	 *            the inflowleft to set
+	 */
+	public void setInflowleft(String inflowleft) {
+		this.inflowleft = inflowleft;
+	}
+
+	/**
+	 * outflowleft
+	 *
+	 * @return the outflowleft
+	 * @since 1.0.0
+	 */
+
+	public String getOutflowleft() {
+		return outflowleft;
+	}
+
+	/**
+	 * @param outflowleft
+	 *            the outflowleft to set
+	 */
+	public void setOutflowleft(String outflowleft) {
+		this.outflowleft = outflowleft;
+	}
+
+	/**
+	 * tel
+	 *
+	 * @return the tel
+	 * @since 1.0.0
+	 */
+
+	public String getTel() {
+		return tel;
+	}
+
+	/**
+	 * @param tel
+	 *            the tel to set
+	 */
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 }
