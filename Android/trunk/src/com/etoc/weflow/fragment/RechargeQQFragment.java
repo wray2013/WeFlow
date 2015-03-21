@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -29,6 +30,7 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
@@ -175,6 +177,12 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				Log.d("=AAA=","buildCount = 0");
 				qqDao.insert(new FrequentQQ(etQQ.getText().toString()));
 			}
+			
+			if (WeFlowApplication.accountInfo != null) {
+				Requester.rechargePhone(true, handler, WeFlowApplication.accountInfo.getUserid(), etQQ.getText().toString(), adapter.getSelectId());
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
 			break;
 		}
 	}
@@ -197,6 +205,10 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 		
 		public String getSelectCost() {
 			return getItem(getSelect()).cost;
+		}
+		
+		public String getSelectId() {
+			return getItem(getSelect()).chargesid;
 		}
 		
 		class RechargeViewHolder {

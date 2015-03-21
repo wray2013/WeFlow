@@ -128,7 +128,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_COST_FLOW_LIST = "/vs/api/user/costFlowList";
 	
 	public static final int RESPONSE_TYPE_GAME_RECHARGE_LIST = 0xffee2130;
-	public static final String RIA_INTERFACE_GAME_RECHARGE_LIST = "/vs/api/user/flowPkgList";
+	public static final String RIA_INTERFACE_GAME_RECHARGE_LIST = "/vs/api/user/gameRechargeList";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();

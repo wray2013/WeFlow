@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -22,7 +23,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dialog.ExchangeFlowDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject;
@@ -45,6 +48,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 	private List<MobileFlowProduct> flowList = new ArrayList<GsonResponseObject.MobileFlowProduct>();
 	private Handler handler;
 	private ExchangeFlowDialog exchangeDialog = null;
+	private String selectId = "";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -95,7 +99,11 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				// TODO Auto-generated method stub
-				
+				if (WeFlowApplication.accountInfo != null) {
+					Requester.exchangeFlowPkg(true, handler, WeFlowApplication.accountInfo.getUserid(), selectId);
+				} else {
+					startActivity(new Intent(getActivity(), LoginActivity.class));
+				}
 			}
 		});
 	}
@@ -212,6 +220,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
+					selectId = item.flowpkgid;
 					exchangeDialog.show();
 				}
 

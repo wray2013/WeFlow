@@ -342,6 +342,7 @@ public class FakeData {
 			product.flowcoins = ((i + 1) * 1000) + "";
 			productList.add(product);
 		}
+		resp.products = (GiftProduct[]) productList.toArray(new GiftProduct[0]);
 		list.add(resp);
 		
 		return list;
