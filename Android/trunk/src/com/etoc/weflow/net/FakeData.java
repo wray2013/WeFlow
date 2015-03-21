@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
 import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
 import com.etoc.weflow.net.GsonResponseObject.AppHomeResp;
 import com.etoc.weflow.net.GsonResponseObject.AppListMoreResp;
@@ -39,12 +40,15 @@ public class FakeData {
 		r1.rate   = "4.31";*/
 //		map.put(Requester.RIA_INTERFACE_LOGIN, r1);
 		
-		getAccInfoResponse r2 = new getAccInfoResponse();
+		AccountInfoResp r2 = new AccountInfoResp();
 		r2.status = "0";
-		r2.suitename = "76元\n4G套餐";
-		r2.innerflow = "380";
-		r2.outerflow = "0";
-		map.put(Requester.RIA_INTERFACE_ACC_INFO, r2);
+		r2.menumoney = "76";
+		r2.menutype = "4G全国套餐";
+		r2.inflowleft = "100";
+		r2.outflowleft = "0";
+		r2.flowcoins = "380";
+		r2.isregistration = "0";
+		map.put(Requester.RIA_INTERFACE_ACCOUNT_INFO, r2);
 		
 		getAdvInfoResponse r3 = new getAdvInfoResponse();
 		r3.status = "0";

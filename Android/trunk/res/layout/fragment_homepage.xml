@@ -152,24 +152,51 @@
                         android:gravity="center_vertical"
                         android:orientation="vertical" >
 
-                        <TextView
-                            android:id="@+id/tv_plans_in_left"
+                        <RelativeLayout 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="套餐内剩余流量：2.5GB"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_plans_out_left"
+                            android:layout_gravity="center_horizontal">
+	                        <TextView
+	                            android:id="@+id/tv_plans_in_left_hint"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                            android:layout_centerVertical="true"
+	                            android:text="套餐内剩余流量："
+	                            android:textColor="@color/white"
+	                            android:textSize="12sp" />
+	                        <TextView
+	                            android:id="@+id/tv_plans_in_left"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                             android:layout_centerVertical="true"
+	                            android:layout_toRightOf="@+id/tv_plans_in_left_hint"
+	                            android:text="2.5GB"
+	                            android:textColor="@color/white"
+	                            android:textSize="12sp" />
+						</RelativeLayout>
+						<RelativeLayout 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="6dp"
-                            android:text="套餐外剩余流量：300MB"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:layout_gravity="center_horizontal">
+	                        <TextView
+	                            android:id="@+id/tv_plans_out_left_hint"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                             android:layout_centerVertical="true"
+	                            android:layout_marginTop="6dp"
+	                            android:text="套餐外剩余流量："
+	                            android:textColor="@color/white"
+	                            android:textSize="12sp" />
+	                        <TextView
+	                            android:id="@+id/tv_plans_out_left"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                            android:layout_centerVertical="true"
+	                            android:layout_toRightOf="@+id/tv_plans_out_left_hint"
+	                            android:text="120MB"
+	                            android:textColor="@color/white"
+	                            android:textSize="12sp" />
+                        </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

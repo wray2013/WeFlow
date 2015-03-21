@@ -31,6 +31,7 @@ import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.FileUtils;
 import com.etoc.weflow.utils.PushMsgUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
@@ -267,7 +268,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			}
 			
 			loadConfig(currentAccount.getMakeflow(), currentAccount.getUseflow());
-			
+			Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 		} else {
 			//未登录
 			rlNotLogin.setVisibility(View.VISIBLE);
@@ -370,8 +371,23 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			ptrScrollView.onRefreshComplete();
 			if(msg.obj != null) {
 				AccountInfoResp response = (AccountInfoResp) msg.obj;
-				if(response.equals("0000")) {
+				if("0".equals(response.status) || "0000".equals(response.status)) {
+					tvPlain.setText(response.menumoney);
+					tvPlainType.setText(response.menutype);
 					
+					float in  = 0;
+					float out = 0;
+					if(response.inflowleft != null && response.outflowleft != null) {
+						try {
+							in  = Float.parseFloat(response.inflowleft);
+							out = Float.parseFloat(response.outflowleft);
+						} catch(Exception e) {
+							e.printStackTrace();
+						}
+					}
+					
+					tvInFlow.setText(FileUtils.getFlowSize((int)in));
+					tvOutFlow.setText(FileUtils.getFlowSize((int)out));
 				}
 			} else {
 				PromptDialog.Alert(MainActivity.class, "您的网络不给力啊！");
@@ -385,7 +401,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
 		// TODO Auto-generated method stub
 		if(isLogin) {
-			Requester.queryAccountInfo(handler, currentAccount.getUserid());
+			Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 		} else {
 			handler.postDelayed(new Runnable() {
 				
