@@ -35,7 +35,6 @@ import android.widget.Toast;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
-import com.etoc.weflow.adapter.RechargeAdapter;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
@@ -47,6 +46,7 @@ import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
+import com.etoc.weflow.net.GsonResponseObject.RechargeProduct;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
@@ -62,9 +62,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 	TextView tvCommit = null;
 	EditText etPhone = null;
 	List<RechargePhoneResp> itemList = new ArrayList<GsonResponseObject.RechargePhoneResp>();
-	List<RechargePhoneResp> telecomList = new ArrayList<RechargePhoneResp>();
-	List<RechargePhoneResp> unicomList = new ArrayList<RechargePhoneResp>();
-	List<RechargePhoneResp> mobileList = new ArrayList<RechargePhoneResp>();
+	List<RechargeProduct> telecomList = new ArrayList<RechargeProduct>();
+	List<RechargeProduct> unicomList = new ArrayList<RechargeProduct>();
+	List<RechargeProduct> mobileList = new ArrayList<RechargeProduct>();
 	
 	private FrequentPhoneDao phoneDao;
 	SQLiteDatabase db;
@@ -143,7 +143,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 			}
 		}*/
 		
-		adapter = new RechargePhoneAdapter(getActivity(), itemList);
+		adapter = new RechargePhoneAdapter(getActivity(), unicomList);
 		gvPhoneMenu.setAdapter(adapter);
 		
 		gvPhoneMenu.setSelector(new ColorDrawable(Color.TRANSPARENT));
@@ -259,13 +259,16 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 					if (resp.chargelist != null && resp.chargelist.length > 0) {
 						Collections.addAll(itemList, resp.chargelist);
 						for (RechargePhoneResp item:itemList) {
-							if (TELECOM.equals(item.type)) {
-								telecomList.add(item);
-							} else if (UNICOM.equals(item.type)) {
-								unicomList.add(item);
-							} else if (MOBILE.equals(item.type)) {
-								mobileList.add(item);
+							if (item.products != null && item.products.length > 0) {
+								if (TELECOM.equals(item.type)) {
+									Collections.addAll(telecomList, item.products);
+								} else if (UNICOM.equals(item.type)) {
+									Collections.addAll(unicomList, item.products);
+								} else if (MOBILE.equals(item.type)) {
+									Collections.addAll(mobileList, item.products);
+								}
 							}
+							
 						}
 					}
 					adapter.setData(unicomList);
@@ -284,7 +287,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 	
 	class RechargePhoneAdapter extends BaseAdapter {
 
-		List<RechargePhoneResp> itemList = null;
+		List<RechargeProduct> itemList = null;
 		Context context;
 		private LayoutInflater inflater;
 		private int curselected = 0;
@@ -306,14 +309,14 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 			ImageView ivSelected;
 		}
 		
-		public RechargePhoneAdapter(Context context,List<RechargePhoneResp> list) {
+		public RechargePhoneAdapter(Context context,List<RechargeProduct> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
 			this.itemList = list;
 		}
 		
-		public void setData(List<RechargePhoneResp> list) {
+		public void setData(List<RechargeProduct> list) {
 			this.itemList = list;
 		}
 		
@@ -324,7 +327,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		}
 
 		@Override
-		public RechargePhoneResp getItem(int position) {
+		public RechargeProduct getItem(int position) {
 			// TODO Auto-generated method stub
 			return itemList.get(position);
 		}
@@ -357,7 +360,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				holder = (RechargeViewHolder) convertView.getTag();
 			}
 			
-			RechargePhoneResp item = itemList.get(position);
+			RechargeProduct item = itemList.get(position);
 			holder.tvMoney.setText(item.money);
 			
 			if (curselected == position) {

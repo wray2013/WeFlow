@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
-import com.etoc.weflow.adapter.RechargeAdapter;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;

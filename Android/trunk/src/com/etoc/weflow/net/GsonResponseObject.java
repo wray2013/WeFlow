@@ -240,16 +240,16 @@ public class GsonResponseObject {
 		public RechargePhoneResp[] chargelist;
 	}
 	
-	public static class RechargePhoneResp {
+	/*public static class RechargePhoneResp {
 		public String chargesid;//产品id
 		public String money;// 充值面额
 		public String cost;// 花费流量币
 		public String type;// 类型
 //		public String typename; //显示类型名   移动话费
 //		public RechargeProduct[] products; //具体产品（面额）  10元
-	}
+	}*/
 	
-	public static class NewRechargePhoneResp {
+	public static class RechargePhoneResp {
 //		public String chargesid;//产品id
 //		public String money;// 充值面额
 //		public String cost;// 花费流量币
@@ -273,12 +273,6 @@ public class GsonResponseObject {
 		public String status;
 		public RechargeQQResp[] chargelist; //size must be 1
 	}
-	
-/*	public static class RechargeQQResp {
-		public String chargesid;//产品id
-		public String qcoins;// 充值面额
-		public String cost;// 花费流量币
-	}*/
 	
 	public static class RechargeQQResp {
 //		public String chargesid;//产品id
@@ -306,11 +300,24 @@ public class GsonResponseObject {
 	}
 	
 	public static class GameGiftResp {
-		public String gamepkgid;
+		/*public String gamepkgid;
 		public String title;
 		public String leave;
 		public String icon;
-		public String cost;
+		public String cost;*/
+		public String type;// 类型
+		public String typename; 
+		public GameGiftProduct[] products;
+		
+	}
+	
+	public static class GameGiftProduct {
+		public String gamepkgid;//产品id
+		public String title;
+		public String money;// 充值面额
+		public String cost;// 花费流量币
+		public String leave;
+		public String icon;
 	}
 	
 	public static class GamePkgResp {
@@ -320,7 +327,7 @@ public class GsonResponseObject {
 		public String icon;
 	}
 	
-	public static class exchangeGamePkgResp {
+	public static class ExchangeGamePkgResp {
 		public String status;
 		public String gamecode;
 		public String flowcoins;
@@ -380,6 +387,18 @@ public class GsonResponseObject {
 		public String gifturl;
 	}
 	public static class GiftResp {
+//		public String giftid;
+//		public String imgsrc;
+//		public String gifturl;
+//		public String giftdesc;
+//		public String title;
+//		public String flowcoins;//流量币
+		public String type;// 类型
+		public String typename; //显示类型名 夜间包、半年包
+		public GiftProduct[] products;
+	}
+	
+	public static class GiftProduct {
 		public String giftid;
 		public String imgsrc;
 		public String gifturl;

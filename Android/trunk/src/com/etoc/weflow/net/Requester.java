@@ -384,7 +384,7 @@ public class Requester {
 		request.gamepkgid = productid;
 		request.userid = userid;
 		
-		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_GAME_PKG, exchangeGamePkgResp.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_GAME_PKG, ExchangeGamePkgResp.class);
 		worker.execute(RIA_INTERFACE_EXCHANGE_GAME_PKG, request);
 	}
 	

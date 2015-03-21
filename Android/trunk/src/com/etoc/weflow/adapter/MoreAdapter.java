@@ -22,7 +22,7 @@ public class MoreAdapter extends BaseAdapter
 	public MoreAdapter(Context ctx, List<String> list)
 	{
 		mCtx = ctx;
-		listItems.addAll(list);
+		listItems = list;
 	}
 	
 	public void setData(ArrayList<String> list){
@@ -52,10 +52,9 @@ public class MoreAdapter extends BaseAdapter
 			convertView = LayoutInflater.from(mCtx).inflate(R.layout.more_popup_window_item, null);
 			item = new ListItemsView();
 			item.menuText = (TextView) convertView.findViewById(R.id.tv_item_title);
-			int paddingSize = DisplayUtil.getSize(mCtx, 6);
-			item.menuText.setPadding(paddingSize, paddingSize, paddingSize, paddingSize);
-			ViewUtils.setHeight(item.menuText, 70);
-			ViewUtils.setTextSize(item.menuText, 35);
+			ViewUtils.setMarginLeft(item.menuText, 32);
+			ViewUtils.setHeight(item.menuText, 96);
+			ViewUtils.setTextSize(item.menuText, 36);
 			convertView.setTag(item);
 		}else{
 			item = (ListItemsView)convertView.getTag();
