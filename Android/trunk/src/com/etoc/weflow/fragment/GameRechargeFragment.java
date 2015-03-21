@@ -11,7 +11,7 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -144,8 +144,10 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 						
 						for (GameChargeResp item:gameChargeList) {
 							gameStrList.add(item.typename);
-							gameAdapter.notify();
+							Log.d("=AAA=","item.typename = " + item.typename);
 						}
+						
+						gameAdapter.notifyDataSetChanged();
 					}
 				}
 			}
@@ -161,7 +163,7 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		coinsPopupWindow = createPopupWindow(coinsAdapter, coinsListView);
 	}
 	
-	private PopupWindow createPopupWindow(MoreAdapter adapter,ListView listView ) {
+	private PopupWindow createPopupWindow(MoreAdapter adapter,ListView listView) {
 		View view = getActivity().getLayoutInflater().inflate(R.layout.item_select_popup_window,
 				null);
 		listView = (ListView) view.findViewById(R.id.lv_selector);
@@ -197,7 +199,9 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 			if (gamePopupWindow.isShowing()) {
 				gamePopupWindow.dismiss();
 			} else {
-				gamePopupWindow.showAtLocation(rlGameType, Gravity.CENTER_HORIZONTAL|Gravity.TOP, 0, DisplayUtil.getSize(getActivity(), 112));
+//				gamePopupWindow.showAtLocation(rlGameType, Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0, DisplayUtil.getSize(getActivity(), 112));
+				gamePopupWindow.showAsDropDown(rlGameType);
+//				ViewUtils.setHeightPixel(gameListView,ViewUtils.getListHeight(gameListView, DisplayUtil.getSize(getActivity(), 70)));
 			}
 			break;
 		case R.id.rl_game_coins:
