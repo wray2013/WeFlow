@@ -20,12 +20,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.adapter.MyBillAdapter;
+import com.etoc.weflow.event.ExpenseFlowBillFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+
+import de.greenrobot.event.EventBus;
+
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -65,7 +70,7 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		EventBus.getDefault().register(this);
 		position = getArguments().getInt(ARG_POSITION);
 		
 		myHandler = new Handler(this);
@@ -78,6 +83,38 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 		View v = inflater.inflate(R.layout.fragment_bill_list, null);
 		initView(v);
 		return v;
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
+	public void onEvent(ExpenseFlowBillFragmentEvent event) {
+		switch(event.getIndex()) {
+		case ExpenseFlowActivity.INDEX_RECHARGE:
+			if (position == POSITION_PHONEBILL) {
+				
+			}
+			break;
+		case ExpenseFlowActivity.INDEX_FLOW:
+			if (position == POSITION_FLOWPKG) {
+				
+			}
+			break;
+		case ExpenseFlowActivity.INDEX_GAME:
+			if (position == POSITION_GAME) {
+				
+			}
+			break;
+		case ExpenseFlowActivity.INDEX_GIFT:
+			if (position == POSITION_GIFT) {
+				
+			}
+			break;
+		}
 	}
 	
 	private void initView(View view) {

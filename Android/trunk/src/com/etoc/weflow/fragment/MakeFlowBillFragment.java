@@ -20,18 +20,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.adapter.MyBillAdapter;
+import com.etoc.weflow.event.MakeFlowBillFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+import de.greenrobot.event.EventBus;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +69,7 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		EventBus.getDefault().register(this);
 		position = getArguments().getInt(ARG_POSITION);
 		
 		myHandler = new Handler(this);
@@ -79,6 +84,13 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		return v;
 	}
 	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
 	private void initView(View view) {
 		xlvMyBill = (PullToRefreshListView) view.findViewById(R.id.xlv_mybill_list);
 		xlvMyBill.setShowIndicator(false);
@@ -91,6 +103,27 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		adapter.setData(makeFakeData());
 		lvBillList.setAdapter(adapter);
 		
+	}
+	
+	public void onEvent(MakeFlowBillFragmentEvent event) {
+		Log.d("=AAA=","onEvent index = " + event.getIndex());
+		switch(event.getIndex()) {
+		case MakeFlowActivity.INDEX_ADVERTISEMENT:
+			if (position == POSITION_ADV) {
+
+			}
+			break;
+		case MakeFlowActivity.INDEX_APPRECOMM:
+			if (position == POSITION_SOFTWARE) {
+
+			}
+			break;
+		case MakeFlowActivity.INDEX_PLAYGAME:
+			if (position == POSITION_GAME) {
+
+			}
+			break;
+		}
 	}
 	
 	private static final long MONTH_TIME = 30 * 12 * 60 * 60 * 1000;
