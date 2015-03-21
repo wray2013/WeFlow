@@ -493,4 +493,17 @@ public class GsonResponseObject {
 		public String time;
 	}
 	
+	// 2.9.5签到列表
+	public static class SignInListResp {
+		public String status;
+		public String signinlist;
+	}
+	
+	// 2.9.6签到
+	public static class SignInResp {
+		public String status;
+		public String flowcoins;
+		public String addcoins;
+	}
+	
 }

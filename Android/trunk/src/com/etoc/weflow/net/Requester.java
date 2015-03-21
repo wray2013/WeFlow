@@ -136,6 +136,12 @@ public class Requester {
 	public static final int RESPONSE_TYPE_GAME_RECHARGE = 0xffee2132;
 	public static final String RIA_INTERFACE_GAME_RECHARGE = "/vs/api/user/gamerecharge";
 	
+	public static final int RESPONSE_TYPE_SIGN_IN_LIST = 0xffee2133;
+	public static final String RIA_INTERFACE_SIGN_IN_LIST = "/vs/api/user/signinlist";
+	
+	public static final int RESPONSE_TYPE_SIGN_IN = 0xffee2134;
+	public static final String RIA_INTERFACE_SIGN_IN = "/vs/api/user/signin";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -481,6 +487,28 @@ public class Requester {
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_COST_FLOW_LIST, CostFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_COST_FLOW_LIST, request);
+	}
+	
+	//2.9.5 签到列表
+	public static void getSignInList(boolean hasLoading,Handler handler,String userid) {
+		SignInListRequest request = new SignInListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SIGN_IN_LIST, SignInListResp.class);
+		worker.execute(RIA_INTERFACE_SIGN_IN_LIST, request);
+	}
+	
+	//2.9.10 签到
+	public static void signIn(boolean hasLoading,Handler handler,String userid) {
+		SignInRequest request = new SignInRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SIGN_IN, SignInResp.class);
+		worker.execute(RIA_INTERFACE_SIGN_IN, request);
 	}
 	
 /*	public static void sendSMS(Handler handler, String tel) {

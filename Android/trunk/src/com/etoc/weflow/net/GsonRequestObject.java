@@ -392,6 +392,21 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	// 2.9.5 签到列表
+	public static class SignInListRequest {
+		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	// 2.9.6 签到
+	public static class SignInRequest {
+		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	
 	
 }
 
