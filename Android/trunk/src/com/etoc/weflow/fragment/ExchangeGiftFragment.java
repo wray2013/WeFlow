@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -23,7 +25,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
@@ -259,11 +264,24 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				holder = (GiftViewHolder) convertView.getTag();
 			}
 			
-			GiftProduct item = appList.get(position);
+			final GiftProduct item = appList.get(position);
 			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.giftdesc);
 			holder.tvFlowCoins.setText(item.flowcoins + "流量币");
+			holder.tvExchange.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+					if (accountInfo != null) {
+						Requester.exchangeGift(true, handler, accountInfo.getUserid(), item.giftid);
+					} else {
+						startActivity(new Intent(getActivity(), LoginActivity.class));
+					}
+				}
+			});
 			return convertView;
 		}
 		

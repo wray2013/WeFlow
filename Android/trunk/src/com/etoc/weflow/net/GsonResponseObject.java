@@ -362,6 +362,11 @@ public class GsonResponseObject {
 		public String cost;
 	}
 	
+	public static class GameRechargeResp {
+		public String status;
+		public String flowcoins;
+	}
+	
 	public static class FlowPkgListResp {
 		public String status;
 		public MobileFlowResp[] list;
@@ -490,6 +495,19 @@ public class GsonResponseObject {
 		public String content;
 		public String flowcoins;
 		public String time;
+	}
+	
+	// 2.9.5签到列表
+	public static class SignInListResp {
+		public String status;
+		public String signinlist;
+	}
+	
+	// 2.9.6签到
+	public static class SignInResp {
+		public String status;
+		public String flowcoins;
+		public String addcoins;
 	}
 	
 }

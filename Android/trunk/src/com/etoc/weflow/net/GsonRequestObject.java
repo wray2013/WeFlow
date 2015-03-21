@@ -281,6 +281,14 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	//2.6.9 游戏充值
+	public static class GameRechargeRequest {
+		String userid;  //用户号码
+		String acctid;  //游戏礼包id
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 	//2.6.10 获取流量包列表
 	public static class flowPkgListRequest {
 		String type; //流量包类型 1 流量包 2 夜间包 3 定向包
@@ -387,6 +395,21 @@ public class GsonRequestObject {
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
+	
+	// 2.9.5 签到列表
+	public static class SignInListRequest {
+		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	// 2.9.6 签到
+	public static class SignInRequest {
+		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 	
 	
 }
