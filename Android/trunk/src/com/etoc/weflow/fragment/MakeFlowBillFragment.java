@@ -35,6 +35,7 @@ import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.PType;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -67,7 +68,10 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	private MyBillAdapter adapter;
 	
 	private Handler myHandler;
-
+	
+	private List<BillList> billList = new ArrayList<BillList>();
+	private int pageNumber = 0;
+	
 	public static MakeFlowBillFragment newInstance(int position) {
 		MakeFlowBillFragment f = new MakeFlowBillFragment();
 		Bundle b = new Bundle();
@@ -110,7 +114,7 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		lvBillList.setDividerHeight(DisplayUtil.getSize(getActivity(), 2));
 		
 		adapter = new MyBillAdapter(getActivity());
-		adapter.setData(makeFakeData());
+		adapter.setData(billList);
 		lvBillList.setAdapter(adapter);
 		
 	}
@@ -118,23 +122,23 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	public void onEvent(MakeFlowBillFragmentEvent event) {
 		Log.d("=AAA=","onEvent index = " + event.getIndex());
 		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
-		if(acc == null || acc.getUserid() != null || acc.getUserid().equals("")) {
+		if(acc == null || acc.getUserid() == null || acc.getUserid().equals("")) {
 			return;
 		}
 		switch(event.getIndex()) {
 		case MakeFlowActivity.INDEX_ADVERTISEMENT:
 			if (position == POSITION_ADV) {
-				Requester.getAdvRecord(false, myHandler, acc.getUserid());
+				Requester.getAdvRecord(true, myHandler, 0 + "", acc.getUserid());
 			}
 			break;
 		case MakeFlowActivity.INDEX_APPRECOMM:
 			if (position == POSITION_SOFTWARE) {
-				Requester.getAppRecord(false, myHandler, acc.getUserid());
+				Requester.getAppRecord(true, myHandler, 0 + "", acc.getUserid());
 			}
 			break;
 		case MakeFlowActivity.INDEX_PLAYGAME:
 			if (position == POSITION_GAME) {
-				Requester.getAwardRecord(false, myHandler, acc.getUserid());
+				Requester.getAwardRecord(true, myHandler, 0 + "", acc.getUserid());
 			}
 			break;
 		}
@@ -166,6 +170,7 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 				break;
 			}
 		}
+		billList.addAll(list);
 		return list;
 	}
 
@@ -178,30 +183,62 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	@Override
 	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 		// TODO Auto-generated method stub
+		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (acc == null || acc.getUserid() == null || acc.getUserid().equals("")) {
+			return;
+		}
+		if(pageNumber == 0) pageNumber = 1;
+		switch (position) {
+		case POSITION_ADV:
+			Requester.getAdvRecord(false, myHandler, pageNumber + "", acc.getUserid());
+			break;
+		case POSITION_SOFTWARE:
+			Requester.getAppRecord(false, myHandler, pageNumber + "", acc.getUserid());
+			break;
+		case POSITION_GAME:
+			Requester.getAwardRecord(false, myHandler, pageNumber + "", acc.getUserid());
+			break;
+		}
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
 		myHandler.postDelayed(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				xlvMyBill.onRefreshComplete();
 			}
 		}, 1000);
-	}
-
-	@Override
-	public boolean handleMessage(Message msg) {
-		// TODO Auto-generated method stub
 		switch(msg.what) {
 		case Requester.RESPONSE_TYPE_ADV_RECORD:
 			if (msg.obj != null) {
 				AdvFlowRecordResp advResp = (AdvFlowRecordResp) msg.obj;
 				if ("0".equals(advResp.status) || "0000".equals(advResp.status)) {
-					if(advResp.recordlist != null) {
+					if(advResp.recordlist != null && advResp.recordlist.length > 0) {
 						List<AdverInfo> advlist = Arrays.asList(advResp.recordlist);
 						List<BillList> blist = new ArrayList<BillList>();
 						for(AdverInfo item : advlist) {
-							
+							PType type = PType.watch_movie;
+							BillList bill = new BillList();
+							bill.type = type.getValue();
+							bill.productid = item.videoid;
+							bill.title = item.title;
+							bill.content = item.content;
+							bill.flowcoins = item.flowcoins;
+							bill.time = item.finishtime;
+							blist.add(bill);
 						}
+						if(pageNumber == 0) {
+							billList.clear();
+						}
+						billList.addAll(blist);
+						adapter.setData(billList);
+						pageNumber ++;
+					} else {
+						
 					}
 				}
 			}
@@ -210,12 +247,28 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 			if (msg.obj != null) {
 				AppFlowRecordResp flowResp = (AppFlowRecordResp) msg.obj;
 				if ("0".equals(flowResp.status) || "0000".equals(flowResp.status)) {
-					if(flowResp.list != null) {
+					if(flowResp.list != null && flowResp.list.length > 0) {
 						List<SoftInfoResp> flowlist = Arrays.asList(flowResp.list);
 						List<BillList> blist = new ArrayList<BillList>();
 						for (SoftInfoResp item : flowlist) {
-
+							PType type = PType.down_soft;
+							BillList bill = new BillList();
+							bill.type = type.getValue();
+							bill.productid = item.appid;
+							bill.title = item.title;
+							bill.content = item.title;
+							bill.flowcoins = item.flowcoins;
+							bill.time = item.downloadfinishtime;
+							blist.add(bill);
 						}
+						if(pageNumber == 0) {
+							billList.clear();
+						}
+						billList.addAll(blist);
+						adapter.setData(billList);
+						pageNumber ++;
+					} else {
+						
 					}
 				}
 			}
@@ -224,12 +277,27 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 			if (msg.obj != null) {
 				AwardRecordResp awardResp = (AwardRecordResp) msg.obj;
 				if ("0".equals(awardResp.status) || "0000".equals(awardResp.status)) {
-					if(awardResp.list != null) {
+					if(awardResp.list != null && awardResp.list.length > 0) {
 						List<AwardInfoResp> awardlist = Arrays.asList(awardResp.list);
 						List<BillList> blist = new ArrayList<BillList>();
 						for (AwardInfoResp item : awardlist) {
-
+							PType type = PType.get_award;
+							BillList bill = new BillList();
+							bill.type = type.getValue();
+							bill.title = item.title;
+							bill.content = item.desc;
+							bill.flowcoins = item.flowcoins;
+							bill.time = item.finishtime;
+							blist.add(bill);
 						}
+						if(pageNumber == 0) {
+							billList.clear();
+						}
+						billList.addAll(blist);
+						adapter.setData(billList);
+						pageNumber ++;
+					} else {
+						
 					}
 				}
 			}

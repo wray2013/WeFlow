@@ -165,6 +165,7 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String pageno;
 	}
 	
 	//2.4.1 下载软件首页
@@ -195,6 +196,7 @@ public class GsonRequestObject {
 		String appid; //软件id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String pageno;
 	}
 	
 	//2.5.1 获取奖品列表
@@ -223,6 +225,7 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String pageno;
 	}
 	
 	/****************************************************
@@ -313,6 +316,7 @@ public class GsonRequestObject {
 		String type;  //消费类型
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String pageno;
 	}
 	
 	/****************************************************

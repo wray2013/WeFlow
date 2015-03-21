@@ -239,7 +239,10 @@ public class GsonResponseObject {
 	}
 	
 	public static class AwardInfoResp {
-		
+		public String title;
+		public String desc;
+		public String flowcoins;//流量币
+		public String finishtime;
 	}
 	/****************************************************
 	 *                      B.花流量币
@@ -432,6 +435,7 @@ public class GsonResponseObject {
 		public String cost;
 		public String title;
 		public String imgsrc;
+		public String time;
 	}
 	/****************************************************
 	 *                      C.流量银行

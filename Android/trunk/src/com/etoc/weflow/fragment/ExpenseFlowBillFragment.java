@@ -17,14 +17,22 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.adapter.MyBillAdapter;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.ExpenseFlowBillFragmentEvent;
+import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
+import com.etoc.weflow.net.GsonResponseObject.CostFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.RecordResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.PType;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -59,6 +67,9 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 	
 	private Handler myHandler;
 
+	private List<BillList> billList = new ArrayList<BillList>();
+	private int pageNumber = 0;
+	
 	public static ExpenseFlowBillFragment newInstance(int position) {
 		ExpenseFlowBillFragment f = new ExpenseFlowBillFragment();
 		Bundle b = new Bundle();
@@ -93,25 +104,29 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 	}
 	
 	public void onEvent(ExpenseFlowBillFragmentEvent event) {
+		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (acc == null || acc.getUserid() == null || acc.getUserid().equals("")) {
+			return;
+		}
 		switch(event.getIndex()) {
 		case ExpenseFlowActivity.INDEX_RECHARGE:
 			if (position == POSITION_PHONEBILL) {
-				
+				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_tc.getValue());
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_FLOW:
 			if (position == POSITION_FLOWPKG) {
-				
+				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_wf.getValue());
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_GAME:
 			if (position == POSITION_GAME) {
-				
+				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_gf.getValue());
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_GIFT:
 			if (position == POSITION_GIFT) {
-				
+				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.bug_gf.getValue());
 			}
 			break;
 		}
@@ -126,7 +141,7 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 		lvBillList.setDividerHeight(DisplayUtil.getSize(getActivity(), 2));
 		
 		adapter = new MyBillAdapter(getActivity());
-		adapter.setData(makeFakeData());
+		adapter.setData(billList);
 		lvBillList.setAdapter(adapter);
 		
 	}
@@ -150,6 +165,7 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 				break;
 			}
 		}
+		billList.addAll(list);
 		return list;
 	}
 
@@ -162,19 +178,66 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 	@Override
 	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 		// TODO Auto-generated method stub
+		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (acc == null || acc.getUserid() == null || acc.getUserid().equals("")) {
+			return;
+		}
+		if(pageNumber == 0) pageNumber = 1;
+		switch (position) {
+		case POSITION_PHONEBILL:
+			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_tc.getValue());
+			break;
+		case POSITION_FLOWPKG:
+			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_wf.getValue());
+			break;
+		case POSITION_GAME:
+			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_gf.getValue());
+			break;
+		case POSITION_GIFT:
+			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.bug_gf.getValue());
+			break;
+		}
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
 		myHandler.postDelayed(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				xlvMyBill.onRefreshComplete();
 			}
 		}, 1000);
-	}
-
-	@Override
-	public boolean handleMessage(Message msg) {
-		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_COST_FLOW_LIST:
+			if (msg.obj != null) {
+				CostFlowRecordResp recRep = (CostFlowRecordResp) msg.obj;
+				if ("0".equals(recRep.status) || "0000".equals(recRep.status)) {
+					if (recRep.list != null && recRep.list.length > 0) {
+						List<RecordResp> reclist = Arrays.asList(recRep.list);
+						List<BillList> blist = new ArrayList<BillList>();
+						for(RecordResp item : reclist) {
+							BillList bill = new BillList();
+							bill.type = item.type;
+							bill.productid = item.productid;
+							bill.title = item.title;
+							bill.content = item.title;
+							bill.flowcoins = item.cost;
+							bill.time = item.time;
+							blist.add(bill);
+						}
+						if(pageNumber == 0) {
+							billList.clear();
+						}
+						billList.addAll(blist);
+						adapter.setData(billList);
+						pageNumber ++;
+					}
+				}
+			}
+			break;
+		}
 		return false;
 	}
 

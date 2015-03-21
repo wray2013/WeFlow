@@ -130,7 +130,7 @@ public class Requester {
 	public static final int RESPONSE_TYPE_GAME_RECHARGE_LIST = 0xffee2130;
 	public static final String RIA_INTERFACE_GAME_RECHARGE_LIST = "/vs/api/user/gameRechargeList";
 
-	public static final int RESPONSE_TYPE_AWARD_RECORD = 0xffee2130;
+	public static final int RESPONSE_TYPE_AWARD_RECORD = 0xffee2131;
 	public static final String RIA_INTERFACE_AWARD_RECORD = "/vs/api/user/awardrecord";
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -269,12 +269,12 @@ public class Requester {
 	}
 	
 	//2.3.5 获取广告赚取流量币记录
-	public static void getAdvRecord(boolean hasLoading,Handler handler,String userid) {
+	public static void getAdvRecord(boolean hasLoading,Handler handler, String pageno,String userid) {
 		advFlowRecordRequest request = new advFlowRecordRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		
+		request.pageno = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_RECORD, AdvFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_ADV_RECORD, request);
 	}
@@ -312,23 +312,23 @@ public class Requester {
 	}
 	
 	//2.4.5 获取下载软件赚取流量币记录
-	public static void getAppRecord(boolean hasLoading,Handler handler,String userid) {
+	public static void getAppRecord(boolean hasLoading, Handler handler, String pageno, String userid) {
 		appFlowRecordRequest request = new appFlowRecordRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		
+		request.pageno = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_FLOW_RECORD, AppFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_APP_FLOW_RECORD, request);
 	}
 	
 	//2.5.4 玩游戏赚取流量币记录
-	public static void getAwardRecord(boolean hasLoading,Handler handler,String userid) {
+	public static void getAwardRecord(boolean hasLoading,Handler handler, String pageno, String userid) {
 		awardRecordRequest request = new awardRecordRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		
+		request.pageno = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_AWARD_RECORD, AwardRecordResp.class);
 		worker.execute(RIA_INTERFACE_AWARD_RECORD, request);
 	}
@@ -456,13 +456,13 @@ public class Requester {
 	}
 	
 	//2.6.14 花流量币记录
-	public static void getCostFlowRecord(boolean hasLoading,Handler handler,String userid,String type) {
+	public static void getCostFlowRecord(boolean hasLoading,Handler handler,String pageno,String userid,String type) {
 		costFlowRecordRequest request = new costFlowRecordRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
 		request.type = type;
-		
+		request.pageno = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_COST_FLOW_LIST, CostFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_COST_FLOW_LIST, request);
 	}
