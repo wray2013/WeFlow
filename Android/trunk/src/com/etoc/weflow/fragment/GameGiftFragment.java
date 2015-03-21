@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -20,6 +22,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.event.GameCoinEvent;
 import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftProduct;
@@ -180,11 +184,23 @@ public class GameGiftFragment extends Fragment implements Callback {
 				holder = (GameGiftViewHolder) convertView.getTag();
 			}
 			
-			GameGiftProduct item = appList.get(position);
+			final GameGiftProduct item = appList.get(position);
 			imageLoader.displayImage(item.icon, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvLeave.setText("剩余数量：" + item.leave);
 			holder.tvFlowCoins.setText(item.cost + "流量币");
+			holder.tvExchange.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View view) {
+					// TODO Auto-generated method stub
+					if (WeFlowApplication.accountInfo != null) {
+						Requester.exchangeGamePkg(true, handler, WeFlowApplication.accountInfo.getUserid(), item.gamepkgid);
+					} else {
+						startActivity(new Intent(getActivity(), LoginActivity.class));
+					}
+				}
+			});
 			return convertView;
 		}
 		
