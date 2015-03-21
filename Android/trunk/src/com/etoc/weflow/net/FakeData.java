@@ -9,6 +9,9 @@ import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
 import com.etoc.weflow.net.GsonResponseObject.AppHomeResp;
 import com.etoc.weflow.net.GsonResponseObject.AppListMoreResp;
 import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
+import com.etoc.weflow.net.GsonResponseObject.GameChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.GameChargeProductResp;
+import com.etoc.weflow.net.GsonResponseObject.GameChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
@@ -131,6 +134,35 @@ public class FakeData {
 		r10.list = (GameGiftResp[]) createGameGiftList().toArray(new GameGiftResp[0]);
 		map.put(Requester.RIA_INTERFACE_GAME_PKG_LIST, r10);
 		
+		GameChargeListResp r11 = new GameChargeListResp();
+		r11.status = "0";
+		r11.list = (GameChargeResp[]) createGameRechargeList().toArray(new GameChargeResp[0]);
+		map.put(Requester.RIA_INTERFACE_GAME_RECHARGE_LIST, r11);
+	}
+	
+	private static List<GameChargeResp> createGameRechargeList() {
+		List<GameChargeResp> list = new ArrayList<GsonResponseObject.GameChargeResp>();
+		String [] typenames = {"征途/巨人","完美一卡通","世纪天成","搜狐一卡通","盛大在线","猫扑一卡通"};
+		for (int i = 0;i < 6;i++) {
+			GameChargeResp resp = new GameChargeResp();
+			resp.type = "" + (i+1);
+			resp.typename = typenames[i];
+			resp.products = (GameChargeProductResp[]) createGameChargeProductList(i).toArray(new GameChargeProductResp[0]);
+			list.add(resp);
+		}
+		return list;
+	}
+	
+	private static List<GameChargeProductResp> createGameChargeProductList(int n) {
+		List<GameChargeProductResp> list = new ArrayList<GameChargeProductResp>();
+		for (int i = 0;i < 6;i++) {
+			GameChargeProductResp resp = new GameChargeProductResp();
+			resp.productid = (n + 1) + "000" + i;
+			resp.money = ((i + 1) * 10) + "";
+			resp.cost = ((i + 1) * 1000) + "";
+			list.add(resp);
+		}
+		return list;
 	}
 	
 	private static List<GameGiftResp> createGameGiftList() {

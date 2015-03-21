@@ -127,6 +127,9 @@ public class Requester {
 	public static final int RESPONSE_TYPE_COST_FLOW_LIST = 0xffee2129;
 	public static final String RIA_INTERFACE_COST_FLOW_LIST = "/vs/api/user/costFlowList";
 	
+	public static final int RESPONSE_TYPE_GAME_RECHARGE_LIST = 0xffee2130;
+	public static final String RIA_INTERFACE_GAME_RECHARGE_LIST = "/vs/api/user/flowPkgList";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -379,6 +382,16 @@ public class Requester {
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_GAME_PKG, exchangeGamePkgResp.class);
 		worker.execute(RIA_INTERFACE_EXCHANGE_GAME_PKG, request);
+	}
+	
+	//2.6.8 游戏充值列表
+	public static void getGameChargeList(boolean hasLoading,Handler handler) {
+		GameChargeListRequest request = new GameChargeListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GAME_RECHARGE_LIST, GameChargeListResp.class);
+		worker.execute(RIA_INTERFACE_GAME_RECHARGE_LIST, request);
 	}
 	
 	//2.6.10 获取流量包列表

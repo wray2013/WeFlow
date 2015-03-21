@@ -294,6 +294,23 @@ public class GsonResponseObject {
 		public String flowcoins;
 	}
 	
+	public static class GameChargeListResp {
+		public String status;
+		public GameChargeResp[] list;
+	}
+	
+	public static class GameChargeResp {
+		public String type;
+		public String typename;
+		public GameChargeProductResp[] products;
+	}
+	
+	public static class GameChargeProductResp {
+		public String productid;
+		public String money;
+		public String cost;
+	}
+	
 	public static class FlowPkgListResp {
 		public String status;
 		public MobileFlowResp[] list;
