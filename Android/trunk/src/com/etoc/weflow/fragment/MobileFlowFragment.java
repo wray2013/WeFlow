@@ -27,6 +27,7 @@ import com.etoc.weflow.dialog.ExchangeFlowDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
+import com.etoc.weflow.net.GsonResponseObject.MobileFlowProduct;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
@@ -41,7 +42,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 	private View mView;
 	private ListView lvFlow;
 	private FlowAdatper adapter;
-	private List<MobileFlowResp> flowList = new ArrayList<GsonResponseObject.MobileFlowResp>();
+	private List<MobileFlowProduct> flowList = new ArrayList<GsonResponseObject.MobileFlowProduct>();
 	private Handler handler;
 	private ExchangeFlowDialog exchangeDialog = null;
 	
@@ -123,11 +124,11 @@ public class MobileFlowFragment extends Fragment implements Callback {
 		MyImageLoader imageLoader = null;
 		DisplayImageOptions imageLoaderOptions = null;
 		
-		private List<MobileFlowResp> appList = null;
+		private List<MobileFlowProduct> appList = null;
 		Context context;
 		private LayoutInflater inflater;
 		
-		public FlowAdatper(Context context,List<MobileFlowResp> list) {
+		public FlowAdatper(Context context,List<MobileFlowProduct> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
@@ -152,7 +153,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 		}
 
 		@Override
-		public MobileFlowResp getItem(int arg0) {
+		public MobileFlowProduct getItem(int arg0) {
 			// TODO Auto-generated method stub
 			return appList.get(arg0);
 		}
@@ -200,7 +201,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 				holder = (FlowViewHolder) convertView.getTag();
 			}
 			
-			final MobileFlowResp item = appList.get(position);
+			final MobileFlowProduct item = appList.get(position);
 			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.desc);
@@ -229,7 +230,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 				FlowPkgListResp resp = (FlowPkgListResp) msg.obj;
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
 					if (resp.list != null && resp.list.length > 0) {
-						Collections.addAll(flowList, resp.list);
+						Collections.addAll(flowList, resp.list[0].products);
 						
 						adapter.notifyDataSetChanged();
 					}

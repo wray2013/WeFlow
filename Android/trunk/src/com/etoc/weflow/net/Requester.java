@@ -186,13 +186,17 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_LOGIN, request);
 	}
 	
-	//2.1.5 自动登录
 	public static void autoLogin(Handler handler, String userid) {
+		autoLogin(true, handler, userid);
+	}
+	
+	//2.1.5 自动登录
+	public static void autoLogin(boolean hasLoading, Handler handler, String userid) {
 		autoLoginRequest request = new autoLoginRequest();
 		request.userid = userid;
 		request.imei = IMEI;
 		request.mac  = MAC;
-		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_AUTO_LOGIN, autoLoginResponse.class);
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_AUTO_LOGIN, autoLoginResponse.class);
 		worker.execute(RIA_INTERFACE_AUTO_LOGIN, request);
 	}
 	
