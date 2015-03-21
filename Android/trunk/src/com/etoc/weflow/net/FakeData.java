@@ -15,9 +15,11 @@ import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
+import com.etoc.weflow.net.GsonResponseObject.MobileFlowProduct;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
 import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.QRechargeProduct;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
@@ -122,7 +124,7 @@ public class FakeData {
 		
 		QChargeListResp r8 = new QChargeListResp();
 		r8.status = "0";
-		r8.chargelist = (RechargeQQResp[]) createQQChargeList().toArray(new RechargeQQResp[0]);
+		r8.chargelist = (RechargeQQResp[]) createQQChargeList().toArray(new RechargeQQResp[1]);
 		map.put(Requester.RIA_INTERFACE_QRECHARGE_LIST, r8);
 		
 		FlowPkgListResp r9 = new FlowPkgListResp();
@@ -169,6 +171,7 @@ public class FakeData {
 	
 	private static List<MobileFlowResp> createMoblieFlowList() {
 		List<MobileFlowResp> list = new ArrayList<MobileFlowResp>();
+		List<MobileFlowProduct> pList = new ArrayList<MobileFlowProduct>();
 		
 		String[] imgUrls = {"http://img2.imgtn.bdimg.com/it/u=2246142888,482574638&fm=21&gp=0.jpg",
         		"http://img.ithome.com/newsuploadfiles/2013/7/20130729_082806_654.jpg",
@@ -191,30 +194,41 @@ public class FakeData {
 				"手机上网套餐全新升级，赠送流量包",
 		};
 		for (int i = 0;i < 5;i++) {
-			MobileFlowResp resp = new MobileFlowResp();
+			MobileFlowProduct resp = new MobileFlowProduct();
 			resp.flowpkgid = i + "";
 			resp.imgsrc = imgUrls[i];
 			resp.title = titles[i];
 			resp.desc = descs[i];
 			resp.cost = ((i + 1) * 1000) + "";
-			list.add(resp);
+			pList.add(resp);
 		}
 		
+		MobileFlowResp item = new MobileFlowResp();
+		item.type = "8";
+		item.typename = "夜间包";
+		item.products = pList.toArray(new MobileFlowProduct[pList.size()]);
+		list.add(item);
 		return list;
 		
 	}
 	
 	private static List<RechargeQQResp> createQQChargeList() {
 		List<RechargeQQResp> list = new ArrayList<GsonResponseObject.RechargeQQResp>();
+		List<QRechargeProduct> plist = new ArrayList<GsonResponseObject.QRechargeProduct>();
 		String [] money = {"1","2","5","10","20","100"};
 		
 		for (int i = 0;i < 6;i++) {
-			RechargeQQResp item = new RechargeQQResp();
-			item.chargesid = i + "";
-			item.qcoins = money[i];
-			item.cost = Integer.parseInt(item.qcoins) * 100 + "";
-			list.add(item);
+			QRechargeProduct p = new QRechargeProduct();
+			p.chargesid = i + "";
+			p.money = money[i];
+			p.cost = Integer.parseInt(p.money) * 100 + "";
+			plist.add(p);
 		}
+		RechargeQQResp item = new RechargeQQResp();
+		item.type = "7";
+		item.typename = "腾讯QQ";
+		item.products = plist.toArray(new QRechargeProduct[plist.size()]);
+		list.add(item);
 		return list;
 	}
 	

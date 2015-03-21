@@ -243,8 +243,25 @@ public class GsonResponseObject {
 	public static class RechargePhoneResp {
 		public String chargesid;//产品id
 		public String money;// 充值面额
-		public String cost;// 话费流量币
+		public String cost;// 花费流量币
 		public String type;// 类型
+//		public String typename; //显示类型名   移动话费
+//		public RechargeProduct[] products; //具体产品（面额）  10元
+	}
+	
+	public static class NewRechargePhoneResp {
+//		public String chargesid;//产品id
+//		public String money;// 充值面额
+//		public String cost;// 花费流量币
+		public String type;// 类型
+		public String typename; //显示类型名   移动话费
+		public RechargeProduct[] products; //具体产品（面额）  10元
+	}
+	
+	public static class RechargeProduct {
+		public String chargesid;//产品id
+		public String money;// 充值面额
+		public String cost;// 花费流量币
 	}
 	
 	public static class PhoneChargeResp {
@@ -254,13 +271,28 @@ public class GsonResponseObject {
 	
 	public static class QChargeListResp {
 		public String status;
-		public RechargeQQResp[] chargelist;
+		public RechargeQQResp[] chargelist; //size must be 1
 	}
 	
-	public static class RechargeQQResp {
+/*	public static class RechargeQQResp {
 		public String chargesid;//产品id
 		public String qcoins;// 充值面额
-		public String cost;// 话费流量币
+		public String cost;// 花费流量币
+	}*/
+	
+	public static class RechargeQQResp {
+//		public String chargesid;//产品id
+//		public String qcoins;// 充值面额
+//		public String cost;// 花费流量币
+		public String type;// 类型
+		public String typename; //显示类型名 腾讯QQ
+		public QRechargeProduct[] products;
+	}
+	
+	public static class QRechargeProduct {
+		public String chargesid;//产品id
+		public String money;// 充值面额
+		public String cost;// 花费流量币
 	}
 	
 	public static class QChargeResp {
@@ -300,6 +332,13 @@ public class GsonResponseObject {
 	}
 	
 	public static class MobileFlowResp {
+//		public String flowpkgid;
+		public String type;// 类型
+		public String typename; //显示类型名 夜间包、半年包
+		public MobileFlowProduct[] products;
+	}
+	
+	public static class MobileFlowProduct {
 		public String flowpkgid;
 		public String title;
 		public String desc;

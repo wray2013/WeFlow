@@ -1,6 +1,7 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,6 +39,7 @@ import com.etoc.weflow.dao.FrequentQQDao.Properties;
 import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.QRechargeProduct;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
 import com.etoc.weflow.net.Requester;
@@ -53,7 +55,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 	GridView gvQQMenu = null;
 	RechargeQQAdapter adapter = null;
 	TextView tvCostCoins = null;
-	List<RechargeQQResp> itemList = new ArrayList<GsonResponseObject.RechargeQQResp>();
+	List<QRechargeProduct> itemList = new ArrayList<GsonResponseObject.QRechargeProduct>();
 	TextView tvCommit = null;
 	private FrequentQQDao qqDao;
 	private EditText etQQ;
@@ -180,7 +182,8 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 	
 	class RechargeQQAdapter extends BaseAdapter {
 
-		List<RechargeQQResp> itemList = null;
+//		List<RechargeQQResp> itemList = null;
+		List<QRechargeProduct> productList = null;
 		Context context;
 		private LayoutInflater inflater;
 		private int curselected = 0;
@@ -202,11 +205,14 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 			ImageView ivSelected;
 		}
 		
-		public RechargeQQAdapter(Context context,List<RechargeQQResp> list) {
+		public RechargeQQAdapter(Context context,List<QRechargeProduct> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
-			this.itemList = list;
+			
+			this.productList = list;
+			
+//			this.itemList = list;
 		}
 		
 		@Override
@@ -216,9 +222,9 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 		}
 
 		@Override
-		public RechargeQQResp getItem(int position) {
+		public QRechargeProduct getItem(int position) {
 			// TODO Auto-generated method stub
-			return itemList.get(position);
+			return productList.get(position);
 		}
 
 		@Override
@@ -249,8 +255,8 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				holder = (RechargeViewHolder) convertView.getTag();
 			}
 			
-			RechargeQQResp item = itemList.get(position);
-			holder.tvMoney.setText(item.qcoins);
+			QRechargeProduct item = productList.get(position);
+			holder.tvMoney.setText(item.money);
 			
 			if (curselected == position) {
 				holder.ivSelected.setVisibility(View.VISIBLE);
@@ -274,7 +280,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
 					itemList.clear();
 					if (resp.chargelist != null && resp.chargelist.length > 0) {
-						Collections.addAll(itemList, resp.chargelist);
+						Collections.addAll(itemList, resp.chargelist[0].products);
 						
 						adapter.notifyDataSetChanged();
 						
