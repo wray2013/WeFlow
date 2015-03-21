@@ -127,6 +127,9 @@ public class Requester {
 	public static final int RESPONSE_TYPE_COST_FLOW_LIST = 0xffee2129;
 	public static final String RIA_INTERFACE_COST_FLOW_LIST = "/vs/api/user/costFlowList";
 	
+	public static final int RESPONSE_TYPE_AWARD_RECORD = 0xffee2130;
+	public static final String RIA_INTERFACE_AWARD_RECORD = "/vs/api/user/awardrecord";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -315,6 +318,17 @@ public class Requester {
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_FLOW_RECORD, AppFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_APP_FLOW_RECORD, request);
+	}
+	
+	//2.5.4 玩游戏赚取流量币记录
+	public static void getAwardRecord(boolean hasLoading,Handler handler,String userid) {
+		awardRecordRequest request = new awardRecordRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_AWARD_RECORD, AwardRecordResp.class);
+		worker.execute(RIA_INTERFACE_AWARD_RECORD, request);
 	}
 	
 	//2.6.1 获取话费充值列表

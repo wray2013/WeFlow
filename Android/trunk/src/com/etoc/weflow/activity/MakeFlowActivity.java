@@ -50,7 +50,7 @@ public class MakeFlowActivity extends TitleRootActivity {
 		titleTab.setViewPager(viewPage);
 		
 		int index = getIntent().getIntExtra(ConStant.INTENT_MAKE_FLOW, 0);
-		index = index == 0?0:(index >= adapter.getCount() ? adapter.getCount() - 1 : index);
+		index = index == 0?0:index - 1;
 		viewPage.setCurrentItem(index);
 		final int indexTemp = index;
 		handler.postDelayed(new Runnable() {

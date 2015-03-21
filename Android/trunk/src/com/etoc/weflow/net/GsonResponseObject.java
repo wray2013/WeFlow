@@ -213,6 +213,11 @@ public class GsonResponseObject {
 		public String status;
 		public SoftInfoResp[] list;
 	}
+	// 2.5.4 玩游戏赚取流量币记录
+	public static class AwardRecordResp {
+		public String status;
+		public AwardInfoResp[] list;
+	}
 	
 	public static class SoftInfoResp {
 		public String appid;
@@ -231,6 +236,10 @@ public class GsonResponseObject {
 		public String downloadfinishtime;//下载完成时间ms
 		public String issharefinished;//是否完成分享(赚币) 0-未完成 1-已完成
 		public String sharefinishtime;//分享完成时间ms
+	}
+	
+	public static class AwardInfoResp {
+		
 	}
 	/****************************************************
 	 *                      B.花流量币
