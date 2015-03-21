@@ -50,6 +50,9 @@ public class WfCrmProduct implements Serializable {
 	private String ptype;
 
 	@Column
+	private String pbusinessid;
+
+	@Column
 	private String pbusiness;
 
 	@Column
@@ -70,6 +73,12 @@ public class WfCrmProduct implements Serializable {
 
 	@Column
 	private String lastUpdateUser;
+
+	@Column
+	private String merchant_prodid;
+
+	@Column
+	private String status;
 
 	/**
 	 * id
@@ -259,6 +268,63 @@ public class WfCrmProduct implements Serializable {
 	 */
 	public void setLastUpdateUser(String lastUpdateUser) {
 		this.lastUpdateUser = lastUpdateUser;
+	}
+
+	/**
+	 * merchant_prodid
+	 *
+	 * @return the merchant_prodid
+	 * @since 1.0.0
+	 */
+
+	public String getMerchant_prodid() {
+		return merchant_prodid;
+	}
+
+	/**
+	 * @param merchant_prodid
+	 *            the merchant_prodid to set
+	 */
+	public void setMerchant_prodid(String merchant_prodid) {
+		this.merchant_prodid = merchant_prodid;
+	}
+
+	/**
+	 * status
+	 *
+	 * @return the status
+	 * @since 1.0.0
+	 */
+
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status
+	 *            the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	/**
+	 * pbusinessid
+	 *
+	 * @return the pbusinessid
+	 * @since 1.0.0
+	 */
+
+	public String getPbusinessid() {
+		return pbusinessid;
+	}
+
+	/**
+	 * @param pbusinessid
+	 *            the pbusinessid to set
+	 */
+	public void setPbusinessid(String pbusinessid) {
+		this.pbusinessid = pbusinessid;
 	}
 
 }

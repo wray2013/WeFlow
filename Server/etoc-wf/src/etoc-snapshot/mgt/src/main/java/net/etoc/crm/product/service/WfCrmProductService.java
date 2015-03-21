@@ -8,6 +8,9 @@ package net.etoc.crm.product.service;
 
 import net.etoc.crm.product.entity.WfCrmProduct;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 /**
  * 
  * @author yuxuan
@@ -19,4 +22,14 @@ import net.etoc.crm.product.entity.WfCrmProduct;
  */
 public interface WfCrmProductService {
 	void saveOrupdate(WfCrmProduct p);
+
+	void delete(Integer id);
+
+	WfCrmProduct findById(Integer id);
+
+	public Page<WfCrmProduct> findBymerchantAndptype(String merchant,
+			String ptype, Pageable pageable);
+
+	Page<WfCrmProduct> findBymerchantAndptypeAndpbusinessid(String merchant,
+			String ptype, String businessid, Pageable pageable);
 }

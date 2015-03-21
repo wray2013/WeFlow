@@ -12,7 +12,7 @@
   <c:set var="currencySymbol" value="<%= java.util.Currency.getInstance(java.util.Locale.getDefault()).getSymbol()%>" />
   
   <c:set target="${version}" property="app">1.0</c:set>
-  <c:set target="${version}" property="porto">3.5.1</c:set>
+  <c:set target="${version}" property="metronic">3.6.1</c:set>
   <c:set target="${version}" property="handlebars">2.0.0</c:set>
 
   <c:set target="${self}" property="theme"><spring:eval expression="@appVars.theme" /></c:set>

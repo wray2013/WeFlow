@@ -1,68 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:context="http://www.springframework.org/schema/context"
-  xmlns:mvc="http://www.springframework.org/schema/mvc"
-  xmlns:util="http://www.springframework.org/schema/util"
-  xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd 
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-  <context:component-scan base-package="net.etoc" use-default-filters="false">
-    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
-  </context:component-scan>
- 
-  <mvc:annotation-driven>
-    <!--<mvc:async-support default-timeout="300000"/>-->
-    <mvc:message-converters register-defaults="true">
-      <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-      <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
-      <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-          <constructor-arg value="UTF-8" />
-      </bean>
-      </mvc:message-converters>
-  </mvc:annotation-driven>
-  
-  <mvc:interceptors>
-    <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-  </mvc:interceptors>
+	<context:component-scan base-package="net.etoc"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
 
-  <!-- 支持上传文件 -->    
-   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    <property name="maxUploadSize" value="100000000" />
-  </bean>
+	<mvc:annotation-driven>
+		<!--<mvc:async-support default-timeout="300000"/> -->
+		<mvc:message-converters register-defaults="true">
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			<bean
+				class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+    
+      <mvc:default-servlet-handler/>
 
-  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="prefix" value="/WEB-INF/views/themes/${app.theme}/"/>
-    <property name="suffix" value=".jsp"/>
-  </bean>
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+	
+	<!-- 支持上传文件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000" />
+	</bean>
 
-  <bean class="org.springframework.web.servlet.view.XmlViewResolver">
-    <property name="order" value="1"/>
-    <property name="location" value="/WEB-INF/views.xml"/>
-  </bean>
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="order" value="1" />
+		<property name="location" value="/WEB-INF/views.xml" />
+	</bean>
 
-  <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
-    <property name="exceptionMappings">  
-      <props>  
-        <prop key="java.lang.Throwable">500</prop>
-      </props>  
-    </property>  
-  </bean>
-  
- <beans profile="production">
-    <context:property-placeholder ignore-unresolvable="true"
-      location="classpath:application.properties" />
-  </beans>
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Throwable">500</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<beans profile="production">
+		<context:property-placeholder
+			ignore-unresolvable="true" file-encoding="UTF-8"
+			location="classpath*:application.properties" />
+			<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/themes/${app.theme}/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+			
+	</beans>
 
-  <beans profile="test">
-    <context:property-placeholder ignore-resource-not-found="true"
-      location="classpath:application.properties,
-                classpath:application.test.properties" />
-   </beans>
+	<beans profile="test">
+		<context:property-placeholder
+			ignore-unresolvable="true" file-encoding="UTF-8"
+			location="classpath*:application.test.properties" />
+			<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/themes/${app.theme}/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+			
+	</beans>
+	
+
+
 
 
 </beans>
