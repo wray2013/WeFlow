@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import android.app.ActionBar.LayoutParams;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -27,7 +28,9 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.adapter.MoreAdapter;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.GameCoinEvent;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeProductResp;
@@ -248,6 +251,12 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.tv_btn_order:
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			if (accountInfo != null) {
+				Requester.rechargeGame(true, handler, accountInfo.getUserid(), selectProduct.productid);
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
 			break;
 		case R.id.rl_game_type:
 			if (gamePopupWindow == null) {

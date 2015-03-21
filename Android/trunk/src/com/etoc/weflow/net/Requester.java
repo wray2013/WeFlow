@@ -130,8 +130,12 @@ public class Requester {
 	public static final int RESPONSE_TYPE_GAME_RECHARGE_LIST = 0xffee2130;
 	public static final String RIA_INTERFACE_GAME_RECHARGE_LIST = "/vs/api/user/gameRechargeList";
 
-	public static final int RESPONSE_TYPE_AWARD_RECORD = 0xffee2130;
+	public static final int RESPONSE_TYPE_AWARD_RECORD = 0xffee2131;
 	public static final String RIA_INTERFACE_AWARD_RECORD = "/vs/api/user/awardrecord";
+	
+	public static final int RESPONSE_TYPE_GAME_RECHARGE = 0xffee2132;
+	public static final String RIA_INTERFACE_GAME_RECHARGE = "/vs/api/user/gamerecharge";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -409,6 +413,18 @@ public class Requester {
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GAME_RECHARGE_LIST, GameChargeListResp.class);
 		worker.execute(RIA_INTERFACE_GAME_RECHARGE_LIST, request);
+	}
+	
+	//2.6.9 游戏充值
+	public static void rechargeGame(boolean hasLoading,Handler handler,String userid,String productid) {
+		GameRechargeRequest request = new GameRechargeRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.acctid = productid;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GAME_RECHARGE, GameRechargeResp.class);
+		worker.execute(RIA_INTERFACE_GAME_RECHARGE, request);
 	}
 	
 	//2.6.10 获取流量包列表
