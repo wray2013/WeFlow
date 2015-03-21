@@ -34,6 +34,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 
 	public static final int TYPE_REGIST = 1;
 	public static final int TYPE_RESET  = 2;
+	public static final int TYPE_MODIFY = 3;
 	
 	private static final int STEP_ONE = 1;
 	private static final int STEP_TWO = 2;
@@ -70,6 +71,10 @@ public class RegisterResetActivity extends TitleRootActivity {
 		case TYPE_REGIST:
 			setTitleText("注册流量钱包");
 			setTitleGravity(GRAVITE_CENTER);
+			break;
+		case TYPE_MODIFY:
+			setTitleText("修改密码");
+			setTitleGravity(GRAVITE_LEFT);
 			break;
 		case TYPE_RESET:
 			setTitleText("忘记密码");
@@ -195,7 +200,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 			} else {
 				if(currentType == TYPE_REGIST) { //注册
 					Requester.register(handler, currentTel, edValidCode.getText().toString());
-				} else if(currentType == TYPE_RESET) { //密码重置
+				} else if(currentType == TYPE_RESET || currentType == TYPE_MODIFY) { //密码重置
 					Requester.resetPassword(handler, currentTel, edValidCode.getText().toString());
 				}
 			}
@@ -236,6 +241,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 				
 			}
 			break;
+		case TYPE_MODIFY:
 		case TYPE_RESET:
 			tvStep2.setText("2.重置密码");
 			if(currentStep == STEP_ONE) {
