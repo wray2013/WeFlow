@@ -6,12 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
+import com.etoc.weflow.event.ExpenseFlowBillFragmentEvent;
 import com.etoc.weflow.fragment.ExpenseFlowBillFragment;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+
+import de.greenrobot.event.EventBus;
 
 public class ExpenseBillListActivity extends TitleRootActivity {
 	private PagerSlidingTabStrip titleTab;
@@ -44,6 +48,41 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 		int index = getIntent().getIntExtra(ConStant.INTENT_EXPENSE_FLOW, 0);
 		index = index <= 0 ? 0 : (index >= adapter.getCount() ? adapter.getCount() - 1 : index);
 		viewPage.setCurrentItem(index);
+		final int indexTemp = index;
+		handler.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				ExpenseFlowBillFragmentEvent event  = new ExpenseFlowBillFragmentEvent();
+				event.setIndex(indexTemp);
+				EventBus.getDefault().post(event);
+			}
+		}, 100);
+		
+		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				ExpenseFlowBillFragmentEvent event  = new ExpenseFlowBillFragmentEvent();
+				event.setIndex(arg0);
+				EventBus.getDefault().post(event);
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 	}
 
 	@Override

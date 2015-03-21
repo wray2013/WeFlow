@@ -31,10 +31,10 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	private MyPagerAdapter adapter;
 	
 	private boolean isLogin = false;
-	public static int INDEX_RECHARGE = 0;
-	public static int INDEX_FLOW = 1;
-	public static int INDEX_GAME = 2;
-	public static int INDEX_GIFT = 3;
+	public final static int INDEX_RECHARGE = 0;
+	public final static int INDEX_FLOW = 1;
+	public final static int INDEX_GAME = 2;
+	public final static int INDEX_GIFT = 3;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

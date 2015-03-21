@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
@@ -195,8 +196,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				Log.d("=AAA=","buildCount = 0");
 				phoneDao.insert(new FrequentPhone(etPhone.getText().toString()));
 			}
-			if (WeFlowApplication.accountInfo != null) {
-				Requester.rechargePhone(true, handler, WeFlowApplication.accountInfo.getUserid(), etPhone.getText().toString(), adapter.getSelectId());
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			if (accountInfo != null) {
+				Requester.rechargePhone(true, handler, accountInfo.getUserid(), etPhone.getText().toString(), adapter.getSelectId());
 			} else {
 				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}

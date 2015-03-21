@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.GameCoinEvent;
 import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftProduct;
@@ -194,8 +195,9 @@ public class GameGiftFragment extends Fragment implements Callback {
 				@Override
 				public void onClick(View view) {
 					// TODO Auto-generated method stub
-					if (WeFlowApplication.accountInfo != null) {
-						Requester.exchangeGamePkg(true, handler, WeFlowApplication.accountInfo.getUserid(), item.gamepkgid);
+					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+					if (accountInfo != null) {
+						Requester.exchangeGamePkg(true, handler, accountInfo.getUserid(), item.gamepkgid);
 					} else {
 						startActivity(new Intent(getActivity(), LoginActivity.class));
 					}

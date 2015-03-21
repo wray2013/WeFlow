@@ -33,6 +33,7 @@ import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.FrequentQQ;
 import com.etoc.weflow.dao.FrequentQQDao;
@@ -178,8 +179,9 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				qqDao.insert(new FrequentQQ(etQQ.getText().toString()));
 			}
 			
-			if (WeFlowApplication.accountInfo != null) {
-				Requester.rechargePhone(true, handler, WeFlowApplication.accountInfo.getUserid(), etQQ.getText().toString(), adapter.getSelectId());
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			if (accountInfo != null) {
+				Requester.rechargePhone(true, handler, accountInfo.getUserid(), etQQ.getText().toString(), adapter.getSelectId());
 			} else {
 				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}

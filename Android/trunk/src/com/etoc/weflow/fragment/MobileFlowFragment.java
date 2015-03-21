@@ -26,6 +26,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.ExchangeFlowDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject;
@@ -99,8 +100,9 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				// TODO Auto-generated method stub
-				if (WeFlowApplication.accountInfo != null) {
-					Requester.exchangeFlowPkg(true, handler, WeFlowApplication.accountInfo.getUserid(), selectId);
+				AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+				if (accountInfo != null) {
+					Requester.exchangeFlowPkg(true, handler, accountInfo.getUserid(), selectId);
 				} else {
 					startActivity(new Intent(getActivity(), LoginActivity.class));
 				}

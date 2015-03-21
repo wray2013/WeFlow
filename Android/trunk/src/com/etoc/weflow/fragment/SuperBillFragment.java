@@ -137,7 +137,7 @@ public class SuperBillFragment extends Fragment implements OnRefreshListener2<Li
 				// TODO Auto-generated method stub
 				xlvMyBill.onRefreshComplete();
 			}
-		}, 1000);
+		}, 5);
 	}
 
 	@Override

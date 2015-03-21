@@ -17,21 +17,36 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.adapter.MyBillAdapter;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.event.MakeFlowBillFragmentEvent;
+import com.etoc.weflow.net.GsonResponseObject.AdvFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
+import com.etoc.weflow.net.GsonResponseObject.AppFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.AwardInfoResp;
+import com.etoc.weflow.net.GsonResponseObject.AwardRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+import de.greenrobot.event.EventBus;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +79,7 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		EventBus.getDefault().register(this);
 		position = getArguments().getInt(ARG_POSITION);
 		
 		myHandler = new Handler(this);
@@ -79,6 +94,13 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		return v;
 	}
 	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
 	private void initView(View view) {
 		xlvMyBill = (PullToRefreshListView) view.findViewById(R.id.xlv_mybill_list);
 		xlvMyBill.setShowIndicator(false);
@@ -91,6 +113,31 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		adapter.setData(makeFakeData());
 		lvBillList.setAdapter(adapter);
 		
+	}
+	
+	public void onEvent(MakeFlowBillFragmentEvent event) {
+		Log.d("=AAA=","onEvent index = " + event.getIndex());
+		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
+		if(acc == null || acc.getUserid() != null || acc.getUserid().equals("")) {
+			return;
+		}
+		switch(event.getIndex()) {
+		case MakeFlowActivity.INDEX_ADVERTISEMENT:
+			if (position == POSITION_ADV) {
+				Requester.getAdvRecord(false, myHandler, acc.getUserid());
+			}
+			break;
+		case MakeFlowActivity.INDEX_APPRECOMM:
+			if (position == POSITION_SOFTWARE) {
+				Requester.getAppRecord(false, myHandler, acc.getUserid());
+			}
+			break;
+		case MakeFlowActivity.INDEX_PLAYGAME:
+			if (position == POSITION_GAME) {
+				Requester.getAwardRecord(false, myHandler, acc.getUserid());
+			}
+			break;
+		}
 	}
 	
 	private static final long MONTH_TIME = 30 * 12 * 60 * 60 * 1000;
@@ -144,6 +191,50 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_ADV_RECORD:
+			if (msg.obj != null) {
+				AdvFlowRecordResp advResp = (AdvFlowRecordResp) msg.obj;
+				if ("0".equals(advResp.status) || "0000".equals(advResp.status)) {
+					if(advResp.recordlist != null) {
+						List<AdverInfo> advlist = Arrays.asList(advResp.recordlist);
+						List<BillList> blist = new ArrayList<BillList>();
+						for(AdverInfo item : advlist) {
+							
+						}
+					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_APP_FLOW_RECORD:
+			if (msg.obj != null) {
+				AppFlowRecordResp flowResp = (AppFlowRecordResp) msg.obj;
+				if ("0".equals(flowResp.status) || "0000".equals(flowResp.status)) {
+					if(flowResp.list != null) {
+						List<SoftInfoResp> flowlist = Arrays.asList(flowResp.list);
+						List<BillList> blist = new ArrayList<BillList>();
+						for (SoftInfoResp item : flowlist) {
+
+						}
+					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_AWARD_RECORD:
+			if (msg.obj != null) {
+				AwardRecordResp awardResp = (AwardRecordResp) msg.obj;
+				if ("0".equals(awardResp.status) || "0000".equals(awardResp.status)) {
+					if(awardResp.list != null) {
+						List<AwardInfoResp> awardlist = Arrays.asList(awardResp.list);
+						List<BillList> blist = new ArrayList<BillList>();
+						for (AwardInfoResp item : awardlist) {
+
+						}
+					}
+				}
+			}
+			break;
+		}
 		return false;
 	}
 
