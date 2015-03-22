@@ -6,6 +6,9 @@ import java.util.HashMap;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.scratchflowResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.RandomUtils;
 import com.etoc.weflow.utils.ViewUtils;
@@ -36,6 +39,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 	
 	private boolean isRetry = false;
 	
+	private AccountInfo accountInfo;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -49,15 +54,16 @@ public class ScratchCardActivity extends TitleRootActivity {
 		hideRightButton();
 		setTitleText("刮刮卡");
 		
+		accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+		
 		String phoneNum = getIntent().getStringExtra("phone");
 		if(phoneNum != null) {
 			Tel = phoneNum;
 		}
 //		String flowvalue = getIntent().getStringExtra("flow");
 //		if(flowvalue != null) {
-		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
 		
-		Flow = acc.getFlowcoins() + "";
+		Flow = accountInfo.getFlowcoins() + "";
 //		}
 		tvFlow = (TextView) findViewById(R.id.tv_flow);
 		tvFlow.setText(Flow);
@@ -101,7 +107,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 				});
 			}
 		});
-		randomAward();
+//		randomAward();
 		
 		gvAward = (GridView) findViewById(R.id.gv_award);
 		makeFakeData(gvAward);
@@ -163,13 +169,14 @@ public class ScratchCardActivity extends TitleRootActivity {
 //		ViewUtils.setHeightPixel(gv, gridHeight);
 	}
 	
-	private void randomAward() {
-		int i = RandomUtils.getRandom(20);
+	private void randomAward(String pricename) {
+		stvCard.setText(pricename);
+		/*int i = RandomUtils.getRandom(20);
 		if(i < 6) {
 			stvCard.setText("恭喜您获得\n" + items[i]);
 		} else {
 			stvCard.setText("谢谢参与");
-		}
+		}*/
 	}
 	
 	@Override
@@ -177,19 +184,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.iv_start_lottery:
-//			Requester.orderLargess(handler, Tel, "C", "prod_out_flow_50");
-			
-			/*randomAward();
-			stvCard.resetScratchCard(R.drawable.scratch_bg, 0);
-			if(isRetry) {
-//				ivCover.setVisibility(View.VISIBLE);
-//				btnStartLottery.setVisibility(View.VISIBLE);
-			} else {
-				ivCover.setVisibility(View.GONE);
-			}
-			btnStartLottery.setVisibility(View.GONE);
-			isRetry = true;*/
-			startLottery();
+			Requester.scratchFlow(true, handler, accountInfo.getUserid());
+//			startLottery();
 			break;
 		case R.id.tv_flow_hint:
 			ivCover.setVisibility(View.VISIBLE);
@@ -199,8 +195,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 		super.onClick(v);
 	}
 	
-	private void startLottery() {
-		randomAward();
+	private void startLottery(String pricename) {
+		randomAward(pricename);
 		LayoutParams cardlp = stvCard.getLayoutParams();
 		stvCard.resetScratchCard(cardlp.width, cardlp.height, R.drawable.scratch_bg, 0);
 		if(isRetry) {
@@ -213,23 +209,34 @@ public class ScratchCardActivity extends TitleRootActivity {
 		isRetry = true;
 	}
 	
+	private String[] noAward = {
+			"哎呀，离中奖就差一点",
+			"搞什么灰机，又没刮到",
+			"据说下雨天跟大奖更配哦",
+			"很遗憾，请再接再厉",
+			"又没中，什么仇什么怨？"
+	};
+	
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
 		switch(msg.what) {
-		/*case Requester.RESPONSE_TYPE_ORDER_LARGESS:
-			commonResponse response = (commonResponse) msg.obj;
-			if(response != null && response.code != null) {
-				if(response.isSucceed()) {
-					tvFlow.setText(MainApplication.totalFlow + "");
-					startLottery();
-				} else if(response.isRunningLow()) {
-					Toast.makeText(MainApplication.getAppInstance(), "您的流量币余额不足", Toast.LENGTH_LONG).show();
-				} else {
-					Toast.makeText(MainApplication.getAppInstance(), "请求失败 [" + response.code + ":" + response.message + "]", Toast.LENGTH_LONG).show();
+		case Requester.RESPONSE_TYPE_SCRATCH:
+			if(msg.obj != null) {
+				scratchflowResp resp = (scratchflowResp) msg.obj;
+				if("0".equals(resp.status) || "0000".equals(resp.status)) {
+					if(resp.award != null) {
+						startLottery(resp.award.pricename);
+					} else {
+						Toast mtoast;
+						mtoast = Toast.makeText(ScratchCardActivity.this,
+								noAward[RandomUtils.getRandom(4) % 5], Toast.LENGTH_SHORT);
+						mtoast.show();
+					}
 				}
+			} else {
+				PromptDialog.Alert(ScratchCardActivity.class, "您的网络部给力啊！");
 			}
-			break;*/
 		}
 		return false;
 	}
