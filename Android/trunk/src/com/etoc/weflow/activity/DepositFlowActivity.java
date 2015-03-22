@@ -1,6 +1,11 @@
 package com.etoc.weflow.activity;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.bankStoreResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
 
 import android.os.Bundle;
@@ -44,6 +49,7 @@ public class DepositFlowActivity extends TitleRootActivity {
 		
 		tvTotal = (TextView) findViewById(R.id.tv_deposit_top_total);
 		tvBtnDeposit = (TextView) findViewById(R.id.tv_btn_deposit);
+		tvBtnDeposit.setOnClickListener(this);
 		
 		tvTotal.setText(total + "");
 		
@@ -123,6 +129,34 @@ public class DepositFlowActivity extends TitleRootActivity {
 	}
 	
 	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+		switch(v.getId()) {
+		case R.id.tv_btn_deposit:
+			String dep = edDeposit.getText().toString();
+			if(dep != null && !dep.equals("")) {
+				int d = 0;
+				try {
+					d = Integer.parseInt(dep);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if(d <= 0) {
+					PromptDialog.Alert(DepositFlowActivity.class, "请输入存入额度");
+					break;
+				}
+				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+				if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
+					Requester.storeFlow(true, handler, info.getUserid(), edDeposit.getText().toString());
+				}
+			}
+			break;
+		}
+		super.onClick(v);
+	}
+	
+	@Override
 	protected int graviteType() {
 		// TODO Auto-generated method stub
 		return GRAVITE_LEFT;
@@ -131,6 +165,24 @@ public class DepositFlowActivity extends TitleRootActivity {
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_BANK_STORE:
+			if(msg.obj != null) {
+				bankStoreResp storeResp = (bankStoreResp) msg.obj;
+				if("0".equals(storeResp.status) || "0000".equals(storeResp.status)) {
+					PromptDialog.Alert(DepositFlowActivity.class, "成功存入流量银行");
+					tvTotal.setText(storeResp.bankcoins);
+					info.setFlowcoins(storeResp.flowcoins);
+					WeFlowApplication.getAppInstance().PersistAccountInfo(info);
+				} else {
+					PromptDialog.Alert(DepositFlowActivity.class, "存入失败，请稍后再试");
+				}
+			} else {
+				PromptDialog.Alert(DepositFlowActivity.class, "您的网络不给力啊！");
+			}
+			break;
+		}
 		return false;
 	}
 

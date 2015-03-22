@@ -165,7 +165,7 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
-		String pageno;
+		String page;
 	}
 	
 	//2.4.1 下载软件首页
@@ -196,7 +196,7 @@ public class GsonRequestObject {
 		String appid; //软件id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
-		String pageno;
+		String page;
 	}
 	
 	//2.5.1 获取奖品列表
@@ -225,7 +225,7 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
-		String pageno;
+		String page;
 	}
 	
 	/****************************************************
@@ -349,7 +349,7 @@ public class GsonRequestObject {
 	//2.7.3 取流量币
 	public static class popFlowRequest {
 		String userid;  //用户号码
-		String popflow;  //账户从银行取出流量币额度
+		String flowcoins;  //账户从银行取出流量币额度
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}

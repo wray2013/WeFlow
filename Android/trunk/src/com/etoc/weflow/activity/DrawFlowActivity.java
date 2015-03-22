@@ -5,7 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.adapter.DrawFlowAdapter;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.bankPopResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
 
 import android.content.Intent;
@@ -59,6 +64,7 @@ public class DrawFlowActivity extends TitleRootActivity {
 		tvWarning = (TextView) findViewById(R.id.tv_warning);
 		tvWarning.setVisibility(View.GONE);
 		tvBtnDraw = (TextView) findViewById(R.id.tv_btn_draw);
+		tvBtnDraw.setOnClickListener(this);
 		
 		tvTotal = (TextView) findViewById(R.id.tv_draw_top_total);
 		tvTotal.setText(total + "");
@@ -124,6 +130,25 @@ public class DrawFlowActivity extends TitleRootActivity {
 	}
 	
 	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()) {
+		case R.id.tv_btn_draw:
+			int draw = adapter.getSelectValue();
+			if(draw <= 0) {
+				PromptDialog.Alert(DepositFlowActivity.class, "请选择取币额度");
+				break;
+			}
+			AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+			if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
+				Requester.popFlow(true, handler, info.getUserid(), draw + "");
+			}
+			break;
+		}
+		super.onClick(v);
+	}
+	
+	@Override
 	protected int graviteType() {
 		// TODO Auto-generated method stub
 		return GRAVITE_LEFT;
@@ -132,6 +157,24 @@ public class DrawFlowActivity extends TitleRootActivity {
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_BANK_POP:
+			if(msg.obj != null) {
+				bankPopResp popResp = (bankPopResp) msg.obj;
+				if("0".equals(popResp.status) || "0000".equals(popResp.status)) {
+					PromptDialog.Alert(DepositFlowActivity.class, "成功取出" + adapter.getSelectValue() + "流量币");
+					tvTotal.setText(popResp.bankcoins);
+					info.setFlowcoins(popResp.flowcoins);
+					WeFlowApplication.getAppInstance().PersistAccountInfo(info);
+				} else {
+					PromptDialog.Alert(DepositFlowActivity.class, "取币失败，请稍后再试");
+				}
+			} else {
+				PromptDialog.Alert(DepositFlowActivity.class, "您的网络不给力啊！");
+			}
+			break;
+		}
 		return false;
 	}
 
