@@ -28,11 +28,14 @@ import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.ExchangeFlowDialog;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeFlowPkgResp;
 import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowProduct;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
+import com.etoc.weflow.net.GsonResponseObject.QChargeResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
 import com.nostra13.universalimageloader.api.MyImageLoader;
@@ -245,6 +248,18 @@ public class MobileFlowFragment extends Fragment implements Callback {
 						
 						adapter.notifyDataSetChanged();
 					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_EXCHANGE_FLOW_PKG:
+			if (msg.obj != null) {
+				ExchangeFlowPkgResp chargeResp = (ExchangeFlowPkgResp) msg.obj;
+				if (Requester.isSuccessed(chargeResp.status)) {
+					PromptDialog.Alert("订购成功");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isProcessed(chargeResp.status)){
+					PromptDialog.Alert("订购已处理");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
 				}
 			}
 			break;

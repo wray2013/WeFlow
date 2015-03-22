@@ -181,4 +181,11 @@ public class WeFlowApplication extends Application {
 			break;
 		}
 	}
+    
+    public static void setFlowCoins(String flowcoins) {
+		AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (accountInfo != null && flowcoins != null) {
+			accountInfo.setFlowcoins(flowcoins);
+		}
+	}
 }

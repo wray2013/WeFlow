@@ -1,7 +1,6 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,22 +30,24 @@ import android.widget.TextView;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
-import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.FrequentQQ;
 import com.etoc.weflow.dao.FrequentQQDao;
 import com.etoc.weflow.dao.FrequentQQDao.Properties;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.PhoneChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.QChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.QRechargeProduct;
-import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
-import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.NumberUtils;
+import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import de.greenrobot.dao.query.QueryBuilder;
@@ -147,7 +148,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				// TODO Auto-generated method stub
 				adapter.setSelect(position);
 				adapter.notifyDataSetChanged();
-				tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost()));
+				tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost()) + "流量币");
 			}
 		});
 		
@@ -176,6 +177,10 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.tv_btn_order:
+			if (StringUtils.isEmpty(etQQ.getText().toString())) {
+				PromptDialog.Dialog(getActivity(), "温馨提示", "请输入QQ号", "确定");
+				return;
+			}
 			QueryBuilder<FrequentQQ> build = qqDao.queryBuilder();
 			build.where(Properties.Qq_num.eq(etQQ.getText().toString()));
 			if (build.buildCount().count() ==0) {
@@ -302,8 +307,20 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 						adapter.notifyDataSetChanged();
 						
 						tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
-						tvCostCoins.setText(adapter.getSelectCost());
+						tvCostCoins.setText(adapter.getSelectCost()+ "流量币");
 					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_RECHARGE_QQ:
+			if (msg.obj != null) {
+				QChargeResp chargeResp = (QChargeResp) msg.obj;
+				if (Requester.isSuccessed(chargeResp.status)) {
+					PromptDialog.Alert("订购成功");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isProcessed(chargeResp.status)){
+					PromptDialog.Alert("订购已处理");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
 				}
 			}
 			break;

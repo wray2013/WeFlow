@@ -16,9 +16,12 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import com.etoc.weflow.Config;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.net.GsonRequestObject.*;
 import com.etoc.weflow.net.GsonResponseObject.*;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.VMobileInfo;
 import com.google.gson.Gson;
 
@@ -752,5 +755,12 @@ public class Requester {
 		}
 
 	}
-
+	
+	public static boolean isSuccessed(String str) {
+		return ConStant.REQUEST_SUCCESS.equals(str) || "0".equals(str);
+	}
+	
+	public static boolean isProcessed(String str) {
+		return ConStant.ORDER_PROCESSED.equals(str);
+	}
 }

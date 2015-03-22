@@ -9,6 +9,8 @@ public class ConStant {
 	public final static String SD_STORAGE_ROOT = "/.weflow"; //不包括sdcard的路径
 	public static final long MEDIA_CACHE_LIMIT = 100;
 	public static final int LOAIND_DISSMISS_DALAY = 10000;
+	public static final String REQUEST_SUCCESS = "0000";
+	public static final String ORDER_PROCESSED = "0002";
 	
 	public static final String INTENT_SOFT_DETAIL = "intent_sort_detail";
 	public static final String INTENT_MAKE_FLOW = "intent_make_flow";
@@ -45,4 +47,5 @@ public class ConStant {
 	public static String getNextUUID() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
+	
 }

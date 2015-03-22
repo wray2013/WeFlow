@@ -1,5 +1,13 @@
 package com.etoc.weflow.activity;
 
+import android.os.Bundle;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
 import com.etoc.weflow.event.FlowBillFragmentEvent;
@@ -8,14 +16,6 @@ import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 
 import de.greenrobot.event.EventBus;
-
-import android.os.Bundle;
-import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 
 public class MyBillListActivity extends TitleRootActivity {
 

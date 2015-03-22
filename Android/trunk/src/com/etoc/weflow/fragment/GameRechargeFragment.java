@@ -31,12 +31,16 @@ import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.adapter.MoreAdapter;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.GameCoinEvent;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeFlowPkgResp;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeProductResp;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeResp;
+import com.etoc.weflow.net.GsonResponseObject.GameRechargeResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import de.greenrobot.event.EventBus;
@@ -141,9 +145,9 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_game_select), 32);
 		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_game_select), 32);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_game_coins_label), 32);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_game_coins_label), 32);
-		ViewUtils.setTextSize(view.findViewById(R.id.tv_game_coins_label), 32);
-		ViewUtils.setMarginTop(view.findViewById(R.id.tv_game_coins_label), 68);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_game_coins_label), 24);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_cost_flowcoins_label), 32);
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_cost_flowcoins_label), 68);
 		ViewUtils.setTextSize(tvFlowCoins, 36);
 		ViewUtils.setMarginTop(tvFlowCoins, 36);
 	}
@@ -168,6 +172,18 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 						gameAdapter.notifyDataSetChanged();
 						Log.d("=AAA=","gameAdapter count = " + gameAdapter.getCount());
 					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_GAME_RECHARGE:
+			if (msg.obj != null) {
+				GameRechargeResp chargeResp = (GameRechargeResp) msg.obj;
+				if (Requester.isSuccessed(chargeResp.status)) {
+					PromptDialog.Alert("订购成功");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isProcessed(chargeResp.status)){
+					PromptDialog.Alert("订购已处理");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
 				}
 			}
 			break;
@@ -219,7 +235,7 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 					long id) {
 				// TODO Auto-generated method stub
 				selectProduct = productList.get(position);
-				tvFlowCoins.setText(selectProduct.cost + "流量币");
+				tvFlowCoins.setText(NumberUtils.convert2IntStr(selectProduct.cost) + "流量币");
 				tvGameCoins.setText(selectProduct.money);
 				coinsPopupWindow.dismiss();
 			}

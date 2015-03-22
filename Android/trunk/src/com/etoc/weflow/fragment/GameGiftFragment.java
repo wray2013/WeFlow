@@ -25,8 +25,11 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.GameCoinEvent;
 import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeFlowPkgResp;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeGamePkgResp;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
@@ -226,6 +229,18 @@ public class GameGiftFragment extends Fragment implements Callback {
 						
 						adapter.notifyDataSetChanged();
 					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_EXCHANGE_GAME_PKG:
+			if (msg.obj != null) {
+				ExchangeGamePkgResp chargeResp = (ExchangeGamePkgResp) msg.obj;
+				if (Requester.isSuccessed(chargeResp.status)) {
+					PromptDialog.Alert("订购成功");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isProcessed(chargeResp.status)){
+					PromptDialog.Alert("订购已处理");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
 				}
 			}
 			break;
