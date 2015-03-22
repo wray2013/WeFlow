@@ -6,7 +6,9 @@
  */
 package net.etoc.soft.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 import net.etoc.crm.user.service.AppUserService;
 import net.etoc.soft.entity.WfSoft;
@@ -25,6 +27,7 @@ import org.springframework.web.client.RestClientException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * 
@@ -106,11 +109,25 @@ public class WfSoftServiceImpl implements WfSoftService {
 			return null;
 		}
 		List<OrderRel> list = crmresult.getList();
+		if (list == null || list.size() == 0) {
+			return null;
+		}
 		List<Integer> ids = Lists.newArrayList();
+		Map<String, OrderRel> tmp = Maps.newHashMap();
 		for (OrderRel bo : list) {
 			ids.add(Integer.valueOf(bo.getProductid()));
+			tmp.put(bo.getProductid(), bo);
 		}
-		return repository.findAll(ids);
+
+		List<WfSoft> rs = repository.findAll(ids);
+		OrderRel or = null;
+		for (WfSoft ws : rs) {
+			or = tmp.get(ws.getAppid());
+			ws.setFlowcoins(new BigDecimal(or.getCost()));
+			ws.setDownloadfinishtime(or.getDate());
+			ws.setTitle(or.getTitle());
+		}
+		return rs;
 	}
 
 }

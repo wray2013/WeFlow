@@ -24,7 +24,10 @@ import net.etoc.wf.ctapp.user.entity.AppProductResponse.PhoneChargeListResp;
 import net.etoc.wf.ctapp.user.entity.AppProductResponse.RechargePhoneResp;
 import net.etoc.wf.ctapp.user.entity.AppProductResponse.RechargeProduct;
 import net.etoc.wf.ctapp.user.entity.AuthCodeRequest;
+import net.etoc.wf.ctapp.user.entity.CrmBillResponse;
+import net.etoc.wf.ctapp.user.entity.CrmFlowBankRequest;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankResponse;
+import net.etoc.wf.ctapp.user.entity.CrmFlowStoreAndPopResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
@@ -195,6 +198,7 @@ public class AppUserServiceImpl implements AppUserService {
 	 * net.etoc.crm.user.service.AppUserService#querySubProdList(java.lang.String
 	 * , net.etoc.wf.ctapp.user.entity.CrmOderHisRequest)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public CrmOrderHisResponse querySubProdList(String methodSuffix,
 			CrmOderHisRequest ar) throws RestClientException,
@@ -261,6 +265,8 @@ public class AppUserServiceImpl implements AppUserService {
 				tmp.setChargesid(bo.getId() + "");
 				tmp.setCost(bo.getPcount() + "");
 				tmp.setMoney(bo.getChildbusiness());
+				tmp.setTitle(bo.getPbusiness());
+				tmp.setDesc(bo.getRemark());
 				lrp.add(tmp);
 				resp.setTypename(bo.getPbusiness());
 			}
@@ -291,6 +297,94 @@ public class AppUserServiceImpl implements AppUserService {
 		try {
 			return (CrmFlowBankResponse) jsonUtils.getResult(rb,
 					CrmFlowBankResponse.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",
+					AppVars.getInstance().crmUrl + methodSuffix, e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.etoc.crm.user.service.AppUserService#storeFlow(java.lang.String,
+	 * net.etoc.wf.ctapp.base.RequestBase)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public CrmFlowStoreAndPopResponse storeFlow(String methodSuffix,
+			CrmFlowBankRequest ar) throws RestClientException,
+			JsonProcessingException {
+		// TODO Auto-generated method stub
+		ar.setOpertype("store");
+		String rb = restTemplate.postForObject(AppVars.getInstance().crmUrl
+				+ methodSuffix, jsonUtils.getJsonResult(ar), String.class);
+		logger.info("访问CRM服务器,[{}] 返回的结果 [{}]", AppVars.getInstance().crmUrl
+				+ methodSuffix, rb);
+
+		try {
+			return (CrmFlowStoreAndPopResponse) jsonUtils.getResult(rb,
+					CrmFlowStoreAndPopResponse.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",
+					AppVars.getInstance().crmUrl + methodSuffix, e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.etoc.crm.user.service.AppUserService#popFlow(java.lang.String,
+	 * net.etoc.wf.ctapp.user.entity.CrmFlowBankRequest)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public CrmFlowStoreAndPopResponse popFlow(String methodSuffix,
+			CrmFlowBankRequest ar) throws RestClientException,
+			JsonProcessingException {
+		// TODO Auto-generated method stub
+		ar.setOpertype("pop");
+		String rb = restTemplate.postForObject(AppVars.getInstance().crmUrl
+				+ methodSuffix, jsonUtils.getJsonResult(ar), String.class);
+		logger.info("访问CRM服务器,[{}] 返回的结果 [{}]", AppVars.getInstance().crmUrl
+				+ methodSuffix, rb);
+
+		try {
+			return (CrmFlowStoreAndPopResponse) jsonUtils.getResult(rb,
+					CrmFlowStoreAndPopResponse.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",
+					AppVars.getInstance().crmUrl + methodSuffix, e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * net.etoc.crm.user.service.AppUserService#queryBillList(java.lang.String,
+	 * net.etoc.wf.ctapp.user.entity.CrmOderHisRequest)
+	 */
+	@Override
+	public CrmBillResponse queryBillList(String methodSuffix,
+			CrmOderHisRequest ar) throws RestClientException,
+			JsonProcessingException {
+		String rb = restTemplate.postForObject(AppVars.getInstance().crmUrl
+				+ methodSuffix, jsonUtils.getJsonResult(ar), String.class);
+		logger.info("访问CRM服务器,[{}] 返回的结果 [{}]", AppVars.getInstance().crmUrl
+				+ methodSuffix, rb);
+
+		try {
+			return (CrmBillResponse) jsonUtils.getResult(rb,
+					CrmBillResponse.class);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",

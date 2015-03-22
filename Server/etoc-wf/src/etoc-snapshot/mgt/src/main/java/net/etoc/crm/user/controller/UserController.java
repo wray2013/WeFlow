@@ -16,13 +16,19 @@ import net.etoc.wf.core.util.JsonUtils;
 import net.etoc.wf.core.util.PMerchant;
 import net.etoc.wf.core.util.PType;
 import net.etoc.wf.core.util.SignUtils;
-import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.base.ResponseBase;
+import net.etoc.wf.ctapp.base.RsCode;
 import net.etoc.wf.ctapp.user.entity.AppCrmUserRequest;
 import net.etoc.wf.ctapp.user.entity.AppCrmUserResponse;
 import net.etoc.wf.ctapp.user.entity.AppProductResponse.PhoneChargeListResp;
 import net.etoc.wf.ctapp.user.entity.AuthCodeRequest;
+import net.etoc.wf.ctapp.user.entity.CrmBankBalance;
+import net.etoc.wf.ctapp.user.entity.CrmBillResponse;
+import net.etoc.wf.ctapp.user.entity.CrmFlowBankRequest;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankResponse;
+import net.etoc.wf.ctapp.user.entity.CrmFlowStoreAndPopResponse;
+import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
+import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderResponse;
 
@@ -266,7 +272,15 @@ public class UserController {
 		AppCrmUserRequest ar = (AppCrmUserRequest) jsonUtils.getResult(json,
 				AppCrmUserRequest.class);
 
-		return appUserService.accountInfo("queryAccountInfo", ar);
+		AppCrmUserResponse result = appUserService.accountInfo(
+				"queryAccountInfo", ar);
+		if (result == null) {
+			AppCrmUserResponse pp = new AppCrmUserResponse();
+			pp.setStatus(RsCode.OK.getCode());
+			return pp;
+		} else {
+			return result;
+		}
 
 	}
 
@@ -279,8 +293,15 @@ public class UserController {
 			BeanUtils.copyProperties(rs, ar);
 			return ar;
 		}
-		return appUserService.findAppProduct(PMerchant.fl_charge.getValue(),
-				PType.change_tc.getValue());
+		PhoneChargeListResp result = appUserService.findAppProduct(
+				PMerchant.fl_charge.getValue(), PType.change_tc.getValue());
+		if (result == null) {
+			PhoneChargeListResp ar = new PhoneChargeListResp();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
 	}
 
 	/**
@@ -326,8 +347,15 @@ public class UserController {
 			BeanUtils.copyProperties(rs, ar);
 			return ar;
 		}
-		return appUserService.findAppProduct(PMerchant.fl_charge.getValue(),
-				PType.change_qq.getValue());
+		PhoneChargeListResp result = appUserService.findAppProduct(
+				PMerchant.fl_charge.getValue(), PType.change_qq.getValue());
+		if (result == null) {
+			PhoneChargeListResp ar = new PhoneChargeListResp();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
 	}
 
 	/**
@@ -373,8 +401,15 @@ public class UserController {
 			BeanUtils.copyProperties(rs, ar);
 			return ar;
 		}
-		return appUserService.findAppProduct(PMerchant.fl_charge.getValue(),
-				PType.change_gf.getValue());
+		PhoneChargeListResp result = appUserService.findAppProduct(
+				PMerchant.fl_charge.getValue(), PType.change_gf.getValue());
+		if (result == null) {
+			PhoneChargeListResp ar = new PhoneChargeListResp();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
 	}
 
 	/**
@@ -420,8 +455,16 @@ public class UserController {
 			BeanUtils.copyProperties(rs, ar);
 			return ar;
 		}
-		return appUserService.findAppProduct(PMerchant.fl_charge.getValue(),
-				PType.change_wf.getValue());
+		PhoneChargeListResp result = appUserService.findAppProduct(
+				PMerchant.fl_charge.getValue(), PType.change_wf.getValue());
+		if (result == null) {
+			PhoneChargeListResp ar = new PhoneChargeListResp();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
+
 	}
 
 	/**
@@ -467,8 +510,15 @@ public class UserController {
 			BeanUtils.copyProperties(rs, ar);
 			return ar;
 		}
-		return appUserService.findAppProduct(PMerchant.fl_charge.getValue(),
-				PType.bug_gf.getValue());
+		PhoneChargeListResp result = appUserService.findAppProduct(
+				PMerchant.fl_charge.getValue(), PType.bug_gf.getValue());
+		if (result == null) {
+			PhoneChargeListResp ar = new PhoneChargeListResp();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
 	}
 
 	/**
@@ -505,6 +555,61 @@ public class UserController {
 		return result;
 	}
 
+	@RequestMapping(value = "/vs/api/user/gameRechargeList", method = RequestMethod.POST)
+	@ResponseBody
+	public PhoneChargeListResp gameRechargeList(String json, String sign) {
+		ResponseBase rs = SignUtils.sign(json, sign);
+		if (rs != null) {
+			PhoneChargeListResp ar = new PhoneChargeListResp();
+			BeanUtils.copyProperties(rs, ar);
+			return ar;
+		}
+		PhoneChargeListResp result = appUserService.findAppProduct(
+				PMerchant.fl_charge.getValue(), PType.recharge_gm.getValue());
+		if (result == null) {
+			PhoneChargeListResp ar = new PhoneChargeListResp();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
+	}
+
+	/**
+	 * TODO app 订购
+	 * 
+	 * @param json
+	 * @param sign
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 *             ResponseBase
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
+	 * @exception
+	 * @since 1.0.0
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/vs/api/user/gamerecharge", method = RequestMethod.POST)
+	@ResponseBody
+	public CrmOrderResponse gamerecharge(String json, String sign)
+			throws JsonParseException, JsonMappingException, IOException,
+			IllegalAccessException, InvocationTargetException {
+		ResponseBase rs = SignUtils.sign(json, sign);
+		if (rs != null) {
+			CrmOrderResponse ar = new CrmOrderResponse();
+			BeanUtils.copyProperties(rs, ar);
+			return ar;
+		}
+		CrmOrderRequest ar = (CrmOrderRequest) jsonUtils.getResult(json,
+				CrmOrderRequest.class);
+		CrmOrderResponse result = appUserService.orderLargess("orderLargess",
+				ar);
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/vs/api/user/queryBank", method = RequestMethod.POST)
 	@ResponseBody
 	public CrmFlowBankResponse queryBank(String json, String sign)
@@ -515,11 +620,69 @@ public class UserController {
 			BeanUtils.copyProperties(rs, ar);
 			return ar;
 		}
-		RequestBase rb = (RequestBase) jsonUtils.getResult(json,
-				RequestBase.class);
+		CrmBankBalance rb = (CrmBankBalance) jsonUtils.getResult(json,
+				CrmBankBalance.class);
 
 		CrmFlowBankResponse result = appUserService.queryBlance("queryBlance",
 				rb);
 		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/vs/api/user/storeFlow", method = RequestMethod.POST)
+	@ResponseBody
+	public CrmFlowStoreAndPopResponse storeFlow(String json, String sign)
+			throws RestClientException, IOException {
+		ResponseBase rs = SignUtils.sign(json, sign);
+		if (rs != null) {
+			CrmFlowStoreAndPopResponse ar = new CrmFlowStoreAndPopResponse();
+			BeanUtils.copyProperties(rs, ar);
+			return ar;
+		}
+		CrmFlowBankRequest rb = (CrmFlowBankRequest) jsonUtils.getResult(json,
+				CrmFlowBankRequest.class);
+
+		CrmFlowStoreAndPopResponse result = appUserService.storeFlow(
+				"flowBank", rb);
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/vs/api/user/costFlowList", method = RequestMethod.POST)
+	@ResponseBody
+	public CrmOrderHisResponse costFlowList(String json, String sign)
+			throws JsonParseException, JsonMappingException, IOException,
+			IllegalAccessException, InvocationTargetException {
+		ResponseBase rs = (ResponseBase) SignUtils.sign(json, sign);
+		if (rs != null) {
+			CrmOrderHisResponse chr = new CrmOrderHisResponse();
+			BeanUtils.copyProperties(rs, chr);
+			return chr;
+		}
+		CrmOrderRequest ar = (CrmOrderRequest) jsonUtils.getResult(json,
+				CrmOrderRequest.class);
+		CrmOderHisRequest cr = new CrmOderHisRequest();
+		BeanUtils.copyProperties(cr, ar);
+		CrmOrderHisResponse result = appUserService.querySubProdList(
+				"querySubProdList", cr);
+		return result;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/vs/api/user/billList", method = RequestMethod.POST)
+	@ResponseBody
+	public CrmBillResponse billList(String json, String sign)
+			throws JsonParseException, JsonMappingException, IOException {
+		ResponseBase rs = (ResponseBase) SignUtils.sign(json, sign);
+		if (rs != null) {
+			CrmBillResponse chr = new CrmBillResponse();
+			BeanUtils.copyProperties(rs, chr);
+			return chr;
+		}
+
+		CrmOderHisRequest ar = (CrmOderHisRequest) jsonUtils.getResult(json,
+				CrmOderHisRequest.class);
+		return appUserService.queryBillList("queryBillList", ar);
 	}
 }

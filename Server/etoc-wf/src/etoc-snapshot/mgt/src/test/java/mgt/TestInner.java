@@ -6,11 +6,8 @@
  */
 package mgt;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.etoc.wf.ctapp.user.entity.AppProductResponse.RechargePhoneResp;
-import net.etoc.wf.ctapp.user.entity.AppProductResponse.RechargeProduct;
+import net.etoc.wf.ctapp.base.ResponseBase;
+import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 
 /**
  * 
@@ -33,13 +30,19 @@ public class TestInner {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		RechargeProduct p = new RechargeProduct();
-		p.setChargesid("111");
-		p.setCost("jljl");
-		System.out.println(p.getChargesid());
-		List<RechargeProduct> l = new ArrayList<RechargeProduct>();
-		RechargePhoneResp rp = new RechargePhoneResp();
-		rp.setProducts(l);
+		/*
+		 * RechargeProduct p = new RechargeProduct(); p.setChargesid("111");
+		 * p.setCost("jljl"); System.out.println(p.getChargesid());
+		 * List<RechargeProduct> l = new ArrayList<RechargeProduct>();
+		 * RechargePhoneResp rp = new RechargePhoneResp(); rp.setProducts(l);
+		 */
+
+		ResponseBase CR = (ResponseBase) t();
+		System.out.println(CR);
+	}
+
+	public static CrmOrderHisResponse t() {
+		return new CrmOrderHisResponse();
 	}
 
 }

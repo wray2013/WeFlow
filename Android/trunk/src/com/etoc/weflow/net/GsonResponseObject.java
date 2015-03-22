@@ -213,6 +213,18 @@ public class GsonResponseObject {
 		public String status;
 		public SoftInfoResp[] list;
 	}
+	// 2.5.2 摇一摇赚取流量币
+	public static class shakeflowResp {
+		public String status;
+		public AwardItemResp award;
+		public String flowcoins;
+	}
+	// 2.5.3 刮刮卡赚取流量币
+	public static class scratchflowResp {
+		public String status;
+		public AwardItemResp award;
+		public String flowcoins;
+	}
 	// 2.5.4 玩游戏赚取流量币记录
 	public static class AwardRecordResp {
 		public String status;
@@ -243,6 +255,13 @@ public class GsonResponseObject {
 		public String desc;
 		public String flowcoins;//流量币
 		public String finishtime;
+	}
+	
+	public static class AwardItemResp {
+		public String priceid;
+		public String pricename;
+		public String atimestart;
+		public String atimeend;
 	}
 	/****************************************************
 	 *                      B.花流量币

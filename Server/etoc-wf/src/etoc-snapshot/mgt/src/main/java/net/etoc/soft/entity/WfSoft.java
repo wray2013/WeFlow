@@ -86,6 +86,27 @@ public class WfSoft implements Serializable {
 	@Column
 	private String status;
 
+	private String downloadfinishtime;
+
+	/**
+	 * downloadfinishtime
+	 *
+	 * @return the downloadfinishtime
+	 * @since 1.0.0
+	 */
+
+	public String getDownloadfinishtime() {
+		return downloadfinishtime;
+	}
+
+	/**
+	 * @param downloadfinishtime
+	 *            the downloadfinishtime to set
+	 */
+	public void setDownloadfinishtime(String downloadfinishtime) {
+		this.downloadfinishtime = downloadfinishtime;
+	}
+
 	/**
 	 * appid
 	 *

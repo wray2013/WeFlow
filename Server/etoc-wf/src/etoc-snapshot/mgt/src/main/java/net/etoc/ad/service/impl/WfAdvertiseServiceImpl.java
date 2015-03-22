@@ -6,8 +6,10 @@
  */
 package net.etoc.ad.service.impl;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import net.etoc.ad.entity.WfAdvertise;
 import net.etoc.ad.repository.WfAdvertiseRepository;
@@ -31,6 +33,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * 
@@ -130,9 +133,23 @@ public class WfAdvertiseServiceImpl implements WfAdvertiseService {
 		}
 		List<OrderRel> list = crmresult.getList();
 		List<Integer> ids = Lists.newArrayList();
+		if (list == null || list.size() == 0) {
+			return null;
+		}
+		Map<String, OrderRel> tmp = Maps.newHashMap();
 		for (OrderRel bo : list) {
 			ids.add(Integer.valueOf(bo.getProductid()));
+			tmp.put(bo.getProductid(), bo);
 		}
-		return wfAdvertiseRepository.findAll(ids);
+		List<WfAdvertise> rs = wfAdvertiseRepository.findAll(ids);
+		OrderRel orl = null;
+		for (WfAdvertise wd : rs) {
+			orl = tmp.get(wd.getVideoid());
+			wd.setFinishtime(orl.getDate());
+			wd.setFlowcoins(new BigDecimal(orl.getCost()));
+			wd.setTitle(orl.getTitle());
+
+		}
+		return rs;
 	}
 }
