@@ -7,7 +7,7 @@ public class Config {
 	/*
 	 *  生产环境，勿启用
 	 **/
-	public static final String SERVER_URL    = "http://61.51.83.194:8090";//"http://61.51.83.194:9080";//"http://113.57.243.18:8088/base-web/dg";
+	public static final String SERVER_URL    = "http://113.57.180.175:8090";//"http://61.51.83.194:9080";//"http://113.57.243.18:8088/base-web/dg";
 	
 	public static final String WEBSERVER_URL = SERVER_URL;
 	

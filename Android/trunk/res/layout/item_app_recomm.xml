@@ -53,6 +53,9 @@
         android:text="1元吃喝玩乐"
         android:layout_alignLeft="@id/tv_app_name"
         android:layout_below="@id/tv_app_name"
+        android:layout_toLeftOf="@+id/tv_app_download"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:includeFontPadding="false"
         android:layout_marginTop="6dp"
         />
