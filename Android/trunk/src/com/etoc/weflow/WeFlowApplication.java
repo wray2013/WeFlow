@@ -107,6 +107,19 @@ public class WeFlowApplication extends Application {
 		return accountInfo;
 	}
 	
+	public void PersistAccountInfo(AccountInfo acc) {
+		if(acc != null) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+	        
+			accountInfoDao = daoSession.getAccountInfoDao();
+			accountInfoDao.insertOrReplace(acc);
+			db.close();
+		}
+	}
+	
 	public void addJPushTag(String tag) {
 		tags.add(tag);
 		JPushInterface.setTags(this, tags, null);

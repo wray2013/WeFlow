@@ -111,7 +111,7 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 		switch(event.getIndex()) {
 		case ExpenseFlowActivity.INDEX_RECHARGE:
 			if (position == POSITION_PHONEBILL) {
-				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_tc.getValue());
+				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_tc.getValue() + "," + PType.change_qq.getValue());
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_FLOW:
@@ -121,7 +121,7 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 			break;
 		case ExpenseFlowActivity.INDEX_GAME:
 			if (position == POSITION_GAME) {
-				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_gf.getValue());
+				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_gf.getValue() + "," + PType.recharge_gm.getValue());
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_GIFT:
@@ -185,13 +185,13 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 		if(pageNumber == 0) pageNumber = 1;
 		switch (position) {
 		case POSITION_PHONEBILL:
-			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_tc.getValue());
+			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_tc.getValue() + "," + PType.change_qq.getValue());
 			break;
 		case POSITION_FLOWPKG:
 			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_wf.getValue());
 			break;
 		case POSITION_GAME:
-			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_gf.getValue());
+			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.change_gf.getValue() + "," + PType.recharge_gm.getValue());
 			break;
 		case POSITION_GIFT:
 			Requester.getCostFlowRecord(false, myHandler, pageNumber + "", acc.getUserid(), PType.bug_gf.getValue());

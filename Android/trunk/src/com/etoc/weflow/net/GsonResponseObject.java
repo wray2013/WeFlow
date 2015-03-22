@@ -455,6 +455,20 @@ public class GsonResponseObject {
 		public String yestdrate;
 		public String totalincome;
 	}
+	
+	// 2.7.2 存流量币
+	public static class bankStoreResp {
+		public String status;
+		public String flowcoins;
+		public String bankcoins;
+	}
+	
+	// 2.7.3 取流量币
+	public static class bankPopResp {
+		public String status;
+		public String flowcoins;
+		public String bankcoins;
+	}
 	/****************************************************
 	 *                      D.发现
 	 ****************************************************/

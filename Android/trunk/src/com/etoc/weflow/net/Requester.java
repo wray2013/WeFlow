@@ -142,6 +142,12 @@ public class Requester {
 	public static final int RESPONSE_TYPE_SIGN_IN = 0xffee2134;
 	public static final String RIA_INTERFACE_SIGN_IN = "/vs/api/user/signin";
 	
+	public static final int RESPONSE_TYPE_BANK_STORE = 0xffee2135;
+	public static final String RIA_INTERFACE_BANK_STORE = "/vs/api/user/storeFlow";
+	
+	public static final int RESPONSE_TYPE_BANK_POP = 0xffee2136;
+	public static final String RIA_INTERFACE_BANK_POP = "/vs/api/user/popFlow";
+	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
 	
@@ -284,7 +290,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		request.pageno = pageno;
+		request.page = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ADV_RECORD, AdvFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_ADV_RECORD, request);
 	}
@@ -327,7 +333,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		request.pageno = pageno;
+		request.page = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_APP_FLOW_RECORD, AppFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_APP_FLOW_RECORD, request);
 	}
@@ -338,7 +344,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.userid = userid;
-		request.pageno = pageno;
+		request.page = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_AWARD_RECORD, AwardRecordResp.class);
 		worker.execute(RIA_INTERFACE_AWARD_RECORD, request);
 	}
@@ -487,6 +493,30 @@ public class Requester {
 		request.pageno = pageno;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_COST_FLOW_LIST, CostFlowRecordResp.class);
 		worker.execute(RIA_INTERFACE_COST_FLOW_LIST, request);
+	}
+	
+	//2.7.2 存流量币
+	public static void storeFlow(boolean hasLoading,Handler handler,String userid, String flowcoins) {
+		storeFlowRequest request = new storeFlowRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.flowcoins = flowcoins;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_BANK_STORE, bankStoreResp.class);
+		worker.execute(RIA_INTERFACE_BANK_STORE, request);
+	}
+	
+	//2.7.3 取流量币
+	public static void popFlow(boolean hasLoading,Handler handler,String userid, String flowcoins) {
+		popFlowRequest request = new popFlowRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.flowcoins = flowcoins;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_BANK_POP, bankPopResp.class);
+		worker.execute(RIA_INTERFACE_BANK_POP, request);
 	}
 	
 	//2.9.5 签到列表
