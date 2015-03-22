@@ -86,7 +86,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 	SQLiteDatabase db;
 	private Handler handler;
 	private ImageView ivContact = null;
-	public static final int REQUEST_CONTACT_PICK = 0xddaa;
+	public static final int REQUEST_CONTACT_PICK = 0xddbb;
 	public static final String TELECOM = "1";
 	public static final String UNICOM = "2";
 	public static final String MOBILE = "3";

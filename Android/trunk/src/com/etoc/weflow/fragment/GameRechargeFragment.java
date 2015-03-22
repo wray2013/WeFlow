@@ -41,6 +41,7 @@ import com.etoc.weflow.net.GsonResponseObject.GameRechargeResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.NumberUtils;
+import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import de.greenrobot.event.EventBus;
@@ -270,6 +271,10 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.tv_btn_order:
+			if (StringUtils.isEmpty(etAccount.getText().toString())) {
+				PromptDialog.Dialog(getActivity(), "温馨提示", "请输入游戏帐号", "确定");
+				return;
+			}
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 			if (accountInfo != null) {
 				Requester.rechargeGame(true, handler, accountInfo.getUserid(), selectProduct.chargesid,etAccount.getText().toString());
