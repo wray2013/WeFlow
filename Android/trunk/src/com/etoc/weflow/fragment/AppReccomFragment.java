@@ -192,7 +192,10 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 		public void onClick(View view) {
 			// TODO Auto-generated method stub
 			switch(view.getId()) {
-			case R.id.iv_playbill:
+			case R.id.rl_item_view_pager:
+				Intent intent = new Intent(getActivity(),SoftDetailActivity.class);
+				intent.putExtra(ConStant.INTENT_SOFT_DETAIL, new Gson().toJson(appInfo));
+				startActivity(intent);
 				break;
 			}
 		}
