@@ -135,6 +135,11 @@ public class AdDetailActivity extends TitleRootActivity {
 			handler.removeCallbacks(run);
 			if (hasVideoInitialized) {
 //				Requester.orderLargess(handler, MainApplication.accountPhone, "C", "prod_in_charge_10");
+				AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+				if (accountInfo != null) {
+					Requester.getAdvFlow(true, handler, accountInfo.getUserid(), adInfo.videoid);
+				} 
+				
 			}
 		}
 		
@@ -180,10 +185,6 @@ public class AdDetailActivity extends TitleRootActivity {
 				vvAdvVideo.resume();
 			}
 			ibPlay.setVisibility(View.GONE);*/
-			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-			if (accountInfo != null) {
-				Requester.getAdvFlow(true, handler, accountInfo.getUserid(), adInfo.videoid);
-			} 
 			
 			checkNetwork();
 			break;

@@ -98,7 +98,8 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		setTitleText("花流量币");
-		setRightButtonText("记录");
+//		setRightButtonText("记录");
+		hideRightButton();
 	}
 	
 	@Override
