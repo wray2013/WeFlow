@@ -14,6 +14,7 @@ import java.util.List;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.ViewUtils;
 
 public class MonthView extends LinearLayout {
   TextView title;
@@ -64,6 +65,7 @@ public class MonthView extends LinearLayout {
     Logr.d("Initializing MonthView (%d) for %s", System.identityHashCode(this), month);
     long start = System.currentTimeMillis();
     title.setText(month.getLabel());
+    ViewUtils.setTextSize(title, 36);
 
     final int numRows = cells.size();
     grid.setNumRows(numRows);
@@ -88,6 +90,7 @@ public class MonthView extends LinearLayout {
           cellView.setSelectable(cell.isSelectable());
           cellView.setSelected(cell.isSelected());
           cellView.setCurrentMonth(cell.isCurrentMonth());
+          ViewUtils.setTextSize(cellView, 32);
           cellView.setToday(cell.isToday());
           cellView.setRangeState(cell.getRangeState());
           cellView.setHighlighted(cell.isHighlighted());

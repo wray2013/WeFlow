@@ -177,8 +177,8 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	@Override
 	public void onClick(View v) {
 		if(!isLogin) {
-			startActivity(new Intent(getActivity(), LoginActivity.class));
-			return;
+//			startActivity(new Intent(getActivity(), LoginActivity.class));
+//			return;
 		}
 		switch (v.getId()) {
 		case R.id.btn_title_left:
