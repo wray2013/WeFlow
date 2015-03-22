@@ -377,6 +377,9 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			if(msg.obj != null) {
 				AccountInfoResp response = (AccountInfoResp) msg.obj;
 				if("0".equals(response.status) || "0000".equals(response.status)) {
+					if (currentAccount != null) {
+						currentAccount.setFlowcoins(response.flowcoins);
+					}
 					tvPlain.setText(response.menumoney);
 					tvPlainType.setText(response.menutype);
 					

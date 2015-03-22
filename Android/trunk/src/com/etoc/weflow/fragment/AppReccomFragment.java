@@ -30,6 +30,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.SoftDetailActivity;
 import com.etoc.weflow.download.DownloadManager;
@@ -299,6 +300,8 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					Requester.getAppFlow(true, handler, WeFlowApplication.getAppInstance().getAccountInfo().getUserid(), item.appid, "0");
+					
 					DownloadManager.getInstance().addDownloadTask(item.soft, item.appid, item.title, item.appicon, "",  DownloadType.APP, "", "");
 				}
 			});

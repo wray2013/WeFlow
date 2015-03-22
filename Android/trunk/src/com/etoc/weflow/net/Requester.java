@@ -359,7 +359,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.productid = productid;
-		request.tel = phone;
+		request.acctid = phone;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_PHONE, PhoneChargeResp.class);
@@ -382,7 +382,7 @@ public class Requester {
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.productid = productid;
-		request.qqnum = qq;
+		request.acctid = qq;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_RECHARGE_QQ, QChargeResp.class);

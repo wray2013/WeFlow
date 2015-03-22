@@ -240,7 +240,7 @@ public class GsonRequestObject {
 	//2.6.2 话费充值
 	public static class rechargePhoneRequest {
 		String userid;  //用户号码
-		String tel;  //用户号码
+		String acctid;  //用户号码
 		String productid;  //产品id 10元话费
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
@@ -255,7 +255,7 @@ public class GsonRequestObject {
 	//2.6.5 Q币充值
 	public static class rechargeQQRequest {
 		String userid;  //用户号码
-		String qqnum;  //QQ号
+		String acctid;  //QQ号
 		String productid;  //产品id 10元话费
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
