@@ -156,9 +156,9 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 			if (msg.obj != null) {
 				GameChargeListResp resp = (GameChargeListResp) msg.obj;
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
-					if (resp.list != null && resp.list.length > 0) {
+					if (resp.chargelist != null && resp.chargelist.length > 0) {
 						gameChargeList.clear();
-						Collections.addAll(gameChargeList, resp.list);
+						Collections.addAll(gameChargeList, resp.chargelist);
 						
 						for (GameChargeResp item:gameChargeList) {
 							gameStrList.add(item.typename);
@@ -253,7 +253,7 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		case R.id.tv_btn_order:
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 			if (accountInfo != null) {
-				Requester.rechargeGame(true, handler, accountInfo.getUserid(), selectProduct.chargesid);
+				Requester.rechargeGame(true, handler, accountInfo.getUserid(), selectProduct.chargesid,etAccount.getText().toString());
 			} else {
 				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}

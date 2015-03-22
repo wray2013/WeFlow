@@ -404,7 +404,7 @@ public class Requester {
 		exchangeGamePkgRequest request = new exchangeGamePkgRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
-		request.gamepkgid = productid;
+		request.productid = productid;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_GAME_PKG, ExchangeGamePkgResp.class);
@@ -422,11 +422,12 @@ public class Requester {
 	}
 	
 	//2.6.9 游戏充值
-	public static void rechargeGame(boolean hasLoading,Handler handler,String userid,String productid) {
+	public static void rechargeGame(boolean hasLoading,Handler handler,String userid,String productid ,String acct) {
 		GameRechargeRequest request = new GameRechargeRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
-		request.acctid = productid;
+		request.acctid = acct;
+		request.productid = productid;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_GAME_RECHARGE, GameRechargeResp.class);
