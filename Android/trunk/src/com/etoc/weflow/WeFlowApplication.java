@@ -3,17 +3,29 @@ package com.etoc.weflow;
 import java.io.File;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 import cn.jpush.android.api.JPushInterface;
 
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dao.AccountInfoDao;
+import com.etoc.weflow.dao.DaoMaster;
+import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
+import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.event.DialogUtils;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.utils.ConStant;
@@ -34,7 +46,13 @@ public class WeFlowApplication extends Application {
 	private LinkedList<Activity> activityList = new LinkedList<Activity>(); 
 	public static int totalFlow = 0;
 	private  Set<String> tags = new HashSet<String>();
-	public static AccountInfo accountInfo;
+	
+	private DaoMaster daoMaster;
+	private DaoSession daoSession;
+	private SQLiteDatabase db;
+	private AccountInfoDao accountInfoDao;
+	private static AccountInfo accountInfo;
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -71,10 +89,41 @@ public class WeFlowApplication extends Application {
 		ImageLoader.getInstance().init(config);
 		MyImageLoader.getInstance();
 		EventBus.getDefault().register(this);
+        
 	}
 
 	public final static WeFlowApplication getAppInstance() {
 		return appinstance;
+	}
+	
+	public AccountInfo getAccountInfo() {
+		DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+        db = helper.getWritableDatabase();
+        daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+        
+		accountInfoDao = daoSession.getAccountInfoDao();
+		if(accountInfoDao.count() > 0) {
+			List<AccountInfo> list = accountInfoDao.loadAll();
+			accountInfo = list.get(0);
+		} else {
+			accountInfo = new AccountInfo();
+		}
+		db.close();
+		return accountInfo;
+	}
+	
+	public void PersistAccountInfo(AccountInfo acc) {
+		if(acc != null) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+	        
+			accountInfoDao = daoSession.getAccountInfoDao();
+			accountInfoDao.insertOrReplace(acc);
+			db.close();
+		}
 	}
 	
 	public void addJPushTag(String tag) {
@@ -138,4 +187,40 @@ public class WeFlowApplication extends Application {
 			break;
 		}
 	}
+    
+    public static void setFlowCoins(String flowcoins) {
+		AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (accountInfo != null && flowcoins != null) {
+			accountInfo.setFlowcoins(flowcoins);
+		}
+	}
+    
+    public static void openApk(String packageName,Context context) { 
+        PackageManager packageManager = context.getPackageManager(); 
+        PackageInfo pi = null;
+        try { 
+             
+            pi = packageManager.getPackageInfo("cld.navi.mainframe", 0); 
+        } catch (NameNotFoundException e) { 
+             
+        } 
+        Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null); 
+        resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER); 
+        resolveIntent.setPackage(pi.packageName); 
+ 
+        List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0); 
+ 
+        ResolveInfo ri = apps.iterator().next(); 
+        if (ri != null ) { 
+            String className = ri.activityInfo.name; 
+ 
+            Intent intent = new Intent(Intent.ACTION_MAIN); 
+            intent.addCategory(Intent.CATEGORY_LAUNCHER); 
+ 
+            ComponentName cn = new ComponentName(packageName, className); 
+ 
+            intent.setComponent(cn); 
+            context.startActivity(intent); 
+        } 
+    } 
 }

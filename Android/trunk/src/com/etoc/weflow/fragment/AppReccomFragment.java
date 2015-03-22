@@ -30,6 +30,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.SoftDetailActivity;
 import com.etoc.weflow.download.DownloadManager;
@@ -43,6 +44,7 @@ import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
 import com.google.gson.Gson;
@@ -292,14 +294,16 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 			imageLoader.displayImage(item.appicon, holder.ivIcon,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.introduction);
-			holder.tvFlowCoins.setText("可赚" + item.flowcoins + "流量币");
+			holder.tvFlowCoins.setText("可赚" + NumberUtils.convert2IntStr(item.flowcoins) + "流量币");
 			
 			holder.tvDownload.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					DownloadManager.getInstance().addDownloadTask(item.soft, "0", item.title, item.appicon, "",  DownloadType.APP, "", "");
+					Requester.getAppFlow(true, handler, WeFlowApplication.getAppInstance().getAccountInfo().getUserid(), item.appid, "0");
+					
+					DownloadManager.getInstance().addDownloadTask(item.soft, item.appid, item.title, item.appicon, "",  DownloadType.APP, "", "");
 				}
 			});
 			return convertView;

@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -116,7 +118,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         mIndicator = (PageIndicator) view.findViewById(R.id.indicator_service);
         
-        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.small_pic_default, /*bannerlist*/makeFakeData());
+        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.small_pic_default, bannerlist);
         if(bannerAdapter.getCount() > 0) {
         	viewPager.setAdapter(bannerAdapter);
         	mIndicator.setViewPager(viewPager);
@@ -156,6 +158,19 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 		ptrScrollView.setOnRefreshListener(this);
 		
 		refreshView();
+		
+		lvRecommentAdv.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				// TODO Auto-generated method stub
+				AdverInfo info = adapter.getItem(position);
+				Intent i = new Intent(getActivity(), AdDetailActivity.class);
+				i.putExtra("adinfo", new Gson().toJson(info));
+				startActivity(i);
+			}
+		});
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.os.Message;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,12 +32,18 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
-import com.etoc.weflow.adapter.RechargeAdapter;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.adapter.MoreAdapter;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
@@ -46,9 +54,12 @@ import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
 import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.PhoneChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
+import com.etoc.weflow.net.GsonResponseObject.RechargeProduct;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import de.greenrobot.dao.query.QueryBuilder;
@@ -61,11 +72,16 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 	TextView tvCostCoins = null;
 	TextView tvCommit = null;
 	EditText etPhone = null;
+	TextView tvTypes = null;
+	RelativeLayout rlTypes = null;
 	List<RechargePhoneResp> itemList = new ArrayList<GsonResponseObject.RechargePhoneResp>();
-	List<RechargePhoneResp> telecomList = new ArrayList<RechargePhoneResp>();
-	List<RechargePhoneResp> unicomList = new ArrayList<RechargePhoneResp>();
-	List<RechargePhoneResp> mobileList = new ArrayList<RechargePhoneResp>();
+	List<RechargeProduct> productList = new ArrayList<RechargeProduct>();
+	List<String> typeStrList = new ArrayList<String>();
+	View typeView = null;
+	ListView typeListView = null;
+	PopupWindow typePopupWindow;
 	
+	MoreAdapter typeAdapter = null;
 	private FrequentPhoneDao phoneDao;
 	SQLiteDatabase db;
 	private Handler handler;
@@ -124,8 +140,58 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		View v = inflater.inflate(R.layout.fragment_recharge_phone, null);
 		mView = v;
 		initView(v);
-		
+		initPopupWindow();
 		return v;
+	}
+	
+	private void initPopupWindow() {
+		typeAdapter = new MoreAdapter(getActivity(), typeStrList);
+		
+		typeView = getActivity().getLayoutInflater().inflate(R.layout.item_select_popup_window,
+				null);
+		typeListView = (ListView) typeView.findViewById(R.id.lv_selector);
+		typeListView.setAdapter(typeAdapter);
+		
+		typePopupWindow = createPopupWindow(typeView);
+		
+		typeListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				RechargePhoneResp resp = itemList.get(position);
+				if (resp.products != null && resp.products.length > 0) {
+					productList.clear();
+					for (RechargeProduct item:resp.products) {
+						productList.add(item);
+					}
+					typeAdapter.notifyDataSetChanged();
+					typePopupWindow.dismiss();
+				}
+				tvTypes.setText(resp.typename);
+			}
+		});
+		
+	}
+	
+	private PopupWindow createPopupWindow(View view) {
+		
+		DisplayMetrics dm = new DisplayMetrics();
+		dm = WeFlowApplication.getAppInstance().getResources()
+				.getDisplayMetrics();
+		final PopupWindow mMorePopupWindow = new PopupWindow(view, DisplayUtil.getSize(WeFlowApplication.getAppInstance(), 656), LayoutParams.WRAP_CONTENT, true);
+		mMorePopupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.drawable_white));
+		mMorePopupWindow.setOutsideTouchable(true);
+		mMorePopupWindow.setOnDismissListener(new OnDismissListener() {
+			
+			@Override
+			public void onDismiss() {
+				// TODO Auto-generated method stub
+			}
+		});
+		
+		return mMorePopupWindow;
 	}
 	
 	private void initView(View view) {
@@ -143,7 +209,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 			}
 		}*/
 		
-		adapter = new RechargePhoneAdapter(getActivity(), itemList);
+		adapter = new RechargePhoneAdapter(getActivity(), productList);
 		gvPhoneMenu.setAdapter(adapter);
 		
 		gvPhoneMenu.setSelector(new ColorDrawable(Color.TRANSPARENT));
@@ -155,14 +221,29 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				// TODO Auto-generated method stub
 				adapter.setSelect(position);
 				adapter.notifyDataSetChanged();
-				tvCostCoins.setText(adapter.getSelectCost());
+				tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost()) + "流量币");
 			}
 		});
 		
 		tvCostCoins = (TextView) view.findViewById(R.id.tv_cost_coins);
-		ViewUtils.setMarginRight(tvCostCoins, 16);
+		ViewUtils.setMarginTop(tvCostCoins, 36);
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_cost_label), 64);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_cost_label), 32);
+		ViewUtils.setTextSize(tvCostCoins, 36);
 //		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
 //		tvCostCoins.setText(adapter.getSelectCost());
+		rlTypes = (RelativeLayout) view.findViewById(R.id.rl_types);
+		tvTypes = (TextView) view.findViewById(R.id.tv_types);
+		rlTypes.setOnClickListener(this);
+		ViewUtils.setHeight(rlTypes, 112);
+		ViewUtils.setTextSize(tvTypes, 32);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_types_label), 32);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_types_label), 24);
+		ViewUtils.setMarginTop(rlTypes, 48);
+		ViewUtils.setMarginTop(gvPhoneMenu, 24);
+		
+		ViewUtils.setSize(view.findViewById(R.id.view_arraw_coins), 72, 72);
+		
 		
 		tvCommit = (TextView) view.findViewById(R.id.tv_btn_order);
 		tvCommit.setOnClickListener(this);
@@ -172,6 +253,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		
 		ViewUtils.setMarginLeft(view.findViewById(R.id.rl_input_phone), 32);
 		ViewUtils.setMarginRight(view.findViewById(R.id.rl_input_phone), 32);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_input_phone), 112);
 		
 		etPhone = (EditText) view.findViewById(R.id.et_phone);
 		ivContact = (ImageView) view.findViewById(R.id.iv_contact_btn);
@@ -194,12 +276,38 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				Log.d("=AAA=","buildCount = 0");
 				phoneDao.insert(new FrequentPhone(etPhone.getText().toString()));
 			}
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			if (accountInfo != null) {
+				Requester.rechargePhone(true, handler, accountInfo.getUserid(), etPhone.getText().toString(), adapter.getSelectId());
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
+			
+			
 			break;
 		case R.id.iv_contact_btn:
 			Intent intent = new Intent();
 	        intent.setAction(Intent.ACTION_PICK);
 	        intent.setData(ContactsContract.Contacts.CONTENT_URI);
 	        startActivityForResult(intent, REQUEST_CONTACT_PICK);
+			break;
+		case R.id.rl_types:
+			
+			if (typePopupWindow == null) {
+				return;
+			}
+			if (typePopupWindow.isShowing()) {
+				typePopupWindow.dismiss();
+			} else {
+				typePopupWindow.showAsDropDown(rlTypes);
+				int height = ViewUtils.getListHeight(typeListView, DisplayUtil.getSize(getActivity(), 96));
+				Log.d("=AAA=","height = " + height);
+				if (height > DisplayUtil.getScreenHeight(getActivity()) / 2) {
+					ViewUtils.setHeightPixel(typeListView,DisplayUtil.getScreenHeight(getActivity()) / 2);
+				} else {
+					ViewUtils.setHeightPixel(typeListView,height);
+				}
+			}
 			break;
 		}
 	}
@@ -253,28 +361,39 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				PhoneChargeListResp resp = (PhoneChargeListResp)msg.obj;
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
 					itemList.clear();
-					telecomList.clear();
-					unicomList.clear();
-					mobileList.clear();
+					productList.clear();
+					typeStrList.clear();
 					if (resp.chargelist != null && resp.chargelist.length > 0) {
 						Collections.addAll(itemList, resp.chargelist);
+						
 						for (RechargePhoneResp item:itemList) {
-							if (TELECOM.equals(item.type)) {
-								telecomList.add(item);
-							} else if (UNICOM.equals(item.type)) {
-								unicomList.add(item);
-							} else if (MOBILE.equals(item.type)) {
-								mobileList.add(item);
-							}
+							typeStrList.add(item.typename);
+							Log.d("=AAA=","item.typename = " + item.typename);
+						}
+						RechargePhoneResp item = itemList.get(0);
+						tvTypes.setText(item.typename);
+						if (item.products != null && item.products.length > 0) {
+							Collections.addAll(productList, item.products);
 						}
 					}
-					adapter.setData(unicomList);
 					adapter.notifyDataSetChanged();
 					
 					tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
-					tvCostCoins.setText(adapter.getSelectCost());
+					tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost())+ "流量币");
 				}
 				
+			}
+			break;
+		case Requester.RESPONSE_TYPE_RECHARGE_PHONE:
+			if (msg.obj != null) {
+				PhoneChargeResp chargeResp = (PhoneChargeResp) msg.obj;
+				if (Requester.isSuccessed(chargeResp.status)) {
+					PromptDialog.Alert("订购成功");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isProcessed(chargeResp.status)){
+					PromptDialog.Alert("订购已处理");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				}
 			}
 			break;
 		}
@@ -284,7 +403,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 	
 	class RechargePhoneAdapter extends BaseAdapter {
 
-		List<RechargePhoneResp> itemList = null;
+		List<RechargeProduct> itemList = null;
 		Context context;
 		private LayoutInflater inflater;
 		private int curselected = 0;
@@ -301,19 +420,23 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 			return getItem(getSelect()).cost;
 		}
 		
+		public String getSelectId() {
+			return getItem(getSelect()).chargesid;
+		}
+		
 		class RechargeViewHolder {
 			TextView tvMoney;
 			ImageView ivSelected;
 		}
 		
-		public RechargePhoneAdapter(Context context,List<RechargePhoneResp> list) {
+		public RechargePhoneAdapter(Context context,List<RechargeProduct> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
 			this.itemList = list;
 		}
 		
-		public void setData(List<RechargePhoneResp> list) {
+		public void setData(List<RechargeProduct> list) {
 			this.itemList = list;
 		}
 		
@@ -324,7 +447,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		}
 
 		@Override
-		public RechargePhoneResp getItem(int position) {
+		public RechargeProduct getItem(int position) {
 			// TODO Auto-generated method stub
 			return itemList.get(position);
 		}
@@ -357,7 +480,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				holder = (RechargeViewHolder) convertView.getTag();
 			}
 			
-			RechargePhoneResp item = itemList.get(position);
+			RechargeProduct item = itemList.get(position);
 			holder.tvMoney.setText(item.money);
 			
 			if (curselected == position) {

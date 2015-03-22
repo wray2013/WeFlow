@@ -176,21 +176,29 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	
 	@Override
 	public void onClick(View v) {
-		if(!isLogin) {
-			startActivity(new Intent(getActivity(), LoginActivity.class));
-			return;
-		}
 		switch (v.getId()) {
 		case R.id.btn_title_left:
 			
 			break;
 		case R.id.rl_me_bill:
+			if(!isLogin) {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+				return;
+			}
 			startActivity(new Intent(getActivity(), MyBillListActivity.class));
 			break;
 		case R.id.rl_me_sign:
+			if(!isLogin) {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+				return;
+			}
 			startActivity(new Intent(getActivity(), SignInActivity.class));
 			break;
 		case R.id.rl_me_feedback:
+			if(!isLogin) {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+				return;
+			}
 			startActivity(new Intent(getActivity(), FeedBackActivity.class));
 			break;
 		case R.id.rl_me_settings:
@@ -203,6 +211,10 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			startActivity(new Intent(getActivity(), LoginActivity.class));
 			break;
 		case R.id.rl_account_info:
+			if(!isLogin) {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+				return;
+			}
 			if (isLogin) {
 				Intent accountIntent = new Intent(getActivity(), AccountActivity.class);
 				accountIntent.putExtra("tel", currentAccount.getTel());

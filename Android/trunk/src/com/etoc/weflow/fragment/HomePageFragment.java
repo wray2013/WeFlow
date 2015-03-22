@@ -18,6 +18,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
@@ -29,6 +30,7 @@ import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
+import com.etoc.weflow.net.GsonResponseObject.SignInResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.FileUtils;
@@ -116,7 +118,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		btnLogin = (TextView) view.findViewById(R.id.tv_login_btn);
 		btnLogin.setOnClickListener(this);
 		
-		ViewUtils.setSize(ivSignIn, 142, 75);
+		ViewUtils.setSize(ivSignIn, 112, 64);
 		ViewUtils.setMarginRight(ivSignIn, 32);
 		ViewUtils.setMarginTop(ivSignIn, 64);
 		ViewUtils.setTextSize(tvCellPhone, 32);
@@ -347,6 +349,12 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		case R.id.tv_login_btn:
 			startActivity(new Intent(getActivity(), LoginActivity.class));
 			break;
+		case R.id.iv_sign_in:
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			if (accountInfo != null) {
+				Requester.signIn(true, handler, accountInfo.getUserid());
+			}
+			break;
 		}
 	}
 
@@ -372,6 +380,9 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			if(msg.obj != null) {
 				AccountInfoResp response = (AccountInfoResp) msg.obj;
 				if("0".equals(response.status) || "0000".equals(response.status)) {
+					if (currentAccount != null) {
+						currentAccount.setFlowcoins(response.flowcoins);
+					}
 					tvPlain.setText(response.menumoney);
 					tvPlainType.setText(response.menutype);
 					
@@ -391,6 +402,16 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				}
 			} else {
 				PromptDialog.Alert(MainActivity.class, "您的网络不给力啊！");
+			}
+			break;
+		case Requester.RESPONSE_TYPE_SIGN_IN:
+			if (msg.obj != null) {
+				SignInResp resp = (SignInResp) msg.obj;
+				if(Requester.isSuccessed(resp.status)) {
+					ivSignIn.setEnabled(false);
+					WeFlowApplication.setFlowCoins(resp.flowcoins);
+					PromptDialog.Alert("签到成功，增加" + resp.flowcoins + "流量币");
+				}
 			}
 			break;
 		}

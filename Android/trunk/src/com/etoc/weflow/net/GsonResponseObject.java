@@ -213,6 +213,23 @@ public class GsonResponseObject {
 		public String status;
 		public SoftInfoResp[] list;
 	}
+	// 2.5.2 摇一摇赚取流量币
+	public static class shakeflowResp {
+		public String status;
+		public AwardItemResp award;
+		public String flowcoins;
+	}
+	// 2.5.3 刮刮卡赚取流量币
+	public static class scratchflowResp {
+		public String status;
+		public AwardItemResp award;
+		public String flowcoins;
+	}
+	// 2.5.4 玩游戏赚取流量币记录
+	public static class AwardRecordResp {
+		public String status;
+		public AwardInfoResp[] list;
+	}
 	
 	public static class SoftInfoResp {
 		public String appid;
@@ -232,6 +249,20 @@ public class GsonResponseObject {
 		public String issharefinished;//是否完成分享(赚币) 0-未完成 1-已完成
 		public String sharefinishtime;//分享完成时间ms
 	}
+	
+	public static class AwardInfoResp {
+		public String title;
+		public String desc;
+		public String flowcoins;//流量币
+		public String finishtime;
+	}
+	
+	public static class AwardItemResp {
+		public String priceid;
+		public String pricename;
+		public String atimestart;
+		public String atimeend;
+	}
 	/****************************************************
 	 *                      B.花流量币
 	 ****************************************************/
@@ -240,16 +271,16 @@ public class GsonResponseObject {
 		public RechargePhoneResp[] chargelist;
 	}
 	
-	public static class RechargePhoneResp {
+	/*public static class RechargePhoneResp {
 		public String chargesid;//产品id
 		public String money;// 充值面额
 		public String cost;// 花费流量币
 		public String type;// 类型
 //		public String typename; //显示类型名   移动话费
 //		public RechargeProduct[] products; //具体产品（面额）  10元
-	}
+	}*/
 	
-	public static class NewRechargePhoneResp {
+	public static class RechargePhoneResp {
 //		public String chargesid;//产品id
 //		public String money;// 充值面额
 //		public String cost;// 花费流量币
@@ -273,12 +304,6 @@ public class GsonResponseObject {
 		public String status;
 		public RechargeQQResp[] chargelist; //size must be 1
 	}
-	
-/*	public static class RechargeQQResp {
-		public String chargesid;//产品id
-		public String qcoins;// 充值面额
-		public String cost;// 花费流量币
-	}*/
 	
 	public static class RechargeQQResp {
 //		public String chargesid;//产品id
@@ -306,11 +331,24 @@ public class GsonResponseObject {
 	}
 	
 	public static class GameGiftResp {
-		public String gamepkgid;
+		/*public String gamepkgid;
 		public String title;
 		public String leave;
 		public String icon;
-		public String cost;
+		public String cost;*/
+		public String type;// 类型
+		public String typename; 
+		public GameGiftProduct[] products;
+		
+	}
+	
+	public static class GameGiftProduct {
+		public String gamepkgid;//产品id
+		public String title;
+		public String money;// 充值面额
+		public String cost;// 花费流量币
+		public String leave;
+		public String icon;
 	}
 	
 	public static class GamePkgResp {
@@ -320,7 +358,7 @@ public class GsonResponseObject {
 		public String icon;
 	}
 	
-	public static class exchangeGamePkgResp {
+	public static class ExchangeGamePkgResp {
 		public String status;
 		public String gamecode;
 		public String flowcoins;
@@ -328,7 +366,7 @@ public class GsonResponseObject {
 	
 	public static class GameChargeListResp {
 		public String status;
-		public GameChargeResp[] list;
+		public GameChargeResp[] chargelist;
 	}
 	
 	public static class GameChargeResp {
@@ -338,9 +376,14 @@ public class GsonResponseObject {
 	}
 	
 	public static class GameChargeProductResp {
-		public String productid;
+		public String chargesid;
 		public String money;
 		public String cost;
+	}
+	
+	public static class GameRechargeResp {
+		public String status;
+		public String flowcoins;
 	}
 	
 	public static class FlowPkgListResp {
@@ -380,6 +423,18 @@ public class GsonResponseObject {
 		public String gifturl;
 	}
 	public static class GiftResp {
+//		public String giftid;
+//		public String imgsrc;
+//		public String gifturl;
+//		public String giftdesc;
+//		public String title;
+//		public String flowcoins;//流量币
+		public String type;// 类型
+		public String typename; //显示类型名 夜间包、半年包
+		public GiftProduct[] products;
+	}
+	
+	public static class GiftProduct {
 		public String giftid;
 		public String imgsrc;
 		public String gifturl;
@@ -404,6 +459,7 @@ public class GsonResponseObject {
 		public String cost;
 		public String title;
 		public String imgsrc;
+		public String time;
 	}
 	/****************************************************
 	 *                      C.流量银行
@@ -418,6 +474,20 @@ public class GsonResponseObject {
 		public String yestdrate;
 		public String totalincome;
 	}
+	
+	// 2.7.2 存流量币
+	public static class bankStoreResp {
+		public String status;
+		public String flowcoins;
+		public String bankcoins;
+	}
+	
+	// 2.7.3 取流量币
+	public static class bankPopResp {
+		public String status;
+		public String flowcoins;
+		public String bankcoins;
+	}
 	/****************************************************
 	 *                      D.发现
 	 ****************************************************/
@@ -428,6 +498,11 @@ public class GsonResponseObject {
 	public static class MyBillListResp {
 		public String status;
 		public BillList[] myBills;
+	}
+	
+	//2.9.3意见反馈
+	public static class FeedBackResp {
+		public String status;
 	}
 	
 	/****************************************************
@@ -458,6 +533,20 @@ public class GsonResponseObject {
 		public String content;
 		public String flowcoins;
 		public String time;
+	}
+	
+	
+	// 2.9.5签到列表
+	public static class SignInListResp {
+		public String status;
+		public String signinlist;
+	}
+	
+	// 2.9.6签到
+	public static class SignInResp {
+		public String status;
+		public String flowcoins;
+		public String addcoins;
 	}
 	
 }

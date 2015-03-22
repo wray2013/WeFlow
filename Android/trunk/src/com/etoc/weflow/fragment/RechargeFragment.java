@@ -119,6 +119,8 @@ public class RechargeFragment extends Fragment {
 		radioGroup = (RadioGroup) view.findViewById(R.id.rg_period_radio);
 		ViewUtils.setMarginTop(radioGroup, 18);
 		ViewUtils.setMarginLeft(radioGroup, 32);
+		ViewUtils.setSize(view.findViewById(R.id.rb_phone), 154, 64);
+		ViewUtils.setSize(view.findViewById(R.id.rb_qq), 154, 64);
 		
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			

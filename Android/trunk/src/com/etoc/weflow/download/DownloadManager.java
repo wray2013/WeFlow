@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.DownloadHistory;
 import com.etoc.weflow.dao.DownloadHistoryDao;
 import com.etoc.weflow.dao.DownloadHistoryDao.Properties;
+import com.etoc.weflow.net.Requester;
 
 import de.greenrobot.dao.query.QueryBuilder;
 import de.greenrobot.event.EventBus;
@@ -469,6 +471,7 @@ public class DownloadManager {
 				if(item.downloadType == DownloadType.APP){
 					installFromPath(context,item.path);
 				}
+//				Requester.getAppFlow(true, new Handler(), WeFlowApplication.accountInfo.getUserid(), item.mediaId, "0");
 			}
 			
 			//下一个相同类型的下载任务

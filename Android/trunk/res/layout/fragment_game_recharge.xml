@@ -12,7 +12,7 @@
         android:layout_height="56dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/bg_input_rect"
+        android:background="@drawable/list_item_with_shape"
         >
         <TextView 
             android:id="@+id/tv_game_select"
@@ -27,13 +27,12 @@
         
         <View
             android:id="@+id/view_arraw"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="12dp"
-            android:background="@color/background_grey"
-            
+            android:background="@drawable/bg_arrow"
             />
         
         
@@ -49,28 +48,15 @@
    </RelativeLayout>
    
     
-   <EditText 
-       android:id="@+id/et_game_account"
-       android:layout_width="fill_parent"
-       android:layout_height="56dp"
-       android:background="@color/white"
-       android:layout_below="@id/rl_game_type"
-       android:layout_alignLeft="@id/rl_game_type"
-       android:layout_alignRight="@id/rl_game_type"
-       android:layout_marginTop="48dp"
-       android:paddingLeft="12dp"
-       android:hint="请输入游戏帐号"
-       />
-   
    <RelativeLayout 
         android:id="@+id/rl_game_coins"
         android:layout_width="fill_parent"
         android:layout_height="56dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@color/white"
-        android:layout_below="@id/et_game_account"
-        android:layout_marginTop="48dp"
+        android:layout_alignLeft="@id/rl_game_type"
+       	android:layout_alignRight="@id/rl_game_type"
+        android:background="@drawable/list_item_with_shape"
+        android:layout_below="@id/rl_game_type"
+        android:layout_marginTop="24dp"
         >
         <TextView 
             android:id="@+id/tv_game_coins_label"
@@ -85,12 +71,12 @@
         
         <View
             android:id="@+id/view_arraw_coins"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="12dp"
-            android:background="@color/background_grey"
+            android:background="@drawable/bg_arrow"
             
             />
         
@@ -107,14 +93,27 @@
             />
    </RelativeLayout>
    
+   <EditText 
+       android:id="@+id/et_game_account"
+       android:layout_width="fill_parent"
+       android:layout_height="56dp"
+       android:background="@color/white"
+       android:layout_below="@id/rl_game_coins"
+       android:layout_alignLeft="@id/rl_game_type"
+       android:layout_alignRight="@id/rl_game_type"
+       android:layout_marginTop="24dp"
+       android:paddingLeft="12dp"
+       android:hint="请输入游戏帐号"
+       />
+   
    <TextView 
        android:id="@+id/tv_cost_flowcoins_label"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_centerHorizontal="true"
-       android:layout_below="@id/rl_game_coins"
+       android:layout_below="@id/et_game_account"
        android:layout_marginTop="34dp"
-       android:text="充值将话费您"
+       android:text="充值将花费您"
        android:textColor="@android:color/black"
        android:includeFontPadding="false"
        android:textSize="16sp"

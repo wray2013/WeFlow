@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etoc.weflow.Config;
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfoDao;
@@ -36,6 +37,7 @@ import com.etoc.weflow.fragment.HomePageFragment;
 import com.etoc.weflow.fragment.MenuFragment;
 import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
+import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.version.CheckUpdate;
 
 import de.greenrobot.event.EventBus;
@@ -103,10 +105,32 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	private void initController() {
+		
+		ViewUtils.setHeight(findViewById(R.id.ll_controller), 118);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_weflow), 48, 48);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_bank), 48, 48);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_discover), 48, 48);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_me), 48, 48);
+		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_weflow), 16);
+		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_bank), 16);
+		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_discover), 16);
+		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_me), 16);
+		
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_weflow), 16);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_bank), 16);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_discover), 16);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_me), 16);
+		
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_weflow), 24);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_bank), 24);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_discover), 24);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_me), 24);
+		
 		rlHomePage = (RelativeLayout) findViewById(R.id.rl_btn_weflow);
 		rlBank     = (RelativeLayout) findViewById(R.id.rl_btn_bank);
 		rlDiscover = (RelativeLayout) findViewById(R.id.rl_btn_discover);
 		rlMe       = (RelativeLayout) findViewById(R.id.rl_btn_me);
+		
 		
 		rlHomePage.setOnClickListener(this);
 		rlBank.setOnClickListener(this);
@@ -332,7 +356,18 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 //			startActivity(new Intent(this, MakeFlowActivity.class));
 //			startActivity(new Intent(this, ShakeShakeActivity.class));
 //			startActivity(new Intent(this, ExpenseFlowActivity.class));
-			startActivity(new Intent(this, LoginActivity.class));
+//			startActivity(new Intent(this, LoginActivity.class));
+			if(currContentFragment instanceof HomePageFragment) {
+				Intent homeIntent = new Intent(this, WebViewActivity.class);
+				homeIntent.putExtra("pageurl", Config.HOMEPAGE_URL);
+				homeIntent.putExtra("pagetitle", "宝典");
+				startActivity(homeIntent);
+			} else if(currContentFragment instanceof FlowBankFragment) {
+				Intent bankIntent = new Intent(this, WebViewActivity.class);
+				bankIntent.putExtra("pageurl", Config.BANKPAGE_URL);
+				bankIntent.putExtra("pagetitle", "攻略");
+				startActivity(bankIntent);
+			}
 			
 			/*Intent intent = new Intent();
 	        intent.setAction(Intent.ACTION_PICK);

@@ -17,21 +17,37 @@
 package com.etoc.weflow.fragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.adapter.MyBillAdapter;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.event.MakeFlowBillFragmentEvent;
+import com.etoc.weflow.net.GsonResponseObject.AdvFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
+import com.etoc.weflow.net.GsonResponseObject.AppFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.AwardInfoResp;
+import com.etoc.weflow.net.GsonResponseObject.AwardRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.PType;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+
+import de.greenrobot.event.EventBus;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +68,10 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	private MyBillAdapter adapter;
 	
 	private Handler myHandler;
-
+	
+	private List<BillList> billList = new ArrayList<BillList>();
+	private int pageNumber = 0;
+	
 	public static MakeFlowBillFragment newInstance(int position) {
 		MakeFlowBillFragment f = new MakeFlowBillFragment();
 		Bundle b = new Bundle();
@@ -64,7 +83,7 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		EventBus.getDefault().register(this);
 		position = getArguments().getInt(ARG_POSITION);
 		
 		myHandler = new Handler(this);
@@ -79,6 +98,13 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		return v;
 	}
 	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+	}
+	
 	private void initView(View view) {
 		xlvMyBill = (PullToRefreshListView) view.findViewById(R.id.xlv_mybill_list);
 		xlvMyBill.setShowIndicator(false);
@@ -88,9 +114,34 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		lvBillList.setDividerHeight(DisplayUtil.getSize(getActivity(), 2));
 		
 		adapter = new MyBillAdapter(getActivity());
-		adapter.setData(makeFakeData());
+		adapter.setData(billList);
 		lvBillList.setAdapter(adapter);
 		
+	}
+	
+	public void onEvent(MakeFlowBillFragmentEvent event) {
+		Log.d("=AAA=","onEvent index = " + event.getIndex());
+		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
+		if(acc == null || acc.getUserid() == null || acc.getUserid().equals("")) {
+			return;
+		}
+		switch(event.getIndex()) {
+		case MakeFlowActivity.INDEX_ADVERTISEMENT:
+			if (position == POSITION_ADV) {
+				Requester.getAdvRecord(true, myHandler, 0 + "", acc.getUserid());
+			}
+			break;
+		case MakeFlowActivity.INDEX_APPRECOMM:
+			if (position == POSITION_SOFTWARE) {
+				Requester.getAppRecord(true, myHandler, 0 + "", acc.getUserid());
+			}
+			break;
+		case MakeFlowActivity.INDEX_PLAYGAME:
+			if (position == POSITION_GAME) {
+				Requester.getAwardRecord(true, myHandler, 0 + "", acc.getUserid());
+			}
+			break;
+		}
 	}
 	
 	private static final long MONTH_TIME = 30 * 12 * 60 * 60 * 1000;
@@ -119,6 +170,7 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 				break;
 			}
 		}
+		billList.addAll(list);
 		return list;
 	}
 
@@ -131,19 +183,126 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 	@Override
 	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 		// TODO Auto-generated method stub
+		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (acc == null || acc.getUserid() == null || acc.getUserid().equals("")) {
+			return;
+		}
+		if(pageNumber == 0) pageNumber = 1;
+		switch (position) {
+		case POSITION_ADV:
+			Requester.getAdvRecord(false, myHandler, pageNumber + "", acc.getUserid());
+			break;
+		case POSITION_SOFTWARE:
+			Requester.getAppRecord(false, myHandler, pageNumber + "", acc.getUserid());
+			break;
+		case POSITION_GAME:
+			Requester.getAwardRecord(false, myHandler, pageNumber + "", acc.getUserid());
+			break;
+		}
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
 		myHandler.postDelayed(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				xlvMyBill.onRefreshComplete();
 			}
 		}, 1000);
-	}
-
-	@Override
-	public boolean handleMessage(Message msg) {
-		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_ADV_RECORD:
+			if (msg.obj != null) {
+				AdvFlowRecordResp advResp = (AdvFlowRecordResp) msg.obj;
+				if ("0".equals(advResp.status) || "0000".equals(advResp.status)) {
+					if(advResp.recordlist != null && advResp.recordlist.length > 0) {
+						List<AdverInfo> advlist = Arrays.asList(advResp.recordlist);
+						List<BillList> blist = new ArrayList<BillList>();
+						for(AdverInfo item : advlist) {
+							PType type = PType.watch_movie;
+							BillList bill = new BillList();
+							bill.type = type.getValue();
+							bill.productid = item.videoid;
+							bill.title = item.title;
+							bill.content = item.content;
+							bill.flowcoins = item.flowcoins;
+							bill.time = item.finishtime;
+							blist.add(bill);
+						}
+						if(pageNumber == 0) {
+							billList.clear();
+						}
+						billList.addAll(blist);
+						adapter.setData(billList);
+						pageNumber ++;
+					} else {
+						
+					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_APP_FLOW_RECORD:
+			if (msg.obj != null) {
+				AppFlowRecordResp flowResp = (AppFlowRecordResp) msg.obj;
+				if ("0".equals(flowResp.status) || "0000".equals(flowResp.status)) {
+					if(flowResp.list != null && flowResp.list.length > 0) {
+						List<SoftInfoResp> flowlist = Arrays.asList(flowResp.list);
+						List<BillList> blist = new ArrayList<BillList>();
+						for (SoftInfoResp item : flowlist) {
+							PType type = PType.down_soft;
+							BillList bill = new BillList();
+							bill.type = type.getValue();
+							bill.productid = item.appid;
+							bill.title = item.title;
+							bill.content = item.title;
+							bill.flowcoins = item.flowcoins;
+							bill.time = item.downloadfinishtime;
+							blist.add(bill);
+						}
+						if(pageNumber == 0) {
+							billList.clear();
+						}
+						billList.addAll(blist);
+						adapter.setData(billList);
+						pageNumber ++;
+					} else {
+						
+					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_AWARD_RECORD:
+			if (msg.obj != null) {
+				AwardRecordResp awardResp = (AwardRecordResp) msg.obj;
+				if ("0".equals(awardResp.status) || "0000".equals(awardResp.status)) {
+					if(awardResp.list != null && awardResp.list.length > 0) {
+						List<AwardInfoResp> awardlist = Arrays.asList(awardResp.list);
+						List<BillList> blist = new ArrayList<BillList>();
+						for (AwardInfoResp item : awardlist) {
+							PType type = PType.get_award;
+							BillList bill = new BillList();
+							bill.type = type.getValue();
+							bill.title = item.title;
+							bill.content = item.desc;
+							bill.flowcoins = item.flowcoins;
+							bill.time = item.finishtime;
+							blist.add(bill);
+						}
+						if(pageNumber == 0) {
+							billList.clear();
+						}
+						billList.addAll(blist);
+						adapter.setData(billList);
+						pageNumber ++;
+					} else {
+						
+					}
+				}
+			}
+			break;
+		}
 		return false;
 	}
 

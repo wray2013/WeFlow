@@ -86,7 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_top"
-                android:layout_margin="5dp" >
+                android:layout_margin="5dp"
+                android:visibility="gone" >
 
                 <TextView
                     android:id="@+id/tv_hint"

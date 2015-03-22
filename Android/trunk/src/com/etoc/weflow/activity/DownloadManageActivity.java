@@ -132,7 +132,7 @@ public class DownloadManageActivity extends TitleRootActivity {
 						try {
 							PackageManager pm = WeFlowApplication.getAppInstance().getPackageManager();
 							pm.getPackageInfo(appPkg.trim(), PackageManager.GET_ACTIVITIES);
-							
+							WeFlowApplication.openApk(appPkg, DownloadManageActivity.this);
 						}catch(NameNotFoundException e){
 							DownloadManager.installFromPath(DownloadManageActivity.this,item.path);
 						}

@@ -59,13 +59,14 @@ public abstract class TitleRootActivity extends BaseActivity implements OnClickL
 		tvLeftBtn = (Button) findViewById(R.id.btn_title_left_tv);
 		tvLeftBtn.setPadding(paddingSize, 0, paddingSize, 0);
 		leftButton.setPadding(paddingSize, 0, paddingSize, 0);
+		
 		rightButton = (Button)findViewById(R.id.btn_title_right);
 		ivRightButton = (ImageView)findViewById(R.id.iv_title_right);
 	
 		ViewUtils.setMarginRight(rightButton, 12);
 		ViewUtils.setMarginRight(ivRightButton, 12);
 		ViewUtils.setMarginLeft(tvLeftBtn, 12);
-
+		ViewUtils.setSize(leftButton, 72, 72);
 		
 		rightButton.setOnClickListener(this);
 		ivRightButton.setOnClickListener(this);

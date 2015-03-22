@@ -213,7 +213,7 @@ public class LoginActivity extends TitleRootActivity {
 					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					finish();
-				} else if("2003".equals(loginResp.status)) {
+				} else if("2002".equals(loginResp.status) || "2003".equals(loginResp.status)) {
 					PromptDialog.Alert(LoginActivity.class, "账号或密码错误，请重新输入！");
 				}
 			} else {

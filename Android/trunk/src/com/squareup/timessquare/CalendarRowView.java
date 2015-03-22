@@ -1,6 +1,8 @@
 // Copyright 2012 Square, Inc.
 package com.squareup.timessquare;
 
+import com.etoc.weflow.utils.ViewUtils;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -33,7 +35,7 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     final int totalWidth = MeasureSpec.getSize(widthMeasureSpec);
     cellSize = totalWidth / 7;
     int cellWidthSpec = makeMeasureSpec(cellSize, EXACTLY);
-    int cellHeightSpec = isHeaderRow ? makeMeasureSpec(cellSize, AT_MOST) : makeMeasureSpec((int)(cellSize * 0.8), EXACTLY);;
+    int cellHeightSpec = isHeaderRow ? makeMeasureSpec(cellSize, EXACTLY) : makeMeasureSpec((int)(cellSize * 0.8), EXACTLY);;
     int rowHeight = 0;
     for (int c = 0, numChildren = getChildCount(); c < numChildren; c++) {
       final View child = getChildAt(c);
@@ -55,6 +57,7 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     for (int c = 0, numChildren = getChildCount(); c < numChildren; c++) {
       final View child = getChildAt(c);
       child.layout(c * cellSize, 0, (c + 1) * cellSize, cellHeight);
+      ViewUtils.setTextSize(child, 30);
     }
     Logr.d("Row.onLayout %d ms", System.currentTimeMillis() - start);
   }

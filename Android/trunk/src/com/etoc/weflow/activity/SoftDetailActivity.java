@@ -26,6 +26,7 @@ import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ProgressGenerator;
 import com.etoc.weflow.utils.ProgressGenerator.OnCompleteListener;
 import com.etoc.weflow.utils.ViewUtils;
@@ -159,7 +160,7 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 			imageLoader.displayImage(softDetailResp.appicon, ivIcon);
 			tvSize.setText(softDetailResp.size);
 			tvVersion.setText("版本：" + softDetailResp.version);
-			tvFlow.setText(softDetailResp.flowcoins);
+			tvFlow.setText(NumberUtils.convert2IntStr(softDetailResp.flowcoins));
 			tvDesc.setText(softDetailResp.introduction);
 			tvFlowDesc.setText(softDetailResp.instruction);
 			setTitleText(softDetailResp.title);
@@ -222,7 +223,7 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 //			DownloadManager.getInstance().addDownloadTask(softDetailResp.soft, "0", softDetailResp.title, softDetailResp.appicon, "",  DownloadType.APP, "", "");
 //            btnDownload.setEnabled(false);
 			
-			Requester.getAppFlow(true, handler, WeFlowApplication.accountInfo.getUserid(), softDetailResp.appid, "0");
+			Requester.getAppFlow(true, handler, WeFlowApplication.getAppInstance().getAccountInfo().getUserid(), softDetailResp.appid, "0");
 	        break;
 		}
 		super.onClick(v);

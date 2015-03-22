@@ -9,10 +9,16 @@ public class ConStant {
 	public final static String SD_STORAGE_ROOT = "/.weflow"; //不包括sdcard的路径
 	public static final long MEDIA_CACHE_LIMIT = 100;
 	public static final int LOAIND_DISSMISS_DALAY = 10000;
+	public static final String REQUEST_SUCCESS = "0000";
+	public static final String ORDER_PROCESSED = "0002";
 	
 	public static final String INTENT_SOFT_DETAIL = "intent_sort_detail";
 	public static final String INTENT_MAKE_FLOW = "intent_make_flow";
 	public static final String INTENT_EXPENSE_FLOW = "intent_expense_flow";
+	
+	public static final String INTENT_BILL_ALL     = "intent_bill_all";
+	public static final String INTENT_BILL_MAKE    = "intent_bill_make";
+	public static final String INTENT_BILL_EXPENSE = "intent_bill_expense";
 	
 	public static String getApkCachePath(){
 		return SD_STORAGE_ROOT + "/" + "apk";
@@ -41,4 +47,5 @@ public class ConStant {
 	public static String getNextUUID() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
+	
 }

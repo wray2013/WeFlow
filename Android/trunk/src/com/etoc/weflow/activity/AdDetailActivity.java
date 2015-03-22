@@ -20,8 +20,11 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.VNetworkStateDetector;
 import com.etoc.weflow.utils.ViewUtils;
 import com.google.gson.Gson;
@@ -37,6 +40,7 @@ public class AdDetailActivity extends TitleRootActivity {
 	private boolean hasVideoInitialized = false;
 	
 	private DisplayMetrics dm = new DisplayMetrics();
+	AdverInfo adInfo = null;
 	
 	private String AdUrl = "http://1s.looklook.cn:8082/pub/looklook/video_pub" +
 			"/original/2013/10/11/111343a1958778779745b19b2afca35a891b5d.mp4";
@@ -71,7 +75,7 @@ public class AdDetailActivity extends TitleRootActivity {
 //		showController.sendEmptyMessageDelayed(0, 1000);
 		
 		String adInfoStr = getIntent().getStringExtra("adinfo");
-		AdverInfo adInfo = new Gson().fromJson(adInfoStr, AdverInfo.class);
+		adInfo = new Gson().fromJson(adInfoStr, AdverInfo.class);
 //		TextView tvTitle = (TextView) findViewById(R.id.tv_ad_title);
 //		tvTitle.setText(adInfo.title);
 		setTitleText(adInfo.title);
@@ -175,6 +179,11 @@ public class AdDetailActivity extends TitleRootActivity {
 				vvAdvVideo.resume();
 			}
 			ibPlay.setVisibility(View.GONE);*/
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			if (accountInfo != null) {
+				Requester.getAdvFlow(true, handler, accountInfo.getUserid(), adInfo.videoid);
+			} 
+			
 			checkNetwork();
 			break;
 		}

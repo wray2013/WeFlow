@@ -165,6 +165,7 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String page;
 	}
 	
 	//2.4.1 下载软件首页
@@ -195,6 +196,7 @@ public class GsonRequestObject {
 		String appid; //软件id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String page;
 	}
 	
 	//2.5.1 获取奖品列表
@@ -223,6 +225,7 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String page;
 	}
 	
 	/****************************************************
@@ -237,7 +240,7 @@ public class GsonRequestObject {
 	//2.6.2 话费充值
 	public static class rechargePhoneRequest {
 		String userid;  //用户号码
-		String tel;  //用户号码
+		String acctid;  //用户号码
 		String productid;  //产品id 10元话费
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
@@ -252,7 +255,7 @@ public class GsonRequestObject {
 	//2.6.5 Q币充值
 	public static class rechargeQQRequest {
 		String userid;  //用户号码
-		String qqnum;  //QQ号
+		String acctid;  //QQ号
 		String productid;  //产品id 10元话费
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
@@ -267,13 +270,22 @@ public class GsonRequestObject {
 	//2.6.7 游戏礼包兑换
 	public static class exchangeGamePkgRequest {
 		String userid;  //用户号码
-		String gamepkgid;  //游戏礼包id
+		String productid;  //游戏礼包id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
 	//2.6.8 游戏充值列表
 	public static class GameChargeListRequest {
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	//2.6.9 游戏充值
+	public static class GameRechargeRequest {
+		String userid;  //用户号码
+		String acctid;  //游戏帐号
+		String productid;  // 游戏id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
@@ -313,6 +325,7 @@ public class GsonRequestObject {
 		String type;  //消费类型
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String pageno;
 	}
 	
 	/****************************************************
@@ -336,7 +349,7 @@ public class GsonRequestObject {
 	//2.7.3 取流量币
 	public static class popFlowRequest {
 		String userid;  //用户号码
-		String popflow;  //账户从银行取出流量币额度
+		String flowcoins;  //账户从银行取出流量币额度
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
@@ -360,6 +373,8 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String page;
+//		String type; 
 	}
 	
 	//2.9.3 意见反馈
@@ -383,6 +398,21 @@ public class GsonRequestObject {
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
+	
+	// 2.9.5 签到列表
+	public static class SignInListRequest {
+		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	// 2.9.6 签到
+	public static class SignInRequest {
+		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 	
 	
 }

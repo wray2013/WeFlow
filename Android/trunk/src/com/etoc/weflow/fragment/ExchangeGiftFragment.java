@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -23,10 +25,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeGiftResp;
+import com.etoc.weflow.net.GsonResponseObject.GameRechargeResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
@@ -49,7 +58,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 	private PullToRefreshScrollView ptrScrollView = null;
 	
 	private List<GiftBannerResp> bannerList = new ArrayList<GiftBannerResp>();
-	private List<GiftResp> giftList = new ArrayList<GiftResp>();
+	private List<GiftProduct> giftList = new ArrayList<GiftProduct>();
 	
 	private ListView listView = null;
 	private GiftAdatper adapter = null;
@@ -181,11 +190,11 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 		MyImageLoader imageLoader = null;
 		DisplayImageOptions imageLoaderOptions = null;
 		
-		private List<GiftResp> appList = null;
+		private List<GiftProduct> appList = null;
 		Context context;
 		private LayoutInflater inflater;
 		
-		public GiftAdatper(Context context,List<GiftResp> list) {
+		public GiftAdatper(Context context,List<GiftProduct> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
@@ -210,7 +219,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 		}
 
 		@Override
-		public GiftResp getItem(int arg0) {
+		public GiftProduct getItem(int arg0) {
 			// TODO Auto-generated method stub
 			return appList.get(arg0);
 		}
@@ -258,11 +267,24 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				holder = (GiftViewHolder) convertView.getTag();
 			}
 			
-			GiftResp item = appList.get(position);
+			final GiftProduct item = appList.get(position);
 			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.giftdesc);
 			holder.tvFlowCoins.setText(item.flowcoins + "流量币");
+			holder.tvExchange.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+					if (accountInfo != null) {
+						Requester.exchangeGift(true, handler, accountInfo.getUserid(), item.giftid);
+					} else {
+						startActivity(new Intent(getActivity(), LoginActivity.class));
+					}
+				}
+			});
 			return convertView;
 		}
 		
@@ -286,11 +308,27 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 						mIndicator.notifyDataSetChanged();
 					}
 					if(response.giftlist != null && response.giftlist.length > 0) {
-						Collections.addAll(giftList, response.giftlist);
+						for (GiftResp item:response.giftlist) {
+							if (item.products != null && item.products.length > 0) {
+								Collections.addAll(giftList, item.products);
+							}
+						}
 						adapter.notifyDataSetChanged();
 						ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
 					}
 					
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_EXCHANG_GIFT:
+			if (msg.obj != null) {
+				ExchangeGiftResp chargeResp = (ExchangeGiftResp) msg.obj;
+				if (Requester.isSuccessed(chargeResp.status)) {
+					PromptDialog.Alert("订购成功");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isProcessed(chargeResp.status)){
+					PromptDialog.Alert("订购已处理");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
 				}
 			}
 			break;

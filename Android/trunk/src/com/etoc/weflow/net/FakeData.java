@@ -13,10 +13,12 @@ import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeProductResp;
 import com.etoc.weflow.net.GsonResponseObject.GameChargeResp;
+import com.etoc.weflow.net.GsonResponseObject.GameGiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowProduct;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
@@ -24,6 +26,7 @@ import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.QRechargeProduct;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
+import com.etoc.weflow.net.GsonResponseObject.RechargeProduct;
 import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
 import com.etoc.weflow.net.GsonResponseObject.getAccInfoResponse;
@@ -142,7 +145,7 @@ public class FakeData {
 		
 		GameChargeListResp r11 = new GameChargeListResp();
 		r11.status = "0";
-		r11.list = (GameChargeResp[]) createGameRechargeList().toArray(new GameChargeResp[0]);
+		r11.chargelist = (GameChargeResp[]) createGameRechargeList().toArray(new GameChargeResp[0]);
 		map.put(Requester.RIA_INTERFACE_GAME_RECHARGE_LIST, r11);
 	}
 	
@@ -163,7 +166,7 @@ public class FakeData {
 		List<GameChargeProductResp> list = new ArrayList<GameChargeProductResp>();
 		for (int i = 0;i < 6;i++) {
 			GameChargeProductResp resp = new GameChargeProductResp();
-			resp.productid = (n + 1) + "000" + i;
+			resp.chargesid = (n + 1) + "000" + i;
 			resp.money = ((i + 1) * 10) + "";
 			resp.cost = ((i + 1) * 1000) + "";
 			list.add(resp);
@@ -188,16 +191,23 @@ public class FakeData {
 				"189",
 				"189",
 		};
+		GameGiftResp resp = new GameGiftResp();
+		resp.type = "";
+		resp.typename = "";
+		List<GameGiftProduct> productList = new ArrayList<GsonResponseObject.GameGiftProduct>();
+		
 		for (int i = 0;i < 5;i++) {
-			GameGiftResp resp = new GameGiftResp();
-			resp.gamepkgid = i + "";
-			resp.icon = imgUrls[i];
-			resp.title = "DNF服务器喇叭";
-			resp.leave = leaves[i];
-			resp.cost = ((i + 1) * 100) + "";
-			list.add(resp);
+			GameGiftProduct product = new GameGiftProduct();
+			product.gamepkgid = i + "";
+			product.icon = imgUrls[i];
+			product.title = "DNF服务器喇叭";
+			product.leave = leaves[i];
+			product.cost = ((i + 1) * 100) + "";
+			productList.add(product);
 		}
 		
+		resp.products = (GameGiftProduct[]) productList.toArray(new GameGiftProduct[0]);
+		list.add(resp);
 		return list;
 	}
 	
@@ -267,15 +277,31 @@ public class FakeData {
 	private static List<RechargePhoneResp> createPhoneChargeList() {
 		List<RechargePhoneResp> list = new ArrayList<GsonResponseObject.RechargePhoneResp>();
 		String [] money = {"10","20","30","50","100","200"};
+		String [] typeNames = {"中国电信","中国联通","中国移动"};
 		
-		for (int i = 0;i < 18;i++) {
+		for (int i = 0;i < 3;i++) {
+			RechargePhoneResp resp = new RechargePhoneResp();
+			resp.type = "" + i;
+			resp.typename = typeNames[i];
+			List<RechargeProduct> productList = new ArrayList<GsonResponseObject.RechargeProduct>();
+			for (int j = 0;j < 6;j++) {
+				RechargeProduct product = new RechargeProduct();
+				product.chargesid = i + "000" + j;
+				product.money = money[j];
+				product.cost = Integer.parseInt(product.money) * 100 + "";
+				productList.add(product);
+			}
+			resp.products = (RechargeProduct[]) productList.toArray(new RechargeProduct[0]);
+			list.add(resp);
+		}
+		/*for (int i = 0;i < 18;i++) {
 			RechargePhoneResp item = new RechargePhoneResp();
 			item.chargesid = i + "";
 			item.money = money[i % 6];
 			item.cost = Integer.parseInt(item.money) * 100 + "";
 			item.type = (i / 6 + 1) + "";
 			list.add(item);
-		}
+		}*/
 		
 		return list;
 		
@@ -304,15 +330,20 @@ public class FakeData {
 				"大曲酱香型白酒的鼻祖，有“国酒”之称，是中国最高端白酒之一",
 				"蟹身不沾泥，俗称清水大闸蟹，体大膘肥，青壳白肚，金爪黄毛",
 		};
+		GiftResp resp = new GiftResp();
+		List<GiftProduct> productList = new ArrayList<GsonResponseObject.GiftProduct>();
+		
 		for (int i = 0;i < 5;i++) {
-			GiftResp resp = new GiftResp();
-			resp.giftid = i + "";
-			resp.imgsrc = imgUrls[i];
-			resp.title = titles[i];
-			resp.giftdesc = descs[i];
-			resp.flowcoins = ((i + 1) * 1000) + "";
-			list.add(resp);
+			GiftProduct product = new GiftProduct();
+			product.giftid = i + "";
+			product.imgsrc = imgUrls[i];
+			product.title = titles[i];
+			product.giftdesc = descs[i];
+			product.flowcoins = ((i + 1) * 1000) + "";
+			productList.add(product);
 		}
+		resp.products = (GiftProduct[]) productList.toArray(new GiftProduct[0]);
+		list.add(resp);
 		
 		return list;
 	}

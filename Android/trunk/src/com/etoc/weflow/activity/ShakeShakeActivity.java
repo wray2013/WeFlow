@@ -1,8 +1,14 @@
 package com.etoc.weflow.activity;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.listener.ShakeListener;
 import com.etoc.weflow.listener.ShakeListener.OnShakeListener;
+import com.etoc.weflow.net.GsonResponseObject.shakeflowResp;
+import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.RandomUtils;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -31,6 +37,7 @@ public class ShakeShakeActivity extends TitleRootActivity {
 	private RelativeLayout mImgUp;
 	private RelativeLayout mImgDn;
 
+	private AccountInfo accountInfo;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -39,6 +46,7 @@ public class ShakeShakeActivity extends TitleRootActivity {
 		setTitleText("摇一摇");
 		hideRightButton();
 		
+		accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 		//获得振动器服务
 		mVibrator = (Vibrator) getApplication().getSystemService(VIBRATOR_SERVICE);
 		//实例化加速度传感器检测类
@@ -56,12 +64,15 @@ public class ShakeShakeActivity extends TitleRootActivity {
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
-						Toast mtoast;
+						
+						Requester.shakeFlow(false, handler, accountInfo.getUserid());
+						
+						/*Toast mtoast;
 						mtoast = Toast.makeText(ShakeShakeActivity.this,
 								"呵呵，成功了！。\n再试一次吧！", 1000);
-						mtoast.show();
+						mtoast.show();*/
 						mVibrator.cancel();
-						mShakeListener.start();
+//						mShakeListener.start();
 					}
 				}, 2000);
 			}
@@ -124,9 +135,40 @@ public class ShakeShakeActivity extends TitleRootActivity {
 			mShakeListener.stop();
 		}
 	}
+	
+	private String[] noAward = {
+			"哎呀，离中奖就差一点",
+			"搞什么灰机，又没摇中",
+			"据说下雨天跟大奖更配哦",
+			"很遗憾，请再接再厉",
+			"又没中，什么仇什么怨？"
+	};
+	
 	@Override
-	public boolean handleMessage(Message arg0) {
+	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_SHAKE:
+			if(msg.obj != null) {
+				shakeflowResp resp = (shakeflowResp) msg.obj;
+				if("0".equals(resp.status) || "0000".equals(resp.status)) {
+					Toast mtoast;
+					if(resp.award != null) {
+						mtoast = Toast.makeText(ShakeShakeActivity.this,
+								"恭喜您获得" + resp.award.pricename, Toast.LENGTH_SHORT);
+						mtoast.show();
+					} else {
+						mtoast = Toast.makeText(ShakeShakeActivity.this,
+								noAward[RandomUtils.getRandom(4) % 5], Toast.LENGTH_SHORT);
+						mtoast.show();
+					}
+				}
+			} else {
+				PromptDialog.Alert(ShakeShakeActivity.class, "您的网络部给力啊！");
+			}
+			mShakeListener.start();
+			break;
+		}
 		return false;
 	}
 	@Override

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -20,8 +22,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.GameCoinEvent;
 import com.etoc.weflow.net.GsonResponseObject;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeFlowPkgResp;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeGamePkgResp;
+import com.etoc.weflow.net.GsonResponseObject.GameGiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.Requester;
@@ -38,7 +47,7 @@ public class GameGiftFragment extends Fragment implements Callback {
 	private ListView lvGift;
 	private GameGiftAdatper adapter;
 	private Handler handler = null;
-	private List<GameGiftResp> itemList = new ArrayList<GsonResponseObject.GameGiftResp>();
+	private List<GameGiftProduct> itemList = new ArrayList<GsonResponseObject.GameGiftProduct>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -104,11 +113,11 @@ public class GameGiftFragment extends Fragment implements Callback {
 		MyImageLoader imageLoader = null;
 		DisplayImageOptions imageLoaderOptions = null;
 		
-		private List<GameGiftResp> appList = null;
+		private List<GameGiftProduct> appList = null;
 		Context context;
 		private LayoutInflater inflater;
 		
-		public GameGiftAdatper(Context context,List<GameGiftResp> list) {
+		public GameGiftAdatper(Context context,List<GameGiftProduct> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
@@ -133,7 +142,7 @@ public class GameGiftFragment extends Fragment implements Callback {
 		}
 
 		@Override
-		public GameGiftResp getItem(int arg0) {
+		public GameGiftProduct getItem(int arg0) {
 			// TODO Auto-generated method stub
 			return appList.get(arg0);
 		}
@@ -179,11 +188,24 @@ public class GameGiftFragment extends Fragment implements Callback {
 				holder = (GameGiftViewHolder) convertView.getTag();
 			}
 			
-			GameGiftResp item = appList.get(position);
+			final GameGiftProduct item = appList.get(position);
 			imageLoader.displayImage(item.icon, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvLeave.setText("剩余数量：" + item.leave);
 			holder.tvFlowCoins.setText(item.cost + "流量币");
+			holder.tvExchange.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View view) {
+					// TODO Auto-generated method stub
+					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+					if (accountInfo != null) {
+						Requester.exchangeGamePkg(true, handler, accountInfo.getUserid(), item.gamepkgid);
+					} else {
+						startActivity(new Intent(getActivity(), LoginActivity.class));
+					}
+				}
+			});
 			return convertView;
 		}
 		
@@ -199,10 +221,26 @@ public class GameGiftFragment extends Fragment implements Callback {
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
 					if (resp.list != null && resp.list.length >0) {
 						itemList.clear();
-						Collections.addAll(itemList, resp.list);
+						for (GameGiftResp item:resp.list) {
+							if (item.products != null && item.products.length > 0) {
+								Collections.addAll(itemList, item.products);
+							}
+						}
 						
 						adapter.notifyDataSetChanged();
 					}
+				}
+			}
+			break;
+		case Requester.RESPONSE_TYPE_EXCHANGE_GAME_PKG:
+			if (msg.obj != null) {
+				ExchangeGamePkgResp chargeResp = (ExchangeGamePkgResp) msg.obj;
+				if (Requester.isSuccessed(chargeResp.status)) {
+					PromptDialog.Alert("订购成功");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isProcessed(chargeResp.status)){
+					PromptDialog.Alert("订购已处理");
+					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
 				}
 			}
 			break;

@@ -9,7 +9,9 @@
         android:id="@+id/tv_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp"
         android:gravity="center_vertical|left"/>
 
 
