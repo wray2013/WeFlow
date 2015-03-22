@@ -2,8 +2,12 @@ package com.etoc.weflow.activity;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
+import com.etoc.weflow.event.FlowBillFragmentEvent;
 import com.etoc.weflow.fragment.SuperBillFragment;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+
+import de.greenrobot.event.EventBus;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -11,12 +15,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 
 public class MyBillListActivity extends TitleRootActivity {
 
 	private PagerSlidingTabStrip titleTab;
 	private ViewPager viewPage;
 	private MyBillPagerAdapter adapter;
+	
+	public final static int INDEX_BILL_ALL     = 0;
+	public final static int INDEX_BILL_MAKE    = 1;
+	public final static int INDEX_BILL_EXPENSE = 2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +48,47 @@ public class MyBillListActivity extends TitleRootActivity {
 		viewPage.setAdapter(adapter);
 		
 		titleTab.setViewPager(viewPage);
+		
+		int index = getIntent().getIntExtra(ConStant.INTENT_BILL_ALL, 0);
+		index = index <= 0 ? 0 : (index >= adapter.getCount() ? adapter.getCount() - 1 : index);
+		final int indexTemp = index;
+		handler.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				FlowBillFragmentEvent event  = new FlowBillFragmentEvent();
+				event.setIndex(indexTemp);
+				EventBus.getDefault().post(event);
+			}
+		}, 100);
+		
+		
+		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				FlowBillFragmentEvent event  = new FlowBillFragmentEvent();
+				event.setIndex(arg0);
+				EventBus.getDefault().post(event);
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
+	
+	
 
 	@Override
 	protected int graviteType() {
