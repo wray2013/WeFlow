@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etoc.weflow.Config;
 import com.etoc.weflow.R;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfoDao;
@@ -332,7 +333,18 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 //			startActivity(new Intent(this, MakeFlowActivity.class));
 //			startActivity(new Intent(this, ShakeShakeActivity.class));
 //			startActivity(new Intent(this, ExpenseFlowActivity.class));
-			startActivity(new Intent(this, LoginActivity.class));
+//			startActivity(new Intent(this, LoginActivity.class));
+			if(currContentFragment instanceof HomePageFragment) {
+				Intent homeIntent = new Intent(this, WebViewActivity.class);
+				homeIntent.putExtra("pageurl", Config.HOMEPAGE_URL);
+				homeIntent.putExtra("pagetitle", "宝典");
+				startActivity(homeIntent);
+			} else if(currContentFragment instanceof FlowBankFragment) {
+				Intent bankIntent = new Intent(this, WebViewActivity.class);
+				bankIntent.putExtra("pageurl", Config.BANKPAGE_URL);
+				bankIntent.putExtra("pagetitle", "攻略");
+				startActivity(bankIntent);
+			}
 			
 			/*Intent intent = new Intent();
 	        intent.setAction(Intent.ACTION_PICK);

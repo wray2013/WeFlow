@@ -14,6 +14,10 @@ public class ConStant {
 	public static final String INTENT_MAKE_FLOW = "intent_make_flow";
 	public static final String INTENT_EXPENSE_FLOW = "intent_expense_flow";
 	
+	public static final String INTENT_BILL_ALL     = "intent_bill_all";
+	public static final String INTENT_BILL_MAKE    = "intent_bill_make";
+	public static final String INTENT_BILL_EXPENSE = "intent_bill_expense";
+	
 	public static String getApkCachePath(){
 		return SD_STORAGE_ROOT + "/" + "apk";
 	}

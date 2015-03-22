@@ -372,6 +372,8 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String page;
+//		String type; 
 	}
 	
 	//2.9.3 意见反馈

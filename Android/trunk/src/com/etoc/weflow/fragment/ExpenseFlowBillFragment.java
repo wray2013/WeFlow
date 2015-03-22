@@ -208,7 +208,7 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 				// TODO Auto-generated method stub
 				xlvMyBill.onRefreshComplete();
 			}
-		}, 1000);
+		}, 5);
 		switch(msg.what) {
 		case Requester.RESPONSE_TYPE_COST_FLOW_LIST:
 			if (msg.obj != null) {

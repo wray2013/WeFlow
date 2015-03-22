@@ -20,7 +20,7 @@ public class WebViewActivity extends TitleRootActivity implements
 
 	public static final int ACTION_REFRESH_DOWNLOAD = 0x19861024;
 
-	private String pageurl;
+	private String pageurl, pagetitle;
 	protected DisplayMetrics dm = new DisplayMetrics();
 
 	private Handler myHandler;
@@ -41,6 +41,11 @@ public class WebViewActivity extends TitleRootActivity implements
 		if (url != null && !url.equals("")) {
 			pageurl = url;
 		}
+		
+		String title = bundle.getString("pagetitle");
+		if (title != null && !title.equals("")) {
+			pagetitle = title;
+		}
 
 		initView();
 
@@ -48,8 +53,9 @@ public class WebViewActivity extends TitleRootActivity implements
 	}
 
 	private void initView() {
-		
-		setTitleText("精彩活动");
+		if(pagetitle != null && !pagetitle.equals("")) {
+			setTitleText(pagetitle);
+		}
 		hideRightButton();
 		// TODO Auto-generated method stub
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -60,7 +66,9 @@ public class WebViewActivity extends TitleRootActivity implements
 			@Override
 			public void onReceivedTitle(WebView view, String title) {
 				super.onReceivedTitle(view, title);
-				setTitleText(title);
+				if(pagetitle == null || pagetitle.equals("")) {
+					setTitleText(title);
+				}
 			}
 
 		};

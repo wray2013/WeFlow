@@ -511,6 +511,7 @@ public class GsonResponseObject {
 		public String time;
 	}
 	
+	
 	// 2.9.5签到列表
 	public static class SignInListResp {
 		public String status;

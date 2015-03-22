@@ -92,7 +92,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_APP_FLOW = "/vs/api/user/appflow";
 	
 	public static final int RESPONSE_TYPE_APP_FLOW_RECORD = 0xffee2118;
-	public static final String RIA_INTERFACE_APP_FLOW_RECORD = "/vs/api/user/appflowrecord";
+	public static final String RIA_INTERFACE_APP_FLOW_RECORD = "/vs/api/user/app2Flow";
 	
 	public static final int RESPONSE_TYPE_PHONE_CHARGE_LIST = 0xffee2119;
 	public static final String RIA_INTERFACE_PHONE_CHARGE_LIST = "/vs/api/user/phoneChargeList";
@@ -147,6 +147,9 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_BANK_POP = 0xffee2136;
 	public static final String RIA_INTERFACE_BANK_POP = "/vs/api/user/popFlow";
+	
+	public static final int RESPONSE_TYPE_MY_BILL = 0xffee2137;
+	public static final String RIA_INTERFACE_MY_BILL = "/vs/api/user/billList";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -517,6 +520,18 @@ public class Requester {
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_BANK_POP, bankPopResp.class);
 		worker.execute(RIA_INTERFACE_BANK_POP, request);
+	}
+	
+	//2.9.2 我的账单
+	public static void getBillList(boolean hasLoading,Handler handler,String pageno,String userid/*,String type*/) {
+		billListRequest request = new billListRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.page = pageno;
+//		request.type = type;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_MY_BILL, MyBillListResp.class);
+		worker.execute(RIA_INTERFACE_MY_BILL, request);
 	}
 	
 	//2.9.5 签到列表
