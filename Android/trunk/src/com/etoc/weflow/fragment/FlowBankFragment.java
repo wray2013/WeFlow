@@ -200,7 +200,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		case Requester.RESPONSE_TYPE_QUERY_BANK:
 			QueryBankResp qbResp = (QueryBankResp) msg.obj;
 			if(qbResp != null) {
-				if("0".equals(qbResp.status)) {
+				if("0".equals(qbResp.status) || "0000".equals(qbResp.status)) {
 					if(qbResp.flowbankcoins != null) {
 						mtvMoney.showNumberWithAnimation(qbResp.flowbankcoins, 1000);
 					}
