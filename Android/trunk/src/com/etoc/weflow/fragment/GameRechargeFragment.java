@@ -253,7 +253,7 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		case R.id.tv_btn_order:
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 			if (accountInfo != null) {
-				Requester.rechargeGame(true, handler, accountInfo.getUserid(), selectProduct.productid);
+				Requester.rechargeGame(true, handler, accountInfo.getUserid(), selectProduct.chargesid);
 			} else {
 				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}

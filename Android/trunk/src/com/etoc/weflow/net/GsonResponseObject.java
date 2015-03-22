@@ -357,7 +357,7 @@ public class GsonResponseObject {
 	}
 	
 	public static class GameChargeProductResp {
-		public String productid;
+		public String chargesid;
 		public String money;
 		public String cost;
 	}

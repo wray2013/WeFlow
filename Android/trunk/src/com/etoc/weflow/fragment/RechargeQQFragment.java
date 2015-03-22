@@ -181,7 +181,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 			
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 			if (accountInfo != null) {
-				Requester.rechargePhone(true, handler, accountInfo.getUserid(), etQQ.getText().toString(), adapter.getSelectId());
+				Requester.rechargeQQ(true, handler, accountInfo.getUserid(), etQQ.getText().toString(), adapter.getSelectId());
 			} else {
 				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}

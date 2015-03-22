@@ -166,7 +166,7 @@ public class FakeData {
 		List<GameChargeProductResp> list = new ArrayList<GameChargeProductResp>();
 		for (int i = 0;i < 6;i++) {
 			GameChargeProductResp resp = new GameChargeProductResp();
-			resp.productid = (n + 1) + "000" + i;
+			resp.chargesid = (n + 1) + "000" + i;
 			resp.money = ((i + 1) * 10) + "";
 			resp.cost = ((i + 1) * 1000) + "";
 			list.add(resp);
