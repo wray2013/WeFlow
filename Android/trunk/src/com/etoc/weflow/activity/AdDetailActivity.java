@@ -26,6 +26,7 @@ import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AdvFlowResp;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.DateUtils;
 import com.etoc.weflow.utils.VNetworkStateDetector;
 import com.etoc.weflow.utils.ViewUtils;
 import com.google.gson.Gson;
@@ -109,6 +110,12 @@ public class AdDetailActivity extends TitleRootActivity {
 		ViewUtils.setTextSize(findViewById(R.id.tv_ad_ins), 28);
 		ViewUtils.setTextSize(findViewById(R.id.tv_content), 23);
 		ViewUtils.setTextSize(findViewById(R.id.tv_ad_flow_label), 18);
+		
+		TextView tvTime = (TextView) findViewById(R.id.tv_ad_time);
+		if(adInfo.publishtime != null) {
+			String date = DateUtils.getStringFromMilli(adInfo.publishtime, DateUtils.DATE_FORMAT_NORMAL_1);
+			tvTime.setText(date);
+		}
 	}
 	
 	@Override
