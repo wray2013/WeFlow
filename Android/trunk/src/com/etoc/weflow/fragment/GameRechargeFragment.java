@@ -150,6 +150,9 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		ViewUtils.setMarginTop(view.findViewById(R.id.tv_cost_flowcoins_label), 68);
 		ViewUtils.setTextSize(tvFlowCoins, 36);
 		ViewUtils.setMarginTop(tvFlowCoins, 36);
+		
+		ViewUtils.setSize(view.findViewById(R.id.view_arraw_coins), 72, 72);
+		ViewUtils.setSize(view.findViewById(R.id.view_arraw), 72, 72);
 	}
 	
 	@Override
@@ -284,8 +287,11 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 //				gamePopupWindow.showAtLocation(rlGameType, Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0, DisplayUtil.getSize(getActivity(), 112));
 				gamePopupWindow.showAsDropDown(rlGameType);
 				int height = ViewUtils.getListHeight(gameListView, DisplayUtil.getSize(getActivity(), 96));
-				Log.d("=AAA=","height = " + height);
-				ViewUtils.setHeightPixel(gameListView,height);
+				if (height > DisplayUtil.getScreenHeight(getActivity()) / 2) {
+					ViewUtils.setHeightPixel(gameListView,DisplayUtil.getScreenHeight(getActivity()) / 2);
+				} else {
+					ViewUtils.setHeightPixel(gameListView,height);
+				}
 			}
 			break;
 		case R.id.rl_game_coins:
@@ -299,7 +305,11 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 				coinsPopupWindow.showAsDropDown(rlCoins);
 				int height = ViewUtils.getListHeight(coinsListView, DisplayUtil.getSize(getActivity(), 96));
 				Log.d("=AAA=","height = " + height);
-				ViewUtils.setHeightPixel(coinsListView,height);
+				if (height > DisplayUtil.getScreenHeight(getActivity()) / 2) {
+					ViewUtils.setHeightPixel(coinsListView,DisplayUtil.getScreenHeight(getActivity()) / 2);
+				} else {
+					ViewUtils.setHeightPixel(coinsListView,height);
+				}
 			}
 			break;
 		}

@@ -481,6 +481,11 @@ public class GsonResponseObject {
 		public BillList[] myBills;
 	}
 	
+	//2.9.3意见反馈
+	public static class FeedBackResp {
+		public String status;
+	}
+	
 	/****************************************************
 	 *                      F.附录-主要数据结构
 	 ****************************************************/

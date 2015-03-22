@@ -15,21 +15,91 @@ import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
 import com.etoc.weflow.Config;
-import com.etoc.weflow.WeFlowApplication;
-import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.RequestEvent;
-import com.etoc.weflow.net.GsonRequestObject.*;
-import com.etoc.weflow.net.GsonResponseObject.*;
+import com.etoc.weflow.net.GsonRequestObject.GameChargeListRequest;
+import com.etoc.weflow.net.GsonRequestObject.GameRechargeRequest;
+import com.etoc.weflow.net.GsonRequestObject.QChargeListRequest;
+import com.etoc.weflow.net.GsonRequestObject.SignInListRequest;
+import com.etoc.weflow.net.GsonRequestObject.SignInRequest;
+import com.etoc.weflow.net.GsonRequestObject.accountInfoRequest;
+import com.etoc.weflow.net.GsonRequestObject.advFlowRecordRequest;
+import com.etoc.weflow.net.GsonRequestObject.advFlowRequest;
+import com.etoc.weflow.net.GsonRequestObject.advHomeRequest;
+import com.etoc.weflow.net.GsonRequestObject.advMoreRequest;
+import com.etoc.weflow.net.GsonRequestObject.appFlowRecordRequest;
+import com.etoc.weflow.net.GsonRequestObject.appFlowRequest;
+import com.etoc.weflow.net.GsonRequestObject.appHomeRequest;
+import com.etoc.weflow.net.GsonRequestObject.appListRequest;
+import com.etoc.weflow.net.GsonRequestObject.autoLoginRequest;
+import com.etoc.weflow.net.GsonRequestObject.awardRecordRequest;
+import com.etoc.weflow.net.GsonRequestObject.billListRequest;
+import com.etoc.weflow.net.GsonRequestObject.costFlowRecordRequest;
+import com.etoc.weflow.net.GsonRequestObject.exchangeFlowPkgRequest;
+import com.etoc.weflow.net.GsonRequestObject.exchangeGamePkgRequest;
+import com.etoc.weflow.net.GsonRequestObject.exchangeGiftRequest;
+import com.etoc.weflow.net.GsonRequestObject.feedBackRequest;
+import com.etoc.weflow.net.GsonRequestObject.flowPkgListRequest;
+import com.etoc.weflow.net.GsonRequestObject.gamePkgListRequest;
+import com.etoc.weflow.net.GsonRequestObject.getAuthCodeRequest;
+import com.etoc.weflow.net.GsonRequestObject.giftListRequest;
+import com.etoc.weflow.net.GsonRequestObject.loginRequest;
+import com.etoc.weflow.net.GsonRequestObject.phoneChargeListRequest;
+import com.etoc.weflow.net.GsonRequestObject.popFlowRequest;
+import com.etoc.weflow.net.GsonRequestObject.queryBankRequest;
+import com.etoc.weflow.net.GsonRequestObject.rechargePhoneRequest;
+import com.etoc.weflow.net.GsonRequestObject.rechargeQQRequest;
+import com.etoc.weflow.net.GsonRequestObject.registerRequest;
+import com.etoc.weflow.net.GsonRequestObject.resetPasswordRequest;
+import com.etoc.weflow.net.GsonRequestObject.storeFlowRequest;
+import com.etoc.weflow.net.GsonRequestObject.testRequest;
+import com.etoc.weflow.net.GsonRequestObject.verifyAuthCodeRequest;
+import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
+import com.etoc.weflow.net.GsonResponseObject.AdvFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.AdvFlowResp;
+import com.etoc.weflow.net.GsonResponseObject.AdvListMoreResp;
+import com.etoc.weflow.net.GsonResponseObject.AdvListResp;
+import com.etoc.weflow.net.GsonResponseObject.AppFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.AppFlowResp;
+import com.etoc.weflow.net.GsonResponseObject.AppHomeResp;
+import com.etoc.weflow.net.GsonResponseObject.AppListMoreResp;
+import com.etoc.weflow.net.GsonResponseObject.AwardRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.CostFlowRecordResp;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeFlowPkgResp;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeGamePkgResp;
+import com.etoc.weflow.net.GsonResponseObject.ExchangeGiftResp;
+import com.etoc.weflow.net.GsonResponseObject.FeedBackResp;
+import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
+import com.etoc.weflow.net.GsonResponseObject.GameChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
+import com.etoc.weflow.net.GsonResponseObject.GameRechargeResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
+import com.etoc.weflow.net.GsonResponseObject.MyBillListResp;
+import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.PhoneChargeResp;
+import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
+import com.etoc.weflow.net.GsonResponseObject.QChargeResp;
+import com.etoc.weflow.net.GsonResponseObject.QueryBankResp;
+import com.etoc.weflow.net.GsonResponseObject.SignInListResp;
+import com.etoc.weflow.net.GsonResponseObject.SignInResp;
+import com.etoc.weflow.net.GsonResponseObject.autoLoginResponse;
+import com.etoc.weflow.net.GsonResponseObject.bankPopResp;
+import com.etoc.weflow.net.GsonResponseObject.bankStoreResp;
+import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
+import com.etoc.weflow.net.GsonResponseObject.loginResponse;
+import com.etoc.weflow.net.GsonResponseObject.registerResponse;
+import com.etoc.weflow.net.GsonResponseObject.resetPasswordResponse;
+import com.etoc.weflow.net.GsonResponseObject.testResponse;
+import com.etoc.weflow.net.GsonResponseObject.verifyAuthCodeResponse;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.VMobileInfo;
 import com.google.gson.Gson;
 
 import de.greenrobot.event.EventBus;
-
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 
 
 public class Requester {
@@ -153,6 +223,12 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_MY_BILL = 0xffee2137;
 	public static final String RIA_INTERFACE_MY_BILL = "/vs/api/user/billList";
+	
+	public static final int RESPONSE_TYPE_FEED_BACK = 0xffee2138;
+	public static final String RIA_INTERFACE_FEED_BACK = "/vs/api/user/feedback";
+	
+	public static final int RESPONSE_TYPE_UPDATE = 0xffee2139;
+	public static final String RIA_INTERFACE_UPDATE = "/vs/api/user/update";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -538,6 +614,20 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_MY_BILL, request);
 	}
 	
+	//2.9.3意见反馈
+	public static void feedBack(boolean hasLoading,Handler handler,String userid,String content) {
+		feedBackRequest request = new feedBackRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.type = "1";
+		request.content = content;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_FEED_BACK, FeedBackResp.class);
+		worker.execute(RIA_INTERFACE_FEED_BACK, request);
+	}
+	
+	
 	//2.9.5 签到列表
 	public static void getSignInList(boolean hasLoading,Handler handler,String userid) {
 		SignInListRequest request = new SignInListRequest();
@@ -549,7 +639,8 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_SIGN_IN_LIST, request);
 	}
 	
-	//2.9.10 签到
+	
+	//2.9.6签到
 	public static void signIn(boolean hasLoading,Handler handler,String userid) {
 		SignInRequest request = new SignInRequest();
 		request.imei = IMEI;
@@ -559,6 +650,8 @@ public class Requester {
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SIGN_IN, SignInResp.class);
 		worker.execute(RIA_INTERFACE_SIGN_IN, request);
 	}
+	
+	
 	
 /*	public static void sendSMS(Handler handler, String tel) {
 		sendSMSRequest request = new sendSMSRequest();

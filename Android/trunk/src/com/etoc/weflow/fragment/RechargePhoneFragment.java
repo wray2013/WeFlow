@@ -242,6 +242,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		ViewUtils.setMarginTop(rlTypes, 48);
 		ViewUtils.setMarginTop(gvPhoneMenu, 24);
 		
+		ViewUtils.setSize(view.findViewById(R.id.view_arraw_coins), 72, 72);
 		
 		
 		tvCommit = (TextView) view.findViewById(R.id.tv_btn_order);
@@ -301,7 +302,11 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				typePopupWindow.showAsDropDown(rlTypes);
 				int height = ViewUtils.getListHeight(typeListView, DisplayUtil.getSize(getActivity(), 96));
 				Log.d("=AAA=","height = " + height);
-				ViewUtils.setHeightPixel(typeListView,height);
+				if (height > DisplayUtil.getScreenHeight(getActivity()) / 2) {
+					ViewUtils.setHeightPixel(typeListView,DisplayUtil.getScreenHeight(getActivity()) / 2);
+				} else {
+					ViewUtils.setHeightPixel(typeListView,height);
+				}
 			}
 			break;
 		}
