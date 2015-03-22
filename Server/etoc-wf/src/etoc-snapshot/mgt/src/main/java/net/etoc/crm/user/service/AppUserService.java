@@ -12,7 +12,10 @@ import net.etoc.wf.ctapp.user.entity.AppCrmUserRequest;
 import net.etoc.wf.ctapp.user.entity.AppCrmUserResponse;
 import net.etoc.wf.ctapp.user.entity.AppProductResponse.PhoneChargeListResp;
 import net.etoc.wf.ctapp.user.entity.AuthCodeRequest;
+import net.etoc.wf.ctapp.user.entity.CrmBillResponse;
+import net.etoc.wf.ctapp.user.entity.CrmFlowBankRequest;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankResponse;
+import net.etoc.wf.ctapp.user.entity.CrmFlowStoreAndPopResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
@@ -53,6 +56,10 @@ public interface AppUserService {
 			CrmOderHisRequest ar) throws RestClientException,
 			JsonProcessingException;
 
+	public CrmBillResponse queryBillList(String methodSuffix,
+			CrmOderHisRequest ar) throws RestClientException,
+			JsonProcessingException;
+
 	/**
 	 * TODO 客户端请求产品
 	 * 
@@ -67,4 +74,12 @@ public interface AppUserService {
 
 	public CrmFlowBankResponse queryBlance(String methodSuffix, RequestBase ar)
 			throws RestClientException, JsonProcessingException;
+
+	public CrmFlowStoreAndPopResponse storeFlow(String methodSuffix,
+			CrmFlowBankRequest ar) throws RestClientException,
+			JsonProcessingException;
+
+	public CrmFlowStoreAndPopResponse popFlow(String methodSuffix,
+			CrmFlowBankRequest ar) throws RestClientException,
+			JsonProcessingException;
 }

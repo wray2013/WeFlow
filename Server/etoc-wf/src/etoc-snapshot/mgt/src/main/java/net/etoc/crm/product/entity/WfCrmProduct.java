@@ -67,6 +67,9 @@ public class WfCrmProduct implements Serializable {
 	@Column
 	private Timestamp validTime;
 
+	@Column(name = "remark")
+	private String remark;
+
 	@Column(columnDefinition = "TIMESTAMP", insertable = false, updatable = false)
 	@OrderBy("lastUpdateTime DESC")
 	private Timestamp lastUpdateTime;
@@ -325,6 +328,25 @@ public class WfCrmProduct implements Serializable {
 	 */
 	public void setPbusinessid(String pbusinessid) {
 		this.pbusinessid = pbusinessid;
+	}
+
+	/**
+	 * remark
+	 *
+	 * @return the remark
+	 * @since 1.0.0
+	 */
+
+	public String getRemark() {
+		return remark;
+	}
+
+	/**
+	 * @param remark
+	 *            the remark to set
+	 */
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 }

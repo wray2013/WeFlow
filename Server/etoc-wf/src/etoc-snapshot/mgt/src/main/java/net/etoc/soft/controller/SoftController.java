@@ -15,6 +15,7 @@ import net.etoc.crm.user.service.AppUserService;
 import net.etoc.soft.entity.WfSoft;
 import net.etoc.soft.service.WfSoftService;
 import net.etoc.wf.core.util.JsonUtils;
+import net.etoc.wf.core.util.PType;
 import net.etoc.wf.core.util.SignUtils;
 import net.etoc.wf.ctapp.base.ResponseBase;
 import net.etoc.wf.ctapp.base.RsCode;
@@ -138,6 +139,7 @@ public class SoftController {
 				CrmOrderRequest.class);
 		CrmOderHisRequest cr = new CrmOderHisRequest();
 		BeanUtils.copyProperties(cr, ar);
+		cr.setType(PType.down_soft.getValue());
 		List<WfSoft> list = wfSoftService.findListByIds("querySubProdList", cr);
 		rsMap.put("status", (RsCode.OK.getCode()));
 		rsMap.put("list", list);

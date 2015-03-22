@@ -39,6 +39,8 @@ public class RequestBase implements Serializable {
 	private String channelid;
 	private String transid;
 
+	private String userid;
+
 	public RequestBase() {
 		if (StringUtils.isEmpty(channelid)) {
 			this.channelid = "app";
@@ -162,6 +164,25 @@ public class RequestBase implements Serializable {
 	 */
 	public void setImei(String imei) {
 		this.imei = imei;
+	}
+
+	/**
+	 * userid
+	 *
+	 * @return the userid
+	 * @since 1.0.0
+	 */
+
+	public String getUserid() {
+		return userid;
+	}
+
+	/**
+	 * @param userid
+	 *            the userid to set
+	 */
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 }

@@ -15,6 +15,7 @@
         /favicon.ico = anon
         /static/** = anon
         /vs/api/** = anon
+        /export/** = anon
         
       </value>
     </property>

@@ -132,4 +132,127 @@ public class OrderRel implements Serializable {
 		this.date = date;
 	}
 
+	public static class Bill {
+		private String type;
+		private String productid;
+		private String title;
+		private String flowcoins;
+		private String content;
+		private String time;
+
+		/**
+		 * type
+		 *
+		 * @return the type
+		 * @since 1.0.0
+		 */
+
+		public String getType() {
+			return type;
+		}
+
+		/**
+		 * @param type
+		 *            the type to set
+		 */
+		public void setType(String type) {
+			this.type = type;
+		}
+
+		/**
+		 * productid
+		 *
+		 * @return the productid
+		 * @since 1.0.0
+		 */
+
+		public String getProductid() {
+			return productid;
+		}
+
+		/**
+		 * @param productid
+		 *            the productid to set
+		 */
+		public void setProductid(String productid) {
+			this.productid = productid;
+		}
+
+		/**
+		 * title
+		 *
+		 * @return the title
+		 * @since 1.0.0
+		 */
+
+		public String getTitle() {
+			return title;
+		}
+
+		/**
+		 * @param title
+		 *            the title to set
+		 */
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+		/**
+		 * flowcoins
+		 *
+		 * @return the flowcoins
+		 * @since 1.0.0
+		 */
+
+		public String getFlowcoins() {
+			return flowcoins;
+		}
+
+		/**
+		 * @param flowcoins
+		 *            the flowcoins to set
+		 */
+		public void setFlowcoins(String flowcoins) {
+			this.flowcoins = flowcoins;
+		}
+
+		/**
+		 * content
+		 *
+		 * @return the content
+		 * @since 1.0.0
+		 */
+
+		public String getContent() {
+			return content;
+		}
+
+		/**
+		 * @param content
+		 *            the content to set
+		 */
+		public void setContent(String content) {
+			this.content = content;
+		}
+
+		/**
+		 * time
+		 *
+		 * @return the time
+		 * @since 1.0.0
+		 */
+
+		public String getTime() {
+			return time;
+		}
+
+		/**
+		 * @param time
+		 *            the time to set
+		 */
+		public void setTime(String time) {
+			this.time = time;
+		}
+
+	}
 }

@@ -130,6 +130,8 @@ public class AppProductResponse {
 		private String chargesid;// 产品id
 		private String money;// 充值面额
 		private String cost;// 话费流量币
+		private String title;
+		private String desc;
 
 		/**
 		 * chargesid
@@ -186,6 +188,44 @@ public class AppProductResponse {
 		 */
 		public void setCost(String cost) {
 			this.cost = cost;
+		}
+
+		/**
+		 * title
+		 *
+		 * @return the title
+		 * @since 1.0.0
+		 */
+
+		public String getTitle() {
+			return title;
+		}
+
+		/**
+		 * @param title
+		 *            the title to set
+		 */
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+		/**
+		 * desc
+		 *
+		 * @return the desc
+		 * @since 1.0.0
+		 */
+
+		public String getDesc() {
+			return desc;
+		}
+
+		/**
+		 * @param desc
+		 *            the desc to set
+		 */
+		public void setDesc(String desc) {
+			this.desc = desc;
 		}
 
 	}

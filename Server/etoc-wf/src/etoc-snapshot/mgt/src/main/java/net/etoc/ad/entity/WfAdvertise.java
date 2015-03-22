@@ -62,10 +62,10 @@ public class WfAdvertise implements Serializable {
 	private Integer isfinished;
 
 	@Column
-	private Timestamp finishtime;
+	private String finishtime;
 
 	@Column
-	private Timestamp publishtime;
+	private String publishtime;
 
 	@Column
 	private Timestamp vtimestart;
@@ -229,7 +229,7 @@ public class WfAdvertise implements Serializable {
 	 * @since 1.0.0
 	 */
 
-	public Timestamp getFinishtime() {
+	public String getFinishtime() {
 		return finishtime;
 	}
 
@@ -237,7 +237,7 @@ public class WfAdvertise implements Serializable {
 	 * @param finishtime
 	 *            the finishtime to set
 	 */
-	public void setFinishtime(Timestamp finishtime) {
+	public void setFinishtime(String finishtime) {
 		this.finishtime = finishtime;
 	}
 
@@ -248,7 +248,7 @@ public class WfAdvertise implements Serializable {
 	 * @since 1.0.0
 	 */
 
-	public Timestamp getPublishtime() {
+	public String getPublishtime() {
 		return publishtime;
 	}
 
@@ -256,7 +256,7 @@ public class WfAdvertise implements Serializable {
 	 * @param publishtime
 	 *            the publishtime to set
 	 */
-	public void setPublishtime(Timestamp publishtime) {
+	public void setPublishtime(String publishtime) {
 		this.publishtime = publishtime;
 	}
 

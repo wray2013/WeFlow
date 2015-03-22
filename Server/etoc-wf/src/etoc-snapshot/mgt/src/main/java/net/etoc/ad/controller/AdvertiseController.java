@@ -15,6 +15,7 @@ import net.etoc.ad.entity.WfAdvertise;
 import net.etoc.ad.service.WfAdvertiseService;
 import net.etoc.crm.user.service.AppUserService;
 import net.etoc.wf.core.util.JsonUtils;
+import net.etoc.wf.core.util.PType;
 import net.etoc.wf.core.util.SignUtils;
 import net.etoc.wf.ctapp.base.ResponseBase;
 import net.etoc.wf.ctapp.base.RsCode;
@@ -171,6 +172,7 @@ public class AdvertiseController {
 				CrmOrderRequest.class);
 		CrmOderHisRequest cr = new CrmOderHisRequest();
 		BeanUtils.copyProperties(cr, ar);
+		cr.setType(PType.watch_movie.getValue());
 		List<WfAdvertise> list = wfAdvertiseService.findListByIds(
 				"querySubProdList", cr);
 		rsMap.put("status", (RsCode.OK.getCode()));
