@@ -23,6 +23,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.AdvFlowResp;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.VNetworkStateDetector;
@@ -237,6 +238,17 @@ public class AdDetailActivity extends TitleRootActivity {
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
 		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_ADV_FLOW:
+			if (msg.obj != null) {
+				AdvFlowResp resp = (AdvFlowResp) msg.obj;
+				if("0".equals(resp.status) || "0000".equals(resp.status)) {
+					PromptDialog.Alert(AdDetailActivity.class, "成功获取" + adInfo.flowcoins + "流量币");
+					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+					accountInfo.setFlowcoins(resp.flowcoins);
+					WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
+				}
+			}
+			break;
 		/*case Requester.RESPONSE_TYPE_ORDER_LARGESS:
 			if (msg.obj != null) {
 				commonResponse resp = (commonResponse) msg.obj;

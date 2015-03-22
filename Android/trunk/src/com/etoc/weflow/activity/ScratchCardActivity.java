@@ -65,6 +65,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 		
 		Flow = accountInfo.getFlowcoins() + "";
 //		}
+		
 		tvFlow = (TextView) findViewById(R.id.tv_flow);
 		tvFlow.setText(Flow);
 		
@@ -226,6 +227,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 				scratchflowResp resp = (scratchflowResp) msg.obj;
 				if("0".equals(resp.status) || "0000".equals(resp.status)) {
 					if(resp.award != null) {
+						accountInfo.setFlowcoins(resp.flowcoins);
+						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 						startLottery(resp.award.pricename);
 					} else {
 						Toast mtoast;
@@ -235,7 +238,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 					}
 				}
 			} else {
-				PromptDialog.Alert(ScratchCardActivity.class, "您的网络部给力啊！");
+				PromptDialog.Alert(ScratchCardActivity.class, "您的网络不给力啊！");
 			}
 		}
 		return false;

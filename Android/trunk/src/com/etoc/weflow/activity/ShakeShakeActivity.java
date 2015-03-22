@@ -154,6 +154,8 @@ public class ShakeShakeActivity extends TitleRootActivity {
 				if("0".equals(resp.status) || "0000".equals(resp.status)) {
 					Toast mtoast;
 					if(resp.award != null) {
+						accountInfo.setFlowcoins(resp.flowcoins);
+						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 						mtoast = Toast.makeText(ShakeShakeActivity.this,
 								"恭喜您获得" + resp.award.pricename, Toast.LENGTH_SHORT);
 						mtoast.show();
@@ -164,7 +166,7 @@ public class ShakeShakeActivity extends TitleRootActivity {
 					}
 				}
 			} else {
-				PromptDialog.Alert(ShakeShakeActivity.class, "您的网络部给力啊！");
+				PromptDialog.Alert(ShakeShakeActivity.class, "您的网络不给力啊！");
 			}
 			mShakeListener.start();
 			break;

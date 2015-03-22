@@ -300,8 +300,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		super.onResume();
 		Log.d(TAG, "onResume");
 		loginView();
-		if(mtvFlow != null && isLogin)
+		if(mtvFlow != null && isLogin) {
+			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+		}
 	}
 	
 	@Override
@@ -366,8 +368,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	@Override
 	public void onShow() {
 		Log.d(TAG, "onShow IN!");
-		if(mtvFlow != null && isLogin)
+		if(mtvFlow != null && isLogin) {
+			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+		}
 		loginView();
 	}
 	
