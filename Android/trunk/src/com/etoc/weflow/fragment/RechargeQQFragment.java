@@ -307,7 +307,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 						adapter.notifyDataSetChanged();
 						
 						tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
-						tvCostCoins.setText(adapter.getSelectCost()+ "流量币");
+						tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost())+ "流量币");
 					}
 				}
 			}

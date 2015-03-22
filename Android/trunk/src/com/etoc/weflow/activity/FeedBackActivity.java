@@ -1,6 +1,12 @@
 package com.etoc.weflow.activity;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.FeedBackResp;
+import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.StringUtils;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -73,6 +79,13 @@ public class FeedBackActivity extends TitleRootActivity {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.tv_btn_submit:
+			if (StringUtils.isEmpty(etContent.getText().toString())) {
+				PromptDialog.Dialog(this, "温馨提示", "请输入一些意见吧！", "确定");
+			}
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			if (accountInfo != null) {
+				Requester.feedBack(true, handler, accountInfo.getUserid(), etContent.getText().toString());
+			}
 			break;
 		}
 		super.onClick(v);
@@ -87,6 +100,19 @@ public class FeedBackActivity extends TitleRootActivity {
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		switch(msg.what) {
+		case Requester.RESPONSE_TYPE_FEED_BACK:
+			if (msg.obj != null) {
+				FeedBackResp resp = (FeedBackResp) msg.obj;
+				if (Requester.isSuccessed(resp.status)) {
+					PromptDialog.Alert("发送成功");
+					finish();
+				} else {
+					PromptDialog.Alert("发送失败");
+				}
+			}
+			break;
+		}
 		return false;
 	}
 

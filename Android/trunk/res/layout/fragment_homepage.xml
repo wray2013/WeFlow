@@ -28,8 +28,8 @@
                 
                 <ImageView 
 			    	android:id="@+id/iv_sign_in"
-			    	android:layout_width="71dp"
-			    	android:layout_height="37.5dp"
+			    	android:layout_width="56dp"
+			    	android:layout_height="32dp"
 			    	android:layout_alignParentRight="true"
 			    	android:layout_marginTop="32dp"
 			    	android:layout_marginRight="16dp"

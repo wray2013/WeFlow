@@ -8,7 +8,13 @@ import java.util.Set;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -18,8 +24,8 @@ import cn.jpush.android.api.JPushInterface;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dao.DaoMaster;
-import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
+import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.event.DialogUtils;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.utils.ConStant;
@@ -188,4 +194,33 @@ public class WeFlowApplication extends Application {
 			accountInfo.setFlowcoins(flowcoins);
 		}
 	}
+    
+    public static void openApk(String packageName,Context context) { 
+        PackageManager packageManager = context.getPackageManager(); 
+        PackageInfo pi = null;
+        try { 
+             
+            pi = packageManager.getPackageInfo("cld.navi.mainframe", 0); 
+        } catch (NameNotFoundException e) { 
+             
+        } 
+        Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null); 
+        resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER); 
+        resolveIntent.setPackage(pi.packageName); 
+ 
+        List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0); 
+ 
+        ResolveInfo ri = apps.iterator().next(); 
+        if (ri != null ) { 
+            String className = ri.activityInfo.name; 
+ 
+            Intent intent = new Intent(Intent.ACTION_MAIN); 
+            intent.addCategory(Intent.CATEGORY_LAUNCHER); 
+ 
+            ComponentName cn = new ComponentName(packageName, className); 
+ 
+            intent.setComponent(cn); 
+            context.startActivity(intent); 
+        } 
+    } 
 }
