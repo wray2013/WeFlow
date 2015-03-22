@@ -37,6 +37,7 @@ import com.etoc.weflow.fragment.HomePageFragment;
 import com.etoc.weflow.fragment.MenuFragment;
 import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
+import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.version.CheckUpdate;
 
 import de.greenrobot.event.EventBus;
@@ -104,6 +105,8 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	private void initController() {
+		
+		ViewUtils.setHeight(findViewById(R.id.ll_controller), 118);
 		rlHomePage = (RelativeLayout) findViewById(R.id.rl_btn_weflow);
 		rlBank     = (RelativeLayout) findViewById(R.id.rl_btn_bank);
 		rlDiscover = (RelativeLayout) findViewById(R.id.rl_btn_discover);

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.utils.ViewUtils;
 import com.squareup.timessquare.CalendarPickerView;
 import com.squareup.timessquare.CalendarPickerView.SelectionMode;
 
@@ -25,6 +26,7 @@ public class SignInActivity extends TitleRootActivity {
 	private HashMap<String, LinePrice> priceMap = new HashMap<String, SignInActivity.LinePrice>();
 	private TextView tvSignIn;
 	private TextView tvSignInFlag;
+	private TextView tvSignRecord;
 	
 	class LinePrice{
 		String adultPrice;
@@ -123,43 +125,20 @@ public class SignInActivity extends TitleRootActivity {
 	    tvSignIn = (TextView) findViewById(R.id.tv_sign_in);
 	    tvSignInFlag = (TextView) findViewById(R.id.tv_sign_in_flag);
 	    
+	    tvSignRecord  = (TextView) findViewById(R.id.tv_sign_in_tips);
+	    
 	    tvSignIn.setOnClickListener(this);
-	    /*calendar.setOnInvalidDateSelectedListener(new OnInvalidDateSelectedListener() {
-			@Override
-			public void onInvalidDateSelected(Date date) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 	    
-	    calendar.setDateSelectableFilter(new DateSelectableFilter() {
-			
-			@Override
-			public boolean isDateSelectable(Date date) {
-				// TODO Auto-generated method stub
-				boolean ret = CalendarPickerView.containsDate(selectableDateList, date);
-//				if (ret) {
-//					Log.d("=AAA=","isDateSelectable date = " + date);
-//				}
-				return ret;
-			}
-		});
+	    ViewUtils.setMarginBottom(tvSignIn, 116);
+	    ViewUtils.setSize(tvSignIn, 188, 188);
+	    ViewUtils.setMarginBottom(tvSignInFlag, 68);
+	    ViewUtils.setMarginTop(tvSignInFlag, 48);
+	    ViewUtils.setTextSize(tvSignIn, 34);
+	    ViewUtils.setTextSize(tvSignInFlag, 30);
+	    ViewUtils.setTextSize(tvSignRecord, 32);
 	    
-	    calendar.setOnDateSelectedListener(new OnDateSelectedListener() {
-			
-			@Override
-			public void onDateUnselected(Date date) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onDateSelected(Date date) {
-				// TODO Auto-generated method stub
-				selectedDate = date;
-				getRightButton().setEnabled(true);
-			}
-		});*/
+	    
+	    
 	}
 	
 	private void initCalendarView(Date minDate,Date maxDate) {
