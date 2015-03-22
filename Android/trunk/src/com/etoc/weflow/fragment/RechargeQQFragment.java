@@ -46,6 +46,7 @@ import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import de.greenrobot.dao.query.QueryBuilder;
@@ -146,12 +147,15 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				// TODO Auto-generated method stub
 				adapter.setSelect(position);
 				adapter.notifyDataSetChanged();
-				tvCostCoins.setText(adapter.getSelectCost());
+				tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost()));
 			}
 		});
 		
 		tvCostCoins = (TextView) view.findViewById(R.id.tv_cost_coins);
-		ViewUtils.setMarginRight(tvCostCoins, 16);
+		ViewUtils.setMarginTop(tvCostCoins, 36);
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_cost_label), 64);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_cost_label), 32);
+		ViewUtils.setTextSize(tvCostCoins, 36);
 //		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
 //		tvCostCoins.setText(adapter.getSelectCost());
 		

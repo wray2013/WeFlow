@@ -347,7 +347,7 @@ public class GsonResponseObject {
 	
 	public static class GameChargeListResp {
 		public String status;
-		public GameChargeResp[] list;
+		public GameChargeResp[] chargelist;
 	}
 	
 	public static class GameChargeResp {

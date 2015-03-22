@@ -145,7 +145,7 @@ public class FakeData {
 		
 		GameChargeListResp r11 = new GameChargeListResp();
 		r11.status = "0";
-		r11.list = (GameChargeResp[]) createGameRechargeList().toArray(new GameChargeResp[0]);
+		r11.chargelist = (GameChargeResp[]) createGameRechargeList().toArray(new GameChargeResp[0]);
 		map.put(Requester.RIA_INTERFACE_GAME_RECHARGE_LIST, r11);
 	}
 	
