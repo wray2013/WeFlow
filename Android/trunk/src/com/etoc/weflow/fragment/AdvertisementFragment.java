@@ -121,7 +121,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         mIndicator = (PageIndicator) view.findViewById(R.id.indicator_service);
         
-        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.small_pic_default, bannerlist);
+        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.content_pic_default, bannerlist);
         if(bannerAdapter.getCount() > 0) {
         	viewPager.setAdapter(bannerAdapter);
         	mIndicator.setViewPager(viewPager);
@@ -135,9 +135,9 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 				.cacheOnDisc(true)
 				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
 				.bitmapConfig(Bitmap.Config.RGB_565)
-				.showImageForEmptyUri(R.drawable.small_pic_default)
-				.showImageOnFail(R.drawable.small_pic_default)
-				.showImageOnLoading(R.drawable.small_pic_default)
+				.showImageForEmptyUri(R.drawable.content_pic_default)
+				.showImageOnFail(R.drawable.content_pic_default)
+				.showImageOnLoading(R.drawable.content_pic_default)
 				.displayer(new RoundedBitmapDisplayer(5))
 //				.displayer(new SimpleBitmapDisplayer())
 				// .displayer(new CircularBitmapDisplayer()) 圆形图片
@@ -244,6 +244,8 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 	        	mIndicator.notifyDataSetChanged();
 	        }
 		}
+		
+		setListViewHeightBasedOnChildren(lvRecommentAdv);
 		
 	}
 	
@@ -398,7 +400,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         	/*View listItem = listAdapter.getView(0, null, listView);
         	listItem.measure(0, 0);
         	itemHeight = listItem.getMeasuredHeight();*/
-        	itemHeight = DisplayUtil.getSize(getActivity(), 140);
+        	itemHeight = DisplayUtil.getSize(getActivity(), 452);
         }
         
         int totalHeight = 0;

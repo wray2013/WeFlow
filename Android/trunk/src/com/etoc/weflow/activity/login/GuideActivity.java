@@ -50,8 +50,8 @@ public class GuideActivity extends TitleRootActivity {
 //			R.drawable.guide04,
 //			R.drawable.guide05,
 //			R.drawable.guide06
-			R.drawable.ic_launcher,
-			R.drawable.ic_launcher,
+			R.drawable.guide_1,
+			R.drawable.guide_2,
 	};
 
 	@Override
