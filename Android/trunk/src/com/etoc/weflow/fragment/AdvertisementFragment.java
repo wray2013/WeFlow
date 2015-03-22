@@ -116,7 +116,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         mIndicator = (PageIndicator) view.findViewById(R.id.indicator_service);
         
-        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.small_pic_default, /*bannerlist*/makeFakeData());
+        bannerAdapter = new BannerAdapter(getChildFragmentManager(), R.drawable.small_pic_default, bannerlist);
         if(bannerAdapter.getCount() > 0) {
         	viewPager.setAdapter(bannerAdapter);
         	mIndicator.setViewPager(viewPager);

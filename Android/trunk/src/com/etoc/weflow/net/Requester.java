@@ -30,7 +30,7 @@ import android.util.Log;
 
 
 public class Requester {
-	private static final int isDebug = 1;
+	private static final int isDebug = 0;
 	
 	///////////////////////////////////////Response code:
 	public static final int RESPONSE_TYPE_TEST = 0xffee2000;

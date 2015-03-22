@@ -18,6 +18,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
@@ -346,6 +347,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			break;
 		case R.id.tv_login_btn:
 			startActivity(new Intent(getActivity(), LoginActivity.class));
+			break;
+		case R.id.iv_sign_in:
+			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+			Requester.signIn(true, handler, accountInfo.getUserid());
 			break;
 		}
 	}
