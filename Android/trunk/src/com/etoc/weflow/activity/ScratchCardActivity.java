@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.RandomUtils;
 import com.etoc.weflow.utils.ViewUtils;
@@ -53,7 +55,9 @@ public class ScratchCardActivity extends TitleRootActivity {
 		}
 //		String flowvalue = getIntent().getStringExtra("flow");
 //		if(flowvalue != null) {
-		Flow = 10000 + "";
+		AccountInfo acc = WeFlowApplication.getAppInstance().getAccountInfo();
+		
+		Flow = acc.getFlowcoins() + "";
 //		}
 		tvFlow = (TextView) findViewById(R.id.tv_flow);
 		tvFlow.setText(Flow);

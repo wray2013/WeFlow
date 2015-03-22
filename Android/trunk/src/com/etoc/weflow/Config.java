@@ -13,6 +13,7 @@ public class Config {
 	
 	public static final String HOMEPAGE_URL = WEBSERVER_URL + "/webpage/home.html";
 	public static final String BANKPAGE_URL = WEBSERVER_URL + "/webpage/bank.html";
+	public static final String ABOUTPAGE_URL= WEBSERVER_URL + "/webpage/about.html";
 	
 	public static final int UDP_PORT = 8765;
 	
