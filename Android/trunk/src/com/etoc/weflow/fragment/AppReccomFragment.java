@@ -184,7 +184,7 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 		public SoftInfoResp appInfo = null;
 		
 		public AppBannerFragment(SoftInfoResp info) {
-			super(info.appbannerpic, R.drawable.small_pic_default);
+			super(info.appbannerpic, R.drawable.content_pic_default);
 			appInfo = info;
 		}
 		

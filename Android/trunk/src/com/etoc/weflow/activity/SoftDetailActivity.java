@@ -70,9 +70,9 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 				.cacheOnDisc(true)
 				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
 				.bitmapConfig(Bitmap.Config.RGB_565)
-				.showImageForEmptyUri(R.drawable.small_pic_default)
-				.showImageOnFail(R.drawable.small_pic_default)
-				.showImageOnLoading(R.drawable.small_pic_default)
+				.showImageForEmptyUri(R.drawable.content_pic_default)
+				.showImageOnFail(R.drawable.content_pic_default)
+				.showImageOnLoading(R.drawable.content_pic_default)
 				.build();
 		
 		initViews();
