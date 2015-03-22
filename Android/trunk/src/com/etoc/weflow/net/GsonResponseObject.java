@@ -521,6 +521,7 @@ public class GsonResponseObject {
 	public static class SignInListResp {
 		public String status;
 		public String signinlist;
+		public String monthcoins;
 	}
 	
 	// 2.9.6签到
@@ -528,6 +529,8 @@ public class GsonResponseObject {
 		public String status;
 		public String flowcoins;
 		public String addcoins;
+		public String signinlist;
+		public String monthcoins;
 	}
 	
 }

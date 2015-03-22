@@ -17,6 +17,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -27,12 +29,14 @@ import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.DownloadHistory;
 import com.etoc.weflow.dao.DownloadHistoryDao;
 import com.etoc.weflow.dao.DownloadHistoryDao.Properties;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.AppFlowResp;
 import com.etoc.weflow.net.Requester;
 
 import de.greenrobot.dao.query.QueryBuilder;
 import de.greenrobot.event.EventBus;
 
-public class DownloadManager {
+public class DownloadManager implements Callback {
 	public static Object globeLock = new Object();
 	public static final long UPDATE_INTERVAL_MS = 1000;
 	private static final String TAG = "DownloadManager";
@@ -43,6 +47,8 @@ public class DownloadManager {
 	private DaoSession daoSession;
 	private DownloadHistoryDao downloadHistoryDao;
 	private SQLiteDatabase db;
+	
+	private Handler handler = null;
 	
 	//WAIT=1,PERPARE=2,RUN=3,PAUSE=4,DONE=5,FAIL=6
 	List<DownloadItem> runningList; //WAIT=1,PERPARE=2,RUN=3,PAUSE=4  运行列表
@@ -64,6 +70,8 @@ public class DownloadManager {
 		runningList = new ArrayList<DownloadItem>();
 		doneList = new ArrayList<DownloadItem>();
 		executor = Executors.newFixedThreadPool(8);
+		
+		handler = new Handler(this);
 		
 		//init from sql
 		context = WeFlowApplication.getAppInstance();
@@ -459,6 +467,7 @@ public class DownloadManager {
 			
 			if(status==DownloadStatus.DONE){
 				doneList.add(item);
+				Requester.getAppFlow(true, handler, WeFlowApplication.getAppInstance().getAccountInfo().getUserid(), item.mediaId, "0");
 				e.setType(DownloadEvent.RUNNING_LIST_DEL|DownloadEvent.DONE_LIST_ADD);
 				
 				SharedPreferences mySharedPreferences= context.getSharedPreferences("has_new_download", 
@@ -572,6 +581,24 @@ public class DownloadManager {
 	
 	public void resumeItem(DownloadItem item) {
 		item.resume();
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_APP_FLOW:
+			if (msg.obj != null) {
+				AppFlowResp resp = (AppFlowResp) msg.obj;
+				if (Requester.isSuccessed(resp.status)) {
+					PromptDialog.Alert("app下载完成，已获得相应流量币");
+					WeFlowApplication.setFlowCoins(resp.flowcoins);
+				}
+					
+			}
+			break;
+		}
+		return false;
 	}
 
 }

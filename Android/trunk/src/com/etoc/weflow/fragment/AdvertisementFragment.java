@@ -35,6 +35,7 @@ import com.etoc.weflow.net.GsonResponseObject.AdvListResp;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
 import com.google.gson.Gson;
@@ -77,6 +78,8 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 	private ArrayList<AdverInfo> bannerlist = new ArrayList<AdverInfo>();
 	private ArrayList<AdverInfo> newestlist = new ArrayList<AdverInfo>();
 	private ArrayList<AdverInfo> wonderfullist = new ArrayList<AdverInfo>();
+	
+	private TextView tvContent1,tvContent2,tvContent3;
 	
 	private Boolean isClearData 	= true;
 	private Boolean isHasNextPage 	= false;
@@ -144,6 +147,10 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 		rlAd2 = (RelativeLayout) view.findViewById(R.id.rl_newest_2);
 		rlAd3 = (RelativeLayout) view.findViewById(R.id.rl_newest_3);
 		
+		tvContent1 = (TextView) view.findViewById(R.id.tv_content_1);
+		tvContent2 = (TextView) view.findViewById(R.id.tv_content_2);
+		tvContent3 = (TextView) view.findViewById(R.id.tv_content_3);
+		
 		rlAd1.setOnClickListener(this);
 		rlAd2.setOnClickListener(this);
 		rlAd3.setOnClickListener(this);
@@ -204,6 +211,9 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 				rlAd1.setTag(newestlist.get(0));
 				rlAd2.setTag(newestlist.get(1));
 				rlAd3.setTag(newestlist.get(2));
+				tvContent1.setText(NumberUtils.convert2IntStr(newestlist.get(0).flowcoins));
+				tvContent2.setText(NumberUtils.convert2IntStr(newestlist.get(1).flowcoins));
+				tvContent2.setText(NumberUtils.convert2IntStr(newestlist.get(2).flowcoins));
 				imageLoader.displayImage(newestlist.get(0).cover, ivNewest1, imageLoaderOptions);
 				imageLoader.displayImage(newestlist.get(1).cover, ivNewest2, imageLoaderOptions);
 				imageLoader.displayImage(newestlist.get(2).cover, ivNewest3, imageLoaderOptions);
@@ -213,6 +223,8 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 				rlAd3.setVisibility(View.INVISIBLE);
 				rlAd1.setTag(newestlist.get(0));
 				rlAd2.setTag(newestlist.get(1));
+				tvContent1.setText(NumberUtils.convert2IntStr(newestlist.get(0).flowcoins));
+				tvContent2.setText(NumberUtils.convert2IntStr(newestlist.get(1).flowcoins));
 				imageLoader.displayImage(newestlist.get(0).cover, ivNewest1, imageLoaderOptions);
 				imageLoader.displayImage(newestlist.get(1).cover, ivNewest2, imageLoaderOptions);
 			} else if(size == 1) {
@@ -220,6 +232,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 				rlAd2.setVisibility(View.INVISIBLE);
 				rlAd3.setVisibility(View.INVISIBLE);
 				rlAd1.setTag(newestlist.get(0));
+				tvContent1.setText(NumberUtils.convert2IntStr(newestlist.get(0).flowcoins));
 				imageLoader.displayImage(newestlist.get(0).cover, ivNewest1, imageLoaderOptions);
 			}
 		}

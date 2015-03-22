@@ -3,6 +3,7 @@ package com.etoc.weflow.fragment;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.AccountActivity;
 import com.etoc.weflow.activity.CaptureActivity;
 import com.etoc.weflow.activity.DownloadManageActivity;
@@ -16,6 +17,7 @@ import com.etoc.weflow.activity.MyBillListActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import android.content.Intent;
@@ -39,6 +41,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 	private TextView tvLogin = null;
 	private RelativeLayout rlAccountInfo = null;
 	private boolean isLogin = false;
+	private TextView tvFlowValue = null;
 	
 	private AccountInfo currentAccount = null;
 	
@@ -70,6 +73,8 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		tvLogin.setOnClickListener(this);
 		rlAccountInfo.setOnClickListener(this);
 		
+		tvFlowValue = (TextView)view.findViewById(R.id.tv_flow_value);
+		
 		view.findViewById(R.id.rl_me_msg).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_bill).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_download).setOnClickListener(this);
@@ -92,7 +97,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		
 		
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_hint), 35);
-		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_value), 35);
+		ViewUtils.setTextSize(tvFlowValue, 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_paper_hint), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_flow_paper), 35);
 		
@@ -171,6 +176,10 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
+		AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (accountInfo != null && accountInfo.getFlowcoins() != null) {
+			tvFlowValue.setText(NumberUtils.convert2IntStr(accountInfo.getFlowcoins()));
+		}
 		loginView();
 	}
 	
