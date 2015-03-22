@@ -2,6 +2,8 @@ package com.etoc.weflow.activity;
 
 import java.io.File;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
@@ -11,7 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import cn.jpush.android.api.JPushInterface;
+
+import com.etoc.weflow.Config;
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.ParallelEvent;
 import com.etoc.weflow.parallel.DiscScanTask;
@@ -29,6 +35,8 @@ public class SettingsActivity extends TitleRootActivity {
 	private static final long SETTING_CACHE_CLEAR = 0x12468322;
 	File cacheFold;
 	
+	public static String SP_NAME = "push";
+	public static String SP_KEY  = "enabled";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -52,6 +60,13 @@ public class SettingsActivity extends TitleRootActivity {
 		tvVersion = (TextView) findViewById(R.id.tv_upgrade_version);
 		
 		switchPush = (ToggleButton) findViewById(R.id.toggle_push);
+		
+		SharedPreferences sp = getSharedPreferences(SP_NAME, MODE_PRIVATE);
+		if(sp.getBoolean(SP_KEY, true)) {
+			switchPush.setChecked(true);
+		} else {
+			switchPush.setChecked(false);
+		}
 		/*switchPush.setOnChangeListener(new OnChangeListener() {
 			
 			@Override
@@ -67,6 +82,14 @@ public class SettingsActivity extends TitleRootActivity {
 				// TODO Auto-generated method stub
 //				switchPush.setChecked(isChecked);
 				Toast.makeText(SettingsActivity.this, isChecked ? "开启推送":"关闭推送", Toast.LENGTH_SHORT).show();
+				SharedPreferences sp = getSharedPreferences(SP_NAME, MODE_PRIVATE);
+				sp.edit().putBoolean(SP_KEY, isChecked).commit();
+				
+				if(isChecked) {
+					JPushInterface.resumePush(WeFlowApplication.getAppInstance());
+				} else {
+					JPushInterface.stopPush(WeFlowApplication.getAppInstance());
+				}
 			}
 		});
 		
@@ -135,6 +158,12 @@ public class SettingsActivity extends TitleRootActivity {
 		case R.id.rl_settings_cache:
 			PromptDialog.showProgressDialog(this);
 			ParallelManager.getInstance().submitTask(new DiskCleanTask(SETTING_CACHE_CLEAR, cacheFold));
+			break;
+		case R.id.rl_settings_about:
+			Intent aboutIntent = new Intent(this, WebViewActivity.class);
+			aboutIntent.putExtra("pageurl", Config.ABOUTPAGE_URL);
+			aboutIntent.putExtra("pagetitle", "关于");
+			startActivity(aboutIntent);
 			break;
 		}
 		super.onClick(v);
