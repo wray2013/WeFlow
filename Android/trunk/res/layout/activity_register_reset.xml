@@ -90,7 +90,7 @@
             android:layout_marginTop="18dp"
             android:background="@color/white"
             android:paddingLeft="8dp"
-            android:maxLength="6"
+            android:maxLength="11"
             android:hint="请输入验证码"
             android:inputType="textPassword" />
     </RelativeLayout>

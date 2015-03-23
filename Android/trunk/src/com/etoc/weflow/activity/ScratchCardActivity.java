@@ -238,6 +238,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 								noAward[RandomUtils.getRandom(4) % 5], Toast.LENGTH_SHORT);
 						mtoast.show();
 					}
+				} else if("2016".equals(resp.status)) {
+					PromptDialog.Alert(MainActivity.class, "刮奖次数已用完");
 				}
 			} else {
 				PromptDialog.Alert(ScratchCardActivity.class, "您的网络不给力啊！");

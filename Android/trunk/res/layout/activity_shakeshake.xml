@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="76dp"
-        android:text="每次消耗1流量币"
+        android:text="每日一摇，流量土豪"
         android:textSize="17sp"
         android:textColor="#A3A0A6"
         />

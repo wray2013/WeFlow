@@ -177,6 +177,8 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 								noAward[RandomUtils.getRandom(4) % 5], Toast.LENGTH_SHORT);
 						mtoast.show();
 					}
+				} else if("2016".equals(resp.status)) {
+					PromptDialog.Alert(MainActivity.class, "摇奖次数已用完");
 				}
 			} else {
 				PromptDialog.Alert(ShakeShakeActivity.class, "您的网络不给力啊！");
