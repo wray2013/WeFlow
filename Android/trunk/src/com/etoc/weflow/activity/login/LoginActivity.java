@@ -203,7 +203,7 @@ public class LoginActivity extends TitleRootActivity {
 					accountinfo.setUseflow(loginResp.useflow);
 					accountinfo.setUserid(loginResp.userid);
 					accountinfo.setTel(loginResp.tel);
-//					accountInfoDao.deleteAll();
+					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(accountinfo);
 					if(loginResp.tel != null && !loginResp.tel.equals("")) {
 						WeFlowApplication.getAppInstance().addJPushTag(loginResp.tel);

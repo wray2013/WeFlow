@@ -128,7 +128,7 @@ public class WelcomePageActivity extends TitleRootActivity {
 					acc.setUseflow(alogin.useflow);
 					acc.setUserid(alogin.userid);
 					acc.setTel(alogin.tel);
-//					accountInfoDao.deleteAll();
+					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(acc);
 					if(alogin.tel != null && !alogin.tel.equals("")) {
 						WeFlowApplication.getAppInstance().addJPushTag(alogin.tel);

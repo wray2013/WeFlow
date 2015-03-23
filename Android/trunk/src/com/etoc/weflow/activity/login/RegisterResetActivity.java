@@ -333,7 +333,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 					accountinfo.setUseflow(regResp.useflow);
 					accountinfo.setUserid(regResp.userid);
 					accountinfo.setTel(regResp.tel);
-//					accountInfoDao.deleteAll();
+					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(accountinfo);
 					if(regResp.tel != null && !regResp.tel.equals("")) {
 						WeFlowApplication.getAppInstance().addJPushTag(regResp.tel);

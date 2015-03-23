@@ -384,8 +384,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			if(msg.obj != null) {
 				AccountInfoResp response = (AccountInfoResp) msg.obj;
 				if("0".equals(response.status) || "0000".equals(response.status)) {
-					if (currentAccount != null) {
+					if (response.flowcoins != null) {
 						currentAccount.setFlowcoins(response.flowcoins);
+						WeFlowApplication.setFlowCoins(response.flowcoins);
+						mtvFlow.showNumberWithAnimation(response.flowcoins, 1000);
 					}
 					tvPlain.setText(response.menumoney);
 					tvPlainType.setText(response.menutype);
