@@ -3,6 +3,7 @@ package com.etoc.weflow.fragment;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.DepositFlowActivity;
 import com.etoc.weflow.activity.DrawFlowActivity;
 import com.etoc.weflow.activity.MainActivity;
@@ -14,6 +15,7 @@ import com.etoc.weflow.net.GsonRequestObject.queryBankRequest;
 import com.etoc.weflow.net.GsonResponseObject.QueryBankResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.testResponse;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 
@@ -86,7 +88,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		
 		viewAdapter(view);
 
-		checkLogin();
+//		checkLogin();
 	}
 	
 	private void checkLogin() {
@@ -143,9 +145,9 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
-//		checkLogin();
-		if(mtvMoney != null)
-			mtvMoney.showNumberWithAnimation(mtvMoney.getText().toString(), 1000);
+		checkLogin();
+//		if(mtvMoney != null)
+//			mtvMoney.showNumberWithAnimation(mtvMoney.getText().toString(), 1000);
 	}
 	
 	@Override
@@ -162,7 +164,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 //				String[] values = new String[] {"14000", "18000", "60000"};
 				Intent drawIntent = new Intent(getActivity(), DrawFlowActivity.class);
 				drawIntent.putExtra("values", trdPop);
-				drawIntent.putExtra("total", (int)mtvMoney.getNumber());
+				drawIntent.putExtra("total", NumberUtils.Str2Int(mtvMoney.getValue()));
 				startActivity(drawIntent);
 				getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			} else {
@@ -174,7 +176,11 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			if(isLogin) {
 				Intent depositIntent = new Intent(getActivity(), DepositFlowActivity.class);
 				depositIntent.putExtra("minValue", trdPush);
-				depositIntent.putExtra("total", (int)mtvMoney.getNumber());
+				depositIntent.putExtra("total", NumberUtils.Str2Int(mtvMoney.getValue()));
+				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+				if(info != null) {
+					depositIntent.putExtra("flowcoins", info.getFlowcoins());
+				}
 				startActivity(depositIntent);
 				getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			} else {
@@ -204,7 +210,13 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 					if(qbResp.flowbankcoins != null) {
 						mtvMoney.showNumberWithAnimation(qbResp.flowbankcoins, 1000);
 					}
-					tvYestIncome.setText(qbResp.yestdincome);
+					
+					int income = NumberUtils.Str2Int(qbResp.yestdincome);
+					if(income > 0) {
+						tvYestIncome.setText(qbResp.yestdincome);
+					} else {
+						tvYestIncome.setText("暂无收益");
+					}
 					tvYestRate.setText(qbResp.yestdrate);
 					tvTotalIncome.setText(qbResp.totalincome);
 					

@@ -7,5 +7,16 @@ public class NumberUtils {
 		int ret = f.intValue();
 		return Math.abs(ret) + "";
 	}
+	
+	public static int Str2Int(String intStr) {
+		float f = 0;
+		try {
+			f = Float.parseFloat(intStr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		int ret = (int)f;
+		return ret;
+	}
 
 }

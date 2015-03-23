@@ -15,6 +15,7 @@ import android.widget.TextView;
 public class MagicTextView extends TextView {
 
 	float number;
+	String numStr;
 
 	public MagicTextView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -29,11 +30,13 @@ public class MagicTextView extends TextView {
 			
 			e.printStackTrace();
 		}
+		numStr = num + "";
 		showNumberWithAnimation((int)num, duration);
 	}
 	
 	@TargetApi(11)
 	public void showNumberWithAnimation(int number, int duration) {
+		numStr = number + "";
 		if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
 			// 修改number属性，会调用setNumber方法
 			ObjectAnimator objectAnimator = ObjectAnimator.ofInt(this,
@@ -48,6 +51,7 @@ public class MagicTextView extends TextView {
 	
 	@TargetApi(11)
 	public void showNumberWithAnimation(float number, int duration) {
+		numStr = number + "";
 		if (VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB) {
 			// 修改number属性，会调用setNumber方法
 			ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(this,
@@ -60,6 +64,10 @@ public class MagicTextView extends TextView {
 		}
 	}
 
+	public String getValue() {
+		return numStr;
+	}
+	
 	public float getNumber() {
 		return number;
 	}

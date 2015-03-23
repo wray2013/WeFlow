@@ -6,6 +6,7 @@ import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.bankStoreResp;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class DepositFlowActivity extends TitleRootActivity {
 	private EditText edDeposit;
 	private int minValue = 0;
 	private int total = 0;
+	private int flowcoins = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,14 @@ public class DepositFlowActivity extends TitleRootActivity {
 		if(getIntent() != null) {
 			minValue = getIntent().getIntExtra("minValue", 0);
 			total = getIntent().getIntExtra("total", 0);
+			String coinsstr = getIntent().getStringExtra("flowcoins");
+			float f = 0;
+			try {
+				f = Float.parseFloat(coinsstr);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			flowcoins = (int)f;
 		}
 		
 		initView();
@@ -75,10 +85,10 @@ public class DepositFlowActivity extends TitleRootActivity {
 				try {
 					int currValue = Integer.valueOf(s.toString());
 					
-					if(currValue > total) {
-						edDeposit.setText(total + "");
+					if(currValue > flowcoins) {
+						edDeposit.setText(flowcoins + "");
 						edDeposit.setSelection(edDeposit.getText().length());
-						currValue = total;
+						currValue = flowcoins;
 					}
 					
 					refreshBtnStatus(currValue);
@@ -172,7 +182,7 @@ public class DepositFlowActivity extends TitleRootActivity {
 				bankStoreResp storeResp = (bankStoreResp) msg.obj;
 				if("0".equals(storeResp.status) || "0000".equals(storeResp.status)) {
 					PromptDialog.Alert(DepositFlowActivity.class, "成功存入流量银行");
-					tvTotal.setText(storeResp.bankcoins);
+					tvTotal.setText(NumberUtils.Str2Int(storeResp.bankcoins) + "");
 					info.setFlowcoins(storeResp.flowcoins);
 					WeFlowApplication.getAppInstance().PersistAccountInfo(info);
 				} else {
