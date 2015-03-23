@@ -24,6 +24,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
@@ -526,7 +527,10 @@ public class DownloadManager implements Callback {
 				if(item.downloadType == DownloadType.APP){
 					installFromPath(context,item.path);
 				}
-//				Requester.getAppFlow(true, new Handler(), WeFlowApplication.accountInfo.getUserid(), item.mediaId, "0");
+				AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+				if (accountInfo != null) {
+					Requester.getAppFlow(false, new Handler(), accountInfo.getUserid(), item.mediaId, "0");
+				}
 			}
 			
 			//下一个相同类型的下载任务
