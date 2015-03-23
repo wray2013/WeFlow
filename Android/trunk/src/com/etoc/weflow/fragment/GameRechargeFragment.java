@@ -70,8 +70,7 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 	private TextView tvGameCoins = null;
 	private TextView tvFlowCoins = null;
 	private TextView tvBtnOrder = null;
-	private int selectGameType = 0;
-	private int selectGameCoins = 0;
+	private int selectGameType = -1;
 	
 	private GameChargeProductResp selectProduct = null;
 	
@@ -221,13 +220,20 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				// TODO Auto-generated method stub
+				if (position == selectGameType) {
+					gamePopupWindow.dismiss();
+					return;
+				}
+				selectGameType = position;
 				GameChargeResp resp = gameChargeList.get(position);
 				if (resp.products != null && resp.products.length > 0) {
 					coinStrList.clear();
+					productList.clear();
 					for (GameChargeProductResp item:resp.products) {
 						productList.add(item);
 						coinStrList.add(item.money);
 					}
+					tvGameCoins.setText("");
 					coinsAdapter.notifyDataSetChanged();
 					gamePopupWindow.dismiss();
 				}
@@ -274,6 +280,10 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.tv_btn_order:
+			if (StringUtils.isEmpty(tvGameCoins.getText().toString())) {
+				PromptDialog.Dialog(getActivity(), "温馨提示", "请选择充值面额", "确定");
+				return;
+			}
 			if (StringUtils.isEmpty(etAccount.getText().toString())) {
 				PromptDialog.Dialog(getActivity(), "温馨提示", "请输入游戏帐号", "确定");
 				return;

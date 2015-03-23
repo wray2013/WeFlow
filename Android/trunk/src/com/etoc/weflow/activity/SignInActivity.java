@@ -143,6 +143,8 @@ public class SignInActivity extends TitleRootActivity {
 	    if(info != null && info.getIsregistration() != null) {
 	    	if("1".equals(info.getIsregistration())) {
 	    		tvSignInFlag.setText("今日已签到");
+	    		tvSignIn.setText("已签");
+	    		tvSignIn.setEnabled(false);
 	    	}
 	    }
 	    
