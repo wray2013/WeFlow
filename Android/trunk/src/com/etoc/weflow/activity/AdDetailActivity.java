@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -26,6 +27,7 @@ import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AdvFlowResp;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DateUtils;
 import com.etoc.weflow.utils.VNetworkStateDetector;
 import com.etoc.weflow.utils.ViewUtils;
@@ -254,6 +256,9 @@ public class AdDetailActivity extends TitleRootActivity {
 					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 					accountInfo.setFlowcoins(resp.flowcoins);
 					WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
+				} else if (Requester.isMaxLimit(resp.status)) {
+					Toast.makeText(WeFlowApplication.getAppInstance(), ConStant.TIP_MAX_LIMIT
+							, Toast.LENGTH_LONG);
 				}
 			}
 			break;

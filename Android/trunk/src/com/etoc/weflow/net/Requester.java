@@ -15,11 +15,15 @@ import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
 import com.etoc.weflow.Config;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.net.GsonRequestObject.GameChargeListRequest;
 import com.etoc.weflow.net.GsonRequestObject.GameRechargeRequest;
@@ -58,6 +62,7 @@ import com.etoc.weflow.net.GsonRequestObject.resetPasswordRequest;
 import com.etoc.weflow.net.GsonRequestObject.shakeFlowRequest;
 import com.etoc.weflow.net.GsonRequestObject.storeFlowRequest;
 import com.etoc.weflow.net.GsonRequestObject.testRequest;
+import com.etoc.weflow.net.GsonRequestObject.uaRequest;
 import com.etoc.weflow.net.GsonRequestObject.verifyAuthCodeRequest;
 import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
 import com.etoc.weflow.net.GsonResponseObject.AdvFlowRecordResp;
@@ -87,6 +92,7 @@ import com.etoc.weflow.net.GsonResponseObject.QChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.QueryBankResp;
 import com.etoc.weflow.net.GsonResponseObject.SignInListResp;
 import com.etoc.weflow.net.GsonResponseObject.SignInResp;
+import com.etoc.weflow.net.GsonResponseObject.UpdateResp;
 import com.etoc.weflow.net.GsonResponseObject.autoLoginResponse;
 import com.etoc.weflow.net.GsonResponseObject.bankPopResp;
 import com.etoc.weflow.net.GsonResponseObject.bankStoreResp;
@@ -99,7 +105,11 @@ import com.etoc.weflow.net.GsonResponseObject.shakeflowResp;
 import com.etoc.weflow.net.GsonResponseObject.testResponse;
 import com.etoc.weflow.net.GsonResponseObject.verifyAuthCodeResponse;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.MetaUtil;
+import com.etoc.weflow.utils.NetWorkUtils;
 import com.etoc.weflow.utils.VMobileInfo;
+import com.etoc.weflow.utils.ZSimCardInfo;
 import com.google.gson.Gson;
 
 import de.greenrobot.event.EventBus;
@@ -654,6 +664,34 @@ public class Requester {
 		worker.execute(RIA_INTERFACE_FEED_BACK, request);
 	}
 	
+	//2.9.4 检查更新
+	public static void update(boolean hasLoading,Handler handler) {
+		uaRequest request = new uaRequest();
+		try {
+			String packagename = WeFlowApplication.getAppInstance().getPackageName();
+			PackageInfo info = WeFlowApplication.getAppInstance().getPackageManager()
+					           .getPackageInfo(packagename, 0);
+	        String version = info.versionName;
+			request.appver = version.replace('.', '_');
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		} 
+		request.channel = MetaUtil.getStringValue("ETOC_CHANNEL");
+		
+		request.deviceType = ZSimCardInfo.getDeviceBrand() + " " + ZSimCardInfo.getDeviceName();
+		request.imei = IMEI;
+		request.imsi = ZSimCardInfo.getIMSI();
+		request.internetway = NetWorkUtils.getNetWorkType(WeFlowApplication.getAppInstance());
+		request.mac = MAC;
+		request.resolution = DisplayUtil.getScreenWidth(WeFlowApplication.getAppInstance()) + "x" + DisplayUtil.getScreenHeight(WeFlowApplication.getAppInstance());
+		AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (accountInfo != null) {
+			request.userid = accountInfo.getUserid();
+		}
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_UPDATE, UpdateResp.class);
+		worker.execute(RIA_INTERFACE_UPDATE, request);
+	}
 	
 	//2.9.5 签到列表
 	public static void getSignInList(boolean hasLoading,Handler handler,String userid) {
@@ -883,4 +921,10 @@ public class Requester {
 	public static boolean isProcessed(String str) {
 		return ConStant.ORDER_PROCESSED.equals(str);
 	}
+	
+	public static boolean isMaxLimit(String str) {
+		return ConStant.MAX_LIMIT.equals(str);
+	}
+	
+	
 }

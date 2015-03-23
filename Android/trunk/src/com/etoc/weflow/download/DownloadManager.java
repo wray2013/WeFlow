@@ -32,6 +32,7 @@ import com.etoc.weflow.dao.DownloadHistoryDao.Properties;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AppFlowResp;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.ConStant;
 
 import de.greenrobot.dao.query.QueryBuilder;
 import de.greenrobot.event.EventBus;
@@ -593,6 +594,9 @@ public class DownloadManager implements Callback {
 				if (Requester.isSuccessed(resp.status)) {
 					PromptDialog.Alert("app下载完成，已获得相应流量币");
 					WeFlowApplication.setFlowCoins(resp.flowcoins);
+				} else if (Requester.isMaxLimit(resp.status)) {
+					Toast.makeText(WeFlowApplication.getAppInstance(), ConStant.TIP_MAX_LIMIT
+							, Toast.LENGTH_LONG);
 				}
 					
 			}

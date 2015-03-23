@@ -2,6 +2,8 @@ package com.etoc.weflow.activity;
 
 import java.io.File;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,14 +14,17 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
 import cn.jpush.android.api.JPushInterface;
 
 import com.etoc.weflow.Config;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.download.DownloadManager;
+import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.event.ParallelEvent;
+import com.etoc.weflow.net.GsonResponseObject.UpdateResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.parallel.DiscScanTask;
 import com.etoc.weflow.parallel.DiskCleanTask;
 import com.etoc.weflow.parallel.ParallelManager;
@@ -165,6 +170,9 @@ public class SettingsActivity extends TitleRootActivity {
 			aboutIntent.putExtra("pagetitle", "关于");
 			startActivity(aboutIntent);
 			break;
+		case R.id.rl_settings_upgrade:
+			Requester.update(true, handler);
+			break;
 		}
 		super.onClick(v);
 	}
@@ -178,6 +186,28 @@ public class SettingsActivity extends TitleRootActivity {
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_UPDATE:
+			if (msg.obj != null) {
+				final UpdateResp resp = (UpdateResp) msg.obj;
+				if (Requester.isSuccessed(resp.status)) {
+					if ("1".equals(resp.type)) {
+						PromptDialog.Dialog(this, false, false, "版本升级", resp.description, new OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "com.etoc.weflow");
+							}
+						});
+					} else {
+						
+					}
+				}
+			}
+			break;
+		
+		}
 		return false;
 	}
 
