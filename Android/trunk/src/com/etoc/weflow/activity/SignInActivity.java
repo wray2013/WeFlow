@@ -139,6 +139,13 @@ public class SignInActivity extends TitleRootActivity {
 	    tvSignIn = (TextView) findViewById(R.id.tv_sign_in);
 	    tvSignInFlag = (TextView) findViewById(R.id.tv_sign_in_flag);
 	    
+	    AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+	    if(info != null && info.getIsregistration() != null) {
+	    	if("1".equals(info.getIsregistration())) {
+	    		tvSignInFlag.setText("今日已签到");
+	    	}
+	    }
+	    
 	    tvSignRecord  = (TextView) findViewById(R.id.tv_sign_in_tips);
 	    
 	    tvSignIn.setOnClickListener(this);
