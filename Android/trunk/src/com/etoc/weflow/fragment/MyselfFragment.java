@@ -189,6 +189,12 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		case R.id.btn_title_left:
 			
 			break;
+		case R.id.rl_me_msg:
+			if(!isLogin) {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+				return;
+			}
+			break;
 		case R.id.rl_me_bill:
 			if(!isLogin) {
 				startActivity(new Intent(getActivity(), LoginActivity.class));

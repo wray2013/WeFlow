@@ -39,7 +39,7 @@ public class MyWebViewClient extends WebViewClient {
 	public void onPageFinished(WebView view, String url) {
 //		super.onPageFinished(view, url);
 		Log.d(TAG, "onPageFinished");
-		PromptDialog.dismissDialog();
+		PromptDialog.dimissProgressDialog();
 //		PrintAlertUtil.dismissDialog();
 	}
 
