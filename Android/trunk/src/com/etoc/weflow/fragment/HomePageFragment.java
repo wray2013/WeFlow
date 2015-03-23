@@ -227,8 +227,15 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 			}
 		}*/
-		
 		loginView();
+		
+		if(currentAccount != null) {
+			if("1".equals(currentAccount.getIsregistration())) {
+				ivSignIn.setEnabled(false);
+			} else {
+				ivSignIn.setEnabled(true);
+			}
+		}
 
 	}
 	
@@ -392,6 +399,12 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 					tvPlain.setText(response.menumoney);
 					tvPlainType.setText(response.menutype);
 					
+					if("1".equals(response.isregistration)) {
+						ivSignIn.setEnabled(false);
+					} else {
+						ivSignIn.setEnabled(true);
+					}
+					
 					float in  = 0;
 					float out = 0;
 					if(response.inflowleft != null && response.outflowleft != null) {
@@ -415,8 +428,12 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				SignInResp resp = (SignInResp) msg.obj;
 				if(Requester.isSuccessed(resp.status)) {
 					ivSignIn.setEnabled(false);
-					WeFlowApplication.setFlowCoins(resp.flowcoins);
-					PromptDialog.Alert("签到成功，增加" + resp.flowcoins + "流量币");
+					WeFlowApplication.setFlowCoins(resp.signflowcoins);
+					PromptDialog.Alert("签到成功，增加" + resp.signflowcoins + "流量币");
+					if(mtvFlow != null && isLogin) {
+						currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
+						mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+					}
 				}
 			}
 			break;

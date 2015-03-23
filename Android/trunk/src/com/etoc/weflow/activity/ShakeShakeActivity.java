@@ -170,7 +170,7 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 						accountInfo.setFlowcoins(resp.flowcoins);
 						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 						mtoast = Toast.makeText(ShakeShakeActivity.this,
-								"恭喜您获得" + resp.award.pricename, Toast.LENGTH_SHORT);
+								"恭喜您获得" + resp.award.prizename, Toast.LENGTH_SHORT);
 						mtoast.show();
 					} else {
 						mtoast = Toast.makeText(ShakeShakeActivity.this,

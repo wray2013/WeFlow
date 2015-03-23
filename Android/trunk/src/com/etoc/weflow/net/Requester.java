@@ -213,7 +213,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_GAME_RECHARGE = "/vs/api/user/gamerecharge";
 	
 	public static final int RESPONSE_TYPE_SIGN_IN_LIST = 0xffee2133;
-	public static final String RIA_INTERFACE_SIGN_IN_LIST = "/vs/api/user/signinlist";
+	public static final String RIA_INTERFACE_SIGN_IN_LIST = "/vs/api/user/signlist";
 	
 	public static final int RESPONSE_TYPE_SIGN_IN = 0xffee2134;
 	public static final String RIA_INTERFACE_SIGN_IN = "/vs/api/user/signin";

@@ -258,8 +258,8 @@ public class GsonResponseObject {
 	}
 	
 	public static class AwardItemResp {
-		public String priceid;
-		public String pricename;
+		public String prizeid;
+		public String prizename;
 		public String atimestart;
 		public String atimeend;
 	}
@@ -547,7 +547,7 @@ public class GsonResponseObject {
 	public static class SignInResp {
 		public String status;
 		public String flowcoins;
-		public String addcoins;
+		public String signflowcoins;
 		public String signinlist;
 		public String monthcoins;
 	}

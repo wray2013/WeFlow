@@ -97,6 +97,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 					
 					@Override
 					public void run() {
+						tvFlow.setText(Flow);
 						ivCover.setVisibility(View.GONE);
 						btnStartLottery.setText("再刮一次");
 						btnStartLottery.setTextColor(getResources().getColor(R.color.scratch_bg_red));
@@ -228,8 +229,9 @@ public class ScratchCardActivity extends TitleRootActivity {
 				if("0".equals(resp.status) || "0000".equals(resp.status)) {
 					if(resp.award != null) {
 						accountInfo.setFlowcoins(resp.flowcoins);
+						Flow = resp.flowcoins;
 						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
-						startLottery(resp.award.pricename);
+						startLottery(resp.award.prizename);
 					} else {
 						Toast mtoast;
 						mtoast = Toast.makeText(ScratchCardActivity.this,
