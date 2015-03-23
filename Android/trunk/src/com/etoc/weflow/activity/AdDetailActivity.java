@@ -1,6 +1,7 @@
 package com.etoc.weflow.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -22,6 +23,7 @@ import android.widget.VideoView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AdvFlowResp;
@@ -194,11 +196,37 @@ public class AdDetailActivity extends TitleRootActivity {
 				vvAdvVideo.resume();
 			}
 			ibPlay.setVisibility(View.GONE);*/
-			
+			checkUserid();
 			checkNetwork();
 			break;
 		}
 		super.onClick(v);
+	}
+	
+	private void checkUserid() {
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (info == null || info.getUserid() == null
+				|| info.getUserid().equals("")) {
+			PromptDialog.Dialog(this, true, "温馨提示", "您未登录，无法获取流量币，是否继续播放？",
+					"我要播放", "现在登录", new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int arg1) {
+							// TODO Auto-generated method stub
+							dialog.dismiss();
+						}
+					}, new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int arg1) {
+							// TODO Auto-generated method stub
+							startActivity(new Intent(AdDetailActivity.this,
+									LoginActivity.class));
+							dialog.dismiss();
+							finish();
+						}
+					});
+		}
 	}
 	
 	private void checkNetwork() {
