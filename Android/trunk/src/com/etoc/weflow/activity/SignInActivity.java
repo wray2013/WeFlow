@@ -86,6 +86,8 @@ public class SignInActivity extends TitleRootActivity {
 						}
 					}
 					
+				} else if("2016".equals(signResp.status)) {
+					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");
 				}
 			}
 			break;

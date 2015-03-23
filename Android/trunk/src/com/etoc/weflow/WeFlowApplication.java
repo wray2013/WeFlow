@@ -102,12 +102,14 @@ public class WeFlowApplication extends Application {
         daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();
         
+        if(accountInfo == null) {
+        	accountInfo = new AccountInfo();
+        }
+        
 		accountInfoDao = daoSession.getAccountInfoDao();
 		if(accountInfoDao.count() > 0) {
 			List<AccountInfo> list = accountInfoDao.loadAll();
 			accountInfo = list.get(0);
-		} else {
-			accountInfo = new AccountInfo();
 		}
 		db.close();
 		return accountInfo;
@@ -121,6 +123,7 @@ public class WeFlowApplication extends Application {
 	        daoSession = daoMaster.newSession();
 	        
 			accountInfoDao = daoSession.getAccountInfoDao();
+			accountInfoDao.deleteAll();
 			accountInfoDao.insertOrReplace(acc);
 			db.close();
 		}
@@ -189,7 +192,7 @@ public class WeFlowApplication extends Application {
 	}
     
     public static void setFlowCoins(String flowcoins) {
-		AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+		accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 		if (accountInfo != null && flowcoins != null) {
 			accountInfo.setFlowcoins(flowcoins);
 		}

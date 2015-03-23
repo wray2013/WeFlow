@@ -17,9 +17,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -30,12 +33,14 @@ import android.widget.Toast;
  * 
  */
 
-public class ShakeShakeActivity extends TitleRootActivity {
+public class ShakeShakeActivity extends TitleRootActivity implements OnLongClickListener {
 
 	ShakeListener mShakeListener = null;
 	Vibrator mVibrator;
 	private RelativeLayout mImgUp;
 	private RelativeLayout mImgDn;
+	
+	private ImageView ivShakeBg;
 
 	private AccountInfo accountInfo;
 	@Override
@@ -53,30 +58,38 @@ public class ShakeShakeActivity extends TitleRootActivity {
 		mImgUp = (RelativeLayout) findViewById(R.id.shakeImgUp);
 		mImgDn = (RelativeLayout) findViewById(R.id.shakeImgDown);
 		
+		ivShakeBg = (ImageView) findViewById(R.id.shakeBg);
+		ivShakeBg.setOnLongClickListener(this);
+		
 		mShakeListener = new ShakeListener(ShakeShakeActivity.this);
 		
 		mShakeListener.setOnShakeListener(new OnShakeListener() {
 			
 			public void onShake() {
-				startAnim();  //开始 摇一摇手掌动画
-				mShakeListener.stop();
-				startVibrato(); // 开始 震动
-				new Handler().postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						
-						Requester.shakeFlow(false, handler, accountInfo.getUserid());
-						
-						/*Toast mtoast;
-						mtoast = Toast.makeText(ShakeShakeActivity.this,
-								"呵呵，成功了！。\n再试一次吧！", 1000);
-						mtoast.show();*/
-						mVibrator.cancel();
-//						mShakeListener.start();
-					}
-				}, 2000);
+				shakePerform();
 			}
 		});
+	}
+	
+	private void shakePerform() {
+		startAnim();  //开始 摇一摇手掌动画
+		mShakeListener.stop();
+		startVibrato(); // 开始 震动
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				
+				Requester.shakeFlow(false, handler, accountInfo.getUserid());
+				
+				/*Toast mtoast;
+				mtoast = Toast.makeText(ShakeShakeActivity.this,
+						"呵呵，成功了！。\n再试一次吧！", 1000);
+				mtoast.show();*/
+				mVibrator.cancel();
+//				mShakeListener.start();
+			}
+		}, 2000);
+	
 	}
 	
 	private void loadSound(final Context ctx) {
@@ -157,13 +170,15 @@ public class ShakeShakeActivity extends TitleRootActivity {
 						accountInfo.setFlowcoins(resp.flowcoins);
 						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 						mtoast = Toast.makeText(ShakeShakeActivity.this,
-								"恭喜您获得" + resp.award.pricename, Toast.LENGTH_SHORT);
+								"恭喜您获得" + resp.award.prizename, Toast.LENGTH_SHORT);
 						mtoast.show();
 					} else {
 						mtoast = Toast.makeText(ShakeShakeActivity.this,
 								noAward[RandomUtils.getRandom(4) % 5], Toast.LENGTH_SHORT);
 						mtoast.show();
 					}
+				} else if("2016".equals(resp.status)) {
+					PromptDialog.Alert(MainActivity.class, "摇奖次数已用完");
 				}
 			} else {
 				PromptDialog.Alert(ShakeShakeActivity.class, "您的网络不给力啊！");
@@ -177,6 +192,17 @@ public class ShakeShakeActivity extends TitleRootActivity {
 	public int subContentViewId() {
 		// TODO Auto-generated method stub
 		return R.layout.activity_shakeshake;
+	}
+
+	@Override
+	public boolean onLongClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()) {
+		case R.id.shakeBg:
+			shakePerform();
+			break;
+		}
+		return false;
 	}
 	
 }
