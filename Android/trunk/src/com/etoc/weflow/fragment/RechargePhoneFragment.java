@@ -58,6 +58,7 @@ import com.etoc.weflow.net.GsonResponseObject.PhoneChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargeProduct;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
@@ -393,6 +394,8 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
 					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else {
+					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;

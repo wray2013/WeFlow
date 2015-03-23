@@ -258,7 +258,7 @@ public class AdDetailActivity extends TitleRootActivity {
 					WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 				} else if (Requester.isMaxLimit(resp.status)) {
 					Toast.makeText(WeFlowApplication.getAppInstance(), ConStant.TIP_MAX_LIMIT
-							, Toast.LENGTH_LONG);
+							, Toast.LENGTH_LONG).show();
 				}
 			}
 			break;

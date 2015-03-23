@@ -596,7 +596,7 @@ public class DownloadManager implements Callback {
 					WeFlowApplication.setFlowCoins(resp.flowcoins);
 				} else if (Requester.isMaxLimit(resp.status)) {
 					Toast.makeText(WeFlowApplication.getAppInstance(), ConStant.TIP_MAX_LIMIT
-							, Toast.LENGTH_LONG);
+							, Toast.LENGTH_LONG).show();
 				}
 					
 			}

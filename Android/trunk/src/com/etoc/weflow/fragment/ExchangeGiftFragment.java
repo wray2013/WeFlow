@@ -38,6 +38,7 @@ import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
@@ -329,6 +330,8 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
 					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else {
+					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;

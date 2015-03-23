@@ -45,6 +45,7 @@ import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.QChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.QRechargeProduct;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.StringUtils;
@@ -321,6 +322,8 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
 					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else {
+					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;

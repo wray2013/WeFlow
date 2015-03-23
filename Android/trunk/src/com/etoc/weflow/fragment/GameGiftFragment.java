@@ -34,6 +34,7 @@ import com.etoc.weflow.net.GsonResponseObject.GameGiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.ViewUtils;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -241,6 +242,8 @@ public class GameGiftFragment extends Fragment implements Callback {
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
 					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+				} else {
+					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;

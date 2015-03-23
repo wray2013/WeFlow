@@ -13,6 +13,7 @@ public class ConStant {
 	public static final String ORDER_PROCESSED = "0002";
 	public static final String MAX_LIMIT = "2016";// 已达到最大限制？
 	public static final String TIP_MAX_LIMIT = "订购已达到最大上限";
+	public static final String ORDER_FAIL = "订购失败";
 	
 	public static final String INTENT_SOFT_DETAIL = "intent_sort_detail";
 	public static final String INTENT_MAKE_FLOW = "intent_make_flow";
