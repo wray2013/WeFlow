@@ -3,26 +3,6 @@ package com.etoc.weflow.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.etoc.weflow.R;
-import com.etoc.weflow.WeFlowApplication;
-import com.etoc.weflow.dialog.PromptDialog;
-import com.etoc.weflow.download.DownloadEvent;
-import com.etoc.weflow.download.DownloadItem;
-import com.etoc.weflow.download.DownloadManager;
-import com.etoc.weflow.download.DownloadStatus;
-import com.etoc.weflow.download.DownloadType;
-import com.etoc.weflow.utils.DisplayUtil;
-import com.etoc.weflow.utils.NetworkTypeUtility;
-import com.etoc.weflow.utils.SpaceUtils;
-import com.etoc.weflow.utils.SpaceUtils.SpaceInfo;
-import com.etoc.weflow.utils.ViewUtils;
-import com.nostra13.universalimageloader.api.MyImageLoader;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -45,6 +25,27 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.download.DownloadEvent;
+import com.etoc.weflow.download.DownloadItem;
+import com.etoc.weflow.download.DownloadManager;
+import com.etoc.weflow.download.DownloadStatus;
+import com.etoc.weflow.download.DownloadType;
+import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NetworkTypeUtility;
+import com.etoc.weflow.utils.SpaceUtils;
+import com.etoc.weflow.utils.SpaceUtils.SpaceInfo;
+import com.etoc.weflow.utils.ViewUtils;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 
 
 public class DownloadManageActivity extends TitleRootActivity {
@@ -118,6 +119,19 @@ public class DownloadManageActivity extends TitleRootActivity {
 		doneAdapter = new DownloadDoneAdapter(this, DownloadManager.getInstance().getDoneList());
 		
 		lvDownloading.setAdapter(downloadingAdapter);
+		
+		lvDownloading.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				DownloadItem item = (DownloadItem)downloadingAdapter.getItem(position);
+				if (item.downloadStatus == DownloadStatus.FAIL) {
+					DownloadManager.getInstance().reAddDownloadTask(item);
+				}
+			}
+		});
 		lvDownloadDone.setAdapter(doneAdapter);
 		
 		lvDownloadDone.setOnItemClickListener(new OnItemClickListener() {
@@ -136,6 +150,8 @@ public class DownloadManageActivity extends TitleRootActivity {
 						}catch(NameNotFoundException e){
 							DownloadManager.installFromPath(DownloadManageActivity.this,item.path);
 						}
+					}else{
+						Toast.makeText(DownloadManageActivity.this, "安装参数错误", Toast.LENGTH_LONG).show();
 					}
 				} else {
 					
@@ -204,7 +220,22 @@ public class DownloadManageActivity extends TitleRootActivity {
                 Log.i(TAG, "onPanelHidden");
             }
         });
+        
+        if (DownloadManager.getInstance().isNoSpace()) {
+			showNoSpaceDialog();
+		}
 
+	}
+	
+	private void showNoSpaceDialog() {
+		PromptDialog.Dialog(this, true, "问题反馈", "设备空间不足请尝试清理后重试", "清理", "关闭", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				DownloadManageActivity.this.onClick(getRightButton());
+			}
+		}, null);
 	}
 	
 	private long lastTime = 0;
@@ -417,22 +448,17 @@ public class DownloadManageActivity extends TitleRootActivity {
 				if (holder.tvStatus.getVisibility() == View.GONE) {
 					holder.tvStatus.setVisibility(View.VISIBLE);
 				}
-				if (item.downloadStatus.getReason().equals(DownloadStatus.REASON_STORAGE_NO_SPACE)) {
-					
-					holder.tvStatus.setText("空间不足");
+				if (DownloadStatus.REASON_STORAGE_NO_SPACE.equals(item.downloadStatus.getReason())) {
+					holder.tvStatus.setText(DownloadStatus.REASON_STORAGE_NO_SPACE);
 					holder.pbDownloading.setProgressDrawable(getResources().getDrawable(R.drawable.drawable_download_progress_low_space));
-					PromptDialog.Dialog(context, true, "问题反馈", "设备空间不足请尝试清理后重试", "清理", "关闭", new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							DownloadManageActivity.this.onClick(getRightButton());
-						}
-					}, null);
-				} else if (item.downloadStatus.getReason().equals(DownloadStatus.REASON_NETWORK_NO_WIFI)){
-					holder.tvStatus.setText("非wifi");
-				} else {
-					holder.tvStatus.setText("等待下载");
+					if (!PromptDialog.isShowing()) {
+						showNoSpaceDialog();
+					}
+					holder.ivPause.setVisibility(View.VISIBLE);
+				} else if (DownloadStatus.REASON_NETWORK_NO_WIFI.equals(item.downloadStatus.getReason())) {
+					holder.tvStatus.setText(DownloadStatus.REASON_NETWORK_NO_WIFI);
+				} else if (DownloadStatus.REASON_IO_EXCEPION.equals(item.downloadStatus.getReason())) {
+					holder.tvStatus.setText(DownloadStatus.REASON_IO_EXCEPION);
 				}
 				holder.tvStatus.setTextColor(0xffd80000);
 				holder.tvSpeed.setVisibility(View.GONE);
@@ -449,6 +475,12 @@ public class DownloadManageActivity extends TitleRootActivity {
 				holder.tvProgress.setVisibility(View.GONE);
 				break;
 			case FAIL:
+				if (holder.tvStatus.getVisibility() == View.GONE) {
+					holder.tvStatus.setVisibility(View.VISIBLE);
+				}
+				holder.tvStatus.setTextColor(0xffd80000);
+				holder.tvStatus.setText("下载失败");
+				holder.tvSpeed.setVisibility(View.GONE);
 				break;
 
 			}
@@ -503,9 +535,15 @@ public class DownloadManageActivity extends TitleRootActivity {
 				}
 			});
 			long progress = 0;
-			if (item.wholeSize > 0) {
-				progress = (long)(item.downloadSize) * 100 / item.wholeSize;
-				holder.pbDownloading.setProgress((int) progress);
+			if (item.downloadSize > 0) {
+				if (item.wholeSize > 0) {
+					progress = (long)(item.downloadSize) * 100 / item.wholeSize;
+					holder.pbDownloading.setProgress((int) progress);
+				} else {
+					holder.pbDownloading.setProgress(0);
+				}
+			} else {
+				holder.pbDownloading.setProgress(0);
 			}
 //			Log.d("=AAA=","******after******** downloadSize " + item.downloadSize + " wholeSize = " + item.wholeSize + " progress = " + progress);
 			

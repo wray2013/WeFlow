@@ -53,8 +53,10 @@ public class WeFlowDaoGenerator {
     private static void addDownloadHistory(Schema schema) {
         Entity note = schema.addEntity("DownloadHistory");
 //        note.addLongProperty("seqNo").primaryKey();
-//        note.addIdProperty().primaryKey().autoincrement();
+//        note.addIdProperty().autoincrement();
         note.addStringProperty("url").primaryKey(); //
+        
+        note.addLongProperty("ts").index();
         
         note.addIntProperty("downloadType"); //MOVIE=1,MUSIC=2,BOOK=3,APP=4
         note.addIntProperty("downloadStatus"); //WAIT=1,PERPARE=2,RUN=3,PAUSE=4,DONE=5,FAIL=6
@@ -69,6 +71,8 @@ public class WeFlowDaoGenerator {
         note.addStringProperty("mediaId"); //
         note.addStringProperty("source"); //
         note.addStringProperty("data"); //
+        note.addStringProperty("sourceId"); //
+        note.addStringProperty("source_package"); //
 
 
     }

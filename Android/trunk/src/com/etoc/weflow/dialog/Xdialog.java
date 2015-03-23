@@ -278,5 +278,9 @@ public class Xdialog /*extends AlertDialog*/ implements android.view.View.OnClic
 		// TODO Auto-generated method stub
 		alertDialog.setCanceledOnTouchOutside(isCancelable);
 	}
+	
+	public boolean isShowing() {
+		return alertDialog.isShowing();
+	}
 }
 

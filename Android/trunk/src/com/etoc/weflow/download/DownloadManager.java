@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
@@ -30,6 +31,7 @@ import com.etoc.weflow.dao.DownloadHistory;
 import com.etoc.weflow.dao.DownloadHistoryDao;
 import com.etoc.weflow.dao.DownloadHistoryDao.Properties;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.net.GsonResponseObject.AppFlowResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
@@ -61,13 +63,17 @@ public class DownloadManager implements Callback {
 	
 	private ExecutorService executor;
 	
-	private long lastReportTs;
+	private volatile int download_status; //0 no items, 1 downloading, 2 pause
+	private int old_download_status;
+	
+	public static final int DOWNLOAD_STATUS_NO_ITEMS = 1;
+	public static final int DOWNLOAD_STATUS_DOWNLOADING = 2;
+	public static final int DOWNLOAD_STATUS_PAUSE = 3;
 	
 	private DownloadManager(){
 		//init data
 		runningSets = new HashMap<DownloadType, DownloadItem>();
 //		lastSeqNo = 0;
-		lastReportTs = System.currentTimeMillis();
 		runningList = new ArrayList<DownloadItem>();
 		doneList = new ArrayList<DownloadItem>();
 		executor = Executors.newFixedThreadPool(8);
@@ -81,16 +87,13 @@ public class DownloadManager implements Callback {
         daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();
         downloadHistoryDao = daoSession.getDownloadHistoryDao();
-        List<DownloadHistory> allList = downloadHistoryDao.loadAll();
+        List<DownloadHistory> allList = downloadHistoryDao.queryBuilder().orderAsc(Properties.Ts).build().list();//loadAll();
         
         if(allList!=null && allList.size()>0){
         	for(DownloadHistory item : allList){
     			DownloadItem ditem = new DownloadItem(item);
-//    			if(lastSeqNo<ditem.seqNo){
-//    				lastSeqNo = ditem.seqNo;
-//    			}
     			
-        		if(item.getDownloadStatus()<=4){
+        		if(item.getDownloadStatus()<=4||item.getDownloadStatus()==6){
         			runningList.add(ditem);
         		}else if(item.getDownloadStatus()==5){
         			if(ditem.path!=null){
@@ -104,9 +107,6 @@ public class DownloadManager implements Callback {
         				}
         			}
         			downloadHistoryDao.deleteByKey(item.getUrl());
-        		}else{
-        			//fail 被忽略掉
-//        			downloadHistoryDao.deleteByKey(item.getUrl());
         		}
         		
         	}
@@ -184,10 +184,20 @@ public class DownloadManager implements Callback {
 	 * 
 	 * 最后，直接返回对应对象
 	 * */
-	public synchronized DownloadItem addDownloadTask(String url, String media_id, String title, String picUrl, String descrp, DownloadType type, String source, String data) {
+	public synchronized DownloadItem addDownloadTask(String url, String media_id, String title, String picUrl, String descrp, DownloadType type, String source, String sourceId, String source_packageName, String data) {
 		Log.v(TAG, "addDownloadTask - DownloadType:" + type + ", title:" + title + ", media_id:" + media_id + ", url:" + url + ", source:" + source + ", data:" + data);
+		
+		if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {   
+			// sd card 不可用                          
+			RequestEvent r = RequestEvent.PAUSE_EXCEPTION;
+			r.setValue(DownloadStatus.REASON_STORAGE_NO_SDCARD);
+			EventBus.getDefault().post(r);
+			return null;
+		}
+		
 		for(DownloadItem item : runningList){
 			if(item.url.equals(url)){
+				Toast.makeText(context, "已在下载队列中", Toast.LENGTH_LONG).show();
 				return item;
 			}
 		}
@@ -213,8 +223,11 @@ public class DownloadManager implements Callback {
 								installFromPath(context,item.path);
 							}
 
-						}else if(item.downloadType == DownloadType.MOVIE){
-						}
+						}/*else if(item.downloadType == DownloadType.MOVIE){
+							if(ConStant.SOHU_SOURCE_NAME.equals(item.source)){
+								MovieDetailActivity.startSohuClient(context, item, true);
+							}
+						}*/
 						return item;
 					}
 				}
@@ -237,7 +250,7 @@ public class DownloadManager implements Callback {
 			Toast.makeText(context, "已加入下载队列", Toast.LENGTH_LONG).show();
 		}
 
-		DownloadItem item = new DownloadItem(media_id, title, url, picUrl, descrp, type, source, data);//path, downloadSize, wholeSize, DownloadStatus
+		DownloadItem item = new DownloadItem(media_id, title, url, picUrl, descrp, type, source, sourceId, source_packageName, data);//path, downloadSize, wholeSize, DownloadStatus
 		addDownloadTask(item);
 		return item;
 	}
@@ -325,6 +338,22 @@ public class DownloadManager implements Callback {
 
 	}
 	
+	public synchronized boolean isNoSpace(){
+		boolean flag = false;
+		if(runningList.size()>0){
+			for(DownloadItem item : runningList){
+				if(item.downloadStatus==DownloadStatus.PAUSE){
+					if(DownloadStatus.REASON_STORAGE_NO_SPACE.equals(item.downloadStatus)){
+						flag = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		return flag;
+	}
+	
 	public synchronized void cleanupDownloadedTask(){
 		final List<DownloadItem> copy = new ArrayList<DownloadItem>();
 		copy.addAll(doneList);
@@ -389,6 +418,12 @@ public class DownloadManager implements Callback {
 			}
 		}.start();
 	}
+	
+	
+	public synchronized void reAddDownloadTask(DownloadItem item){
+		runningList.remove(item);
+		addDownloadTask(item);
+	}
 
 	private synchronized void addDownloadTask(DownloadItem item){
 		//1 去重
@@ -422,6 +457,9 @@ public class DownloadManager implements Callback {
 		entity.setMediaId(item.mediaId);
 		entity.setData(item.data);
 		entity.setSource(item.source);
+		entity.setSourceId(item.sourceId);
+		entity.setSource_package(item.sourcePackageName);
+		entity.setTs(System.currentTimeMillis());
 		downloadHistoryDao.insertOrReplace(entity);
 		
 		//3. 启动第一个相同类型的
@@ -463,8 +501,15 @@ public class DownloadManager implements Callback {
 		DownloadEvent e = DownloadEvent.STATUS_CHANGED;
 		if(status==DownloadStatus.FAIL || status==DownloadStatus.DONE){
 			e.setType(DownloadEvent.RUNNING_LIST_DEL);
-			runningList.remove(item);
+			if (status == DownloadStatus.DONE) {
+				runningList.remove(item);
+			}
 			runningSets.remove(item.downloadType);
+			
+			if(runningList.size()==0){
+				download_status = DOWNLOAD_STATUS_NO_ITEMS;
+
+			}
 			
 			if(status==DownloadStatus.DONE){
 				doneList.add(item);
@@ -488,9 +533,11 @@ public class DownloadManager implements Callback {
 			if(runningList.size()>0){
 				for(DownloadItem _item : runningList){
 					if(_item.downloadType == item.downloadType){
-						executor.submit(_item);
-						runningSets.put(item.downloadType, item);
-						break;
+						if (_item.downloadStatus != DownloadStatus.FAIL) {
+							executor.submit(_item);
+							runningSets.put(item.downloadType, item);
+							break;
+						}
 					}
 				}
 			}
@@ -512,12 +559,30 @@ public class DownloadManager implements Callback {
 				executor.submit(item);
 				runningSets.put(item.downloadType, item);
 			}
+		} else if(status==DownloadStatus.PAUSE){
+			download_status = DOWNLOAD_STATUS_PAUSE;
+			if(DownloadStatus.REASON_STORAGE_NO_SPACE.equals(status.getReason()) || DownloadStatus.REASON_IO_EXCEPION.equals(status.getReason())){
+				RequestEvent r = RequestEvent.PAUSE_EXCEPTION;
+				r.setValue(status.getReason());
+				EventBus.getDefault().post(r);
+			}else if(old_download_status==DOWNLOAD_STATUS_DOWNLOADING && download_status==DOWNLOAD_STATUS_PAUSE){
+				RequestEvent r = RequestEvent.PAUSE_DOWNLOAIND;
+				r.setValue(status.getReason());
+				EventBus.getDefault().post(r);
+			}
+		}else if(status==DownloadStatus.RUN){
+			download_status = DOWNLOAD_STATUS_DOWNLOADING;
+			if(old_download_status==DOWNLOAD_STATUS_PAUSE && download_status==DOWNLOAD_STATUS_DOWNLOADING){
+				EventBus.getDefault().post(RequestEvent.RESUMING_DOWNLOADING);
+			}
 		}
 
 		e.setUrl(item.url);
 		e.setDownloadSize(item.downloadSize);
 		e.setWholeSize(item.wholeSize);
 		
+		old_download_status = download_status;
+
 		EventBus.getDefault().post(e);
 		
 		//同步数据库
@@ -535,12 +600,17 @@ public class DownloadManager implements Callback {
 		entity.setMediaId(item.mediaId);
 		entity.setData(item.data);
 		entity.setSource(item.source);
+		entity.setSourceId(item.sourceId);
+		entity.setSource_package(item.sourcePackageName);
+		entity.setTs(item.ts);
 		downloadHistoryDao.insertOrReplace(entity);
 
-		notifyLockItems();
-		
-		
+//		notifyLockItems();
 
+	}
+	
+	public int getDownloadingStatus(){
+		return download_status;
 	}
 	
 	public List<DownloadHistory> queryByUrl(String url) {
@@ -550,7 +620,7 @@ public class DownloadManager implements Callback {
 		}
 		
 		QueryBuilder<DownloadHistory> qb = downloadHistoryDao.queryBuilder();
-		qb.where(Properties.Url.isNotNull(), Properties.Url.eq(url));//, Properties.DownloadType.eq(type.getIndex())).build();
+		qb.where(Properties.Url.isNotNull(), Properties.Url.eq(url)).orderAsc(Properties.Ts);//, Properties.DownloadType.eq(type.getIndex())).build();
 		List<DownloadHistory> ret =  qb.list();
 //		List<DownloadHistory> ret = downloadHistoryDao.queryRaw("WHERE media_id=?", new String[]{media_id});
 		return ret;
@@ -562,7 +632,7 @@ public class DownloadManager implements Callback {
 			return new ArrayList<DownloadHistory>();
 		}
 		QueryBuilder<DownloadHistory> qb = downloadHistoryDao.queryBuilder();
-		qb.where(Properties.MediaId.isNotNull(), Properties.MediaId.eq(media_id));//, Properties.DownloadType.eq(type.getIndex())).build();
+		qb.where(Properties.MediaId.isNotNull(), Properties.MediaId.eq(media_id)).orderAsc(Properties.Ts);//, Properties.DownloadType.eq(type.getIndex())).build();
 		List<DownloadHistory> ret =  qb.list();
 //		List<DownloadHistory> ret = downloadHistoryDao.queryRaw("WHERE media_id=?", new String[]{media_id});
 		return ret;
@@ -571,7 +641,7 @@ public class DownloadManager implements Callback {
 	public List<DownloadHistory> queryByStatus(DownloadStatus status) {
 		// TODO Auto-generated method stub
 		QueryBuilder<DownloadHistory> qb = downloadHistoryDao.queryBuilder();
-		qb.where(Properties.DownloadStatus.isNotNull(), Properties.DownloadStatus.eq(status.getIndex()));//, Properties.DownloadType.eq(type.getIndex())).build();
+		qb.where(Properties.DownloadStatus.isNotNull(), Properties.DownloadStatus.eq(status.getIndex())).orderAsc(Properties.Ts);//, Properties.DownloadType.eq(type.getIndex())).build();
 		List<DownloadHistory> ret =  qb.list();
 		return ret;
 	}

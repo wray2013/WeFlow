@@ -13,7 +13,9 @@ public enum DownloadStatus {
 	private String reason;
 	
 	public static final String REASON_NETWORK_NO_WIFI = "网络非wifi";
-	public static final String REASON_STORAGE_NO_SPACE = "存储不足";
+	public static final String REASON_STORAGE_NO_SPACE = "空间不足";
+	public static final String REASON_IO_EXCEPION = "磁盘读写异常";
+	public static final String REASON_STORAGE_NO_SDCARD = "没有监检测到sdcard";
 	public static final String REASON_USER_PAUSE = "用户暂停";
 	
 	private DownloadStatus(int index) {

@@ -13,6 +13,8 @@ public class SeriesItem {
 	public String seqStr; //01 02...
 	public String media_id;
 	public String source; //sohu or other
+	public String sourceId; //sohu or other
+	public String sourcePackageName;
 
 	public String data; //json data
 	

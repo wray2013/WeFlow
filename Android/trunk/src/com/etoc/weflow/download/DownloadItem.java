@@ -12,6 +12,7 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 
+import android.os.Environment;
 import android.util.Log;
 
 import com.etoc.weflow.WeFlowApplication;
@@ -33,35 +34,38 @@ public class DownloadItem implements Runnable {
 	
 //	public long seqNo;        //序号，递增,id
 	
-	public DownloadType downloadType; //电影、音乐、app
-	public DownloadStatus downloadStatus; //下载的各种阶段状态
-	public int downloadSize; //已下载字节数
-	public int wholeSize;    //实际大小
+	public volatile DownloadType downloadType; //电影、音乐、app
+	public volatile DownloadStatus downloadStatus; //下载的各种阶段状态
+	public volatile int downloadSize; //已下载字节数
+	public volatile int wholeSize;    //实际大小
 	
 //	public long startTs; //任务开始时间戳
 //	public long endTs; //任务完成时间戳
 	
-	public String url;    //下载url
-	public String path;    //下载路径（绝对路径）
+	public volatile String url;    //下载url
+	public volatile String path;    //下载路径（绝对路径）
 	
-	public String source;
-	public String data;
-	public String mediaId;
+	public volatile String source;
+	public volatile String sourceId;
+	public volatile String sourcePackageName;
+	public volatile String data;
+	public volatile String mediaId;
+	public volatile long ts;
 
-	public String title;    //title
-	public String detail;    //detail
-	public String picUrl;    //封面图片url
-	public int speedBps;
+	public volatile String title;    //title
+	public volatile String detail;    //detail
+	public volatile String picUrl;    //封面图片url
+	public volatile int speedBps;
 
 	private AndroidHttpClient client;
     private HttpGet httpGet;
     private HttpResponse response;
 
-	private int totalSize;
+	private volatile int totalSize;
 	private File downloadFile;
 	
 	private RandomAccessFile outputStream;
-	public boolean cancel = false;
+	public volatile boolean cancel = false;
 	private boolean isUserPause = true;
 	private boolean is3GPermis = false;
 //	public long seqNo;
@@ -77,7 +81,7 @@ public class DownloadItem implements Runnable {
 		}
 	}
 
-	public DownloadItem(String mediaid, String title,String url, String picUrl, String descrp,DownloadType type, String source, String data) {
+	public DownloadItem(String mediaid, String title,String url, String picUrl, String descrp,DownloadType type, String source, String sourceId, String sourcePackageName, String data) {
 		this();
 		this.isUserPause = false;
 		this.mediaId = mediaid;
@@ -87,6 +91,8 @@ public class DownloadItem implements Runnable {
 		this.detail = descrp;
 		this.downloadType = type;
 		this.source = source;
+		this.sourceId = sourceId;
+		this.sourcePackageName = sourcePackageName;
 		this.data = data;
 	}
 
@@ -148,6 +154,9 @@ public class DownloadItem implements Runnable {
 		picUrl = item.getPicUrl();
 		source = item.getSource();
 		mediaId = item.getMediaId();
+		sourceId = item.getSourceId();
+		sourcePackageName = item.getSource_package();
+		ts = item.getTs();
 		
 		data = item.getData();
 
@@ -270,7 +279,14 @@ public class DownloadItem implements Runnable {
 				if (n == -1) {
 					break;
 				}
-				out.write(buffer, 0, n);
+				
+				try{
+					out.write(buffer, 0, n);
+				}catch(IOException  e){
+					e.printStackTrace();
+					throw new WriteDiskException();
+				}
+
 				count += n;
 				
 				readNum+=n;
@@ -311,6 +327,14 @@ public class DownloadItem implements Runnable {
 		return NetworkTypeUtility.isWifi(WeFlowApplication.getAppInstance()) || is3GPermis;
 	}
 	
+	private boolean checkSdCardExist(){
+		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {   
+			// sd card 可用                          
+			return true;
+		}
+		
+		return false;
+	}
 	private boolean checkStorage(){
 		return SpaceUtils.getAvailSpaceOfSDCard() - (wholeSize-downloadSize)>10*1024*1024;
 	}
@@ -365,6 +389,10 @@ public class DownloadItem implements Runnable {
 					}
 					
 					totalSize = (int) response.getEntity().getContentLength();
+					if (totalSize <= 0) {
+						badTry--;
+						continue;
+					}
 					
 					if(downloadFile==null){
 						if(path!=null && !path.equals("")){
@@ -379,12 +407,9 @@ public class DownloadItem implements Runnable {
 						}
 					}
 
-					Log.d(TAG,"EnterPrepare totalSize = " + totalSize + " wholeSize = " + wholeSize);
-					if (totalSize <= 0) {
-						return DownloadStatus.WAIT;
-					} else if(wholeSize<=0){
+					if(wholeSize<=0){
 						wholeSize = totalSize;
-					}else if(wholeSize!=totalSize && totalSize > 0){
+					}else if(wholeSize!=totalSize){
 						downloadFile.delete(); //重新下载
 						wholeSize = totalSize;
 						downloadSize  = 0;
@@ -459,6 +484,10 @@ public class DownloadItem implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return DownloadStatus.FAIL;
+			} catch(WriteDiskException e){
+				DownloadStatus s = DownloadStatus.PAUSE;
+				s.setReason(DownloadStatus.REASON_IO_EXCEPION);
+				return s;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

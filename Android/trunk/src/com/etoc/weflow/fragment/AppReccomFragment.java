@@ -305,7 +305,7 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					
-					DownloadManager.getInstance().addDownloadTask(item.soft, item.appid, item.title, item.appicon, "",  DownloadType.APP, "", "");
+					DownloadManager.getInstance().addDownloadTask(item.soft, item.appid, item.title, item.appicon, "",  DownloadType.APP, "","","", "");
 				}
 			});
 			return convertView;

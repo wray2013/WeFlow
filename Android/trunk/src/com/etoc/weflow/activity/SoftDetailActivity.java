@@ -220,7 +220,7 @@ public class SoftDetailActivity extends TitleRootActivity implements OnCompleteL
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
 		case R.id.btnSubmit:
-			DownloadManager.getInstance().addDownloadTask(softDetailResp.soft, "0", softDetailResp.title, softDetailResp.appicon, "",  DownloadType.APP, "", "");
+			DownloadManager.getInstance().addDownloadTask(softDetailResp.soft, "0", softDetailResp.title, softDetailResp.appicon, "",  DownloadType.APP, "","","","");
             btnDownload.setEnabled(false);
 			
 //			Requester.getAppFlow(true, handler, WeFlowApplication.getAppInstance().getAccountInfo().getUserid(), softDetailResp.appid, "0");

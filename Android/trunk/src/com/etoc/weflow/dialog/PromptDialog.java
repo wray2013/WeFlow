@@ -323,4 +323,11 @@ public class PromptDialog {
 		}
 	}
 	
+	public static boolean isShowing() {
+		if(x_dialog!=null){
+			return x_dialog.isShowing();
+		}
+		return false;
+	}
+	
 }

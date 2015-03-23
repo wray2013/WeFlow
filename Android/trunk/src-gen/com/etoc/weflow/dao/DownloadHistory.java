@@ -7,6 +7,7 @@ package com.etoc.weflow.dao;
 public class DownloadHistory {
 
     private String url;
+    private Long ts;
     private Integer downloadType;
     private Integer downloadStatus;
     private Integer downloadSize;
@@ -18,6 +19,8 @@ public class DownloadHistory {
     private String mediaId;
     private String source;
     private String data;
+    private String sourceId;
+    private String source_package;
 
     public DownloadHistory() {
     }
@@ -26,8 +29,9 @@ public class DownloadHistory {
         this.url = url;
     }
 
-    public DownloadHistory(String url, Integer downloadType, Integer downloadStatus, Integer downloadSize, Integer wholeSize, String path, String title, String detail, String picUrl, String mediaId, String source, String data) {
+    public DownloadHistory(String url, Long ts, Integer downloadType, Integer downloadStatus, Integer downloadSize, Integer wholeSize, String path, String title, String detail, String picUrl, String mediaId, String source, String data, String sourceId, String source_package) {
         this.url = url;
+        this.ts = ts;
         this.downloadType = downloadType;
         this.downloadStatus = downloadStatus;
         this.downloadSize = downloadSize;
@@ -39,6 +43,8 @@ public class DownloadHistory {
         this.mediaId = mediaId;
         this.source = source;
         this.data = data;
+        this.sourceId = sourceId;
+        this.source_package = source_package;
     }
 
     public String getUrl() {
@@ -47,6 +53,14 @@ public class DownloadHistory {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Long getTs() {
+        return ts;
+    }
+
+    public void setTs(Long ts) {
+        this.ts = ts;
     }
 
     public Integer getDownloadType() {
@@ -135,6 +149,22 @@ public class DownloadHistory {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public String getSourceId() {
+        return sourceId;
+    }
+
+    public void setSourceId(String sourceId) {
+        this.sourceId = sourceId;
+    }
+
+    public String getSource_package() {
+        return source_package;
+    }
+
+    public void setSource_package(String source_package) {
+        this.source_package = source_package;
     }
 
 }

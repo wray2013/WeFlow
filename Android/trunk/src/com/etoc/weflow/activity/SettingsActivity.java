@@ -197,7 +197,7 @@ public class SettingsActivity extends TitleRootActivity {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								// TODO Auto-generated method stub
-								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "com.etoc.weflow");
+								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
 							}
 						});
 					} else {
