@@ -112,6 +112,7 @@ public class AccountActivity extends TitleRootActivity {
 		switch (v.getId()) {
 		case R.id.rl_account_password:
 			Intent resetIntent = new Intent(this, RegisterResetActivity.class);
+			resetIntent.putExtra("tel", tel);
 			resetIntent.putExtra("type", RegisterResetActivity.TYPE_MODIFY);
 			startActivity(resetIntent);
 			break;

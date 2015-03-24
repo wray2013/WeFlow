@@ -227,7 +227,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 			}
 		}*/
-		loginView();
+		loginView(true);
 		
 		if(currentAccount != null) {
 			if("1".equals(currentAccount.getIsregistration())) {
@@ -255,7 +255,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		}
 	}
 	
-	private void loginView() {
+	private void loginView(boolean needQuery) {
 		
 		if(rlNotLogin == null || rlLogin == null ||
 				tvCellPhone == null || mtvFlow == null) return;
@@ -277,7 +277,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			}
 			
 			loadConfig(currentAccount.getMakeflow(), currentAccount.getUseflow());
-			Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
+			if(needQuery)
+				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 		} else {
 			//未登录
 			rlNotLogin.setVisibility(View.VISIBLE);
@@ -306,7 +307,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
-		loginView();
+		loginView(false);
 		if(mtvFlow != null && isLogin) {
 			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
@@ -379,7 +380,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 		}
-		loginView();
+		loginView(false);
 	}
 	
 	@Override
