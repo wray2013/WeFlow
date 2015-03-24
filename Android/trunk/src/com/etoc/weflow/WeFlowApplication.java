@@ -102,7 +102,7 @@ public class WeFlowApplication extends Application {
 	
 	public List<MyMessage> getMyMessage() {
 		List<MyMessage> list = new ArrayList<MyMessage>();
-		if(daoSession == null) {
+		if(daoSession == null || !db.isOpen()) {
 			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
 	        db = helper.getWritableDatabase();
 	        daoMaster = new DaoMaster(db);
@@ -118,7 +118,7 @@ public class WeFlowApplication extends Application {
 	}
 	
 	public AccountInfo getAccountInfo() {
-		if(daoSession == null) {
+		if(daoSession == null || !db.isOpen()) {
 			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
 	        db = helper.getWritableDatabase();
 	        daoMaster = new DaoMaster(db);

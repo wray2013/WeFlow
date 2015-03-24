@@ -255,10 +255,11 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	
 	private void loginView(boolean needQuery) {
 		
+		checkLogin();
+		
 		if(rlNotLogin == null || rlLogin == null ||
 				tvCellPhone == null || mtvFlow == null) return;
 		
-		checkLogin();
 		
 		if(isLogin) {
 			//已登录

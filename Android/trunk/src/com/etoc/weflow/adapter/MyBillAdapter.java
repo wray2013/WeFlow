@@ -6,6 +6,8 @@ import java.util.List;
 import com.etoc.weflow.R;
 import com.etoc.weflow.net.GsonResponseObject.*;
 import com.etoc.weflow.utils.DateUtils;
+import com.etoc.weflow.utils.NumberUtils;
+import com.etoc.weflow.utils.PTypeTransfer;
 import com.etoc.weflow.utils.ViewUtils;
 
 import android.content.Context;
@@ -105,20 +107,12 @@ public class MyBillAdapter extends BaseAdapter {
 	private void bindBill(ViewHolder holder, BillList mybill) {
 		// TODO Auto-generated method stub
 		holder.ivTypeIcon.setBackgroundResource(R.drawable.ic_launcher);
-		holder.tvTitle.setText(mybill.title);
-		
-		if(mybill.content != null && !mybill.content.equals("")) {
-			holder.tvContent.setText(mybill.content);
-			holder.tvContent.setVisibility(View.VISIBLE);
-		} else {
-			holder.tvContent.setText("空");
-			holder.tvContent.setVisibility(View.INVISIBLE);
-		}
+		holder.tvTitle.setText(PTypeTransfer.getPTypeName(mybill.type));
 		
 		int coins = 0;
 		if(mybill.flowcoins != null) {
 			try {
-				coins = Integer.parseInt(mybill.flowcoins);
+				coins = NumberUtils.Str2Int(mybill.flowcoins);
 				if(coins >= 0) {
 					holder.tvCoins.setText("+" + coins + "流量币");
 					holder.tvCoins.setTextColor(ctx.getResources().getColor(R.color.pagertab_color_orange));
@@ -129,6 +123,19 @@ public class MyBillAdapter extends BaseAdapter {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
+		}
+		
+		if(mybill.content != null && !mybill.content.equals("")) {
+			holder.tvContent.setText(mybill.content);
+			holder.tvContent.setVisibility(View.VISIBLE);
+		} else if(mybill.type != null && !mybill.type.equals("")) {
+			String content = PTypeTransfer.getPTypeName(mybill.type);
+			String coinIncome = coins == 0 ? "" : (coins > 0 ? ("赚取" + Math.abs(coins) + "流量币") : ("花费" + Math.abs(coins) + "流量币"));
+			holder.tvContent.setText(content + "\"" + mybill.title + "\"" + coinIncome);
+			holder.tvContent.setVisibility(View.VISIBLE);
+		} else {	
+			holder.tvContent.setText("空");
+			holder.tvContent.setVisibility(View.INVISIBLE);
 		}
 		
 		String currentYearMonth = DateUtils.getYMStringFromMilli(System.currentTimeMillis() + "");

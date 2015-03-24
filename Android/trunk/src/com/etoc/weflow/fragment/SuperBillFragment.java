@@ -31,6 +31,7 @@ import com.etoc.weflow.net.GsonResponseObject.MyBillListResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NumberUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
@@ -224,20 +225,15 @@ public class SuperBillFragment extends Fragment implements OnRefreshListener2<Li
 			if (msg.obj != null) {
 				MyBillListResp billResp = (MyBillListResp) msg.obj;
 				if ("0".equals(billResp.status) || "0000".equals(billResp.status)) {
-					if (billResp.myBills != null && billResp.myBills.length > 0) {
-						List<BillList> blist = Arrays.asList(billResp.myBills);
+					if (billResp.list != null && billResp.list.length > 0) {
+						List<BillList> blist = Arrays.asList(billResp.list);
 						if(pageNumber == 0) {
 							billList.clear();
 						}
 						if(blist != null) {
 							for(BillList item : blist) {
 								String coins = item.flowcoins;
-								int c = 0;
-								try {
-									c = Integer.parseInt(coins);
-								} catch(Exception e) {
-									e.printStackTrace();
-								}
+								int c = NumberUtils.Str2Int(coins);
 								switch(position) {
 								case POSITION_TOTAL:
 									billList.add(item);

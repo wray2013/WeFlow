@@ -497,7 +497,7 @@ public class GsonResponseObject {
 	//2.9.2 我的账单
 	public static class MyBillListResp {
 		public String status;
-		public BillList[] myBills;
+		public BillList[] list;
 	}
 	
 	//2.9.3意见反馈

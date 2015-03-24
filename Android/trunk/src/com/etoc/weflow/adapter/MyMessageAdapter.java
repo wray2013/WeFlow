@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.net.GsonResponseObject.*;
 import com.etoc.weflow.utils.DateUtils;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -106,7 +109,11 @@ public class MyMessageAdapter extends BaseAdapter {
 	
 	private void bindBill(ViewHolder holder, MessageList mymsg) {
 		// TODO Auto-generated method stub
-		holder.ivTypeIcon.setBackgroundResource(R.drawable.ic_launcher);
+		if(mymsg.picurl != null && !mymsg.picurl.equals("")) {
+			ImageLoader.getInstance().displayImage(mymsg.picurl, holder.ivTypeIcon);
+		} else {
+			holder.ivTypeIcon.setBackgroundResource(R.drawable.ic_launcher);
+		}
 		holder.tvTitle.setText(mymsg.title);
 		
 		if(mymsg.content != null && !mymsg.content.equals("")) {
@@ -120,13 +127,15 @@ public class MyMessageAdapter extends BaseAdapter {
 		int coins = 0;
 		if(mymsg.flowcoins != null) {
 			try {
-				coins = Integer.parseInt(mymsg.flowcoins);
-				if(coins >= 0) {
+				coins = NumberUtils.Str2Int(mymsg.flowcoins);
+				if(coins > 0) {
 					holder.tvCoins.setText("+" + coins + "流量币");
 					holder.tvCoins.setTextColor(ctx.getResources().getColor(R.color.pagertab_color_orange));
-				} else {
+				} else if(coins < 0) {
 					holder.tvCoins.setText(coins + "流量币");
 					holder.tvCoins.setTextColor(ctx.getResources().getColor(R.color.pagertab_color_green));
+				} else {
+					holder.tvCoins.setText("");
 				}
 			} catch(Exception e) {
 				e.printStackTrace();

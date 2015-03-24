@@ -9,6 +9,7 @@ import com.etoc.weflow.activity.CaptureActivity;
 import com.etoc.weflow.activity.DownloadManageActivity;
 import com.etoc.weflow.activity.FeedBackActivity;
 import com.etoc.weflow.activity.MainActivity;
+import com.etoc.weflow.activity.MyMessageActivity;
 import com.etoc.weflow.activity.SettingsActivity;
 import com.etoc.weflow.activity.SignInActivity;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
@@ -194,6 +195,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 				startActivity(new Intent(getActivity(), LoginActivity.class));
 				return;
 			}
+			startActivity(new Intent(getActivity(), MyMessageActivity.class));
 			break;
 		case R.id.rl_me_bill:
 			if(!isLogin) {
