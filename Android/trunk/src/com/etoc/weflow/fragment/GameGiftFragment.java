@@ -35,6 +35,7 @@ import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -192,8 +193,8 @@ public class GameGiftFragment extends Fragment implements Callback {
 			final GameGiftProduct item = appList.get(position);
 			imageLoader.displayImage(item.icon, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
-			holder.tvLeave.setText("剩余数量：" + item.leave);
-			holder.tvFlowCoins.setText(item.cost + "流量币");
+			holder.tvLeave.setText(item.desc);
+			holder.tvFlowCoins.setText(NumberUtils.convert2IntStr(item.cost) + "流量币");
 			holder.tvExchange.setOnClickListener(new OnClickListener() {
 				
 				@Override
@@ -201,7 +202,7 @@ public class GameGiftFragment extends Fragment implements Callback {
 					// TODO Auto-generated method stub
 					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 					if (accountInfo != null) {
-						Requester.exchangeGamePkg(true, handler, accountInfo.getUserid(), item.gamepkgid);
+						Requester.exchangeGamePkg(true, handler, accountInfo.getUserid(), item.chargesid);
 					} else {
 						startActivity(new Intent(getActivity(), LoginActivity.class));
 					}
@@ -220,9 +221,9 @@ public class GameGiftFragment extends Fragment implements Callback {
 			if (msg.obj != null) {
 				GamePkgListResp resp = (GamePkgListResp) msg.obj;
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
-					if (resp.list != null && resp.list.length >0) {
+					if (resp.chargelist != null && resp.chargelist.length >0) {
 						itemList.clear();
-						for (GameGiftResp item:resp.list) {
+						for (GameGiftResp item:resp.chargelist) {
 							if (item.products != null && item.products.length > 0) {
 								Collections.addAll(itemList, item.products);
 							}

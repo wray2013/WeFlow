@@ -40,6 +40,7 @@ import com.etoc.weflow.net.GsonResponseObject.GiftResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
@@ -271,8 +272,8 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 			final GiftProduct item = appList.get(position);
 			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
-			holder.tvDesc.setText(item.giftdesc);
-			holder.tvFlowCoins.setText(item.flowcoins + "流量币");
+			holder.tvDesc.setText(item.desc);
+			holder.tvFlowCoins.setText(NumberUtils.convert2IntStr(item.cost) + "流量币");
 			holder.tvExchange.setOnClickListener(new OnClickListener() {
 				
 				@Override
@@ -280,7 +281,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 					// TODO Auto-generated method stub
 					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 					if (accountInfo != null) {
-						Requester.exchangeGift(true, handler, accountInfo.getUserid(), item.giftid);
+						Requester.exchangeGift(true, handler, accountInfo.getUserid(), item.chargesid);
 					} else {
 						startActivity(new Intent(getActivity(), LoginActivity.class));
 					}
@@ -308,8 +309,8 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 						mIndicator.setViewPager(viewPager);
 						mIndicator.notifyDataSetChanged();
 					}
-					if(response.giftlist != null && response.giftlist.length > 0) {
-						for (GiftResp item:response.giftlist) {
+					if(response.chargelist != null && response.chargelist.length > 0) {
+						for (GiftResp item:response.chargelist) {
 							if (item.products != null && item.products.length > 0) {
 								Collections.addAll(giftList, item.products);
 							}

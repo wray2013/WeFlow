@@ -120,7 +120,7 @@ public class FakeData {
 		GiftListResp r6 = new GiftListResp();
 		r6.status = "0";
 		r6.bannerlist = (GiftBannerResp[]) createGiftBannerList().toArray(new GiftBannerResp[0]);
-		r6.giftlist = (GiftResp[]) createGiftData().toArray(new GiftResp [0]);
+		r6.chargelist = (GiftResp[]) createGiftData().toArray(new GiftResp [0]);
 		map.put(Requester.RIA_INTERFACE_GIFT_LIST, r6);
 		
 		PhoneChargeListResp r7 = new PhoneChargeListResp();
@@ -140,7 +140,7 @@ public class FakeData {
 		
 		GamePkgListResp r10 = new GamePkgListResp();
 		r10.status = "0";
-		r10.list = (GameGiftResp[]) createGameGiftList().toArray(new GameGiftResp[0]);
+		r10.chargelist = (GameGiftResp[]) createGameGiftList().toArray(new GameGiftResp[0]);
 		map.put(Requester.RIA_INTERFACE_GAME_PKG_LIST, r10);
 		
 		GameChargeListResp r11 = new GameChargeListResp();
@@ -198,10 +198,10 @@ public class FakeData {
 		
 		for (int i = 0;i < 5;i++) {
 			GameGiftProduct product = new GameGiftProduct();
-			product.gamepkgid = i + "";
+			product.chargesid = i + "";
 			product.icon = imgUrls[i];
 			product.title = "DNF服务器喇叭";
-			product.leave = leaves[i];
+			product.desc = leaves[i];
 			product.cost = ((i + 1) * 100) + "";
 			productList.add(product);
 		}
@@ -335,11 +335,11 @@ public class FakeData {
 		
 		for (int i = 0;i < 5;i++) {
 			GiftProduct product = new GiftProduct();
-			product.giftid = i + "";
+			product.chargesid = i + "";
 			product.imgsrc = imgUrls[i];
 			product.title = titles[i];
-			product.giftdesc = descs[i];
-			product.flowcoins = ((i + 1) * 1000) + "";
+			product.desc = descs[i];
+			product.cost = ((i + 1) * 1000) + "";
 			productList.add(product);
 		}
 		resp.products = (GiftProduct[]) productList.toArray(new GiftProduct[0]);
