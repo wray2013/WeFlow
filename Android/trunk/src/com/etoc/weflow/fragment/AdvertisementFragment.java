@@ -143,6 +143,10 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
 				// .displayer(new CircularBitmapDisplayer()) 圆形图片
 				.build();
 		
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_newest_ad), 32);
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_newest_ad), 20);
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_recomment_ad), 30);
+		
 		rlAd1 = (RelativeLayout) view.findViewById(R.id.rl_newest_1);
 		rlAd2 = (RelativeLayout) view.findViewById(R.id.rl_newest_2);
 		rlAd3 = (RelativeLayout) view.findViewById(R.id.rl_newest_3);

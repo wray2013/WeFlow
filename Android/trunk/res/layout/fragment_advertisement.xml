@@ -55,7 +55,7 @@
             android:textSize="15sp"
             android:layout_below="@id/rl_view_pager"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="16dp"
             android:includeFontPadding="false"
             />
         
@@ -250,8 +250,8 @@
             android:textColor="#A6A6A6"
             android:textSize="15sp"
             android:layout_below="@id/view_line_recomment_ad"
+            android:layout_alignLeft="@id/tv_newest_ad"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="8dp"
             android:includeFontPadding="false"
             />
         
