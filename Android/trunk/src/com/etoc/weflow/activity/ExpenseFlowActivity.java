@@ -35,6 +35,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	public final static int INDEX_FLOW = 1;
 	public final static int INDEX_GAME = 2;
 	public final static int INDEX_GIFT = 3;
+	private Fragment phoneFragment;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -162,6 +163,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 			switch (position) {
 			case 0:
 				frag = new RechargeFragment();
+				phoneFragment = frag;
 				break;
 			case 2:
 				frag = new GameCoinsFragment();
@@ -184,7 +186,11 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 		// TODO Auto-generated method stub
 		Log.d("=AAA=","***********爷爷***************");
-		super.onActivityResult(arg0, arg1, arg2);
+		if (phoneFragment != null) {
+			phoneFragment.onActivityResult(arg0, arg1, arg2);
+		} else {
+			super.onActivityResult(arg0, arg1, arg2);
+		}
 	}
 	
 }
