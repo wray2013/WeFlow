@@ -1,8 +1,11 @@
 package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ScratchCardActivity;
 import com.etoc.weflow.activity.ShakeShakeActivity;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,12 +62,25 @@ public class PlayGameFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		boolean isLogin = false;
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
+			isLogin = true;
+		}
 		switch(v.getId()) {
 		case R.id.iv_game_shake:
-			startActivity(new Intent(getActivity(), ShakeShakeActivity.class));
+			if(isLogin) {
+				startActivity(new Intent(getActivity(), ShakeShakeActivity.class));
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
 			break;
 		case R.id.iv_scratch_card:
-			startActivity(new Intent(getActivity(), ScratchCardActivity.class));
+			if(isLogin) {
+				startActivity(new Intent(getActivity(), ScratchCardActivity.class));
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
 			break;
 		}
 	}

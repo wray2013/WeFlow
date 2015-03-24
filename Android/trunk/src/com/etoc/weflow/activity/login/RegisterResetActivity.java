@@ -42,6 +42,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 	private int currentType = TYPE_REGIST;
 	private int currentStep = STEP_ONE;
 	private String currentTel = "";
+	private String intentTel = "";
 	
 	private TickDownHelper tickDown = null;
 	private boolean hasGetValidCode = false;
@@ -65,6 +66,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 		
 		if(getIntent() != null) {
 			currentType = getIntent().getIntExtra("type", TYPE_REGIST);
+			intentTel = getIntent().getStringExtra("tel");
 		}
 		
 		switch(currentType) {
@@ -212,6 +214,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 		edAccount.requestFocus();
 		edAccount.setText("");
 		edValidCode.setText("");
+		edAccount.setEnabled(true);
 		switch(currentType) {
 		case TYPE_REGIST:
 			tvStep2.setText("2.设置密码");
@@ -250,6 +253,12 @@ public class RegisterResetActivity extends TitleRootActivity {
 				vDivider.setVisibility(View.VISIBLE);
 				tvValidCode.setVisibility(View.VISIBLE);
 				
+				if(currentType == TYPE_MODIFY) {
+					if(intentTel != null && !intentTel.equals("")) {
+						edAccount.setText(intentTel);
+						edAccount.setEnabled(false);
+					}
+				}
 				edAccount.setHint("请输入手机号");
 				edValidCode.setHint("请输入验证码");
 				edAccount.setInputType(InputType.TYPE_CLASS_PHONE);

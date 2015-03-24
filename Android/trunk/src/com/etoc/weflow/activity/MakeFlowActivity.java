@@ -93,8 +93,8 @@ public class MakeFlowActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		setTitleText("赚流量币");
-//		setRightButtonText("记录");
-		hideRightButton();
+		setRightButtonText("记录");
+//		hideRightButton();
 	}
 	
 	@Override

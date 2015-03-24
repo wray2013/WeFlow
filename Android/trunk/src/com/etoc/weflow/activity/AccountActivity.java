@@ -112,11 +112,14 @@ public class AccountActivity extends TitleRootActivity {
 		switch (v.getId()) {
 		case R.id.rl_account_password:
 			Intent resetIntent = new Intent(this, RegisterResetActivity.class);
+			resetIntent.putExtra("tel", tel);
 			resetIntent.putExtra("type", RegisterResetActivity.TYPE_MODIFY);
 			startActivity(resetIntent);
 			break;
 		case R.id.rl_login_out:
-			accountInfoDao.deleteByKey(tel);
+//			accountInfoDao.deleteByKey(tel);
+			accountInfoDao.deleteAll();
+			db.close();
 			Intent i = new Intent(this, LoginActivity.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(i);
