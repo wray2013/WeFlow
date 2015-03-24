@@ -42,17 +42,19 @@ public class SignInActivity extends TitleRootActivity {
 			if (msg.obj != null) {
 				SignInListResp resp = (SignInListResp) msg.obj;
 				if (Requester.isSuccessed(resp.status)) {
-					if (resp.signinlist != null) {
-						String [] dates = resp.signinlist.split(",");
+					if (resp.signlist != null) {
+						String [] dates = resp.signlist.split(",");
+						Log.d("=AAA=","dates = " + dates);
 						if (dates.length > 0) {
 							tvSignRecord.setVisibility(View.VISIBLE);
-							tvSignRecord.setText("本月签到" + dates.length + "次；获得" + NumberUtils.convert2IntStr(resp.monthcoins) + "流量币");
+							tvSignRecord.setText("本月签到" + dates.length + "次；获得" + NumberUtils.convert2IntStr(resp.signflowcoins) + "流量币");
 							
 							ArrayList<Date> dateList = new ArrayList<Date>();
 							for (String dateStr:dates) {
 					        	Long dateLong = Long.parseLong(dateStr);
-					        	 Date date = new Date(dateLong); 
-					        	 dateList.add(date);
+					        	Date date = new Date(dateLong); 
+					        	dateList.add(date);
+					        	Log.d("=AAA=","datelist item = " + date);
 					        }
 							
 							final Calendar todayCal = Calendar.getInstance();
@@ -78,13 +80,11 @@ public class SignInActivity extends TitleRootActivity {
 					tvSignIn.setText("已签");
 					tvSignIn.setEnabled(false);
 					
-					if (signResp.signinlist != null) {
-						String [] dates = signResp.signinlist.split(",");
-						if (dates.length > 0) {
-							tvSignRecord.setVisibility(View.VISIBLE);
-							tvSignRecord.setText("本月签到" + dates.length + "次；获得" + NumberUtils.convert2IntStr(signResp.monthcoins) + "流量币");
-						}
+					if (signResp.signlist != null) {
+						tvSignRecord.setText("本月签到" + signResp.signcount + "次；获得" + NumberUtils.convert2IntStr(signResp.signflowcoins) + "流量币");
 					}
+					
+					WeFlowApplication.setFlowCoins(signResp.flowcoins);
 					
 				} else if("2016".equals(signResp.status)) {
 					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");

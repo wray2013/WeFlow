@@ -551,8 +551,9 @@ public class GsonResponseObject {
 	// 2.9.5签到列表
 	public static class SignInListResp {
 		public String status;
-		public String signinlist;
-		public String monthcoins;
+		public String signlist;
+		public String signflowcoins;
+		public String signcount;
 	}
 	
 	// 2.9.6签到
@@ -560,8 +561,8 @@ public class GsonResponseObject {
 		public String status;
 		public String flowcoins;
 		public String signflowcoins;
-		public String signinlist;
-		public String monthcoins;
+		public String signlist;
+		public String signcount;
 	}
 	
 }
