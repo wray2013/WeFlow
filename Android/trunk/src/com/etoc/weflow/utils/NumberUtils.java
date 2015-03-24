@@ -3,9 +3,17 @@ package com.etoc.weflow.utils;
 public class NumberUtils {
 	
 	public static String convert2IntStr(String floatStr) {
-		Float f = Float.parseFloat(floatStr);
-		int ret = f.intValue();
-		return Math.abs(ret) + "";
+		if (floatStr == null) {
+			return "0";
+		}
+		try {
+			Float f = Float.parseFloat(floatStr);
+			int ret = f.intValue();
+			return Math.abs(ret) + "";
+		} catch (Exception e) {
+			
+		}
+		return "0";
 	}
 	
 	public static int Str2Int(String intStr) {

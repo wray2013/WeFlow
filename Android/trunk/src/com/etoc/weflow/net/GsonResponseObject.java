@@ -327,7 +327,7 @@ public class GsonResponseObject {
 	
 	public static class GamePkgListResp {
 		public String status;
-		public GameGiftResp[] list;
+		public GameGiftResp[] chargelist;
 	}
 	
 	public static class GameGiftResp {
@@ -343,11 +343,11 @@ public class GsonResponseObject {
 	}
 	
 	public static class GameGiftProduct {
-		public String gamepkgid;//产品id
+		public String chargesid;//产品id
 		public String title;
 		public String money;// 充值面额
 		public String cost;// 花费流量币
-		public String leave;
+		public String desc;
 		public String icon;
 	}
 	
@@ -414,7 +414,7 @@ public class GsonResponseObject {
 	public static class GiftListResp {
 		public String status;
 		public GiftBannerResp[] bannerlist;
-		public GiftResp[] giftlist;
+		public GiftResp[] chargelist;
 	}
 	
 	public static class GiftBannerResp {
@@ -435,12 +435,12 @@ public class GsonResponseObject {
 	}
 	
 	public static class GiftProduct {
-		public String giftid;
+		public String chargesid;
 		public String imgsrc;
 		public String gifturl;
-		public String giftdesc;
+		public String desc;
 		public String title;
-		public String flowcoins;//流量币
+		public String cost;//流量币
 	}
 	
 	public static class ExchangeGiftResp {
@@ -551,8 +551,9 @@ public class GsonResponseObject {
 	// 2.9.5签到列表
 	public static class SignInListResp {
 		public String status;
-		public String signinlist;
-		public String monthcoins;
+		public String signlist;
+		public String signflowcoins;
+		public String signcount;
 	}
 	
 	// 2.9.6签到
@@ -560,8 +561,8 @@ public class GsonResponseObject {
 		public String status;
 		public String flowcoins;
 		public String signflowcoins;
-		public String signinlist;
-		public String monthcoins;
+		public String signlist;
+		public String signcount;
 	}
 	
 }

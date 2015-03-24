@@ -596,7 +596,7 @@ public class Requester {
 		exchangeGiftRequest request = new exchangeGiftRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
-		request.giftid = productid;
+		request.productid = productid;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANG_GIFT, ExchangeGiftResp.class);

@@ -258,6 +258,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		
 		etPhone = (EditText) view.findViewById(R.id.et_phone);
 		ivContact = (ImageView) view.findViewById(R.id.iv_contact_btn);
+		ViewUtils.setSize(ivContact, 72, 72);
 		ivContact.setOnClickListener(this);
 	}
 
@@ -317,7 +318,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		if(resultCode != Activity.RESULT_OK || data == null) return;
-		if (requestCode == REQUEST_CONTACT_PICK) {
+		if ((requestCode & 0xffff) == REQUEST_CONTACT_PICK) {
 			Uri result = data.getData();
 			String contactId = result.getLastPathSegment();
 			String contactnumber = getPhoneContacts(contactId);

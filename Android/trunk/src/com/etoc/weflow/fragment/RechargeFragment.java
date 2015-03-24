@@ -168,7 +168,7 @@ public class RechargeFragment extends Fragment {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		Log.d("=AAA=","***********爸爸***************");
-		if (requestCode == RechargePhoneFragment.REQUEST_CONTACT_PICK) {
+		if ((requestCode & 0xffff) == RechargePhoneFragment.REQUEST_CONTACT_PICK) {
 			if (phoneFragment != null) {
 				phoneFragment.onActivityResult(requestCode, resultCode, data);
 			}

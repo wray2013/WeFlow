@@ -31,14 +31,11 @@
         
         <ImageView 
             android:id="@+id/iv_contact_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:background="@drawable/drawable_contact"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
             android:layout_centerVertical="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             />
         
     </RelativeLayout>

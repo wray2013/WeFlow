@@ -314,7 +314,7 @@ public class GsonRequestObject {
 	//2.6.13 兑换礼券
 	public static class exchangeGiftRequest {
 		String userid;  //用户号码
-		String giftid;  //礼券id
+		String productid;  //礼券id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
