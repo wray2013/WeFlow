@@ -289,7 +289,7 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 				return;
 			}
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-			if (accountInfo != null) {
+			if (accountInfo != null && accountInfo.getUserid() != null) {
 				Requester.rechargeGame(true, handler, accountInfo.getUserid(), selectProduct.chargesid,etAccount.getText().toString());
 			} else {
 				startActivity(new Intent(getActivity(), LoginActivity.class));

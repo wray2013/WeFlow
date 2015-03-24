@@ -147,7 +147,7 @@ public class AdDetailActivity extends TitleRootActivity {
 			if (hasVideoInitialized) {
 //				Requester.orderLargess(handler, MainApplication.accountPhone, "C", "prod_in_charge_10");
 				AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-				if (accountInfo != null) {
+				if (accountInfo != null && accountInfo.getUserid() != null) {
 					Requester.getAdvFlow(true, handler, accountInfo.getUserid(), adInfo.videoid);
 				} 
 				

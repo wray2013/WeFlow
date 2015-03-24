@@ -127,7 +127,6 @@
        android:layout_below="@id/tv_cost_flowcoins_label"
        android:layout_marginTop="18dp"
        android:includeFontPadding="false"
-       android:text="5000流量币"
        android:textColor="@color/pagertab_color_green"
        android:textSize="18sp"
        />

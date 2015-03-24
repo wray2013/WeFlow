@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.SignInListResp;
@@ -118,7 +120,7 @@ public class SignInActivity extends TitleRootActivity {
 		initViews();
 		
 		AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-		if (accountInfo != null) {
+		if (accountInfo != null && accountInfo.getUserid() != null) {
 			Requester.getSignInList(true, handler, accountInfo.getUserid());
 		}
 	}
@@ -180,8 +182,10 @@ public class SignInActivity extends TitleRootActivity {
 			break;
 		case R.id.tv_sign_in:
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-			if (accountInfo != null) {
+			if (accountInfo != null && accountInfo.getUserid() != null) {
 				Requester.signIn(true, handler, accountInfo.getUserid());
+			} else {
+				startActivity(new Intent(this, LoginActivity.class));
 			}
 			break;
 		}

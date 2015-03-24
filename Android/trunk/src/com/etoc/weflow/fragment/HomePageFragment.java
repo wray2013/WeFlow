@@ -360,8 +360,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			break;
 		case R.id.iv_sign_in:
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-			if (accountInfo != null) {
+			if (accountInfo != null && accountInfo.getUserid() != null) {
 				Requester.signIn(true, handler, accountInfo.getUserid());
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
 			}
 			break;
 		}

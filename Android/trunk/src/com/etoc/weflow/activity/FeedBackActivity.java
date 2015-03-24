@@ -83,7 +83,7 @@ public class FeedBackActivity extends TitleRootActivity {
 				PromptDialog.Dialog(this, "温馨提示", "请输入一些意见吧！", "确定");
 			}
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-			if (accountInfo != null) {
+			if (accountInfo != null && accountInfo.getUserid() != null) {
 				Requester.feedBack(true, handler, accountInfo.getUserid(), etContent.getText().toString());
 			}
 			break;

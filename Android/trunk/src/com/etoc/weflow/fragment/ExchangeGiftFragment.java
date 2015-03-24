@@ -280,7 +280,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-					if (accountInfo != null) {
+					if (accountInfo != null && accountInfo.getUserid() != null) {
 						Requester.exchangeGift(true, handler, accountInfo.getUserid(), item.chargesid);
 					} else {
 						startActivity(new Intent(getActivity(), LoginActivity.class));

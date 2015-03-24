@@ -171,6 +171,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 					typePopupWindow.dismiss();
 				}
 				tvTypes.setText(resp.typename);
+				tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost()) + "流量币");
 			}
 		});
 		
@@ -279,7 +280,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				phoneDao.insert(new FrequentPhone(etPhone.getText().toString()));
 			}
 			AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-			if (accountInfo != null) {
+			if (accountInfo != null && accountInfo.getUserid() != null) {
 				Requester.rechargePhone(true, handler, accountInfo.getUserid(), etPhone.getText().toString(), adapter.getSelectId());
 			} else {
 				startActivity(new Intent(getActivity(), LoginActivity.class));

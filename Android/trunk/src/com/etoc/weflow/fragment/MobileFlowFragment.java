@@ -105,7 +105,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			public void onClick(DialogInterface arg0, int arg1) {
 				// TODO Auto-generated method stub
 				AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-				if (accountInfo != null) {
+				if (accountInfo != null && accountInfo.getUserid() != null) {
 					Requester.exchangeFlowPkg(true, handler, accountInfo.getUserid(), selectId);
 				} else {
 					startActivity(new Intent(getActivity(), LoginActivity.class));

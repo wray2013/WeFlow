@@ -528,7 +528,7 @@ public class DownloadManager implements Callback {
 					installFromPath(context,item.path);
 				}
 				AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-				if (accountInfo != null) {
+				if (accountInfo != null && accountInfo.getUserid() != null) {
 					Requester.getAppFlow(false, new Handler(), accountInfo.getUserid(), item.mediaId, "0");
 				}
 			}
