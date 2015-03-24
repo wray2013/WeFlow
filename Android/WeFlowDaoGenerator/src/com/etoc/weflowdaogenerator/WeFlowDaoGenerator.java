@@ -36,7 +36,8 @@ public class WeFlowDaoGenerator {
     	addFrequentPhone(schema);
     	addFrequentQQ(schema);
 		addDownloadHistory(schema);
-		addAccount(schema);    	
+		addAccount(schema);
+		addMessageList(schema);
         new DaoGenerator().generateAll(schema, "../trunk/src-gen");
     }
     
@@ -88,4 +89,19 @@ public class WeFlowDaoGenerator {
         note.addStringProperty("useflow");
     }
 
+    private static void addMessageList(Schema schema) {
+    	Entity note = schema.addEntity("MyMessage");
+//        note.addIdProperty().primaryKey().autoincrement();
+        note.addStringProperty("msgid").notNull().primaryKey();
+        note.addStringProperty("type");
+        note.addStringProperty("picurl");
+        note.addStringProperty("title");
+        note.addStringProperty("content");
+        note.addStringProperty("flowcoins");
+        note.addStringProperty("time");
+        note.addStringProperty("pageurl");
+        note.addStringProperty("productid");
+        note.addStringProperty("extradata");
+    }
+    
 }

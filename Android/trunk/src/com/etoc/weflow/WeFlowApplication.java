@@ -1,6 +1,7 @@
 package com.etoc.weflow;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +27,8 @@ import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
+import com.etoc.weflow.dao.MyMessage;
+import com.etoc.weflow.dao.MyMessageDao;
 import com.etoc.weflow.event.DialogUtils;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.utils.ConStant;
@@ -51,6 +54,7 @@ public class WeFlowApplication extends Application {
 	private DaoSession daoSession;
 	private SQLiteDatabase db;
 	private AccountInfoDao accountInfoDao;
+	private MyMessageDao myMessageDao;
 	private static AccountInfo accountInfo;
 	
 	@Override
@@ -96,12 +100,30 @@ public class WeFlowApplication extends Application {
 		return appinstance;
 	}
 	
-	public AccountInfo getAccountInfo() {
-		DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
-        db = helper.getWritableDatabase();
-        daoMaster = new DaoMaster(db);
-        daoSession = daoMaster.newSession();
+	public List<MyMessage> getMyMessage() {
+		List<MyMessage> list = new ArrayList<MyMessage>();
+		if(daoSession == null) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+		}
         
+		myMessageDao = daoSession.getMyMessageDao();
+		if(myMessageDao.count() > 0) {
+			list = myMessageDao.loadAll();
+		}
+		db.close();
+		return list;
+	}
+	
+	public AccountInfo getAccountInfo() {
+		if(daoSession == null) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+		}
         if(accountInfo == null) {
         	accountInfo = new AccountInfo();
         }

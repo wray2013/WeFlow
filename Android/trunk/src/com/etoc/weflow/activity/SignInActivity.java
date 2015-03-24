@@ -88,7 +88,7 @@ public class SignInActivity extends TitleRootActivity {
 					
 					WeFlowApplication.setFlowCoins(signResp.flowcoins);
 					
-				} else if("2016".equals(signResp.status)) {
+				} else if("2015".equals(signResp.status)) {
 					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");
 				}
 			}

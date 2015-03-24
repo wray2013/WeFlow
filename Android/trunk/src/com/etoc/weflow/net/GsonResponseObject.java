@@ -535,6 +535,19 @@ public class GsonResponseObject {
 		public String time;
 	}
 	
+	public static class MessageList {
+		public String msgid;
+		public String type; //栏目类型
+		public String picurl;
+		public String title; //消息标题
+		public String content; //消息体内容
+		public String flowcoins;
+		public String time; //消息毫秒时间
+		public String pageurl; //跳转地址
+		public String productid;
+		public String extradata; //预留字段
+	}
+	
 	// 2.9.4升级接口
 	public static class UpdateResp {
 		public String status;//": 0,  //状态：0成功,失败查看错误文档 

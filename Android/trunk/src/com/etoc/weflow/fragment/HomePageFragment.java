@@ -442,8 +442,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 					if(mtvFlow != null && isLogin) {
 						currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 						mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+						currentAccount.setIsregistration("1");
+						WeFlowApplication.getAppInstance().PersistAccountInfo(currentAccount);
 					}
-				} else if("2016".equals(resp.status)) {
+				} else if("2015".equals(resp.status)) {
 					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");
 				}
 			}

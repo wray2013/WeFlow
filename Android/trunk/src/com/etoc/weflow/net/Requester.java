@@ -241,7 +241,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_FEED_BACK = "/vs/api/user/feedback";
 	
 	public static final int RESPONSE_TYPE_UPDATE = 0xffee2139;
-	public static final String RIA_INTERFACE_UPDATE = "/vs/api/user/update";
+	public static final String RIA_INTERFACE_UPDATE = "/vs/api/ua";
 	
 	public static final int RESPONSE_TYPE_SHAKE = 0xffee2140;
 	public static final String RIA_INTERFACE_SHAKE = "/vs/api/user/shakeflow";
