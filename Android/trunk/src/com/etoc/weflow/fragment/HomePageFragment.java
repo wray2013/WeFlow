@@ -24,7 +24,6 @@ import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.ScratchCardActivity;
 import com.etoc.weflow.activity.ShakeShakeActivity;
-import com.etoc.weflow.activity.WebViewActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
@@ -34,7 +33,6 @@ import com.etoc.weflow.net.GsonResponseObject.SignInResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.FileUtils;
-import com.etoc.weflow.utils.PushMsgUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -348,13 +346,21 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			/*Intent recIntent1 = new Intent(getActivity(), WebViewActivity.class);
 			recIntent1.putExtra("pageurl", "http://detail.amap.com/telecom/");
 			startActivity(recIntent1);*/
-			startActivity(new Intent(getActivity(), ScratchCardActivity.class));
+			if(isLogin) {
+				startActivity(new Intent(getActivity(), ScratchCardActivity.class));
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
 			break;
 		case R.id.iv_recomm_2:
 			/*Intent recIntent2 = new Intent(getActivity(), WebViewActivity.class);
 			recIntent2.putExtra("pageurl", "http://detail.amap.com/telecom/");
 			startActivity(recIntent2);*/
-			startActivity(new Intent(getActivity(), ShakeShakeActivity.class));
+			if(isLogin) {
+				startActivity(new Intent(getActivity(), ShakeShakeActivity.class));
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
 			break;
 		case R.id.tv_login_btn:
 			startActivity(new Intent(getActivity(), LoginActivity.class));
