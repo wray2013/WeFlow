@@ -133,6 +133,8 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		tvBtnOrder.setOnClickListener(this);
 		rlGameType.setOnClickListener(this);
 		rlCoins.setOnClickListener(this);
+		ViewUtils.setSize(tvBtnOrder, 552, 96);
+		ViewUtils.setMarginBottom(tvBtnOrder, 48);
 		
 		ViewUtils.setHeight(rlGameType, 112);
 		ViewUtils.setMarginLeft(rlGameType, 32);

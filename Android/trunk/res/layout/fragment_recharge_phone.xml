@@ -60,7 +60,7 @@
         android:layout_alignRight="@id/rl_input_phone"
         android:background="@color/white"
         android:layout_below="@id/rl_input_phone"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         >
         <TextView 
             android:id="@+id/tv_types_label"
@@ -120,7 +120,7 @@
        android:layout_height="wrap_content"
        android:layout_centerHorizontal="true"
        android:layout_below="@id/gv_menu"
-       android:layout_marginTop="32dp"
+       android:layout_marginTop="16dp"
        android:text="充值将花费您"
        android:textColor="@android:color/black"
        android:includeFontPadding="false"
@@ -135,7 +135,6 @@
        android:layout_below="@id/tv_cost_label"
        android:layout_marginTop="18dp"
        android:includeFontPadding="false"
-       android:text="5000流量币"
        android:textColor="@color/pagertab_color_green"
        android:textSize="18sp"
        />
@@ -152,7 +151,7 @@
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="34dp"      
+        android:layout_marginBottom="24dp"      
         />
     
 

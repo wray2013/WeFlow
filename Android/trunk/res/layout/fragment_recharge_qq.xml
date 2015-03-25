@@ -68,9 +68,8 @@
        android:layout_height="wrap_content"
        android:layout_centerHorizontal="true"
        android:layout_below="@id/tv_cost_label"
-       android:layout_marginTop="18dp"
+       android:layout_marginTop="12dp"
        android:includeFontPadding="false"
-       android:text="5000流量币"
        android:textColor="@color/pagertab_color_green"
        android:textSize="18sp"
        />
@@ -87,7 +86,7 @@
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="34dp"      
+        android:layout_marginBottom="24dp"      
         />
     
 

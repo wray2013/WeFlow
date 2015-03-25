@@ -98,6 +98,8 @@ public class GameGiftFragment extends Fragment implements Callback {
 		
 		adapter = new GameGiftAdatper(getActivity(), itemList);
 		lvGift.setAdapter(adapter);
+		ViewUtils.setMarginLeft(lvGift, 32);
+		ViewUtils.setMarginRight(lvGift, 32);
 	}
 	
 	
