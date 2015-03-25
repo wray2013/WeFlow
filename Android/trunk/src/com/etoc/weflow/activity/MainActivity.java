@@ -289,7 +289,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				hideLeftButton();
 //				setLeftButtonBackground(resId);
 			} else if(fragment instanceof FlowBankFragment) {
-				title = "流量银行";
+				title = "存钱罐";
 				setRightButtonText("攻略");
 				hideLeftButton();
 			} else if(fragment instanceof DiscoveryFragment) {

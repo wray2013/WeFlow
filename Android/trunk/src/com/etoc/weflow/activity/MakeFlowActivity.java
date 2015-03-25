@@ -135,7 +135,7 @@ public class MakeFlowActivity extends TitleRootActivity {
 	
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "看广告", "下软件", "玩游戏"/*, "交友"*/};
+		private final String[] TITLES = { "看视频", "下软件", "玩游戏"/*, "交友"*/};
 
 		public MyPagerAdapter(FragmentManager fm) {
 			super(fm);

@@ -105,7 +105,7 @@ public class MakeBillListActivity extends TitleRootActivity {
 
 	public class MakeBillPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "看广告", "下软件", "玩游戏"/*, "交友"*/};
+		private final String[] TITLES = { "看视频", "下软件", "玩游戏"/*, "交友"*/};
 
 		public MakeBillPagerAdapter(FragmentManager fm) {
 			super(fm);
