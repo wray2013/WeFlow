@@ -1,14 +1,15 @@
-<com.handmark.pulltorefresh.library.PullToRefreshScrollView  
+<ScrollView  
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ptr_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:fillViewport="true"
-    ptr:ptrHeaderTextColor="#212324"
-    ptr:ptrAnimationStyle="flip"
-    ptr:ptrMode="pullUpFromBottom"
     >
+    <!-- 
+	    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+	    ptr:ptrHeaderTextColor="#212324"
+	    ptr:ptrAnimationStyle="flip"
+	    ptr:ptrMode="pullUpFromBottom" -->
     
     <RelativeLayout 
         android:layout_width="fill_parent"
@@ -62,4 +63,4 @@
         
     </RelativeLayout>
 
-</com.handmark.pulltorefresh.library.PullToRefreshScrollView >
+</ScrollView >

@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
@@ -57,7 +58,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 	private AutoScrollViewPager viewPager = null;
 	private PageIndicator mIndicator;
 	private GiftBannerAdapter bannerAdapter;
-	private PullToRefreshScrollView ptrScrollView = null;
+//	private PullToRefreshScrollView ptrScrollView = null;
 	
 	private List<GiftBannerResp> bannerList = new ArrayList<GiftBannerResp>();
 	private List<GiftProduct> giftList = new ArrayList<GiftProduct>();
@@ -65,6 +66,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 	private ListView listView = null;
 	private GiftAdatper adapter = null;
 	private Handler handler = null;
+	private RelativeLayout rlViewPager = null;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -109,6 +111,7 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 	}
 	
 	private void initView(View view) {
+		rlViewPager = (RelativeLayout) view.findViewById(R.id.rl_view_pager);
 		viewPager = (AutoScrollViewPager) view.findViewById(R.id.vp_pager_service);
 		
         viewPager.setInterval(3000);
@@ -118,14 +121,16 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
         mIndicator = (PageIndicator) view.findViewById(R.id.indicator_service);
         
         bannerAdapter = new GiftBannerAdapter(getChildFragmentManager(),  bannerList);
+        
+        ViewUtils.setHeight(rlViewPager, 360);
 //        viewPager.setAdapter(bannerAdapter);
         
 //        mIndicator.setViewPager(viewPager);
 //		mIndicator.notifyDataSetChanged();
 		
-		ptrScrollView = (PullToRefreshScrollView) view.findViewById(R.id.ptr_scroll_view);
+		/*ptrScrollView = (PullToRefreshScrollView) view.findViewById(R.id.ptr_scroll_view);
 		ptrScrollView.setPullLabel("加载更多");
-		ptrScrollView.setReleaseLabel("松开加载更多");
+		ptrScrollView.setReleaseLabel("松开加载更多");*/
 		
 		listView = (ListView) view.findViewById(R.id.lv_gift_exchange);
 		adapter = new GiftAdatper(getActivity(), giftList);
@@ -308,6 +313,9 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 						viewPager.setCurrentItem(0);
 						mIndicator.setViewPager(viewPager);
 						mIndicator.notifyDataSetChanged();
+						rlViewPager.setVisibility(View.VISIBLE);
+					} else {
+						rlViewPager.setVisibility(View.GONE);
 					}
 					if(response.chargelist != null && response.chargelist.length > 0) {
 						for (GiftResp item:response.chargelist) {
