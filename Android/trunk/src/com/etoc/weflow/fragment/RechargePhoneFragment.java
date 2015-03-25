@@ -392,10 +392,10 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				PhoneChargeResp chargeResp = (PhoneChargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}

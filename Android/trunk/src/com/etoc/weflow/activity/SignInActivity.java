@@ -86,7 +86,7 @@ public class SignInActivity extends TitleRootActivity {
 						tvSignRecord.setText("本月签到" + signResp.signcount + "次；获得" + NumberUtils.convert2IntStr(signResp.signflowcoins) + "流量币");
 					}
 					
-					WeFlowApplication.setFlowCoins(signResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(signResp.flowcoins);
 					
 				} else if("2015".equals(signResp.status)) {
 					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");
