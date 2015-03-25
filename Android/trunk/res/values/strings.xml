@@ -4,7 +4,7 @@
     
     <!-- TAB Text -->
     <string name="tab_weflow">微流量</string>
-    <string name="tab_bank">银行</string>
+    <string name="tab_bank">存钱罐</string>
     <string name="tab_discover">发现</string>
     <string name="tab_me">我</string>
     <string name="hint_phone_number">请输入手机号码</string>
