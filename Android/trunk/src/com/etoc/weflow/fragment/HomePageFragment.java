@@ -440,7 +440,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				if(Requester.isSuccessed(resp.status)) {
 					ivSignIn.setEnabled(false);
 					WeFlowApplication.setFlowCoins(resp.signflowcoins);
-					PromptDialog.Alert("签到成功，增加" + NumberUtils.Str2Int(resp.signflowcoins) + "流量币");
+					PromptDialog.Alert("签到成功，增加" + NumberUtils.convert2IntStr(resp.singleflowcoins) + "流量币");
 					if(mtvFlow != null && isLogin) {
 						currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 						mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
