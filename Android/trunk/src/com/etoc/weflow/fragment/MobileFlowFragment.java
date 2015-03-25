@@ -261,7 +261,9 @@ public class MobileFlowFragment extends Fragment implements Callback {
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-				} else {
+				} else if (Requester.isLowFlow(chargeResp.status)) {
+					PromptDialog.Alert(ConStant.LOW_FLOW);
+				}  else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}

@@ -922,6 +922,10 @@ public class Requester {
 		return ConStant.ORDER_PROCESSED.equals(str);
 	}
 	
+	public static boolean isLowFlow(String str) {
+		return ConStant.LOW_FLOW_COINS.equals(str);
+	}
+	
 	public static boolean isMaxLimit(String str) {
 		return ConStant.MAX_LIMIT.equals(str);
 	}
