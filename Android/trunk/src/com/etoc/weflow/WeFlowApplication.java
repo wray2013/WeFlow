@@ -217,6 +217,7 @@ public class WeFlowApplication extends Application {
 		accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 		if (accountInfo != null && flowcoins != null) {
 			accountInfo.setFlowcoins(flowcoins);
+			PersistAccountInfo(accountInfo);
 		}
 	}
     
