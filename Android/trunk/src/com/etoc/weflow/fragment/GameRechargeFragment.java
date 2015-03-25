@@ -186,10 +186,10 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 				GameRechargeResp chargeResp = (GameRechargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
