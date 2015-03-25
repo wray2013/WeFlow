@@ -357,7 +357,6 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 				}
 			}
 			break;
-
 		}
 		return false;
 	}

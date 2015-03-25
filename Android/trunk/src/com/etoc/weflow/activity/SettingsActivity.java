@@ -200,8 +200,15 @@ public class SettingsActivity extends TitleRootActivity {
 								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
 							}
 						});
-					} else {
-						
+					} else if ("2".equals(resp.type)){
+						PromptDialog.Dialog(this, true, true, "版本升级", resp.description, new OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
+							}
+						});
 					}
 				}
 			}

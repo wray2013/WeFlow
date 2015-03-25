@@ -13,13 +13,17 @@ import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.download.DownloadManager;
+import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.net.GsonResponseObject.*;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.VMobileInfo;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.DialogInterface.OnClickListener;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Message;
@@ -70,6 +74,7 @@ public class WelcomePageActivity extends TitleRootActivity {
         
         accountInfoDao = daoSession.getAccountInfoDao();
         aiList = accountInfoDao.loadAll();
+        
         if(aiList != null && aiList.size() > 0) {
         	AccountInfo lastAcc = aiList.get(0);
         	if(lastAcc.getUserid() != null && !lastAcc.getUserid().equals("")) {
@@ -78,6 +83,7 @@ public class WelcomePageActivity extends TitleRootActivity {
         		return;
         	}
         }
+        Requester.update(false, handler);
 		handler.postDelayed(runnable, INTV_TIME);
 	}
 	
@@ -146,6 +152,32 @@ public class WelcomePageActivity extends TitleRootActivity {
 			} else {
 				PromptDialog.Alert(WelcomePageActivity.class, "您的网络不给力啊！");
 				handler.postDelayed(runnable, INTV_TIME);
+			}
+			break;
+		case Requester.RESPONSE_TYPE_UPDATE:
+			if (msg.obj != null) {
+				final UpdateResp resp = (UpdateResp) msg.obj;
+				if (Requester.isSuccessed(resp.status)) {
+					if ("1".equals(resp.type)) {
+						PromptDialog.Dialog(this, false, false, "版本升级", resp.description, new OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
+							}
+						});
+					} else if ("2".equals(resp.type)){
+						PromptDialog.Dialog(this, true, true, "版本升级", resp.description, new OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
+							}
+						});
+					}
+				}
 			}
 			break;
 		}
