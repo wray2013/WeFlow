@@ -112,21 +112,25 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 		case ExpenseFlowActivity.INDEX_RECHARGE:
 			if (position == POSITION_PHONEBILL) {
 				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_tc.getValue() + "," + PType.change_qq.getValue());
+				pageNumber = 0;
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_FLOW:
 			if (position == POSITION_FLOWPKG) {
 				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_wf.getValue());
+				pageNumber = 0;
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_GAME:
 			if (position == POSITION_GAME) {
 				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.change_gf.getValue() + "," + PType.recharge_gm.getValue());
+				pageNumber = 0;
 			}
 			break;
 		case ExpenseFlowActivity.INDEX_GIFT:
 			if (position == POSITION_GIFT) {
 				Requester.getCostFlowRecord(true, myHandler, 0 + "", acc.getUserid(), PType.bug_gf.getValue());
+				pageNumber = 0;
 			}
 			break;
 		}
@@ -224,7 +228,7 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 							bill.title = item.title;
 							bill.content = item.title;
 							bill.flowcoins = item.cost;
-							bill.time = item.time;
+							bill.time = item.date;
 							blist.add(bill);
 						}
 						if(pageNumber == 0) {

@@ -123,6 +123,8 @@ public class MyBillAdapter extends BaseAdapter {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
+		} else {
+			holder.tvCoins.setText("");
 		}
 		
 		if(mybill.content != null && !mybill.content.equals("")) {

@@ -33,6 +33,7 @@ import com.etoc.weflow.net.GsonResponseObject.SignInResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.FileUtils;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -258,7 +259,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		checkLogin();
 		
 		if(rlNotLogin == null || rlLogin == null ||
-				tvCellPhone == null || mtvFlow == null) return;
+				tvCellPhone == null || mtvFlow == null || ivSignIn == null) return;
 		
 		
 		if(isLogin) {
@@ -269,10 +270,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			tvCellPhone.setText(currentAccount.getTel());
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 			
-			if("0".equals(currentAccount.getIsregistration())) { //未签到
-				
+			if("1".equals(currentAccount.getIsregistration())) {
+				ivSignIn.setEnabled(false);
 			} else {
-				
+				ivSignIn.setEnabled(true);
 			}
 			
 			loadConfig(currentAccount.getMakeflow(), currentAccount.getUseflow());
@@ -389,7 +390,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 		}
-		loginView(false);
+		loginView(true);
 	}
 	
 	@Override
@@ -439,13 +440,14 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				if(Requester.isSuccessed(resp.status)) {
 					ivSignIn.setEnabled(false);
 					WeFlowApplication.setFlowCoins(resp.signflowcoins);
-					PromptDialog.Alert("签到成功，增加" + resp.signflowcoins + "流量币");
+					PromptDialog.Alert("签到成功，增加" + NumberUtils.Str2Int(resp.signflowcoins) + "流量币");
 					if(mtvFlow != null && isLogin) {
 						currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 						mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 						currentAccount.setIsregistration("1");
 						WeFlowApplication.getAppInstance().PersistAccountInfo(currentAccount);
 					}
+					Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 				} else if("2015".equals(resp.status)) {
 					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");
 				}

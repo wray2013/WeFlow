@@ -228,7 +228,7 @@ public class GsonResponseObject {
 	// 2.5.4 玩游戏赚取流量币记录
 	public static class AwardRecordResp {
 		public String status;
-		public AwardInfoResp[] list;
+		public AwardInfoResp[] recordlist;
 	}
 	
 	public static class SoftInfoResp {
@@ -251,10 +251,13 @@ public class GsonResponseObject {
 	}
 	
 	public static class AwardInfoResp {
+		public String prizeid;
+		public String prizename;
 		public String title;
 		public String desc;
+		public String time;
 		public String flowcoins;//流量币
-		public String finishtime;
+		public String awardway;
 	}
 	
 	public static class AwardItemResp {
@@ -459,7 +462,7 @@ public class GsonResponseObject {
 		public String cost;
 		public String title;
 		public String imgsrc;
-		public String time;
+		public String date;
 	}
 	/****************************************************
 	 *                      C.流量银行

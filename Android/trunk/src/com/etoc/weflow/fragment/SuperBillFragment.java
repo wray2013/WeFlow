@@ -110,16 +110,19 @@ public class SuperBillFragment extends Fragment implements OnRefreshListener2<Li
 		case MyBillListActivity.INDEX_BILL_ALL:
 			if (position == POSITION_TOTAL) {
 				Requester.getBillList(true, myHandler, 0 + "", acc.getUserid());
+				pageNumber = 0;
 			}
 			break;
 		case MyBillListActivity.INDEX_BILL_MAKE:
 			if (position == POSITION_INCOME) {
 				Requester.getBillList(true, myHandler, 0 + "", acc.getUserid());
+				pageNumber = 0;
 			}
 			break;
 		case MyBillListActivity.INDEX_BILL_EXPENSE:
 			if (position == POSITION_PAY) {
 				Requester.getBillList(true, myHandler, 0 + "", acc.getUserid());
+				pageNumber = 0;
 			}
 			break;
 		}

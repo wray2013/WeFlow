@@ -129,16 +129,19 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 		case MakeFlowActivity.INDEX_ADVERTISEMENT:
 			if (position == POSITION_ADV) {
 				Requester.getAdvRecord(true, myHandler, 0 + "", acc.getUserid());
+				pageNumber = 0;
 			}
 			break;
 		case MakeFlowActivity.INDEX_APPRECOMM:
 			if (position == POSITION_SOFTWARE) {
 				Requester.getAppRecord(true, myHandler, 0 + "", acc.getUserid());
+				pageNumber = 0;
 			}
 			break;
 		case MakeFlowActivity.INDEX_PLAYGAME:
 			if (position == POSITION_GAME) {
 				Requester.getAwardRecord(true, myHandler, 0 + "", acc.getUserid());
+				pageNumber = 0;
 			}
 			break;
 		}
@@ -277,8 +280,8 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 			if (msg.obj != null) {
 				AwardRecordResp awardResp = (AwardRecordResp) msg.obj;
 				if ("0".equals(awardResp.status) || "0000".equals(awardResp.status)) {
-					if(awardResp.list != null && awardResp.list.length > 0) {
-						List<AwardInfoResp> awardlist = Arrays.asList(awardResp.list);
+					if(awardResp.recordlist != null && awardResp.recordlist.length > 0) {
+						List<AwardInfoResp> awardlist = Arrays.asList(awardResp.recordlist);
 						List<BillList> blist = new ArrayList<BillList>();
 						for (AwardInfoResp item : awardlist) {
 							PType type = PType.get_award;
@@ -287,7 +290,7 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 							bill.title = item.title;
 							bill.content = item.desc;
 							bill.flowcoins = item.flowcoins;
-							bill.time = item.finishtime;
+							bill.time = item.time;
 							blist.add(bill);
 						}
 						if(pageNumber == 0) {
