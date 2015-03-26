@@ -92,7 +92,8 @@ public class WeFlowDaoGenerator {
     private static void addMessageList(Schema schema) {
     	Entity note = schema.addEntity("MyMessage");
 //        note.addIdProperty().primaryKey().autoincrement();
-        note.addStringProperty("msgid").notNull().primaryKey();
+    	note.addStringProperty("msgid").notNull().primaryKey();
+        note.addStringProperty("userid").notNull();
         note.addStringProperty("type");
         note.addStringProperty("picurl");
         note.addStringProperty("title");
