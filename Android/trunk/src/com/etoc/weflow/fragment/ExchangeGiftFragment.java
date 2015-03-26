@@ -42,6 +42,7 @@ import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.NumberUtils;
+import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
@@ -336,6 +337,9 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
+					if (!StringUtils.isEmpty(chargeResp.cardcode)) {
+						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
+					}
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);

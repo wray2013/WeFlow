@@ -301,6 +301,7 @@ public class GsonResponseObject {
 	public static class PhoneChargeResp {
 		public String status;
 		public String flowcoins;
+		public String cardcode;
 	}
 	
 	public static class QChargeListResp {
@@ -326,6 +327,7 @@ public class GsonResponseObject {
 	public static class QChargeResp {
 		public String status;
 		public String flowcoins;
+		public String cardcode;
 	}
 	
 	public static class GamePkgListResp {
@@ -364,6 +366,7 @@ public class GsonResponseObject {
 	public static class ExchangeGamePkgResp {
 		public String status;
 		public String gamecode;
+		public String cardcode;
 		public String flowcoins;
 	}
 	
@@ -387,6 +390,7 @@ public class GsonResponseObject {
 	public static class GameRechargeResp {
 		public String status;
 		public String flowcoins;
+		public String cardcode;
 	}
 	
 	public static class FlowPkgListResp {
@@ -412,6 +416,7 @@ public class GsonResponseObject {
 	public static class ExchangeFlowPkgResp {
 		public String status;
 		public String flowcoins;
+		public String cardcode;
 	}
 	
 	public static class GiftListResp {
@@ -449,6 +454,7 @@ public class GsonResponseObject {
 	public static class ExchangeGiftResp {
 		public String status;
 		public String flowcoins;
+		public String cardcode;
 	}
 	
 	public static class CostFlowRecordResp {
