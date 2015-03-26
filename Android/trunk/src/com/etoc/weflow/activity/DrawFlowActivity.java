@@ -11,6 +11,7 @@ import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.bankPopResp;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 import android.content.Intent;
@@ -164,7 +165,7 @@ public class DrawFlowActivity extends TitleRootActivity {
 				bankPopResp popResp = (bankPopResp) msg.obj;
 				if("0".equals(popResp.status) || "0000".equals(popResp.status)) {
 					PromptDialog.Alert(DepositFlowActivity.class, "成功取出" + adapter.getSelectValue() + "流量币");
-					tvTotal.setText(popResp.bankcoins);
+					tvTotal.setText(NumberUtils.Str2Int(popResp.bankcoins) + "");
 					info.setFlowcoins(popResp.flowcoins);
 					WeFlowApplication.getAppInstance().PersistAccountInfo(info);
 				} else {

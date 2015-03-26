@@ -142,7 +142,7 @@ public class MyBillAdapter extends BaseAdapter {
 		
 		String content = holder.tvContent.getText().toString();
 		if(mybill.cardcode != null && !mybill.cardcode.equals("")) {
-			String code = "兑换码：" + mybill.cardcode + "请您尽快使用";
+			String code = "兑换码：" + mybill.cardcode + "\n请您尽快使用";
 			if(content.equals("")) {
 				content += code;
 			} else {

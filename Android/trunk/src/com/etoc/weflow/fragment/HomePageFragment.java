@@ -278,7 +278,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			}
 			
 			loadConfig(currentAccount.getMakeflow(), currentAccount.getUseflow());
-			if(needQuery)
+			if(needQuery || tvPlain.getText().toString().equals("？"))
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 		} else {
 			//未登录
