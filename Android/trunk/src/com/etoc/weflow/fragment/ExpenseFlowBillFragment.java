@@ -229,6 +229,8 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 							bill.content = item.title;
 							bill.flowcoins = item.cost;
 							bill.time = item.date;
+							bill.state = item.state;
+							bill.cardcode = item.cardcode;
 							blist.add(bill);
 						}
 						if(pageNumber == 0) {

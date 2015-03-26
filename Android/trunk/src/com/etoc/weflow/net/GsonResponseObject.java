@@ -464,6 +464,8 @@ public class GsonResponseObject {
 		public String content;
 		public String imgsrc;
 		public String date;
+		public String state;
+		public String cardcode;
 	}
 	/****************************************************
 	 *                      C.流量银行
