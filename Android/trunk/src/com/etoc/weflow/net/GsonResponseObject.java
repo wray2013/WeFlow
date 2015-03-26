@@ -461,6 +461,7 @@ public class GsonResponseObject {
 		public String productid;
 		public String cost;
 		public String title;
+		public String content;
 		public String imgsrc;
 		public String date;
 	}
@@ -536,6 +537,8 @@ public class GsonResponseObject {
 		public String content;
 		public String flowcoins;
 		public String time;
+		public String state;    //订购状态
+		public String cardcode; //卡密
 	}
 	
 	public static class MessageList {

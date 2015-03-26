@@ -67,7 +67,6 @@
                 android:layout_alignRight="@+id/tv_title"
                 android:layout_below="@+id/tv_title"
                 android:ellipsize="end"
-                android:maxLines="3"
                 android:text="到底是监狱风云还是澳门风云？"
                 android:textColor="@color/text_grey"
                 android:visibility="invisible"/>

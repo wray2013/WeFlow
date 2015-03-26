@@ -140,6 +140,19 @@ public class MyBillAdapter extends BaseAdapter {
 			holder.tvContent.setVisibility(View.INVISIBLE);
 		}
 		
+		String content = holder.tvContent.getText().toString();
+		if(mybill.cardcode != null && !mybill.cardcode.equals("")) {
+			String code = "兑换码：" + mybill.cardcode + "请您尽快使用";
+			if(content.equals("")) {
+				content += code;
+			} else {
+				content += ("\n" + code);
+			}
+			holder.tvContent.setText(content);
+			holder.tvContent.setVisibility(View.VISIBLE);
+		}
+		
+		
 		String currentYearMonth = DateUtils.getYMStringFromMilli(System.currentTimeMillis() + "");
 		String YM = DateUtils.getYMStringFromMilli(mybill.time);
 		int index = billList.indexOf(mybill);
