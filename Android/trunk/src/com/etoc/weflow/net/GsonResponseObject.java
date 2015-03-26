@@ -580,6 +580,7 @@ public class GsonResponseObject {
 		public String status;
 		public String flowcoins;
 		public String signflowcoins;
+		public String singleflowcoins;
 		public String signlist;
 		public String signcount;
 	}

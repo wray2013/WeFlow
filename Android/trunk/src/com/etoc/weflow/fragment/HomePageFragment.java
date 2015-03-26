@@ -404,7 +404,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				if("0".equals(response.status) || "0000".equals(response.status)) {
 					if (response.flowcoins != null) {
 						currentAccount.setFlowcoins(response.flowcoins);
-						WeFlowApplication.setFlowCoins(response.flowcoins);
+						WeFlowApplication.getAppInstance().setFlowCoins(response.flowcoins);
 						mtvFlow.showNumberWithAnimation(response.flowcoins, 1000);
 					}
 					tvPlain.setText(response.menumoney);
@@ -439,8 +439,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				SignInResp resp = (SignInResp) msg.obj;
 				if(Requester.isSuccessed(resp.status)) {
 					ivSignIn.setEnabled(false);
-					WeFlowApplication.setFlowCoins(resp.signflowcoins);
-					PromptDialog.Alert("签到成功，增加" + NumberUtils.Str2Int(resp.signflowcoins) + "流量币");
+					WeFlowApplication.getAppInstance().setFlowCoins(resp.signflowcoins);
+					PromptDialog.Alert("签到成功，增加" + NumberUtils.convert2IntStr(resp.singleflowcoins) + "流量币");
 					if(mtvFlow != null && isLogin) {
 						currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 						mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);

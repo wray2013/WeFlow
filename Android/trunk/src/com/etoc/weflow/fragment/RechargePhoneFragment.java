@@ -228,8 +228,8 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		});
 		
 		tvCostCoins = (TextView) view.findViewById(R.id.tv_cost_coins);
-		ViewUtils.setMarginTop(tvCostCoins, 36);
-		ViewUtils.setMarginTop(view.findViewById(R.id.tv_cost_label), 64);
+		ViewUtils.setMarginTop(tvCostCoins, 24);
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_cost_label), 32);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_cost_label), 32);
 		ViewUtils.setTextSize(tvCostCoins, 36);
 //		tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
@@ -241,7 +241,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		ViewUtils.setTextSize(tvTypes, 32);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_types_label), 32);
 		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_types_label), 24);
-		ViewUtils.setMarginTop(rlTypes, 48);
+		ViewUtils.setMarginTop(rlTypes, 24);
 		ViewUtils.setMarginTop(gvPhoneMenu, 24);
 		
 		ViewUtils.setSize(view.findViewById(R.id.view_arraw_coins), 72, 72);
@@ -250,7 +250,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		tvCommit = (TextView) view.findViewById(R.id.tv_btn_order);
 		tvCommit.setOnClickListener(this);
 		ViewUtils.setSize(tvCommit, 552, 96);
-		ViewUtils.setMarginBottom(tvCommit, 68);
+		ViewUtils.setMarginBottom(tvCommit, 48);
 		tvCommit.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
 		
 		ViewUtils.setMarginLeft(view.findViewById(R.id.rl_input_phone), 32);
@@ -392,10 +392,12 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				PhoneChargeResp chargeResp = (PhoneChargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isLowFlow(chargeResp.status)) {
+					PromptDialog.Alert(ConStant.LOW_FLOW);
 				} else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}

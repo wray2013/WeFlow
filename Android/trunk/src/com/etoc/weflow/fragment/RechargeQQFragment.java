@@ -164,7 +164,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 		tvCommit = (TextView) view.findViewById(R.id.tv_btn_order);
 		tvCommit.setOnClickListener(this);
 		ViewUtils.setSize(tvCommit, 552, 96);
-		ViewUtils.setMarginBottom(tvCommit, 68);
+		ViewUtils.setMarginBottom(tvCommit, 48);
 		tvCommit.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
 		
 		etQQ = (EditText) view.findViewById(R.id.et_qq);
@@ -318,10 +318,12 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				QChargeResp chargeResp = (QChargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isLowFlow(chargeResp.status)) {
+					PromptDialog.Alert(ConStant.LOW_FLOW);
 				} else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}

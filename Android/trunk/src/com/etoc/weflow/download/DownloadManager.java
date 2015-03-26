@@ -667,7 +667,7 @@ public class DownloadManager implements Callback {
 				AppFlowResp resp = (AppFlowResp) msg.obj;
 				if (Requester.isSuccessed(resp.status)) {
 					PromptDialog.Alert("app下载完成，已获得相应流量币");
-					WeFlowApplication.setFlowCoins(resp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(resp.flowcoins);
 				} else if (Requester.isMaxLimit(resp.status)) {
 					PromptDialog.Alert(ConStant.TIP_MAX_LIMIT);
 					Toast.makeText(WeFlowApplication.getAppInstance(), ConStant.TIP_MAX_LIMIT

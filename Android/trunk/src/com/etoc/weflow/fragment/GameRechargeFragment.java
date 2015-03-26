@@ -133,6 +133,8 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 		tvBtnOrder.setOnClickListener(this);
 		rlGameType.setOnClickListener(this);
 		rlCoins.setOnClickListener(this);
+		ViewUtils.setSize(tvBtnOrder, 552, 96);
+		ViewUtils.setMarginBottom(tvBtnOrder, 48);
 		
 		ViewUtils.setHeight(rlGameType, 112);
 		ViewUtils.setMarginLeft(rlGameType, 32);
@@ -184,11 +186,13 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 				GameRechargeResp chargeResp = (GameRechargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
-				} else {
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isLowFlow(chargeResp.status)) {
+					PromptDialog.Alert(ConStant.LOW_FLOW);
+				}  else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}

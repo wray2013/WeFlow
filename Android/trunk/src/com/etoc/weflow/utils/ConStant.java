@@ -11,9 +11,11 @@ public class ConStant {
 	public static final int LOAIND_DISSMISS_DALAY = 10000;
 	public static final String REQUEST_SUCCESS = "0000";
 	public static final String ORDER_PROCESSED = "0002";
+	public static final String LOW_FLOW_COINS = "2012";
 	public static final String MAX_LIMIT = "2016";// 已达到最大限制？
 	public static final String TIP_MAX_LIMIT = "订购已达到最大上限";
 	public static final String ORDER_FAIL = "订购失败";
+	public static final String LOW_FLOW = "流量币不足";
 	
 	public static final String INTENT_SOFT_DETAIL = "intent_sort_detail";
 	public static final String INTENT_MAKE_FLOW = "intent_make_flow";

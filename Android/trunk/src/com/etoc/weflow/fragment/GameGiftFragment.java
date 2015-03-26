@@ -98,6 +98,8 @@ public class GameGiftFragment extends Fragment implements Callback {
 		
 		adapter = new GameGiftAdatper(getActivity(), itemList);
 		lvGift.setAdapter(adapter);
+		ViewUtils.setMarginLeft(lvGift, 32);
+		ViewUtils.setMarginRight(lvGift, 32);
 	}
 	
 	
@@ -131,9 +133,9 @@ public class GameGiftFragment extends Fragment implements Callback {
 					.cacheOnDisc(true)
 					.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
 					.bitmapConfig(Bitmap.Config.RGB_565)
-					.showImageForEmptyUri(R.drawable.small_pic_default)
-					.showImageOnFail(R.drawable.small_pic_default)
-					.showImageOnLoading(R.drawable.small_pic_default)
+					.showImageForEmptyUri(R.drawable.game_default)
+					.showImageOnFail(R.drawable.game_default)
+					.showImageOnLoading(R.drawable.game_default)
 					.build();
 		}
 		
@@ -239,11 +241,13 @@ public class GameGiftFragment extends Fragment implements Callback {
 				ExchangeGamePkgResp chargeResp = (ExchangeGamePkgResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
-				} else {
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isLowFlow(chargeResp.status)) {
+					PromptDialog.Alert(ConStant.LOW_FLOW);
+				}  else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}

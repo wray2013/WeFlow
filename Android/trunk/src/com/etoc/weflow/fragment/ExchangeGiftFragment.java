@@ -213,9 +213,9 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 					.cacheOnDisc(true)
 					.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
 					.bitmapConfig(Bitmap.Config.RGB_565)
-					.showImageForEmptyUri(R.drawable.small_pic_default)
-					.showImageOnFail(R.drawable.small_pic_default)
-					.showImageOnLoading(R.drawable.small_pic_default)
+					.showImageForEmptyUri(R.drawable.jd_pic)
+					.showImageOnFail(R.drawable.jd_pic)
+					.showImageOnLoading(R.drawable.jd_pic)
 					.build();
 		}
 		
@@ -335,11 +335,13 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				ExchangeGiftResp chargeResp = (ExchangeGiftResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 					PromptDialog.Alert("订购成功");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
-					WeFlowApplication.setFlowCoins(chargeResp.flowcoins);
-				} else {
+					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
+				} else if (Requester.isLowFlow(chargeResp.status)) {
+					PromptDialog.Alert(ConStant.LOW_FLOW);
+				}  else {
 					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
