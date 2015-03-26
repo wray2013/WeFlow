@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.etoc.weflow.R;
-import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.net.GsonResponseObject.*;
 import com.etoc.weflow.utils.DateUtils;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.api.MyImageLoader;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +33,23 @@ public class MyMessageAdapter extends BaseAdapter {
 	
 	private List<MessageList> MessageList = new ArrayList<MessageList>();
 	
+	private MyImageLoader imageLoader;
+	private DisplayImageOptions imageLoaderOptions = null;
 	
 	public MyMessageAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
 		ctx = context;
+		imageLoader = MyImageLoader.getInstance();
+
+		imageLoaderOptions = new DisplayImageOptions.Builder()
+				.cacheInMemory(true)
+				.cacheOnDisc(true)
+				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
+				.bitmapConfig(Bitmap.Config.RGB_565)
+				.showImageForEmptyUri(R.drawable.ic_launcher)
+				.showImageOnFail(R.drawable.ic_launcher)
+				.showImageOnLoading(R.drawable.ic_launcher)
+				.build();
 	}
 	
 	public void setData(List<MessageList> data) {
@@ -96,6 +111,7 @@ public class MyMessageAdapter extends BaseAdapter {
 		ViewUtils.setHeight(View.findViewById(R.id.tv_subtitle), 65);
 		ViewUtils.setMarginBottom(View.findViewById(R.id.tv_date), 20);
 		ViewUtils.setMarginTop(View.findViewById(R.id.tv_title), 20);
+		ViewUtils.setMarginLeft(View.findViewById(R.id.iv_type_icon), 32);
 		ViewUtils.setMarginLeft(View.findViewById(R.id.rl_bill_right_title), 32);
 		ViewUtils.setMarginLeft(View.findViewById(R.id.tv_subtitle), 32);
 		ViewUtils.setMarginRight(View.findViewById(R.id.tv_coins), 32);
@@ -110,7 +126,7 @@ public class MyMessageAdapter extends BaseAdapter {
 	private void bindBill(ViewHolder holder, MessageList mymsg) {
 		// TODO Auto-generated method stub
 		if(mymsg.picurl != null && !mymsg.picurl.equals("")) {
-			ImageLoader.getInstance().displayImage(mymsg.picurl, holder.ivTypeIcon);
+			imageLoader.displayImage(mymsg.picurl, holder.ivTypeIcon, imageLoaderOptions);
 		} else {
 			holder.ivTypeIcon.setBackgroundResource(R.drawable.ic_launcher);
 		}
@@ -156,7 +172,7 @@ public class MyMessageAdapter extends BaseAdapter {
 		} else {
 			showSubTitle(holder, true);
 		}
-		holder.tvDate.setText(DateUtils.getStringFromMilli(mymsg.time, DateUtils.DATE_FORMAT_NORMAL_1));
+		holder.tvDate.setText(DateUtils.getStringFromMilli(mymsg.time, DateUtils.DATE_FORMAT_NORMAL));
 		
 		String subtitle = DateUtils.getStringFromMilli(mymsg.time, "M月");
 		if (currentYearMonth.equals(YM)) {

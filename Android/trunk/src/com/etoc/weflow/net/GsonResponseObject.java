@@ -542,6 +542,7 @@ public class GsonResponseObject {
 	}
 	
 	public static class MessageList {
+		public String userid;
 		public String msgid;
 		public String type; //栏目类型
 		public String picurl;
@@ -583,6 +584,14 @@ public class GsonResponseObject {
 		public String singleflowcoins;
 		public String signlist;
 		public String signcount;
+	}
+	
+	public static class PushMsgResp {
+		public String msgtype; // 1 收到消息推送   2其他
+		public String msgtitle; // 有新消息
+		public String msgcontent; // 欢迎使用流量钱包
+		public String msghint; // 点击查看
+		public MessageList msglist;
 	}
 	
 }

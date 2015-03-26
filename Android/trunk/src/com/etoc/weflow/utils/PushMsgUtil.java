@@ -67,7 +67,7 @@ public class PushMsgUtil extends Thread {
 		//验证串，用于校验发送的合法性。
 		BasicNameValuePair verification_code = new BasicNameValuePair("verification_code", getVerificationCode(no, tag));
 		//发送消息的类型：1 通知 2 自定义
-		BasicNameValuePair msg_type = new BasicNameValuePair("msg_type", "1");
+		BasicNameValuePair msg_type = new BasicNameValuePair("msg_type", "2");
 		BasicNameValuePair msg_content = new BasicNameValuePair("msg_content", msg);
 		//目标用户终端手机的平台类型，如： android, ios 多个请使用逗号分隔。
 		BasicNameValuePair platform = new BasicNameValuePair("platform", "android");

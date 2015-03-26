@@ -124,8 +124,7 @@
                     android:layout_alignParentTop="true"
                     android:background="@drawable/list_item_with_shape"
                     android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:visibility="gone" >
+                    android:paddingLeft="16dp" >
 
                     <ImageView
                         android:id="@+id/iv_me_msg"

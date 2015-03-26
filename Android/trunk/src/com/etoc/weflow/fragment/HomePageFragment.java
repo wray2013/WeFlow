@@ -34,6 +34,7 @@ import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.FileUtils;
 import com.etoc.weflow.utils.NumberUtils;
+import com.etoc.weflow.utils.PushMsgUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -323,7 +324,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 					"\"n_extras\": {\"msgtype\": \"1\", \"msgcontent\" : \"" + "你妹" + "\"," +
 					"\"msghint\" : \"" + "点击查看" + "\"," + 
 					"\"msgtitle\" : \"" + "有新消息" + "\"" +"}}";
-            pushmsg.execute(sendMSG, "weflow");*/
+            pushmsg.execute(sendMSG, "weflow, 15927130377");*/
 			break;
 		case 0xffeecc00:
 		case 0xffeecc01:

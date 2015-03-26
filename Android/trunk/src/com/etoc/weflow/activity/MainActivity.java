@@ -1,5 +1,7 @@
 package com.etoc.weflow.activity;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,7 +27,9 @@ import android.widget.Toast;
 
 import com.etoc.weflow.Config;
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoSession;
@@ -37,8 +41,12 @@ import com.etoc.weflow.fragment.HomePageFragment;
 import com.etoc.weflow.fragment.MenuFragment;
 import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
+import com.etoc.weflow.net.GsonResponseObject.MessageList;
+import com.etoc.weflow.net.GsonResponseObject.PushMsgResp;
+import com.etoc.weflow.utils.PushMsgUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.version.CheckUpdate;
+import com.google.gson.Gson;
 
 import de.greenrobot.event.EventBus;
 
@@ -286,8 +294,8 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			if(fragment instanceof HomePageFragment) {
 				title = "流量钱包";
 				setRightButtonText("宝典");
-				hideLeftButton();
-//				setLeftButtonBackground(resId);
+//				hideLeftButton();
+				setLeftButtonBackground(R.drawable.btn_message);
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "存钱罐";
 				setRightButtonText("攻略");
@@ -336,7 +344,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	
-
+	private int num = 0;
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -353,11 +361,33 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		case R.id.rl_btn_me:
 			switchContent(myselfFragment);
 			break;
+		case R.id.btn_title_left:
+			if(currContentFragment instanceof HomePageFragment) {
+				/*PushMsgUtil pushmsg = new PushMsgUtil(handler, 0x88661256);
+				List<MessageList> fakedata = MyMessageActivity.makeFakeData();
+				MessageList msglist = fakedata.get(num % fakedata.size());
+				num ++;
+				
+				PushMsgResp resp = new PushMsgResp();
+				resp.msgtype = "2";
+				resp.msgtitle = "有新消息";
+				resp.msgcontent = "这是一条测试消息";
+				resp.msghint = "点击查看";
+				resp.msglist = msglist;
+				String jsonStr = new Gson().toJson(resp);
+				
+	            String sendMSG = "{\"message\" : " + jsonStr + "}";
+	            pushmsg.execute(sendMSG, "15927130377");*/
+	            
+				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+				if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
+					startActivity(new Intent(this, MyMessageActivity.class));
+				} else {
+					startActivity(new Intent(this, LoginActivity.class));
+				}
+			}
+            break;
 		case R.id.btn_title_right:
-//			startActivity(new Intent(this, MakeFlowActivity.class));
-//			startActivity(new Intent(this, ShakeShakeActivity.class));
-//			startActivity(new Intent(this, ExpenseFlowActivity.class));
-//			startActivity(new Intent(this, LoginActivity.class));
 			if(currContentFragment instanceof HomePageFragment) {
 				Intent homeIntent = new Intent(this, WebViewActivity.class);
 				homeIntent.putExtra("pageurl", Config.HOMEPAGE_URL);

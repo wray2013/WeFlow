@@ -24,15 +24,16 @@ public class MyMessageDao extends AbstractDao<MyMessage, String> {
     */
     public static class Properties {
         public final static Property Msgid = new Property(0, String.class, "msgid", true, "MSGID");
-        public final static Property Type = new Property(1, String.class, "type", false, "TYPE");
-        public final static Property Picurl = new Property(2, String.class, "picurl", false, "PICURL");
-        public final static Property Title = new Property(3, String.class, "title", false, "TITLE");
-        public final static Property Content = new Property(4, String.class, "content", false, "CONTENT");
-        public final static Property Flowcoins = new Property(5, String.class, "flowcoins", false, "FLOWCOINS");
-        public final static Property Time = new Property(6, String.class, "time", false, "TIME");
-        public final static Property Pageurl = new Property(7, String.class, "pageurl", false, "PAGEURL");
-        public final static Property Productid = new Property(8, String.class, "productid", false, "PRODUCTID");
-        public final static Property Extradata = new Property(9, String.class, "extradata", false, "EXTRADATA");
+        public final static Property Userid = new Property(1, String.class, "userid", false, "USERID");
+        public final static Property Type = new Property(2, String.class, "type", false, "TYPE");
+        public final static Property Picurl = new Property(3, String.class, "picurl", false, "PICURL");
+        public final static Property Title = new Property(4, String.class, "title", false, "TITLE");
+        public final static Property Content = new Property(5, String.class, "content", false, "CONTENT");
+        public final static Property Flowcoins = new Property(6, String.class, "flowcoins", false, "FLOWCOINS");
+        public final static Property Time = new Property(7, String.class, "time", false, "TIME");
+        public final static Property Pageurl = new Property(8, String.class, "pageurl", false, "PAGEURL");
+        public final static Property Productid = new Property(9, String.class, "productid", false, "PRODUCTID");
+        public final static Property Extradata = new Property(10, String.class, "extradata", false, "EXTRADATA");
     };
 
 
@@ -49,15 +50,16 @@ public class MyMessageDao extends AbstractDao<MyMessage, String> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'MY_MESSAGE' (" + //
                 "'MSGID' TEXT PRIMARY KEY NOT NULL ," + // 0: msgid
-                "'TYPE' TEXT," + // 1: type
-                "'PICURL' TEXT," + // 2: picurl
-                "'TITLE' TEXT," + // 3: title
-                "'CONTENT' TEXT," + // 4: content
-                "'FLOWCOINS' TEXT," + // 5: flowcoins
-                "'TIME' TEXT," + // 6: time
-                "'PAGEURL' TEXT," + // 7: pageurl
-                "'PRODUCTID' TEXT," + // 8: productid
-                "'EXTRADATA' TEXT);"); // 9: extradata
+                "'USERID' TEXT NOT NULL ," + // 1: userid
+                "'TYPE' TEXT," + // 2: type
+                "'PICURL' TEXT," + // 3: picurl
+                "'TITLE' TEXT," + // 4: title
+                "'CONTENT' TEXT," + // 5: content
+                "'FLOWCOINS' TEXT," + // 6: flowcoins
+                "'TIME' TEXT," + // 7: time
+                "'PAGEURL' TEXT," + // 8: pageurl
+                "'PRODUCTID' TEXT," + // 9: productid
+                "'EXTRADATA' TEXT);"); // 10: extradata
     }
 
     /** Drops the underlying database table. */
@@ -71,50 +73,51 @@ public class MyMessageDao extends AbstractDao<MyMessage, String> {
     protected void bindValues(SQLiteStatement stmt, MyMessage entity) {
         stmt.clearBindings();
         stmt.bindString(1, entity.getMsgid());
+        stmt.bindString(2, entity.getUserid());
  
         String type = entity.getType();
         if (type != null) {
-            stmt.bindString(2, type);
+            stmt.bindString(3, type);
         }
  
         String picurl = entity.getPicurl();
         if (picurl != null) {
-            stmt.bindString(3, picurl);
+            stmt.bindString(4, picurl);
         }
  
         String title = entity.getTitle();
         if (title != null) {
-            stmt.bindString(4, title);
+            stmt.bindString(5, title);
         }
  
         String content = entity.getContent();
         if (content != null) {
-            stmt.bindString(5, content);
+            stmt.bindString(6, content);
         }
  
         String flowcoins = entity.getFlowcoins();
         if (flowcoins != null) {
-            stmt.bindString(6, flowcoins);
+            stmt.bindString(7, flowcoins);
         }
  
         String time = entity.getTime();
         if (time != null) {
-            stmt.bindString(7, time);
+            stmt.bindString(8, time);
         }
  
         String pageurl = entity.getPageurl();
         if (pageurl != null) {
-            stmt.bindString(8, pageurl);
+            stmt.bindString(9, pageurl);
         }
  
         String productid = entity.getProductid();
         if (productid != null) {
-            stmt.bindString(9, productid);
+            stmt.bindString(10, productid);
         }
  
         String extradata = entity.getExtradata();
         if (extradata != null) {
-            stmt.bindString(10, extradata);
+            stmt.bindString(11, extradata);
         }
     }
 
@@ -129,15 +132,16 @@ public class MyMessageDao extends AbstractDao<MyMessage, String> {
     public MyMessage readEntity(Cursor cursor, int offset) {
         MyMessage entity = new MyMessage( //
             cursor.getString(offset + 0), // msgid
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // type
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // picurl
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // title
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // content
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // flowcoins
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // time
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // pageurl
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // productid
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // extradata
+            cursor.getString(offset + 1), // userid
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // type
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // picurl
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // title
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // content
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // flowcoins
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // time
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // pageurl
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // productid
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // extradata
         );
         return entity;
     }
@@ -146,15 +150,16 @@ public class MyMessageDao extends AbstractDao<MyMessage, String> {
     @Override
     public void readEntity(Cursor cursor, MyMessage entity, int offset) {
         entity.setMsgid(cursor.getString(offset + 0));
-        entity.setType(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setPicurl(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setTitle(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setContent(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setFlowcoins(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setTime(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setPageurl(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setProductid(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setExtradata(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setUserid(cursor.getString(offset + 1));
+        entity.setType(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setPicurl(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setTitle(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setContent(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setFlowcoins(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setTime(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setPageurl(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setProductid(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setExtradata(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
      }
     
     /** @inheritdoc */

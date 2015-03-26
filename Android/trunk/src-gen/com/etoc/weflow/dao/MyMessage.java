@@ -8,6 +8,8 @@ public class MyMessage {
 
     /** Not-null value. */
     private String msgid;
+    /** Not-null value. */
+    private String userid;
     private String type;
     private String picurl;
     private String title;
@@ -25,8 +27,9 @@ public class MyMessage {
         this.msgid = msgid;
     }
 
-    public MyMessage(String msgid, String type, String picurl, String title, String content, String flowcoins, String time, String pageurl, String productid, String extradata) {
+    public MyMessage(String msgid, String userid, String type, String picurl, String title, String content, String flowcoins, String time, String pageurl, String productid, String extradata) {
         this.msgid = msgid;
+        this.userid = userid;
         this.type = type;
         this.picurl = picurl;
         this.title = title;
@@ -46,6 +49,16 @@ public class MyMessage {
     /** Not-null value; ensure this value is available before it is saved to the database. */
     public void setMsgid(String msgid) {
         this.msgid = msgid;
+    }
+
+    /** Not-null value. */
+    public String getUserid() {
+        return userid;
+    }
+
+    /** Not-null value; ensure this value is available before it is saved to the database. */
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getType() {

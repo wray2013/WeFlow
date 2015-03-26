@@ -7,8 +7,14 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dao.MyMessage;
+import com.etoc.weflow.net.GsonResponseObject.MessageList;
+import com.etoc.weflow.net.GsonResponseObject.PushMsgResp;
 import com.etoc.weflow.receiver.PushHeatbeatReceiver;
 import com.etoc.weflow.utils.NotificationUtil;
+import com.google.gson.Gson;
 
 
 import android.app.ActivityManager;
@@ -56,8 +62,10 @@ public class PushService extends Service implements Callback {
 			String msg = intent.getStringExtra("ExtraMsg");
 			//有消息收到
 			if(msg != null && !"".equals(msg)) {
+				Log.d(TAG, "msg received ==>" + msg + "<==");
+				PushMsgResp resp = null;
 				try {
-					JSONTokener jsonParser = new JSONTokener(msg);
+					/*JSONTokener jsonParser = new JSONTokener(msg);
 					JSONObject result = (JSONObject) jsonParser.nextValue();
 					String msgtype = result.getString("msgtype");
 					// 收到消息推送
@@ -71,9 +79,72 @@ public class PushService extends Service implements Callback {
 									pushtitle == null ? "有新消息" : pushtitle, pushcontent,
 									pushhint == null ? "点击查看详情" : pushhint);
 						}
-					}
-				} catch (JSONException ex) {
+					}*/
+					Gson gson = new Gson();
+					resp = gson.fromJson(msg, PushMsgResp.class);
+					
+				} catch (Exception ex) {
 					ex.printStackTrace();
+				}
+				
+				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+				boolean isLogin = (info != null && info.getUserid() != null && !info.getUserid().equals(""));
+				
+				if (resp != null) {
+					// 收到通知
+					if("1".equals(resp.msgtype)) {
+						String pushcontent = emptyToNull(resp.msgcontent);
+						String pushhint = emptyToNull(resp.msghint);
+						String pushtitle = emptyToNull(resp.msgtitle);
+						if (!isAppInFront()) {
+							NotificationUtil.PopNotification(this,
+									R.drawable.ic_launcher,
+									pushtitle == null ? "有新消息" : pushtitle,
+									pushcontent,
+									pushhint == null ? "点击查看详情" : pushhint);
+						}
+					// 收到消息
+					} else if("2".equals(resp.msgtype) && isLogin) {
+						if(resp.msglist != null && resp.msglist instanceof MessageList) {
+							MessageList list = resp.msglist;
+							List<MyMessage> l = WeFlowApplication.getAppInstance().getMyMessage();
+							MyMessage msgitem = new MyMessage();
+							msgitem.setMsgid(list.msgid);
+							msgitem.setUserid(info.getUserid());
+							msgitem.setType(list.type);
+							msgitem.setPicurl(list.picurl);
+							msgitem.setTitle(list.title);
+							msgitem.setContent(list.content);
+							msgitem.setFlowcoins(list.flowcoins);
+							msgitem.setTime(list.time);
+							msgitem.setPageurl(list.pageurl);
+							msgitem.setProductid(list.productid);
+							msgitem.setExtradata(list.extradata);
+							l.add(msgitem);
+							WeFlowApplication.getAppInstance().PersistMyMessage(l);
+						}
+					}
+				} else {
+					try {
+						JSONTokener jsonParser = new JSONTokener(msg);
+						JSONObject result = (JSONObject) jsonParser.nextValue();
+						String msgtype = result.getString("msgtype");
+						// 收到消息推送
+						if ("1".equals(msgtype)) {
+							String pushcontent = emptyToNull(result.getString("msgcontent"));
+							String pushhint = emptyToNull(result.getString("msghint"));
+							String pushtitle = emptyToNull(result.getString("msgtitle"));
+							if (!isAppInFront()) {
+								NotificationUtil.PopNotification(this,
+										R.drawable.ic_launcher,
+										pushtitle == null ? "有新消息" : pushtitle,
+										pushcontent,
+										pushhint == null ? "点击查看详情" : pushhint);
+							}
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}

@@ -29,6 +29,7 @@ import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.MyMessage;
 import com.etoc.weflow.dao.MyMessageDao;
+import com.etoc.weflow.dao.MyMessageDao.Properties;
 import com.etoc.weflow.event.DialogUtils;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.utils.ConStant;
@@ -115,6 +116,50 @@ public class WeFlowApplication extends Application {
 		}
 		db.close();
 		return list;
+	}
+	
+	public List<MyMessage> getMyMessageByUserid(String userid) {
+		List<MyMessage> list = new ArrayList<MyMessage>();
+		if(daoSession == null || !db.isOpen()) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+		}
+        
+		myMessageDao = daoSession.getMyMessageDao();
+		if(myMessageDao.count() > 0 && userid != null) {
+			list = myMessageDao.queryBuilder().where(Properties.Userid.eq(userid)).list();
+		}
+		db.close();
+		return list;
+	}
+	
+	public void clearMyMessage() {
+		if(daoSession == null || !db.isOpen()) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+		}
+        
+		myMessageDao = daoSession.getMyMessageDao();
+		myMessageDao.deleteAll();
+		db.close();
+	}
+	
+	public void PersistMyMessage(List<MyMessage> msglist) {
+		if(msglist != null && msglist.size() > 0) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+	        
+	        myMessageDao = daoSession.getMyMessageDao();
+	        myMessageDao.deleteAll();
+	        myMessageDao.insertOrReplaceInTx(msglist);
+			db.close();
+		}
 	}
 	
 	public AccountInfo getAccountInfo() {
