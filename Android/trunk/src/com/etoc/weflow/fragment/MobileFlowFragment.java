@@ -250,7 +250,6 @@ public class MobileFlowFragment extends Fragment implements Callback {
 						for (MobileFlowResp flowResp:resp.chargelist) {
 							Collections.addAll(flowList, flowResp.products);
 						}
-						
 						adapter.notifyDataSetChanged();
 					}
 				}

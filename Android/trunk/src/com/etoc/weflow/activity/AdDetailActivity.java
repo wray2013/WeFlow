@@ -40,6 +40,7 @@ public class AdDetailActivity extends TitleRootActivity {
 	private ImageButton ibPlay;
 	private VideoView vvAdvVideo;
 	private TextView tvSecRemains;
+	private TextView tvAdins;
 	
 	private MediaController mediaController;
 	
@@ -71,6 +72,8 @@ public class AdDetailActivity extends TitleRootActivity {
 		tvSecRemains = (TextView) findViewById(R.id.tv_sec_remains);
 		tvSecRemains.setVisibility(View.GONE);
 		
+		tvAdins = (TextView) findViewById(R.id.tv_ad_ins);
+		
 		mediaController=new MediaController(this);
 		vvAdvVideo = (VideoView) findViewById(R.id.vv_ad_video);
 		vvAdvVideo.setOnPreparedListener(mOnPreparedListener);
@@ -88,6 +91,8 @@ public class AdDetailActivity extends TitleRootActivity {
 		AdUrl = adInfo.video;
 		TextView tvContent = (TextView) findViewById(R.id.tv_ad_content);
 		tvContent.setText(adInfo.content);
+		
+		tvAdins.setText(adInfo.instruction);
 		
 		TextView tvCoins = (TextView) findViewById(R.id.tv_content);
 		float coins = 0;
