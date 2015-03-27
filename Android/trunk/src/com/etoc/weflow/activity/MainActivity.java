@@ -1,7 +1,5 @@
 package com.etoc.weflow.activity;
 
-import java.util.List;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,19 +8,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.provider.Contacts.People;
-import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etoc.weflow.Config;
@@ -34,21 +26,13 @@ import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
-import com.etoc.weflow.event.FragmentEvent;
 import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
 import com.etoc.weflow.fragment.HomePageFragment;
-import com.etoc.weflow.fragment.MenuFragment;
 import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
-import com.etoc.weflow.net.GsonResponseObject.MessageList;
-import com.etoc.weflow.net.GsonResponseObject.PushMsgResp;
-import com.etoc.weflow.utils.PushMsgUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.version.CheckUpdate;
-import com.google.gson.Gson;
-
-import de.greenrobot.event.EventBus;
 
 public class MainActivity extends TitleRootActivity implements Callback, OnClickListener {
 	
@@ -302,8 +286,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				hideLeftButton();
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
-				hideLeftButton();
+//				hideLeftButton();
 				hideRightButton();
+				setLeftButtonBackground(R.drawable.btn_scan);
 			} else if(fragment instanceof MyselfFragment) {
 				title = "我";
 				hideLeftButton();
@@ -385,6 +370,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				} else {
 					startActivity(new Intent(this, LoginActivity.class));
 				}
+			} else if(currContentFragment instanceof DiscoveryFragment) {
+				Intent discIntent = new Intent(this, CaptureActivity.class);
+				startActivity(discIntent);
 			}
             break;
 		case R.id.btn_title_right:
