@@ -228,7 +228,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					selectId = item.flowpkgid;
+					selectId = item.chargesid;
 					exchangeDialog.show();
 				}
 
@@ -246,8 +246,10 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			if (msg.obj != null) {
 				FlowPkgListResp resp = (FlowPkgListResp) msg.obj;
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
-					if (resp.list != null && resp.list.length > 0) {
-						Collections.addAll(flowList, resp.list[0].products);
+					if (resp.chargelist != null && resp.chargelist.length > 0) {
+						for (MobileFlowResp flowResp:resp.chargelist) {
+							Collections.addAll(flowList, flowResp.products);
+						}
 						
 						adapter.notifyDataSetChanged();
 					}
@@ -263,9 +265,11 @@ public class MobileFlowFragment extends Fragment implements Callback {
 					if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
 					}
+					exchangeDialog.dismiss();
 				} else if (Requester.isProcessed(chargeResp.status)){
 					PromptDialog.Alert("订购已处理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
+					exchangeDialog.dismiss();
 				} else if (Requester.isLowFlow(chargeResp.status)) {
 					PromptDialog.Alert(ConStant.LOW_FLOW);
 				}  else {

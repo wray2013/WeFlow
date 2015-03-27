@@ -574,7 +574,7 @@ public class Requester {
 		exchangeFlowPkgRequest request = new exchangeFlowPkgRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
-		request.flowpkgid = productid;
+		request.productid = productid;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_FLOW_PKG, ExchangeFlowPkgResp.class);

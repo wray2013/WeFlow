@@ -300,7 +300,7 @@ public class GsonRequestObject {
 	//2.6.11 兑换流量包
 	public static class exchangeFlowPkgRequest {
 		String userid;  //用户号码
-		String flowpkgid;  //流量包id
+		String productid;  //流量包id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}

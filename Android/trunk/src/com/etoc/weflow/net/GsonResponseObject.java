@@ -395,7 +395,7 @@ public class GsonResponseObject {
 	
 	public static class FlowPkgListResp {
 		public String status;
-		public MobileFlowResp[] list;
+		public MobileFlowResp[] chargelist;
 	}
 	
 	public static class MobileFlowResp {
@@ -406,7 +406,7 @@ public class GsonResponseObject {
 	}
 	
 	public static class MobileFlowProduct {
-		public String flowpkgid;
+		public String chargesid;
 		public String title;
 		public String desc;
 		public String imgsrc;
