@@ -16,7 +16,7 @@
 	       	android:textColor="#212434"
 	       	android:textSize="20sp"
 	       	android:singleLine="true"
-	       	android:maxLength="8"
+	       	android:maxLength="11"
 	       	android:inputType="number"
 	       	android:background="@null"
 	       	android:hint="请输入手机号码"

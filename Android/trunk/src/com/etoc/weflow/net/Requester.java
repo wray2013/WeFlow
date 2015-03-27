@@ -202,7 +202,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_FLOW_PKG_LIST = "/vs/api/user/flowPkgList";
 	
 	public static final int RESPONSE_TYPE_EXCHANGE_FLOW_PKG = 0xffee2126;
-	public static final String RIA_INTERFACE_EXCHANGE_FLOW_PKG = "/vs/api/user/exchangeGamePkg";
+	public static final String RIA_INTERFACE_EXCHANGE_FLOW_PKG = "/vs/api/user/exchangeFlowPkg";
 	
 	public static final int RESPONSE_TYPE_GIFT_LIST = 0xffee2127;
 	public static final String RIA_INTERFACE_GIFT_LIST = "/vs/api/user/giftList";
@@ -574,7 +574,7 @@ public class Requester {
 		exchangeFlowPkgRequest request = new exchangeFlowPkgRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
-		request.flowpkgid = productid;
+		request.productid = productid;
 		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_FLOW_PKG, ExchangeFlowPkgResp.class);

@@ -395,7 +395,7 @@ public class GsonResponseObject {
 	
 	public static class FlowPkgListResp {
 		public String status;
-		public MobileFlowResp[] list;
+		public MobileFlowResp[] chargelist;
 	}
 	
 	public static class MobileFlowResp {
@@ -406,7 +406,7 @@ public class GsonResponseObject {
 	}
 	
 	public static class MobileFlowProduct {
-		public String flowpkgid;
+		public String chargesid;
 		public String title;
 		public String desc;
 		public String imgsrc;
@@ -529,6 +529,7 @@ public class GsonResponseObject {
 		
 		public String flowcoins;  //流量币
 		public String content;    //内容描述
+		public String instruction; //活动介绍
 		public String duration;   //广告时长s
 		public String isfinished;   //是否完成观看(赚币) 0-未完成 1-已完成
 		
