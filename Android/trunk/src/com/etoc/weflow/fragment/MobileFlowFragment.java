@@ -38,6 +38,7 @@ import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
 import com.etoc.weflow.net.GsonResponseObject.QChargeResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.nostra13.universalimageloader.api.MyImageLoader;
@@ -220,7 +221,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.desc);
-			holder.tvFlowCoins.setText(item.cost + "流量币");
+			holder.tvFlowCoins.setText(NumberUtils.convert2IntStr(item.cost) + "流量币");
 			
 			holder.tvExchange.setOnClickListener(new View.OnClickListener() {
 				
