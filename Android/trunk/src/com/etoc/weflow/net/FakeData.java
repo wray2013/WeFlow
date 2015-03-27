@@ -135,7 +135,7 @@ public class FakeData {
 		
 		FlowPkgListResp r9 = new FlowPkgListResp();
 		r9.status = "0";
-		r9.list = (MobileFlowResp[]) createMoblieFlowList().toArray(new MobileFlowResp[0]);
+		r9.chargelist = (MobileFlowResp[]) createMoblieFlowList().toArray(new MobileFlowResp[0]);
 		map.put(Requester.RIA_INTERFACE_FLOW_PKG_LIST, r9);
 		
 		GamePkgListResp r10 = new GamePkgListResp();

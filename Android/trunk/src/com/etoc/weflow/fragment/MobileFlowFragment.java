@@ -245,8 +245,8 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			if (msg.obj != null) {
 				FlowPkgListResp resp = (FlowPkgListResp) msg.obj;
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
-					if (resp.list != null && resp.list.length > 0) {
-						Collections.addAll(flowList, resp.list[0].products);
+					if (resp.chargelist != null && resp.chargelist.length > 0) {
+						Collections.addAll(flowList, resp.chargelist[0].products);
 						
 						adapter.notifyDataSetChanged();
 					}
