@@ -44,6 +44,7 @@ import com.etoc.weflow.fragment.XFragment;
 import com.etoc.weflow.net.GsonResponseObject.MessageList;
 import com.etoc.weflow.net.GsonResponseObject.PushMsgResp;
 import com.etoc.weflow.utils.PushMsgUtil;
+import com.etoc.weflow.utils.RandomUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.version.CheckUpdate;
 import com.google.gson.Gson;
@@ -364,20 +365,32 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		case R.id.btn_title_left:
 			if(currContentFragment instanceof HomePageFragment) {
 				/*PushMsgUtil pushmsg = new PushMsgUtil(handler, 0x88661256);
-				List<MessageList> fakedata = MyMessageActivity.makeFakeData();
-				MessageList msglist = fakedata.get(num % fakedata.size());
-				num ++;
+//				List<MessageList> fakedata = MyMessageActivity.makeFakeData();
+//				MessageList msglist = fakedata.get(num % fakedata.size());
+//				num ++;
+				
+				MessageList item = new MessageList();
+				item.msgid = "msg" + String.format("%05d", RandomUtils.getRandom(10000));
+				item.type = "02";//看视频
+				item.picurl = "";
+				item.title = "欢迎您使用流量钱包";
+				item.content = "现在完成任务，即刻领取大礼\n点击开始赚币>>";
+				item.flowcoins = "";
+				item.time = System.currentTimeMillis() + "";
+				item.pageurl = "";
+				item.productid = "";
+				item.extradata = "";
 				
 				PushMsgResp resp = new PushMsgResp();
 				resp.msgtype = "2";
 				resp.msgtitle = "有新消息";
 				resp.msgcontent = "这是一条测试消息";
 				resp.msghint = "点击查看";
-				resp.msglist = msglist;
+				resp.msglist = item;
 				String jsonStr = new Gson().toJson(resp);
 				
 	            String sendMSG = "{\"message\" : " + jsonStr + "}";
-	            pushmsg.execute(sendMSG, "15927130377");*/
+	            pushmsg.execute(sendMSG, "18627934685");*/
 	            
 				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
 				if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
