@@ -202,7 +202,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_FLOW_PKG_LIST = "/vs/api/user/flowPkgList";
 	
 	public static final int RESPONSE_TYPE_EXCHANGE_FLOW_PKG = 0xffee2126;
-	public static final String RIA_INTERFACE_EXCHANGE_FLOW_PKG = "/vs/api/user/exchangeGamePkg";
+	public static final String RIA_INTERFACE_EXCHANGE_FLOW_PKG = "/vs/api/user/exchangeFlowPkg";
 	
 	public static final int RESPONSE_TYPE_GIFT_LIST = 0xffee2127;
 	public static final String RIA_INTERFACE_GIFT_LIST = "/vs/api/user/giftList";
