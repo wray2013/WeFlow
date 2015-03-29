@@ -68,7 +68,7 @@ public class WfSoft implements Serializable {
 	private BigDecimal sharecoins;
 
 	@Column
-	private Long size;
+	private String size;
 
 	@Column
 	private String stype;
@@ -285,7 +285,7 @@ public class WfSoft implements Serializable {
 	 * @since 1.0.0
 	 */
 
-	public Long getSize() {
+	public String getSize() {
 		return size;
 	}
 
@@ -293,7 +293,7 @@ public class WfSoft implements Serializable {
 	 * @param size
 	 *            the size to set
 	 */
-	public void setSize(Long size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 

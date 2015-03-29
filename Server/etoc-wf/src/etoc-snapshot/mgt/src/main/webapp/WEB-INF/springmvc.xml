@@ -68,7 +68,7 @@
 			
 	</beans>
 
-	<beans profile="test">
+	<beans profile="test,develop">
 		<context:property-placeholder
 			ignore-unresolvable="true" file-encoding="UTF-8"
 			location="classpath*:application.test.properties" />

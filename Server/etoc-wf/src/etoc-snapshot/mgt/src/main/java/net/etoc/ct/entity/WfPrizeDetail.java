@@ -38,8 +38,10 @@ public class WfPrizeDetail implements Serializable {
 
 	private static final long serialVersionUID = 955980058950298015L;
 	@Id
+	@Column(name = "PRIZE_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int prizeid;
+
 	@Column(name = "PRIZE_COUNT")
 	private Integer prizeCount;
 

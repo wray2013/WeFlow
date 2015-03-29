@@ -136,20 +136,25 @@ public class WfAdvertiseServiceImpl implements WfAdvertiseService {
 		if (list == null || list.size() == 0) {
 			return null;
 		}
-		Map<String, OrderRel> tmp = Maps.newHashMap();
+
 		for (OrderRel bo : list) {
 			ids.add(Integer.valueOf(bo.getProductid()));
-			tmp.put(bo.getProductid(), bo);
 		}
-		List<WfAdvertise> rs = wfAdvertiseRepository.findAll(ids);
-		OrderRel orl = null;
-		for (WfAdvertise wd : rs) {
-			orl = tmp.get(wd.getVideoid());
-			wd.setFinishtime(orl.getDate());
-			wd.setFlowcoins(new BigDecimal(orl.getCost()));
-			wd.setTitle(orl.getTitle());
 
+		List<WfAdvertise> rs = wfAdvertiseRepository.findAll(ids);
+		Map<Integer, WfAdvertise> tmp = Maps.newHashMap();
+		for (WfAdvertise bo : rs) {
+			tmp.put(bo.getVideoid(), bo);
 		}
-		return rs;
+		List<WfAdvertise> result = Lists.newArrayList();
+		WfAdvertise ws = null;
+		for (OrderRel bo : list) {
+			ws = tmp.get(Integer.valueOf(bo.getProductid()));
+			ws.setFinishtime(bo.getDate());
+			ws.setFlowcoins(new BigDecimal(bo.getCost()));
+			ws.setTitle(bo.getTitle());
+			result.add(ws);
+		}
+		return result;
 	}
 }

@@ -21,6 +21,9 @@
   <c:set target="${self}" property="css" value="<%= new java.util.HashMap()%>" />
   <c:set target="${self}" property="js" value="<%= new java.util.HashMap()%>" />
   <c:set target="${self}" property="content" value="<%= new java.util.HashMap()%>" />
+  <c:set target="${self}" property="headerbar" value="true" />
+  <c:set target="${self}" property="sidebar" value="true" />
+  
   
   <spring:eval var="appVars" expression="@appVars.instance" />
   

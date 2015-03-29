@@ -12,6 +12,7 @@ dependencies {
   compile "org.apache.shiro:shiro-core:$shiroVersion"
   compile "org.apache.shiro:shiro-ehcache:$shiroVersion"
   compile "org.apache.shiro:shiro-spring:$shiroVersion"
+  compile "org.apache.shiro:shiro-quartz:$shiroVersion"
   compile "org.bouncycastle:bcprov-jdk16:$bcprovVersion"
   compile "org.codehaus.groovy:groovy-all:$groovyVersion"
   compile "org.freemarker:freemarker:$freemarkerVersion"

@@ -138,7 +138,7 @@ public class SoftController {
 		CrmOrderRequest ar = (CrmOrderRequest) jsonUtils.getResult(json,
 				CrmOrderRequest.class);
 		CrmOderHisRequest cr = new CrmOderHisRequest();
-		BeanUtils.copyProperties(cr, ar);
+		BeanUtils.copyProperties(ar, cr);
 		cr.setType(PType.down_soft.getValue());
 		List<WfSoft> list = wfSoftService.findListByIds("querySubProdList", cr);
 		rsMap.put("status", (RsCode.OK.getCode()));

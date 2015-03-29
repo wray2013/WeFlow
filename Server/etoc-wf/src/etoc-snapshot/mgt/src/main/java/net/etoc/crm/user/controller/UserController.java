@@ -241,7 +241,7 @@ public class UserController {
 		AppCrmUserRequest ar = (AppCrmUserRequest) jsonUtils.getResult(json,
 				AppCrmUserRequest.class);
 
-		return appUserService.loginORregister("autoLogin", ar);
+		return appUserService.loginORregister("resetPassword", ar);
 
 	}
 
@@ -456,7 +456,7 @@ public class UserController {
 			return ar;
 		}
 		PhoneChargeListResp result = appUserService.findAppProduct(
-				PMerchant.fl_charge.getValue(), PType.change_wf.getValue());
+				PMerchant.app.getValue(), PType.change_wf.getValue());
 		if (result == null) {
 			PhoneChargeListResp ar = new PhoneChargeListResp();
 			ar.setStatus(RsCode.OK.getCode());
@@ -648,6 +648,25 @@ public class UserController {
 	}
 
 	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/vs/api/user/popFlow", method = RequestMethod.POST)
+	@ResponseBody
+	public CrmFlowStoreAndPopResponse popFlow(String json, String sign)
+			throws RestClientException, IOException {
+		ResponseBase rs = SignUtils.sign(json, sign);
+		if (rs != null) {
+			CrmFlowStoreAndPopResponse ar = new CrmFlowStoreAndPopResponse();
+			BeanUtils.copyProperties(rs, ar);
+			return ar;
+		}
+		CrmFlowBankRequest rb = (CrmFlowBankRequest) jsonUtils.getResult(json,
+				CrmFlowBankRequest.class);
+
+		CrmFlowStoreAndPopResponse result = appUserService.popFlow("flowBank",
+				rb);
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/vs/api/user/costFlowList", method = RequestMethod.POST)
 	@ResponseBody
 	public CrmOrderHisResponse costFlowList(String json, String sign)
@@ -662,7 +681,7 @@ public class UserController {
 		CrmOrderRequest ar = (CrmOrderRequest) jsonUtils.getResult(json,
 				CrmOrderRequest.class);
 		CrmOderHisRequest cr = new CrmOderHisRequest();
-		BeanUtils.copyProperties(cr, ar);
+		BeanUtils.copyProperties(ar, cr);
 		CrmOrderHisResponse result = appUserService.querySubProdList(
 				"querySubProdList", cr);
 		return result;

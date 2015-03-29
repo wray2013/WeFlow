@@ -241,11 +241,14 @@ public class AppUserServiceImpl implements AppUserService {
 		}
 
 		Map<String, List<WfCrmProduct>> groupMap = Maps.newHashMap();
-		List<WfCrmProduct> ct = Lists.newArrayList();
+		List<WfCrmProduct> ct = null;
 		for (WfCrmProduct tmp : page.getContent()) {
 			if (!groupMap.containsKey(tmp.getPbusinessid())) {
+				ct = Lists.newArrayList();
 				ct.add(tmp);
 				groupMap.put(tmp.getPbusinessid(), ct);
+			} else {
+				groupMap.get(tmp.getPbusinessid()).add(tmp);
 			}
 		}
 		List<WfCrmProduct> boList = null;
@@ -253,13 +256,13 @@ public class AppUserServiceImpl implements AppUserService {
 		List<RechargeProduct> lrp = null;
 		RechargePhoneResp resp = null;
 		List<RechargePhoneResp> lresp = Lists.newArrayList();
-		;
 		PhoneChargeListResp result = new PhoneChargeListResp();
 		for (Map.Entry<String, List<WfCrmProduct>> m : groupMap.entrySet()) {
 			boList = m.getValue();
 			lrp = Lists.newArrayList();
 			resp = new RechargePhoneResp();
 			resp.setType(m.getKey());
+
 			for (WfCrmProduct bo : boList) {
 				tmp = new RechargeProduct();
 				tmp.setChargesid(bo.getId() + "");

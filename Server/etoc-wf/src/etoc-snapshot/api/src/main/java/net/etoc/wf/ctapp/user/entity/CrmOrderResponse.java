@@ -27,6 +27,7 @@ public class CrmOrderResponse extends ResponseBase {
 	private static final long serialVersionUID = -1705165231157940818L;
 	private String flowcoins;
 	private String keycode;
+	private String cardcode;
 
 	/**
 	 * flowcoins
@@ -64,6 +65,25 @@ public class CrmOrderResponse extends ResponseBase {
 	 */
 	public void setKeycode(String keycode) {
 		this.keycode = keycode;
+	}
+
+	/**
+	 * cardcode
+	 *
+	 * @return the cardcode
+	 * @since 1.0.0
+	 */
+
+	public String getCardcode() {
+		return cardcode;
+	}
+
+	/**
+	 * @param cardcode
+	 *            the cardcode to set
+	 */
+	public void setCardcode(String cardcode) {
+		this.cardcode = cardcode;
 	}
 
 }

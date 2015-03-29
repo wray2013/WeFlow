@@ -16,7 +16,7 @@
         /static/** = anon
         /vs/api/** = anon
         /export/** = anon
-        
+        /** = anon
       </value>
     </property>
   </bean>
@@ -45,18 +45,14 @@
 		<property name="cookie" ref="rememberMeCookie" />
 	</bean>
 	<!-- rememberMe管理器，cipherKey是加密rememberMe Cookie的密钥；默认AES算法； -->
-	
-  <bean id="defaultSecurityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
-    <property name="realm" ref="shiroDbRealm" />
-    <property name="cacheManager" ref="shiroEhcacheManager" />
-    <property name="rememberMeManager" ref="rememberMeManager"/>  
-  </bean>
-
  
   <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-    <property name="realm" ref="shiroDbRealm" />
-    <property name="cacheManager" ref="shiroEhcacheManager" />
-  </bean>
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+		<property name="rememberMeManager" ref="rememberMeManager"/>
+	</bean>
+	
+
 
   <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
     <property name="cacheManager" ref="ehCacheManager"/>

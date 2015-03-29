@@ -113,21 +113,26 @@ public class WfSoftServiceImpl implements WfSoftService {
 			return null;
 		}
 		List<Integer> ids = Lists.newArrayList();
-		Map<String, OrderRel> tmp = Maps.newHashMap();
 		for (OrderRel bo : list) {
 			ids.add(Integer.valueOf(bo.getProductid()));
-			tmp.put(bo.getProductid(), bo);
 		}
 
 		List<WfSoft> rs = repository.findAll(ids);
-		OrderRel or = null;
+		Map<Integer, WfSoft> tmp = Maps.newHashMap();
 		for (WfSoft ws : rs) {
-			or = tmp.get(ws.getAppid());
-			ws.setFlowcoins(new BigDecimal(or.getCost()));
-			ws.setDownloadfinishtime(or.getDate());
-			ws.setTitle(or.getTitle());
+			tmp.put(ws.getAppid(), ws);
 		}
-		return rs;
-	}
 
+		WfSoft or = null;
+		List<WfSoft> resultList = Lists.newArrayList();
+		for (OrderRel bo : list) {
+			or = tmp.get(Integer.valueOf(bo.getProductid()));
+			or.setFlowcoins(new BigDecimal(bo.getCost()));
+			or.setDownloadfinishtime(bo.getDate());
+			or.setTitle(bo.getTitle());
+			resultList.add(or);
+		}
+
+		return resultList;
+	}
 }

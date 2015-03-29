@@ -17,11 +17,11 @@ import net.etoc.ct.repository.WfCtInfoRepository;
 import net.etoc.ct.service.WfCtInfoService;
 import net.etoc.wf.core.util.AppVars;
 import net.etoc.wf.core.util.JsonUtils;
+import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.base.ResponseBase;
 import net.etoc.wf.ctapp.base.RsCode;
 import net.etoc.wf.ctapp.user.entity.FeedBackRequest;
 import net.etoc.wf.ctapp.user.entity.UserSignResponse;
-import net.sf.ehcache.search.impl.BaseResult;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
@@ -158,7 +158,7 @@ public class WfCtInfoServiceImpl implements WfCtInfoService {
 	 * net.etoc.wf.ctapp.user.entity.UserSignResponse)
 	 */
 	@Override
-	public UserSignResponse sign(String methodSuffix, BaseResult fr)
+	public UserSignResponse sign(String methodSuffix, RequestBase fr)
 			throws RestClientException, JsonProcessingException {
 		String rb = restTemplate.postForObject(AppVars.getInstance().crmUrl
 				+ methodSuffix, jsonUtils.getJsonResult(fr), String.class);

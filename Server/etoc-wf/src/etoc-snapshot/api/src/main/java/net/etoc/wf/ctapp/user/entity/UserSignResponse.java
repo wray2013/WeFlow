@@ -20,6 +20,9 @@ import net.etoc.wf.ctapp.base.ResponseBase;
 public class UserSignResponse extends ResponseBase {
 	private String signcount;
 	private String signlist;
+	private String signflowcoins;
+	private String flowcoins;
+	private String singleflowcoins;
 
 	/**
 	 * signcount
@@ -57,6 +60,63 @@ public class UserSignResponse extends ResponseBase {
 	 */
 	public void setSignlist(String signlist) {
 		this.signlist = signlist;
+	}
+
+	/**
+	 * signflowcoins
+	 *
+	 * @return the signflowcoins
+	 * @since 1.0.0
+	 */
+
+	public String getSignflowcoins() {
+		return signflowcoins;
+	}
+
+	/**
+	 * @param signflowcoins
+	 *            the signflowcoins to set
+	 */
+	public void setSignflowcoins(String signflowcoins) {
+		this.signflowcoins = signflowcoins;
+	}
+
+	/**
+	 * flowcoins
+	 *
+	 * @return the flowcoins
+	 * @since 1.0.0
+	 */
+
+	public String getFlowcoins() {
+		return flowcoins;
+	}
+
+	/**
+	 * @param flowcoins
+	 *            the flowcoins to set
+	 */
+	public void setFlowcoins(String flowcoins) {
+		this.flowcoins = flowcoins;
+	}
+
+	/**
+	 * singleflowcoins
+	 *
+	 * @return the singleflowcoins
+	 * @since 1.0.0
+	 */
+
+	public String getSingleflowcoins() {
+		return singleflowcoins;
+	}
+
+	/**
+	 * @param singleflowcoins
+	 *            the singleflowcoins to set
+	 */
+	public void setSingleflowcoins(String singleflowcoins) {
+		this.singleflowcoins = singleflowcoins;
 	}
 
 }

@@ -109,6 +109,8 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 		CrmOrderResponse result = appUserService.orderLargess("orderLargess",
 				ar);
 		wr.setFlowcoins(result.getFlowcoins());
+		wr.setStatus(result.getStatus());
+		wr.setMessage(result.getMessage());
 		return wr;
 	}
 
@@ -138,7 +140,8 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 					continue;
 				}
 				prize.setPrizeCount(prize.getPrizeCount() - 1);
-				prize = dao.save(prize);
+
+				this.saveOrupdate(prize);
 				return prize;
 			} else {
 				max = max - currentProp;
@@ -168,24 +171,28 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 			return null;
 		}
 		List<Integer> ids = Lists.newArrayList();
-		Map<String, OrderRel> tmp = Maps.newHashMap();
 		for (OrderRel bo : list) {
 			ids.add(Integer.valueOf(bo.getProductid()));
-			tmp.put(bo.getProductid(), bo);
 		}
 
 		List<WfPrizeDetail> rs = dao.findAll(ids);
-		OrderRel or = null;
-		PrizeHisResponse phr = null;
+		Map<Integer, WfPrizeDetail> tmp = Maps.newHashMap();
+		for (WfPrizeDetail wd : rs) {
+			tmp.put(wd.getPrizeid(), wd);
+		}
+
 		List<PrizeHisResponse> result = Lists.newArrayList();
-		for (WfPrizeDetail ws : rs) {
+		PrizeHisResponse phr = null;
+		WfPrizeDetail wl = null;
+		for (OrderRel bo : list) {
 			phr = new PrizeHisResponse();
-			BeanUtils.copyProperties(phr, ws);
-			or = tmp.get(ws.getPrizeid());
-			phr.setTime(or.getDate());
-			phr.setTitle(or.getTitle());
+			wl = tmp.get(Integer.valueOf(bo.getProductid()));
+			BeanUtils.copyProperties(phr, wl);
+			phr.setTime(bo.getDate());
+			phr.setTitle(bo.getTitle());
 			result.add(phr);
 		}
+
 		return result;
 	}
 }

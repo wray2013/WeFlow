@@ -28,6 +28,7 @@ public class AppCrmUserRequest extends RequestBase {
 	private static final long serialVersionUID = -1762554830989958126L;
 	private String userid;
 	private String pwd;
+	private String newpassword;
 
 	private String mac;
 	private String imei;
@@ -49,6 +50,25 @@ public class AppCrmUserRequest extends RequestBase {
 	 */
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	/**
+	 * newpassword
+	 *
+	 * @return the newpassword
+	 * @since 1.0.0
+	 */
+
+	public String getNewpassword() {
+		return newpassword;
+	}
+
+	/**
+	 * @param newpassword
+	 *            the newpassword to set
+	 */
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
 	}
 
 	/**

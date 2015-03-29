@@ -132,6 +132,46 @@ public class AppProductResponse {
 		private String cost;// 话费流量币
 		private String title;
 		private String desc;
+		private String state;
+		private String cardcode;
+
+		/**
+		 * state
+		 *
+		 * @return the state
+		 * @since 1.0.0
+		 */
+
+		public String getState() {
+			return state;
+		}
+
+		/**
+		 * @param state
+		 *            the state to set
+		 */
+		public void setState(String state) {
+			this.state = state;
+		}
+
+		/**
+		 * cardcode
+		 *
+		 * @return the cardcode
+		 * @since 1.0.0
+		 */
+
+		public String getCardcode() {
+			return cardcode;
+		}
+
+		/**
+		 * @param cardcode
+		 *            the cardcode to set
+		 */
+		public void setCardcode(String cardcode) {
+			this.cardcode = cardcode;
+		}
 
 		/**
 		 * chargesid

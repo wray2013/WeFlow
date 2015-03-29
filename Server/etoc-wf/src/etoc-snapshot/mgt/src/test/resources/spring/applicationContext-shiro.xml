@@ -10,11 +10,12 @@
     <property name="successUrl" value="/index" />
     <property name="filterChainDefinitions">
       <value>
-      	/test/** = anon
+        /test/** = anon
         /login = authc
         /favicon.ico = anon
         /static/** = anon
         /vs/api/** = anon
+        /export/** = anon
         
       </value>
     </property>
@@ -44,18 +45,36 @@
 		<property name="cookie" ref="rememberMeCookie" />
 	</bean>
 	<!-- rememberMe管理器，cipherKey是加密rememberMe Cookie的密钥；默认AES算法； -->
-	
-  <bean id="defaultSecurityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
-    <property name="realm" ref="shiroDbRealm" />
-    <property name="cacheManager" ref="shiroEhcacheManager" />
-    <property name="rememberMeManager" ref="rememberMeManager"/>  
-  </bean>
-
  
   <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-    <property name="realm" ref="shiroDbRealm" />
-    <property name="cacheManager" ref="shiroEhcacheManager" />
-  </bean>
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+		<property name="rememberMeManager" ref="rememberMeManager"/>
+		<!-- <property name="sessionManager" ref="sessionManager"/> -->
+	</bean>
+	
+	<!-- 会话ID生成器 -->
+	<bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
+	<!-- 会话DAO -->
+	<bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+		<property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
+		<property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+	</bean>
+	<!-- 会话验证调度器 -->
+	<bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+		<property name="sessionValidationInterval" value="1800000"/>
+		<property name="sessionManager" ref="sessionManager"/>
+	</bean>
+	<!-- 会话管理器 -->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="globalSessionTimeout" value="1800000"/>
+		<property name="deleteInvalidSessions" value="true"/>
+		<property name="sessionValidationSchedulerEnabled" value="true"/>
+		<property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+		<property name="sessionDAO" ref="sessionDAO"/>
+		<property name="sessionIdCookieEnabled" value="true"/>
+		<property name="sessionIdCookie" ref="sessionIdCookie"/>
+	</bean>
 
   <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
     <property name="cacheManager" ref="ehCacheManager"/>

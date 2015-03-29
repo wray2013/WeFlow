@@ -28,6 +28,46 @@ public class CrmOrderRequest extends RequestBase {
 	private String userid;
 	private String productid;
 	private String acctid;
+	private String page;
+	private String type;
+
+	/**
+	 * type
+	 *
+	 * @return the type
+	 * @since 1.0.0
+	 */
+
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
+	 * page
+	 *
+	 * @return the page
+	 * @since 1.0.0
+	 */
+
+	public String getPage() {
+		return page;
+	}
+
+	/**
+	 * @param page
+	 *            the page to set
+	 */
+	public void setPage(String page) {
+		this.page = page;
+	}
 
 	/**
 	 * userid

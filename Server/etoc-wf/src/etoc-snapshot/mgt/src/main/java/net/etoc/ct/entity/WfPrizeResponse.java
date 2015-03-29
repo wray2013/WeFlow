@@ -47,6 +47,46 @@ public class WfPrizeResponse extends ResponseBase {
 	public static class PrizeDetailResponse {
 		private WfPrizeDetail award;
 		private String flowcoins;
+		private String status;
+		private String message;
+
+		/**
+		 * status
+		 *
+		 * @return the status
+		 * @since 1.0.0
+		 */
+
+		public String getStatus() {
+			return status;
+		}
+
+		/**
+		 * @param status
+		 *            the status to set
+		 */
+		public void setStatus(String status) {
+			this.status = status;
+		}
+
+		/**
+		 * message
+		 *
+		 * @return the message
+		 * @since 1.0.0
+		 */
+
+		public String getMessage() {
+			return message;
+		}
+
+		/**
+		 * @param message
+		 *            the message to set
+		 */
+		public void setMessage(String message) {
+			this.message = message;
+		}
 
 		/**
 		 * award

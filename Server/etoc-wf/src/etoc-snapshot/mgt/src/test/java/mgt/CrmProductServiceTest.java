@@ -1,6 +1,5 @@
 package mgt;
 
-import net.etoc.crm.product.entity.WfCrmProduct;
 import net.etoc.crm.product.service.WfCrmProductService;
 
 import org.apache.commons.lang.StringUtils;
@@ -28,9 +27,10 @@ public class CrmProductServiceTest extends AbstractJUnit4SpringContextTests {
 
 	@Test
 	public void save() {
-		WfCrmProduct p = new WfCrmProduct();
-		p.setMerchant("11");
-		WfCrmProductService.saveOrupdate(p);
+		/*
+		 * WfCrmProduct p = new WfCrmProduct(); p.setMerchant("11");
+		 * WfCrmProductService.saveOrupdate(p);
+		 */
 	}
 
 	@Test

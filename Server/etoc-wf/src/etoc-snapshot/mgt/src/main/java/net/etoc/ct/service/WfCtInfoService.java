@@ -11,10 +11,10 @@ import java.lang.reflect.InvocationTargetException;
 import net.etoc.ct.entity.CtInfoRequest;
 import net.etoc.ct.entity.CtInfoResponse;
 import net.etoc.ct.entity.WfCtInfo;
+import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.base.ResponseBase;
 import net.etoc.wf.ctapp.user.entity.FeedBackRequest;
 import net.etoc.wf.ctapp.user.entity.UserSignResponse;
-import net.sf.ehcache.search.impl.BaseResult;
 
 import org.springframework.web.client.RestClientException;
 
@@ -40,7 +40,7 @@ public interface WfCtInfoService {
 	public ResponseBase feedBack(String methodSuffix, FeedBackRequest fr)
 			throws RestClientException, JsonProcessingException;
 
-	public UserSignResponse sign(String methodSuffix, BaseResult fr)
+	public UserSignResponse sign(String methodSuffix, RequestBase fr)
 			throws RestClientException, JsonProcessingException;
 
 }

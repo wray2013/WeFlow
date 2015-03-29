@@ -14,10 +14,10 @@ import net.etoc.ct.entity.CtInfoResponse;
 import net.etoc.ct.service.WfCtInfoService;
 import net.etoc.wf.core.util.JsonUtils;
 import net.etoc.wf.core.util.SignUtils;
+import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.base.ResponseBase;
 import net.etoc.wf.ctapp.user.entity.FeedBackRequest;
 import net.etoc.wf.ctapp.user.entity.UserSignResponse;
-import net.sf.ehcache.search.impl.BaseResult;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,8 +91,8 @@ public class WfCtController {
 			BeanUtils.copyProperties(ur, cs);
 			return ur;
 		}
-		BaseResult fr = (BaseResult) jsonUtils
-				.getResult(json, BaseResult.class);
+		RequestBase fr = (RequestBase) jsonUtils.getResult(json,
+				RequestBase.class);
 		return service.sign("signIn", fr);
 	}
 
@@ -108,8 +108,8 @@ public class WfCtController {
 			BeanUtils.copyProperties(ur, cs);
 			return ur;
 		}
-		BaseResult fr = (BaseResult) jsonUtils
-				.getResult(json, BaseResult.class);
+		RequestBase fr = (RequestBase) jsonUtils.getResult(json,
+				RequestBase.class);
 		return service.sign("querySignInList", fr);
 	}
 
