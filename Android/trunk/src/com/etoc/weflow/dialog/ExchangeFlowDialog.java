@@ -62,7 +62,8 @@ public class ExchangeFlowDialog implements OnClickListener {
 			@Override
 			public void afterTextChanged(Editable s) {
 				// TODO Auto-generated method stub
-				if (StringUtils.isEmpty(etContent.getText().toString())) {
+				if (StringUtils.isEmpty(etContent.getText().toString()) ||
+						!PromptDialog.checkPhoneNum(etContent.getText().toString())) {
 					btnOK.setEnabled(false);
 				} else {
 					btnOK.setEnabled(true);
