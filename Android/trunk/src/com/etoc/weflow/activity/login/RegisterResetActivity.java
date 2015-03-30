@@ -148,6 +148,15 @@ public class RegisterResetActivity extends TitleRootActivity {
 		ViewUtils.setTextSize(tvStep1, 32);
 		ViewUtils.setTextSize(tvStep2, 32);
 	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if(db != null) {
+			db.close();
+		}
+	}
 
 	@Override
 	public void onClick(View v) {
