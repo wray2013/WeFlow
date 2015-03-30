@@ -116,6 +116,13 @@ public class DrawFlowActivity extends TitleRootActivity {
 		ViewUtils.setTextSize(findViewById(R.id.tv_draw_center_values), 28);
 		ViewUtils.setTextSize(findViewById(R.id.tv_warning), 28);
 		ViewUtils.setTextSize(findViewById(R.id.tv_btn_draw), 35);
+		
+		
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		if(info != null && info.getTel() != null) {
+			TextView tvTel = (TextView) findViewById(R.id.tv_draw_top_tel);
+			tvTel.setText(info.getTel());
+		}
 	}
 	
 	private void refreshBtnStatus(int selectedValue) {

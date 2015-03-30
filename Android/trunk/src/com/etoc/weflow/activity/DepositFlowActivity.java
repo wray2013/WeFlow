@@ -124,6 +124,13 @@ public class DepositFlowActivity extends TitleRootActivity {
 		ViewUtils.setTextSize(findViewById(R.id.ed_deposit_center_values_input), 38);
 		
 		ViewUtils.setHeight(findViewById(R.id.ed_deposit_center_values_input), 100);
+		
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		if(info != null && info.getTel() != null) {
+			TextView tvTel = (TextView) findViewById(R.id.tv_deposit_top_tel);
+			tvTel.setText(info.getTel());
+		}
+		
 	}
 	
 	private void refreshBtnStatus(int currValue) {

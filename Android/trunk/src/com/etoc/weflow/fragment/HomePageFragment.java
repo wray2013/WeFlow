@@ -308,9 +308,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
+		currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 		loginView(false);
 		if(mtvFlow != null && isLogin) {
-			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
+//			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 		}
 	}
@@ -409,6 +410,11 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 						mtvFlow.showNumberWithAnimation(response.flowcoins, 1000);
 					}
 					tvPlain.setText(response.menumoney);
+					if(response.menutype == null || response.menutype.equals("")) {
+						tvPlainType.setVisibility(View.GONE);
+					} else {
+						tvPlainType.setVisibility(View.VISIBLE);
+					}
 					tvPlainType.setText(response.menutype);
 					
 					if("1".equals(response.isregistration)) {

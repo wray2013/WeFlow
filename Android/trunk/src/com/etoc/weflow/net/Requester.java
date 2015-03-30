@@ -106,6 +106,7 @@ import com.etoc.weflow.net.GsonResponseObject.testResponse;
 import com.etoc.weflow.net.GsonResponseObject.verifyAuthCodeResponse;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.MD5Utils;
 import com.etoc.weflow.utils.MetaUtil;
 import com.etoc.weflow.utils.NetWorkUtils;
 import com.etoc.weflow.utils.VMobileInfo;
@@ -275,7 +276,7 @@ public class Requester {
 	public static void register(Handler handler, String tel, String pass) {
 		registerRequest request = new registerRequest();
 		request.tel = tel;
-		request.pwd = pass;
+		request.pwd = MD5Utils.get32MD5Str(pass);
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
@@ -298,7 +299,7 @@ public class Requester {
 	public static void login(Handler handler, String tel, String pass) {
 		loginRequest request = new loginRequest();
 		request.tel = tel;
-		request.pwd = pass;
+		request.pwd = MD5Utils.get32MD5Str(pass);
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
@@ -323,7 +324,7 @@ public class Requester {
 	public static void resetPassword(Handler handler, String tel, String newPass) {
 		resetPasswordRequest request = new resetPasswordRequest();
 		request.tel = tel;
-		request.newpassword = newPass;
+		request.newpassword = MD5Utils.get32MD5Str(newPass);
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_RESET_PWD, resetPasswordResponse.class);
