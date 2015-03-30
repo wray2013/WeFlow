@@ -231,7 +231,11 @@ public class ScratchCardActivity extends TitleRootActivity {
 						accountInfo.setFlowcoins(resp.flowcoins);
 						Flow = resp.flowcoins;
 						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
-						startLottery(resp.award.prizename);
+						String awardname = resp.award.prizename;
+						if(awardname == null || awardname.equals("0流量币")) {
+							awardname = noAward[RandomUtils.getRandom(4) % 5];
+						}
+						startLottery(awardname);
 					} else {
 						Toast mtoast;
 						mtoast = Toast.makeText(ScratchCardActivity.this,
