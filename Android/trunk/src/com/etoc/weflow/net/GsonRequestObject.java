@@ -391,8 +391,8 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String resolution;
 		String channel;
-		String appver;
-		String deviceType;
+		String appversion;
+		String devicetype;
 		String internetway;
 		String imsi;
 		String mac; // 手机的mac地址

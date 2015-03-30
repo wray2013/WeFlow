@@ -672,14 +672,14 @@ public class Requester {
 			String packagename = WeFlowApplication.getAppInstance().getPackageName();
 			PackageInfo info = WeFlowApplication.getAppInstance().getPackageManager()
 					           .getPackageInfo(packagename, 0);
-	        String version = info.versionName;
-			request.appver = version.replace('.', '_');
+	        int version = info.versionCode;
+			request.appversion = "" + version;
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		} 
 		request.channel = MetaUtil.getStringValue("ETOC_CHANNEL");
 		
-		request.deviceType = ZSimCardInfo.getDeviceBrand() + " " + ZSimCardInfo.getDeviceName();
+		request.devicetype = ZSimCardInfo.getDeviceBrand() + " " + ZSimCardInfo.getDeviceName();
 		request.imei = IMEI;
 		request.imsi = ZSimCardInfo.getIMSI();
 		request.internetway = NetWorkUtils.getNetWorkType(WeFlowApplication.getAppInstance());

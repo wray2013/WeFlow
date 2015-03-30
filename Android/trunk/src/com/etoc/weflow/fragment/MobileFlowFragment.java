@@ -28,6 +28,7 @@ import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.ExchangeFlowDialog;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject;
@@ -56,6 +57,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 	private Handler handler;
 	private ExchangeFlowDialog exchangeDialog = null;
 	private String selectId = "";
+	private String selectProduct = "";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -173,7 +175,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			// TODO Auto-generated method stub
 			return appList.get(arg0);
 		}
-
+		
 		@Override
 		public long getItemId(int arg0) {
 			// TODO Auto-generated method stub
@@ -234,6 +236,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 					selectId = item.chargesid;
+					selectProduct = item.title;
 					exchangeDialog.show();
 				}
 
@@ -264,14 +267,16 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			if (msg.obj != null) {
 				ExchangeFlowPkgResp chargeResp = (ExchangeFlowPkgResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
-					PromptDialog.Alert("订购成功");
+//					PromptDialog.Alert("订购成功");
+					OrderDialog.Dialog(getActivity(), "已成功兑换" + selectProduct + " 流量包");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					if (!StringUtils.isEmpty(chargeResp.cardcode)) {
+					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
-					}
+					}*/
 					exchangeDialog.dismiss();
 				} else if (Requester.isProcessed(chargeResp.status)){
-					PromptDialog.Alert("订购已处理");
+//					PromptDialog.Alert("订购已处理");
+					OrderDialog.Dialog(getActivity(), "订购已受理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 					exchangeDialog.dismiss();
 				} else if (Requester.isLowFlow(chargeResp.status)) {
