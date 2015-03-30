@@ -218,7 +218,12 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			}
 			
 			final MobileFlowProduct item = appList.get(position);
-			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
+			if(item.imgsrc != null && !item.imgsrc.equals("")) {
+				holder.ivImg.setVisibility(View.VISIBLE);
+				imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
+			} else {
+				holder.ivImg.setVisibility(View.GONE);
+			}
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.desc);
 			holder.tvFlowCoins.setText(NumberUtils.convert2IntStr(item.cost) + "流量币");
