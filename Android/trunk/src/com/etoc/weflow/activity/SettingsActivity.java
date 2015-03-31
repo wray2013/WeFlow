@@ -28,6 +28,7 @@ import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.parallel.DiscScanTask;
 import com.etoc.weflow.parallel.DiskCleanTask;
 import com.etoc.weflow.parallel.ParallelManager;
+import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.VMobileInfo;
 import com.etoc.weflow.utils.ViewUtils;
 import com.nostra13.universalimageloader.api.MyImageLoader;
@@ -192,23 +193,31 @@ public class SettingsActivity extends TitleRootActivity {
 				final UpdateResp resp = (UpdateResp) msg.obj;
 				if (Requester.isSuccessed(resp.status)) {
 					if ("1".equals(resp.type)) {
-						PromptDialog.Dialog(this, false, false, "版本升级", resp.description, new OnClickListener() {
-							
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								// TODO Auto-generated method stub
-								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
-							}
-						});
+						if (!StringUtils.isEmpty(resp.path) && !resp.path.startsWith("http://")) {
+							PromptDialog.Dialog(this, false, false, "版本升级", resp.description, new OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
+								}
+							});
+						} else {
+							Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
+						}
 					} else if ("2".equals(resp.type)){
-						PromptDialog.Dialog(this, true, true, "版本升级", resp.description, new OnClickListener() {
-							
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								// TODO Auto-generated method stub
-								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
-							}
-						});
+						if (!StringUtils.isEmpty(resp.path) && !resp.path.startsWith("http://")) {
+							PromptDialog.Dialog(this, true, true, "版本升级", resp.description, new OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
+								}
+							});
+						} else {
+							Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
+						}
 					}
 				}
 			}
