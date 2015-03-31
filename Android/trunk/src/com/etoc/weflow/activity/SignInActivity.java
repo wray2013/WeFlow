@@ -66,9 +66,9 @@ public class SignInActivity extends TitleRootActivity {
 							Log.d("=AAA=","firstDate = " + today.getTime());
 						    
 						    final Calendar endDate = Calendar.getInstance();
-						    endDate.set(Calendar.DAY_OF_MONTH,1);
+//						    endDate.set(Calendar.DAY_OF_MONTH,1);
+						    endDate.set(Calendar.DAY_OF_MONTH, endDate.getMaximum(Calendar.DAY_OF_MONTH));
 						    endDate.add(Calendar.DAY_OF_MONTH, 1);
-//						    endDate.set(Calendar.DAY_OF_MONTH, endDate.getMaximum(Calendar.DAY_OF_MONTH));
 						    initCalendarView(firstDay, endDate.getTime(),dateList);
 						}
 					}
