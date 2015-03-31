@@ -37,7 +37,7 @@ public class DrawFlowActivity extends TitleRootActivity {
 	private DrawFlowAdapter adapter = null;
 	
 	private List<String> values = new ArrayList<String>();
-	private int total = 0;
+	private float total = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class DrawFlowActivity extends TitleRootActivity {
 				values.addAll(Arrays.asList(v));
 			}
 			
-			total = i.getIntExtra("total", 0);
+			total = i.getFloatExtra("total", 0.0f);
 			
 		}
 		initView();

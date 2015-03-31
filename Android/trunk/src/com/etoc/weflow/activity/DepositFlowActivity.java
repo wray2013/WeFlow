@@ -27,7 +27,7 @@ public class DepositFlowActivity extends TitleRootActivity {
 	private TextView tvBtnDeposit, tvTotal;
 	private EditText edDeposit;
 	private int minValue = 0;
-	private int total = 0;
+	private float total = 0;
 	private int flowcoins = 0;
 	
 	@Override
@@ -37,7 +37,7 @@ public class DepositFlowActivity extends TitleRootActivity {
 		
 		if(getIntent() != null) {
 			minValue = getIntent().getIntExtra("minValue", 0);
-			total = getIntent().getIntExtra("total", 0);
+			total = getIntent().getFloatExtra("total", 0.0f);
 			String coinsstr = getIntent().getStringExtra("flowcoins");
 			float f = 0;
 			try {

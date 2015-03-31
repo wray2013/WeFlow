@@ -164,7 +164,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 //				String[] values = new String[] {"14000", "18000", "60000"};
 				Intent drawIntent = new Intent(getActivity(), DrawFlowActivity.class);
 				drawIntent.putExtra("values", trdPop);
-				drawIntent.putExtra("total", NumberUtils.Str2Int(mtvMoney.getValue()));
+				drawIntent.putExtra("total", NumberUtils.Str2Float(mtvMoney.getValue()));
 				startActivity(drawIntent);
 				getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 			} else {
@@ -176,7 +176,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			if(isLogin) {
 				Intent depositIntent = new Intent(getActivity(), DepositFlowActivity.class);
 				depositIntent.putExtra("minValue", trdPush);
-				depositIntent.putExtra("total", NumberUtils.Str2Int(mtvMoney.getValue()));
+				depositIntent.putExtra("total", NumberUtils.Str2Float(mtvMoney.getValue()));
 				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
 				if(info != null) {
 					depositIntent.putExtra("flowcoins", info.getFlowcoins());
@@ -208,7 +208,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			if(qbResp != null) {
 				if("0".equals(qbResp.status) || "0000".equals(qbResp.status)) {
 					if(qbResp.flowbankcoins != null) {
-						mtvMoney.showNumberWithAnimation(qbResp.flowbankcoins, 1000);
+						mtvMoney.showNumberWithAnimation(qbResp.flowbankcoins, 1000, true);
 					}
 					
 					int income = NumberUtils.Str2Int(qbResp.yestdincome);
@@ -217,7 +217,13 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 					} else {
 						tvYestIncome.setText("暂无收益");
 					}
-					tvYestRate.setText(qbResp.yestdrate);
+					float rate = 0.0f;
+					try {
+						rate = Float.parseFloat(qbResp.yestdrate);
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+					tvYestRate.setText(rate * 100 + "%");
 					tvTotalIncome.setText(qbResp.totalincome);
 					
 					if(qbResp.thresholdpop != null) {
@@ -254,7 +260,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			checkLogin();
 		}
 		if(mtvMoney != null)
-			mtvMoney.showNumberWithAnimation(mtvMoney.getText().toString(), 1000);
+			mtvMoney.showNumberWithAnimation(mtvMoney.getText().toString(), 1000, true);
 	}
 	
 }

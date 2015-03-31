@@ -26,5 +26,15 @@ public class NumberUtils {
 		int ret = (int)f;
 		return ret;
 	}
+	
+	public static float Str2Float(String intStr) {
+		float f = 0.0f;
+		try {
+			f = Float.parseFloat(intStr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
 
 }
