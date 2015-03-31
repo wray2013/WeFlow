@@ -37,6 +37,7 @@ import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
 import com.etoc.weflow.net.GsonResponseObject.UpdateResp;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.ViewUtils;
 
 public class MainActivity extends TitleRootActivity implements Callback, OnClickListener {
@@ -343,31 +344,39 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 //							PromptDialog.Dialog(this, "版本升级", "当前已经是最新版本", "确定");
 							//普通升级
 						} else if ("1".equals(resp.type)) {
-							PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
-								
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
-									// TODO Auto-generated method stub
-									DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
-								}
-							}, null, false, null);
+							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
+								PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
+									}
+								}, null, false, null);
+							} else {
+								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
+							}
 							//强制升级
 						} else if ("2".equals(resp.type)){
-							PromptDialog.Dialog(this, true, false, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
-								
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
-									// TODO Auto-generated method stub
-									DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
-								}
-							}, new DialogInterface.OnClickListener() {
-								
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
-									// TODO Auto-generated method stub
-									finish();
-								}
-							}, false, null);
+							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
+								PromptDialog.Dialog(this, true, false, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
+									}
+								}, new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										finish();
+									}
+								}, false, null);
+							} else {
+								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
+							}
 						}
 					} catch(Exception e) {
 						e.printStackTrace();
