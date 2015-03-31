@@ -59,6 +59,12 @@ public class OrderDialog implements OnClickListener {
 	}
 	
 	
+	private void setBackgroundRes(int res) {
+		if (view != null) {
+			view.setBackgroundResource(res);
+		}
+	}
+	
 	public void show() {
 		// TODO Auto-generated method stub
 		alertDialog.setView(((Activity)(context)).getLayoutInflater().inflate(R.layout.order_dialog, null));
@@ -93,7 +99,17 @@ public class OrderDialog implements OnClickListener {
 	}
 	
 	public static void Dialog(Context context,String content) {
+		/*orderDialog = new OrderDialog(context, null);
+		orderDialog.setDescText(content);
+		orderDialog.show();*/
+		Dialog(context, content, false);
+	}
+	
+	public static void Dialog(Context context,String content,boolean failed) {
 		orderDialog = new OrderDialog(context, null);
+		if (failed) {
+			orderDialog.setBackgroundRes(R.drawable.bg_order_dialog_fail);
+		}
 		orderDialog.setDescText(content);
 		orderDialog.show();
 	}
