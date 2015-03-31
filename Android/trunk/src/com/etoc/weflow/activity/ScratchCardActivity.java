@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.scratchflowResp;
 import com.etoc.weflow.net.Requester;
@@ -243,7 +244,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 						mtoast.show();
 					}
 				} else if("2016".equals(resp.status)) {
-					PromptDialog.Alert(MainActivity.class, "刮奖次数已用完");
+					OrderDialog.Dialog(this, "刮奖次数已用完", true);
+//					PromptDialog.Alert(MainActivity.class, "刮奖次数已用完");
 				}
 			} else {
 				PromptDialog.Alert(ScratchCardActivity.class, "您的网络不给力啊！");

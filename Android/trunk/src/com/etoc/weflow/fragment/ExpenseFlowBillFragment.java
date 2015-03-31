@@ -26,7 +26,6 @@ import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.adapter.MyBillAdapter;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.ExpenseFlowBillFragmentEvent;
-import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
 import com.etoc.weflow.net.GsonResponseObject.BillList;
 import com.etoc.weflow.net.GsonResponseObject.CostFlowRecordResp;
 import com.etoc.weflow.net.GsonResponseObject.RecordResp;

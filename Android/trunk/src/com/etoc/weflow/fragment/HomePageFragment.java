@@ -163,7 +163,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		
 		
 		String [] makeFlows = {"赚流量","看视频","下软件","玩游戏"};
-		String [] expenseFlows = {"花流量","充值","订流量包","换游戏币","换礼券"};
+		String [] expenseFlows = {"花流量","充话费","订流量包","换游戏币","换礼券"};
 		int [] makeflowsIds = {R.drawable.make_flow,R.drawable.watch_video,R.drawable.download_apk,R.drawable.play_game};
 		int [] expenseFlowsIds = {R.drawable.expense_flow,R.drawable.recharge,R.drawable.order_flow_pkg,R.drawable.exchange_game_coins,R.drawable.exchange_gift};
 		for (int i = 0;i < 4;i++) {
@@ -388,8 +388,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	@Override
 	public void onShow() {
 		Log.d(TAG, "onShow IN!");
+		currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 		if(mtvFlow != null && isLogin) {
-			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 		}
 		loginView(true);

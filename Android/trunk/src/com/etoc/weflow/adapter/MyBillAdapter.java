@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.net.GsonResponseObject.*;
+import com.etoc.weflow.utils.DESDecryptAPIUtil;
 import com.etoc.weflow.utils.DateUtils;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.PTypeTransfer;
@@ -72,6 +73,7 @@ public class MyBillAdapter extends BaseAdapter {
 				convertView = inflater.inflate(R.layout.fragment_bill_list_item, null);
 				holder = new ViewHolder();
 				holder.ivTypeIcon = (ImageView) convertView.findViewById(R.id.iv_type_icon);
+				holder.ivState = (ImageView) convertView.findViewById(R.id.iv_bill_state);
 				holder.tvSubTitle = (TextView) convertView.findViewById(R.id.tv_subtitle);
 				holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
 				holder.tvContent = (TextView) convertView.findViewById(R.id.tv_content);
@@ -91,6 +93,10 @@ public class MyBillAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		ViewUtils.setHeight(View.findViewById(R.id.view_height), 145);
 		ViewUtils.setHeight(View.findViewById(R.id.tv_subtitle), 65);
+		
+		ViewUtils.setHeight(View.findViewById(R.id.iv_bill_state), 83);
+		ViewUtils.setWidth(View.findViewById(R.id.iv_bill_state), 145);
+		
 		ViewUtils.setMarginBottom(View.findViewById(R.id.tv_date), 20);
 		ViewUtils.setMarginTop(View.findViewById(R.id.tv_title), 20);
 		ViewUtils.setMarginLeft(View.findViewById(R.id.rl_bill_right_title), 32);
@@ -108,6 +114,7 @@ public class MyBillAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		holder.ivTypeIcon.setBackgroundResource(R.drawable.ic_launcher);
 		holder.tvTitle.setText(PTypeTransfer.getPTypeName(mybill.type));
+		holder.ivState.setVisibility(View.GONE);
 		
 		int coins = 0;
 		if(mybill.flowcoins != null) {
@@ -142,7 +149,8 @@ public class MyBillAdapter extends BaseAdapter {
 		
 		String content = holder.tvContent.getText().toString();
 		if(mybill.cardcode != null && !mybill.cardcode.equals("")) {
-			String code = "兑换码：" + mybill.cardcode + "\n请您尽快使用";
+			String realcode = DESDecryptAPIUtil.decryptDES(mybill.cardcode);
+			String code = "兑换码：\n" + realcode + "\n请您尽快使用";
 			if(content.equals("")) {
 				content += code;
 			} else {
@@ -152,6 +160,9 @@ public class MyBillAdapter extends BaseAdapter {
 			holder.tvContent.setVisibility(View.VISIBLE);
 		}
 		
+		if(mybill.state != null && mybill.state.equals("2")) {
+			holder.ivState.setVisibility(View.VISIBLE);
+		}
 		
 		String currentYearMonth = DateUtils.getYMStringFromMilli(System.currentTimeMillis() + "");
 		String YM = DateUtils.getYMStringFromMilli(mybill.time);
@@ -187,7 +198,7 @@ public class MyBillAdapter extends BaseAdapter {
 
 
 	public class ViewHolder {
-		ImageView ivTypeIcon;
+		ImageView ivTypeIcon, ivState;
 		TextView tvSubTitle, tvTitle, tvContent, tvCoins, tvDate;
 	}
 

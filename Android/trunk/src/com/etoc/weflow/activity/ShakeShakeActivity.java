@@ -3,6 +3,7 @@ package com.etoc.weflow.activity;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.listener.ShakeListener;
 import com.etoc.weflow.listener.ShakeListener.OnShakeListener;
@@ -178,7 +179,8 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 						mtoast.show();
 					}
 				} else if("2016".equals(resp.status)) {
-					PromptDialog.Alert(MainActivity.class, "摇奖次数已用完");
+					OrderDialog.Dialog(this, "摇奖次数已用完", true);
+//					PromptDialog.Alert(MainActivity.class, "摇奖次数已用完");
 				}
 			} else {
 				PromptDialog.Alert(ShakeShakeActivity.class, "您的网络不给力啊！");

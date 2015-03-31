@@ -253,9 +253,11 @@ public class GameGiftFragment extends Fragment implements Callback {
 					OrderDialog.Dialog(getActivity(), "订购已受理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isLowFlow(chargeResp.status)) {
-					PromptDialog.Alert(ConStant.LOW_FLOW);
+					OrderDialog.Dialog(getActivity(), ConStant.LOW_FLOW, true);
+//					PromptDialog.Alert(ConStant.LOW_FLOW);
 				}  else {
-					PromptDialog.Alert(ConStant.ORDER_FAIL);
+					OrderDialog.Dialog(getActivity(), ConStant.ORDER_FAIL, true);
+//					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;
