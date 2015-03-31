@@ -83,7 +83,6 @@ public class WelcomePageActivity extends TitleRootActivity {
         		return;
         	}
         }
-        Requester.update(false, handler);
 		handler.postDelayed(runnable, INTV_TIME);
 	}
 	
@@ -154,32 +153,42 @@ public class WelcomePageActivity extends TitleRootActivity {
 				handler.postDelayed(runnable, INTV_TIME);
 			}
 			break;
-		case Requester.RESPONSE_TYPE_UPDATE:
+/*		case Requester.RESPONSE_TYPE_UPDATE:
 			if (msg.obj != null) {
 				final UpdateResp resp = (UpdateResp) msg.obj;
 				if (Requester.isSuccessed(resp.status)) {
-					if ("1".equals(resp.type)) {
-						PromptDialog.Dialog(this, false, false, "版本升级", resp.description, new OnClickListener() {
-							
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								// TODO Auto-generated method stub
-								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
-							}
-						});
-					} else if ("2".equals(resp.type)){
-						PromptDialog.Dialog(this, true, true, "版本升级", resp.description, new OnClickListener() {
-							
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								// TODO Auto-generated method stub
-								DownloadManager.getInstance().addDownloadTask(resp.path, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
-							}
-						});
+					try {
+						resp.type = "2";
+						//已经最新
+						if ("0".equals(resp.type)) {
+//							PromptDialog.Dialog(this, "版本升级", "当前已经是最新版本", "确定");
+							//普通升级
+						} else if ("1".equals(resp.type)) {
+							PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
+								}
+							}, null, false, null);
+							//强制升级
+						} else if ("2".equals(resp.type)){
+							PromptDialog.Dialog(this, false, false, false, "版本升级", resp.description, "下载", "取消", new OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.version, "", "",  DownloadType.APP, "", "","","com.etoc.weflow");
+								}
+							}, null, false, null);
+						}
+					} catch(Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}
-			break;
+			break;*/
 		}
 		return false;
 	}

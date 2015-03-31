@@ -1,5 +1,6 @@
 package com.etoc.weflow.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,16 +25,19 @@ import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dao.DaoMaster;
-import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
+import com.etoc.weflow.dao.DaoSession;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.download.DownloadManager;
+import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
 import com.etoc.weflow.fragment.HomePageFragment;
 import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
-import com.etoc.weflow.utils.RandomUtils;
+import com.etoc.weflow.net.GsonResponseObject.UpdateResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ViewUtils;
-import com.etoc.weflow.version.CheckUpdate;
 
 public class MainActivity extends TitleRootActivity implements Callback, OnClickListener {
 	
@@ -73,7 +77,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		initMain(savedInstanceState);
 		setLeftButtonBackground(R.drawable.btn_message);
 		//检查更新
-		CheckUpdate.getInstance(this).update();
+//		CheckUpdate.getInstance(this).update();
+		Requester.update(false, handler);
+		WeFlowApplication.getAppInstance().addActivity(this);
 	}
 	
 	private void initDataBase() {
@@ -93,6 +99,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		WeFlowApplication.getAppInstance().removeActivity(this);
 		if(db != null)
 			db.close();
 	}
@@ -325,7 +332,50 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	
 	@Override
 	public boolean handleMessage(Message msg) {
-		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_UPDATE:
+			if (msg.obj != null) {
+				final UpdateResp resp = (UpdateResp) msg.obj;
+				if (Requester.isSuccessed(resp.status)) {
+					try {
+						//已经最新
+						if ("0".equals(resp.type)) {
+//							PromptDialog.Dialog(this, "版本升级", "当前已经是最新版本", "确定");
+							//普通升级
+						} else if ("1".equals(resp.type)) {
+							PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
+								}
+							}, null, false, null);
+							//强制升级
+						} else if ("2".equals(resp.type)){
+							PromptDialog.Dialog(this, true, false, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
+								}
+							}, new DialogInterface.OnClickListener() {
+								
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// TODO Auto-generated method stub
+									finish();
+								}
+							}, false, null);
+						}
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			break;
+		}
 		return false;
 	}
 	
