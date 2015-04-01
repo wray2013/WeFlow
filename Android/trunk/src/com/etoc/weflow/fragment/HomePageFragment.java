@@ -171,8 +171,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
-			ViewUtils.setMarginRight(layout, 2);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 180, 200);
+//			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(makeFlowId + i);
 			layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
@@ -191,8 +191,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
-			ViewUtils.setMarginRight(layout, 2);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 180, 200);
+//			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(expenseFlowId + i);
 			layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
@@ -328,6 +328,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
             pushmsg.execute(sendMSG, "weflow, 15927130377");*/
 			break;
 		case 0xffeecc00:
+			break;
 		case 0xffeecc01:
 		case 0xffeecc02:
 		case 0xffeecc03:
@@ -337,6 +338,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			startActivity(makeFlowIntent);
 			break;
 		case 0xffeedd00:
+			break;
 		case 0xffeedd01:
 		case 0xffeedd02:
 		case 0xffeedd03:

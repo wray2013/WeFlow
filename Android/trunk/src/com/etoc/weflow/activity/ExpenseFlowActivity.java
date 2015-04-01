@@ -21,13 +21,14 @@ import com.etoc.weflow.fragment.MobileFlowFragment;
 import com.etoc.weflow.fragment.RechargeFragment;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.view.MyViewPager;
 
 import de.greenrobot.event.EventBus;
 
 public class ExpenseFlowActivity extends TitleRootActivity {
 
 	private PagerSlidingTabStrip titleTab;
-	private ViewPager viewPage;
+	private MyViewPager viewPage;
 	private MyPagerAdapter adapter;
 	
 	private boolean isLogin = false;
@@ -43,16 +44,18 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 		super.onCreate(savedInstanceState);
 		initViews();
 		
-		titleTab = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-		viewPage = (ViewPager) findViewById(R.id.pager);
+//		titleTab = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+		viewPage = (MyViewPager) findViewById(R.id.pager);
+		viewPage.setOffscreenPageLimit(0);
+		viewPage.setScrollEnable(false);
 		
-		titleTab.setTextColorResource(R.color.pagertab_color_green);
-		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 40));
+//		titleTab.setTextColorResource(R.color.pagertab_color_green);
+//		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 40));
 		
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
 		viewPage.setAdapter(adapter);
 		
-		titleTab.setViewPager(viewPage);
+//		titleTab.setViewPager(viewPage);
 		
 		int index = getIntent().getIntExtra(ConStant.INTENT_EXPENSE_FLOW, 0);
 		index = index == 0?0:index - 1;
@@ -68,7 +71,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 			}
 		}, 100);
 		
-		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+		/*titleTab.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int arg0) {
@@ -89,16 +92,31 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 				// TODO Auto-generated method stub
 				
 			}
-		});
+		});*/
 		
 		viewPage.setCurrentItem(index);
+		
+		switch (index) {
+		case 0:
+			setTitleText("充话费");
+			break;
+		case 1:
+			setTitleText("定流量包");
+			break;
+		case 2:
+			setTitleText("换游戏币");
+			break;
+		case 3:
+			setTitleText("换礼券");
+			break;
+		}
 		
 		isLogin = getIntent().getBooleanExtra("isLogin", false);
 		
 	}
 	
 	private void initViews() {
-		setTitleText("花流量币");
+//		setTitleText("花流量币");
 		setRightButtonText("记录");
 //		hideRightButton();
 	}

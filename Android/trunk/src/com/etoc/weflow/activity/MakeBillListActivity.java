@@ -14,13 +14,14 @@ import com.etoc.weflow.event.MakeFlowBillFragmentEvent;
 import com.etoc.weflow.fragment.MakeFlowBillFragment;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.view.MyViewPager;
 
 import de.greenrobot.event.EventBus;
 
 public class MakeBillListActivity extends TitleRootActivity {
 
-	private PagerSlidingTabStrip titleTab;
-	private ViewPager viewPage;
+//	private PagerSlidingTabStrip titleTab;
+	private MyViewPager viewPage;
 	private MakeBillPagerAdapter adapter;
 	
 	@Override
@@ -32,18 +33,19 @@ public class MakeBillListActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		// TODO Auto-generated method stub
-		setTitleText("赚币记录");
+//		setTitleText("赚币记录");
 		hideRightButton();
 		
-		titleTab = (PagerSlidingTabStrip) findViewById(R.id.mybill_tabs);
-		viewPage = (ViewPager) findViewById(R.id.mybill_pager);
-		
-		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 50));
+//		titleTab = (PagerSlidingTabStrip) findViewById(R.id.mybill_tabs);
+		viewPage = (MyViewPager) findViewById(R.id.mybill_pager);
+		viewPage.setOffscreenPageLimit(0);
+		viewPage.setScrollEnable(false);
+//		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 50));
 		
 		adapter = new MakeBillPagerAdapter(getSupportFragmentManager());
 		viewPage.setAdapter(adapter);
 		
-		titleTab.setViewPager(viewPage);
+//		titleTab.setViewPager(viewPage);
 		
 		int index = getIntent().getIntExtra(ConStant.INTENT_MAKE_FLOW, 0);
 		index = index <= 0 ? 0 : (index >= adapter.getCount() ? adapter.getCount() - 1 : index);
@@ -60,7 +62,19 @@ public class MakeBillListActivity extends TitleRootActivity {
 			}
 		}, 100);
 		
-		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+		switch (index) {
+		case 0:
+			setTitleText("看视频记录");
+			break;
+		case 1:
+			setTitleText("下软件记录");
+			break;
+		case 2:
+			setTitleText("玩游戏记录");
+			break;
+		}
+		
+		/*titleTab.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int arg0) {
@@ -81,7 +95,7 @@ public class MakeBillListActivity extends TitleRootActivity {
 				// TODO Auto-generated method stub
 				
 			}
-		});
+		});*/
 		
 	}
 
