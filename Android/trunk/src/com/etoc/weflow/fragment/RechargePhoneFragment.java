@@ -382,8 +382,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 						}
 					}
 					adapter.notifyDataSetChanged();
-					
-					tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+					if(isAdded()) {
+						tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+					}
 					tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost())+ "流量币");
 				}
 				

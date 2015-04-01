@@ -1,5 +1,9 @@
 package com.etoc.weflow.activity;
 
+import java.io.File;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,6 +18,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -37,14 +42,17 @@ import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
 import com.etoc.weflow.net.GsonResponseObject.UpdateResp;
 import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.service.PushService;
+import com.etoc.weflow.utils.DownloadThread;
 import com.etoc.weflow.utils.StringUtils;
+import com.etoc.weflow.utils.VNetworkStateDetector;
 import com.etoc.weflow.utils.ViewUtils;
 
 public class MainActivity extends TitleRootActivity implements Callback, OnClickListener {
 	
 	private final String TAG = "MainActivity";
 
-	private Handler handler;
+	private static Handler handler;
 	private DisplayMetrics dm = new DisplayMetrics();
 	
 	private XFragment<?> currContentFragment;
@@ -59,6 +67,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	private RelativeLayout rlDiscover;
 	private RelativeLayout rlMe;
 	
+	private static DownloadThread downloadThread = null;
+	private static ProgressDialog pd = null;
+	
 	private DaoMaster daoMaster;
 	private DaoSession daoSession;
 	private SQLiteDatabase db;
@@ -72,6 +83,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		
 		handler = new Handler(this);
 		dm = getResources().getDisplayMetrics();
+		
+		pd = new ProgressDialog(getApplicationContext());
+		pd.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
 		
 		initDataBase();
 		initController();
@@ -345,21 +359,57 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 							//普通升级
 						} else if ("1".equals(resp.type)) {
 							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
-								PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+								/*PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
 									
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
 										// TODO Auto-generated method stub
 										DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
 									}
-								}, null, false, null);
+								}, null, false, null);*/
+								//need upgrade
+								final AlertDialog alertDialog;
+								AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
+								dl.setTitle("更新提示")
+								.setMessage(resp.description)
+								.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+						                pd.setTitle("正在下载");
+						                pd.setMessage("请稍后...");
+						                pd.setCancelable(false);
+						                pd.setButton(AlertDialog.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												// TODO Auto-generated method stub
+												if(downloadThread != null) {
+													downloadThread.stopThread();
+												}
+											}
+										});
+						                pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+						                downFile(resp.filepath);
+									}
+								})
+								.setNegativeButton("暂时不", new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										dialog.dismiss();
+									}
+								});
+								alertDialog = dl.create();
+								alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+								alertDialog.show();
+								
 							} else {
 								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
 							}
 							//强制升级
 						} else if ("2".equals(resp.type)){
 							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
-								PromptDialog.Dialog(this, true, false, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+								/*PromptDialog.Dialog(this, true, false, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
 									
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
@@ -373,7 +423,33 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 										// TODO Auto-generated method stub
 										finish();
 									}
-								}, false, null);
+								}, false, null);*/
+								final AlertDialog alertDialog;
+								AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
+								dl.setTitle("更新提示").setMessage(resp.description).setCancelable(false)
+										.setPositiveButton("更新", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												pd.setTitle("正在下载");
+												pd.setMessage("请稍后...");
+												pd.setCancelable(false);
+												pd.setButton(AlertDialog.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+													@Override
+													public void onClick(DialogInterface dialog, int which) {
+														// TODO Auto-generated method stub
+														if(downloadThread != null) {
+															downloadThread.stopThread();
+														}
+														WeFlowApplication.getAppInstance().cleanAllActivity();
+													}
+												});
+												pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+												downFile(resp.filepath);
+											}
+										});
+								alertDialog = dl.create();
+								alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+								alertDialog.show();
 							} else {
 								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
 							}
@@ -383,6 +459,10 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 					}
 				}
 			}
+			break;
+		case PushService.APK_DOWNLOADED_MSG:
+			pd.cancel();
+			update();
 			break;
 		}
 		return false;
@@ -511,4 +591,62 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		}
 		return number;
 	}
+	
+	 /**
+     * 下载apk
+     */
+    public static void downFile(final String url) {
+    	
+    	if(VNetworkStateDetector.isAvailable()) {
+    		if(VNetworkStateDetector.isMobile()) {
+	    		final AlertDialog alertDialog;
+	    		AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
+				dl.setTitle("网络提示")
+				.setMessage("您当前为2G/3G网络，下载将消耗流量，是否继续？")
+				.setCancelable(false)
+				.setPositiveButton("继续下载", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int arg1) {
+						// TODO Auto-generated method stub
+						pd.show();
+				        if(downloadThread != null)
+				        	downloadThread.stopThread();
+				        downloadThread = new DownloadThread(handler, pd);
+				        downloadThread.excute(url);
+					}
+				})
+				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+						WeFlowApplication.getAppInstance().cleanAllActivity();
+					}
+				});
+				alertDialog = dl.create();
+				alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+				alertDialog.show();
+    		} else {
+    			pd.show();
+		        if(downloadThread != null)
+		        	downloadThread.stopThread();
+		        downloadThread = new DownloadThread(handler, pd);
+		        downloadThread.excute(url);
+    		}
+    	}
+    }
+    
+    /**
+     * 安装应用
+     */
+	public void update() {
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(Uri.fromFile(new File(Config.DOWNLOAD_FOLDER, PushService.UPDATE_SERVERAPK)),
+				"application/vnd.android.package-archive");
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
+	}
+	
 }

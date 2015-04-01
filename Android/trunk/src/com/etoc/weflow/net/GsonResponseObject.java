@@ -219,11 +219,19 @@ public class GsonResponseObject {
 		public AwardItemResp award;
 		public String flowcoins;
 	}
+	public static class shakeConfigResp {
+		public String status;
+		public String cost;
+	}
 	// 2.5.3 刮刮卡赚取流量币
 	public static class scratchflowResp {
 		public String status;
 		public AwardItemResp award;
 		public String flowcoins;
+	}
+	public static class scratchConfigResp {
+		public String status;
+		public String cost;
 	}
 	// 2.5.4 玩游戏赚取流量币记录
 	public static class AwardRecordResp {

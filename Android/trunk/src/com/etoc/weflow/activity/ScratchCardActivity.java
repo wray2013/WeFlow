@@ -8,6 +8,8 @@ import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonRequestObject.getScratchConfigRequest;
+import com.etoc.weflow.net.GsonResponseObject.scratchConfigResp;
 import com.etoc.weflow.net.GsonResponseObject.scratchflowResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
@@ -24,14 +26,16 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ScratchCardActivity extends TitleRootActivity {
 
+	private RelativeLayout rlFlowCost;
 	private ImageView ivCover;
-	private TextView tvFlow;
+	private TextView tvFlow, tvFlowCost;
 	private Button btnStartLottery;
 	private ScratchTextView stvCard;
 	private GridView gvAward;
@@ -66,6 +70,11 @@ public class ScratchCardActivity extends TitleRootActivity {
 		
 		Flow = accountInfo.getFlowcoins() + "";
 //		}
+		
+		rlFlowCost = (RelativeLayout) findViewById(R.id.rl_flow_cost);
+		rlFlowCost.setVisibility(View.GONE);
+		
+		tvFlowCost = (TextView) findViewById(R.id.tv_flow_cost);
 		
 		tvFlow = (TextView) findViewById(R.id.tv_flow);
 		tvFlow.setText(Flow);
@@ -114,6 +123,8 @@ public class ScratchCardActivity extends TitleRootActivity {
 		
 		gvAward = (GridView) findViewById(R.id.gv_award);
 		makeFakeData(gvAward);
+		
+		Requester.getScratchConfig(true, handler);
 		
 		/*TextView hint = (TextView) findViewById(R.id.tv_flow_hint);
 		hint.setOnClickListener(this);*/
@@ -233,7 +244,7 @@ public class ScratchCardActivity extends TitleRootActivity {
 						Flow = resp.flowcoins;
 						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 						String awardname = resp.award.prizename;
-						if(awardname == null || awardname.equals("0流量币")) {
+						if(awardname == null || awardname.equals("刮刮卡0流量币")) {
 							awardname = noAward[RandomUtils.getRandom(4) % 5];
 						}
 						startLottery(awardname);
@@ -250,6 +261,25 @@ public class ScratchCardActivity extends TitleRootActivity {
 			} else {
 				PromptDialog.Alert(ScratchCardActivity.class, "您的网络不给力啊！");
 			}
+			break;
+		case Requester.RESPONSE_TYPE_SCRATCH_CONFIG:
+			if(msg.obj != null) {
+				scratchConfigResp configresp = (scratchConfigResp) msg.obj;
+				if("0".equals(configresp.status) || "0000".equals(configresp.status)) {
+					float cost = 0.0f;
+					try {
+						cost = Float.parseFloat(configresp.cost);
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+					if(cost != 0) {
+						rlFlowCost.setVisibility(View.VISIBLE);
+						tvFlowCost.setText(Math.abs(cost) + "");
+					}
+				}
+			}
+			 
+			break;
 		}
 		return false;
 	}

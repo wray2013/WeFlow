@@ -39,7 +39,7 @@ public class PushService extends Service implements Callback {
 	public final static int HANDLER_FLAG_SENDSMS_RESPONSE =  0x19861219;
 	
 	public static final int APK_DOWNLOADED_MSG = 0xff861214;
-	public static String UPDATE_SERVERAPK = "songliuliang.apk";
+	public static String UPDATE_SERVERAPK = "weflow.apk";
 	
 	public static String SP_NAME = "installinfo";
 	public static String SP_KEY_SERVICE_TEL = "servicetel";

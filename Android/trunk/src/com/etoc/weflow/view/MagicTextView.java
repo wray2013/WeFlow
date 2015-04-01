@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
 
@@ -36,7 +37,7 @@ public class MagicTextView extends TextView {
 			e.printStackTrace();
 		}
 		numStr = num + "";
-		if(isFloat) {
+		if(isFloat && num != 0) {
 			showNumberWithAnimation(num, duration);
 		} else {
 			showNumberWithAnimation((int)num, duration);
@@ -88,6 +89,6 @@ public class MagicTextView extends TextView {
 
 	public void setNumber(float number) {
 		this.number = number;
-		setText(String.format("%1$07.2f", number));
+		setText(String.format("%1$9.2f", number).trim());
 	}
 }

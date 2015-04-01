@@ -18,6 +18,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etoc.weflow.R;
@@ -27,6 +28,7 @@ import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.listener.ShakeListener;
 import com.etoc.weflow.listener.ShakeListener.OnShakeListener;
+import com.etoc.weflow.net.GsonResponseObject.shakeConfigResp;
 import com.etoc.weflow.net.GsonResponseObject.shakeflowResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.RandomUtils;
@@ -48,6 +50,8 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 	
 	private ImageView ivShakeBg;
 	private FlowerView mFlowerView;
+	
+	private TextView tvShakeHint;
 
 	private AccountInfo accountInfo;
 	
@@ -73,6 +77,9 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		
 		accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
+		
+		tvShakeHint = (TextView) findViewById(R.id.tv_shake_label);
+		
 		//获得振动器服务
 		mVibrator = (Vibrator) getApplication().getSystemService(VIBRATOR_SERVICE);
 		//实例化加速度传感器检测类
@@ -109,6 +116,8 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 				mHandler.sendMessage(msg);
 			}
 		};
+		
+		Requester.getShakeConfig(true, handler);
 	}
 	
 	private void shakePerform() {
@@ -220,9 +229,16 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 						accountInfo.setFlowcoins(resp.flowcoins);
 						WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 //						myTimer.schedule(mTask, 0, 10);
-						OrderDialog.Dialog(this, "恭喜您获得" + resp.award.prizename);
-						mtoast = Toast.makeText(ShakeShakeActivity.this,
-								"恭喜您获得" + resp.award.prizename, Toast.LENGTH_SHORT);
+						String awardname = resp.award.prizename;
+						if(awardname == null || awardname.equals("摇一摇0流量币")) {
+							awardname = noAward[RandomUtils.getRandom(4) % 5];
+							OrderDialog.Dialog(this, awardname, true);
+							mtoast = Toast.makeText(ShakeShakeActivity.this, awardname, Toast.LENGTH_SHORT);
+						} else {
+							OrderDialog.Dialog(this, "恭喜您获得" + resp.award.prizename);
+							mtoast = Toast.makeText(ShakeShakeActivity.this,
+									"恭喜您获得" + resp.award.prizename, Toast.LENGTH_SHORT);
+						}
 						mtoast.show();
 					} else {
 						mtoast = Toast.makeText(ShakeShakeActivity.this,
@@ -237,6 +253,23 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 				PromptDialog.Alert(ShakeShakeActivity.class, "您的网络不给力啊！");
 			}
 			mShakeListener.start();
+			break;
+			
+		case Requester.RESPONSE_TYPE_SHAKE_CONFIG:
+			if(msg.obj != null) {
+				shakeConfigResp resp = (shakeConfigResp) msg.obj;
+				if("0".equals(resp.status) || "0000".equals(resp.status)) {
+					float cost = 0.0f;
+					try {
+						cost = Float.parseFloat(resp.cost);
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+					if(cost != 0) {
+						tvShakeHint.setText("摇一摇，每次只需" + Math.abs((int)cost) + "流量币");
+					}
+				}
+			}
 			break;
 		}
 		return false;

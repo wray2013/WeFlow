@@ -50,6 +50,7 @@ import com.etoc.weflow.net.GsonRequestObject.feedBackRequest;
 import com.etoc.weflow.net.GsonRequestObject.flowPkgListRequest;
 import com.etoc.weflow.net.GsonRequestObject.gamePkgListRequest;
 import com.etoc.weflow.net.GsonRequestObject.getAuthCodeRequest;
+import com.etoc.weflow.net.GsonRequestObject.getShakeConfigRequest;
 import com.etoc.weflow.net.GsonRequestObject.giftListRequest;
 import com.etoc.weflow.net.GsonRequestObject.loginRequest;
 import com.etoc.weflow.net.GsonRequestObject.phoneChargeListRequest;
@@ -100,7 +101,9 @@ import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
 import com.etoc.weflow.net.GsonResponseObject.loginResponse;
 import com.etoc.weflow.net.GsonResponseObject.registerResponse;
 import com.etoc.weflow.net.GsonResponseObject.resetPasswordResponse;
+import com.etoc.weflow.net.GsonResponseObject.scratchConfigResp;
 import com.etoc.weflow.net.GsonResponseObject.scratchflowResp;
+import com.etoc.weflow.net.GsonResponseObject.shakeConfigResp;
 import com.etoc.weflow.net.GsonResponseObject.shakeflowResp;
 import com.etoc.weflow.net.GsonResponseObject.testResponse;
 import com.etoc.weflow.net.GsonResponseObject.verifyAuthCodeResponse;
@@ -249,6 +252,12 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_SCRATCH = 0xffee2141;
 	public static final String RIA_INTERFACE_SCRATCH = "/vs/api/user/scratchflow";
+	
+	public static final int RESPONSE_TYPE_SHAKE_CONFIG = 0xffee2142;
+	public static final String RIA_INTERFACE_SHAKE_CONFIG = "/vs/api/user/shakeConfig";
+	
+	public static final int RESPONSE_TYPE_SCRATCH_CONFIG = 0xffee2143;
+	public static final String RIA_INTERFACE_SCRATCH_CONFIG = "/vs/api/user/scratchConfig";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -449,6 +458,13 @@ public class Requester {
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SHAKE, shakeflowResp.class);
 		worker.execute(RIA_INTERFACE_SHAKE, request);
 	}
+	public static void getShakeConfig(boolean hasLoading,Handler handler) {
+		getShakeConfigRequest request = new getShakeConfigRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SHAKE_CONFIG, shakeConfigResp.class);
+		worker.execute(RIA_INTERFACE_SHAKE_CONFIG, request);
+	}
 	//2.5.3 刮刮卡赚取流量币
 	public static void scratchFlow(boolean hasLoading,Handler handler, String userid) {
 		shakeFlowRequest request = new shakeFlowRequest();
@@ -457,6 +473,13 @@ public class Requester {
 		request.userid = userid;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SCRATCH, scratchflowResp.class);
 		worker.execute(RIA_INTERFACE_SCRATCH, request);
+	}
+	public static void getScratchConfig(boolean hasLoading,Handler handler) {
+		getShakeConfigRequest request = new getShakeConfigRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SCRATCH_CONFIG, scratchConfigResp.class);
+		worker.execute(RIA_INTERFACE_SCRATCH_CONFIG, request);
 	}
 	//2.5.4 玩游戏赚取流量币记录
 	public static void getAwardRecord(boolean hasLoading,Handler handler, String pageno, String userid) {

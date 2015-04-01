@@ -42,9 +42,12 @@ public enum PType {
 
 	// 购礼券
 	bug_gf("09"),
-	
-	// 抽奖
-	get_award("10");
+
+	// 游戏摇一摇
+	game_shake("10"),
+
+	// 游戏刮刮
+	game_scratch("11");
 
 	private String value;
 

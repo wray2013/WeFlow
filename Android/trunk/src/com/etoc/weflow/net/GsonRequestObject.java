@@ -213,9 +213,19 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	public static class getShakeConfigRequest {
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 	//2.5.3 刮刮卡赚取流量币
 	public static class scratchFlowRequest {
 		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	public static class getScratchConfigRequest {
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
