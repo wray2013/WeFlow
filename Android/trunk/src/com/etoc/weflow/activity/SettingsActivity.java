@@ -168,9 +168,10 @@ public class SettingsActivity extends TitleRootActivity {
 			ParallelManager.getInstance().submitTask(new DiskCleanTask(SETTING_CACHE_CLEAR, cacheFold));
 			break;
 		case R.id.rl_settings_about:
-			Intent aboutIntent = new Intent(this, WebViewActivity.class);
+			/*Intent aboutIntent = new Intent(this, WebViewActivity.class);
 			aboutIntent.putExtra("pageurl", Config.ABOUTPAGE_URL);
-			aboutIntent.putExtra("pagetitle", "关于");
+			aboutIntent.putExtra("pagetitle", "关于");*/
+			Intent aboutIntent = new Intent(this, AboutActivity.class);
 			startActivity(aboutIntent);
 			break;
 		case R.id.rl_settings_upgrade:
