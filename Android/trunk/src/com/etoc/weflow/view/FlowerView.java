@@ -84,7 +84,7 @@ public class FlowerView extends View {
 	
 	public void loadFlower(){
 		Resources r = this.getContext().getResources();
-		mFlowers = ((BitmapDrawable)r.getDrawable(R.drawable.snow)).getBitmap();
+		mFlowers = ((BitmapDrawable)r.getDrawable(R.drawable.coins)).getBitmap();
 	}
 	
 	public void recycle(){
