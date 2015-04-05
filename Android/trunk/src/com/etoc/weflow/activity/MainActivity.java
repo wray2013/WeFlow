@@ -2,6 +2,10 @@ package com.etoc.weflow.activity;
 
 import java.io.File;
 
+import net.youmi.android.offers.OffersBrowserConfig;
+import net.youmi.android.offers.OffersManager;
+import net.youmi.android.offers.PointsManager;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -32,9 +36,6 @@ import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
-import com.etoc.weflow.dialog.PromptDialog;
-import com.etoc.weflow.download.DownloadManager;
-import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
 import com.etoc.weflow.fragment.HomePageFragment;
@@ -80,6 +81,14 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreate");
+		
+		OffersManager.getInstance(this).onAppLaunch();
+		
+		// 设置积分墙列表页标题文字
+		OffersBrowserConfig.setBrowserTitleText("下软件");
+		// 设置积分墙标题背景颜色
+//		OffersBrowserConfig.setBrowserTitleBackgroundColor(getResources().getColor(R.color.titlebar));
 		
 		handler = new Handler(this);
 		dm = getResources().getDisplayMetrics();
@@ -111,9 +120,25 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.d(TAG, "onResume");
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Log.d(TAG, "onStop");
+	}
+	
+	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		Log.d(TAG, "onDestroy");
+		OffersManager.getInstance(this).onAppExit();
 		WeFlowApplication.getAppInstance().removeActivity(this);
 		if(db != null)
 			db.close();
@@ -281,7 +306,11 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		if (null == getSupportFragmentManager().findFragmentByTag(
 				fragment.getClass().getName())) {
 			Log.d(TAG, "add fragment=" + fragment + " name = " + fragment.getClass().getName());
-			ft.add(R.id.content_frame, fragment, fragment.getClass().getName());
+			if(fragment.isAdded()) {
+				Log.d(TAG, "fragment name = " + fragment.getClass().getName() + " is Added!");
+			} else {
+				ft.add(R.id.content_frame, fragment, fragment.getClass().getName());
+			}
 			// ft.addToBackStack(null);
 		} else {
 			Log.d(TAG, "show fragment=" + fragment);
@@ -523,8 +552,34 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 					startActivity(new Intent(this, LoginActivity.class));
 				}
 			} else if(currContentFragment instanceof DiscoveryFragment) {
-				Intent discIntent = new Intent(this, CaptureActivity.class);
-				startActivity(discIntent);
+				
+				
+				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+				if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
+					//查询用户的积分账户余额
+					int myPointBalance = PointsManager.getInstance(this).queryPoints();
+					//扣除积分
+					PointsManager.getInstance(this).spendPoints(myPointBalance);
+					
+					float flowcoins = 0;
+					if(info != null && info.getFlowcoins() != null) {
+						try {
+							flowcoins = Float.parseFloat(info.getFlowcoins());
+						} catch(Exception e) {
+							e.printStackTrace();
+						}
+					}
+					//增加积分
+					PointsManager.getInstance(this).awardPoints((int)flowcoins);
+					
+					OffersManager.getInstance(this).showOffersWall();
+					
+				} else {
+					startActivity(new Intent(this, LoginActivity.class));
+				}
+				
+//				Intent discIntent = new Intent(this, CaptureActivity.class);
+//				startActivity(discIntent);
 			}
             break;
 		case R.id.btn_title_right:
