@@ -228,7 +228,7 @@
                     android:layout_marginBottom="28dp"
                     android:background="@drawable/bg_round_login"
                     android:gravity="center"
-                    android:text="登陆"
+                    android:text="登录"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp" />
             </RelativeLayout>
