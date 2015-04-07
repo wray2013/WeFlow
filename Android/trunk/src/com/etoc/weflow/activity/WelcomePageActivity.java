@@ -3,6 +3,8 @@ package com.etoc.weflow.activity;
 
 import java.util.List;
 
+import net.youmi.android.AdManager;
+
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.GuideActivity;
@@ -48,6 +50,12 @@ public class WelcomePageActivity extends TitleRootActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		AdManager.getInstance(this).init("81b5d6a3b8130593", "51f70349743c649d", false);
+		if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {  
+            //结束你的activity
+			this.finish();
+            return;  
+        }
 		hideTitlebar();
 		
 		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
