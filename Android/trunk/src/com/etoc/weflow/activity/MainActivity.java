@@ -554,7 +554,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			} else if(currContentFragment instanceof DiscoveryFragment) {
 				
 				
-				AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+				/*AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
 				if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
 					//查询用户的积分账户余额
 					int myPointBalance = PointsManager.getInstance(this).queryPoints();
@@ -576,10 +576,10 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 					
 				} else {
 					startActivity(new Intent(this, LoginActivity.class));
-				}
+				}*/
 				
-//				Intent discIntent = new Intent(this, CaptureActivity.class);
-//				startActivity(discIntent);
+				Intent discIntent = new Intent(this, CaptureActivity.class);
+				startActivity(discIntent);
 			}
             break;
 		case R.id.btn_title_right:

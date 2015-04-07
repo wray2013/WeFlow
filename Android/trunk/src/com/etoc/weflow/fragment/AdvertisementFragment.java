@@ -404,6 +404,7 @@ public class AdvertisementFragment extends Fragment implements OnClickListener, 
         	/*View listItem = listAdapter.getView(0, null, listView);
         	listItem.measure(0, 0);
         	itemHeight = listItem.getMeasuredHeight();*/
+        	if(getActivity() != null)
         	itemHeight = DisplayUtil.getSize(getActivity(), 452);
         }
         

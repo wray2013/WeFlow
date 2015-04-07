@@ -339,7 +339,8 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 					if(response.applist != null && response.applist.length > 0) {
 						Collections.addAll(appList, response.applist);
 						adapter.notifyDataSetChanged();
-						ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
+						if(getActivity() != null)
+							ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
 						currentPage = 1;
 					}
 					
