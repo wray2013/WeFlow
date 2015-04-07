@@ -242,7 +242,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_MY_BILL = "/vs/api/user/billList";
 	
 	public static final int RESPONSE_TYPE_FEED_BACK = 0xffee2138;
-	public static final String RIA_INTERFACE_FEED_BACK = "/vs/api/user/feedback";
+	public static final String RIA_INTERFACE_FEED_BACK = "/vs/api/user/feedBack";
 	
 	public static final int RESPONSE_TYPE_UPDATE = 0xffee2139;
 	public static final String RIA_INTERFACE_UPDATE = "/vs/api/ua";
@@ -288,6 +288,7 @@ public class Requester {
 		request.pwd = MD5Utils.get32MD5Str(pass);
 		request.imei = IMEI;
 		request.mac  = MAC;
+		request.channelid = MetaUtil.getStringValue("ETOC_CHANNEL");
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
 		worker.execute(RIA_INTERFACE_REGISTER, request);
 	}
