@@ -20,7 +20,7 @@
 	    		android:layout_height="wrap_content"
 	    		android:gravity="center"
 	    		android:text="程序版本："
-	    		android:textColor="@color/black"/>
+	    		android:textColor="@color/white"/>
 	        <TextView 
 	            android:id="@+id/tv_version"
 	            android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
 	    		android:layout_toRightOf="@+id/tv_version_hint"
 	    		android:gravity="center"
 	    		android:text="v1.0.0"
-	    		android:textColor="@color/black"/>
+	    		android:textColor="@color/white"/>
         </RelativeLayout>
         <RelativeLayout 
     	    android:id="@+id/rl_copyrights"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="©2014-"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/tv_copyrights"
@@ -51,7 +51,7 @@
                 android:layout_toRightOf="@+id/tv_copyrights_hint_a"
                 android:gravity="center"
                 android:text="2015"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/tv_copyrights_hint_b"
@@ -60,7 +60,7 @@
                 android:layout_toRightOf="@+id/tv_copyrights"
                 android:gravity="center"
                 android:text=" EToC. All Rights Reserved"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
         </RelativeLayout>
     </RelativeLayout>

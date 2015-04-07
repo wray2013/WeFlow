@@ -174,7 +174,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			ViewUtils.setSize(layout.findViewById(R.id.view_space), 180, 200);
 //			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(makeFlowId + i);
-			layout.setOnClickListener(this);
+			if(i != 0) layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(makeFlows[i]);
 			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
@@ -194,7 +194,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			ViewUtils.setSize(layout.findViewById(R.id.view_space), 180, 200);
 //			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(expenseFlowId + i);
-			layout.setOnClickListener(this);
+			if(i != 0) layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(expenseFlows[i]);
 			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
