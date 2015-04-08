@@ -288,7 +288,7 @@ public class Requester {
 		request.pwd = MD5Utils.get32MD5Str(pass);
 		request.imei = IMEI;
 		request.mac  = MAC;
-		request.channelid = MetaUtil.getStringValue("ETOC_CHANNEL");
+//		request.channelid = MetaUtil.getStringValue("ETOC_CHANNEL");
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
 		worker.execute(RIA_INTERFACE_REGISTER, request);
 	}

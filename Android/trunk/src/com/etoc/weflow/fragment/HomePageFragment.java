@@ -227,6 +227,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 			}
 		}*/
+		currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 		loginView(true);
 		
 		if(currentAccount != null) {
@@ -242,15 +243,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private void checkLogin() {
 		isLogin = false;
 		if (mainActivity != null) {
-			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
-			if (accountInfoDao != null && accountInfoDao.count() > 0) {
-				List<AccountInfo> aiList = accountInfoDao.loadAll();
-				currentAccount = aiList.get(0);
-				if (currentAccount != null && currentAccount.getUserid() != null
-						&& !currentAccount.getUserid().equals("")) {
-					Log.e("XXX", "已登录");
-					isLogin = true;
-				}
+			if (currentAccount != null && currentAccount.getUserid() != null
+					&& !currentAccount.getUserid().equals("")) {
+				Log.e("XXX", "已登录");
+				isLogin = true;
 			}
 		}
 	}
@@ -312,7 +308,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		loginView(false);
 		if(mtvFlow != null && isLogin) {
 //			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
-			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+			String newflow = currentAccount.getFlowcoins();
+			mtvFlow.showNumberWithAnimation(newflow, 1000);
 		}
 	}
 	
@@ -448,7 +445,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				SignInResp resp = (SignInResp) msg.obj;
 				if(Requester.isSuccessed(resp.status)) {
 					ivSignIn.setEnabled(false);
-					WeFlowApplication.getAppInstance().setFlowCoins(resp.signflowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(resp.flowcoins);
 					PromptDialog.Alert("签到成功，增加" + NumberUtils.convert2IntStr(resp.singleflowcoins) + "流量币");
 					if(mtvFlow != null && isLogin) {
 						currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();

@@ -86,7 +86,7 @@ public class GsonRequestObject {
 		String pwd; //密码，加密MD5
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
-		String channelid;// channelid
+//		String channelid;// channelid
 	}
 	
 	//2.1.3 验证码验证

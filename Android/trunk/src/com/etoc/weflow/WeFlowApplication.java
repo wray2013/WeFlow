@@ -191,7 +191,8 @@ public class WeFlowApplication extends Application {
 	        
 			accountInfoDao = daoSession.getAccountInfoDao();
 			accountInfoDao.deleteAll();
-			accountInfoDao.insertOrReplace(acc);
+			accountInfoDao.insert(acc);
+			accountInfo = acc;
 			db.close();
 		}
 	}
