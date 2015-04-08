@@ -235,7 +235,7 @@ public class ShakeShakeActivity extends TitleRootActivity implements OnLongClick
 							OrderDialog.Dialog(this, awardname, true);
 							mtoast = Toast.makeText(ShakeShakeActivity.this, awardname, Toast.LENGTH_SHORT);
 						} else {
-							OrderDialog.Dialog(this, "恭喜您获得" + resp.award.prizename);
+							OrderDialog.Dialog(this, "恭喜您获得" + resp.award.prizename, true);
 							mtoast = Toast.makeText(ShakeShakeActivity.this,
 									"恭喜您获得" + resp.award.prizename, Toast.LENGTH_SHORT);
 						}

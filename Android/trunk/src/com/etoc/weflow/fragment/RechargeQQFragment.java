@@ -324,7 +324,7 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 				if (Requester.isSuccessed(chargeResp.status)) {
 //					PromptDialog.Alert("订购成功");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					OrderDialog.Dialog(getActivity(), "已成功充值" + adapter.getSelectMoney() + "Q币");
+					OrderDialog.Dialog(getActivity(), "已成功充值" + adapter.getSelectMoney() + "Q币", true);
 					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
 					}*/

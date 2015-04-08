@@ -396,7 +396,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 				if (Requester.isSuccessed(chargeResp.status)) {
 //					PromptDialog.Alert("订购成功");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					OrderDialog.Dialog(getActivity(), "已成功充值" + adapter.getSelectMoney() + "元话费");
+					OrderDialog.Dialog(getActivity(), "已成功充值" + adapter.getSelectMoney() + "元话费", true);
 					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						OrderDialog.Dialog(getActivity(), "兑换码: " + chargeResp.cardcode + "\n请尽快使用");
 //						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");

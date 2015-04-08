@@ -286,7 +286,7 @@ public class AdDetailActivity extends TitleRootActivity {
 			if (msg.obj != null) {
 				AdvFlowResp resp = (AdvFlowResp) msg.obj;
 				if("0".equals(resp.status) || "0000".equals(resp.status)) {
-					OrderDialog.Dialog(this, "成功获取" + adInfo.flowcoins + "流量币");
+					OrderDialog.Dialog(this, "成功获取" + adInfo.flowcoins + "流量币", true);
 //					PromptDialog.Alert(AdDetailActivity.class, "成功获取" + adInfo.flowcoins + "流量币");
 					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 					accountInfo.setFlowcoins(resp.flowcoins);
