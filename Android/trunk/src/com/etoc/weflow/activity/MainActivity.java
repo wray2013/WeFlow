@@ -2,10 +2,6 @@ package com.etoc.weflow.activity;
 
 import java.io.File;
 
-import net.youmi.android.offers.OffersBrowserConfig;
-import net.youmi.android.offers.OffersManager;
-import net.youmi.android.offers.PointsManager;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -83,10 +79,10 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "onCreate");
 		
-		OffersManager.getInstance(this).onAppLaunch();
+//		OffersManager.getInstance(this).onAppLaunch();
 		
 		// 设置积分墙列表页标题文字
-		OffersBrowserConfig.setBrowserTitleText("下软件");
+//		OffersBrowserConfig.setBrowserTitleText("下软件");
 		// 设置积分墙标题背景颜色
 //		OffersBrowserConfig.setBrowserTitleBackgroundColor(getResources().getColor(R.color.titlebar));
 		
@@ -138,7 +134,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		Log.d(TAG, "onDestroy");
-		OffersManager.getInstance(this).onAppExit();
+//		OffersManager.getInstance(this).onAppExit();
 		WeFlowApplication.getAppInstance().removeActivity(this);
 		if(db != null)
 			db.close();

@@ -93,6 +93,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	}
 	
 	private void initView(View view) {
+		Log.d(TAG, "initView");
 		inflater = LayoutInflater.from(getActivity());
 		makeFLowLayout = (LinearLayout) view.findViewById(R.id.ll_make_flow);
 		expenseFlowLayout =(LinearLayout) view.findViewById(R.id.ll_expense_flow);
@@ -274,7 +275,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			}
 			
 			loadConfig(currentAccount.getMakeflow(), currentAccount.getUseflow());
-			if(needQuery || tvPlain.getText().toString().equals("？"))
+			if(needQuery || tvInFlow.getText().toString().equals("？"))
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 		} else {
 			//未登录
