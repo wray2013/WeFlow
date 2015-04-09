@@ -315,11 +315,11 @@ public class RegisterResetActivity extends TitleRootActivity {
 			getAuthCodeResponse getAuthResp = (getAuthCodeResponse) msg.obj;
 			if(getAuthResp != null) {
 				if("0000".equals(getAuthResp.status)) { //发送成功
-					PromptDialog.Alert(RegisterResetActivity.class, "验证码发送成功，请查收");
+					PromptDialog.Alert(this, "验证码发送成功，请查收", true);
 				} else if("2009".equals(getAuthResp.status)) {
-					PromptDialog.Alert(RegisterResetActivity.class, "您发送验证码太频繁，请稍后再试");
+					PromptDialog.Alert(this, "您发送验证码太频繁，请稍后再试", true);
 				} else if("2007".equals(getAuthResp.status)) {
-					PromptDialog.Alert(RegisterResetActivity.class, "该手机已被注册");
+					PromptDialog.Alert(this, "该手机已被注册", true);
 				}
 			} else {
 				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
@@ -332,7 +332,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 					currentStep = STEP_TWO;
 					refreshViewStatus();
 				} else if("2001".equals(codeResp.status)) {
-					PromptDialog.Alert(RegisterResetActivity.class, "验证码错误，请检查后重新输入");
+					PromptDialog.Alert(this, "验证码错误，请检查后重新输入", true);
 				}
 			} else {
 				PromptDialog.Alert(RegisterResetActivity.class, "您的网络不给力啊！");
@@ -342,7 +342,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 			registerResponse regResp = (registerResponse) msg.obj;
 			if(regResp != null) {
 				if("0000".equals(regResp.status) || "0".equals(regResp.status)) { //注册成功
-					PromptDialog.Alert(RegisterResetActivity.class, "成功注册");
+					PromptDialog.Alert(this, "成功注册", true);
 					//TODO:跳转主页
 //					AccountInfo acc = new AccountInfo();
 					accountinfo.setIsregistration(regResp.isregistration);
@@ -367,7 +367,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 			resetPasswordResponse resetResp = (resetPasswordResponse) msg.obj;
 			if(resetResp != null) {
 				if("0000".equals(resetResp.status) || "0".equals(resetResp.status)) { //重置成功
-					PromptDialog.Alert(RegisterResetActivity.class, "密码修改成功,请重新登录");
+					PromptDialog.Alert(this, "密码修改成功,请重新登录", true);
 					//TODO:跳转登录页
 					Intent loginIntent = new Intent(this, LoginActivity.class);
 					loginIntent.putExtra("tel", currentTel);

@@ -152,6 +152,7 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 			tvLogin.setText("开通流量钱包");
 			tvLogin.setClickable(true);
 			tvLogin.setBackgroundResource(R.drawable.bg_round_login);
+			tvFlowValue.setText("0");
 		}
 	}
 
