@@ -314,6 +314,7 @@ public class GsonRequestObject {
 		String productid;  //流量包id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String acctid;// 手机号
 	}
 	
 	//2.6.12 获取礼券兑换列表

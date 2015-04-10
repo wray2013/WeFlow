@@ -595,12 +595,13 @@ public class Requester {
 	}
 	
 	//2.6.11 兑换流量包
-	public static void exchangeFlowPkg(boolean hasLoading,Handler handler,String userid,String productid) {
+	public static void exchangeFlowPkg(boolean hasLoading,Handler handler,String userid,String productid,String phone) {
 		exchangeFlowPkgRequest request = new exchangeFlowPkgRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.productid = productid;
 		request.userid = userid;
+		request.acctid = phone;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_FLOW_PKG, ExchangeFlowPkgResp.class);
 		worker.execute(RIA_INTERFACE_EXCHANGE_FLOW_PKG, request);

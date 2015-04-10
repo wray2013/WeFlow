@@ -84,6 +84,10 @@ public class ExchangeFlowDialog implements OnClickListener {
 		alertDialog = builder.create();
 	}
 	
+	public String getContext() {
+		return etContent.getText().toString();
+	}
+	
 	
 	public void show() {
 		// TODO Auto-generated method stub
