@@ -17,7 +17,7 @@ import org.springframework.web.client.RestClientException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-@ActiveProfiles("test")
+@ActiveProfiles("develop")
 @ContextConfiguration(locations = { "classpath*:/net/etoc/spring/*.xml",
 		"classpath:/spring/*.xml" })
 public class PrizeServiceTest extends AbstractJUnit4SpringContextTests {
@@ -33,7 +33,7 @@ public class PrizeServiceTest extends AbstractJUnit4SpringContextTests {
 	public void before() {
 		String key = "spring.profiles.active";
 		if (StringUtils.isEmpty(System.getProperty(key))) {
-			System.setProperty(key, "test");
+			System.setProperty(key, "develop");
 		}
 	}
 
@@ -50,7 +50,12 @@ public class PrizeServiceTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void get() {
 		try {
-			service.rotatePrize("1", new RequestBase());
+			for (int i = 0; i < 30; i++) {
+				System.out.println(service.rotatePrize("1", new RequestBase())
+						.getMessage());
+				;
+			}
+
 		} catch (RestClientException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

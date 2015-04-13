@@ -50,4 +50,8 @@ public class LoginController {
 		return "login";
 	}
 
+	@RequestMapping(value = "product")
+	public String product() {
+		return "product/product";
+	}
 }

@@ -7,9 +7,12 @@
 package net.etoc.ct.service.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
+import net.etoc.crm.product.entity.WfCrmProduct;
+import net.etoc.crm.product.service.WfCrmProductService;
 import net.etoc.crm.user.service.AppUserService;
 import net.etoc.ct.entity.WfPrizeDetail;
 import net.etoc.ct.entity.WfPrizeResponse.PrizeDetailResponse;
@@ -18,16 +21,22 @@ import net.etoc.ct.repository.WfPrizeDetailRepository;
 import net.etoc.ct.service.WfPrizeService;
 import net.etoc.wf.core.util.RandomUtils;
 import net.etoc.wf.ctapp.base.RequestBase;
+import net.etoc.wf.ctapp.base.RsCode;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderResponse;
+import net.etoc.wf.ctapp.user.entity.GameConfigResponse;
 import net.etoc.wf.ctapp.user.entity.OrderRel;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,6 +65,9 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 	@Autowired
 	private AppUserService appUserService;
 
+	@Autowired
+	private WfCrmProductService wfCrmProductService;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -79,6 +91,23 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 		return dao.findPrize(awardway);
 	}
 
+	@Override
+	public GameConfigResponse findGameConfig(String merchant, String ptype) {
+		Pageable p = new PageRequest(0, 200, new Sort(Sort.Direction.ASC,
+				"pbusinessid"));
+		Page<WfCrmProduct> page = wfCrmProductService.findBymerchantAndptype(
+				merchant, ptype, p);
+		GameConfigResponse gr = new GameConfigResponse();
+		if (page != null && page.getContent() != null
+				&& page.getContent().size() > 0) {
+			gr.setStatus(RsCode.OK.getCode());
+			gr.setCost(page.getContent().get(0).getPcount() + "");
+			return gr;
+		} else {
+			return null;
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -90,17 +119,17 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 			RestClientException, JsonProcessingException {
 		// TODO Auto-generated method stub
 		List<WfPrizeDetail> prizeList = dao.findPrize(awardway);
-		List<Object> totalRange = dao.findTotalRange(awardway);
-		int min = 1;
+		List<BigDecimal> totalRange = dao.findTotalRange(awardway);
+		int min = 0;
 		int max = 0;
 		if (totalRange.get(0) == null) {
 			max = 0;
 		} else {
-			max = Integer.valueOf(totalRange.get(0) + "");
+			max = totalRange.get(0).multiply(new BigDecimal(100)).intValue();
 		}
 		WfPrizeDetail rsObj = generatePrize(prizeList, min, max);
-
 		PrizeDetailResponse wr = new PrizeDetailResponse();
+
 		wr.setAward(rsObj);
 		CrmOrderRequest ar = new CrmOrderRequest();
 		BeanUtils.copyProperties(ar, rb);
@@ -111,6 +140,7 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 		wr.setFlowcoins(result.getFlowcoins());
 		wr.setStatus(result.getStatus());
 		wr.setMessage(result.getMessage());
+
 		return wr;
 	}
 
@@ -132,16 +162,17 @@ public class WfPrizeServiceImpl implements WfPrizeService {
 		int tmp = 0;
 		int currentProp = 0;
 		for (WfPrizeDetail prize : prizeList) {
-			currentProp = prize.getPrizeProba();
+			currentProp = prize.getPrizeProba().multiply(new BigDecimal(100))
+					.intValue();
 			tmp = RandomUtils.createRnageRndom(min, max);
 			logger.info("tmp: " + tmp + " current " + currentProp);
 			if (tmp <= currentProp) {
-				if (prize.getPrizeCount() == 0) {
-					continue;
-				}
-				prize.setPrizeCount(prize.getPrizeCount() - 1);
-
-				this.saveOrupdate(prize);
+				/*
+				 * if (prize.getPrizeCount() == 0) { continue; }
+				 * prize.setPrizeCount(prize.getPrizeCount() - 1);
+				 * 
+				 * this.saveOrupdate(prize);
+				 */
 				return prize;
 			} else {
 				max = max - currentProp;

@@ -13,7 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-@ActiveProfiles("test")
+@ActiveProfiles("develop")
 @ContextConfiguration(locations = { "classpath*:/net/etoc/spring/*.xml",
 		"classpath:/spring/*.xml" })
 public class SoftServiceTest extends AbstractJUnit4SpringContextTests {
@@ -26,7 +26,7 @@ public class SoftServiceTest extends AbstractJUnit4SpringContextTests {
 	public void before() {
 		String key = "spring.profiles.active";
 		if (StringUtils.isEmpty(System.getProperty(key))) {
-			System.setProperty(key, "test");
+			System.setProperty(key, "develop");
 		}
 	}
 

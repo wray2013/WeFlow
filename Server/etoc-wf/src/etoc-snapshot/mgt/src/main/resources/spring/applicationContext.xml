@@ -18,8 +18,8 @@
 	
 	<bean id="httpClientFactory"
 		class="org.springframework.http.client.SimpleClientHttpRequestFactory">
-		<property name="connectTimeout" value="1000" />
-		<property name="readTimeout" value="1000" />
+		<property name="connectTimeout" value="60000" />
+		<property name="readTimeout" value="60000" />
 	</bean>
 
 	<!--RestTemplate -->
@@ -54,7 +54,7 @@
 			/> -->
 	</beans>
 
-	<beans profile="test,develop">
+	<beans profile="develop">
 		<context:property-placeholder
 			ignore-unresolvable="true" file-encoding="UTF-8"
 			location="classpath*:application.test.properties" />

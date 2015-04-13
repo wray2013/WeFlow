@@ -19,6 +19,26 @@ public class CtInfoRequest {
 	private String devicetype;
 	private String internetway;
 	private String appversion;
+	private String channel;
+
+	/**
+	 * channel
+	 *
+	 * @return the channel
+	 * @since 1.0.0
+	 */
+
+	public String getChannel() {
+		return channel;
+	}
+
+	/**
+	 * @param channel
+	 *            the channel to set
+	 */
+	public void setChannel(String channel) {
+		this.channel = channel;
+	}
 
 	/**
 	 * devicetype

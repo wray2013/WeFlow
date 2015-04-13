@@ -10,6 +10,9 @@ import java.util.UUID;
  * 
  */
 public class RandomUtils {
+	public static void main(String[] args) {
+		System.out.println(Math.round(Math.random() * (0.9 - 0.1) + 0.1));
+	}
 
 	private static SecureRandom random = new SecureRandom();
 

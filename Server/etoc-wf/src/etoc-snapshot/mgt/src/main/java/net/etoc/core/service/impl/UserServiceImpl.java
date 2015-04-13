@@ -59,7 +59,8 @@ public class UserServiceImpl implements ShiroUserService {
 
 	public String encodeUserPassword(String plainPassword, UserVO user) {
 		SimpleHash hash = new SimpleHash(appVars.hashAlgorithmName,
-				plainPassword, getSaltBytes(user), appVars.hashIterations);
+				plainPassword, getSaltBytes(user),
+				Integer.valueOf(appVars.hashIterations));
 		return hash.toString();
 	}
 

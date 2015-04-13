@@ -6,6 +6,7 @@
  */
 package net.etoc.ct.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import net.etoc.ct.entity.WfPrizeDetail;
@@ -29,6 +30,6 @@ public interface WfPrizeDetailRepository extends
 	public List<WfPrizeDetail> findPrize(@Param("awardway") String awardway);
 
 	@Query("select sum(obj.prizeProba) from WfPrizeDetail obj where obj.prizeCount > 0 and obj.awardway =:awardway  ")
-	List<Object> findTotalRange(@Param("awardway") String awardway);
+	List<BigDecimal> findTotalRange(@Param("awardway") String awardway);
 
 }

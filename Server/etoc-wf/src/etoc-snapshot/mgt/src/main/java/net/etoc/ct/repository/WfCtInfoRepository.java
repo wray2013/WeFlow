@@ -20,5 +20,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 
  */
 public interface WfCtInfoRepository extends JpaRepository<WfCtInfo, Integer> {
+	public WfCtInfo findByChannel(String channel);
 
 }

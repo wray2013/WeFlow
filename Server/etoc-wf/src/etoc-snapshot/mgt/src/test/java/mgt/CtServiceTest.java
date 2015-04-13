@@ -1,5 +1,6 @@
 package mgt;
 
+import net.etoc.ct.repository.WfCtInfoRepository;
 import net.etoc.ct.service.WfCtInfoService;
 
 import org.apache.commons.lang.StringUtils;
@@ -10,12 +11,14 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-@ActiveProfiles("test")
+@ActiveProfiles("develop")
 @ContextConfiguration(locations = { "classpath*:/net/etoc/spring/*.xml",
 		"classpath:/spring/*.xml" })
 public class CtServiceTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	WfCtInfoService service;
+	@Autowired
+	WfCtInfoRepository dao;
 
 	private String serverurl = "http://123.56.104.49:7085/export/";
 
@@ -23,7 +26,7 @@ public class CtServiceTest extends AbstractJUnit4SpringContextTests {
 	public void before() {
 		String key = "spring.profiles.active";
 		if (StringUtils.isEmpty(System.getProperty(key))) {
-			System.setProperty(key, "test");
+			System.setProperty(key, "develop");
 		}
 	}
 
@@ -36,8 +39,10 @@ public class CtServiceTest extends AbstractJUnit4SpringContextTests {
 		 */
 	}
 
-	// @Test
+	@Test
 	public void get() {
+		System.out.println(dao.findByChannel("etoc").getChannel()
+				+ "====================");
 	}
 
 	@Test

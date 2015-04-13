@@ -8,7 +8,6 @@ package net.etoc.ct.service.impl;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 import net.etoc.ct.entity.CtInfoRequest;
 import net.etoc.ct.entity.CtInfoResponse;
@@ -88,14 +87,14 @@ public class WfCtInfoServiceImpl implements WfCtInfoService {
 	public CtInfoResponse findCtInfo(CtInfoRequest rq)
 			throws IllegalAccessException, InvocationTargetException {
 		// TODO Auto-generated method stub
-		List<WfCtInfo> rs = dao.findAll();
+		WfCtInfo tmp = dao.findByChannel(rq.getChannel());
+
 		CtInfoResponse cr = new CtInfoResponse();
-		if (rs == null || rs.size() == 0) {
+		if (tmp == null) {
 			cr.setType(versionType.latest.getValue());
 			cr.setStatus(RsCode.OK.getCode());
 			return cr;
 		}
-		WfCtInfo tmp = rs.get(0);
 		BeanUtils.copyProperties(cr, tmp);
 		int serverVS = Integer.valueOf(tmp.getVersion());
 		int clientVS = Integer.valueOf(rq.getAppversion());
@@ -103,11 +102,14 @@ public class WfCtInfoServiceImpl implements WfCtInfoService {
 			// 大于2个版本强制升级
 			cr.setType(versionType.forceup.getValue());
 		} else if ((serverVS - clientVS) == 1) {
-			cr.setType(versionType.latest.getValue());
-		} else if (serverVS == clientVS) {
 			cr.setType(versionType.normalup.getValue());
+		} else if (serverVS == clientVS) {
+			cr.setType(versionType.latest.getValue());
 		}
 		cr.setServertime(System.currentTimeMillis());
+		cr.setStatus(RsCode.OK.getCode());
+		cr.setFilepath(tmp.getFilePath());
+		cr.setFilesize(tmp.getFileSize());
 		return cr;
 	}
 
