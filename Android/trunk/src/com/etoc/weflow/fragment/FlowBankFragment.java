@@ -112,12 +112,13 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	
 	private void viewAdapter(View view) {
 		// TODO Auto-generated method stub
-		ViewUtils.setHeight(view.findViewById(R.id.rl_bank_top), 275);
-		ViewUtils.setWidth(view.findViewById(R.id.ll_bank_bottom), 658);
-		ViewUtils.setHeight(view.findViewById(R.id.ll_bank_bottom), 112);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_bank_top), 246);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_bank_center), 740);
+		ViewUtils.setWidth(view.findViewById(R.id.ll_bank_bottom), 592);
+		ViewUtils.setHeight(view.findViewById(R.id.ll_bank_bottom), 82);
 		ViewUtils.setHeight(view.findViewById(R.id.v_divider), 72);
 		
-		ViewUtils.setWidth(mtvMoney, 380);
+		ViewUtils.setSize(mtvMoney, 350,350);
 		
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_yest_income), 105);
 		ViewUtils.setTextSize(mtvMoney, 70);

@@ -142,25 +142,25 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	
 	private void initController() {
 		
-		ViewUtils.setHeight(findViewById(R.id.ll_controller), 118);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_weflow), 48, 48);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_bank), 48, 48);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_discover), 48, 48);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_me), 48, 48);
-		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_weflow), 16);
+		ViewUtils.setHeight(findViewById(R.id.ll_controller), 132);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_weflow), 96, 96);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_bank), 96, 96);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_discover), 96, 96);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_me), 96, 96);
+		/*ViewUtils.setMarginTop(findViewById(R.id.btn_tab_weflow), 16);
 		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_bank), 16);
 		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_discover), 16);
-		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_me), 16);
+		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_me), 16);*/
 		
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_weflow), 16);
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_bank), 16);
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_discover), 16);
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_me), 16);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_weflow), 12);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_bank), 12);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_discover), 12);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_me), 12);
 		
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_weflow), 24);
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_bank), 24);
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_discover), 24);
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_me), 24);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_weflow), 18);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_bank), 18);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_discover), 18);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_me), 18);
 		
 		rlHomePage = (RelativeLayout) findViewById(R.id.rl_btn_weflow);
 		rlBank     = (RelativeLayout) findViewById(R.id.rl_btn_bank);
@@ -334,9 +334,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				hideLeftButton();
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
-//				hideLeftButton();
-				hideRightButton();
-				setLeftButtonBackground(R.drawable.btn_scan);
+				hideLeftButton();
+//				hideRightButton();
+				setRightButtonBackground(R.drawable.btn_scan);
 			} else if(fragment instanceof MyselfFragment) {
 				title = "我";
 				hideLeftButton();
@@ -589,6 +589,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				bankIntent.putExtra("pageurl", Config.BANKPAGE_URL);
 				bankIntent.putExtra("pagetitle", "攻略");
 				startActivity(bankIntent);
+			} else if(currContentFragment instanceof DiscoveryFragment) {
+				Intent discIntent = new Intent(this, CaptureActivity.class);
+				startActivity(discIntent);
 			}
 			
 			/*Intent intent = new Intent();

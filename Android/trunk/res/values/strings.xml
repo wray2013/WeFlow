@@ -3,10 +3,10 @@
     <string name="app_name">流量钱包</string>
     
     <!-- TAB Text -->
-    <string name="tab_weflow">微流量</string>
-    <string name="tab_bank">存钱罐</string>
+    <string name="tab_weflow">流量</string>
+    <string name="tab_bank">储蓄</string>
     <string name="tab_discover">发现</string>
-    <string name="tab_me">我</string>
+    <string name="tab_me">我的</string>
     <string name="hint_phone_number">请输入手机号码</string>
     <string name="hint_qq_number">请输入qq号</string>
     

@@ -69,7 +69,6 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		rlAccountInfo = (RelativeLayout) view.findViewById(R.id.rl_account_info);
 		ViewUtils.setSize(tvLogin, 242, 72);
 		ViewUtils.setMarginLeft(tvLogin, 94);
-		ViewUtils.setMarginBottom(tvLogin, 36);
 		ViewUtils.setTextSize(tvLogin, 30);
 		tvLogin.setOnClickListener(this);
 		rlAccountInfo.setOnClickListener(this);
@@ -83,9 +82,9 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		view.findViewById(R.id.rl_me_feedback).setOnClickListener(this);
 		view.findViewById(R.id.rl_me_settings).setOnClickListener(this);
 		
-		ViewUtils.setHeight(view.findViewById(R.id.rl_me_top), 222);
-		ViewUtils.setHeight(rlAccountInfo, 144);
-		ViewUtils.setSize(view.findViewById(R.id.iv_head), 112,112);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_me_top), 306);
+		ViewUtils.setHeight(rlAccountInfo, 202);
+		ViewUtils.setSize(view.findViewById(R.id.iv_head), 130,130);
 		ViewUtils.setMarginBottom(view.findViewById(R.id.iv_head), 16);
 		ViewUtils.setMarginLeft(view.findViewById(R.id.iv_head), 32);
 		
@@ -109,18 +108,27 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_settings), 35);
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_download), 35);
 		
-		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_hint), 52);
-		ViewUtils.setMarginLeft((TextView) view.findViewById(R.id.tv_flow_paper_hint), 52);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.iv_me_flow_coin), 32);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.iv_me_flow_gift), 12);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_flow_coin), 72, 72);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_flow_gift), 72, 72);
 		
 		ViewUtils.setMarginRight((TextView) view.findViewById(R.id.tv_flow_value), 25);
 		ViewUtils.setMarginRight((TextView) view.findViewById(R.id.tv_flow_paper), 25);
 		
-		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_msg), 48);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_bill), 48);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_download), 48);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_sign), 48);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_feedback), 48);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_settings), 48);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_msg), 72, 72);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_bill), 72, 72);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_download), 72, 72);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_sign), 72, 72);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_feedback), 72, 72);
+		ViewUtils.setSize(view.findViewById(R.id.iv_me_settings), 72, 72);
+		
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_msg), 24);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_bill), 24);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_download), 24);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_sign), 24);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_feedback), 24);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_settings), 24);
 		ViewUtils.setMarginLeft(view.findViewById(R.id.view_divide_h_center), 32);
 		ViewUtils.setMarginRight(view.findViewById(R.id.view_divide_h_center), 32);
 		ViewUtils.setPaddingLeft(view.findViewById(R.id.rl_me_msg), 32);
