@@ -8,21 +8,20 @@
     <RelativeLayout
         android:id="@+id/rl_me_top"
         android:layout_width="match_parent"
-        android:layout_height="111dp"
+        android:layout_height="153dp"
         android:background="@color/white" >
 
         <RelativeLayout
             android:id="@+id/rl_account_info"
             android:layout_width="fill_parent"
-            android:layout_height="72dp"
-            android:background="#121C34" >
+            android:layout_height="101dp"
+            android:background="#E50244" >
 
             <ImageView
                 android:id="@+id/iv_head"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="8dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
                 android:src="@drawable/drawable_head" />
 
@@ -30,13 +29,12 @@
                 android:id="@+id/tv_login_btn"
                 android:layout_width="121dp"
                 android:layout_height="36dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="18dp"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="47dp"
                 android:layout_toRightOf="@id/iv_head"
                 android:background="@drawable/bg_round_login"
                 android:gravity="center"
-                android:text="开通流量钱包"
+                android:text="登陆"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -51,11 +49,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" >
-
+                
+				<ImageView
+                        android:id="@+id/iv_me_flow_coin"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/me_flow_coin" />
                 <TextView
                     android:id="@+id/tv_flow_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_me_flow_coin"
+                    android:layout_centerVertical="true"
                     android:text="流量币"
                     android:textColor="@color/black" />
 
@@ -66,6 +73,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_toRightOf="@+id/tv_flow_hint"
                     android:gravity="right|center_vertical"
+                    android:layout_centerVertical="true"
                     android:text="0"
                     android:textColor="@color/black" />
             </RelativeLayout>
@@ -80,12 +88,22 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" >
+                
+                <ImageView
+                    android:id="@+id/iv_me_flow_gift"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/me_flow_gift" />
 
                 <TextView
                     android:id="@+id/tv_flow_paper_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="流量券"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_me_flow_gift"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -93,6 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/tv_flow_paper_hint"
                     android:gravity="right|center_vertical"
                     android:text="0"
@@ -128,8 +147,8 @@
 
                     <ImageView
                         android:id="@+id/iv_me_msg"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_centerVertical="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/me_message" />
@@ -139,7 +158,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_toRightOf="@+id/iv_me_msg"
                         android:gravity="center_vertical"
                         android:text="我的消息"
@@ -166,8 +185,8 @@
 
                     <ImageView
                         android:id="@+id/iv_me_bill"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_centerVertical="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/me_bill" />
@@ -177,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_toRightOf="@+id/iv_me_bill"
                         android:gravity="center_vertical"
                         android:text="我的账单"
@@ -204,8 +223,8 @@
 
                     <ImageView
                         android:id="@+id/iv_me_download"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_centerVertical="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/me_download" />
@@ -215,7 +234,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_toRightOf="@+id/iv_me_download"
                         android:gravity="center_vertical"
                         android:text="下载管理"
@@ -241,8 +260,8 @@
 
                     <ImageView
                         android:id="@+id/iv_me_sign"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_centerVertical="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/me_sign_in" />
@@ -252,7 +271,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_toRightOf="@+id/iv_me_sign"
                         android:gravity="center_vertical"
                         android:text="签到"
@@ -279,8 +298,8 @@
 
                     <ImageView
                         android:id="@+id/iv_me_feedback"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_centerVertical="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/me_feedback" />
@@ -290,7 +309,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_toRightOf="@+id/iv_me_feedback"
                         android:gravity="center_vertical"
                         android:text="意见反馈"
@@ -316,8 +335,8 @@
 
                     <ImageView
                         android:id="@+id/iv_me_settings"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_centerVertical="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/me_setting" />
@@ -327,7 +346,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="24dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_toRightOf="@+id/iv_me_settings"
                         android:gravity="center_vertical"
                         android:text="设置"

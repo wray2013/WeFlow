@@ -3,32 +3,109 @@
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#e3e6e8"
     >
-    <TextView
-        android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:layout_centerInParent="true"
-    	android:text="Discovery Fragment"
-    	android:textColor="@color/white"
-        android:visibility="gone"/>
-    <ImageView 
-        android:layout_width="match_parent"
+    
+    <RelativeLayout 
+        android:id="@+id/rl_top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="101dp"
+        android:background="#E50244"
+        >
+        
+        <ImageView 
+            android:id="@+id/iv_flow_gift"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="63dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/discover_flow_gift"
+            />
+        
+        <ImageView 
+            android:id="@+id/iv_flow_pkg"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="63dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/discover_flow_pkg"
+            />
+    </RelativeLayout>
+    
+    <ScrollView
+        android:id="@+id/sv_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/tobeexepted"/>
-    <!-- <com.handmark.pulltorefresh.library.PullToRefreshListView
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/xlv_discovery_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="#00000000"
-        android:divider="@null"
-        android:overScrollMode="never"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="@null"
-        android:background="@color/black"
-        ptr:ptrPinnedListViewEnabled="true"
-        ptr:ptrAnimationStyle="flip"
-        ptr:ptrMode="both" /> -->
+        android:layout_below="@id/rl_top_layout"
+        android:layout_marginTop="24dp" 
+        >
+	    <RelativeLayout 
+	        android:id="@+id/rl_content"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@color/white"
+	        android:layout_marginLeft="16dp"
+	        android:layout_marginRight="16dp"
+	        >
+	        <TextView 
+	            android:id="@+id/tv_flow_gift"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="28dp"
+	            android:layout_marginLeft="20dp"
+	            android:text="流量券"
+	            android:textSize="13sp"
+	            android:includeFontPadding="false"
+	            android:textColor="@android:color/black"
+	            />
+	        
+	        <ImageView 
+	            android:id="@+id/iv_flow_gift_activity"
+	            android:layout_width="fill_parent"
+	            android:layout_height="126dp"
+	            android:layout_alignLeft="@id/tv_flow_gift"
+	            android:layout_marginRight="20dp"
+	            android:layout_below="@id/tv_flow_gift"
+	            android:layout_marginTop="20dp"
+	            android:scaleType="fitXY"
+	            android:src="@drawable/flow_gift_activity"
+	            />
+	        
+	        <TextView 
+	            android:id="@+id/tv_flow_pkg"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignLeft="@id/tv_flow_gift"
+	            android:layout_marginTop="28dp"
+	            android:layout_below="@id/iv_flow_gift_activity"
+	            android:text="流量券"
+	            android:textSize="13sp"
+	            android:includeFontPadding="false"
+	            android:textColor="@android:color/black"
+	            />
+	        
+	        <ImageView 
+	            android:id="@+id/iv_flow_pkg_activity"
+	            android:layout_width="fill_parent"
+	            android:layout_height="109dp"
+	            android:layout_alignLeft="@id/iv_flow_gift_activity"
+	            android:layout_alignRight="@id/iv_flow_gift_activity"
+	            android:layout_below="@id/tv_flow_pkg"
+	            android:layout_marginTop="20dp"
+	            android:scaleType="fitXY"
+	            android:src="@drawable/flow_pkg_activity"
+	            />
+	        <View 
+	            android:id="@+id/view_stub"
+	            android:layout_width="1px"
+	            android:layout_height="1px"
+	            android:layout_below="@id/iv_flow_pkg_activity"
+	            android:layout_marginTop="30dp"
+	            />
+	    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
 
