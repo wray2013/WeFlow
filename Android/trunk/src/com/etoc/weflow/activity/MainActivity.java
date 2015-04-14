@@ -34,7 +34,7 @@ import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
-import com.etoc.weflow.fragment.HomePageFragment;
+import com.etoc.weflow.fragment.HomePageFragment2;
 import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
 import com.etoc.weflow.net.GsonResponseObject.UpdateResp;
@@ -95,7 +95,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		initDataBase();
 		initController();
 		initMain(savedInstanceState);
-		setLeftButtonBackground(R.drawable.btn_message);
+		setLeftButtonBackground(R.drawable.btn_message2);
 		//检查更新
 //		CheckUpdate.getInstance(this).update();
 		Requester.update(false, handler);
@@ -175,7 +175,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	private void switchStatus(XFragment fragment) {
-		if (fragment instanceof HomePageFragment) {
+		if (fragment instanceof HomePageFragment2) {
 			rlHomePage.setSelected(true);
 			rlBank.setSelected(false);
 			rlDiscover.setSelected(false);
@@ -203,7 +203,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		if(savedInstanceState != null) {
 			
 			homePageFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
-					savedInstanceState, HomePageFragment.class.getName());
+					savedInstanceState, HomePageFragment2.class.getName());
 			
 			flowBankFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
 					savedInstanceState, FlowBankFragment.class.getName());
@@ -222,7 +222,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		}
 		
 		if (homePageFragment == null) {
-			homePageFragment = new HomePageFragment();
+			homePageFragment = new HomePageFragment2();
 		}
 		
 		if (flowBankFragment == null) {
@@ -323,14 +323,16 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		showLeftButton();
 		showRightButton();
 		if(fragment != null) {
-			if(fragment instanceof HomePageFragment) {
+			if(fragment instanceof HomePageFragment2) {
 				title = "流量钱包";
-				setRightButtonText("宝典");
+//				setRightButtonText("宝典");
+				setRightButtonBackground(R.drawable.btn_baodian);
 //				hideLeftButton();
-				setLeftButtonBackground(R.drawable.btn_message);
+				setLeftButtonBackground(R.drawable.btn_message2);
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "存钱罐";
-				setRightButtonText("攻略");
+//				setRightButtonText("攻略");
+				setRightButtonBackground(R.drawable.btn_gonglve);
 				hideLeftButton();
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
@@ -512,7 +514,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			switchContent(myselfFragment);
 			break;
 		case R.id.btn_title_left:
-			if(currContentFragment instanceof HomePageFragment) {
+			if(currContentFragment instanceof HomePageFragment2) {
 				/*PushMsgUtil pushmsg = new PushMsgUtil(handler, 0x88661256);
 //				List<MessageList> fakedata = MyMessageActivity.makeFakeData();
 //				MessageList msglist = fakedata.get(num % fakedata.size());
@@ -579,7 +581,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			}
             break;
 		case R.id.btn_title_right:
-			if(currContentFragment instanceof HomePageFragment) {
+			if(currContentFragment instanceof HomePageFragment2) {
 				Intent homeIntent = new Intent(this, WebViewActivity.class);
 				homeIntent.putExtra("pageurl", Config.HOMEPAGE_URL);
 				homeIntent.putExtra("pagetitle", "宝典");

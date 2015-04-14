@@ -10,7 +10,8 @@
     <color name="yellow">#FFFF00</color>
     <color name="orange">#FF4500</color>
     
-    <color name="red_text">#FE0200</color>
+    <!-- color name="red_text">#FE0200</color-->
+    <color name="red_text">#e50244</color>
     
     <color name="pagertab_color_red">#FF666666</color>
     <color name="pagertab_color_green">#FF14ae67</color>
@@ -56,6 +57,7 @@
     
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="background_grey">#E3E6E8</color>
+    <color name="background_grey2">#EFF3ED</color>
     <color name="divider_grey">#EEEEEE</color>
     <color name="text_grey">#919292</color>
     <color name="line_grey">#F6F7F7</color>

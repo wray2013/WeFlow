@@ -52,6 +52,7 @@ public class GuideActivity extends TitleRootActivity {
 //			R.drawable.guide06
 			R.drawable.guide_1,
 			R.drawable.guide_2,
+			R.drawable.guide_3,
 	};
 
 	@Override
