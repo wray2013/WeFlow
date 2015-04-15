@@ -2,13 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white" >
+    android:background="@color/background_grey2" >
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/view_bottom_line" />
-    
+	<View 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_bottom_line"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"/>
+	
     <include layout="@layout/include_main_bottom_controller" 
         />
     
@@ -18,6 +24,7 @@
         android:layout_height="1dp"
         android:background="#DCDCDC"
         android:layout_above="@+id/ll_controller"
+        android:visibility="invisible"
         />
 
 </RelativeLayout>

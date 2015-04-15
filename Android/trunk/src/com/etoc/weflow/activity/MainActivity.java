@@ -143,6 +143,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	private void initController() {
 		
 		ViewUtils.setHeight(findViewById(R.id.ll_controller), 132);
+		ViewUtils.setMarginTop(findViewById(R.id.ll_controller), -15);
 		ViewUtils.setSize(findViewById(R.id.btn_tab_weflow), 96, 96);
 		ViewUtils.setSize(findViewById(R.id.btn_tab_bank), 96, 96);
 		ViewUtils.setSize(findViewById(R.id.btn_tab_discover), 96, 96);
@@ -327,25 +328,30 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				title = "流量钱包";
 //				setRightButtonText("宝典");
 				setRightButtonBackground(R.drawable.btn_baodian);
+				setTitleBackground(R.drawable.title_homepage);
 //				hideLeftButton();
 				setLeftButtonBackground(R.drawable.btn_message2);
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "存钱罐";
 //				setRightButtonText("攻略");
 				setRightButtonBackground(R.drawable.btn_gonglve);
+				setTitleBackground(R.drawable.title_bank);
 				hideLeftButton();
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
 				hideLeftButton();
 //				hideRightButton();
 				setRightButtonBackground(R.drawable.btn_scan);
+				setTitleBackground(R.drawable.title_discovery);
 			} else if(fragment instanceof MyselfFragment) {
 				title = "我";
 				hideLeftButton();
 				hideRightButton();
+				setTitleBackground(R.drawable.title_myself);
 			}
 		}
-		setTitleText(title);
+		setTitleWxH(160, 51);
+//		setTitleText(title);
 	}
 	
 	/*@Override

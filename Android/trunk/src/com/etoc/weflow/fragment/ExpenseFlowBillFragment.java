@@ -54,9 +54,9 @@ public class ExpenseFlowBillFragment extends Fragment implements OnRefreshListen
 	private static final String ARG_POSITION = "position";
 
 	private static final int POSITION_PHONEBILL = 0; //充话费
-	private static final int POSITION_FLOWPKG   = 1; //流量包
-	private static final int POSITION_GAME      = 2; //游戏币
-	private static final int POSITION_GIFT      = 3; //礼品券
+	private static final int POSITION_FLOWPKG   = 3; //流量包
+	private static final int POSITION_GAME      = 1; //游戏币
+	private static final int POSITION_GIFT      = 2; //礼品券
 	
 	private int position = POSITION_PHONEBILL;
 	

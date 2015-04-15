@@ -1,6 +1,5 @@
 package com.etoc.weflow.fragment;
 
-import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,21 +11,21 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.ConstructionActivity;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
+import com.etoc.weflow.activity.MobileFlowActivity;
 import com.etoc.weflow.activity.ScratchCardActivity;
 import com.etoc.weflow.activity.ShakeShakeActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
-import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
 import com.etoc.weflow.net.GsonResponseObject.SignInResp;
@@ -34,14 +33,11 @@ import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.FileUtils;
 import com.etoc.weflow.utils.NumberUtils;
-import com.etoc.weflow.utils.PushMsgUtil;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
-import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-import com.viewpagerindicator.PageIndicator;
 
 public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ScrollView> {
 
@@ -149,6 +145,15 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		
 		ViewUtils.setHeight(view.findViewById(R.id.rl_view_pager), 458);
 		ViewUtils.setHeight(view.findViewById(R.id.rl_account), 106);
+		
+		ViewUtils.setSize(view.findViewById(R.id.iv_login), 210, 69);
+		
+		ViewUtils.setTextSize(mtvFlow, 76);
+		ViewUtils.setTextSize(tvPlain, 20);
+		ViewUtils.setTextSize(tvInFlow, 20);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_pkg_type_hint), 20);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_pkg_flow_left_hint), 20);
+		ViewUtils.setTextSize(view.findViewById(R.id.mtv_flow_hint), 20);
 		
 	}
 
@@ -299,16 +304,29 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 			startActivity(softintent);
 			break;
 		case R.id.rl_grid_activity:
-			break;
-		case R.id.rl_grid_exchange:
-			break;
-		case R.id.rl_grid_flow:
-			break;
-		case R.id.rl_grid_game:
 			Intent gameintent = new Intent(getActivity(),MakeFlowActivity.class);
 			gameintent.putExtra("isLogin", isLogin);
 			gameintent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc03 & 0xff);
 			startActivity(gameintent);
+			break;
+		case R.id.rl_grid_exchange:
+			Intent exchangeIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
+//			exchangeIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, v.getId() & 0xff);
+			exchangeIntent.putExtra("isLogin", isLogin);
+			startActivity(exchangeIntent);
+			break;
+		case R.id.rl_grid_flow:
+			Intent flowIntent = new Intent(getActivity(),MobileFlowActivity.class);
+//			flowIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 0xffeedd02 & 0xff);
+			flowIntent.putExtra("isLogin", isLogin);
+			startActivity(flowIntent);
+			break;
+		case R.id.rl_grid_game:
+			startActivity(new Intent(getActivity(), ConstructionActivity.class));
+			/*Intent gameintent = new Intent(getActivity(),MakeFlowActivity.class);
+			gameintent.putExtra("isLogin", isLogin);
+			gameintent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc03 & 0xff);
+			startActivity(gameintent);*/
 			break;
 		}
 	}

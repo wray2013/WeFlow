@@ -67,12 +67,13 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 			setTitleText("充话费记录");
 			break;
 		case 1:
-			setTitleText("定流量包记录");
-			break;
-		case 2:
+//			setTitleText("定流量包记录");
+//			break;
+//		case 2:
 			setTitleText("换游戏币记录");
 			break;
-		case 3:
+//		case 3:
+		case 2:
 			setTitleText("换礼券记录");
 			break;
 		}
@@ -122,7 +123,7 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 
 	public class ExpenseBillPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "充话费", "流量包", "游戏币", "礼品券"};
+		private final String[] TITLES = { "充话费", /*"流量包", */"游戏币", "礼品券"};
 
 		public ExpenseBillPagerAdapter(FragmentManager fm) {
 			super(fm);

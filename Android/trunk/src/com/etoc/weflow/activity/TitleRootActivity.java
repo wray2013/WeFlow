@@ -267,7 +267,11 @@ public abstract class TitleRootActivity extends BaseActivity implements OnClickL
 	
 	protected void setLeftButtonBackground(int resId){
 		if(leftButton!=null){
-			leftButton.setImageResource(resId);
+			leftButton.setBackgroundResource(resId);
+			RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) leftButton.getLayoutParams();
+			lParams.height = DisplayUtil.getSize(this, 72);
+			lParams.width = lParams.height;
+			leftButton.setLayoutParams(lParams);
 		}
 
 		
@@ -333,6 +337,12 @@ public abstract class TitleRootActivity extends BaseActivity implements OnClickL
 	protected void setTitleSize(int sizepx){
 		if(title!=null) {
 			ViewUtils.setTextSize(title, sizepx);
+		}
+	}
+	
+	protected void setTitleWxH(int w, int h){
+		if(title!=null) {
+			ViewUtils.setSize(title, w, h);
 		}
 	}
 	

@@ -33,9 +33,9 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	
 	private boolean isLogin = false;
 	public final static int INDEX_RECHARGE = 0;
-	public final static int INDEX_FLOW = 1;
-	public final static int INDEX_GAME = 2;
-	public final static int INDEX_GIFT = 3;
+	public final static int INDEX_FLOW = 3;
+	public final static int INDEX_GAME = 1;
+	public final static int INDEX_GIFT = 2;
 	private Fragment phoneFragment;
 	
 	@Override
@@ -44,18 +44,18 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 		super.onCreate(savedInstanceState);
 		initViews();
 		
-//		titleTab = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+		titleTab = (PagerSlidingTabStrip) findViewById(R.id.tabs);
 		viewPage = (MyViewPager) findViewById(R.id.pager);
 		viewPage.setOffscreenPageLimit(0);
 		viewPage.setScrollEnable(false);
 		
-//		titleTab.setTextColorResource(R.color.pagertab_color_green);
-//		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 40));
+		titleTab.setTextColorResource(R.color.pagertab_color_green);
+		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 40));
 		
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
 		viewPage.setAdapter(adapter);
 		
-//		titleTab.setViewPager(viewPage);
+		titleTab.setViewPager(viewPage);
 		
 		int index = getIntent().getIntExtra(ConStant.INTENT_EXPENSE_FLOW, 0);
 		index = index == 0?0:index - 1;
@@ -71,7 +71,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 			}
 		}, 100);
 		
-		/*titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int arg0) {
@@ -92,7 +92,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 				// TODO Auto-generated method stub
 				
 			}
-		});*/
+		});
 		
 		viewPage.setCurrentItem(index);
 		
@@ -101,12 +101,13 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 			setTitleText("充话费");
 			break;
 		case 1:
-			setTitleText("定流量包");
-			break;
-		case 2:
+//			setTitleText("定流量包");
+//			break;
+//		case 2:
 			setTitleText("换游戏币");
 			break;
-		case 3:
+//		case 3:
+		case 2:
 			setTitleText("换礼券");
 			break;
 		}
@@ -159,7 +160,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	
 	public class MyPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "充话费", "流量包", "游戏币", "礼品券"};
+		private final String[] TITLES = { "充话费", /*"流量包", */"游戏币", "礼品券"};
 
 		public MyPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -183,13 +184,14 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 				frag = new RechargeFragment();
 				phoneFragment = frag;
 				break;
-			case 2:
+			case 1:
+//				frag = new MobileFlowFragment();
+//				break;
+//			case 2:
 				frag = new GameCoinsFragment();
 				break;
-			case 1:
-				frag = new MobileFlowFragment();
-				break;
-			case 3:
+//			case 3:
+			case 2:
 				frag = new ExchangeGiftFragment();
 				break;
 			default:

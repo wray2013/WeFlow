@@ -21,8 +21,8 @@
 	        android:layout_height="229dp" >
 	        <ImageView 
 	            android:id="@+id/iv_banner"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
 	            android:background="@drawable/banner_homepage"/>
 	
 	        <com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager
@@ -60,13 +60,14 @@
 	        android:id="@+id/rl_account"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/rl_view_pager" >
+	        android:layout_below="@+id/rl_view_pager"
+	        android:background="@color/transparent" >
 		    <LinearLayout 
 		        android:id="@+id/ll_account_not_login"
 		        android:layout_width="match_parent"
-		        android:layout_height="53dp"
+		        android:layout_height="match_parent"
 		        android:baselineAligned="false"
-		        android:background="@color/red_text"
+		        android:background="@drawable/shape_homepage_account"
 		        android:gravity="center"
 		        android:orientation="horizontal"
 		        android:visibility="gone" >
@@ -80,9 +81,9 @@
 		    <LinearLayout 
 		        android:id="@+id/ll_account"
 		        android:layout_width="match_parent"
-		        android:layout_height="53dp"
+		        android:layout_height="match_parent"
 		        android:baselineAligned="false"
-		        android:background="@color/red_text"
+		        android:background="@drawable/shape_homepage_account"
 		        android:orientation="horizontal" >
 		        <RelativeLayout 
 		            android:id="@+id/rl_account_flow"
@@ -176,7 +177,8 @@
 		    android:layout_height="wrap_content"
 		    android:layout_alignParentBottom="true"
 		    android:gravity="center_vertical"
-		    android:layout_below="@+id/rl_account" >
+		    android:layout_below="@+id/rl_account"
+		    android:background="#EFF3ED" >
 	        <LinearLayout 
 	            android:id="@+id/ll_grid_line_1"
 		    	android:layout_width="match_parent"
