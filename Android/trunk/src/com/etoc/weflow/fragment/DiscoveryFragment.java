@@ -1,12 +1,14 @@
 package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.ConstructionActivity;
 import com.etoc.weflow.adapter.FastScrollAdapter;
 import com.etoc.weflow.utils.ViewUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -61,7 +63,10 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 		ViewUtils.setHeight(view.findViewById(R.id.iv_flow_pkg_activity), 218);
 		ViewUtils.setMarginTop(view.findViewById(R.id.iv_flow_pkg_activity), 36); 
 		
-		ViewUtils.setMarginTop(view.findViewById(R.id.view_stub), 60); 
+		ViewUtils.setMarginTop(view.findViewById(R.id.view_stub), 60);
+		
+		view.findViewById(R.id.iv_flow_gift_activity).setOnClickListener(this);
+		view.findViewById(R.id.iv_flow_pkg_activity).setOnClickListener(this);
 		
 	}
 	
@@ -69,6 +74,12 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
+		case R.id.iv_flow_gift_activity:
+			startActivity(new Intent(getActivity(), ConstructionActivity.class));
+			break;
+		case R.id.iv_flow_pkg_activity:
+			startActivity(new Intent(getActivity(), ConstructionActivity.class));
+			break;
 		}
 	}
 	

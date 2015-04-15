@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.handmark.pulltorefresh.library.PullToRefreshScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.handmark.pulltorefresh.library.PullToRefreshScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ptr_scroll_view"
     android:layout_width="match_parent"
@@ -9,7 +10,8 @@
     ptr:ptrHeaderTextColor="#212324"
     ptr:ptrMode="pullDownFromTop">
 
-	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	<RelativeLayout 
+	    xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:id="@+id/rl_root"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
@@ -55,6 +57,7 @@
 	    	android:layout_marginTop="32dp"
 	    	android:layout_marginRight="16dp"
 	    	android:src="@drawable/btn_sign_in_selector"
+	    	android:visibility="gone"
 	    	/>
 	    <RelativeLayout 
 	        android:id="@+id/rl_account"
@@ -175,7 +178,7 @@
 		    android:id="@+id/rl_grid"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:layout_alignParentBottom="true"
+		    android:layout_marginTop="5dp"
 		    android:gravity="center_vertical"
 		    android:layout_below="@+id/rl_account"
 		    android:background="#EFF3ED" >
@@ -323,6 +326,32 @@
 	            </RelativeLayout>
 	        </LinearLayout>
 		</RelativeLayout>
-	
+		<RelativeLayout 
+		    android:id="@+id/rl_activity_bottom"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="20dp"
+		    android:layout_below="@+id/rl_grid" >
+	        <TextView 
+	            android:id="@+id/tv_activity_hint"
+	            android:layout_width="match_parent"
+		    	android:layout_height="wrap_content"
+		    	android:layout_marginLeft="10dp"
+		    	android:text="活动推荐  ACTIVITY"
+		    	android:textStyle="bold"
+		    	android:textColor="@color/red_text"
+		    	android:textSize="20sp" />
+		    <ImageView 
+		        android:id="@+id/iv_activity_bottom"
+		        android:layout_width="match_parent"
+		    	android:layout_height="wrap_content"
+		    	android:layout_marginLeft="10dp"
+		    	android:layout_marginRight="10dp"
+		    	android:layout_centerHorizontal="true"
+		    	android:gravity="center"
+		    	android:layout_marginTop="15dp"
+		    	android:layout_below="@+id/tv_activity_hint"
+		    	android:background="@drawable/banner_activity"/>
+		</RelativeLayout>
 	</RelativeLayout>
 </com.handmark.pulltorefresh.library.PullToRefreshScrollView>

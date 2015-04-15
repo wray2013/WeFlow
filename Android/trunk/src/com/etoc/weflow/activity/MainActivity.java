@@ -350,7 +350,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				setTitleBackground(R.drawable.title_myself);
 			}
 		}
-		setTitleWxH(160, 51);
+		setTitleWxH(188, 60);
 //		setTitleText(title);
 	}
 	

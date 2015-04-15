@@ -58,6 +58,8 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 	private LinearLayout llNotLogin = null;
 	private ImageView btnLogin = null;//登录按钮
 	private ImageView ivSignIn = null;//签到按钮
+	private ImageView ivBanner = null;//banner图片
+	private ImageView ivActivity = null;//活动图片
 	
 //	private AutoScrollViewPager viewPager = null;
 //	private PageIndicator mIndicator;
@@ -96,6 +98,12 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		
 		ivSignIn = (ImageView) view.findViewById(R.id.iv_sign_in);
 		ivSignIn.setOnClickListener(this);
+		
+		ivBanner = (ImageView) view.findViewById(R.id.iv_banner);
+		ivBanner.setOnClickListener(this);
+		
+		ivActivity = (ImageView) view.findViewById(R.id.iv_activity_bottom);
+		ivActivity.setOnClickListener(this);
 		
 		tvPlain = (TextView) view.findViewById(R.id.tv_pkg_type);
 		tvInFlow = (TextView) view.findViewById(R.id.tv_pkg_flow_left);
@@ -155,6 +163,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_pkg_flow_left_hint), 20);
 		ViewUtils.setTextSize(view.findViewById(R.id.mtv_flow_hint), 20);
 		
+		ViewUtils.setSize(ivActivity, 680, 262);
 	}
 
 	private void checkLogin() {
@@ -302,6 +311,20 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 			softintent.putExtra("isLogin", isLogin);
 			softintent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc02 & 0xff);
 			startActivity(softintent);
+			break;
+		case R.id.iv_banner:
+			if(isLogin) {
+				startActivity(new Intent(getActivity(), ShakeShakeActivity.class));
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
+			break;
+		case R.id.iv_activity_bottom:
+			if(isLogin) {
+				startActivity(new Intent(getActivity(), ScratchCardActivity.class));
+			} else {
+				startActivity(new Intent(getActivity(), LoginActivity.class));
+			}
 			break;
 		case R.id.rl_grid_activity:
 			Intent gameintent = new Intent(getActivity(),MakeFlowActivity.class);
