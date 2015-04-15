@@ -81,7 +81,7 @@
 	            android:layout_alignLeft="@id/tv_flow_gift"
 	            android:layout_marginTop="28dp"
 	            android:layout_below="@id/iv_flow_gift_activity"
-	            android:text="流量券"
+	            android:text="抢红包"
 	            android:textSize="13sp"
 	            android:includeFontPadding="false"
 	            android:textColor="@android:color/black"
