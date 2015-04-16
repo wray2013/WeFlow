@@ -8,20 +8,10 @@
     <RelativeLayout 
         android:id="@+id/rl_title"
         android:layout_width="fill_parent"
-        android:layout_height="37dp"
-        android:background="@color/white"
+        android:layout_height="65dp"
+        android:background="@color/red_text"
         
         >
-        
-        <View
-            android:id="@+id/view_title_bottom"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/line_grey"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_alignParentBottom="true"
-            />
         
         <TextView 
             android:id="@+id/tv_title_label"
@@ -29,14 +19,14 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="订购立即生效，次月继续续订"
-            android:layout_alignLeft="@id/view_title_bottom"
-            android:textColor="@color/text_grey"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/white"
             android:textSize="13sp"
             />
         
     </RelativeLayout>
     
-    <ListView 
+    <!-- <ListView 
         android:id="@+id/lv_flows"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -46,7 +36,17 @@
         android:divider="@android:color/transparent"
         >
         
-    </ListView>
+    </ListView> -->
+    
+    <com.idunnololz.widgets.AnimatedExpandableListView
+        android:id="@+id/lv_flows"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0px"
+        android:background="@color/white"
+        android:layout_below="@id/rl_title"
+        />
     
 
 </RelativeLayout>

@@ -126,8 +126,8 @@ public class MobileFlowFragment extends Fragment implements Callback {
 	
 	private void initView(View view) {
 		ViewUtils.setHeight(view.findViewById(R.id.rl_title), 74);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.view_title_bottom), 32);
-		ViewUtils.setMarginRight(view.findViewById(R.id.view_title_bottom), 32);
+//		ViewUtils.setMarginLeft(view.findViewById(R.id.view_title_bottom), 32);
+//		ViewUtils.setMarginRight(view.findViewById(R.id.view_title_bottom), 32);
 		lvFlow = (ListView) view.findViewById(R.id.lv_flows);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_title_label), 26);
 		

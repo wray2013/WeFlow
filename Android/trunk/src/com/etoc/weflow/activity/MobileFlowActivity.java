@@ -1,23 +1,22 @@
 package com.etoc.weflow.activity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,27 +27,26 @@ import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.ExchangeFlowDialog;
 import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
-import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject;
-import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.net.GsonResponseObject.ExchangeFlowPkgResp;
 import com.etoc.weflow.net.GsonResponseObject.FlowPkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowProduct;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
+import com.idunnololz.widgets.AnimatedExpandableListView;
+import com.idunnololz.widgets.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
-import de.greenrobot.event.EventBus;
-
 public class MobileFlowActivity extends TitleRootActivity {
 
-	private ListView lvFlow;
+	private AnimatedExpandableListView lvFlow;
 	private FlowAdatper adapter;
-	private List<MobileFlowProduct> flowList = new ArrayList<GsonResponseObject.MobileFlowProduct>();
+	private List<MobileFlowResp> flowList = new ArrayList<GsonResponseObject.MobileFlowResp>();
 	private Handler handler;
 	private ExchangeFlowDialog exchangeDialog = null;
 	private String selectId = "";
@@ -149,10 +147,11 @@ public class MobileFlowActivity extends TitleRootActivity {
 	}
 	
 	private void initView() {
-		ViewUtils.setHeight(findViewById(R.id.rl_title), 74);
-		ViewUtils.setMarginLeft(findViewById(R.id.view_title_bottom), 32);
-		ViewUtils.setMarginRight(findViewById(R.id.view_title_bottom), 32);
-		lvFlow = (ListView) findViewById(R.id.lv_flows);
+		ViewUtils.setHeight(findViewById(R.id.rl_title), 130);
+		ViewUtils.setMarginLeft(findViewById(R.id.tv_title_label), 32);
+		lvFlow = (AnimatedExpandableListView) findViewById(R.id.lv_flows);
+		lvFlow.setGroupIndicator(null);
+		lvFlow.setSelector(new ColorDrawable(Color.TRANSPARENT));
 		ViewUtils.setTextSize(findViewById(R.id.tv_title_label), 26);
 		
 		adapter = new FlowAdatper(this, flowList);
@@ -167,20 +166,25 @@ public class MobileFlowActivity extends TitleRootActivity {
 		TextView tvFlowCoins;
 	}
 	
-	private class FlowAdatper extends BaseAdapter {
+	class GroupHolder {
+		TextView tvTypeName;
+		ImageView ivOpen;
+	}
+	
+	private class FlowAdatper extends AnimatedExpandableListAdapter {
 
 		MyImageLoader imageLoader = null;
 		DisplayImageOptions imageLoaderOptions = null;
 		
-		private List<MobileFlowProduct> appList = null;
+		private List<MobileFlowResp> flowList = null;
 		Context context;
 		private LayoutInflater inflater;
 		
-		public FlowAdatper(Context context,List<MobileFlowProduct> list) {
+		public FlowAdatper(Context context,List<MobileFlowResp> list) {
 			// TODO Auto-generated constructor stub
 			this.context = context;
 			inflater = LayoutInflater.from(context);
-			appList = list;
+			flowList = list;
 			imageLoader = MyImageLoader.getInstance();
 
 			imageLoaderOptions = new DisplayImageOptions.Builder()
@@ -194,26 +198,84 @@ public class MobileFlowActivity extends TitleRootActivity {
 					.build();
 		}
 		
+
 		@Override
-		public int getCount() {
+		public int getGroupCount() {
 			// TODO Auto-generated method stub
-			return appList.size();
+			return flowList.size();
 		}
 
 		@Override
-		public MobileFlowProduct getItem(int arg0) {
+		public MobileFlowResp getGroup(int groupPosition) {
 			// TODO Auto-generated method stub
-			return appList.get(arg0);
-		}
-		
-		@Override
-		public long getItemId(int arg0) {
-			// TODO Auto-generated method stub
-			return 0;
+			return flowList.get(groupPosition);
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public MobileFlowProduct getChild(int groupPosition, int childPosition) {
+			// TODO Auto-generated method stub
+			if (flowList.get(groupPosition) != null && flowList.get(groupPosition).products != null) {
+				return flowList.get(groupPosition).products[childPosition];
+			}
+			return null;
+		}
+
+		@Override
+		public long getGroupId(int groupPosition) {
+			// TODO Auto-generated method stub
+			return groupPosition;
+		}
+
+		@Override
+		public long getChildId(int groupPosition, int childPosition) {
+			// TODO Auto-generated method stub
+			return childPosition;
+		}
+
+		@Override
+		public boolean hasStableIds() {
+			// TODO Auto-generated method stub
+			return true;
+		}
+
+		@Override
+		public View getGroupView(int groupPosition, boolean isExpanded,
+				View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			GroupHolder holder;
+            MobileFlowResp item = getGroup(groupPosition);
+            if (convertView == null) {
+                holder = new GroupHolder();
+                convertView = inflater.inflate(R.layout.item_mobile_flow_header, parent, false);
+                holder.tvTypeName = (TextView) convertView.findViewById(R.id.tv_name);
+                holder.ivOpen = (ImageView) convertView.findViewById(R.id.iv_expande);
+                
+                ViewUtils.setTextSize(holder.tvTypeName, 24);
+                convertView.setTag(holder);
+                
+                ViewUtils.setMarginLeft(holder.tvTypeName, 36);
+        		ViewUtils.setMarginRight(holder.ivOpen, 64);
+            } else {
+                holder = (GroupHolder) convertView.getTag();
+            }
+            
+            if (isExpanded) {
+            } else {
+            }
+            holder.tvTypeName.setText(item.typename);
+            
+            return convertView;
+		}
+
+		@Override
+		public boolean isChildSelectable(int groupPosition, int childPosition) {
+			// TODO Auto-generated method stub
+			return true;
+		}
+
+		@Override
+		public View getRealChildView(int groupPosition, int childPosition,
+				boolean isLastChild, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
 			FlowViewHolder holder = null;
 			if (convertView == null) {
@@ -249,7 +311,7 @@ public class MobileFlowActivity extends TitleRootActivity {
 				holder = (FlowViewHolder) convertView.getTag();
 			}
 			
-			final MobileFlowProduct item = appList.get(position);
+			final MobileFlowProduct item = getChild(groupPosition, childPosition);
 			if(item.imgsrc != null && !item.imgsrc.equals("")) {
 				holder.ivImg.setVisibility(View.VISIBLE);
 				imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
@@ -273,6 +335,15 @@ public class MobileFlowActivity extends TitleRootActivity {
 			});
 			return convertView;
 		}
+
+		@Override
+		public int getRealChildrenCount(int groupPosition) {
+			// TODO Auto-generated method stub
+			if (flowList.get(groupPosition) != null && flowList.get(groupPosition).products != null) {
+				return flowList.get(groupPosition).products.length;
+			}
+			return 0;
+		}
 		
 	}
 
@@ -286,7 +357,7 @@ public class MobileFlowActivity extends TitleRootActivity {
 				if(resp.status.equals("0000") || resp.status.equals("0")) {
 					if (resp.chargelist != null && resp.chargelist.length > 0) {
 						for (MobileFlowResp flowResp:resp.chargelist) {
-							Collections.addAll(flowList, flowResp.products);
+							flowList.add(flowResp);
 						}
 						adapter.notifyDataSetChanged();
 					}
