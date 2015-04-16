@@ -105,6 +105,12 @@ public class MobileFlowActivity extends TitleRootActivity {
 		super.onClick(v);
 	}
 	
+	@Override
+	protected int graviteType() {
+		// TODO Auto-generated method stub
+		return GRAVITE_LEFT;
+	}
+	
 /*	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

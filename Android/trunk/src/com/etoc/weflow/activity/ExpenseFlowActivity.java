@@ -98,17 +98,17 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 		
 		switch (index) {
 		case 0:
-			setTitleText("充话费");
+//			setTitleText("充话费");
 			break;
 		case 1:
 //			setTitleText("定流量包");
 //			break;
 //		case 2:
-			setTitleText("换游戏币");
+//			setTitleText("换游戏币");
 			break;
 //		case 3:
 		case 2:
-			setTitleText("换礼券");
+//			setTitleText("换礼券");
 			break;
 		}
 		
@@ -117,7 +117,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	}
 	
 	private void initViews() {
-//		setTitleText("花流量币");
+		setTitleText("兑换");
 		setRightButtonText("记录");
 //		hideRightButton();
 	}

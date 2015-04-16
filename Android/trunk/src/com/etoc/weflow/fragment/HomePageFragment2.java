@@ -402,7 +402,8 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 						}
 					}
 					
-					tvInFlow.setText(FileUtils.getFlowSize((int)in));
+					tvInFlow.setText(response.inflowleft);
+//					tvInFlow.setText(FileUtils.getFlowSize((int)in));
 //					tvOutFlow.setText(FileUtils.getFlowSize((int)out));
 				}
 			} else {

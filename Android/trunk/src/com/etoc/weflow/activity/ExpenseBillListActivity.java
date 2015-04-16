@@ -76,6 +76,9 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 		case 2:
 			setTitleText("换礼券记录");
 			break;
+		case 3:
+			setTitleText("定流量包记录");
+			break;
 		}
 		
 		/*titleTab.setOnPageChangeListener(new OnPageChangeListener() {
@@ -123,7 +126,7 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 
 	public class ExpenseBillPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "充话费", /*"流量包", */"游戏币", "礼品券"};
+		private final String[] TITLES = { "充话费", "游戏币", "礼品券", "流量包"};
 
 		public ExpenseBillPagerAdapter(FragmentManager fm) {
 			super(fm);
