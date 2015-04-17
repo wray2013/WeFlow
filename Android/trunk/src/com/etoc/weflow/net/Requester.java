@@ -874,8 +874,8 @@ public class Requester {
 					httpPostRequest.setEntity(new UrlEncodedFormEntity(parameters, HTTP.UTF_8));
 					//httpPostRequest.setEntity(new StringEntity(securityJson/*json*/, HTTP.UTF_8));
 
-					httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 10000);
-					httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
+					httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 20000);
+					httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 20000);
 					
 					HttpResponse localHttpResponse = httpClient.execute(httpPostRequest);
 				    
