@@ -390,7 +390,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 						if ("0".equals(resp.type)) {
 //							PromptDialog.Dialog(this, "版本升级", "当前已经是最新版本", "确定");
 							//普通升级
-						} else if ("1".equals(resp.type)) {
+						} else if ("2".equals(resp.type)) {
 							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
 								/*PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
 									
@@ -404,7 +404,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 								final AlertDialog alertDialog;
 								AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
 								dl.setTitle("更新提示")
-								.setMessage(resp.description)
+								.setMessage(resp.description.replace("\\n", "\n"))
 								.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
 									
 									@Override
@@ -440,7 +440,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
 							}
 							//强制升级
-						} else if ("2".equals(resp.type)){
+						} else if ("1".equals(resp.type)){
 							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
 								/*PromptDialog.Dialog(this, true, false, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
 									
@@ -459,7 +459,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 								}, false, null);*/
 								final AlertDialog alertDialog;
 								AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
-								dl.setTitle("更新提示").setMessage(resp.description).setCancelable(false)
+								dl.setTitle("更新提示").setMessage(resp.description.replace("\\n", "\n")).setCancelable(false)
 										.setPositiveButton("更新", new DialogInterface.OnClickListener() {
 											@Override
 											public void onClick(DialogInterface dialog, int which) {
@@ -478,6 +478,14 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 												});
 												pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 												downFile(resp.filepath);
+											}
+										})
+										.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												// TODO Auto-generated method stub
+												dialog.dismiss();
+												WeFlowApplication.getAppInstance().cleanAllActivity();
 											}
 										});
 								alertDialog = dl.create();

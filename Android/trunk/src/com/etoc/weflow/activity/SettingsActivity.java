@@ -207,9 +207,9 @@ public class SettingsActivity extends TitleRootActivity {
 						if ("0".equals(resp.type)) {
 							PromptDialog.Dialog(this, "版本升级", "当前已经是最新版本", "确定");
 							//普通升级
-						} else if ("1".equals(resp.type)) {
+						} else if ("2".equals(resp.type)) {
 							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
-								PromptDialog.Dialog(this, true, true, false, "发现新版本", resp.description, "下载", "取消", new OnClickListener() {
+								PromptDialog.Dialog(this, true, true, false, "发现新版本", resp.description.replace("\\n", "\n"), "下载", "取消", new OnClickListener() {
 									
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
@@ -221,9 +221,9 @@ public class SettingsActivity extends TitleRootActivity {
 								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
 							}
 							//强制升级
-						} else if ("2".equals(resp.type)) {
+						} else if ("1".equals(resp.type)) {
 							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
-								PromptDialog.Dialog(this, true, false, false, "发现新版本", resp.description, "下载", "取消", new OnClickListener() {
+								PromptDialog.Dialog(this, true, false, false, "发现新版本", resp.description.replace("\\n", "\n"), "下载", "取消", new OnClickListener() {
 									
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
