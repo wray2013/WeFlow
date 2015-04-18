@@ -16,6 +16,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.SignInListResp;
 import com.etoc.weflow.net.GsonResponseObject.SignInResp;
@@ -66,7 +67,9 @@ public class SignInActivity extends TitleRootActivity {
 							Log.d("=AAA=","firstDate = " + today.getTime());
 						    
 						    final Calendar endDate = Calendar.getInstance();
-						    endDate.set(Calendar.DAY_OF_MONTH, endDate.getMaximum(Calendar.DAY_OF_MONTH));
+						    endDate.set(Calendar.DAY_OF_MONTH,1);
+						    endDate.add(Calendar.MONTH, 1);
+//						    endDate.add(Calendar.DAY_OF_MONTH, 1);
 						    initCalendarView(firstDay, endDate.getTime(),dateList);
 						}
 					}
@@ -89,7 +92,8 @@ public class SignInActivity extends TitleRootActivity {
 					WeFlowApplication.getAppInstance().setFlowCoins(signResp.flowcoins);
 					
 				} else if("2015".equals(signResp.status)) {
-					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");
+					OrderDialog.Dialog(this, "您今天已经签过到了！", true);
+//					PromptDialog.Alert(MainActivity.class, "您已经签过到了！");
 				}
 			}
 			break;

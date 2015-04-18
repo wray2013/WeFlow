@@ -306,6 +306,10 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 					// TODO Auto-generated method stub
 					
 					DownloadManager.getInstance().addDownloadTask(item.soft, item.appid, item.title, item.appicon, "",  DownloadType.APP, "","","", "");
+					
+					Intent intent = new Intent(getActivity(),SoftDetailActivity.class);
+					intent.putExtra(ConStant.INTENT_SOFT_DETAIL, new Gson().toJson(item));
+					startActivity(intent);
 				}
 			});
 			return convertView;
@@ -335,7 +339,8 @@ public class AppReccomFragment extends Fragment implements Callback, OnRefreshLi
 					if(response.applist != null && response.applist.length > 0) {
 						Collections.addAll(appList, response.applist);
 						adapter.notifyDataSetChanged();
-						ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
+						if(getActivity() != null)
+							ViewUtils.setHeightPixel(listView,ViewUtils.getListHeight(listView, DisplayUtil.getSize(getActivity(), 152)));
 						currentPage = 1;
 					}
 					

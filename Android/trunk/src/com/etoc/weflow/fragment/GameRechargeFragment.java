@@ -31,6 +31,7 @@ import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.adapter.MoreAdapter;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.GameCoinEvent;
 import com.etoc.weflow.net.GsonResponseObject.ExchangeFlowPkgResp;
@@ -185,18 +186,22 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 			if (msg.obj != null) {
 				GameRechargeResp chargeResp = (GameRechargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
-					PromptDialog.Alert("订购成功");
+//					PromptDialog.Alert("订购成功");
+					OrderDialog.Dialog(getActivity(), "兑换码：" + chargeResp.cardcode+ "\n请尽快使用");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					if (!StringUtils.isEmpty(chargeResp.cardcode)) {
+					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
-					}
+					}*/
 				} else if (Requester.isProcessed(chargeResp.status)){
-					PromptDialog.Alert("订购已处理");
+//					PromptDialog.Alert("订购已处理");
+					OrderDialog.Dialog(getActivity(), "订购已受理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isLowFlow(chargeResp.status)) {
-					PromptDialog.Alert(ConStant.LOW_FLOW);
+					OrderDialog.Dialog(getActivity(), ConStant.LOW_FLOW, true);
+//					PromptDialog.Alert(ConStant.LOW_FLOW);
 				}  else {
-					PromptDialog.Alert(ConStant.ORDER_FAIL);
+					OrderDialog.Dialog(getActivity(), ConStant.ORDER_FAIL, true);
+//					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;

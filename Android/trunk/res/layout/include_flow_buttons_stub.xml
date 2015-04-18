@@ -3,12 +3,11 @@
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
     android:background="@drawable/list_item_with_shape" 
-    android:layout_marginRight="1dp"
     >
     
     <View 
         android:id="@+id/view_space"
-        android:layout_width="89dp"
+        android:layout_width="90dp"
         android:layout_height="100dp"
         />
     

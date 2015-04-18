@@ -50,6 +50,7 @@ import com.etoc.weflow.net.GsonRequestObject.feedBackRequest;
 import com.etoc.weflow.net.GsonRequestObject.flowPkgListRequest;
 import com.etoc.weflow.net.GsonRequestObject.gamePkgListRequest;
 import com.etoc.weflow.net.GsonRequestObject.getAuthCodeRequest;
+import com.etoc.weflow.net.GsonRequestObject.getShakeConfigRequest;
 import com.etoc.weflow.net.GsonRequestObject.giftListRequest;
 import com.etoc.weflow.net.GsonRequestObject.loginRequest;
 import com.etoc.weflow.net.GsonRequestObject.phoneChargeListRequest;
@@ -100,12 +101,15 @@ import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
 import com.etoc.weflow.net.GsonResponseObject.loginResponse;
 import com.etoc.weflow.net.GsonResponseObject.registerResponse;
 import com.etoc.weflow.net.GsonResponseObject.resetPasswordResponse;
+import com.etoc.weflow.net.GsonResponseObject.scratchConfigResp;
 import com.etoc.weflow.net.GsonResponseObject.scratchflowResp;
+import com.etoc.weflow.net.GsonResponseObject.shakeConfigResp;
 import com.etoc.weflow.net.GsonResponseObject.shakeflowResp;
 import com.etoc.weflow.net.GsonResponseObject.testResponse;
 import com.etoc.weflow.net.GsonResponseObject.verifyAuthCodeResponse;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.utils.MD5Utils;
 import com.etoc.weflow.utils.MetaUtil;
 import com.etoc.weflow.utils.NetWorkUtils;
 import com.etoc.weflow.utils.VMobileInfo;
@@ -238,7 +242,7 @@ public class Requester {
 	public static final String RIA_INTERFACE_MY_BILL = "/vs/api/user/billList";
 	
 	public static final int RESPONSE_TYPE_FEED_BACK = 0xffee2138;
-	public static final String RIA_INTERFACE_FEED_BACK = "/vs/api/user/feedback";
+	public static final String RIA_INTERFACE_FEED_BACK = "/vs/api/user/feedBack";
 	
 	public static final int RESPONSE_TYPE_UPDATE = 0xffee2139;
 	public static final String RIA_INTERFACE_UPDATE = "/vs/api/ua";
@@ -248,6 +252,12 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_SCRATCH = 0xffee2141;
 	public static final String RIA_INTERFACE_SCRATCH = "/vs/api/user/scratchflow";
+	
+	public static final int RESPONSE_TYPE_SHAKE_CONFIG = 0xffee2142;
+	public static final String RIA_INTERFACE_SHAKE_CONFIG = "/vs/api/user/shakeConfig";
+	
+	public static final int RESPONSE_TYPE_SCRATCH_CONFIG = 0xffee2143;
+	public static final String RIA_INTERFACE_SCRATCH_CONFIG = "/vs/api/user/scratchConfig";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -275,9 +285,10 @@ public class Requester {
 	public static void register(Handler handler, String tel, String pass) {
 		registerRequest request = new registerRequest();
 		request.tel = tel;
-		request.pwd = pass;
+		request.pwd = MD5Utils.get32MD5Str(pass);
 		request.imei = IMEI;
 		request.mac  = MAC;
+		request.channelplatid = MetaUtil.getStringValue("ETOC_CHANNEL");
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_REGISTER, registerResponse.class);
 		worker.execute(RIA_INTERFACE_REGISTER, request);
 	}
@@ -298,7 +309,7 @@ public class Requester {
 	public static void login(Handler handler, String tel, String pass) {
 		loginRequest request = new loginRequest();
 		request.tel = tel;
-		request.pwd = pass;
+		request.pwd = MD5Utils.get32MD5Str(pass);
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_LOGIN, loginResponse.class);
@@ -323,7 +334,7 @@ public class Requester {
 	public static void resetPassword(Handler handler, String tel, String newPass) {
 		resetPasswordRequest request = new resetPasswordRequest();
 		request.tel = tel;
-		request.newpassword = newPass;
+		request.newpassword = MD5Utils.get32MD5Str(newPass);
 		request.imei = IMEI;
 		request.mac  = MAC;
 		PostWorker worker = new PostWorker(handler, RESPONSE_TYPE_RESET_PWD, resetPasswordResponse.class);
@@ -448,6 +459,13 @@ public class Requester {
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SHAKE, shakeflowResp.class);
 		worker.execute(RIA_INTERFACE_SHAKE, request);
 	}
+	public static void getShakeConfig(boolean hasLoading,Handler handler) {
+		getShakeConfigRequest request = new getShakeConfigRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SHAKE_CONFIG, shakeConfigResp.class);
+		worker.execute(RIA_INTERFACE_SHAKE_CONFIG, request);
+	}
 	//2.5.3 刮刮卡赚取流量币
 	public static void scratchFlow(boolean hasLoading,Handler handler, String userid) {
 		shakeFlowRequest request = new shakeFlowRequest();
@@ -456,6 +474,13 @@ public class Requester {
 		request.userid = userid;
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SCRATCH, scratchflowResp.class);
 		worker.execute(RIA_INTERFACE_SCRATCH, request);
+	}
+	public static void getScratchConfig(boolean hasLoading,Handler handler) {
+		getShakeConfigRequest request = new getShakeConfigRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SCRATCH_CONFIG, scratchConfigResp.class);
+		worker.execute(RIA_INTERFACE_SCRATCH_CONFIG, request);
 	}
 	//2.5.4 玩游戏赚取流量币记录
 	public static void getAwardRecord(boolean hasLoading,Handler handler, String pageno, String userid) {
@@ -570,12 +595,13 @@ public class Requester {
 	}
 	
 	//2.6.11 兑换流量包
-	public static void exchangeFlowPkg(boolean hasLoading,Handler handler,String userid,String productid) {
+	public static void exchangeFlowPkg(boolean hasLoading,Handler handler,String userid,String productid,String phone) {
 		exchangeFlowPkgRequest request = new exchangeFlowPkgRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
 		request.productid = productid;
 		request.userid = userid;
+		request.acctid = phone;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_EXCHANGE_FLOW_PKG, ExchangeFlowPkgResp.class);
 		worker.execute(RIA_INTERFACE_EXCHANGE_FLOW_PKG, request);
@@ -671,14 +697,14 @@ public class Requester {
 			String packagename = WeFlowApplication.getAppInstance().getPackageName();
 			PackageInfo info = WeFlowApplication.getAppInstance().getPackageManager()
 					           .getPackageInfo(packagename, 0);
-	        String version = info.versionName;
-			request.appver = version.replace('.', '_');
+	        int version = info.versionCode;
+			request.appversion = "" + version;
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		} 
 		request.channel = MetaUtil.getStringValue("ETOC_CHANNEL");
 		
-		request.deviceType = ZSimCardInfo.getDeviceBrand() + " " + ZSimCardInfo.getDeviceName();
+		request.devicetype = ZSimCardInfo.getDeviceBrand() + " " + ZSimCardInfo.getDeviceName();
 		request.imei = IMEI;
 		request.imsi = ZSimCardInfo.getIMSI();
 		request.internetway = NetWorkUtils.getNetWorkType(WeFlowApplication.getAppInstance());
@@ -848,8 +874,8 @@ public class Requester {
 					httpPostRequest.setEntity(new UrlEncodedFormEntity(parameters, HTTP.UTF_8));
 					//httpPostRequest.setEntity(new StringEntity(securityJson/*json*/, HTTP.UTF_8));
 
-					httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 10000);
-					httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
+					httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 20000);
+					httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 20000);
 					
 					HttpResponse localHttpResponse = httpClient.execute(httpPostRequest);
 				    

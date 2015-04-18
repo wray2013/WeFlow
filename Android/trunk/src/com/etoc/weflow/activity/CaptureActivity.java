@@ -188,12 +188,16 @@ public class CaptureActivity extends TitleRootActivity implements Callback
 			@Override
 			public void onClick(DialogInterface dialog, int which)
 			{
-				//用默认浏览器打开扫描得到的地址
-				Intent intent = new Intent();
-				intent.setAction("android.intent.action.VIEW");
-				Uri content_url = Uri.parse(obj.getText());
-				intent.setData(content_url);
-				startActivity(intent);
+				try {
+					// 用默认浏览器打开扫描得到的地址
+					Intent intent = new Intent();
+					intent.setAction("android.intent.action.VIEW");
+					Uri content_url = Uri.parse(obj.getText());
+					intent.setData(content_url);
+					startActivity(intent);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				finish();
 			}
 		});

@@ -2,6 +2,8 @@ package com.etoc.weflow.utils;
 
 import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
+import com.etoc.weflow.activity.ScratchCardActivity;
+import com.etoc.weflow.activity.ShakeShakeActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -38,8 +40,11 @@ public class PTypeTransfer {
 		case bug_gf:
 			ret = "购礼券";
 			break;
-		case get_award:
-			ret = "获得奖品";
+		case game_shake:
+			ret = "游戏摇一摇";
+			break;
+		case game_scratch:
+			ret = "游戏刮刮卡";
 			break;
 		}
 		return ret;
@@ -85,7 +90,11 @@ public class PTypeTransfer {
 			intent.putExtra("isLogin", isLogin);
 			intent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 0xffeedd04 & 0xff);
 			break;
-		case get_award:
+		case game_shake:
+			intent.setClass(ctx, ShakeShakeActivity.class);
+			break;
+		case game_scratch:
+			intent.setClass(ctx, ScratchCardActivity.class);
 			break;
 		default:
 			break;
@@ -114,8 +123,10 @@ public class PTypeTransfer {
 				ret = getPTypeName(PType.recharge_gm);
 			} else if(typeStr.equals(PType.bug_gf.getValue())) {
 				ret = getPTypeName(PType.bug_gf);
-			} else if(typeStr.equals(PType.get_award.getValue())) {
-				ret = getPTypeName(PType.get_award);
+			} else if(typeStr.equals(PType.game_shake.getValue())) {
+				ret = getPTypeName(PType.game_shake);
+			} else if(typeStr.equals(PType.game_scratch.getValue())) {
+				ret = getPTypeName(PType.game_scratch);
 			}
 		}
 		return ret;
@@ -142,8 +153,10 @@ public class PTypeTransfer {
 				ptype = PType.recharge_gm;
 			} else if(typeStr.equals(PType.bug_gf.getValue())) {
 				ptype = PType.bug_gf;
-			} else if(typeStr.equals(PType.get_award.getValue())) {
-				ptype = PType.get_award;
+			} else if(typeStr.equals(PType.game_shake.getValue())) {
+				ptype = PType.game_shake;
+			} else if(typeStr.equals(PType.game_scratch.getValue())) {
+				ptype = PType.game_scratch;
 			}
 		}
 		return ptype;

@@ -50,6 +50,7 @@ import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.FrequentPhone;
 import com.etoc.weflow.dao.FrequentPhoneDao;
 import com.etoc.weflow.dao.FrequentPhoneDao.Properties;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
@@ -381,8 +382,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 						}
 					}
 					adapter.notifyDataSetChanged();
-					
-					tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+					if(isAdded()) {
+						tvCostCoins.setTextSize(DisplayUtil.textGetSizeSp(getActivity(), 32));
+					}
 					tvCostCoins.setText(NumberUtils.convert2IntStr(adapter.getSelectCost())+ "流量币");
 				}
 				
@@ -392,18 +394,23 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 			if (msg.obj != null) {
 				PhoneChargeResp chargeResp = (PhoneChargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
-					PromptDialog.Alert("订购成功");
+//					PromptDialog.Alert("订购成功");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					if (!StringUtils.isEmpty(chargeResp.cardcode)) {
-						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
-					}
+					OrderDialog.Dialog(getActivity(), "已成功充值" + adapter.getSelectMoney() + "元话费", true);
+					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
+						OrderDialog.Dialog(getActivity(), "兑换码: " + chargeResp.cardcode + "\n请尽快使用");
+//						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
+					}*/
 				} else if (Requester.isProcessed(chargeResp.status)){
-					PromptDialog.Alert("订购已处理");
+//					PromptDialog.Alert("订购已处理");
+					OrderDialog.Dialog(getActivity(), "充值已受理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isLowFlow(chargeResp.status)) {
-					PromptDialog.Alert(ConStant.LOW_FLOW);
+					OrderDialog.Dialog(getActivity(), ConStant.LOW_FLOW, true);
+//					PromptDialog.Alert(ConStant.LOW_FLOW);
 				} else {
-					PromptDialog.Alert(ConStant.ORDER_FAIL);
+					OrderDialog.Dialog(getActivity(), ConStant.ORDER_FAIL, true);
+//					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;
@@ -433,6 +440,10 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		
 		public String getSelectId() {
 			return getItem(getSelect()).chargesid;
+		}
+		
+		public String getSelectMoney() {
+			return getItem(getSelect()).money;
 		}
 		
 		class RechargeViewHolder {

@@ -284,7 +284,12 @@ public class MakeFlowBillFragment extends Fragment implements OnRefreshListener2
 						List<AwardInfoResp> awardlist = Arrays.asList(awardResp.recordlist);
 						List<BillList> blist = new ArrayList<BillList>();
 						for (AwardInfoResp item : awardlist) {
-							PType type = PType.get_award;
+							PType type = PType.play_game;
+							if("1".equals(item.awardway)) {
+								type = PType.game_shake;
+							} else if("2".equals(item.awardway)) {
+								type = PType.game_scratch;
+							}
 							BillList bill = new BillList();
 							bill.type = type.getValue();
 							bill.title = item.title;

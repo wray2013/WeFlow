@@ -37,6 +37,7 @@ import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.FrequentQQ;
 import com.etoc.weflow.dao.FrequentQQDao;
 import com.etoc.weflow.dao.FrequentQQDao.Properties;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.RechargeEvent;
 import com.etoc.weflow.net.GsonResponseObject;
@@ -219,6 +220,10 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 			return getItem(getSelect()).cost;
 		}
 		
+		public String getSelectMoney() {
+			return getItem(getSelect()).money;
+		}
+		
 		public String getSelectId() {
 			return getItem(getSelect()).chargesid;
 		}
@@ -317,18 +322,22 @@ public class RechargeQQFragment extends Fragment implements OnClickListener, Cal
 			if (msg.obj != null) {
 				QChargeResp chargeResp = (QChargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
-					PromptDialog.Alert("订购成功");
+//					PromptDialog.Alert("订购成功");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					if (!StringUtils.isEmpty(chargeResp.cardcode)) {
+					OrderDialog.Dialog(getActivity(), "已成功充值" + adapter.getSelectMoney() + "Q币", true);
+					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
-					}
+					}*/
 				} else if (Requester.isProcessed(chargeResp.status)){
-					PromptDialog.Alert("订购已处理");
+//					PromptDialog.Alert("订购已处理");
+					OrderDialog.Dialog(getActivity(), "充值已受理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 				} else if (Requester.isLowFlow(chargeResp.status)) {
-					PromptDialog.Alert(ConStant.LOW_FLOW);
+					OrderDialog.Dialog(getActivity(), ConStant.LOW_FLOW, true);
+//					PromptDialog.Alert(ConStant.LOW_FLOW);
 				} else {
-					PromptDialog.Alert(ConStant.ORDER_FAIL);
+					OrderDialog.Dialog(getActivity(), ConStant.ORDER_FAIL, true);
+//					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;

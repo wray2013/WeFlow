@@ -162,6 +162,20 @@ public class WeFlowApplication extends Application {
 		}
 	}
 	
+	public void logout() {
+		if(daoSession == null || !db.isOpen()) {
+			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
+	        db = helper.getWritableDatabase();
+	        daoMaster = new DaoMaster(db);
+	        daoSession = daoMaster.newSession();
+		}
+        
+		accountInfoDao = daoSession.getAccountInfoDao();
+		accountInfoDao.deleteAll();
+		accountInfo = null;
+		db.close();
+	}
+	
 	public AccountInfo getAccountInfo() {
 		if(daoSession == null || !db.isOpen()) {
 			DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "weflowdb", null);
@@ -191,7 +205,8 @@ public class WeFlowApplication extends Application {
 	        
 			accountInfoDao = daoSession.getAccountInfoDao();
 			accountInfoDao.deleteAll();
-			accountInfoDao.insertOrReplace(acc);
+			accountInfoDao.insert(acc);
+			accountInfo = acc;
 			db.close();
 		}
 	}

@@ -14,12 +14,13 @@ import com.etoc.weflow.event.ExpenseFlowBillFragmentEvent;
 import com.etoc.weflow.fragment.ExpenseFlowBillFragment;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.view.MyViewPager;
 
 import de.greenrobot.event.EventBus;
 
 public class ExpenseBillListActivity extends TitleRootActivity {
-	private PagerSlidingTabStrip titleTab;
-	private ViewPager viewPage;
+//	private PagerSlidingTabStrip titleTab;
+	private MyViewPager viewPage;
 	private ExpenseBillPagerAdapter adapter;
 	
 	@Override
@@ -31,19 +32,20 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 	
 	private void initViews() {
 		// TODO Auto-generated method stub
-		setTitleText("花币记录");
+//		setTitleText("花币记录");
 		hideRightButton();
 		
-		titleTab = (PagerSlidingTabStrip) findViewById(R.id.mybill_tabs);
-		viewPage = (ViewPager) findViewById(R.id.mybill_pager);
-		
-		titleTab.setTextColorResource(R.color.pagertab_color_green);
-		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 40));
+//		titleTab = (PagerSlidingTabStrip) findViewById(R.id.mybill_tabs);
+		viewPage = (MyViewPager) findViewById(R.id.mybill_pager);
+		viewPage.setOffscreenPageLimit(0);
+		viewPage.setScrollEnable(false);
+//		titleTab.setTextColorResource(R.color.pagertab_color_green);
+//		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 40));
 		
 		adapter = new ExpenseBillPagerAdapter(getSupportFragmentManager());
 		viewPage.setAdapter(adapter);
 		
-		titleTab.setViewPager(viewPage);
+//		titleTab.setViewPager(viewPage);
 		
 		int index = getIntent().getIntExtra(ConStant.INTENT_EXPENSE_FLOW, 0);
 		index = index <= 0 ? 0 : (index >= adapter.getCount() ? adapter.getCount() - 1 : index);
@@ -60,7 +62,26 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 			}
 		}, 100);
 		
-		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+		switch (index) {
+		case 0:
+			setTitleText("充话费记录");
+			break;
+		case 1:
+//			setTitleText("定流量包记录");
+//			break;
+//		case 2:
+			setTitleText("换游戏币记录");
+			break;
+//		case 3:
+		case 2:
+			setTitleText("换礼券记录");
+			break;
+		case 3:
+			setTitleText("定流量包记录");
+			break;
+		}
+		
+		/*titleTab.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int arg0) {
@@ -81,7 +102,7 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 				// TODO Auto-generated method stub
 				
 			}
-		});
+		});*/
 		
 	}
 
@@ -105,7 +126,7 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 
 	public class ExpenseBillPagerAdapter extends FragmentPagerAdapter {
 
-		private final String[] TITLES = { "充话费", "流量包", "游戏币", "礼品券"};
+		private final String[] TITLES = { "充话费", "游戏币", "礼品券", "流量包"};
 
 		public ExpenseBillPagerAdapter(FragmentManager fm) {
 			super(fm);

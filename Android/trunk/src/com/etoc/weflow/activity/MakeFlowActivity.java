@@ -7,8 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etoc.weflow.R;
@@ -18,14 +19,14 @@ import com.etoc.weflow.fragment.AdvertisementFragment;
 import com.etoc.weflow.fragment.AppReccomFragment;
 import com.etoc.weflow.fragment.PlayGameFragment;
 import com.etoc.weflow.utils.ConStant;
-import com.etoc.weflow.utils.DisplayUtil;
+import com.etoc.weflow.view.MyViewPager;
 
 import de.greenrobot.event.EventBus;
 
 public class MakeFlowActivity extends TitleRootActivity {
 
 	private PagerSlidingTabStrip titleTab;
-	private ViewPager viewPage;
+	private MyViewPager viewPage;
 	private MyPagerAdapter adapter;
 	
 	private boolean isLogin = false;
@@ -40,14 +41,16 @@ public class MakeFlowActivity extends TitleRootActivity {
 		initViews();
 		
 		titleTab = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-		viewPage = (ViewPager) findViewById(R.id.pager);
-		
-		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 50));
+		viewPage = (MyViewPager) findViewById(R.id.pager);
+		viewPage.setScrollEnable(false);
+		viewPage.setOffscreenPageLimit(0);
+//		titleTab.setTabPaddingLeftRight(DisplayUtil.getSize(this, 50));
 		
 		adapter = new MyPagerAdapter(getSupportFragmentManager());
+		
 		viewPage.setAdapter(adapter);
 		
-		titleTab.setViewPager(viewPage);
+//		titleTab.setViewPager(viewPage);
 		
 		int index = getIntent().getIntExtra(ConStant.INTENT_MAKE_FLOW, 0);
 		index = index == 0?0:index - 1;
@@ -64,10 +67,22 @@ public class MakeFlowActivity extends TitleRootActivity {
 			}
 		}, 100);
 		
+		switch (index) {
+		case 0:
+			setTitleText("看视频");
+			break;
+		case 1:
+			setTitleText("下软件");
+			break;
+		case 2:
+			setTitleText("玩游戏");
+			break;
+		}
+		
 		
 		isLogin = getIntent().getBooleanExtra("isLogin", false);
 		
-		titleTab.setOnPageChangeListener(new OnPageChangeListener() {
+		/*titleTab.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
 			public void onPageSelected(int arg0) {
@@ -88,11 +103,10 @@ public class MakeFlowActivity extends TitleRootActivity {
 				// TODO Auto-generated method stub
 				
 			}
-		});
+		});*/
 	}
 	
 	private void initViews() {
-		setTitleText("赚流量币");
 		setRightButtonText("记录");
 //		hideRightButton();
 	}

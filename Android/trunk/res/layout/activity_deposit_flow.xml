@@ -27,7 +27,7 @@
             android:layout_toRightOf="@+id/tv_deposit_top_tel_hint"
             android:layout_alignTop="@+id/tv_deposit_top_tel_hint"
             android:layout_alignBottom="@+id/tv_deposit_top_tel_hint"
-            android:text="18502717626"
+            android:text="0"
             android:textColor="@color/black" />
         <View
             android:id="@+id/v_divider_h" 
@@ -55,8 +55,8 @@
             android:layout_alignLeft="@+id/v_divider_h"
             android:includeFontPadding="false"
             android:layout_marginTop="18dp"
-            android:text="5000"
-            android:textColor="#E94628"
+            android:text="0"
+            android:textColor="@color/red_text"
             android:textSize="42sp" />
         <View
             android:id="@+id/v_divider_top"

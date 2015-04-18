@@ -21,6 +21,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
@@ -28,6 +29,7 @@ import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.ExchangeFlowDialog;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject;
@@ -56,6 +58,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 	private Handler handler;
 	private ExchangeFlowDialog exchangeDialog = null;
 	private String selectId = "";
+	private String selectProduct = "";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -107,19 +110,24 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			public void onClick(DialogInterface arg0, int arg1) {
 				// TODO Auto-generated method stub
 				AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
-				if (accountInfo != null && accountInfo.getUserid() != null) {
-					Requester.exchangeFlowPkg(true, handler, accountInfo.getUserid(), selectId);
+				if(PromptDialog.checkPhoneNum(exchangeDialog.getContext())) {
+					if (accountInfo != null && accountInfo.getUserid() != null) {
+						Requester.exchangeFlowPkg(true, handler, accountInfo.getUserid(), selectId,exchangeDialog.getContext());
+					} else {
+						startActivity(new Intent(getActivity(), LoginActivity.class));
+					}
 				} else {
-					startActivity(new Intent(getActivity(), LoginActivity.class));
+					Toast.makeText(getActivity(), "请输入有效手机号", Toast.LENGTH_SHORT).show();
 				}
+				
 			}
 		});
 	}
 	
 	private void initView(View view) {
 		ViewUtils.setHeight(view.findViewById(R.id.rl_title), 74);
-		ViewUtils.setMarginLeft(view.findViewById(R.id.view_title_bottom), 32);
-		ViewUtils.setMarginRight(view.findViewById(R.id.view_title_bottom), 32);
+//		ViewUtils.setMarginLeft(view.findViewById(R.id.view_title_bottom), 32);
+//		ViewUtils.setMarginRight(view.findViewById(R.id.view_title_bottom), 32);
 		lvFlow = (ListView) view.findViewById(R.id.lv_flows);
 		ViewUtils.setTextSize(view.findViewById(R.id.tv_title_label), 26);
 		
@@ -173,7 +181,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			// TODO Auto-generated method stub
 			return appList.get(arg0);
 		}
-
+		
 		@Override
 		public long getItemId(int arg0) {
 			// TODO Auto-generated method stub
@@ -218,7 +226,12 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			}
 			
 			final MobileFlowProduct item = appList.get(position);
-			imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
+			if(item.imgsrc != null && !item.imgsrc.equals("")) {
+				holder.ivImg.setVisibility(View.VISIBLE);
+				imageLoader.displayImage(item.imgsrc, holder.ivImg,imageLoaderOptions);
+			} else {
+				holder.ivImg.setVisibility(View.GONE);
+			}
 			holder.tvName.setText(item.title);
 			holder.tvDesc.setText(item.desc);
 			holder.tvFlowCoins.setText(NumberUtils.convert2IntStr(item.cost) + "流量币");
@@ -229,6 +242,7 @@ public class MobileFlowFragment extends Fragment implements Callback {
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 					selectId = item.chargesid;
+					selectProduct = item.title;
 					exchangeDialog.show();
 				}
 
@@ -259,20 +273,24 @@ public class MobileFlowFragment extends Fragment implements Callback {
 			if (msg.obj != null) {
 				ExchangeFlowPkgResp chargeResp = (ExchangeFlowPkgResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
-					PromptDialog.Alert("订购成功");
+//					PromptDialog.Alert("订购成功");
+					OrderDialog.Dialog(getActivity(), "已成功兑换" + selectProduct + " 流量包");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					if (!StringUtils.isEmpty(chargeResp.cardcode)) {
+					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
-					}
+					}*/
 					exchangeDialog.dismiss();
 				} else if (Requester.isProcessed(chargeResp.status)){
-					PromptDialog.Alert("订购已处理");
+//					PromptDialog.Alert("订购已处理");
+					OrderDialog.Dialog(getActivity(), "订购已受理");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 					exchangeDialog.dismiss();
 				} else if (Requester.isLowFlow(chargeResp.status)) {
-					PromptDialog.Alert(ConStant.LOW_FLOW);
+					OrderDialog.Dialog(getActivity(), ConStant.LOW_FLOW, true);
+//					PromptDialog.Alert(ConStant.LOW_FLOW);
 				}  else {
-					PromptDialog.Alert(ConStant.ORDER_FAIL);
+					OrderDialog.Dialog(getActivity(), ConStant.ORDER_FAIL, true);
+//					PromptDialog.Alert(ConStant.ORDER_FAIL);
 				}
 			}
 			break;

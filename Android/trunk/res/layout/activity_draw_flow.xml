@@ -27,7 +27,7 @@
             android:layout_toRightOf="@+id/tv_draw_top_tel_hint"
             android:layout_alignTop="@+id/tv_draw_top_tel_hint"
             android:layout_alignBottom="@+id/tv_draw_top_tel_hint"
-            android:text="18502717626"
+            android:text=""
             android:textColor="@color/black" />
         <View
             android:id="@+id/v_divider_h" 
@@ -55,8 +55,8 @@
             android:layout_alignLeft="@+id/v_divider_h"
             android:includeFontPadding="false"
             android:layout_marginTop="18dp"
-            android:text="5000"
-            android:textColor="#E94628"
+            android:text="0"
+            android:textColor="@color/red_text"
             android:textSize="42sp" />
         <View
             android:id="@+id/v_divider_top"
@@ -129,7 +129,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="余额未达到最小额度，无法提取"
-            android:textColor="#E94628"
+            android:textColor="@color/red_text"
             android:textSize="16sp" />
         <TextView
             android:id="@+id/tv_btn_draw"

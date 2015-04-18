@@ -109,7 +109,9 @@ public class FileUtils {
 	}
 	
 	public static String getFlowSize(double size) {
-		double kiloByte = size / 1024;
+		boolean isMinus = size < 0;
+		String prefix = isMinus ? "-" : "";
+		double kiloByte = Math.abs(size) / 1024;
 		if (kiloByte < 1) {
 			return "0KB";
 		}
@@ -117,25 +119,25 @@ public class FileUtils {
 		double megaByte = kiloByte / 1024;
 		if (megaByte < 1) {
 			BigDecimal result1 = new BigDecimal(Double.toString(kiloByte));
-			return result1.setScale(0, BigDecimal.ROUND_HALF_UP)
+			return prefix + result1.setScale(0, BigDecimal.ROUND_HALF_UP)
 					.toPlainString() + "KB";
 		}
 
 		double gigaByte = megaByte / 1024;
 		if (gigaByte < 1) {
 			BigDecimal result2 = new BigDecimal(Double.toString(megaByte));
-			return result2.setScale(0, BigDecimal.ROUND_HALF_UP)
+			return prefix + result2.setScale(0, BigDecimal.ROUND_HALF_UP)
 					.toPlainString() + "MB";
 		}
 
 		double teraBytes = gigaByte / 1024;
 		if (teraBytes < 1) {
 			BigDecimal result3 = new BigDecimal(Double.toString(gigaByte));
-			return result3.setScale(0, BigDecimal.ROUND_HALF_UP)
+			return prefix + result3.setScale(0, BigDecimal.ROUND_HALF_UP)
 					.toPlainString() + "GB";
 		}
 		BigDecimal result4 = new BigDecimal(teraBytes);
-		return result4.setScale(0, BigDecimal.ROUND_HALF_UP).toPlainString()
+		return prefix + result4.setScale(0, BigDecimal.ROUND_HALF_UP).toPlainString()
 				+ "TB";
 	}
 	

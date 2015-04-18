@@ -1,11 +1,14 @@
 package com.etoc.weflow.fragment;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.activity.ConstructionActivity;
 import com.etoc.weflow.adapter.FastScrollAdapter;
+import com.etoc.weflow.utils.ViewUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -14,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class DiscoveryFragment extends XFragment<Object> implements OnClickListener, OnRefreshListener2<ListView> {
+public class DiscoveryFragment extends XFragment<Object> implements OnClickListener {
 
 	private final String TAG = "DiscoveryFragment";
 	
@@ -36,18 +39,47 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 	private void initView(View view) {
 		dm = getResources().getDisplayMetrics();
 		
-		/*mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.xlv_discovery_list);
-		mPullRefreshListView.setShowIndicator(false);
-		mPullRefreshListView.setOnRefreshListener(this);
+		ViewUtils.setHeight(view.findViewById(R.id.rl_top_layout), 202);
+		ViewUtils.setSize(view.findViewById(R.id.iv_flow_gift), 168, 168);
+		ViewUtils.setSize(view.findViewById(R.id.iv_flow_pkg), 168, 168);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.iv_flow_gift), 128);
+		ViewUtils.setMarginRight(view.findViewById(R.id.iv_flow_pkg), 128);
 		
-		mListView = mPullRefreshListView.getRefreshableView();*/
-//		initializeAdapter();
+		ViewUtils.setMarginTop(view.findViewById(R.id.sv_content), 48);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.rl_content), 32);
+		ViewUtils.setMarginRight(view.findViewById(R.id.rl_content), 32);
+		
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_flow_gift), 50);
+		ViewUtils.setMarginLeft(view.findViewById(R.id.tv_flow_gift), 40);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_flow_gift),26);
+		
+		ViewUtils.setHeight(view.findViewById(R.id.iv_flow_gift_activity), 252);
+		ViewUtils.setMarginTop(view.findViewById(R.id.iv_flow_gift_activity), 36); 
+		ViewUtils.setMarginRight(view.findViewById(R.id.iv_flow_gift_activity), 40);
+		
+		ViewUtils.setMarginTop(view.findViewById(R.id.tv_flow_pkg), 50);
+		ViewUtils.setTextSize(view.findViewById(R.id.tv_flow_pkg),26);
+		
+		ViewUtils.setHeight(view.findViewById(R.id.iv_flow_pkg_activity), 218);
+		ViewUtils.setMarginTop(view.findViewById(R.id.iv_flow_pkg_activity), 36); 
+		
+		ViewUtils.setMarginTop(view.findViewById(R.id.view_stub), 60);
+		
+		view.findViewById(R.id.iv_flow_gift_activity).setOnClickListener(this);
+		view.findViewById(R.id.iv_flow_pkg_activity).setOnClickListener(this);
+		
 	}
 	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch(v.getId()) {
+		case R.id.iv_flow_gift_activity:
+			startActivity(new Intent(getActivity(), ConstructionActivity.class));
+			break;
+		case R.id.iv_flow_pkg_activity:
+			startActivity(new Intent(getActivity(), ConstructionActivity.class));
+			break;
 		}
 	}
 	
@@ -61,31 +93,5 @@ public class DiscoveryFragment extends XFragment<Object> implements OnClickListe
 		// TODO Auto-generated method stub
 		
 	}
-
-	/*private void initializeAdapter() {
-		mListView.setAdapter(new FastScrollAdapter(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1));
-    }*/
 	
-	@Override
-	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-		// TODO Auto-generated method stub
-		handler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-//				mPullRefreshListView.onRefreshComplete();
-			}
-		}, 500);
-	}
-
-	@Override
-	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-		// TODO Auto-generated method stub
-		handler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-//				mPullRefreshListView.onRefreshComplete();
-			}
-		}, 500);
-	}
-
 }

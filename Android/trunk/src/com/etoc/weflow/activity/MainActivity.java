@@ -1,5 +1,10 @@
 package com.etoc.weflow.activity;
 
+import java.io.File;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +18,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -24,22 +30,26 @@ import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dao.AccountInfoDao;
 import com.etoc.weflow.dao.DaoMaster;
-import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
+import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.fragment.DiscoveryFragment;
 import com.etoc.weflow.fragment.FlowBankFragment;
-import com.etoc.weflow.fragment.HomePageFragment;
+import com.etoc.weflow.fragment.HomePageFragment2;
 import com.etoc.weflow.fragment.MyselfFragment;
 import com.etoc.weflow.fragment.XFragment;
-import com.etoc.weflow.utils.RandomUtils;
+import com.etoc.weflow.net.GsonResponseObject.UpdateResp;
+import com.etoc.weflow.net.Requester;
+import com.etoc.weflow.service.PushService;
+import com.etoc.weflow.utils.DownloadThread;
+import com.etoc.weflow.utils.StringUtils;
+import com.etoc.weflow.utils.VNetworkStateDetector;
 import com.etoc.weflow.utils.ViewUtils;
-import com.etoc.weflow.version.CheckUpdate;
 
 public class MainActivity extends TitleRootActivity implements Callback, OnClickListener {
 	
 	private final String TAG = "MainActivity";
 
-	private Handler handler;
+	private static Handler handler;
 	private DisplayMetrics dm = new DisplayMetrics();
 	
 	private XFragment<?> currContentFragment;
@@ -54,6 +64,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	private RelativeLayout rlDiscover;
 	private RelativeLayout rlMe;
 	
+	private static DownloadThread downloadThread = null;
+	private static ProgressDialog pd = null;
+	
 	private DaoMaster daoMaster;
 	private DaoSession daoSession;
 	private SQLiteDatabase db;
@@ -64,16 +77,29 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreate");
+		
+//		OffersManager.getInstance(this).onAppLaunch();
+		
+		// 设置积分墙列表页标题文字
+//		OffersBrowserConfig.setBrowserTitleText("下软件");
+		// 设置积分墙标题背景颜色
+//		OffersBrowserConfig.setBrowserTitleBackgroundColor(getResources().getColor(R.color.titlebar));
 		
 		handler = new Handler(this);
 		dm = getResources().getDisplayMetrics();
 		
+		pd = new ProgressDialog(getApplicationContext());
+		pd.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+		
 		initDataBase();
 		initController();
 		initMain(savedInstanceState);
-		setLeftButtonBackground(R.drawable.btn_message);
+		setLeftButtonBackground(R.drawable.btn_message2);
 		//检查更新
-		CheckUpdate.getInstance(this).update();
+//		CheckUpdate.getInstance(this).update();
+		Requester.update(false, handler);
+		WeFlowApplication.getAppInstance().addActivity(this);
 	}
 	
 	private void initDataBase() {
@@ -90,34 +116,52 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.d(TAG, "onResume");
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Log.d(TAG, "onStop");
+	}
+	
+	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		Log.d(TAG, "onDestroy");
+//		OffersManager.getInstance(this).onAppExit();
+		WeFlowApplication.getAppInstance().removeActivity(this);
 		if(db != null)
 			db.close();
 	}
 	
 	private void initController() {
 		
-		ViewUtils.setHeight(findViewById(R.id.ll_controller), 118);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_weflow), 48, 48);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_bank), 48, 48);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_discover), 48, 48);
-		ViewUtils.setSize(findViewById(R.id.btn_tab_me), 48, 48);
-		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_weflow), 16);
+		ViewUtils.setHeight(findViewById(R.id.ll_controller), 132);
+		ViewUtils.setMarginTop(findViewById(R.id.ll_controller), -15);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_weflow), 96, 96);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_bank), 96, 96);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_discover), 96, 96);
+		ViewUtils.setSize(findViewById(R.id.btn_tab_me), 96, 96);
+		/*ViewUtils.setMarginTop(findViewById(R.id.btn_tab_weflow), 16);
 		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_bank), 16);
 		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_discover), 16);
-		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_me), 16);
+		ViewUtils.setMarginTop(findViewById(R.id.btn_tab_me), 16);*/
 		
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_weflow), 16);
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_bank), 16);
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_discover), 16);
-		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_me), 16);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_weflow), 12);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_bank), 12);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_discover), 12);
+		ViewUtils.setMarginBottom(findViewById(R.id.tv_tab_me), 12);
 		
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_weflow), 24);
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_bank), 24);
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_discover), 24);
-		ViewUtils.setTextSize(findViewById(R.id.tv_tab_me), 24);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_weflow), 18);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_bank), 18);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_discover), 18);
+		ViewUtils.setTextSize(findViewById(R.id.tv_tab_me), 18);
 		
 		rlHomePage = (RelativeLayout) findViewById(R.id.rl_btn_weflow);
 		rlBank     = (RelativeLayout) findViewById(R.id.rl_btn_bank);
@@ -132,7 +176,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	}
 	
 	private void switchStatus(XFragment fragment) {
-		if (fragment instanceof HomePageFragment) {
+		if (fragment instanceof HomePageFragment2) {
 			rlHomePage.setSelected(true);
 			rlBank.setSelected(false);
 			rlDiscover.setSelected(false);
@@ -160,7 +204,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		if(savedInstanceState != null) {
 			
 			homePageFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
-					savedInstanceState, HomePageFragment.class.getName());
+					savedInstanceState, HomePageFragment2.class.getName());
 			
 			flowBankFragment = (XFragment<?>)getSupportFragmentManager().getFragment(
 					savedInstanceState, FlowBankFragment.class.getName());
@@ -179,7 +223,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		}
 		
 		if (homePageFragment == null) {
-			homePageFragment = new HomePageFragment();
+			homePageFragment = new HomePageFragment2();
 		}
 		
 		if (flowBankFragment == null) {
@@ -259,7 +303,11 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		if (null == getSupportFragmentManager().findFragmentByTag(
 				fragment.getClass().getName())) {
 			Log.d(TAG, "add fragment=" + fragment + " name = " + fragment.getClass().getName());
-			ft.add(R.id.content_frame, fragment, fragment.getClass().getName());
+			if(fragment.isAdded()) {
+				Log.d(TAG, "fragment name = " + fragment.getClass().getName() + " is Added!");
+			} else {
+				ft.add(R.id.content_frame, fragment, fragment.getClass().getName());
+			}
 			// ft.addToBackStack(null);
 		} else {
 			Log.d(TAG, "show fragment=" + fragment);
@@ -276,27 +324,34 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		showLeftButton();
 		showRightButton();
 		if(fragment != null) {
-			if(fragment instanceof HomePageFragment) {
+			if(fragment instanceof HomePageFragment2) {
 				title = "流量钱包";
-				setRightButtonText("宝典");
+//				setRightButtonText("宝典");
+				setRightButtonBackground(R.drawable.btn_baodian);
+				setTitleBackground(R.drawable.title_homepage);
 //				hideLeftButton();
-				setLeftButtonBackground(R.drawable.btn_message);
+				setLeftButtonBackground(R.drawable.btn_message2);
 			} else if(fragment instanceof FlowBankFragment) {
 				title = "存钱罐";
-				setRightButtonText("攻略");
+//				setRightButtonText("攻略");
+				setRightButtonBackground(R.drawable.btn_gonglve);
+				setTitleBackground(R.drawable.title_bank);
 				hideLeftButton();
 			} else if(fragment instanceof DiscoveryFragment) {
 				title = "发现";
-//				hideLeftButton();
-				hideRightButton();
-				setLeftButtonBackground(R.drawable.btn_scan);
+				hideLeftButton();
+//				hideRightButton();
+				setRightButtonBackground(R.drawable.btn_scan);
+				setTitleBackground(R.drawable.title_discovery);
 			} else if(fragment instanceof MyselfFragment) {
 				title = "我";
 				hideLeftButton();
 				hideRightButton();
+				setTitleBackground(R.drawable.title_myself);
 			}
 		}
-		setTitleText(title);
+		setTitleWxH(188, 60);
+//		setTitleText(title);
 	}
 	
 	/*@Override
@@ -325,7 +380,132 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 	
 	@Override
 	public boolean handleMessage(Message msg) {
-		// TODO Auto-generated method stub
+		switch (msg.what) {
+		case Requester.RESPONSE_TYPE_UPDATE:
+			if (msg.obj != null) {
+				final UpdateResp resp = (UpdateResp) msg.obj;
+				if (Requester.isSuccessed(resp.status)) {
+					try {
+						//已经最新
+						if ("0".equals(resp.type)) {
+//							PromptDialog.Dialog(this, "版本升级", "当前已经是最新版本", "确定");
+							//普通升级
+						} else if ("2".equals(resp.type)) {
+							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
+								/*PromptDialog.Dialog(this, true, true, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
+									}
+								}, null, false, null);*/
+								//need upgrade
+								final AlertDialog alertDialog;
+								AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
+								dl.setTitle("更新提示")
+								.setMessage(resp.description.replace("\\n", "\n"))
+								.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+						                pd.setTitle("正在下载");
+						                pd.setMessage("请稍后...");
+						                pd.setCancelable(false);
+						                pd.setButton(AlertDialog.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												// TODO Auto-generated method stub
+												if(downloadThread != null) {
+													downloadThread.stopThread();
+												}
+											}
+										});
+						                pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+						                downFile(resp.filepath);
+									}
+								})
+								.setNegativeButton("暂时不", new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										dialog.dismiss();
+									}
+								});
+								alertDialog = dl.create();
+								alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+								alertDialog.show();
+								
+							} else {
+								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
+							}
+							//强制升级
+						} else if ("1".equals(resp.type)){
+							if(!StringUtils.isEmpty(resp.filepath) && resp.filepath.startsWith("http://")) {
+								/*PromptDialog.Dialog(this, true, false, false, "版本升级", resp.description, "下载", "取消", new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										DownloadManager.getInstance().addDownloadTask(resp.filepath, "0", resp.description, "", resp.description,  DownloadType.APP, "", "","","com.etoc.weflow");
+									}
+								}, new DialogInterface.OnClickListener() {
+									
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// TODO Auto-generated method stub
+										finish();
+									}
+								}, false, null);*/
+								final AlertDialog alertDialog;
+								AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
+								dl.setTitle("更新提示").setMessage(resp.description.replace("\\n", "\n")).setCancelable(false)
+										.setPositiveButton("更新", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												pd.setTitle("正在下载");
+												pd.setMessage("请稍后...");
+												pd.setCancelable(false);
+												pd.setButton(AlertDialog.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
+													@Override
+													public void onClick(DialogInterface dialog, int which) {
+														// TODO Auto-generated method stub
+														if(downloadThread != null) {
+															downloadThread.stopThread();
+														}
+														WeFlowApplication.getAppInstance().cleanAllActivity();
+													}
+												});
+												pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+												downFile(resp.filepath);
+											}
+										})
+										.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												// TODO Auto-generated method stub
+												dialog.dismiss();
+												WeFlowApplication.getAppInstance().cleanAllActivity();
+											}
+										});
+								alertDialog = dl.create();
+								alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+								alertDialog.show();
+							} else {
+								Toast.makeText(this, "下载链接无效", Toast.LENGTH_LONG).show();
+							}
+						}
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			break;
+		case PushService.APK_DOWNLOADED_MSG:
+			pd.cancel();
+			update();
+			break;
+		}
 		return false;
 	}
 	
@@ -348,7 +528,7 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 			switchContent(myselfFragment);
 			break;
 		case R.id.btn_title_left:
-			if(currContentFragment instanceof HomePageFragment) {
+			if(currContentFragment instanceof HomePageFragment2) {
 				/*PushMsgUtil pushmsg = new PushMsgUtil(handler, 0x88661256);
 //				List<MessageList> fakedata = MyMessageActivity.makeFakeData();
 //				MessageList msglist = fakedata.get(num % fakedata.size());
@@ -384,12 +564,38 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 					startActivity(new Intent(this, LoginActivity.class));
 				}
 			} else if(currContentFragment instanceof DiscoveryFragment) {
+				
+				
+				/*AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+				if(info != null && info.getUserid() != null && !info.getUserid().equals("")) {
+					//查询用户的积分账户余额
+					int myPointBalance = PointsManager.getInstance(this).queryPoints();
+					//扣除积分
+					PointsManager.getInstance(this).spendPoints(myPointBalance);
+					
+					float flowcoins = 0;
+					if(info != null && info.getFlowcoins() != null) {
+						try {
+							flowcoins = Float.parseFloat(info.getFlowcoins());
+						} catch(Exception e) {
+							e.printStackTrace();
+						}
+					}
+					//增加积分
+					PointsManager.getInstance(this).awardPoints((int)flowcoins);
+					
+					OffersManager.getInstance(this).showOffersWall();
+					
+				} else {
+					startActivity(new Intent(this, LoginActivity.class));
+				}*/
+				
 				Intent discIntent = new Intent(this, CaptureActivity.class);
 				startActivity(discIntent);
 			}
             break;
 		case R.id.btn_title_right:
-			if(currContentFragment instanceof HomePageFragment) {
+			if(currContentFragment instanceof HomePageFragment2) {
 				Intent homeIntent = new Intent(this, WebViewActivity.class);
 				homeIntent.putExtra("pageurl", Config.HOMEPAGE_URL);
 				homeIntent.putExtra("pagetitle", "宝典");
@@ -399,6 +605,9 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 				bankIntent.putExtra("pageurl", Config.BANKPAGE_URL);
 				bankIntent.putExtra("pagetitle", "攻略");
 				startActivity(bankIntent);
+			} else if(currContentFragment instanceof DiscoveryFragment) {
+				Intent discIntent = new Intent(this, CaptureActivity.class);
+				startActivity(discIntent);
 			}
 			
 			/*Intent intent = new Intent();
@@ -452,4 +661,62 @@ public class MainActivity extends TitleRootActivity implements Callback, OnClick
 		}
 		return number;
 	}
+	
+	 /**
+     * 下载apk
+     */
+    public static void downFile(final String url) {
+    	
+    	if(VNetworkStateDetector.isAvailable()) {
+    		if(VNetworkStateDetector.isMobile()) {
+	    		final AlertDialog alertDialog;
+	    		AlertDialog.Builder dl = new AlertDialog.Builder(WeFlowApplication.getAppInstance());
+				dl.setTitle("网络提示")
+				.setMessage("您当前为2G/3G网络，下载将消耗流量，是否继续？")
+				.setCancelable(false)
+				.setPositiveButton("继续下载", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int arg1) {
+						// TODO Auto-generated method stub
+						pd.show();
+				        if(downloadThread != null)
+				        	downloadThread.stopThread();
+				        downloadThread = new DownloadThread(handler, pd);
+				        downloadThread.excute(url);
+					}
+				})
+				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+						WeFlowApplication.getAppInstance().cleanAllActivity();
+					}
+				});
+				alertDialog = dl.create();
+				alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+				alertDialog.show();
+    		} else {
+    			pd.show();
+		        if(downloadThread != null)
+		        	downloadThread.stopThread();
+		        downloadThread = new DownloadThread(handler, pd);
+		        downloadThread.excute(url);
+    		}
+    	}
+    }
+    
+    /**
+     * 安装应用
+     */
+	public void update() {
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(Uri.fromFile(new File(Config.DOWNLOAD_FOLDER, PushService.UPDATE_SERVERAPK)),
+				"application/vnd.android.package-archive");
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
+	}
+	
 }

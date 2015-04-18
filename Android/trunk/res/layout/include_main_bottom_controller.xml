@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_controller"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
+    android:layout_height="66dp"
     android:layout_alignParentBottom="true"
     android:baselineAligned="false"
-    android:background="#FFFFFF"
+    android:background="@color/transparent"
+    android:layout_marginTop="-6dp"
     android:orientation="horizontal" >
     <RelativeLayout
         android:id="@+id/rl_btn_weflow"
@@ -17,10 +18,9 @@
 
         <ImageView
             android:id="@+id/btn_tab_weflow"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
             android:background="@drawable/btn_weflow" />
 
         <TextView
@@ -30,10 +30,10 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/tab_weflow"
             android:textColor="@color/color_bottom_text"
-            android:textSize="12sp" />
+            android:textSize="9sp" />
     </RelativeLayout>
 	<RelativeLayout
         android:id="@+id/rl_btn_bank"
@@ -45,10 +45,9 @@
 
         <ImageView
             android:id="@+id/btn_tab_bank"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
             android:background="@drawable/btn_bank" />
 
         <TextView
@@ -58,10 +57,10 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/tab_bank"
             android:textColor="@color/color_bottom_text"
-            android:textSize="12sp" />
+            android:textSize="9sp" />
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/rl_btn_discover"
@@ -73,10 +72,9 @@
 
         <ImageView
             android:id="@+id/btn_tab_discover"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
             android:background="@drawable/btn_discover" />
 
         <TextView
@@ -86,10 +84,10 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/tab_discover"
             android:textColor="@color/color_bottom_text"
-            android:textSize="12sp" />
+            android:textSize="9sp" />
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/rl_btn_me"
@@ -101,10 +99,9 @@
 
         <ImageView
             android:id="@+id/btn_tab_me"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
             android:background="@drawable/btn_me" />
 
         <TextView
@@ -114,9 +111,9 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/tab_me"
             android:textColor="@color/color_bottom_text"
-            android:textSize="12sp" />
+            android:textSize="9sp" />
     </RelativeLayout>
 </LinearLayout>

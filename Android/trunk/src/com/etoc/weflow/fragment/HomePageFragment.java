@@ -93,6 +93,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	}
 	
 	private void initView(View view) {
+		Log.d(TAG, "initView");
 		inflater = LayoutInflater.from(getActivity());
 		makeFLowLayout = (LinearLayout) view.findViewById(R.id.ll_make_flow);
 		expenseFlowLayout =(LinearLayout) view.findViewById(R.id.ll_expense_flow);
@@ -163,7 +164,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		
 		
 		String [] makeFlows = {"赚流量","看视频","下软件","玩游戏"};
-		String [] expenseFlows = {"花流量","充值","订流量包","换游戏币","换礼券"};
+		String [] expenseFlows = {"花流量","充话费","订流量包","换游戏币","换礼券"};
 		int [] makeflowsIds = {R.drawable.make_flow,R.drawable.watch_video,R.drawable.download_apk,R.drawable.play_game};
 		int [] expenseFlowsIds = {R.drawable.expense_flow,R.drawable.recharge,R.drawable.order_flow_pkg,R.drawable.exchange_game_coins,R.drawable.exchange_gift};
 		for (int i = 0;i < 4;i++) {
@@ -171,10 +172,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
-			ViewUtils.setMarginRight(layout, 2);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 180, 200);
+//			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(makeFlowId + i);
-			layout.setOnClickListener(this);
+			if(i != 0) layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(makeFlows[i]);
 			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
@@ -191,10 +192,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 			layout.setLayoutParams(params);
-			ViewUtils.setSize(layout.findViewById(R.id.view_space), 178, 200);
-			ViewUtils.setMarginRight(layout, 2);
+			ViewUtils.setSize(layout.findViewById(R.id.view_space), 180, 200);
+//			ViewUtils.setMarginRight(layout, 2);
 			layout.setId(expenseFlowId + i);
-			layout.setOnClickListener(this);
+			if(i != 0) layout.setOnClickListener(this);
 			TextView tvName = (TextView) layout.findViewById(R.id.tv_flow_name);
 			tvName.setText(expenseFlows[i]);
 			ImageView ivModules = (ImageView) layout.findViewById(R.id.iv_flow_image);
@@ -227,6 +228,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 			}
 		}*/
+		currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 		loginView(true);
 		
 		if(currentAccount != null) {
@@ -242,15 +244,10 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	private void checkLogin() {
 		isLogin = false;
 		if (mainActivity != null) {
-			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
-			if (accountInfoDao != null && accountInfoDao.count() > 0) {
-				List<AccountInfo> aiList = accountInfoDao.loadAll();
-				currentAccount = aiList.get(0);
-				if (currentAccount != null && currentAccount.getUserid() != null
-						&& !currentAccount.getUserid().equals("")) {
-					Log.e("XXX", "已登录");
-					isLogin = true;
-				}
+			if (currentAccount != null && currentAccount.getUserid() != null
+					&& !currentAccount.getUserid().equals("")) {
+				Log.e("XXX", "已登录");
+				isLogin = true;
 			}
 		}
 	}
@@ -278,7 +275,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			}
 			
 			loadConfig(currentAccount.getMakeflow(), currentAccount.getUseflow());
-			if(needQuery || tvPlain.getText().toString().equals("？"))
+			if(needQuery || tvInFlow.getText().toString().equals("？"))
 				Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
 		} else {
 			//未登录
@@ -308,10 +305,12 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		// TODO Auto-generated method stub
 		super.onResume();
 		Log.d(TAG, "onResume");
+		currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 		loginView(false);
 		if(mtvFlow != null && isLogin) {
-			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
-			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
+//			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
+			String newflow = currentAccount.getFlowcoins();
+			mtvFlow.showNumberWithAnimation(newflow, 1000);
 		}
 	}
 	
@@ -327,6 +326,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
             pushmsg.execute(sendMSG, "weflow, 15927130377");*/
 			break;
 		case 0xffeecc00:
+			break;
 		case 0xffeecc01:
 		case 0xffeecc02:
 		case 0xffeecc03:
@@ -336,6 +336,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 			startActivity(makeFlowIntent);
 			break;
 		case 0xffeedd00:
+			break;
 		case 0xffeedd01:
 		case 0xffeedd02:
 		case 0xffeedd03:
@@ -387,8 +388,8 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 	@Override
 	public void onShow() {
 		Log.d(TAG, "onShow IN!");
+		currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 		if(mtvFlow != null && isLogin) {
-			currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
 			mtvFlow.showNumberWithAnimation(currentAccount.getFlowcoins(), 1000);
 		}
 		loginView(true);
@@ -409,6 +410,11 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 						mtvFlow.showNumberWithAnimation(response.flowcoins, 1000);
 					}
 					tvPlain.setText(response.menumoney);
+					if(response.menutype == null || response.menutype.equals("")) {
+						tvPlainType.setVisibility(View.GONE);
+					} else {
+						tvPlainType.setVisibility(View.VISIBLE);
+					}
 					tvPlainType.setText(response.menutype);
 					
 					if("1".equals(response.isregistration)) {
@@ -440,7 +446,7 @@ public class HomePageFragment extends XFragment<Object>/*TitleRootFragment*/impl
 				SignInResp resp = (SignInResp) msg.obj;
 				if(Requester.isSuccessed(resp.status)) {
 					ivSignIn.setEnabled(false);
-					WeFlowApplication.getAppInstance().setFlowCoins(resp.signflowcoins);
+					WeFlowApplication.getAppInstance().setFlowCoins(resp.flowcoins);
 					PromptDialog.Alert("签到成功，增加" + NumberUtils.convert2IntStr(resp.singleflowcoins) + "流量币");
 					if(mtvFlow != null && isLogin) {
 						currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();

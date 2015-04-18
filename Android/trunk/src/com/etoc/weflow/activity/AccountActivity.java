@@ -1,6 +1,7 @@
 package com.etoc.weflow.activity;
 
 import com.etoc.weflow.R;
+import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.activity.login.RegisterResetActivity;
 import com.etoc.weflow.dao.AccountInfoDao;
@@ -118,8 +119,7 @@ public class AccountActivity extends TitleRootActivity {
 			break;
 		case R.id.rl_login_out:
 //			accountInfoDao.deleteByKey(tel);
-			accountInfoDao.deleteAll();
-			db.close();
+			WeFlowApplication.getAppInstance().logout();
 			Intent i = new Intent(this, LoginActivity.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(i);

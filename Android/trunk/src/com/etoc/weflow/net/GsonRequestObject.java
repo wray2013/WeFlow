@@ -86,6 +86,7 @@ public class GsonRequestObject {
 		String pwd; //密码，加密MD5
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String channelplatid;// channelplatid
 	}
 	
 	//2.1.3 验证码验证
@@ -213,9 +214,19 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	public static class getShakeConfigRequest {
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 	//2.5.3 刮刮卡赚取流量币
 	public static class scratchFlowRequest {
 		String userid;  //用户号码
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	public static class getScratchConfigRequest {
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}
@@ -303,6 +314,7 @@ public class GsonRequestObject {
 		String productid;  //流量包id
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
+		String acctid;// 手机号
 	}
 	
 	//2.6.12 获取礼券兑换列表
@@ -391,8 +403,8 @@ public class GsonRequestObject {
 		String userid;  //用户号码
 		String resolution;
 		String channel;
-		String appver;
-		String deviceType;
+		String appversion;
+		String devicetype;
 		String internetway;
 		String imsi;
 		String mac; // 手机的mac地址

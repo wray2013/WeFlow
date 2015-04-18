@@ -79,6 +79,8 @@ public class WebViewActivity extends TitleRootActivity implements
 		webview.setWebViewClient(myWebClient);
 		webview.getSettings().setBuiltInZoomControls(true);
 		webview.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+//		webview.getSettings().setUseWideViewPort(true); 
+//		webview.getSettings().setLoadWithOverviewMode(true);
 		webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);

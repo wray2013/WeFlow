@@ -219,11 +219,19 @@ public class GsonResponseObject {
 		public AwardItemResp award;
 		public String flowcoins;
 	}
+	public static class shakeConfigResp {
+		public String status;
+		public String cost;
+	}
 	// 2.5.3 刮刮卡赚取流量币
 	public static class scratchflowResp {
 		public String status;
 		public AwardItemResp award;
 		public String flowcoins;
+	}
+	public static class scratchConfigResp {
+		public String status;
+		public String cost;
 	}
 	// 2.5.4 玩游戏赚取流量币记录
 	public static class AwardRecordResp {
@@ -571,7 +579,7 @@ public class GsonResponseObject {
 		public String version;//":"1.0.2";//返回最新版本号
 		public String type;// ":"2";//0:已是最新版本   1:强制升级  2:普通升级
 		public String filesize;//":"0";//该版本文件大小
-		public String path;// ":" http://192.168.100.113:8899/download/xxx ";//进行升级下载地址
+		public String filepath;// ":" http://192.168.100.113:8899/download/xxx ";//进行升级下载地址
 		public String description;// ":"更新了xxx，解决了xxx";//版本描述
 		public String servertime;// ":"1344393182968";//服务器返回时间
 

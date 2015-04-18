@@ -37,7 +37,7 @@ public class DrawFlowActivity extends TitleRootActivity {
 	private DrawFlowAdapter adapter = null;
 	
 	private List<String> values = new ArrayList<String>();
-	private int total = 0;
+	private float total = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class DrawFlowActivity extends TitleRootActivity {
 				values.addAll(Arrays.asList(v));
 			}
 			
-			total = i.getIntExtra("total", 0);
+			total = i.getFloatExtra("total", 0.0f);
 			
 		}
 		initView();
@@ -116,6 +116,13 @@ public class DrawFlowActivity extends TitleRootActivity {
 		ViewUtils.setTextSize(findViewById(R.id.tv_draw_center_values), 28);
 		ViewUtils.setTextSize(findViewById(R.id.tv_warning), 28);
 		ViewUtils.setTextSize(findViewById(R.id.tv_btn_draw), 35);
+		
+		
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		if(info != null && info.getTel() != null) {
+			TextView tvTel = (TextView) findViewById(R.id.tv_draw_top_tel);
+			tvTel.setText(info.getTel());
+		}
 	}
 	
 	private void refreshBtnStatus(int selectedValue) {

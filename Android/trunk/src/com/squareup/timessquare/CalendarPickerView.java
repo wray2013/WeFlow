@@ -511,7 +511,11 @@ public class CalendarPickerView extends ListView {
    * @return - whether we were able to set the date
    */
   public boolean selectDate(Date date, boolean smoothScroll) {
-    validateDate(date);
+	try {
+		validateDate(date);
+	} catch (Exception e) {
+		return false;
+	}
 
     MonthCellWithMonthIndex monthCellWithMonthIndex = getMonthCellWithIndexByDate(date);
     if (monthCellWithMonthIndex == null || !isDateSelectable(date)) {

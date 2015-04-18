@@ -3,6 +3,7 @@ package com.etoc.weflow.download;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -198,12 +199,14 @@ public class DownloadManager implements Callback {
 		
 		for(DownloadItem item : runningList){
 			if(item.url.equals(url)){
-				Toast.makeText(context, "已在下载队列中", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "任务正在下载中", Toast.LENGTH_LONG).show();
 				return item;
 			}
 		}
 		
-		for(DownloadItem item : doneList){
+		Iterator<DownloadItem> iterator = doneList.iterator();
+		while(iterator.hasNext()){
+			DownloadItem item = iterator.next();
 			if(item.url.equals(url)){
 				//check file
 				File f = new File(item.path);
@@ -234,7 +237,7 @@ public class DownloadManager implements Callback {
 				}
 				
 				//重新下载
-				doneList.remove(item);
+				iterator.remove();
 				downloadHistoryDao.deleteByKey(item.url);
 				
 			}
@@ -247,12 +250,13 @@ public class DownloadManager implements Callback {
 			if(one!=null && one.getDownloadStatus()==DownloadStatus.FAIL.getIndex()){
 				downloadHistoryDao.deleteByKey(url);
 			}
-		} else {
-			Toast.makeText(context, "已加入下载队列", Toast.LENGTH_LONG).show();
 		}
+		
+		Toast.makeText(context, "已添加下载任务", Toast.LENGTH_LONG).show();
 
 		DownloadItem item = new DownloadItem(media_id, title, url, picUrl, descrp, type, source, sourceId, source_packageName, data);//path, downloadSize, wholeSize, DownloadStatus
 		addDownloadTask(item);
+		
 		return item;
 	}
 	
@@ -268,15 +272,15 @@ public class DownloadManager implements Callback {
 
 	}
 
-	synchronized public void delDownloadingTask(String url) {
-		// TODO Auto-generated method stub
-		for(DownloadItem item : runningList){
-			if(item.url.equals(url)){
-				delDownloadingTask(item);
-				break;
-			}
-		}
-	}
+//	synchronized public void delDownloadingTask(String url) {
+//		// TODO Auto-generated method stub
+//		for(DownloadItem item : runningList){
+//			if(item.url.equals(url)){
+//				delDownloadingTask(item);
+//				break;
+//			}
+//		}
+//	}
 	
 //	public synchronized void delItemByKey(String url, final String path){
 //		if(url!=null){
@@ -415,6 +419,12 @@ public class DownloadManager implements Callback {
 					}
 				}
 				
+				SharedPreferences mySharedPreferences= context.getSharedPreferences("has_new_download", 
+						Activity.MODE_PRIVATE); 
+				SharedPreferences.Editor editor = mySharedPreferences.edit();
+				editor.putBoolean("has_new", false);
+				editor.commit();
+				
 				EventBus.getDefault().post(DownloadEvent.DONE_CLEAN_ALL);
 			}
 		}.start();
@@ -435,6 +445,7 @@ public class DownloadManager implements Callback {
 				}
 			}
 		}
+
 		
 		
 //		item.seqNo = ++lastSeqNo;
@@ -462,6 +473,11 @@ public class DownloadManager implements Callback {
 		entity.setSource_package(item.sourcePackageName);
 		entity.setTs(System.currentTimeMillis());
 		downloadHistoryDao.insertOrReplace(entity);
+		
+		//通知外部
+		DownloadEvent e = DownloadEvent.STATUS_CHANGED;
+                e.setType(DownloadEvent.RUNNING_LIST_ADD);
+		EventBus.getDefault().post(e);
 		
 		//3. 启动第一个相同类型的
 		if(!runningSets.containsKey(item.downloadType)){
@@ -565,15 +581,18 @@ public class DownloadManager implements Callback {
 			}
 		} else if(status==DownloadStatus.PAUSE){
 			download_status = DOWNLOAD_STATUS_PAUSE;
-			if(DownloadStatus.REASON_STORAGE_NO_SPACE.equals(status.getReason()) || DownloadStatus.REASON_IO_EXCEPION.equals(status.getReason())){
-				RequestEvent r = RequestEvent.PAUSE_EXCEPTION;
-				r.setValue(status.getReason());
-				EventBus.getDefault().post(r);
-			}else if(old_download_status==DOWNLOAD_STATUS_DOWNLOADING && download_status==DOWNLOAD_STATUS_PAUSE){
-				RequestEvent r = RequestEvent.PAUSE_DOWNLOAIND;
-				r.setValue(status.getReason());
-				EventBus.getDefault().post(r);
+			if(download_status!=old_download_status){
+				if(DownloadStatus.REASON_STORAGE_NO_SPACE.equals(status.getReason()) || DownloadStatus.REASON_IO_EXCEPION.equals(status.getReason())){
+					RequestEvent r = RequestEvent.PAUSE_EXCEPTION;
+					r.setValue(status.getReason());
+					EventBus.getDefault().post(r);
+				}else if(old_download_status==DOWNLOAD_STATUS_DOWNLOADING && download_status==DOWNLOAD_STATUS_PAUSE){
+					RequestEvent r = RequestEvent.PAUSE_DOWNLOAIND;
+					r.setValue(status.getReason());
+					EventBus.getDefault().post(r);
+				}
 			}
+
 		}else if(status==DownloadStatus.RUN){
 			download_status = DOWNLOAD_STATUS_DOWNLOADING;
 			if(old_download_status==DOWNLOAD_STATUS_PAUSE && download_status==DOWNLOAD_STATUS_DOWNLOADING){
@@ -590,24 +609,27 @@ public class DownloadManager implements Callback {
 		EventBus.getDefault().post(e);
 		
 		//同步数据库
-		DownloadHistory entity = new DownloadHistory();
-//		entity.setSeqNo(item.seqNo);
-		entity.setUrl(item.url);
-		entity.setPath(item.path);
-		entity.setDownloadSize(item.downloadSize);
-		entity.setWholeSize(item.wholeSize);
-		entity.setDownloadStatus(status.getIndex());
-		entity.setDownloadType(item.downloadType.getIndex());
-		entity.setPicUrl(item.picUrl);
-		entity.setTitle(item.title);
-		entity.setDetail(item.detail);
-		entity.setMediaId(item.mediaId);
-		entity.setData(item.data);
-		entity.setSource(item.source);
-		entity.setSourceId(item.sourceId);
-		entity.setSource_package(item.sourcePackageName);
-		entity.setTs(item.ts);
-		downloadHistoryDao.insertOrReplace(entity);
+		if(!item.cancel){
+			DownloadHistory entity = new DownloadHistory();
+//			entity.setSeqNo(item.seqNo);
+			entity.setUrl(item.url);
+			entity.setPath(item.path);
+			entity.setDownloadSize(item.downloadSize);
+			entity.setWholeSize(item.wholeSize);
+			entity.setDownloadStatus(status.getIndex());
+			entity.setDownloadType(item.downloadType.getIndex());
+			entity.setPicUrl(item.picUrl);
+			entity.setTitle(item.title);
+			entity.setDetail(item.detail);
+			entity.setMediaId(item.mediaId);
+			entity.setData(item.data);
+			entity.setSource(item.source);
+			entity.setSourceId(item.sourceId);
+			entity.setSource_package(item.sourcePackageName);
+			entity.setTs(item.ts);
+			downloadHistoryDao.insertOrReplace(entity);
+		}
+
 
 //		notifyLockItems();
 
@@ -666,9 +688,11 @@ public class DownloadManager implements Callback {
 			if (msg.obj != null) {
 				AppFlowResp resp = (AppFlowResp) msg.obj;
 				if (Requester.isSuccessed(resp.status)) {
+//					OrderDialog.Dialog(WeFlowApplication.getAppInstance(), "app下载完成，已获得对应流量币");
 					PromptDialog.Alert("app下载完成，已获得相应流量币");
 					WeFlowApplication.getAppInstance().setFlowCoins(resp.flowcoins);
 				} else if (Requester.isMaxLimit(resp.status)) {
+//					OrderDialog.Dialog(WeFlowApplication.getAppInstance(), ConStant.TIP_MAX_LIMIT, true);
 					PromptDialog.Alert(ConStant.TIP_MAX_LIMIT);
 					Toast.makeText(WeFlowApplication.getAppInstance(), ConStant.TIP_MAX_LIMIT
 							, Toast.LENGTH_LONG).show();

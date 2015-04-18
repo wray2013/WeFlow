@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
         android:layout_marginBottom="76dp"
-        android:text="每日一摇，流量土豪"
+        android:text="每日一摇，流量土豪\n不能摇？试试按住屏幕"
         android:textSize="17sp"
         android:textColor="#A3A0A6"
         />
-    
     <TextView 
         android:id="@+id/tv_shake_label"
         android:layout_width="wrap_content"
@@ -80,6 +80,10 @@
         </LinearLayout>
     </RelativeLayout>
     
-    
+	<com.etoc.weflow.view.FlowerView
+        android:id="@+id/flowerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </com.etoc.weflow.view.FlowerView>
 
 </RelativeLayout>

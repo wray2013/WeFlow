@@ -100,8 +100,10 @@ public class DrawFlowAdapter extends BaseAdapter {
 
 		if (curselected == position) {
 			holder.ivSelected.setVisibility(View.VISIBLE);
+			/*holder.tvFlow.setTextColor(context.getResources().getColor(
+					R.color.pagertab_color_orange));*/
 			holder.tvFlow.setTextColor(context.getResources().getColor(
-					R.color.pagertab_color_orange));
+					R.color.red_text));
 			holder.tvFlow.setBackgroundResource(R.drawable.shape_square_recentage_orange);
 		} else {
 			holder.ivSelected.setVisibility(View.GONE);

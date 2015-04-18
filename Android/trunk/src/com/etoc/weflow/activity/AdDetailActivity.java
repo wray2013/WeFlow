@@ -25,6 +25,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.OrderDialog;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AdvFlowResp;
 import com.etoc.weflow.net.GsonResponseObject.AdverInfo;
@@ -285,7 +286,8 @@ public class AdDetailActivity extends TitleRootActivity {
 			if (msg.obj != null) {
 				AdvFlowResp resp = (AdvFlowResp) msg.obj;
 				if("0".equals(resp.status) || "0000".equals(resp.status)) {
-					PromptDialog.Alert(AdDetailActivity.class, "成功获取" + adInfo.flowcoins + "流量币");
+					OrderDialog.Dialog(this, "成功获取" + adInfo.flowcoins + "流量币", true);
+//					PromptDialog.Alert(AdDetailActivity.class, "成功获取" + adInfo.flowcoins + "流量币");
 					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 					accountInfo.setFlowcoins(resp.flowcoins);
 					WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);

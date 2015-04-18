@@ -123,6 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:gravity="center"
                             android:text="？元"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
@@ -132,6 +133,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:gravity="center"
                             android:text="？套餐"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
@@ -226,7 +228,7 @@
                     android:layout_marginBottom="28dp"
                     android:background="@drawable/bg_round_login"
                     android:gravity="center"
-                    android:text="开通流量钱包"
+                    android:text="登录"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp" />
             </RelativeLayout>
@@ -235,7 +237,7 @@
         <LinearLayout
             android:id="@+id/ll_flow_change"
             android:layout_width="fill_parent"
-            android:layout_height="200.5dp"
+            android:layout_height="202dp"
             android:layout_below="@id/rl_title_top_wrapper"
             android:background="#DCDCDC"
             android:orientation="vertical" >
@@ -258,7 +260,7 @@
                 android:id="@+id/hsv_expense_flow"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="0.5dp"
+                android:layout_marginTop="2dp"
                 android:layout_weight="1" >
 
                 <LinearLayout

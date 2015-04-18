@@ -11,6 +11,7 @@ import com.etoc.weflow.activity.MainActivity;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -20,6 +21,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
+import android.widget.Toast;
 
 
 public class PromptDialog {
@@ -131,6 +133,13 @@ public class PromptDialog {
 		
 		progressDialog = null;
 
+	}
+	
+	public static void Alert(Context context, String content, boolean withToast){
+		Alert(WeFlowApplication.getAppInstance(),  content, null);
+		if(withToast) {
+			Toast.makeText(context, content, Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	public static void Alert(String content){
