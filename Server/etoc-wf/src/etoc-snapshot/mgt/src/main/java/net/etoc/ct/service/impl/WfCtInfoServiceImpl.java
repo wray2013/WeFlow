@@ -98,7 +98,7 @@ public class WfCtInfoServiceImpl implements WfCtInfoService {
 		BeanUtils.copyProperties(cr, tmp);
 		int serverVS = Integer.valueOf(tmp.getVersion());
 		int clientVS = Integer.valueOf(rq.getAppversion());
-		if ((serverVS - clientVS) > 2) {
+		if ((serverVS - clientVS) > 1) {
 			// 大于2个版本强制升级
 			cr.setType(versionType.forceup.getValue());
 		} else if ((serverVS - clientVS) == 1) {

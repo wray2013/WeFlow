@@ -62,6 +62,23 @@ public class AppUserServiceImpl implements AppUserService {
 	private static Logger logger = LoggerFactory
 			.getLogger(AppUserServiceImpl.class);
 
+	private static Map<String, String> pbMap;
+
+	static {
+		pbMap = Maps.newHashMap();
+		/*
+		 * pbMap.put("1", "移动话费"); pbMap.put("2", "联通话费"); pbMap.put("3",
+		 * "电信话费"); pbMap.put("4", "腾讯"); pbMap.put("1", "征途/巨人");
+		 * pbMap.put("1", "完美一卡通"); pbMap.put("1", "世纪天成"); pbMap.put("1",
+		 * "搜狐一卡通"); pbMap.put("1", "盛大在线"); pbMap.put("1", "猫扑一卡通");
+		 * pbMap.put("1", "迅雷一卡通"); pbMap.put("1", "空中网一卡通"); pbMap.put("1",
+		 * "多玩游戏"); pbMap.put("1", "九合一卡通"); pbMap.put("1", "360游戏中心");
+		 * pbMap.put("1", "锦游一卡通(侠客列传)"); pbMap.put("1", "边锋三国杀");
+		 */
+		pbMap.put("19", "联通全国流量订购");
+		pbMap.put("20", "电信全国流量订购");
+	}
+
 	@Autowired
 	private JsonUtils jsonUtils;
 
@@ -271,7 +288,12 @@ public class AppUserServiceImpl implements AppUserService {
 				tmp.setTitle(bo.getPbusiness());
 				tmp.setDesc(bo.getRemark());
 				lrp.add(tmp);
-				resp.setTypename(bo.getPbusiness());
+				if (pbMap.containsKey(bo.getPbusinessid())) {
+					resp.setTypename(pbMap.get(bo.getPbusinessid()));
+				} else {
+					resp.setTypename(bo.getPbusiness());
+				}
+
 			}
 			resp.setProducts(lrp);
 			lresp.add(resp);
