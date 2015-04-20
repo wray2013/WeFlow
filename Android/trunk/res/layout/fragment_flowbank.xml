@@ -165,11 +165,11 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:paddingTop="20dp"
+            android:paddingTop="85dp"
             android:text="0"
-            android:textColor="#e50244"
+            android:textColor="@color/white"
             android:textSize="42sp"
-            android:background="@drawable/pig" />
+            android:background="@drawable/bank_flow_bg" />
 
         
     </RelativeLayout>
