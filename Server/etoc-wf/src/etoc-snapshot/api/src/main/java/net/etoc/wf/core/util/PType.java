@@ -41,7 +41,13 @@ public enum PType {
 	recharge_gm("08"),
 
 	// 购礼券
-	bug_gf("09");
+	bug_gf("09"),
+
+	// 游戏摇一摇
+	game_shake("10"),
+
+	// 游戏刮刮
+	game_scratch("11");
 
 	private String value;
 

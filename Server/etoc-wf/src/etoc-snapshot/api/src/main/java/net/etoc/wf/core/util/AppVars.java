@@ -22,7 +22,7 @@ public class AppVars {
 	public String hashAlgorithmName;
 
 	@Value("${app.shiro.hashIterations:1}")
-	public Integer hashIterations;
+	public String hashIterations;
 
 	@Value("default")
 	public String theme;

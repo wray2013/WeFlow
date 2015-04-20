@@ -17,6 +17,7 @@ import net.etoc.ct.entity.WfPrizeResponse.prizeListResponse;
 import net.etoc.ct.entity.WfprizeRequest;
 import net.etoc.ct.service.WfPrizeService;
 import net.etoc.wf.core.util.JsonUtils;
+import net.etoc.wf.core.util.PMerchant;
 import net.etoc.wf.core.util.PType;
 import net.etoc.wf.core.util.SignUtils;
 import net.etoc.wf.ctapp.base.RequestBase;
@@ -24,6 +25,7 @@ import net.etoc.wf.ctapp.base.ResponseBase;
 import net.etoc.wf.ctapp.base.RsCode;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
+import net.etoc.wf.ctapp.user.entity.GameConfigResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +75,47 @@ public class WfPrizeController {
 		wr.setAward(service.findAll(fr.getAwardway()));
 
 		return wr;
+	}
+
+	@RequestMapping(value = "/vs/api/user/shakeConfig", method = RequestMethod.POST)
+	@ResponseBody
+	public GameConfigResponse shakeConfig(String json, String sign)
+			throws IllegalAccessException, InvocationTargetException {
+		/*
+		 * ResponseBase rs = SignUtils.sign(json, sign); if (rs != null) {
+		 * GameConfigResponse ar = new GameConfigResponse();
+		 * BeanUtils.copyProperties(rs, ar); return ar; }
+		 */
+		GameConfigResponse result = service.findGameConfig(
+				PMerchant.app.getValue(), PType.game_shake.getValue());
+		if (result == null) {
+			GameConfigResponse ar = new GameConfigResponse();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
+	}
+
+	@RequestMapping(value = "/vs/api/user/scratchConfig", method = RequestMethod.POST)
+	@ResponseBody
+	public GameConfigResponse scratchConfig(String json, String sign)
+			throws IllegalAccessException, InvocationTargetException {
+		ResponseBase rs = SignUtils.sign(json, sign);
+		if (rs != null) {
+			GameConfigResponse ar = new GameConfigResponse();
+			BeanUtils.copyProperties(rs, ar);
+			return ar;
+		}
+		GameConfigResponse result = service.findGameConfig(
+				PMerchant.app.getValue(), PType.game_scratch.getValue());
+		if (result == null) {
+			GameConfigResponse ar = new GameConfigResponse();
+			ar.setStatus(RsCode.OK.getCode());
+			return ar;
+		} else {
+			return result;
+		}
 	}
 
 	@SuppressWarnings("unchecked")

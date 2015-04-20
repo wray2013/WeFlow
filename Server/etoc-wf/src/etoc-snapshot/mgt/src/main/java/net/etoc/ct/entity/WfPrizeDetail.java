@@ -7,6 +7,7 @@
 package net.etoc.ct.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -49,7 +50,7 @@ public class WfPrizeDetail implements Serializable {
 	private String prizename;
 
 	@Column(name = "PRIZE_PROBA")
-	private Integer prizeProba;
+	private BigDecimal prizeProba;
 
 	@Column(name = "PRIZE_REMARK")
 	private String prizeRemark;
@@ -95,7 +96,7 @@ public class WfPrizeDetail implements Serializable {
 	 * @since 1.0.0
 	 */
 
-	public Integer getPrizeProba() {
+	public BigDecimal getPrizeProba() {
 		return prizeProba;
 	}
 
@@ -103,7 +104,7 @@ public class WfPrizeDetail implements Serializable {
 	 * @param prizeProba
 	 *            the prizeProba to set
 	 */
-	public void setPrizeProba(Integer prizeProba) {
+	public void setPrizeProba(BigDecimal prizeProba) {
 		this.prizeProba = prizeProba;
 	}
 

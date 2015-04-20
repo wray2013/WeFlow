@@ -13,9 +13,6 @@
 				http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<description>SpringJpa配置</description>
 
-<context:property-placeholder
-			ignore-unresolvable="true" file-encoding="UTF-8"
-			location="classpath*:application.properties" />
 
 	<!-- 定义实体管理器工厂,参数中的myJPA在spring data jpa配置文件中 -->
 	<bean id="entityManagerFactory"

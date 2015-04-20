@@ -14,6 +14,7 @@ import net.etoc.ct.entity.WfPrizeResponse.PrizeDetailResponse;
 import net.etoc.ct.entity.WfPrizeResponse.PrizeHisResponse;
 import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
+import net.etoc.wf.ctapp.user.entity.GameConfigResponse;
 
 import org.springframework.web.client.RestClientException;
 
@@ -41,4 +42,6 @@ public interface WfPrizeService {
 			CrmOderHisRequest ar) throws RestClientException,
 			JsonProcessingException, IllegalAccessException,
 			InvocationTargetException;
+
+	public GameConfigResponse findGameConfig(String merchant, String ptype);
 }

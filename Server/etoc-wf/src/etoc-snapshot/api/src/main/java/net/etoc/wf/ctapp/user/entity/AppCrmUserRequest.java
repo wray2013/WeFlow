@@ -32,6 +32,7 @@ public class AppCrmUserRequest extends RequestBase {
 
 	private String mac;
 	private String imei;
+	private String channelplatid;
 
 	/**
 	 * pwd
@@ -126,6 +127,25 @@ public class AppCrmUserRequest extends RequestBase {
 	 */
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+
+	/**
+	 * channelplatid
+	 *
+	 * @return the channelplatid
+	 * @since 1.0.0
+	 */
+
+	public String getChannelplatid() {
+		return channelplatid;
+	}
+
+	/**
+	 * @param channelplatid
+	 *            the channelplatid to set
+	 */
+	public void setChannelplatid(String channelplatid) {
+		this.channelplatid = channelplatid;
 	}
 
 }
