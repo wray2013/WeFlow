@@ -165,7 +165,6 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 			// TODO Auto-generated method stub
 			return appList.size();
 		}
-		
 	}
 	
 	private class GiftBannerFragment extends BaseBannerFragment {
