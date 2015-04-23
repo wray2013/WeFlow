@@ -394,12 +394,12 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 					float in  = 0;
 					float out = 0;
 					if(response.inflowleft != null && response.outflowleft != null) {
-						try {
+						/*try {
 							in  = Float.parseFloat(response.inflowleft);
 							out = Float.parseFloat(response.outflowleft);
 						} catch(Exception e) {
 							e.printStackTrace();
-						}
+						}*/
 					}
 					
 					tvInFlow.setText(response.inflowleft);
