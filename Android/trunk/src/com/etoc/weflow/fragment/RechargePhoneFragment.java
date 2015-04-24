@@ -325,7 +325,7 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 			Uri result = data.getData();
 			String contactId = result.getLastPathSegment();
 			String contactnumber = getPhoneContacts(contactId);
-			Toast.makeText(WeFlowApplication.getAppInstance(), "phone number = " + contactnumber, Toast.LENGTH_LONG).show();
+//			Toast.makeText(WeFlowApplication.getAppInstance(), "phone number = " + contactnumber, Toast.LENGTH_LONG).show();
 			etPhone.setText(contactnumber);
 		}
 		super.onActivityResult(requestCode, resultCode, data);
