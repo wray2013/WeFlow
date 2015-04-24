@@ -16,6 +16,7 @@ import net.etoc.wf.ctapp.user.entity.CrmBillResponse;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankRequest;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankResponse;
 import net.etoc.wf.ctapp.user.entity.CrmFlowStoreAndPopResponse;
+import net.etoc.wf.ctapp.user.entity.CrmGameRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
@@ -50,6 +51,9 @@ public interface AppUserService {
 			JsonProcessingException;
 
 	public CrmOrderResponse orderLargess(String methodSuffix, CrmOrderRequest ar)
+			throws RestClientException, JsonProcessingException;
+
+	public ResponseBase orderGame(String methodSuffix, CrmGameRequest ar)
 			throws RestClientException, JsonProcessingException;
 
 	public CrmOrderHisResponse querySubProdList(String methodSuffix,
