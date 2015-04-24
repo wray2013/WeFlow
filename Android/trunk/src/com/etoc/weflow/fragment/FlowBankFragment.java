@@ -119,6 +119,7 @@ public class FlowBankFragment extends XFragment<Object>/*TitleRootFragment*/impl
 		ViewUtils.setHeight(view.findViewById(R.id.v_divider), 72);
 		
 		ViewUtils.setSize(mtvMoney, 350,350);
+		ViewUtils.setPaddingTop(mtvMoney, 170);
 		
 		ViewUtils.setTextSize((TextView) view.findViewById(R.id.tv_yest_income), 66);
 		ViewUtils.setTextSize(mtvMoney, 70);

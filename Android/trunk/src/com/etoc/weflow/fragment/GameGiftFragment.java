@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.text.ClipboardManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,6 +39,7 @@ import com.etoc.weflow.net.GsonResponseObject.GameGiftResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.DESDecryptAPIUtil;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.ViewUtils;
@@ -207,7 +211,17 @@ public class GameGiftFragment extends Fragment implements Callback {
 					AccountInfo accountInfo = WeFlowApplication.getAppInstance().getAccountInfo();
 					if (accountInfo != null) {
 						Requester.exchangeGamePkg(true, handler, accountInfo.getUserid(), item.chargesid);
-					} else {
+						/*final String realcode = "abc123";
+						OrderDialog.Dialog(getActivity(), "兑换码：" + realcode + "\n请尽快使用",new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								// TODO Auto-generated method stub
+								ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Activity.CLIPBOARD_SERVICE);
+								cmb.setText(realcode);
+							}
+						});*/
+				    } else {
 						startActivity(new Intent(getActivity(), LoginActivity.class));
 					}
 				}
@@ -244,7 +258,16 @@ public class GameGiftFragment extends Fragment implements Callback {
 				if (Requester.isSuccessed(chargeResp.status)) {
 //					PromptDialog.Alert("订购成功");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					OrderDialog.Dialog(getActivity(), "兑换码：" + chargeResp.cardcode + "\n请尽快使用");
+					final String realcode = DESDecryptAPIUtil.decryptDES(chargeResp.cardcode);
+					OrderDialog.Dialog(getActivity(), "兑换码：" + realcode + "\n请尽快使用",new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Activity.CLIPBOARD_SERVICE);
+							cmb.setText(realcode);
+						}
+					});
 					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
 					}*/
