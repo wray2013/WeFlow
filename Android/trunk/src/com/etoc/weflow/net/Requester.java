@@ -121,7 +121,7 @@ import de.greenrobot.event.EventBus;
 
 public class Requester {
 	private static final int isDebug = 0;
-	
+	private static final boolean LogOpen = false;
 	///////////////////////////////////////Response code:
 	public static final int RESPONSE_TYPE_TEST = 0xffee2000;
 	public static final String RIA_INTERFACE_TEST = "/test/ct";
@@ -838,8 +838,12 @@ public class Requester {
 			if(hasLoading)
 				EventBus.getDefault().post(RequestEvent.LOADING_START);
 			String url = /*(use_dc?Config.SERVER_DC_URL:Config.SERVER_RIA_URL)*/Config.SERVER_URL + ria_command_id;
-			System.out.println("url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
-		    Log.v(TAG,"request url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
+			
+			if(LogOpen) {
+				System.out.println("url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
+			    Log.v(TAG,"request url--->" + url + ", responseType:" + responseType + ", request:" + gson.toJson(request));
+			}
+			
 			String ret_entity_str = null;
 		    Object object = null;
 		    
@@ -881,8 +885,10 @@ public class Requester {
 				    
 					if(localHttpResponse!=null){
 					    ret_entity_str = EntityUtils.toString(localHttpResponse.getEntity());
-					    Log.v(TAG, "ret_entity_str:" + ret_entity_str);
-					    System.out.println("ret_entity_str:" + ret_entity_str);
+					    if(LogOpen) {
+						    Log.v(TAG, "ret_entity_str:" + ret_entity_str);
+						    System.out.println("ret_entity_str:" + ret_entity_str);
+					    }
 					}
 
 				} catch (UnsupportedEncodingException e1) {
@@ -912,7 +918,9 @@ public class Requester {
 		    		e.printStackTrace();
 		    	}
 		    } else{
-		    	Log.v(TAG, "request url--->" + url  + "*******ret_entity_str:" + ret_entity_str);
+		    	if(LogOpen) {
+		    		Log.v(TAG, "request url--->" + url  + "*******ret_entity_str:" + ret_entity_str);
+		    	}
 		    	EventBus.getDefault().post(RequestEvent.RESP_NULL);
 
 		    }
