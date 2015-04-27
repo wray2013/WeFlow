@@ -27,7 +27,7 @@
 	    		android:layout_height="wrap_content"
 	    		android:layout_toRightOf="@+id/tv_version_hint"
 	    		android:gravity="center"
-	    		android:text="v1.0.0"
+	    		android:text="v1.2.0"
 	    		android:textColor="@color/white"/>
         </RelativeLayout>
         <RelativeLayout 
