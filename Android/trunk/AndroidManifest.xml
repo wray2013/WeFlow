@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.etoc.weflow"
-    android:versionCode="10201"
+    android:versionCode="10202"
     android:versionName="1.2.0" >
 
     <uses-sdk
@@ -403,6 +403,6 @@
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
         <meta-data android:name="JPUSH_APPKEY" android:value="cbc2a2081bfafc6ea8ed1174"/>
-        <meta-data android:name="ETOC_CHANNEL" android:value="etoc"/>
+        <meta-data android:name="ETOC_CHANNEL" android:value="a004"/>
     </application>
 </manifest>
