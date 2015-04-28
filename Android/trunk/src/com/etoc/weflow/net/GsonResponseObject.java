@@ -611,4 +611,15 @@ public class GsonResponseObject {
 		public MessageList msglist;
 	}
 	
+	public static class HomePageBannerWrapper{
+		public String picurl;// 图片地址
+		public String type;// 跳转类型
+		public String sourceurl;// 跳转网页url
+		public String sourcetitle;// 网页标题栏标题，当type类型为12时有效。
+	}
+	
+	public static class HomePageBannerResp {
+		public String status;
+		public HomePageBannerWrapper[] bannerlist;
+	}
 }

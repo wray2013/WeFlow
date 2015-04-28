@@ -37,6 +37,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 	public final static int INDEX_GAME = 1;
 	public final static int INDEX_GIFT = 2;
 	private Fragment phoneFragment;
+	private int exchangeIndex = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 		titleTab.setViewPager(viewPage);
 		
 		int index = getIntent().getIntExtra(ConStant.INTENT_EXPENSE_FLOW, 0);
+		exchangeIndex = getIntent().getIntExtra(ConStant.INTENT_EXCHANGE_INDEX, 0);
 		index = index == 0?0:index - 1;
 		final int indexTemp = index;
 		handler.postDelayed(new Runnable() {
@@ -181,14 +183,14 @@ public class ExpenseFlowActivity extends TitleRootActivity {
 			Fragment frag = null;
 			switch (position) {
 			case 0:
-				frag = new RechargeFragment();
+				frag = new RechargeFragment(exchangeIndex);
 				phoneFragment = frag;
 				break;
 			case 1:
 //				frag = new MobileFlowFragment();
 //				break;
 //			case 2:
-				frag = new GameCoinsFragment();
+				frag = new GameCoinsFragment(exchangeIndex);
 				break;
 //			case 3:
 			case 2:

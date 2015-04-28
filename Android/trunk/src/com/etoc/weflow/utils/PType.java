@@ -47,7 +47,10 @@ public enum PType {
 	game_shake("10"),
 
 	// 游戏刮刮
-	game_scratch("11");
+	game_scratch("11"),
+	
+	// 网页
+	web_page("12");
 
 	private String value;
 

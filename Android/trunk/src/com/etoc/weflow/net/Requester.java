@@ -27,6 +27,7 @@ import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.event.RequestEvent;
 import com.etoc.weflow.net.GsonRequestObject.GameChargeListRequest;
 import com.etoc.weflow.net.GsonRequestObject.GameRechargeRequest;
+import com.etoc.weflow.net.GsonRequestObject.HomePageBannerRequest;
 import com.etoc.weflow.net.GsonRequestObject.QChargeListRequest;
 import com.etoc.weflow.net.GsonRequestObject.SignInListRequest;
 import com.etoc.weflow.net.GsonRequestObject.SignInRequest;
@@ -85,6 +86,7 @@ import com.etoc.weflow.net.GsonResponseObject.GameChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.GamePkgListResp;
 import com.etoc.weflow.net.GsonResponseObject.GameRechargeResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
+import com.etoc.weflow.net.GsonResponseObject.HomePageBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.MyBillListResp;
 import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.PhoneChargeResp;
@@ -258,6 +260,9 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_SCRATCH_CONFIG = 0xffee2143;
 	public static final String RIA_INTERFACE_SCRATCH_CONFIG = "/vs/api/user/scratchConfig";
+	
+	public static final int RESPONSE_TYPE_HOMEPAGE_BANNER = 0xffee2144;
+	public static final String RIA_INTERFACE_HOMEPAGE_BANNER = "/vs/api/user/queryBannerList";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -740,6 +745,17 @@ public class Requester {
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_SIGN_IN, SignInResp.class);
 		worker.execute(RIA_INTERFACE_SIGN_IN, request);
+	}
+	
+	// 首页banner请求
+	public static void homepageBanner(boolean hasLoading,Handler handler,String userid) {
+		HomePageBannerRequest request = new HomePageBannerRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_HOMEPAGE_BANNER, HomePageBannerResp.class);
+		worker.execute(RIA_INTERFACE_HOMEPAGE_BANNER, request);
 	}
 	
 	

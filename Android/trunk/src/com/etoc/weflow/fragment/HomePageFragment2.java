@@ -2,6 +2,7 @@ package com.etoc.weflow.fragment;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.etoc.weflow.Config;
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ConstructionActivity;
@@ -30,16 +32,20 @@ import com.etoc.weflow.activity.MakeFlowActivity;
 import com.etoc.weflow.activity.MobileFlowActivity;
 import com.etoc.weflow.activity.ScratchCardActivity;
 import com.etoc.weflow.activity.ShakeShakeActivity;
+import com.etoc.weflow.activity.WebViewActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.adapter.HomePageAdapter;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
+import com.etoc.weflow.net.GsonResponseObject.HomePageBannerResp;
+import com.etoc.weflow.net.GsonResponseObject.HomePageBannerWrapper;
 import com.etoc.weflow.net.GsonResponseObject.SignInResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
 import com.etoc.weflow.utils.NumberUtils;
+import com.etoc.weflow.utils.PType;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
@@ -75,6 +81,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 	private AutoScrollViewPager viewPager = null;
 	private PageIndicator mIndicator;
 	private HomePageBannerAdapter bannerAdapter = null;
+	private ArrayList<HomePageBannerWrapper> bannerList = new ArrayList<HomePageBannerWrapper>();
 	
 	private RelativeLayout rlGridVideo, rlGridSoft, rlGridActivity, rlGridExchange, rlGridFlow, rlGridGame;
 	
@@ -95,6 +102,9 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		}
 		View v = inflater.inflate(R.layout.fragment_homepage2, null);
 		initView(v);
+		if (isLogin) {
+			Requester.homepageBanner(true, handler, currentAccount.getUserid());
+		}
 		return v;
 	}
 	
@@ -122,9 +132,8 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
         viewPager.setCycle(true);
         viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
         
-        ArrayList<String> list = new ArrayList<String>();
         
-        bannerAdapter = new HomePageBannerAdapter(getFragmentManager(), list);
+        bannerAdapter = new HomePageBannerAdapter(getFragmentManager(), bannerList);
 		
 		ivActivity = (ImageView) view.findViewById(R.id.iv_activity_bottom);
 		ivActivity.setOnClickListener(this);
@@ -453,6 +462,22 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 				}
 			}
 			break;
+		case Requester.RESPONSE_TYPE_HOMEPAGE_BANNER:
+			if (msg.obj != null) {
+				HomePageBannerResp resp = (HomePageBannerResp) msg.obj;
+				if (Requester.isSuccessed(resp.status)) {
+					if(resp.bannerlist != null && resp.bannerlist.length > 0) {
+						bannerList.clear();
+						Collections.addAll(bannerList, resp.bannerlist);
+						viewPager.setAdapter(bannerAdapter);
+						viewPager.setCurrentItem(0);
+						mIndicator.setViewPager(viewPager);
+						mIndicator.notifyDataSetChanged();
+					}
+					
+				}
+			}
+			break;
 		}
 		return false;
 	}
@@ -462,6 +487,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		// TODO Auto-generated method stub
 		if(isLogin) {
 			Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
+			Requester.homepageBanner(false, handler, currentAccount.getUserid());
 		} else {
 			handler.postDelayed(new Runnable() {
 				
@@ -482,9 +508,9 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 	
 	private class HomePageBannerAdapter extends FragmentPagerAdapter {
 
-		private List<String> appList = null;
+		private List<HomePageBannerWrapper> appList = null;
 		
-		public HomePageBannerAdapter(FragmentManager fm,List<String> list) {
+		public HomePageBannerAdapter(FragmentManager fm,List<HomePageBannerWrapper> list) {
 			// TODO Auto-generated constructor stub
 			super(fm);
 			
@@ -506,10 +532,10 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 	}
 	
 	private class HomePageBannerFragment extends BaseBannerFragment {
-		public String appInfo = null;
+		public HomePageBannerWrapper appInfo = null;
 		
-		public HomePageBannerFragment(String info) {
-			super(info, R.drawable.small_pic_default);
+		public HomePageBannerFragment(HomePageBannerWrapper info) {
+			super(info.picurl, R.drawable.small_pic_default);
 			appInfo = info;
 		}
 		
@@ -518,7 +544,69 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 			// TODO Auto-generated method stub
 			switch(view.getId()) {
 			case R.id.iv_playbill:
-				break;
+				if ("1".equals(appInfo.type)) {
+					Intent softintent = new Intent(getActivity(),MakeFlowActivity.class);
+					softintent.putExtra("isLogin", isLogin);
+					softintent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc02 & 0xff);
+					startActivity(softintent);
+				} else if ("2".equals(appInfo.type)) {
+					Intent videointent = new Intent(getActivity(),MakeFlowActivity.class);
+					videointent.putExtra("isLogin", isLogin);
+					videointent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc01 & 0xff);
+					startActivity(videointent);
+				} else if ("3".equals(appInfo.type)) {
+					startActivity(new Intent(getActivity(), ConstructionActivity.class));
+				} else if ("4".equals(appInfo.type)) {
+					Intent exchangeIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
+					exchangeIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 1);
+					exchangeIntent.putExtra(ConStant.INTENT_EXCHANGE_INDEX, 0);
+					exchangeIntent.putExtra("isLogin", isLogin);
+					startActivity(exchangeIntent);
+				} else if ("5".equals(appInfo.type)) {
+					Intent exchangeIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
+					exchangeIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 1);
+					exchangeIntent.putExtra(ConStant.INTENT_EXCHANGE_INDEX, 1);
+					exchangeIntent.putExtra("isLogin", isLogin);
+					startActivity(exchangeIntent);
+				} else if ("6".equals(appInfo.type)) {
+					Intent flowIntent = new Intent(getActivity(),MobileFlowActivity.class);
+					flowIntent.putExtra("isLogin", isLogin);
+					startActivity(flowIntent);
+				} else if ("7".equals(appInfo.type)) {
+					Intent exchangeIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
+					exchangeIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 2);
+					exchangeIntent.putExtra(ConStant.INTENT_EXCHANGE_INDEX, 0);
+					exchangeIntent.putExtra("isLogin", isLogin);
+					startActivity(exchangeIntent);
+				} else if ("8".equals(appInfo.type)) {
+					Intent exchangeIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
+					exchangeIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 2);
+					exchangeIntent.putExtra(ConStant.INTENT_EXCHANGE_INDEX, 1);
+					exchangeIntent.putExtra("isLogin", isLogin);
+					startActivity(exchangeIntent);
+				} else if ("9".equals(appInfo.type)) {
+					Intent exchangeIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
+					exchangeIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 3);
+					exchangeIntent.putExtra("isLogin", isLogin);
+					startActivity(exchangeIntent);
+				} else if ("10".equals(appInfo.type)) {
+					if(isLogin) {
+						startActivity(new Intent(getActivity(), ShakeShakeActivity.class));
+					} else {
+						startActivity(new Intent(getActivity(), LoginActivity.class));
+					}
+				} else if ("11".equals(appInfo.type)) {
+					if(isLogin) {
+						startActivity(new Intent(getActivity(), ScratchCardActivity.class));
+					} else {
+						startActivity(new Intent(getActivity(), LoginActivity.class));
+					}
+				} else if ("12".equals(appInfo.type)) {
+					Intent homeIntent = new Intent(getActivity(), WebViewActivity.class);
+					homeIntent.putExtra("pageurl", appInfo.sourceurl);
+					homeIntent.putExtra("pagetitle", appInfo.sourcetitle);
+					startActivity(homeIntent);
+				}
 			}
 		}
 	}
