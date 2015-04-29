@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
@@ -28,6 +29,16 @@ public class RechargeFragment extends Fragment {
 	public Fragment currFragment;
 	private final static String TAG = "RechargeFragment";
 	private View mView;
+	private int index = 0;
+	
+	public RechargeFragment() {
+		super();
+		index = 0;
+	}
+	public RechargeFragment(int index) {
+		super();
+		index = index;
+	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +95,11 @@ public class RechargeFragment extends Fragment {
 			qqFragment = new RechargeQQFragment();
 		}
 		if (currFragment == null) {
-			currFragment = phoneFragment;
+			if (index == 0) {
+				currFragment = phoneFragment;
+			} else {
+				currFragment = qqFragment;
+			}
 		}
 		if (null != getChildFragmentManager().findFragmentByTag(
 				currFragment.getClass().getName())) {

@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tv_copyrights"
                 android:gravity="center"
-                android:text=" EToC. All Rights Reserved"
+                android:text=" 绛紫互动. All Rights Reserved"
                 android:textColor="@color/black" />
         </RelativeLayout>
     </RelativeLayout>

@@ -19,6 +19,8 @@ import net.etoc.wf.core.util.JsonUtils;
 import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.base.ResponseBase;
 import net.etoc.wf.ctapp.base.RsCode;
+import net.etoc.wf.ctapp.user.entity.CrmGameParamRequest;
+import net.etoc.wf.ctapp.user.entity.CrmGameParamResponse;
 import net.etoc.wf.ctapp.user.entity.FeedBackRequest;
 import net.etoc.wf.ctapp.user.entity.UserSignResponse;
 
@@ -170,6 +172,27 @@ public class WfCtInfoServiceImpl implements WfCtInfoService {
 		try {
 			return (UserSignResponse) jsonUtils.getResult(rb,
 					UserSignResponse.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",
+					AppVars.getInstance().crmUrl + methodSuffix, e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public CrmGameParamResponse queryGameParam(String methodSuffix,
+			CrmGameParamRequest fr) throws RestClientException,
+			JsonProcessingException {
+		String rb = restTemplate.postForObject(AppVars.getInstance().crmUrl
+				+ methodSuffix, jsonUtils.getJsonResult(fr), String.class);
+		logger.info("访问CRM服务器,[{}] 返回的结果 [{}]", AppVars.getInstance().crmUrl
+				+ methodSuffix, rb);
+
+		try {
+			return (CrmGameParamResponse) jsonUtils.getResult(rb,
+					CrmGameParamResponse.class);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",

@@ -28,7 +28,16 @@ public class GameCoinsFragment extends Fragment {
 	private View mView;
 	private GameGiftFragment giftFragment;
 	private GameRechargeFragment rechargeFragment;
+	int index = 0;
 	
+	public GameCoinsFragment() {
+		super();
+		this.index = 0;
+	}
+	public GameCoinsFragment(int index) {
+		super();
+		this.index = index;
+	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -84,7 +93,11 @@ public class GameCoinsFragment extends Fragment {
 			rechargeFragment = new GameRechargeFragment();
 		}
 		if (currFragment == null) {
-			currFragment = giftFragment;
+			if (index == 0) {
+				currFragment = giftFragment;
+			} else {
+				currFragment = rechargeFragment;
+			}
 		}
 		if (null != getChildFragmentManager().findFragmentByTag(
 				currFragment.getClass().getName())) {

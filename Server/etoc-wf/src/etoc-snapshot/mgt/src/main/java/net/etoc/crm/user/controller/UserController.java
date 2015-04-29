@@ -27,6 +27,7 @@ import net.etoc.wf.ctapp.user.entity.CrmBillResponse;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankRequest;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankResponse;
 import net.etoc.wf.ctapp.user.entity.CrmFlowStoreAndPopResponse;
+import net.etoc.wf.ctapp.user.entity.CrmGameRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
@@ -703,5 +704,21 @@ public class UserController {
 		CrmOderHisRequest ar = (CrmOderHisRequest) jsonUtils.getResult(json,
 				CrmOderHisRequest.class);
 		return appUserService.queryBillList("queryBillList", ar);
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/vs/api/user/orderGame", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseBase orderGame(String json, String sign)
+			throws JsonParseException, JsonMappingException, IOException,
+			IllegalAccessException, InvocationTargetException {
+		ResponseBase rs = SignUtils.sign(json, sign);
+		if (rs != null) {
+			return rs;
+		}
+		CrmGameRequest ar = (CrmGameRequest) jsonUtils.getResult(json,
+				CrmGameRequest.class);
+		ResponseBase result = appUserService.orderGame("orderGame", ar);
+		return result;
 	}
 }

@@ -13,6 +13,8 @@ import net.etoc.ct.entity.CtInfoResponse;
 import net.etoc.ct.entity.WfCtInfo;
 import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.base.ResponseBase;
+import net.etoc.wf.ctapp.user.entity.CrmGameParamRequest;
+import net.etoc.wf.ctapp.user.entity.CrmGameParamResponse;
 import net.etoc.wf.ctapp.user.entity.FeedBackRequest;
 import net.etoc.wf.ctapp.user.entity.UserSignResponse;
 
@@ -42,5 +44,9 @@ public interface WfCtInfoService {
 
 	public UserSignResponse sign(String methodSuffix, RequestBase fr)
 			throws RestClientException, JsonProcessingException;
+
+	public CrmGameParamResponse queryGameParam(String methodSuffix,
+			CrmGameParamRequest fr) throws RestClientException,
+			JsonProcessingException;
 
 }

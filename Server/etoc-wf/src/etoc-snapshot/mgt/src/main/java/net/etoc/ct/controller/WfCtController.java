@@ -16,6 +16,8 @@ import net.etoc.wf.core.util.JsonUtils;
 import net.etoc.wf.core.util.SignUtils;
 import net.etoc.wf.ctapp.base.RequestBase;
 import net.etoc.wf.ctapp.base.ResponseBase;
+import net.etoc.wf.ctapp.user.entity.CrmGameParamRequest;
+import net.etoc.wf.ctapp.user.entity.CrmGameParamResponse;
 import net.etoc.wf.ctapp.user.entity.FeedBackRequest;
 import net.etoc.wf.ctapp.user.entity.UserSignResponse;
 
@@ -111,6 +113,23 @@ public class WfCtController {
 		RequestBase fr = (RequestBase) jsonUtils.getResult(json,
 				RequestBase.class);
 		return service.sign("querySignInList", fr);
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/vs/api/user/queryGameParam", method = RequestMethod.POST)
+	@ResponseBody
+	public CrmGameParamResponse queryGameParam(String json, String sign)
+			throws IllegalAccessException, InvocationTargetException,
+			JsonParseException, JsonMappingException, IOException {
+		ResponseBase cs = SignUtils.sign(json, sign);
+		if (cs != null) {
+			CrmGameParamResponse ur = new CrmGameParamResponse();
+			BeanUtils.copyProperties(ur, cs);
+			return ur;
+		}
+		CrmGameParamRequest fr = (CrmGameParamRequest) jsonUtils.getResult(
+				json, CrmGameParamRequest.class);
+		return service.queryGameParam("queryGameParam", fr);
 	}
 
 }

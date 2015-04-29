@@ -20,6 +20,8 @@ public class ConStant {
 	public static final String INTENT_SOFT_DETAIL = "intent_sort_detail";
 	public static final String INTENT_MAKE_FLOW = "intent_make_flow";
 	public static final String INTENT_EXPENSE_FLOW = "intent_expense_flow";
+	public static final String INTENT_EXCHANGE_INDEX = "intent_exchange_index";
+	
 	
 	public static final String INTENT_BILL_ALL     = "intent_bill_all";
 	public static final String INTENT_BILL_MAKE    = "intent_bill_make";

@@ -64,7 +64,7 @@ public class ExpenseBillListActivity extends TitleRootActivity {
 		
 		switch (index) {
 		case 0:
-			setTitleText("充话费记录");
+			setTitleText("兑换记录");
 			break;
 		case 1:
 //			setTitleText("定流量包记录");

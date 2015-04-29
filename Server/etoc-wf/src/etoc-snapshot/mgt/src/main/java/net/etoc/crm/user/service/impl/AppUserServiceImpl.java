@@ -28,6 +28,7 @@ import net.etoc.wf.ctapp.user.entity.CrmBillResponse;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankRequest;
 import net.etoc.wf.ctapp.user.entity.CrmFlowBankResponse;
 import net.etoc.wf.ctapp.user.entity.CrmFlowStoreAndPopResponse;
+import net.etoc.wf.ctapp.user.entity.CrmGameRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOderHisRequest;
 import net.etoc.wf.ctapp.user.entity.CrmOrderHisResponse;
 import net.etoc.wf.ctapp.user.entity.CrmOrderRequest;
@@ -198,6 +199,28 @@ public class AppUserServiceImpl implements AppUserService {
 		try {
 			return (CrmOrderResponse) jsonUtils.getResult(rb,
 					CrmOrderResponse.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",
+					AppVars.getInstance().crmUrl + methodSuffix, e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ResponseBase orderGame(String methodSuffix, CrmGameRequest ar)
+			throws RestClientException, JsonProcessingException {
+
+		String rb = restTemplate.postForObject(AppVars.getInstance().crmUrl
+				+ methodSuffix, jsonUtils.getJsonResult(ar), String.class);
+		logger.info("访问CRM服务器,[{}] 返回的结果 [{}]", AppVars.getInstance().crmUrl
+				+ methodSuffix, rb);
+
+		try {
+			return (ResponseBase) jsonUtils.getResult(rb, ResponseBase.class);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("访问CRM服务器 [{}]  出现错误 [{}]",
