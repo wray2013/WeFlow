@@ -99,14 +99,22 @@ public class OrderDialog implements OnClickListener {
 	}
 	
 	public static void Dialog(Context context,String content) {
-		/*orderDialog = new OrderDialog(context, null);
-		orderDialog.setDescText(content);
-		orderDialog.show();*/
 		Dialog(context, content, false);
 	}
 	
+	public static void Dialog(Context context,String content,DialogInterface.OnClickListener listener) {
+		Dialog(context, content, false,listener);
+	}
+	
 	public static void Dialog(Context context,String content,boolean failed) {
-		orderDialog = new OrderDialog(context, null);
+		Dialog(context, content, failed, null);
+	}
+	
+	public static void Dialog(Context context,String content,boolean failed,DialogInterface.OnClickListener listener) {
+		orderDialog = new OrderDialog(context, listener);
+		if (listener != null) {
+			orderDialog.btnConfirm.setText("复制");
+		}
 		if (failed) {
 			orderDialog.setBackgroundRes(R.drawable.bg_order_dialog_fail);
 		}

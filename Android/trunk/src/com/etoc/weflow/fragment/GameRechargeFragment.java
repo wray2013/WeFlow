@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.text.ClipboardManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,6 +44,7 @@ import com.etoc.weflow.net.GsonResponseObject.GameChargeResp;
 import com.etoc.weflow.net.GsonResponseObject.GameRechargeResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.DESDecryptAPIUtil;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.StringUtils;
@@ -187,7 +191,16 @@ public class GameRechargeFragment extends Fragment implements Callback, OnClickL
 				GameRechargeResp chargeResp = (GameRechargeResp) msg.obj;
 				if (Requester.isSuccessed(chargeResp.status)) {
 //					PromptDialog.Alert("订购成功");
-					OrderDialog.Dialog(getActivity(), "兑换码：" + chargeResp.cardcode+ "\n请尽快使用");
+					final String realcode = DESDecryptAPIUtil.decryptDES(chargeResp.cardcode);
+					OrderDialog.Dialog(getActivity(), "兑换码：" + realcode + "\n请尽快使用",new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Activity.CLIPBOARD_SERVICE);
+							cmb.setText(realcode);
+						}
+					});
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
 					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");

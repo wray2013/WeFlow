@@ -1,9 +1,15 @@
 package com.etoc.weflow.fragment;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,19 +32,24 @@ import com.etoc.weflow.activity.MobileFlowActivity;
 import com.etoc.weflow.activity.ScratchCardActivity;
 import com.etoc.weflow.activity.ShakeShakeActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.adapter.HomePageAdapter;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
+import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.SignInResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
-import com.etoc.weflow.utils.FileUtils;
 import com.etoc.weflow.utils.NumberUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.MagicTextView;
+import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.imbryk.viewPager.LoopViewPager;
+import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.PageIndicator;
 
 public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/implements OnClickListener, OnRefreshListener2<ScrollView> {
 
@@ -62,8 +73,9 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 	private ImageView ivBanner = null;//banner图片
 	private ImageView ivActivity = null;//活动图片
 	
-//	private AutoScrollViewPager viewPager = null;
-//	private PageIndicator mIndicator;
+	private AutoScrollViewPager viewPager = null;
+	private PageIndicator mIndicator;
+	private HomePageBannerAdapter bannerAdapter = null;
 	
 	private RelativeLayout rlGridVideo, rlGridSoft, rlGridActivity, rlGridExchange, rlGridFlow, rlGridGame;
 	
@@ -102,6 +114,18 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		
 		ivBanner = (ImageView) view.findViewById(R.id.iv_banner);
 		ivBanner.setOnClickListener(this);
+		
+		viewPager = (AutoScrollViewPager) view.findViewById(R.id.vp_pager_service);
+		mIndicator = (CirclePageIndicator) view.findViewById(R.id.indicator_service);
+		
+		viewPager.setInterval(3000);
+        viewPager.startAutoScroll();
+        viewPager.setCycle(true);
+        viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_CYCLE);
+        
+        ArrayList<String> list = new ArrayList<String>();
+        
+        bannerAdapter = new HomePageBannerAdapter(getFragmentManager(), list);
 		
 		ivActivity = (ImageView) view.findViewById(R.id.iv_activity_bottom);
 		ivActivity.setOnClickListener(this);
@@ -395,12 +419,12 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 					float in  = 0;
 					float out = 0;
 					if(response.inflowleft != null && response.outflowleft != null) {
-						try {
+						/*try {
 							in  = Float.parseFloat(response.inflowleft);
 							out = Float.parseFloat(response.outflowleft);
 						} catch(Exception e) {
 							e.printStackTrace();
-						}
+						}*/
 					}
 					
 					tvInFlow.setText(response.inflowleft);
@@ -455,6 +479,49 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 	public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private class HomePageBannerAdapter extends FragmentPagerAdapter {
+
+		private List<String> appList = null;
+		
+		public HomePageBannerAdapter(FragmentManager fm,List<String> list) {
+			// TODO Auto-generated constructor stub
+			super(fm);
+			
+			appList = list;
+		}
+		@Override
+		public Fragment getItem(int position) {
+			// TODO Auto-generated method stub
+			position = LoopViewPager.toRealPosition(position, getCount());
+			Log.d("=AAA=","position = " + position);
+			return new HomePageBannerFragment(appList.get(position));
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return appList.size();
+		}
+	}
+	
+	private class HomePageBannerFragment extends BaseBannerFragment {
+		public String appInfo = null;
+		
+		public HomePageBannerFragment(String info) {
+			super(info, R.drawable.small_pic_default);
+			appInfo = info;
+		}
+		
+		@Override
+		public void onClick(View view) {
+			// TODO Auto-generated method stub
+			switch(view.getId()) {
+			case R.id.iv_playbill:
+				break;
+			}
+		}
 	}
 
 }

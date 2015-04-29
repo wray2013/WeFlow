@@ -54,10 +54,16 @@ public class SignInActivity extends TitleRootActivity {
 							
 							ArrayList<Date> dateList = new ArrayList<Date>();
 							for (String dateStr:dates) {
-					        	Long dateLong = Long.parseLong(dateStr);
-					        	Date date = new Date(dateLong); 
-					        	dateList.add(date);
-					        	Log.d("=AAA=","datelist item = " + date);
+								try {
+									Long dateLong = Long.parseLong(dateStr);
+					        		Date date = new Date(dateLong); 
+					        		dateList.add(date);
+					        		Log.d("=AAA=","datelist item = " + date);
+								} catch (Exception e) {
+									e.printStackTrace();
+									continue;
+								}
+								
 					        }
 							
 							final Calendar todayCal = Calendar.getInstance();

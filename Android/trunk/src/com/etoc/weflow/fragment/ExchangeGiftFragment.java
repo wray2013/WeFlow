@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.text.ClipboardManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,22 +34,19 @@ import com.etoc.weflow.activity.ExpenseFlowActivity;
 import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
 import com.etoc.weflow.dialog.OrderDialog;
-import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.event.ExpenseFlowFragmentEvent;
 import com.etoc.weflow.net.GsonResponseObject.ExchangeGiftResp;
-import com.etoc.weflow.net.GsonResponseObject.GameRechargeResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.ConStant;
+import com.etoc.weflow.utils.DESDecryptAPIUtil;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.NumberUtils;
-import com.etoc.weflow.utils.StringUtils;
 import com.etoc.weflow.utils.ViewUtils;
 import com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.imbryk.viewPager.LoopViewPager;
 import com.nostra13.universalimageloader.api.MyImageLoader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -165,7 +165,6 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 			// TODO Auto-generated method stub
 			return appList.size();
 		}
-		
 	}
 	
 	private class GiftBannerFragment extends BaseBannerFragment {
@@ -338,7 +337,16 @@ public class ExchangeGiftFragment extends Fragment implements Callback {
 				if (Requester.isSuccessed(chargeResp.status)) {
 //					PromptDialog.Alert("订购成功");
 					WeFlowApplication.getAppInstance().setFlowCoins(chargeResp.flowcoins);
-					OrderDialog.Dialog(getActivity(), "兑换码：" + chargeResp.cardcode+ "\n请尽快使用");
+					final String realcode = DESDecryptAPIUtil.decryptDES(chargeResp.cardcode);
+					OrderDialog.Dialog(getActivity(), "兑换码：" + realcode + "\n请尽快使用",new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Activity.CLIPBOARD_SERVICE);
+							cmb.setText(realcode);
+						}
+					});
 					/*if (!StringUtils.isEmpty(chargeResp.cardcode)) {
 						PromptDialog.Dialog(getActivity(), "温馨提示", "订购成功，兑换码: " + chargeResp.cardcode + "\n请尽快使用", "确定");
 					}*/
