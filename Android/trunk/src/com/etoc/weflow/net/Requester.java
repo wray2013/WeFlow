@@ -123,7 +123,7 @@ import de.greenrobot.event.EventBus;
 
 public class Requester {
 	private static final int isDebug = 0;
-	private static final boolean LogOpen = false;
+	private static final boolean LogOpen = true;
 	///////////////////////////////////////Response code:
 	public static final int RESPONSE_TYPE_TEST = 0xffee2000;
 	public static final String RIA_INTERFACE_TEST = "/test/ct";
@@ -748,11 +748,11 @@ public class Requester {
 	}
 	
 	// 首页banner请求
-	public static void homepageBanner(boolean hasLoading,Handler handler,String userid) {
+	public static void homepageBanner(boolean hasLoading,Handler handler) {
 		HomePageBannerRequest request = new HomePageBannerRequest();
 		request.imei = IMEI;
 		request.mac = MAC;
-		request.userid = userid;
+//		request.userid = userid;
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_HOMEPAGE_BANNER, HomePageBannerResp.class);
 		worker.execute(RIA_INTERFACE_HOMEPAGE_BANNER, request);

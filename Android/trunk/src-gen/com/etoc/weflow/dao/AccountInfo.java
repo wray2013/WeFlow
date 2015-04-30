@@ -13,6 +13,7 @@ public class AccountInfo {
     private String isregistration;
     private String makeflow;
     private String useflow;
+    private String nickname;
 
     public AccountInfo() {
     }
@@ -21,13 +22,14 @@ public class AccountInfo {
         this.tel = tel;
     }
 
-    public AccountInfo(String tel, String userid, String flowcoins, String isregistration, String makeflow, String useflow) {
+    public AccountInfo(String tel, String userid, String flowcoins, String isregistration, String makeflow, String useflow, String nickname) {
         this.tel = tel;
         this.userid = userid;
         this.flowcoins = flowcoins;
         this.isregistration = isregistration;
         this.makeflow = makeflow;
         this.useflow = useflow;
+        this.nickname = nickname;
     }
 
     /** Not-null value. */
@@ -78,6 +80,14 @@ public class AccountInfo {
 
     public void setUseflow(String useflow) {
         this.useflow = useflow;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
 }

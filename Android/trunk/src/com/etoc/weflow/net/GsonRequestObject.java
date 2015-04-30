@@ -426,7 +426,7 @@ public class GsonRequestObject {
 	}
 	
 	public static class HomePageBannerRequest {
-		String userid;  //用户号码
+//		String userid;  //用户号码
 		String mac; // 手机的mac地址
 		String imei; // 手机imei（手机的唯一标识）
 	}

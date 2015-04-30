@@ -351,6 +351,7 @@ public class RegisterResetActivity extends TitleRootActivity {
 					accountinfo.setUseflow(regResp.useflow);
 					accountinfo.setUserid(regResp.userid);
 					accountinfo.setTel(regResp.tel);
+					accountinfo.setNickname(regResp.nickname);
 					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(accountinfo);
 					if(regResp.tel != null && !regResp.tel.equals("")) {

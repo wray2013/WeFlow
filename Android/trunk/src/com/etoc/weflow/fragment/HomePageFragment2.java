@@ -103,9 +103,9 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		}
 		View v = inflater.inflate(R.layout.fragment_homepage2, null);
 		initView(v);
-		if (isLogin) {
-			Requester.homepageBanner(true, handler, currentAccount.getUserid());
-		}
+//		if (isLogin) {
+			Requester.homepageBanner(true, handler/*, currentAccount.getUserid()*/);
+//		}
 		return v;
 	}
 	
@@ -486,9 +486,9 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 	@Override
 	public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
 		// TODO Auto-generated method stub
+		Requester.homepageBanner(false, handler/*, currentAccount.getUserid()*/);
 		if(isLogin) {
 			Requester.queryAccountInfo(false, handler, currentAccount.getUserid());
-			Requester.homepageBanner(false, handler, currentAccount.getUserid());
 		} else {
 			handler.postDelayed(new Runnable() {
 				

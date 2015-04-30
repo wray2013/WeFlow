@@ -127,6 +127,7 @@ public class GsonResponseObject {
 		public String isregistration;
 		public String makeflow;
 		public String useflow;
+		public String nickname;
 	}
 	
 	public static class registerResponse {
@@ -137,6 +138,7 @@ public class GsonResponseObject {
 		public String isregistration;
 		public String makeflow;
 		public String useflow;
+		public String nickname;
 	}
 	
 	public static class resetPasswordResponse {
@@ -151,6 +153,7 @@ public class GsonResponseObject {
 		public String isregistration;
 		public String makeflow;
 		public String useflow;
+		public String nickname;
 	}
 	
 	public static class AccountInfoResp {
@@ -163,6 +166,7 @@ public class GsonResponseObject {
 		public String menutype;
 		public String inflowleft;
 		public String outflowleft;
+		public String nickname;
 	}
 	
 	/****************************************************

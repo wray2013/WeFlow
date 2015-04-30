@@ -13,17 +13,13 @@ import com.etoc.weflow.dao.DaoMaster;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dialog.PromptDialog;
-import com.etoc.weflow.download.DownloadManager;
-import com.etoc.weflow.download.DownloadType;
 import com.etoc.weflow.net.GsonResponseObject.*;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.VMobileInfo;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.DialogInterface.OnClickListener;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Message;
@@ -139,6 +135,7 @@ public class WelcomePageActivity extends TitleRootActivity {
 					acc.setUseflow(alogin.useflow);
 					acc.setUserid(alogin.userid);
 					acc.setTel(alogin.tel);
+					acc.setNickname(alogin.nickname);
 					accountInfoDao.deleteAll();
 					accountInfoDao.insertOrReplace(acc);
 					if(alogin.tel != null && !alogin.tel.equals("")) {

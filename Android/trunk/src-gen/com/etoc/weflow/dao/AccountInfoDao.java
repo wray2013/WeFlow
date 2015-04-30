@@ -29,6 +29,7 @@ public class AccountInfoDao extends AbstractDao<AccountInfo, String> {
         public final static Property Isregistration = new Property(3, String.class, "isregistration", false, "ISREGISTRATION");
         public final static Property Makeflow = new Property(4, String.class, "makeflow", false, "MAKEFLOW");
         public final static Property Useflow = new Property(5, String.class, "useflow", false, "USEFLOW");
+        public final static Property Nickname = new Property(6, String.class, "nickname", false, "NICKNAME");
     };
 
 
@@ -49,7 +50,8 @@ public class AccountInfoDao extends AbstractDao<AccountInfo, String> {
                 "'FLOWCOINS' TEXT," + // 2: flowcoins
                 "'ISREGISTRATION' TEXT," + // 3: isregistration
                 "'MAKEFLOW' TEXT," + // 4: makeflow
-                "'USEFLOW' TEXT);"); // 5: useflow
+                "'USEFLOW' TEXT," + // 5: useflow
+                "'NICKNAME' TEXT);"); // 6: nickname
     }
 
     /** Drops the underlying database table. */
@@ -88,6 +90,11 @@ public class AccountInfoDao extends AbstractDao<AccountInfo, String> {
         if (useflow != null) {
             stmt.bindString(6, useflow);
         }
+ 
+        String nickname = entity.getNickname();
+        if (nickname != null) {
+            stmt.bindString(7, nickname);
+        }
     }
 
     /** @inheritdoc */
@@ -105,7 +112,8 @@ public class AccountInfoDao extends AbstractDao<AccountInfo, String> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // flowcoins
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // isregistration
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // makeflow
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // useflow
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // useflow
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // nickname
         );
         return entity;
     }
@@ -119,6 +127,7 @@ public class AccountInfoDao extends AbstractDao<AccountInfo, String> {
         entity.setIsregistration(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setMakeflow(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setUseflow(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setNickname(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
      }
     
     /** @inheritdoc */
