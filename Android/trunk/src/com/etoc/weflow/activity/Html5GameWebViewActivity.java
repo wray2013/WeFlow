@@ -19,6 +19,9 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -115,7 +118,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 
 		myWebClient = new MyWebViewClient(this);
 		webview.setWebViewClient(myWebClient);
-		webview.addJavascriptInterface(interfaceObj, "h5test");
+		webview.addJavascriptInterface(new JsObject()/*interfaceObj*/, "h5test");
 		setConfig(webview);
 		/*webview.getSettings().setBuiltInZoomControls(true);
 		webview.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
@@ -159,7 +162,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 	    s.setDomStorageEnabled(true);
 	}
 	
-	private static class gameUserinfo {
+	public static class gameUserinfo {
 		public int gold;
 		public int B;
 		public int C;
@@ -167,34 +170,46 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 		public int type;
 	}
 	
-	private Object interfaceObj = new Object() {
-		
+	class JsObject {
+		@JavascriptInterface
 		public void getAppUserInfo() {
 			
-			gameUserinfo uinfo = new gameUserinfo();
-			float gold = 0;
-			int b = 0;
-			int c = 0;
-			int d = 0;
-			try {
-				gold = Float.parseFloat(WeFlowApplication.getAppInstance().getAccountInfo().getFlowcoins());
-				b = Integer.parseInt(gameparams.rangea);
-				c = Integer.parseInt(gameparams.rangeb);
-				d = Integer.parseInt(gameparams.amendment);
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-			uinfo.gold = (int) gold;
-			uinfo.B = b;
-			uinfo.C = c;
-			uinfo.D = d;
-			uinfo.type = 3;
-			String jsonStr = new Gson().toJson(uinfo);
-			
-			//发送xxx给h5接口javacalljswithargs
-			webview.loadUrl("javascript:calBackAppUserInfo('" + jsonStr + "')");
+			handler.post(new Runnable() {
+
+				@Override
+				public void run() {
+					gameUserinfo uinfo = new gameUserinfo();
+					float gold = 0;
+					int b = 0;
+					int c = 0;
+					int d = 0;
+					try {
+						gold = Float.parseFloat(WeFlowApplication.getAppInstance().getAccountInfo().getFlowcoins());
+						b = Integer.parseInt(gameparams.rangea);
+						c = Integer.parseInt(gameparams.rangeb);
+						d = Integer.parseInt(gameparams.amendment);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					uinfo.gold = (int) gold;
+					uinfo.B = b;
+					uinfo.C = c;
+					uinfo.D = d;
+					uinfo.type = 3;
+					String jsonStr = new Gson().toJson(uinfo);
+					
+					Log.d("H5WebGame", "jsonStr = " + jsonStr);
+					
+					Toast.makeText(Html5GameWebViewActivity.this,
+							"calBackAppUserInfo = " + jsonStr,
+							Toast.LENGTH_LONG).show();
+					// 发送xxx给h5接口javacalljswithargs
+					webview.loadUrl("javascript:calBackAppUserInfo('" + jsonStr + "')");
+				}
+			});
 		}
 		
+		@JavascriptInterface
 		public void updateAppUserGold(final String gold) {
 			handler.post(new Runnable() {
 				
@@ -217,6 +232,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 			});
 		}
 		
+		@JavascriptInterface
 		public void closeGame() {
 			handler.post(new Runnable() {
 				
@@ -228,14 +244,49 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 				}
 			});
 		}
-		
-	};
+	}
 	
 	@Override
 	protected void onDestroy() {
 		webview.loadUrl("");//规避退出游戏时音频设备为关闭的BUG
 		super.onDestroy();
 	};
+	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()) {
+		case R.id.btn_title_left:
+			quitWarnning();
+			break;
+		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		quitWarnning();
+	}
+	
+	private void quitWarnning() {
+		PromptDialog.Dialog(this, true, "温馨提示", "真的要退出游戏？", "退出",
+				"继续玩", new OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int arg1) {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+						finish();
+					}
+				}, new OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int arg1) {
+						// TODO Auto-generated method stub
+						dialog.dismiss();
+					}
+				});
+	}
 
 	@Override
 	public boolean handleMessage(Message msg) {

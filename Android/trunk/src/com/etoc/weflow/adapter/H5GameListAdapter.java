@@ -38,9 +38,9 @@ public class H5GameListAdapter extends BaseAdapter {
 				.cacheOnDisc(true)
 				.imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
 				.bitmapConfig(Bitmap.Config.RGB_565)
-				.showImageForEmptyUri(R.drawable.game_default)
-				.showImageOnFail(R.drawable.game_default)
-				.showImageOnLoading(R.drawable.game_default)
+				.showImageForEmptyUri(R.drawable.banner_activity)
+				.showImageOnFail(R.drawable.banner_activity)
+				.showImageOnLoading(R.drawable.banner_activity)
 				.build();
 	}
 	
@@ -98,8 +98,12 @@ public class H5GameListAdapter extends BaseAdapter {
 
 	private void initViews(View convertView) {
 		// TODO Auto-generated method stub
+//		ViewUtils.setMarginLeft(convertView.findViewById(R.id.iv_game_banner), 15);
+//		ViewUtils.setMarginRight(convertView.findViewById(R.id.iv_game_banner), 15);
+		ViewUtils.setMarginTop(convertView.findViewById(R.id.iv_game_banner), 15);
+		ViewUtils.setSize(convertView.findViewById(R.id.iv_game_banner), 680, 262);
+		
 		ViewUtils.setMarginTop(convertView.findViewById(R.id.tv_game_name), 15);
-		ViewUtils.setMarginLeft(convertView.findViewById(R.id.tv_game_name), 15);
 		ViewUtils.setMarginBottom(convertView.findViewById(R.id.tv_game_name), 15);
 	}
 	

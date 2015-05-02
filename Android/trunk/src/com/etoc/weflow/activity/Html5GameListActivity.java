@@ -32,12 +32,17 @@ public class Html5GameListActivity extends TitleRootActivity implements OnRefres
 	
 	private List<GameWrapper> gamelist = new ArrayList<GameWrapper>();
 	
+	private boolean isDebug = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		hideRightButton();
 		setTitleText("玩游戏");
+		
+		isDebug = getIntent().getBooleanExtra("isDebug", false);
+		
 		initViews();
 	}
 	
@@ -46,12 +51,16 @@ public class Html5GameListActivity extends TitleRootActivity implements OnRefres
 		xlvH5Game = (PullToRefreshListView) findViewById(R.id.xlv_h5game_list);
 		xlvH5Game.setShowIndicator(false);
 		xlvH5Game.setOnRefreshListener(this);
+		xlvH5Game.setPullLabel("开始刷新");
+		xlvH5Game.setReleaseLabel("松开刷新数据");
 		
 		lvGameList = xlvH5Game.getRefreshableView();
 		lvGameList.setDividerHeight(DisplayUtil.getSize(this, 30));
 		lvGameList.setOnItemClickListener(this);
 		
-		makeFakeData();
+		if(isDebug) {
+			makeFakeData();
+		}
 		
 		adapter = new H5GameListAdapter(this);
 		adapter.setData(gamelist);
@@ -105,8 +114,9 @@ public class Html5GameListActivity extends TitleRootActivity implements OnRefres
 			if (msg.obj != null) {
 				queryGameListResp resp = (queryGameListResp) msg.obj;
 				if("0000".equals(resp.status) || "0".equals(resp.status)) {
+					gamelist.clear();
 					if(resp.gamelist != null && resp.gamelist.length > 0) {
-						gamelist = Arrays.asList(resp.gamelist);
+						gamelist.addAll(Arrays.asList(resp.gamelist));
 						if(adapter != null) {
 							adapter.setData(gamelist);
 						}

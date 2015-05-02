@@ -9,12 +9,15 @@
         android:id="@+id/iv_game_banner"
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
-    	android:background="@drawable/banner_activity"/>
+    	android:layout_centerHorizontal="true"
+    	android:scaleType="fitXY" />
     <TextView 
         android:id="@+id/tv_game_name"
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:layout_below="@+id/iv_game_banner"
+    	android:layout_alignLeft="@+id/iv_game_banner"
+    	android:layout_alignRight="@+id/iv_game_banner"
     	android:gravity="center_vertical"
     	android:text="连连看"
     	android:textSize="20sp"

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -161,6 +162,17 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		rlGridExchange.setOnClickListener(this);
 		rlGridFlow.setOnClickListener(this);
 		rlGridGame.setOnClickListener(this);
+		
+		rlGridGame.setOnLongClickListener(new OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				Intent gameIntent = new Intent(getActivity(), Html5GameListActivity.class);
+				gameIntent.putExtra("isDebug", true);
+				startActivity(gameIntent);
+				return false;
+			}
+		});
 		
 		adaptView(view);
 		
@@ -380,7 +392,9 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 			startActivity(flowIntent);
 			break;
 		case R.id.rl_grid_game:
-			startActivity(new Intent(getActivity(), /*Html5GameListActivity.class*/ConstructionActivity.class));
+			Intent gameIntent = new Intent(getActivity(), Html5GameListActivity.class/*ConstructionActivity.class*/);
+			gameIntent.putExtra("isDebug", false);
+			startActivity(gameIntent);
 			/*Intent gameintent = new Intent(getActivity(),MakeFlowActivity.class);
 			gameintent.putExtra("isLogin", isLogin);
 			gameintent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc03 & 0xff);
