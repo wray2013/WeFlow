@@ -284,6 +284,14 @@
         </activity>
         
         <activity
+            android:name="com.etoc.weflow.activity.Html5GameListActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            >
+        </activity>
+        
+        <activity
             android:name="com.etoc.weflow.activity.CaptureActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"

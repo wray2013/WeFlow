@@ -2,18 +2,25 @@ package com.etoc.weflow.activity;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
+import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
+import com.etoc.weflow.net.GsonResponseObject.orderGameResp;
+import com.etoc.weflow.net.GsonResponseObject.queryGameParamResp;
+import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.web.MyWebViewClient;
 import com.google.gson.Gson;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Handler.Callback;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.View.OnClickListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
-import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -23,15 +30,16 @@ import android.widget.Toast;
  * @author Ray
  *
  */
-public class Html5GameWebViewActivity extends TitleRootActivity implements
-		OnClickListener, Callback {
+public class Html5GameWebViewActivity extends TitleRootActivity implements Callback {
 
-	public static final int ACTION_REFRESH_DOWNLOAD = 0x19861024;
+	public static final int ACTION_LOAD_GAME = 0x19861024;
 
-	private String pageurl, pagetitle;
+	private String pageurl, pagetitle, gameid;
+	private queryGameParamResp gameparams = null;
+	
 	protected DisplayMetrics dm = new DisplayMetrics();
 
-	private Handler myHandler;
+//	private Handler handler;
 
 	// WebView
 	private WebView webview;
@@ -40,21 +48,36 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		myHandler = new Handler(this);
+//		handler = new Handler(this);
 		// userID =
 		// ActiveAccount.getInstance(MainApplication.getAppInstance()).getUID();
 
 		Bundle bundle = getIntent().getExtras();
 		if(bundle != null) {
 			String url = bundle.getString("pageurl");
-			if (url != null && !url.equals("")) {
+			if (!TextUtils.isEmpty(url)) {
 				pageurl = url;
 			}
 			
 			String title = bundle.getString("pagetitle");
-			if (title != null && !title.equals("")) {
+			if (!TextUtils.isEmpty(title)) {
 				pagetitle = title;
 			}
+			
+			String id = bundle.getString("gameid");
+			if (!TextUtils.isEmpty(id)) {
+				gameid = id;
+			}
+			
+			String params = bundle.getString("gameparam");
+			if (!TextUtils.isEmpty(params)) {
+				try {
+					gameparams = new Gson().fromJson(params, queryGameParamResp.class);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
 		}
 		initView();
 
@@ -81,6 +104,12 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements
 			}
 
 		};
+		
+		//参数错误
+		if(gameparams == null) {
+			
+		}
+		
 		// 设置setWebChromeClient对象
 		webview.setWebChromeClient(wvcc);
 
@@ -96,13 +125,14 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 		webview.loadUrl("http://www.jiessie.net/series/index.html""file:///sdcard/EToCDownload/html5test.html");*/
+		
+		handler.sendEmptyMessage(ACTION_LOAD_GAME);
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		myHandler.sendEmptyMessage(ACTION_REFRESH_DOWNLOAD);
 	}
 
 	@Override
@@ -119,7 +149,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements
 	    s.setSavePassword(true);
 	    s.setSaveFormData(true);
 	    s.setJavaScriptEnabled(true);
-	    wv.loadUrl("http://www.jiessie.net/series/index.html");
+//	    wv.loadUrl("http://www.jiessie.net/series/index.html");
 //	    wv.loadUrl("file:///sdcard/EToCDownload/html5test.html");
 	    // enable navigator.geolocation 
 //	    s.setGeolocationEnabled(true);
@@ -142,10 +172,22 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements
 		public void getAppUserInfo() {
 			
 			gameUserinfo uinfo = new gameUserinfo();
-			uinfo.gold = 8888;
-			uinfo.B = 5000;
-			uinfo.C = 10000;
-			uinfo.D = 2;
+			float gold = 0;
+			int b = 0;
+			int c = 0;
+			int d = 0;
+			try {
+				gold = Float.parseFloat(WeFlowApplication.getAppInstance().getAccountInfo().getFlowcoins());
+				b = Integer.parseInt(gameparams.rangea);
+				c = Integer.parseInt(gameparams.rangeb);
+				d = Integer.parseInt(gameparams.amendment);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			uinfo.gold = (int) gold;
+			uinfo.B = b;
+			uinfo.C = c;
+			uinfo.D = d;
 			uinfo.type = 3;
 			String jsonStr = new Gson().toJson(uinfo);
 			
@@ -154,7 +196,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements
 		}
 		
 		public void updateAppUserGold(final String gold) {
-			myHandler.post(new Runnable() {
+			handler.post(new Runnable() {
 				
 				@Override
 				public void run() {
@@ -165,35 +207,99 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements
 					try {
 						type = Integer.parseInt(infos[0]);
 						money = Integer.parseInt(infos[1]);
+						Requester.orderGame(false, handler, WeFlowApplication.getAppInstance().getAccountInfo().getUserid(), gameid, type + "", money + "");
+						Toast.makeText(Html5GameWebViewActivity.this, "UpdateAppUserGold type = " + type + ", money = " + money, Toast.LENGTH_LONG).show();
 					} catch (Exception e) {
-						
+						Toast.makeText(Html5GameWebViewActivity.this, "Something unexpected occured!", Toast.LENGTH_LONG).show();
+						e.printStackTrace();
 					}
-					// TODO Auto-generated method stub
-					Toast.makeText(Html5GameWebViewActivity.this, "updateAppUserGold type = " + type + ", money = " + money, Toast.LENGTH_LONG).show();
 				}
 			});
 		}
 		
 		public void closeGame() {
-			myHandler.post(new Runnable() {
+			handler.post(new Runnable() {
 				
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					Toast.makeText(Html5GameWebViewActivity.this, "You want to close webview ? No way!", Toast.LENGTH_LONG).show();
+					Toast.makeText(Html5GameWebViewActivity.this, "You want to close webview ?", Toast.LENGTH_LONG).show();
+					finish();
 				}
 			});
 		}
 		
+	};
+	
+	@Override
+	protected void onDestroy() {
+		webview.loadUrl("");//规避退出游戏时音频设备为关闭的BUG
+		super.onDestroy();
 	};
 
 	@Override
 	public boolean handleMessage(Message msg) {
 		// TODO Auto-generated method stub
 		switch (msg.what) {
+		case ACTION_LOAD_GAME:
+			//判断gameurl、gameid、gameparam合法性
+			if(TextUtils.isEmpty(pageurl) ||
+					!pageurl.startsWith("http") ||
+					TextUtils.isEmpty(gameid) ||
+					gameparams == null) {
+				Toast.makeText(this, "游戏参数读取失败，请尝试刷新", Toast.LENGTH_LONG).show();
+				break;
+			}
+			//判断当前是否登录
+			if (checkUserid()) {
+				//开始加载游戏
+				webview.loadUrl(pageurl);
+			}
 
+			break;
+		case Requester.RESPONSE_TYPE_ORDER_GAME:
+			if(msg.obj != null) {
+				orderGameResp resp = (orderGameResp) msg.obj;
+				if("0000".equals(resp.status) || "0".equals(resp.status)) {
+					String coins = resp.flowcoins;
+					WeFlowApplication.getAppInstance().setFlowCoins(coins);
+					Toast.makeText(this, "成功获取" + coins + "流量币", Toast.LENGTH_LONG).show();
+				}
+			}
+			break;
 		}
 		return false;
+	}
+	
+	private boolean checkUserid() {
+		AccountInfo info = WeFlowApplication.getAppInstance().getAccountInfo();
+		if (info == null || info.getUserid() == null
+				|| info.getUserid().equals("")) {
+			PromptDialog.Dialog(this, true, "温馨提示", "您未登录，无法获取流量币，是否继续游戏？",
+					"继续游戏", "现在登录", new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int arg1) {
+							// TODO Auto-generated method stub
+							webview.loadUrl(pageurl);
+							dialog.dismiss();
+						}
+					}, new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int arg1) {
+							// TODO Auto-generated method stub
+							startActivity(new Intent(
+									Html5GameWebViewActivity.this,
+									LoginActivity.class));
+							dialog.dismiss();
+							finish();
+						}
+					});
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override

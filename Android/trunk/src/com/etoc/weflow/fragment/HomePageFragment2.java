@@ -27,6 +27,7 @@ import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
 import com.etoc.weflow.activity.ConstructionActivity;
 import com.etoc.weflow.activity.ExpenseFlowActivity;
+import com.etoc.weflow.activity.Html5GameListActivity;
 import com.etoc.weflow.activity.Html5GameWebViewActivity;
 import com.etoc.weflow.activity.MainActivity;
 import com.etoc.weflow.activity.MakeFlowActivity;
@@ -379,7 +380,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 			startActivity(flowIntent);
 			break;
 		case R.id.rl_grid_game:
-			startActivity(new Intent(getActivity(), /*Html5GameWebViewActivity.class*/ConstructionActivity.class));
+			startActivity(new Intent(getActivity(), /*Html5GameListActivity.class*/ConstructionActivity.class));
 			/*Intent gameintent = new Intent(getActivity(),MakeFlowActivity.class);
 			gameintent.putExtra("isLogin", isLogin);
 			gameintent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc03 & 0xff);

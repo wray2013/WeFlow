@@ -431,5 +431,28 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	/****************************************************
+	 *                      F.游戏相关
+	 ****************************************************/
+	public static class queryGameListRequest {
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	public static class queryGameParamRequest {
+		String gameid;
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
+	public static class orderGameRequest {
+		String userid;  //用户号码
+		String gameid;
+		String eventid;
+		String flowcoin;
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 }
 
