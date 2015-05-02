@@ -10,6 +10,7 @@ import com.etoc.weflow.dao.DaoSession;
 import com.etoc.weflow.dao.DaoMaster.DevOpenHelper;
 import com.etoc.weflow.utils.ViewUtils;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -21,8 +22,10 @@ import android.widget.TextView;
 public class AccountActivity extends TitleRootActivity {
 
 	private String tel = "";
+	private String nickName = "";
 	
 	private TextView tvTel;
+	private TextView tvNick;
 	
 	private DaoMaster daoMaster;
 	private DaoSession daoSession;
@@ -45,7 +48,7 @@ public class AccountActivity extends TitleRootActivity {
         daoSession = daoMaster.newSession();
         
         accountInfoDao = daoSession.getAccountInfoDao();
-        
+        nickName = WeFlowApplication.getAppInstance().getAccountInfo().getNickname();
 		initViews();
 	}
 	
@@ -55,29 +58,40 @@ public class AccountActivity extends TitleRootActivity {
 		hideRightButton();
 		RelativeLayout rlPassword = (RelativeLayout) findViewById(R.id.rl_account_password);
 		RelativeLayout rlLoginOut = (RelativeLayout) findViewById(R.id.rl_login_out);
+		RelativeLayout rlNickName = (RelativeLayout) findViewById(R.id.rl_account_nickname);
 		
 		rlPassword.setOnClickListener(this);
 		rlLoginOut.setOnClickListener(this);
+		rlNickName.setOnClickListener(this);
 		
 		ViewUtils.setHeight(findViewById(R.id.rl_account_phone), 112);
 		ViewUtils.setHeight(findViewById(R.id.rl_account_password), 112);
+		ViewUtils.setHeight(findViewById(R.id.rl_account_nickname), 112);
 		ViewUtils.setHeight(findViewById(R.id.rl_login_out), 112);
+		
 		
 		ViewUtils.setMarginLeft(findViewById(R.id.tv_phone_label), 32);
 		ViewUtils.setMarginRight(findViewById(R.id.rl_account_phone), 32);
 		ViewUtils.setMarginRight(findViewById(R.id.view_password_flag), 32);
 		ViewUtils.setMarginLeft(findViewById(R.id.tv_password_label), 32);
+		ViewUtils.setMarginLeft(findViewById(R.id.tv_nickname_label), 32);
 		ViewUtils.setMarginLeft(findViewById(R.id.tv_login_out), 32);
 		ViewUtils.setMarginTop(findViewById(R.id.rl_login_out), 32);
 		ViewUtils.setMarginLeft(findViewById(R.id.view_line), 32);
+		ViewUtils.setMarginLeft(findViewById(R.id.view_line2), 32);
 		
 		ViewUtils.setTextSize(findViewById(R.id.tv_phone_label), 30);
 		ViewUtils.setTextSize(findViewById(R.id.tv_phone_num), 30);
+		ViewUtils.setTextSize(findViewById(R.id.tv_nickname_label), 30);
+		ViewUtils.setTextSize(findViewById(R.id.tv_nickname), 30);
 		ViewUtils.setTextSize(findViewById(R.id.tv_password_label), 30);
 		ViewUtils.setTextSize(findViewById(R.id.tv_login_out), 30);
 		
 		tvTel = (TextView) findViewById(R.id.tv_phone_number);
 		tvTel.setText(tel);
+		
+		tvNick = (TextView) findViewById(R.id.tv_nickname);
+		tvNick.setText(nickName);
 	}
 	
 	@Override
@@ -125,8 +139,22 @@ public class AccountActivity extends TitleRootActivity {
 			startActivity(i);
 			finish();
 			break;
+		case R.id.rl_account_nickname:
+			Intent nickNameIntent = new Intent(this,NicknameActivity.class);
+			nickNameIntent.putExtra("nickname", nickName);
+			startActivityForResult(nickNameIntent, 0x1234);
+			break;
 		}
 		super.onClick(v);
+	}
+	
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == Activity.RESULT_OK) {
+			if (data !=null  && data.getStringExtra("nickname")!=null) {
+				tvNick.setText(data.getStringExtra("nickname"));
+			}
+		}
 	}
 
 }

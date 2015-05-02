@@ -151,6 +151,13 @@
         </activity>
         
         <activity
+            android:name="com.etoc.weflow.activity.NicknameActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        
+        <activity
             android:name="com.etoc.weflow.activity.SoftDetailActivity"
             android:theme="@android:style/Theme.NoTitleBar"
             android:screenOrientation="portrait"

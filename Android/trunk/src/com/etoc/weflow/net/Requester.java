@@ -40,7 +40,7 @@ import de.greenrobot.event.EventBus;
 
 
 public class Requester {
-	private static final int isDebug = 0;
+	private static final int isDebug = 1;
 	private static final boolean LogOpen = true;
 	///////////////////////////////////////Response code:
 	public static final int RESPONSE_TYPE_TEST = 0xffee2000;
@@ -190,6 +190,9 @@ public class Requester {
 	
 	public static final int RESPONSE_TYPE_ORDER_GAME = 0xffee2147;
 	public static final String RIA_INTERFACE_ORDER_GAME = "/vs/api/user/orderGame";
+	
+	public static final int RESPONSE_TYPE_NICKNAME_CHANGE = 0xffee2148;
+	public static final String RIA_INTERFACE_NICKNAME_CHANGE = "/vs/api/user/modifyUserName";
 	
 	public static String IMEI = VMobileInfo.getIMEI();
 	public static String MAC  = VMobileInfo.getDeviceMac();
@@ -716,6 +719,18 @@ public class Requester {
 		
 		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_ORDER_GAME, orderGameResp.class);
 		worker.execute(RIA_INTERFACE_ORDER_GAME, request);
+	}
+	
+	public static void changeNickName(boolean hasLoading,Handler handler,String userid,String nickName) {
+		nicknameRequest request = new nicknameRequest();
+		request.imei = IMEI;
+		request.mac = MAC;
+		request.userid = userid;
+		request.nickname = nickName;
+		
+		PostWorker worker = new PostWorker(hasLoading, handler, RESPONSE_TYPE_NICKNAME_CHANGE, NickNameResp.class);
+		worker.execute(RIA_INTERFACE_NICKNAME_CHANGE, request);
+		
 	}
 	
 	

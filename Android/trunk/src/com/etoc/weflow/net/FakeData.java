@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.etoc.weflow.net.GsonRequestObject.HomePageBannerRequest;
 import com.etoc.weflow.net.GsonResponseObject.AccountInfoResp;
 import com.etoc.weflow.net.GsonResponseObject.AdvInfo;
 import com.etoc.weflow.net.GsonResponseObject.AppHomeResp;
@@ -20,8 +21,11 @@ import com.etoc.weflow.net.GsonResponseObject.GiftBannerResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftListResp;
 import com.etoc.weflow.net.GsonResponseObject.GiftProduct;
 import com.etoc.weflow.net.GsonResponseObject.GiftResp;
+import com.etoc.weflow.net.GsonResponseObject.HomePageBannerResp;
+import com.etoc.weflow.net.GsonResponseObject.HomePageBannerWrapper;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowProduct;
 import com.etoc.weflow.net.GsonResponseObject.MobileFlowResp;
+import com.etoc.weflow.net.GsonResponseObject.NickNameResp;
 import com.etoc.weflow.net.GsonResponseObject.PhoneChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.QChargeListResp;
 import com.etoc.weflow.net.GsonResponseObject.QRechargeProduct;
@@ -29,7 +33,6 @@ import com.etoc.weflow.net.GsonResponseObject.RechargePhoneResp;
 import com.etoc.weflow.net.GsonResponseObject.RechargeProduct;
 import com.etoc.weflow.net.GsonResponseObject.RechargeQQResp;
 import com.etoc.weflow.net.GsonResponseObject.SoftInfoResp;
-import com.etoc.weflow.net.GsonResponseObject.getAccInfoResponse;
 import com.etoc.weflow.net.GsonResponseObject.getAdvInfoResponse;
 import com.etoc.weflow.net.GsonResponseObject.getAuthCodeResponse;
 import com.etoc.weflow.net.GsonResponseObject.loginResponse;
@@ -60,7 +63,7 @@ public class FakeData {
 		r2.outflowleft = "0";
 		r2.flowcoins = "380";
 		r2.isregistration = "0";
-		map.put(Requester.RIA_INTERFACE_ACCOUNT_INFO, r2);
+//		map.put(Requester.RIA_INTERFACE_ACCOUNT_INFO, r2);
 		
 		getAdvInfoResponse r3 = new getAdvInfoResponse();
 		r3.status = "0";
@@ -109,44 +112,78 @@ public class FakeData {
 		r4.status = "0";
 		r4.bannerlist = (SoftInfoResp[])createAppBannerData().toArray(new SoftInfoResp[0]);
 		r4.applist = (SoftInfoResp[])createAppData().toArray(new SoftInfoResp[0]);
-		map.put(Requester.RIA_INTERFACE_APP_HOME, r4);
+//		map.put(Requester.RIA_INTERFACE_APP_HOME, r4);
 		
 		AppListMoreResp r5 = new AppListMoreResp();
 		r5.status = "0";
 		r5.hasnextpage = "1";
 		r5.list = (SoftInfoResp[])createAppData().toArray(new SoftInfoResp[0]);
-		map.put(Requester.RIA_INTERFACE_APP_LIST, r5);
+//		map.put(Requester.RIA_INTERFACE_APP_LIST, r5);
 		
 		GiftListResp r6 = new GiftListResp();
 		r6.status = "0";
 		r6.bannerlist = (GiftBannerResp[]) createGiftBannerList().toArray(new GiftBannerResp[0]);
 		r6.chargelist = (GiftResp[]) createGiftData().toArray(new GiftResp [0]);
-		map.put(Requester.RIA_INTERFACE_GIFT_LIST, r6);
+//		map.put(Requester.RIA_INTERFACE_GIFT_LIST, r6);
 		
 		PhoneChargeListResp r7 = new PhoneChargeListResp();
 		r7.status = "0";
 		r7.chargelist = (RechargePhoneResp[]) createPhoneChargeList().toArray(new RechargePhoneResp[0]);
-		map.put(Requester.RIA_INTERFACE_PHONE_CHARGE_LIST, r7);
+//		map.put(Requester.RIA_INTERFACE_PHONE_CHARGE_LIST, r7);
 		
 		QChargeListResp r8 = new QChargeListResp();
 		r8.status = "0";
 		r8.chargelist = (RechargeQQResp[]) createQQChargeList().toArray(new RechargeQQResp[1]);
-		map.put(Requester.RIA_INTERFACE_QRECHARGE_LIST, r8);
+//		map.put(Requester.RIA_INTERFACE_QRECHARGE_LIST, r8);
 		
 		FlowPkgListResp r9 = new FlowPkgListResp();
 		r9.status = "0";
 		r9.chargelist = (MobileFlowResp[]) createMoblieFlowList().toArray(new MobileFlowResp[0]);
-		map.put(Requester.RIA_INTERFACE_FLOW_PKG_LIST, r9);
+//		map.put(Requester.RIA_INTERFACE_FLOW_PKG_LIST, r9);
 		
 		GamePkgListResp r10 = new GamePkgListResp();
 		r10.status = "0";
 		r10.chargelist = (GameGiftResp[]) createGameGiftList().toArray(new GameGiftResp[0]);
-		map.put(Requester.RIA_INTERFACE_GAME_PKG_LIST, r10);
+//		map.put(Requester.RIA_INTERFACE_GAME_PKG_LIST, r10);
 		
 		GameChargeListResp r11 = new GameChargeListResp();
 		r11.status = "0";
 		r11.chargelist = (GameChargeResp[]) createGameRechargeList().toArray(new GameChargeResp[0]);
-		map.put(Requester.RIA_INTERFACE_GAME_RECHARGE_LIST, r11);
+//		map.put(Requester.RIA_INTERFACE_GAME_RECHARGE_LIST, r11);
+		
+		HomePageBannerResp r12 = new HomePageBannerResp();
+		r12.status = "0";
+		r12.bannerlist =(HomePageBannerWrapper[]) createHomePageBannerList().toArray(new HomePageBannerWrapper[0]);
+		map.put(Requester.RIA_INTERFACE_HOMEPAGE_BANNER, r12);
+		
+		NickNameResp r13 = new NickNameResp();
+		r13.status = "0";
+		map.put(Requester.RIA_INTERFACE_NICKNAME_CHANGE, r13);
+	}
+	
+	private static List<HomePageBannerWrapper> createHomePageBannerList() {
+		ArrayList<HomePageBannerWrapper> list = new ArrayList<GsonResponseObject.HomePageBannerWrapper>();
+		String [] picurls = {
+				"http://pic35.nipic.com/20131112/13437230_125552175181_2.jpg",
+				"http://img.ithome.com/newsuploadfiles/2012/12/20121215_174845_424.jpg",
+				"http://www.kankanews.com/ICkengine/wp-content/plugins/wp-o-matic/cache/099d6b5067_030959uaoykk8aoxpqszsa.jpg",
+				"http://img5.imgtn.bdimg.com/it/u=2493606155,4261128454&fm=21&gp=0.jpg",
+		};
+		String [] types = {
+				"10",
+				"1",
+				"2",
+				"4",
+		};
+		for (int i = 0; i < 4; i++) {
+			HomePageBannerWrapper wrapper = new HomePageBannerWrapper();
+			wrapper.picurl = picurls[i];
+			wrapper.type = types[i];
+			wrapper.sourcetitle = "";
+			wrapper.sourceurl = "";
+			list.add(wrapper);
+		}
+		return list;
 	}
 	
 	private static List<GameChargeResp> createGameRechargeList() {

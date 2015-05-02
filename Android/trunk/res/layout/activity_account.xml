@@ -34,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:text="18627934685"
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
                 />
@@ -52,10 +51,50 @@
             />
         
         <RelativeLayout 
+            android:id="@+id/rl_account_nickname"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:layout_alignRight="@id/rl_account_phone"
+            android:layout_below="@id/view_line"
+            >
+            <TextView 
+                android:id="@+id/tv_nickname_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:text="昵称"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                />
+            
+            <TextView 
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                />
+            
+        </RelativeLayout>
+        
+        <View 
+            android:id="@+id/view_line2"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="16dp"
+            android:layout_alignRight="@id/rl_account_phone"
+            android:background="@color/line_grey"
+            android:layout_below="@id/rl_account_nickname"
+            />
+        
+        <RelativeLayout 
             android:id="@+id/rl_account_password"
             android:layout_width="fill_parent"
             android:layout_height="56dp"
-            android:layout_below="@id/view_line"
+            android:layout_below="@id/view_line2"
             android:background="@drawable/list_item_with_shape"
             >
             <TextView 

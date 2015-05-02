@@ -545,7 +545,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		public void onClick(View view) {
 			// TODO Auto-generated method stub
 			switch(view.getId()) {
-			case R.id.iv_playbill:
+			case R.id.rl_item_view_pager:
 				if ("1".equals(appInfo.type)) {
 					Intent softintent = new Intent(getActivity(),MakeFlowActivity.class);
 					softintent.putExtra("isLogin", isLogin);

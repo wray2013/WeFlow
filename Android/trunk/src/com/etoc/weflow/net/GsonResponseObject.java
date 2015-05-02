@@ -655,4 +655,8 @@ public class GsonResponseObject {
 		public String flowcoins;
 	}
 	
+	public static class NickNameResp {
+		public String status;
+	}
+	
 }

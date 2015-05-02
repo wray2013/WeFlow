@@ -26,14 +26,13 @@
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
 	            android:background="@drawable/banner_homepage"
-	            
+	            android:visibility="gone"
 	            />
 	
 	        <com.etoc.weflow.view.autoscrollviewpager.AutoScrollViewPager
 	            android:id="@+id/vp_pager_service"
 	            android:layout_width="match_parent"
 	            android:layout_height="match_parent"
-	            android:visibility="gone"
 	            />
 	
 	        <com.viewpagerindicator.CirclePageIndicator
@@ -44,7 +43,7 @@
 	            android:layout_alignParentBottom="true"
 	            android:layout_centerHorizontal="true"
 	            android:padding="10dp"
-	            android:visibility="gone"
+	            
 	            />
 	
 	        <ImageView

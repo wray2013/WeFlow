@@ -454,5 +454,12 @@ public class GsonRequestObject {
 		String imei; // 手机imei（手机的唯一标识）
 	}
 	
+	public static class nicknameRequest {
+		String userid;
+		String nickname;
+		String mac; // 手机的mac地址
+		String imei; // 手机imei（手机的唯一标识）
+	}
+	
 }
 
