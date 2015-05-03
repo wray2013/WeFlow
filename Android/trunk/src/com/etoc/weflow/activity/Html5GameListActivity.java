@@ -93,7 +93,8 @@ public class Html5GameListActivity extends TitleRootActivity implements OnRefres
 			param.rangea = (500 + i) + "";
 			param.rangeb = (520 + i) + "";
 			param.amendment = "2";
-			wrapper.params = param;
+			param.type = "3";
+			wrapper.gameparams = param;
 			
 			gamelist.add(wrapper);
 		}
@@ -166,7 +167,7 @@ public class Html5GameListActivity extends TitleRootActivity implements OnRefres
 				webIntent.putExtra("pageurl", item.gameurl);
 				webIntent.putExtra("pagetitle", item.gamename);
 				webIntent.putExtra("gameid", item.gameid);
-				webIntent.putExtra("gameparam", new Gson().toJson(item.params));
+				webIntent.putExtra("gameparam", new Gson().toJson(item.gameparams));
 				startActivity(webIntent);
 				return;
 			}

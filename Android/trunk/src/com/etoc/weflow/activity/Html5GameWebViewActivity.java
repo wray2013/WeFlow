@@ -185,19 +185,21 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 					int b = 0;
 					int c = 0;
 					int d = 0;
+					int e = 0;
 					try {
 						gold = Float.parseFloat(WeFlowApplication.getAppInstance().getAccountInfo().getFlowcoins());
 						b = Integer.parseInt(gameparams.rangea);
 						c = Integer.parseInt(gameparams.rangeb);
 						d = Integer.parseInt(gameparams.amendment);
-					} catch (Exception e) {
-						e.printStackTrace();
+						e = Integer.parseInt(gameparams.type);
+					} catch (Exception ex) {
+						ex.printStackTrace();
 					}
 					uinfo.gold = (int) gold;
 					uinfo.B = b;
 					uinfo.C = c;
 					uinfo.D = d;
-					uinfo.type = 3;
+					uinfo.type = e;
 					String jsonStr = new Gson().toJson(uinfo);
 					
 					Log.d("H5WebGame", "jsonStr = " + jsonStr);
