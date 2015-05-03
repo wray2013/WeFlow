@@ -640,7 +640,7 @@ public class GsonResponseObject {
 		public String gamename;// 游戏名称
 		public String gamepic;// 游戏图片地址
 		public String gameurl;// 游戏源地址
-		public queryGameParamResp gameparams;//游戏参数
+		public queryGameParamResp gameparam;//游戏参数
 	}
 	
 	public static class queryGameParamResp {
