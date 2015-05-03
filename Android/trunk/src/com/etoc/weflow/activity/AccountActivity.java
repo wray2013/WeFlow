@@ -152,7 +152,8 @@ public class AccountActivity extends TitleRootActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == Activity.RESULT_OK) {
 			if (data !=null  && data.getStringExtra("nickname")!=null) {
-				tvNick.setText(data.getStringExtra("nickname"));
+				nickName = data.getStringExtra("nickname");
+				tvNick.setText(nickName);
 			}
 		}
 	}

@@ -7,11 +7,11 @@ public class Config {
 	/*
 	 *  测试环境
 	 **/
-//	public static final String SERVER_URL    = "http://113.57.180.175:8090";
+	public static final String SERVER_URL    = "http://113.57.180.175:8090";
 	/*
 	 *  生产环境，勿启用
 	 **/
-	public static final String SERVER_URL    = "http://113.57.243.148:81";//"http://123.56.104.49:7085";
+//	public static final String SERVER_URL    = "http://113.57.243.148:81";//"http://123.56.104.49:7085";
 	
 	public static final String WEBSERVER_URL = SERVER_URL;
 	

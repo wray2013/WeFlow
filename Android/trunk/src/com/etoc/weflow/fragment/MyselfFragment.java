@@ -23,6 +23,7 @@ import com.etoc.weflow.utils.ViewUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -153,7 +154,11 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		if(tvLogin == null) return;
 		
 		if(isLogin) {
-			tvLogin.setText(currentAccount.getTel());
+			if(currentAccount != null && !TextUtils.isEmpty(currentAccount.getNickname())) {
+				tvLogin.setText(currentAccount.getNickname());
+			} else {
+				tvLogin.setText(currentAccount.getTel());
+			}
 			tvLogin.setClickable(false);
 			tvLogin.setBackgroundResource(0);
 		} else {
@@ -166,17 +171,20 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 
 	private void checkLogin() {
 		isLogin = false;
+		
+		currentAccount = WeFlowApplication.getAppInstance().getAccountInfo();
+		
 		if (mainActivity != null) {
-			AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
+			/*AccountInfoDao accountInfoDao = mainActivity.getAccountInfoDao();
 			if (accountInfoDao != null && accountInfoDao.count() > 0) {
 				List<AccountInfo> aiList = accountInfoDao.loadAll();
-				currentAccount = aiList.get(0);
+				currentAccount = aiList.get(0);*/
 				if (currentAccount != null && currentAccount.getUserid() != null
 						&& !currentAccount.getUserid().equals("")) {
 					Log.e("XXX", "已登录");
 					isLogin = true;
 				}
-			}
+//			}
 		}
 	}
 	

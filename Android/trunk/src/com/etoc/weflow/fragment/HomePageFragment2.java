@@ -106,7 +106,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		View v = inflater.inflate(R.layout.fragment_homepage2, null);
 		initView(v);
 //		if (isLogin) {
-			Requester.homepageBanner(true, handler/*, currentAccount.getUserid()*/);
+			Requester.homepageBanner(false, handler/*, currentAccount.getUserid()*/);
 //		}
 		return v;
 	}

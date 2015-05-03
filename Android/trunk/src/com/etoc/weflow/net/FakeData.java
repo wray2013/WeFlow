@@ -173,7 +173,7 @@ public class FakeData {
 				"10",
 				"1",
 				"2",
-				"4",
+				"12",
 		};
 		for (int i = 0; i < 4; i++) {
 			HomePageBannerWrapper wrapper = new HomePageBannerWrapper();
@@ -181,6 +181,10 @@ public class FakeData {
 			wrapper.type = types[i];
 			wrapper.sourcetitle = "";
 			wrapper.sourceurl = "";
+			if(i == 3) {
+				wrapper.sourcetitle = "测试网页";
+				wrapper.sourceurl = "http://www.baidu.com";
+			}
 			list.add(wrapper);
 		}
 		return list;

@@ -91,8 +91,10 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 		if(pagetitle != null && !pagetitle.equals("")) {
 			setTitleText(pagetitle);
 		}
-		hideRightButton();
-		// TODO Auto-generated method stub
+		
+//		hideRightButton();
+		setRightButtonText("刷新");
+		
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 
 		webview = (WebView) findViewById(R.id.wv_page);
@@ -258,6 +260,11 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 		switch(v.getId()) {
 		case R.id.btn_title_left:
 			quitWarnning();
+			break;
+		case R.id.btn_title_right:
+			if(webview != null) {
+				webview.reload();
+			}
 			break;
 		}
 	}
