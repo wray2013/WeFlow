@@ -11,6 +11,7 @@ import com.etoc.weflow.utils.StringUtils;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
@@ -105,10 +106,25 @@ public class FeedBackActivity extends TitleRootActivity {
 			if (msg.obj != null) {
 				FeedBackResp resp = (FeedBackResp) msg.obj;
 				if (Requester.isSuccessed(resp.status)) {
-					PromptDialog.Alert("发送成功");
+					PromptDialog.Alert("提交成功，感谢您的宝贵建议");
+					
+					if(!TextUtils.isEmpty(resp.presentflowcoins)) {
+						float pf = 0f;
+						try {
+							pf = Float.parseFloat(resp.presentflowcoins);
+						} catch(Exception e) {
+							e.printStackTrace();
+						}
+						if(pf > 0) {
+							PromptDialog.Dialog(this, "温馨提示", "感谢您的反馈，恭喜获得" + (int)pf + "流量币", "知道了");
+						}
+					}
+					finish();
+				} else if("2016".equals(resp.status)) {
+					PromptDialog.Alert("提交成功，感谢您的宝贵建议");
 					finish();
 				} else {
-					PromptDialog.Alert("发送失败");
+					PromptDialog.Alert("提交失败，请稍后再试");
 				}
 			}
 			break;

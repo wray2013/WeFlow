@@ -40,7 +40,7 @@ import de.greenrobot.event.EventBus;
 
 
 public class Requester {
-	private static final int isDebug = 1;
+	private static final int isDebug = 0;
 	private static final boolean LogOpen = true;
 	///////////////////////////////////////Response code:
 	public static final int RESPONSE_TYPE_TEST = 0xffee2000;

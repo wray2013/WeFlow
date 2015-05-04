@@ -527,6 +527,7 @@ public class GsonResponseObject {
 	//2.9.3意见反馈
 	public static class FeedBackResp {
 		public String status;
+		public String presentflowcoins;
 	}
 	
 	/****************************************************
@@ -648,7 +649,7 @@ public class GsonResponseObject {
 		public String rangea; //允许范围A
 		public String rangeb; //允许范围B
 		public String amendment; //修正系数
-		public String type;
+//		public String type;
 	}
 	
 	public static class orderGameResp {

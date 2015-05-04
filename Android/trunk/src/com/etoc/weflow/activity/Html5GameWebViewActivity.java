@@ -169,7 +169,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 		public int B;
 		public int C;
 		public int D;
-		public int type;
+//		public int type;
 	}
 	
 	class JsObject {
@@ -185,13 +185,13 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 					int b = 0;
 					int c = 0;
 					int d = 0;
-					int e = 0;
+//					int e = 0;
 					try {
 						gold = Float.parseFloat(WeFlowApplication.getAppInstance().getAccountInfo().getFlowcoins());
 						b = Integer.parseInt(gameparams.rangea);
 						c = Integer.parseInt(gameparams.rangeb);
 						d = Integer.parseInt(gameparams.amendment);
-						e = Integer.parseInt(gameparams.type);
+//						e = Integer.parseInt(gameparams.type);
 					} catch (Exception ex) {
 						ex.printStackTrace();
 					}
@@ -199,7 +199,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 					uinfo.B = b;
 					uinfo.C = c;
 					uinfo.D = d;
-					uinfo.type = e;
+//					uinfo.type = e;
 					String jsonStr = new Gson().toJson(uinfo);
 					
 					Log.d("H5WebGame", "jsonStr = " + jsonStr);
@@ -323,8 +323,16 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 				if("0000".equals(resp.status) || "0".equals(resp.status)) {
 					String coins = resp.flowcoins;
 					WeFlowApplication.getAppInstance().setFlowCoins(coins);
-					Toast.makeText(this, "成功获取" + coins + "流量币", Toast.LENGTH_LONG).show();
+					if(webview != null) {
+						Toast.makeText(this, "成功获取" + coins + "流量币", Toast.LENGTH_LONG).show();
+						webview.loadUrl("javascript:callUpdateAppUserGold('1')");
+					}
+					break;
 				}
+			}
+			if(webview != null) {
+				Toast.makeText(this, "获取流量币失败", Toast.LENGTH_LONG).show();
+				webview.loadUrl("javascript:callUpdateAppUserGold('0')");
 			}
 			break;
 		}

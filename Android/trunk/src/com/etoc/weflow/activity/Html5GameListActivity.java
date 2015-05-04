@@ -93,7 +93,7 @@ public class Html5GameListActivity extends TitleRootActivity implements OnRefres
 			param.rangea = (500 + i) + "";
 			param.rangeb = (520 + i) + "";
 			param.amendment = "2";
-			param.type = "3";
+//			param.type = "3";
 			wrapper.gameparam = param;
 			
 			gamelist.add(wrapper);
