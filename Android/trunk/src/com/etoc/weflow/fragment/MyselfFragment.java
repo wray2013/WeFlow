@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -155,13 +156,15 @@ public class MyselfFragment extends XFragment<Object>/*TitleRootFragment*/implem
 		
 		if(isLogin) {
 			if(currentAccount != null && !TextUtils.isEmpty(currentAccount.getNickname())) {
-				tvLogin.setText(currentAccount.getNickname());
+				tvLogin.setText(currentAccount.getNickname().trim() + "\n" + currentAccount.getTel());
 			} else {
 				tvLogin.setText(currentAccount.getTel());
 			}
+			tvLogin.setGravity(Gravity.CENTER_VERTICAL);
 			tvLogin.setClickable(false);
 			tvLogin.setBackgroundResource(0);
 		} else {
+			tvLogin.setGravity(Gravity.CENTER);
 			tvLogin.setText("开通流量钱包");
 			tvLogin.setClickable(true);
 			tvLogin.setBackgroundResource(R.drawable.bg_round_login);
