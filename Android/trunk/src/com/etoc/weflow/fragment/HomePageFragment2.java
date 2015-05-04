@@ -571,7 +571,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 					videointent.putExtra(ConStant.INTENT_MAKE_FLOW, 0xffeecc01 & 0xff);
 					startActivity(videointent);
 				} else if ("3".equals(appInfo.type)) {
-					startActivity(new Intent(getActivity(), ConstructionActivity.class));
+					startActivity(new Intent(getActivity(), Html5GameListActivity.class));
 				} else if ("4".equals(appInfo.type)) {
 					Intent exchangeIntent = new Intent(getActivity(),ExpenseFlowActivity.class);
 					exchangeIntent.putExtra(ConStant.INTENT_EXPENSE_FLOW, 1);
