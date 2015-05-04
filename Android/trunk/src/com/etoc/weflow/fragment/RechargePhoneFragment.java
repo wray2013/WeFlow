@@ -471,6 +471,9 @@ public class RechargePhoneFragment extends Fragment implements OnClickListener, 
 		@Override
 		public RechargeProduct getItem(int position) {
 			// TODO Auto-generated method stub
+			if (itemList == null || itemList.size() == 0) {
+				return null;
+			}
 			return itemList.get(position);
 		}
 
