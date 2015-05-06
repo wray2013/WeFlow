@@ -26,32 +26,42 @@
     	
     
     	<EditText 
-        android:id="@+id/et_nickname"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/tv_line_a"
-        android:gravity="center_vertical"
-        android:hint="请输入昵称"
-        android:paddingLeft="10dp"
-        android:background="@drawable/order_confirm_edit_bg"
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="6dp"
-	    android:layout_marginRight="6dp"
-	    android:singleLine="true"
-	    android:textColorHint="#888888"
-	    android:maxLength="10"
+	        android:id="@+id/et_nickname"
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dp"
+	        android:layout_below="@id/tv_line_a"
+	        android:gravity="center_vertical"
+	        android:hint="请输入昵称"
+	        android:paddingLeft="10dp"
+	        android:background="@drawable/order_confirm_edit_bg"
+	        android:layout_marginTop="13dp"
+	        android:layout_marginLeft="6dp"
+		    android:layout_marginRight="6dp"
+		    android:singleLine="true"
+		    android:textColorHint="#888888"
+		    android:maxLength="10"
 	    />
 			    
        <ImageView 
-        android:id="@+id/iv_input_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/et_nickname"
-        android:layout_alignBottom="@+id/et_nickname"
-        android:layout_alignRight="@+id/et_nickname"
-        android:src="@drawable/btn_input_cancel_selector"
-        />
+	       android:id="@+id/iv_input_cancel"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_alignTop="@+id/et_nickname"
+	       android:layout_alignBottom="@+id/et_nickname"
+	       android:layout_alignRight="@+id/et_nickname"
+	       android:src="@drawable/btn_input_cancel_selector"
+	       />
 		
+       <TextView 
+           android:id="@+id/tv_nickname_warning"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:layout_below="@+id/et_nickname"
+	       android:layout_marginTop="5dp"
+	       android:layout_alignLeft="@+id/et_nickname"
+	       android:text="该昵称已存在"
+	       android:textSize="15sp"
+	       android:textColor="#ffc60606"/>
 
     </RelativeLayout>
 </RelativeLayout>

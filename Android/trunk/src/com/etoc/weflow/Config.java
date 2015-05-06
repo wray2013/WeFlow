@@ -7,7 +7,7 @@ public class Config {
 	/*
 	 *  测试环境
 	 **/
-	public static final String SERVER_URL    = "http://113.57.180.175:8090";
+	public static final String SERVER_URL    = "http://113.57.243.18:8070/transit";//"http://113.57.180.175:8090";
 	/*
 	 *  生产环境，勿启用
 	 **/

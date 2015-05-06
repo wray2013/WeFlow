@@ -163,7 +163,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 		rlGridFlow.setOnClickListener(this);
 		rlGridGame.setOnClickListener(this);
 		
-		rlGridGame.setOnLongClickListener(new OnLongClickListener() {
+		/*rlGridGame.setOnLongClickListener(new OnLongClickListener() {
 			
 			@Override
 			public boolean onLongClick(View v) {
@@ -172,7 +172,7 @@ public class HomePageFragment2 extends XFragment<Object>/*TitleRootFragment*/imp
 				startActivity(gameIntent);
 				return false;
 			}
-		});
+		});*/
 		
 		adaptView(view);
 		

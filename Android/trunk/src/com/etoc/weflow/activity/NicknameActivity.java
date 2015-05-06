@@ -12,19 +12,20 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.etoc.weflow.R;
 import com.etoc.weflow.WeFlowApplication;
+import com.etoc.weflow.activity.login.LoginActivity;
 import com.etoc.weflow.dao.AccountInfo;
+import com.etoc.weflow.dialog.PromptDialog;
 import com.etoc.weflow.net.GsonResponseObject.NickNameResp;
 import com.etoc.weflow.net.Requester;
 import com.etoc.weflow.utils.DisplayUtil;
 import com.etoc.weflow.utils.ViewUtils;
 
 /**
- * @author youtian
- * @email youtian@cmmobi.com
- * @date  2015-03-10
+ * 
  */
 public class NicknameActivity extends TitleRootActivity{
 
@@ -32,6 +33,7 @@ public class NicknameActivity extends TitleRootActivity{
 
 	private ImageView ivInputCancel;
 	private EditText etNickname;
+	private TextView tvWarning;
 	
 	@Override
 	public int subContentViewId() {
@@ -51,6 +53,12 @@ public class NicknameActivity extends TitleRootActivity{
 		ViewUtils.setMarginTop(findViewById(R.id.rl_content), 16);
 		ViewUtils.setMarginLeft(findViewById(R.id.rl_content), 12);
 		ViewUtils.setMarginRight(findViewById(R.id.rl_content), 12);
+		
+		tvWarning = (TextView) findViewById(R.id.tv_nickname_warning);
+		tvWarning.setVisibility(View.GONE);
+		
+		ViewUtils.setMarginTop(tvWarning, 8);
+		ViewUtils.setTextSize(tvWarning, 28);
 		
 		ivInputCancel  = (ImageView) findViewById(R.id.iv_input_cancel);
 		RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) ivInputCancel.getLayoutParams();
@@ -88,6 +96,7 @@ public class NicknameActivity extends TitleRootActivity{
 		public void onTextChanged(CharSequence s, int start, int before, int count) {
 			// TODO Auto-generated method stub
 			et.setHintTextColor(0xff888888);
+			tvWarning.setVisibility(View.GONE);
 			if(et.getId() == R.id.et_nickname){
 				
 			}
@@ -142,6 +151,7 @@ public class NicknameActivity extends TitleRootActivity{
 			break;
 		case R.id.iv_input_cancel:
 			etNickname.setText("");
+			tvWarning.setVisibility(View.GONE);
 			break;
 		default:{
 				
@@ -171,7 +181,13 @@ public class NicknameActivity extends TitleRootActivity{
 					WeFlowApplication.getAppInstance().PersistAccountInfo(accountInfo);
 					this.setResult(RESULT_OK, intent);
 					this.finish();
+				} else if("2017".equals(resp.status)) {
+					tvWarning.setVisibility(View.VISIBLE);
+				} else {
+					PromptDialog.Alert(NicknameActivity.class, "昵称修改失败！");
 				}
+			} else {
+				PromptDialog.Alert(NicknameActivity.class, "您的网络不给力啊！");
 			}
 			break;
 		default:

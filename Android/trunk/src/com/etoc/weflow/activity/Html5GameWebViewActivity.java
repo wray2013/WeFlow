@@ -204,9 +204,9 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 					
 					Log.d("H5WebGame", "jsonStr = " + jsonStr);
 					
-					Toast.makeText(Html5GameWebViewActivity.this,
+					/*Toast.makeText(Html5GameWebViewActivity.this,
 							"calBackAppUserInfo = " + jsonStr,
-							Toast.LENGTH_LONG).show();
+							Toast.LENGTH_LONG).show();*/
 					// 发送xxx给h5接口javacalljswithargs
 					webview.loadUrl("javascript:calBackAppUserInfo('" + jsonStr + "')");
 				}
@@ -227,9 +227,9 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 						type = Integer.parseInt(infos[0]);
 						money = Integer.parseInt(infos[1]);
 						Requester.orderGame(false, handler, WeFlowApplication.getAppInstance().getAccountInfo().getUserid(), gameid, type + "", money + "");
-						Toast.makeText(Html5GameWebViewActivity.this, "UpdateAppUserGold type = " + type + ", money = " + money, Toast.LENGTH_LONG).show();
+//						Toast.makeText(Html5GameWebViewActivity.this, "UpdateAppUserGold type = " + type + ", money = " + money, Toast.LENGTH_LONG).show();
 					} catch (Exception e) {
-						Toast.makeText(Html5GameWebViewActivity.this, "Something unexpected occured!", Toast.LENGTH_LONG).show();
+//						Toast.makeText(Html5GameWebViewActivity.this, "Something unexpected occured!", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
 					}
 				}
@@ -243,7 +243,7 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					Toast.makeText(Html5GameWebViewActivity.this, "You want to close webview ?", Toast.LENGTH_LONG).show();
+//					Toast.makeText(Html5GameWebViewActivity.this, "You want to close webview ?", Toast.LENGTH_LONG).show();
 					finish();
 				}
 			});
@@ -324,14 +324,14 @@ public class Html5GameWebViewActivity extends TitleRootActivity implements Callb
 					String coins = resp.flowcoins;
 					WeFlowApplication.getAppInstance().setFlowCoins(coins);
 					if(webview != null) {
-						Toast.makeText(this, "成功获取" + coins + "流量币", Toast.LENGTH_LONG).show();
+//						Toast.makeText(this, "成功获取" + coins + "流量币", Toast.LENGTH_LONG).show();
 						webview.loadUrl("javascript:callUpdateAppUserGold('1')");
 					}
 					break;
 				}
 			}
 			if(webview != null) {
-				Toast.makeText(this, "获取流量币失败", Toast.LENGTH_LONG).show();
+//				Toast.makeText(this, "获取流量币失败", Toast.LENGTH_LONG).show();
 				webview.loadUrl("javascript:callUpdateAppUserGold('0')");
 			}
 			break;
