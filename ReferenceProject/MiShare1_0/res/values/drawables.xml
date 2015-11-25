@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-
-    <item name="contacts_tab_select" type="drawable">#1b1b1b</item>
-    <item name="contacts_tab" type="drawable">#00000000</item>
-
-    <drawable name="transparent">#00000000</drawable>
-    
-</resources>

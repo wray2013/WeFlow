@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="effect_seek_margin_top">22dp</dimen>
-    <dimen name="effect_item_margin_top">18.5dp</dimen>
-    <dimen name="menu_line_width">240dp</dimen>
-    <dimen name="seekbar_margin_top">-8.5dp</dimen>
-</resources>

@@ -1,8 +1,0 @@
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" 
-        android:drawable="@drawable/haoyou_jian_2" />
-    <item android:state_selected="true"
-        android:drawable="@drawable/haoyou_jian_2" />
-    <item
-        android:drawable="@drawable/haoyou_jian_1" />
-</selector>

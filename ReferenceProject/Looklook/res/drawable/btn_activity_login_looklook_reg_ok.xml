@@ -1,8 +1,0 @@
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:drawable="@drawable/queren_disable" android:state_enabled="false"/>
-    <item android:drawable="@drawable/queren_pressed" android:state_pressed="true"/>
-    <item android:drawable="@drawable/queren_pressed" android:state_checked="true"/>
-    <item android:drawable="@drawable/queren_normal"/>
-
-</selector>
